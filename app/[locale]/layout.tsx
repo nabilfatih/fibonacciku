@@ -8,6 +8,7 @@ import { Providers } from "@/components/providers";
 import { notFound } from "next/navigation";
 import { getScopedI18n } from "@/locales/server";
 import { Toaster } from "@/components/ui/sonner";
+import { Suspense } from "react";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getScopedI18n("Metadata");
@@ -137,7 +138,9 @@ export default function RootLayout({
         >
           <Toaster />
           <div className="flex min-h-screen flex-col">
-            <main className="flex flex-1 flex-col">{children}</main>
+            <main className="flex flex-1 flex-col">
+              <Suspense>{children}</Suspense>
+            </main>
           </div>
           <TailwindIndicator />
         </Providers>
