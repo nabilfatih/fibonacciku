@@ -136,8 +136,8 @@ export default function RootLayout({
           enableSystem
         >
           <Toaster />
-          <div className="flex flex-col min-h-screen">
-            <main className="flex flex-col flex-1">{children}</main>
+          <div className="flex min-h-screen flex-col">
+            <main className="flex flex-1 flex-col">{children}</main>
           </div>
           <TailwindIndicator />
         </Providers>
