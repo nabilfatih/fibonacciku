@@ -574,6 +574,7 @@ export default {
       "Check your email inbox/spam for the reset password link",
     role: "Role",
     logout: "Logout",
+    homepage: "Homepage",
   },
   ModalClearChat: {
     clear: "Clear",

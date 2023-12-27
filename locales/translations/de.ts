@@ -594,6 +594,7 @@ export default {
       "Überprüfen Sie Ihren E-Mail-Eingang/Spam für den Link zum Zurücksetzen des Passworts",
     role: "Rolle",
     logout: "Abmelden",
+    homepage: "Startseite",
   },
   ModalClearChat: {
     clear: "Leeren",

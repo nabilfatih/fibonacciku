@@ -591,6 +591,7 @@ export default {
       "Cek kotak masuk/spam email Anda untuk tautan reset kata sandi",
     role: "Peran",
     logout: "Keluar",
+    homepage: "Beranda",
   },
   ModalClearChat: {
     clear: "Hapus",
