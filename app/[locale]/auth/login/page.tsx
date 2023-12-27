@@ -1,7 +1,7 @@
 import { LoginAuthForm } from "@/components/auth/login-form";
 import { createClientServer } from "@/lib/supabase/server";
 import { getScopedI18n } from "@/locales/server";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
