@@ -420,6 +420,9 @@ export default {
       "Periksa kotak masuk/spam email Anda untuk tautan verifikasi",
     "something-wrong": "Ada yang salah, silakan coba lagi nanti",
     "user-exist": "Pengguna sudah ada",
+    "or-continue-with": "Atau lanjutkan dengan",
+    "login-header":
+      "Masukkan email dan kata sandi Anda di bawah ini untuk masuk",
   },
   Chat: {
     chat: "Chat",

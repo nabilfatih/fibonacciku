@@ -406,6 +406,8 @@ export default {
       "Check your email inbox/spam for the verification link",
     "something-wrong": "Something went wrong, please try again later",
     "user-exist": "User already exist",
+    "or-continue-with": "Or continue with",
+    "login-header": "Enter your email and password below to login",
   },
   Chat: {
     chat: "Chat",

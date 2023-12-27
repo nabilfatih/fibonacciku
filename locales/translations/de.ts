@@ -419,6 +419,9 @@ export default {
     "something-wrong":
       "Etwas ist schief gelaufen, bitte versuchen Sie es später noch einmal",
     "user-exist": "Benutzer existiert bereits",
+    "or-continue-with": "Oder fortfahren mit",
+    "login-header":
+      "Geben Sie Ihre E-Mail-Adresse und Ihr Passwort ein, um sich anzumelden",
   },
   Chat: {
     chat: "Chat",
