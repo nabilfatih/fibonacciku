@@ -1,3 +1,4 @@
+import { SidebarToggle } from "@/components/sidebar/sidebar-toggle";
 import { IconSeparator } from "@/components/ui/icons";
 import { createClientServer } from "@/lib/supabase/server";
 import { cookies } from "next/headers";
@@ -11,6 +12,7 @@ async function UserOrLogin() {
   } = await supabase.auth.getSession();
   return (
     <>
+      <SidebarToggle />
       {/* {session?.user ? (
         <>
           <SidebarMobile>
