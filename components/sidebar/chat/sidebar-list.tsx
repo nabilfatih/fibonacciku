@@ -11,6 +11,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useCurrentUser } from "@/lib/context/use-current-user";
 import type { Chat } from "@/types/types";
 import supabaseClient from "@/lib/supabase/client";
+import { ClearHistory } from "@/components/sidebar/chat/clear-history";
 
 type Props = {
   userId: string;
@@ -144,7 +145,7 @@ export default function SidebarList({ userId }: Props) {
         </form>
       </div>
 
-      <div ref={ref} className="flex-1 overflow-auto">
+      <div ref={ref} className="flex-1 overflow-y-auto overflow-x-hidden">
         {filteredChats.length ? (
           <div className="space-y-2 px-2">
             <SidebarItems chats={filteredChats} ref={ref} />
@@ -159,7 +160,7 @@ export default function SidebarList({ userId }: Props) {
       </div>
       <div className="flex items-center justify-between border-t p-2">
         <ThemeToggle />
-        {/* <ClearHistory clearChats={clearChats} isEnabled={chats?.length > 0} /> */}
+        <ClearHistory isEnabled={!!userChatData.length} />
       </div>
     </div>
   );

@@ -605,6 +605,13 @@ export default {
     "title-clear-conversations": "Alle Unterhaltungen löschen",
     "desc-clear-conversations":
       "Sind Sie sicher, dass Sie alle Unterhaltungen löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden",
+    "clear-history": "Verlauf löschen",
+    "history-clear": "Verlauf wurde gelöscht",
+    "title-clear-history": "Verlauf löschen",
+    "desc-clear-history":
+      "Sind Sie sicher, dass Sie den Verlauf löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden",
+    cancel: "Abbrechen",
+    delete: "Löschen",
   },
   ModalShareChat: {
     "share-chat": "Chat teilen",

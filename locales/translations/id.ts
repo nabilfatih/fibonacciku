@@ -599,8 +599,15 @@ export default {
     "conversations-clear": "Percakapan telah dihapus",
     "something-wrong": "Ada yang salah, silakan coba lagi nanti!",
     "title-clear-conversations": "Hapus semua percakapan",
+    "clear-history": "Hapus riwayat",
+    "history-clear": "Riwayat telah dihapus",
+    "title-clear-history": "Hapus semua riwayat",
+    "desc-clear-history":
+      "Anda yakin ingin menghapus semua riwayat? Tindakan ini tidak dapat dibatalkan",
     "desc-clear-conversations":
       "Anda yakin ingin menghapus semua percakapan? Tindakan ini tidak dapat dibatalkan",
+    cancel: "Batal",
+    delete: "Hapus",
   },
   ModalShareChat: {
     "share-chat": "Bagikan obrolan",
