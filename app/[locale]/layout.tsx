@@ -4,9 +4,10 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { cn } from "@/lib/utils";
 import { TailwindIndicator } from "@/components/development/tailwind-indicator";
-import { Providers } from "@/components/providers/theme";
+import { Providers } from "@/components/providers";
 import { notFound } from "next/navigation";
 import { getScopedI18n } from "@/locales/server";
+import { Toaster } from "@/components/ui/sonner";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getScopedI18n("Metadata");
@@ -120,7 +121,7 @@ export default function RootLayout({
   if (!isValidLocale) notFound();
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={params.locale} suppressHydrationWarning>
       <body
         className={cn(
           "font-sans antialiased",
@@ -128,7 +129,13 @@ export default function RootLayout({
           GeistMono.variable
         )}
       >
-        <Providers attribute="class" defaultTheme="system" enableSystem>
+        <Providers
+          locale={params.locale}
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+        >
+          <Toaster />
           <div className="flex flex-col min-h-screen">
             <main className="flex flex-col flex-1">{children}</main>
           </div>
