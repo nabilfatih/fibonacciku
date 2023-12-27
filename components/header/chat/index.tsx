@@ -5,6 +5,8 @@ import { cookies } from "next/headers";
 import Link from "next/link";
 import { Suspense } from "react";
 import { UserMenu } from "./user-menu";
+import { SidebarMobile } from "@/components/sidebar/chat/sidebar-mobile";
+import { ChatHistory } from "@/components/sidebar/chat/chat-history";
 
 async function UserHistory() {
   const cookieStore = cookies();
@@ -12,8 +14,14 @@ async function UserHistory() {
   const {
     data: { session },
   } = await supabase.auth.getSession();
+
+  if (!session?.user?.id) return null;
+
   return (
     <div className="flex items-center">
+      <SidebarMobile>
+        <ChatHistory userId={session.user.id} />
+      </SidebarMobile>
       <SidebarToggle />
       <div className="flex items-center">
         <IconSeparator className="h-6 w-6 text-muted-foreground/50" />

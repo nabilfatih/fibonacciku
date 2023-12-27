@@ -426,6 +426,7 @@ export default {
   },
   Chat: {
     chat: "Chat",
+    "chat-history": "Riwayat chat",
     "new-chat": "Chat baru",
     "search-chat": "Cari chat",
     "edit-message": "Edit pesan",

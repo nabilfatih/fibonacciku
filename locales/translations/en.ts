@@ -411,6 +411,7 @@ export default {
   },
   Chat: {
     chat: "Chat",
+    "chat-history": "Chat history",
     "new-chat": "New chat",
     "search-chat": "Search chat",
     "edit-message": "Edit message",
