@@ -32,7 +32,7 @@ export default function SidebarList({ userId }: Props) {
           </div>
         )}
       </div>
-      <div className="flex items-center justify-between p-4">
+      <div className="flex items-center justify-between px-2 py-4">
         <ThemeToggle />
         {/* <ClearHistory clearChats={clearChats} isEnabled={chats?.length > 0} /> */}
       </div>
