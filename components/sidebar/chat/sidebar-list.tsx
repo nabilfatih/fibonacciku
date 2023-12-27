@@ -4,7 +4,7 @@ import { ThemeToggle } from "@/components/theme/toggle";
 import useChatHistory from "@/lib/swr/use-chat-history";
 import LoadingChatHistory from "./loading-chat-history";
 import { useScopedI18n } from "@/locales/client";
-import { SidebarItems } from "./sidebar-items";
+import { SidebarItems } from "@/components/sidebar/chat/sidebar-items";
 import { IconSearch } from "@tabler/icons-react";
 import { Input } from "@/components/ui/input";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
