@@ -29,7 +29,11 @@ export function SidebarItems({ chats, ref }: SidebarItemsProps) {
                 }}
               >
                 <SidebarItem index={index} chat={item}>
-                  <div></div>
+                  <div>
+                    {
+                      // TODO: Action buttons
+                    }
+                  </div>
                 </SidebarItem>
               </motion.div>
             )}
