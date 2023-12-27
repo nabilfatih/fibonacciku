@@ -1,3 +1,4 @@
+import { HeaderChat } from "@/components/header/chat";
 import { CurrentUserContextProvider } from "@/lib/context/use-current-user";
 import { createClientServer } from "@/lib/supabase/server";
 import { cookies } from "next/headers";
@@ -15,8 +16,13 @@ export default async function ApplicationLayout({
   } = await supabase.auth.getSession();
 
   return (
-    // <CurrentUserContextProvider session={session}>
-    <Suspense>{children}</Suspense>
-    // </CurrentUserContextProvider>
+    <>
+      {/* <CurrentUserContextProvider session={session}>  */}
+      <HeaderChat />
+      <main className="flex flex-1 flex-col">
+        <Suspense>{children}</Suspense>
+      </main>
+      {/* </CurrentUserContextProvider> */}
+    </>
   );
 }

@@ -138,9 +138,7 @@ export default function RootLayout({
         >
           <Toaster />
           <div className="flex min-h-screen flex-col">
-            <main className="flex flex-1 flex-col">
-              <Suspense>{children}</Suspense>
-            </main>
+            <Suspense>{children}</Suspense>
           </div>
           <TailwindIndicator />
         </Providers>
