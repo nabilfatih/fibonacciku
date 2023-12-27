@@ -15,8 +15,8 @@ export default async function ApplicationLayout({
   } = await supabase.auth.getSession();
 
   return (
-    <CurrentUserContextProvider session={session}>
-      <Suspense>{children}</Suspense>
-    </CurrentUserContextProvider>
+    // <CurrentUserContextProvider session={session}>
+    <Suspense>{children}</Suspense>
+    // </CurrentUserContextProvider>
   );
 }
