@@ -135,6 +135,7 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
           enableSystem
+          disableTransitionOnChange
         >
           <Toaster />
           <div className="flex min-h-screen flex-col">
