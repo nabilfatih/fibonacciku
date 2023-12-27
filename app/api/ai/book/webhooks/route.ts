@@ -3,7 +3,7 @@ import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { SupabaseVectorStore } from "langchain/vectorstores/supabase";
 import supabaseAdmin from "@/lib/supabase/admin";
-import { createDocumentsFromPages } from "@/utils/openai/helper";
+import { createDocumentsFromPages } from "@/lib/openai/helper";
 import { updateBooksStatusAdmin } from "@/lib/supabase/admin/book";
 
 export const maxDuration = 300; // This function can run for a maximum of 300 seconds

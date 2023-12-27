@@ -1,8 +1,8 @@
 import { cookies } from "next/headers";
-import type { priceList } from "@/components/layout/marketing/pricing/helper";
+import type { priceList } from "@/lib/helpers";
 import { createOrRetrieveCustomerAdmin } from "@/lib/supabase/admin/users";
 import { stripe } from "@/lib/stripe/admin";
-import { getURL } from "@/utils/helpers";
+import { getURL } from "@/lib/utils";
 import { NextResponse } from "next/server";
 import { createClientServer } from "@/lib/supabase/server";
 

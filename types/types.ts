@@ -271,3 +271,14 @@ export type InvoiceCallbackPayload = {
   on_demand_link?: string;
   recurring_payment_id?: string;
 };
+
+// Define types
+export type PlanType = "starter" | "hobby" | "premium";
+export type CurrencyType = "usd" | "eur" | "idr";
+export type PlanDetailsType = Record<PlanType, string[]>;
+export type PriceListType = Array<{
+  plan: PlanType;
+  redirect: boolean;
+  priceId: string;
+  price: Record<CurrencyType, number>;
+}>;

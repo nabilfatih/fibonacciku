@@ -1,4 +1,4 @@
-import { AppId, extractDataFromXML } from "@/utils/openai/plugin/wolframalpha";
+import { AppId, extractDataFromXML } from "@/lib/openai/plugin/wolframalpha";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {

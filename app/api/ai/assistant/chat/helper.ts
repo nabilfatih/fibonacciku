@@ -5,7 +5,7 @@ import {
   callingSolveMathProblem,
   callingWeather,
   callingWebsite,
-} from "@/utils/openai/function";
+} from "@/lib/openai/function";
 
 function createSafeTitle(prompt: string) {
   if (prompt.length <= 50) {

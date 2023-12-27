@@ -1,4 +1,4 @@
-import { getCurrentDate } from "@/utils/helpers";
+import { getCurrentDate } from "@/lib/utils";
 import supabaseAdmin from ".";
 import type { Books } from "@/types/types";
 

@@ -2,13 +2,13 @@ import {
   getLanguage,
   systemPersonality,
   systemRule,
-} from "@/utils/chat/system";
+} from "@/lib/openai/system";
 import { NextRequest, NextResponse } from "next/server";
 import { StreamingTextResponse, OpenAIStream } from "ai";
 import OpenAI from "openai";
 import { track } from "@vercel/analytics/server";
 import { codeBlock } from "common-tags";
-import { openai } from "@/utils/openai";
+import { openai } from "@/lib/openai";
 import { cookies } from "next/headers";
 import { createClientServer } from "@/lib/supabase/server";
 

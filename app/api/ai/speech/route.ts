@@ -1,5 +1,5 @@
 import { createClientServer } from "@/lib/supabase/server";
-import { openai } from "@/utils/openai";
+import { openai } from "@/lib/openai";
 import { track } from "@vercel/analytics/server";
 import { cookies } from "next/headers";
 import { NextResponse, type NextRequest } from "next/server";

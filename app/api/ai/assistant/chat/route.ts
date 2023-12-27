@@ -1,5 +1,5 @@
-import { openai } from "@/utils/openai";
-import { defaultToolsChat } from "@/utils/openai/tools";
+import { openai } from "@/lib/openai";
+import { defaultToolsChat } from "@/lib/openai/tools";
 import {
   OpenAIStream,
   StreamingTextResponse,
@@ -12,7 +12,7 @@ import OpenAI from "openai";
 import { cookies } from "next/headers";
 import { createClientServer } from "@/lib/supabase/server";
 import type { DataMessage } from "@/types/types";
-import { determineModelBasedOnSubscription } from "@/utils/openai/helper";
+import { determineModelBasedOnSubscription } from "@/lib/openai/helper";
 import { updateUserUsageAdmin } from "@/lib/supabase/admin/users";
 import { track } from "@vercel/analytics/server";
 import { getChatAttachmentSignedUrlAdmin } from "@/lib/supabase/admin/chat";

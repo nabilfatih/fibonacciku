@@ -1,12 +1,12 @@
 import { getChatDocumentSignedUrlAdmin } from "@/lib/supabase/admin/chat";
 import { insertLibraryAdmin } from "@/lib/supabase/admin/library";
 import { createClientServer } from "@/lib/supabase/server";
-import { generateUUID } from "@/utils/helpers";
+import { generateUUID } from "@/lib/utils";
 import {
   EDEN_HEADERS,
   ENDPOINTS,
   WEBHOOK_RECEIVER_DOCUMENT,
-} from "@/utils/openai/plugin/ai";
+} from "@/lib/openai/plugin/ai";
 import { track } from "@vercel/analytics/server";
 import { cookies } from "next/headers";
 import { NextResponse, type NextRequest } from "next/server";

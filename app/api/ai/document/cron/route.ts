@@ -2,8 +2,8 @@ import {
   getLibraryProcessingAdmin,
   updateLibraryStatusAdmin,
 } from "@/lib/supabase/admin/library";
-import { createDocumentsFromPages } from "@/utils/openai/helper";
-import { EDEN_HEADERS, ENDPOINTS } from "@/utils/openai/plugin/ai";
+import { createDocumentsFromPages } from "@/lib/openai/helper";
+import { EDEN_HEADERS, ENDPOINTS } from "@/lib/openai/plugin/ai";
 import { NextResponse } from "next/server";
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";

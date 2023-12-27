@@ -3,7 +3,7 @@ import {
   insertBooksAdmin,
 } from "@/lib/supabase/admin/book";
 import { createClientServer } from "@/lib/supabase/server";
-import { EDEN_HEADERS, ENDPOINTS } from "@/utils/openai/plugin/ai";
+import { EDEN_HEADERS, ENDPOINTS } from "@/lib/openai/plugin/ai";
 import { track } from "@vercel/analytics/server";
 import { cookies } from "next/headers";
 import { NextResponse, type NextRequest } from "next/server";

@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 import { ChatOpenAI } from "langchain/chat_models/openai";
 import { Document } from "langchain/document";
 import { PromptTemplate } from "langchain/prompts";
-import { getLanguage, systemPersonality } from "@/utils/chat/system";
+import { getLanguage, systemPersonality } from "@/lib/openai/system";
 import { RunnableSequence } from "langchain/schema/runnable";
 import {
   BytesOutputParser,
@@ -19,7 +19,7 @@ import { SupabaseHybridSearch } from "langchain/retrievers/supabase";
 import { formatDocumentsAsString } from "langchain/util/document";
 import { kv } from "@vercel/kv";
 import { Ratelimit } from "@upstash/ratelimit";
-import { determineModelBasedOnSubscription } from "@/utils/openai/helper";
+import { determineModelBasedOnSubscription } from "@/lib/openai/helper";
 
 export const runtime = "edge";
 

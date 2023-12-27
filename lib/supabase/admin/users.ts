@@ -1,4 +1,4 @@
-import { generateNanoID, getCurrentDate, toDateTime } from "@/utils/helpers";
+import { generateNanoID, getCurrentDate, toDateTime } from "@/lib/utils";
 import supabaseAdmin from ".";
 import type { Database } from "@/types/types_db";
 import Stripe from "stripe";
