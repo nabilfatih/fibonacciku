@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -14,13 +14,26 @@ import { IconSpinner } from "@/components/ui/icons";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useCurrentUser } from "@/lib/context/use-current-user";
+import { cn } from "@/lib/utils";
 import { useScopedI18n } from "@/locales/client";
 import { IconSend } from "@tabler/icons-react";
 import axios from "axios";
 import { useState } from "react";
 import { toast } from "sonner";
 
-export default function Feedback() {
+type Props = {
+  variant?:
+    | "default"
+    | "link"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | null;
+  className?: string;
+};
+
+export default function Feedback({ variant, className }: Props) {
   const t = useScopedI18n("ModalFeedback");
 
   const { userDetails } = useCurrentUser();
@@ -63,7 +76,9 @@ export default function Feedback() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">{t("feedback")}</Button>
+        <span className={cn(variant && buttonVariants({ variant }), className)}>
+          {t("feedback")}
+        </span>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

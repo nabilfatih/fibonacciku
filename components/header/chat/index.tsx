@@ -47,7 +47,9 @@ export function HeaderChat() {
         </Suspense>
       </div>
       <div className="flex items-center justify-end space-x-2">
-        <Feedback />
+        <div className="hidden sm:flex">
+          <Feedback variant="outline" />
+        </div>
         <UserMenu />
       </div>
     </header>

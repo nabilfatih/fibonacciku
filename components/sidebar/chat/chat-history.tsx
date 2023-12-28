@@ -1,14 +1,6 @@
 import NewChat from "@/components/sidebar/chat/new-chat";
-import LoadingChatHistory from "@/components/sidebar/chat/loading-chat-history";
-import dynamic from "next/dynamic";
+import SidebarList from "@/components/sidebar/chat/sidebar-list";
 import { getScopedI18n } from "@/locales/server";
-
-const SidebarList = dynamic(
-  () => import("@/components/sidebar/chat/sidebar-list"),
-  {
-    loading: () => <LoadingChatHistory />,
-  }
-);
 
 type ChatHistoryProps = {
   userId: string;
