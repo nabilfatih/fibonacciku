@@ -2,7 +2,6 @@
 
 import type { Subscription, UserDetails } from "@/types/types";
 import type { Session } from "@supabase/supabase-js";
-import { redirect, usePathname } from "next/navigation";
 import {
   createContext,
   useCallback,
@@ -39,18 +38,11 @@ type CurrentUserContextProviderProps = {
 export const CurrentUserContextProvider: React.FC<
   CurrentUserContextProviderProps
 > = ({ session, children }) => {
-  const pathname = usePathname();
-
-  // Redirect if no session
-  if (!session) {
-    redirect(`/auth/login?next=${encodeURIComponent(pathname)}`);
-  }
-
   const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
   const [subscription, setSubscription] = useState<Subscription | null>(null);
 
   const { userDetails: userData, subscription: subscriptionData } = useUser(
-    session.user.id
+    session?.user?.id ?? ""
   );
 
   useEffect(() => {

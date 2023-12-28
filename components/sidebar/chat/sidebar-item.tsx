@@ -45,7 +45,12 @@ export function SidebarItem({ index, chat, children }: SidebarItemProps) {
         ease: "easeInOut",
       }}
     >
-      <div className="absolute left-3 top-1.5 flex h-6 w-6 items-center justify-center">
+      <div
+        className={cn(
+          "absolute left-3 top-1.5 flex h-6 w-6 items-center justify-center",
+          isActive && "text-primary-foreground hover:text-primary-foreground"
+        )}
+      >
         {chat.type === "document" ? (
           <IconFile className="mr-2" />
         ) : (
@@ -57,7 +62,8 @@ export function SidebarItem({ index, chat, children }: SidebarItemProps) {
         className={cn(
           buttonVariants({ variant: "ghost" }),
           "group w-full pl-10 pr-4",
-          isActive && "pr-16 font-semibold"
+          isActive &&
+            "bg-primary pr-16 font-semibold text-primary-foreground transition-colors hover:bg-primary/90 hover:text-primary-foreground"
         )}
       >
         <div
