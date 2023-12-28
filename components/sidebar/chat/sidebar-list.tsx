@@ -158,7 +158,7 @@ export default function SidebarList({ userId }: Props) {
           </div>
         )}
       </div>
-      <div className="flex items-center justify-between border-t p-2">
+      <div className="flex items-center justify-between border-t px-2 py-4">
         <ThemeToggle />
         <ClearHistory isEnabled={!!userChatData.length} />
       </div>
