@@ -1,5 +1,4 @@
 import { createClientServer } from "@/lib/supabase/server";
-import { generateUUID } from "@/lib/utils";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import ChatMessage from "@/components/chat";
@@ -19,7 +18,5 @@ export default async function ChatFeaturePage({ params }: Props) {
     redirect(`/auth/login?next=/chat/${params.feature}`);
   }
 
-  const id = generateUUID();
-
-  return <ChatMessage id={id} />;
+  return <ChatMessage />;
 }
