@@ -20,6 +20,7 @@ import {
 import { IconSpinner } from "@/components/ui/icons";
 import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard";
 import { useScopedI18n } from "@/locales/client";
+import moment from "moment";
 
 type ShareChatProps = {
   sharePath: string;
@@ -71,7 +72,8 @@ export function ChatShareDialog({
         <div className="space-y-1 rounded-md border p-4 text-sm">
           <div className="font-medium">{chat.title}</div>
           <div className="text-muted-foreground">
-            {chat.message.length} {t("messages")}
+            {chat.message.length} {t("messages")} ·{" "}
+            {moment(chat.createdAt).format("MMM DD, YYYY")}
           </div>
         </div>
         <DialogFooter className="items-center">
