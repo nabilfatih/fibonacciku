@@ -2,7 +2,8 @@
 
 import { cn } from "@/lib/utils";
 import ChatScrollAnchor from "@/components/chat/scroll-anchor";
-import type { ChatMessage } from "@/types/types";
+import type { ChatMessage, ShowChatMessage } from "@/types/types";
+import { ChatPanel } from "./panel";
 
 export interface ChatProps extends React.ComponentProps<"div"> {
   initialMessages?: ChatMessage[];
@@ -16,19 +17,19 @@ export default function ChatMessage({
   className,
   type,
 }: ChatProps) {
+  if (id && type === "document") {
+    // handle chat with document
+    return null; // TODO: implement chat with document
+  }
+
   return (
     <>
       <div className={cn("pb-[200px] pt-4 md:pt-10", className)}></div>
-      {/* <ChatPanel
+      <ChatPanel
         id={id}
-        isLoading={isLoading}
-        stop={stop}
-        append={append}
-        reload={reload}
-        messages={messages}
-        input={input}
-        setInput={setInput}
-      /> */}
+        isLoading={false}
+        messages={initialMessages as ShowChatMessage[]}
+      />
     </>
   );
 }
