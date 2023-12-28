@@ -65,7 +65,7 @@ export default function UserMenu() {
             <div className="font-normal text-zinc-500">{userDetails.email}</div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuLabel className="cursor-pointer rounded-xl font-normal transition-colors hover:bg-accent">
+          <DropdownMenuLabel className="rounded-xl font-normal transition-colors hover:bg-accent">
             <Feedback className="w-full" />
           </DropdownMenuLabel>
           <DropdownMenuSeparator />

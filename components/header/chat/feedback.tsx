@@ -76,7 +76,13 @@ export default function Feedback({ variant, className }: Props) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <span className={cn(variant && buttonVariants({ variant }), className)}>
+        <span
+          className={cn(
+            variant && buttonVariants({ variant }),
+            "cursor-pointer",
+            className
+          )}
+        >
           {t("feedback")}
         </span>
       </DialogTrigger>
