@@ -4,9 +4,10 @@ import { createClientServer } from "@/lib/supabase/server";
 import { cookies } from "next/headers";
 import Link from "next/link";
 import { Suspense } from "react";
-import { UserMenu } from "./user-menu";
+import UserMenu from "@/components/header/chat/user-menu";
 import { SidebarMobile } from "@/components/sidebar/chat/sidebar-mobile";
 import { ChatHistory } from "@/components/sidebar/chat/chat-history";
+import Feedback from "@/components/header/chat/feedback";
 
 async function UserHistory() {
   const cookieStore = cookies();
@@ -46,6 +47,7 @@ export function HeaderChat() {
         </Suspense>
       </div>
       <div className="flex items-center justify-end space-x-2">
+        <Feedback />
         <UserMenu />
       </div>
     </header>

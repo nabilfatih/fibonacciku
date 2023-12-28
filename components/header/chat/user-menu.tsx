@@ -18,7 +18,7 @@ import { useRouter } from "next/navigation";
 import Avatar, { genConfig } from "react-nice-avatar";
 import { IconExternalLink } from "@tabler/icons-react";
 
-export function UserMenu() {
+export default function UserMenu() {
   const t = useScopedI18n("ModalAccount");
   const router = useRouter();
 
