@@ -1,13 +1,10 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 import { type DialogProps } from "@radix-ui/react-dialog";
 import { toast } from "sonner";
 
 import type { Chat, ServerActionResult, ShowChatMessage } from "@/types/types";
-import { cn } from "@/lib/utils";
-import { badgeVariants } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -57,8 +54,9 @@ export function ChatShareDialog({
       url.pathname = chat.sharePath;
       copyToClipboard(url.toString());
       onCopy();
-      toast.success("Share link copied to clipboard");
+      toast.success(t("link-copied"));
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [copyToClipboard, onCopy]
   );
 
