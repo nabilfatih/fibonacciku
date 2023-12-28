@@ -20,7 +20,7 @@ export type ChatPanelProps = {
   createdAt?: string;
 };
 
-export function ChatPanel({
+export default function ChatPanel({
   id,
   messages,
   type,

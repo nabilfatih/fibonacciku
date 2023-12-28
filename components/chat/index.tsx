@@ -3,7 +3,9 @@
 import { cn } from "@/lib/utils";
 import ChatScrollAnchor from "@/components/chat/scroll-anchor";
 import type { ChatMessage, ShowChatMessage } from "@/types/types";
-import { ChatPanel } from "./panel";
+import dynamic from "next/dynamic";
+
+const ChatPanel = dynamic(() => import("@/components/chat/panel"));
 
 export interface ChatProps extends React.ComponentProps<"div"> {
   initialMessages?: ChatMessage[];
