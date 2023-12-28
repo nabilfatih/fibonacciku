@@ -46,9 +46,7 @@ export function HeaderChat() {
         </Suspense>
       </div>
       <div className="flex items-center justify-end space-x-2">
-        <Suspense>
-          <UserMenu />
-        </Suspense>
+        <UserMenu />
       </div>
     </header>
   );
