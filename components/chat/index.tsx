@@ -7,16 +7,18 @@ import type { ChatMessage } from "@/types/types";
 export interface ChatProps extends React.ComponentProps<"div"> {
   initialMessages?: ChatMessage[];
   id?: string;
+  type?: "assistant" | "document";
 }
 
 export default function ChatMessage({
   id,
   initialMessages,
   className,
+  type,
 }: ChatProps) {
   return (
     <>
-      <div className={cn("pb-[200px] pt-4 md:pt-10", className)}>tes</div>
+      <div className={cn("pb-[200px] pt-4 md:pt-10", className)}></div>
       {/* <ChatPanel
         id={id}
         isLoading={isLoading}

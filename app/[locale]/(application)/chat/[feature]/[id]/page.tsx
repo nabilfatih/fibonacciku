@@ -73,5 +73,11 @@ export default async function ChatMessagePage({ params }: Props) {
     notFound();
   }
 
-  return <ChatMessage id={chat.id} initialMessages={chat.messages} />;
+  return (
+    <ChatMessage
+      id={chat.id}
+      initialMessages={chat.messages}
+      type={chat.type as "assistant" | "document"}
+    />
+  );
 }
