@@ -57,7 +57,7 @@ export default function PromptForm({
     >
       <div
         className={cn(
-          "relative flex max-h-60 w-full grow flex-col overflow-hidden bg-background px-8 sm:rounded-3xl sm:border sm:px-12",
+          "relative flex max-h-60 w-full grow flex-col overflow-hidden px-8 sm:rounded-3xl sm:border bg-background sm:px-12",
           !isAssistant && "pl-0 sm:pl-2"
         )}
       >
