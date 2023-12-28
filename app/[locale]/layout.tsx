@@ -129,6 +129,7 @@ export default function RootLayout({
           GeistSans.variable,
           GeistMono.variable
         )}
+        suppressHydrationWarning
       >
         <Providers
           locale={params.locale}

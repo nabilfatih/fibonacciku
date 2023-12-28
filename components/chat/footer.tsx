@@ -4,8 +4,9 @@ import { cn } from "@/lib/utils";
 
 export default function FooterText({
   className,
+  text,
   ...props
-}: React.ComponentProps<"p">) {
+}: React.ComponentProps<"p"> & { text: string }) {
   return (
     <p
       className={cn(
@@ -14,7 +15,7 @@ export default function FooterText({
       )}
       {...props}
     >
-      FibonacciKu makes mistake sometimes
+      {text}
     </p>
   );
 }

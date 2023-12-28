@@ -90,7 +90,14 @@ export function ChatPanel({
             isLoading={isLoading}
             type={type}
           />
-          <FooterText className="hidden sm:block" />
+          <FooterText
+            className="hidden sm:block"
+            text={
+              type === "assistant"
+                ? t("fibonacciku-make-mistake")
+                : t("fibonacciku-answer-based-doc")
+            }
+          />
         </div>
       </div>
     </div>
