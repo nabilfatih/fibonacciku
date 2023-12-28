@@ -514,6 +514,7 @@ export default {
     "no-image-selected": "Kein Bild ausgewählt",
     "max-file-size-5mb": "Maximale Dateigröße ist 5MB",
     "see-diagram": "Diagramm ansehen",
+    share: "Teilen",
   },
   FormDocument: {
     "form-document-desc": "Laden Sie Ihr Dokument hoch, um zu starten",
@@ -625,6 +626,8 @@ export default {
     "link-created-at": "Link erstellt am",
     "delete-link": "Link löschen",
     "link-deleted": "Link gelöscht",
+    messages: "Nachrichten",
+    copying: "Kopieren",
   },
   ModalPluginChat: {
     plugin: "Plugin",

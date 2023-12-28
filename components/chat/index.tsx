@@ -9,6 +9,8 @@ export interface ChatProps extends React.ComponentProps<"div"> {
   initialMessages?: ChatMessage[];
   id?: string;
   type?: "assistant" | "document";
+  title?: string;
+  createdAt?: string;
 }
 
 export default function ChatMessage({
@@ -16,6 +18,8 @@ export default function ChatMessage({
   initialMessages,
   className,
   type,
+  title,
+  createdAt,
 }: ChatProps) {
   if (id && type === "document") {
     // handle chat with document
@@ -34,6 +38,8 @@ export default function ChatMessage({
           isLoading={false}
           messages={initialMessages as ShowChatMessage[]}
           type={type as "assistant" | "document"}
+          title={title}
+          createdAt={createdAt}
         />
       )}
     </>

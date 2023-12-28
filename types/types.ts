@@ -3,6 +3,13 @@ import type { Database, Json } from "./types_db";
 
 export type UserRole = "student" | "teacher" | "professional";
 
+export type ServerActionResult<Result> = Promise<
+  | Result
+  | {
+      error: string;
+    }
+>;
+
 export type UserDetails = {
   id: string /* primary key */;
   full_name: string;

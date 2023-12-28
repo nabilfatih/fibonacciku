@@ -511,6 +511,7 @@ export default {
     "no-image-selected": "Tidak ada gambar yang dipilih",
     "max-file-size-5mb": "Ukuran file maksimal adalah 5MB",
     "see-diagram": "Lihat diagram",
+    share: "Bagikan",
   },
   FormDocument: {
     "form-document-desc": "Unggah dokumen Anda untuk memulai",
@@ -621,6 +622,8 @@ export default {
     "link-created-at": "Tautan dibuat pada",
     "delete-link": "Hapus tautan",
     "link-deleted": "Tautan dihapus",
+    messages: "Pesan",
+    copying: "Menyalin",
   },
   ModalPluginChat: {
     plugin: "Plugin",

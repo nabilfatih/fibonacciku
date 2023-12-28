@@ -78,6 +78,8 @@ export default async function ChatMessagePage({ params }: Props) {
       id={chat.id}
       initialMessages={chat.messages}
       type={chat.type as "assistant" | "document"}
+      title={chat.title}
+      createdAt={chat.created_at}
     />
   );
 }

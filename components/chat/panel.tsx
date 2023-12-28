@@ -1,22 +1,35 @@
 import * as React from "react";
-import { type UseChatHelpers } from "ai/react";
 
 import { Button } from "@/components/ui/button";
 import ButtonScrollToBottom from "@/components/chat/button-scroll-to-bottom";
 import { IconStop } from "@/components/ui/icons";
 import FooterText from "@/components/chat/footer";
-import { IconRefresh } from "@tabler/icons-react";
+import { IconRefresh, IconShare3 } from "@tabler/icons-react";
 import PromptForm from "./form";
 import type { ShowChatMessage } from "@/types/types";
+import { useScopedI18n } from "@/locales/client";
+import { ChatShareDialog } from "./share-dialog";
+import { shareChat } from "@/app/actions";
 
 export type ChatPanelProps = {
   isLoading: boolean;
   messages: ShowChatMessage[];
   type: "assistant" | "document";
   id?: string;
+  title?: string;
+  createdAt?: string;
 };
 
-export function ChatPanel({ id, messages, type, isLoading }: ChatPanelProps) {
+export function ChatPanel({
+  id,
+  messages,
+  type,
+  title,
+  createdAt,
+  isLoading,
+}: ChatPanelProps) {
+  const t = useScopedI18n("FormChat");
+
   const [shareDialogOpen, setShareDialogOpen] = React.useState(false);
   const [input, setInput] = React.useState("");
 
@@ -32,15 +45,39 @@ export function ChatPanel({ id, messages, type, isLoading }: ChatPanelProps) {
               className="bg-background"
             >
               <IconStop className="mr-2 h-5 w-5" />
-              Stop generating
+              {t("stop-generating")}
             </Button>
           ) : (
             messages?.length >= 2 && (
               <div className="flex space-x-2">
                 <Button variant="outline">
                   <IconRefresh className="mr-2 h-5 w-5" />
-                  Regenerate response
+                  {t("regenerate")}
                 </Button>
+                {id && title ? (
+                  <>
+                    <Button
+                      variant="outline"
+                      onClick={() => setShareDialogOpen(true)}
+                    >
+                      <IconShare3 className="mr-2 h-5 w-5" />
+                      {t("share")}
+                    </Button>
+                    <ChatShareDialog
+                      open={shareDialogOpen}
+                      onOpenChange={setShareDialogOpen}
+                      onCopy={() => setShareDialogOpen(false)}
+                      shareChat={shareChat}
+                      chat={{
+                        id,
+                        title,
+                        message: messages,
+                        type,
+                        createdAt: String(createdAt),
+                      }}
+                    />
+                  </>
+                ) : null}
               </div>
             )
           )}

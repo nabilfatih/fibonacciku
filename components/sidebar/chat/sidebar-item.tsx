@@ -61,7 +61,7 @@ export function SidebarItem({ index, chat, children }: SidebarItemProps) {
         href={`/chat/${chat.type}/${chat.id}`}
         className={cn(
           buttonVariants({ variant: "ghost" }),
-          "group w-full pl-10 pr-4",
+          "group w-full pl-10 pr-4 font-normal",
           isActive &&
             "bg-primary pr-16 font-semibold text-primary-foreground transition-colors hover:bg-primary/90 hover:text-primary-foreground"
         )}
