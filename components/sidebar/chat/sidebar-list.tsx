@@ -148,7 +148,7 @@ export default function SidebarList({ userId }: Props) {
       <div ref={ref} className="mb-1 flex-1 overflow-y-auto overflow-x-hidden">
         {filteredChats.length ? (
           <div className="space-y-2 px-2">
-            <SidebarItems chats={filteredChats} ref={ref} />
+            <SidebarItems chats={filteredChats} parentRef={ref} />
           </div>
         ) : (
           <div className="p-8 text-center">

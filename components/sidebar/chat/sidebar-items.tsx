@@ -9,17 +9,17 @@ import { SidebarItem } from "@/components/sidebar/chat/sidebar-item";
 
 type SidebarItemsProps = {
   chats: Chat[];
-  ref: MutableRefObject<HTMLDivElement | null>;
+  parentRef: MutableRefObject<HTMLDivElement | null>;
 };
 
-export function SidebarItems({ chats, ref }: SidebarItemsProps) {
+export function SidebarItems({ chats, parentRef }: SidebarItemsProps) {
   const listRef = useRef(null);
 
   return (
     <div className="relative flex flex-col">
       <LayoutGroup>
         <AnimatePresence>
-          <ViewportList ref={listRef} viewportRef={ref} items={chats}>
+          <ViewportList ref={listRef} viewportRef={parentRef} items={chats}>
             {(item, index) => (
               <motion.div
                 key={item.id}

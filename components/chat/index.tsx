@@ -25,11 +25,17 @@ export default function ChatMessage({
   return (
     <>
       <div className={cn("pb-[200px] pt-4 md:pt-10", className)}></div>
-      <ChatPanel
-        id={id}
-        isLoading={false}
-        messages={initialMessages as ShowChatMessage[]}
-      />
+
+      {type === "document" ? (
+        <div></div>
+      ) : (
+        <ChatPanel
+          id={id}
+          isLoading={false}
+          messages={initialMessages as ShowChatMessage[]}
+          type={type as "assistant" | "document"}
+        />
+      )}
     </>
   );
 }

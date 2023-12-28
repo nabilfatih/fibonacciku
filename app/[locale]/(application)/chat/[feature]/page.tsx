@@ -18,5 +18,5 @@ export default async function ChatFeaturePage({ params }: Props) {
     redirect(`/auth/login?next=/chat/${params.feature}`);
   }
 
-  return <ChatMessage />;
+  return <ChatMessage type={params.feature as "assistant" | "document"} />;
 }

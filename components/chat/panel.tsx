@@ -12,10 +12,11 @@ import type { ShowChatMessage } from "@/types/types";
 export type ChatPanelProps = {
   isLoading: boolean;
   messages: ShowChatMessage[];
+  type: "assistant" | "document";
   id?: string;
 };
 
-export function ChatPanel({ id, messages, isLoading }: ChatPanelProps) {
+export function ChatPanel({ id, messages, type, isLoading }: ChatPanelProps) {
   const [shareDialogOpen, setShareDialogOpen] = React.useState(false);
   const [input, setInput] = React.useState("");
 
@@ -50,6 +51,7 @@ export function ChatPanel({ id, messages, isLoading }: ChatPanelProps) {
             input={input}
             setInput={setInput}
             isLoading={isLoading}
+            type={type}
           />
           <FooterText className="hidden sm:block" />
         </div>
