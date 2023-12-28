@@ -60,7 +60,7 @@ export default async function ChatMessagePage({ params }: Props) {
   } = await supabase.auth.getSession();
 
   if (!session?.user) {
-    redirect(`/login?next=/chat/${params.feature}/${params.id}`);
+    redirect(`/auth/login?next=/chat/${params.feature}/${params.id}`);
   }
 
   const chat = await fetchUserChat(params.id, session.user.id);

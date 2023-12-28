@@ -16,7 +16,7 @@ export default async function ChatFeaturePage({ params }: Props) {
   } = await supabase.auth.getSession();
 
   if (!session?.user) {
-    redirect(`/login?next=/chat/${params.feature}`);
+    redirect(`/auth/login?next=/chat/${params.feature}`);
   }
 
   const id = generateUUID();
