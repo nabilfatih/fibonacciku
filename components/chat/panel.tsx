@@ -34,9 +34,9 @@ export default function ChatPanel({
   const [input, setInput] = React.useState("");
 
   return (
-    <div className="fixed inset-x-0 bottom-0 w-full bg-gradient-to-b from-transparent via-muted to-muted duration-300 ease-in-out animate-in peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px] dark:from-background/10 dark:from-10% dark:to-background/80">
+    <div className="fixed inset-x-0 bottom-0 w-full bg-gradient-to-b from-transparent via-muted to-muted duration-300 ease-in-out animate-in peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px] dark:from-transparent dark:via-background dark:to-background">
       <ButtonScrollToBottom />
-      <div className="mx-auto sm:max-w-2xl sm:px-4">
+      <div className="mx-auto sm:max-w-2xl sm:px-2">
         <div className="flex h-12 items-center justify-center">
           {isLoading ? (
             <Button
@@ -82,7 +82,7 @@ export default function ChatPanel({
             )
           )}
         </div>
-        <div className="space-y-2 border-t bg-background px-4 py-2 sm:border-none sm:bg-transparent">
+        <div className="space-y-2 border-t bg-background p-2 sm:border-none sm:bg-transparent">
           <PromptForm
             onSubmit={async (value) => {}}
             input={input}
