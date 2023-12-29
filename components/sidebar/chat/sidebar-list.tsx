@@ -69,7 +69,7 @@ export default function SidebarList({ userId }: Props) {
         (navigator.userAgent.includes("Mac") && e.metaKey && e.key === "k") ||
         (!navigator.userAgent.includes("Mac") &&
           e.altKey &&
-          e.key.toLocaleLowerCase() === "k")
+          e.key.toLowerCase() === "k")
       ) {
         e.preventDefault();
         refSearch.current?.focus();
@@ -138,6 +138,7 @@ export default function SidebarList({ userId }: Props) {
             }
             className="h-10 pl-10"
             value={searchTerm}
+            autoComplete="off"
             autoFocus={false}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
