@@ -62,7 +62,9 @@ export default function UserMenu() {
         <DropdownMenuContent sideOffset={8} align="end" className="w-full">
           <DropdownMenuLabel className="flex-col items-start">
             <div className="font-medium">{userDetails.full_name}</div>
-            <div className="font-normal text-zinc-500">{userDetails.email}</div>
+            <div className="font-normal text-muted-foreground">
+              {userDetails.email}
+            </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuLabel className="rounded-xl font-normal transition-colors hover:bg-accent">
