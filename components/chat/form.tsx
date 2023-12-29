@@ -68,7 +68,7 @@ export default function PromptForm({
                 }}
                 className={cn(
                   buttonVariants({ size: "sm", variant: "ghost" }),
-                  "absolute bottom-4 left-0 h-8 w-8 rounded-full bg-background p-0 sm:bottom-3.5 sm:left-4"
+                  "absolute bottom-[18px] left-0 h-8 w-8 rounded-full bg-background p-0 sm:bottom-3.5 sm:left-4"
                 )}
               >
                 <IconSettings />
@@ -88,7 +88,7 @@ export default function PromptForm({
                 }}
                 className={cn(
                   buttonVariants({ size: "sm", variant: "ghost" }),
-                  "absolute bottom-4 left-9 h-8 w-8 rounded-full bg-background p-0 sm:bottom-3.5 sm:left-[3.25rem]"
+                  "absolute bottom-[18px] left-9 h-8 w-8 rounded-full bg-background p-0 sm:bottom-3.5 sm:left-[3.25rem]"
                 )}
               >
                 <IconPhoto />

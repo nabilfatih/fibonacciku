@@ -135,7 +135,7 @@ export default function RootLayout({
         <Providers
           locale={params.locale}
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
