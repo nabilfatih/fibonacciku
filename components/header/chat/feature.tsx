@@ -15,8 +15,10 @@ import {
   IconFile,
   IconMessageCircle2,
 } from "@tabler/icons-react";
+import { useScopedI18n } from "@/locales/client";
 
 export default function HeaderChatFeature() {
+  const t = useScopedI18n("Feature");
   const params = useParams();
 
   const type = params.feature;
@@ -24,19 +26,14 @@ export default function HeaderChatFeature() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button asChild variant="ghost">
-          <Link
-            href="/chat/assistant"
-            className="inline-flex items-center gap-2"
-          >
-            {type === "assistant" ? (
-              <IconMessageCircle2 className="h-5 w-5" />
-            ) : (
-              <IconFile className="h-5 w-5" />
-            )}
-            {type === "assistant" ? "Assistant" : "Document"}
-            <IconChevronDown className="h-4 w-4" />
-          </Link>
+        <Button variant="ghost" className="gap-2">
+          {type === "assistant" ? (
+            <IconMessageCircle2 className="h-5 w-5" />
+          ) : (
+            <IconFile className="h-5 w-5" />
+          )}
+          {type === "assistant" ? t("assistant") : t("document")}
+          <IconChevronDown className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent sideOffset={8} align="start" className="w-full p-2">
@@ -48,9 +45,9 @@ export default function HeaderChatFeature() {
             href="/chat/assistant"
             className="flex w-full cursor-pointer flex-col"
           >
-            <p className="font-medium">Assistant</p>
+            <p className="font-medium">{t("assistant")}</p>
             <span className="font-normal text-muted-foreground">
-              Ask me anything and I will answer you.
+              {t("assistant-desc")}
             </span>
           </Link>
         </DropdownMenuLabel>
@@ -65,9 +62,9 @@ export default function HeaderChatFeature() {
             href="/chat/document"
             className="flex w-full cursor-pointer flex-col"
           >
-            <p className="font-medium">Document</p>
+            <p className="font-medium">{t("document")}</p>
             <span className="font-normal text-muted-foreground">
-              Upload documents and chat with it.
+              {t("document-desc")}
             </span>
           </Link>
         </DropdownMenuLabel>

@@ -859,4 +859,10 @@ export default {
     "related-links": "Tautan Terkait",
     "youtube-videos": "Video Youtube",
   },
+  Feature: {
+    assistant: "Asisten",
+    "assistant-desc": "Tanyakan apa saja dan saya akan menjawab Anda.",
+    document: "Dokumen",
+    "document-desc": "Upload dokumen Anda dan chat dengannya.",
+  },
 } as const;

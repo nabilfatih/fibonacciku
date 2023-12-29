@@ -843,4 +843,10 @@ export default {
     "related-links": "Related links",
     "youtube-videos": "Youtube videos",
   },
+  Feature: {
+    assistant: "Assistant",
+    "assistant-desc": "Ask me anything and I will answer you.",
+    document: "Document",
+    "document-desc": "Upload your document and chat with it.",
+  },
 } as const;

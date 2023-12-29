@@ -873,4 +873,10 @@ export default {
     "related-links": "Verwandte Links",
     "youtube-videos": "YouTube-Videos",
   },
+  Feature: {
+    assistant: "Assistent",
+    "assistant-desc": "Fragen Sie irgendetwas und ich werde Ihnen antworten.",
+    document: "Dokument",
+    "document-desc": "Laden Sie Ihr Dokument hoch und chatten Sie damit.",
+  },
 } as const;
