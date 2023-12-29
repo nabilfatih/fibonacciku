@@ -139,7 +139,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex min-h-[100dvh] flex-col">
+          <div className="flex min-h-[100dvh] flex-col overflow-hidden">
             <Suspense>{children}</Suspense>
           </div>
           <TailwindIndicator />
