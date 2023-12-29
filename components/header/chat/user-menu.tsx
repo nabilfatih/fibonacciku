@@ -67,14 +67,18 @@ export default function UserMenu() {
               {userDetails.email}
             </div>
           </DropdownMenuLabel>
-          <DropdownMenuLabel className="cursor-pointer rounded-xl py-2 font-normal transition-colors hover:bg-accent">
+          <DropdownMenuLabel className="cursor-pointer rounded-sm py-2 font-normal transition-colors hover:bg-accent">
             <Account className="w-full" />
           </DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuLabel className="cursor-pointer rounded-xl py-2 font-normal transition-colors hover:bg-accent">
+
+          <DropdownMenuSeparator className="my-2" />
+
+          <DropdownMenuLabel className="cursor-pointer rounded-sm py-2 font-normal transition-colors hover:bg-accent">
             <Feedback className="w-full" />
           </DropdownMenuLabel>
-          <DropdownMenuSeparator />
+
+          <DropdownMenuSeparator className="my-2" />
+
           <DropdownMenuItem asChild className="py-2">
             <Link
               href="/home"

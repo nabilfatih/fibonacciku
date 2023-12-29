@@ -2,12 +2,12 @@ import { SidebarToggle } from "@/components/sidebar/sidebar-toggle";
 import { IconSeparator } from "@/components/ui/icons";
 import { createClientServer } from "@/lib/supabase/server";
 import { cookies } from "next/headers";
-import Link from "next/link";
 import { Suspense } from "react";
 import UserMenu from "@/components/header/chat/user-menu";
 import { SidebarMobile } from "@/components/sidebar/chat/sidebar-mobile";
 import { ChatHistory } from "@/components/sidebar/chat/chat-history";
 import Feedback from "@/components/header/chat/feedback";
+import HeaderChatFeature from "./feature";
 
 async function UserHistory() {
   const cookieStore = cookies();
@@ -24,15 +24,10 @@ async function UserHistory() {
         <ChatHistory userId={session.user.id} />
       </SidebarMobile>
       <SidebarToggle />
-      <div className="flex items-center">
+      <div className="ml-[10px] flex items-center">
         <IconSeparator className="h-6 w-6 text-muted-foreground/50" />
 
-        <Link
-          href="/chat/assistant"
-          className="ml-2 text-lg font-medium tracking-tight"
-        >
-          FibonacciKu
-        </Link>
+        <HeaderChatFeature />
       </div>
     </div>
   );
