@@ -5,27 +5,18 @@ import { Button, type ButtonProps } from "@/components/ui/button";
 import { IconArrowNarrowDown } from "@tabler/icons-react";
 import { useMessage } from "@/lib/context/use-message";
 import { useMemo } from "react";
-import { useParams } from "next/navigation";
 
 export default function ButtonScrollToBottom({
   className,
   ...props
 }: ButtonProps) {
-  const params = useParams();
   const { state, showMessage, handleScrollToBottom } = useMessage();
-
-  const feature = useMemo(() => {
-    return params.feature as "assistant" | "document";
-  }, [params.feature]);
 
   const isAtBottom = useMemo(() => {
     if (state.scrollPosition === -1) return true;
     if (showMessage.length === 0) return true;
-    return (
-      state.scrollPosition + 1 ===
-      showMessage.length - (feature === "assistant" ? 1 : 0)
-    );
-  }, [feature, showMessage.length, state.scrollPosition]);
+    if (state.scrollPosition - showMessage.length > -5) return true;
+  }, [showMessage.length, state.scrollPosition]);
 
   return (
     <Button

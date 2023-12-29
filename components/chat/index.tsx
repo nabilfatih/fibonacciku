@@ -69,10 +69,10 @@ export default function ChatMessage({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialMessages]);
 
-  if (id && type === "document") {
-    // handle chat with document
-    return null; // TODO: implement chat with document
-  }
+  // if (id && type === "document") {
+  //   // handle chat with document
+  //   return null; // TODO: implement chat with document
+  // }
 
   return (
     <>
@@ -99,18 +99,18 @@ export default function ChatMessage({
         }
       </div>
 
-      {type === "document" ? (
+      {/* {type === "document" ? (
         <div></div>
-      ) : (
-        <ChatPanel
-          id={id}
-          isLoading={false}
-          messages={initialMessages as ShowChatMessage[]}
-          type={type as "assistant" | "document"}
-          title={title}
-          createdAt={createdAt}
-        />
-      )}
+      ) : ( */}
+      <ChatPanel
+        id={id}
+        isLoading={false}
+        messages={initialMessages as ShowChatMessage[]}
+        type={type as "assistant" | "document"}
+        title={title}
+        createdAt={createdAt}
+      />
+      {/* )} */}
     </>
   );
 }
