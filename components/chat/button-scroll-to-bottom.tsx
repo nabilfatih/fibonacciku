@@ -1,17 +1,21 @@
 "use client";
 
-import * as React from "react";
-
 import { cn } from "@/lib/utils";
-import { useAtBottom } from "@/lib/hooks/use-at-bottom";
 import { Button, type ButtonProps } from "@/components/ui/button";
 import { IconArrowNarrowDown } from "@tabler/icons-react";
+import { useMessage } from "@/lib/context/use-message";
+import { useMemo } from "react";
 
 export default function ButtonScrollToBottom({
   className,
   ...props
 }: ButtonProps) {
-  const isAtBottom = useAtBottom();
+  const { state, showMessage, handleScrollToBottom } = useMessage();
+
+  const isAtBottom = useMemo(() => {
+    if (state.scrollPosition === -1) return true;
+    return state.scrollPosition + 1 === showMessage.length - 1;
+  }, [showMessage.length, state.scrollPosition]);
 
   return (
     <Button
@@ -22,12 +26,7 @@ export default function ButtonScrollToBottom({
         isAtBottom ? "opacity-0" : "opacity-100",
         className
       )}
-      onClick={() =>
-        window.scrollTo({
-          top: document.body.offsetHeight,
-          behavior: "smooth",
-        })
-      }
+      onClick={handleScrollToBottom}
       {...props}
     >
       <IconArrowNarrowDown />

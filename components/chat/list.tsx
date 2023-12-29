@@ -45,7 +45,7 @@ export default function ChatList({
   indexMessage,
   type,
 }: Props) {
-  const { messageRef } = useMessage();
+  const { messageRef, dispatch } = useMessage();
   return (
     <div className="relative mx-auto max-w-2xl px-4">
       <ViewportList
@@ -55,6 +55,10 @@ export default function ChatList({
         initialIndex={messages.length}
         initialOffset={208}
         initialAlignToTop={false}
+        onViewportIndexesChange={(indexes) => {
+          console.log(indexes);
+          dispatch({ type: "SET_SCROLL_POSITION", payload: indexes[0] });
+        }}
       >
         {(item, index) => {
           return (
