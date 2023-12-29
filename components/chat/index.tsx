@@ -65,14 +65,10 @@ export default function ChatMessage({
     } else {
       setIndexMessage([]);
       setShowMessage([]);
+      dispatch({ type: "SET_CURRENT_DOCUMENT", payload: null });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialMessages]);
-
-  // if (id && type === "document") {
-  //   // handle chat with document
-  //   return null; // TODO: implement chat with document
-  // }
 
   return (
     <>
@@ -99,9 +95,6 @@ export default function ChatMessage({
         }
       </div>
 
-      {/* {type === "document" ? (
-        <div></div>
-      ) : ( */}
       <ChatPanel
         id={id}
         isLoading={false}
@@ -110,7 +103,6 @@ export default function ChatMessage({
         title={title}
         createdAt={createdAt}
       />
-      {/* )} */}
     </>
   );
 }

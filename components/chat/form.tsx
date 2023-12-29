@@ -109,8 +109,8 @@ export default function PromptForm({
           placeholder={`${t("ask-anything")}...`}
           spellCheck={false}
           className={cn(
-            "min-h-[60px] w-full resize-none bg-transparent py-[1.3rem] pl-12 pr-4 scrollbar-hide focus-within:outline-none sm:text-sm",
-            !isAssistant && "pl-0 sm:pl-4"
+            "scrollbar-hide min-h-[60px] w-full resize-none bg-transparent py-[1.3rem] pl-12 pr-4 focus-within:outline-none sm:text-sm",
+            !isAssistant && "pl-2 sm:pl-4"
           )}
         />
         <div className="absolute bottom-4 right-0 sm:bottom-3 sm:right-4">

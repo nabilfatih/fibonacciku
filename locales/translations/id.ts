@@ -576,6 +576,7 @@ export default {
     "link-not-available": "Tautan tidak tersedia",
   },
   ModalAccount: {
+    account: "Akun",
     "your-email": "Email Anda",
     "reset-password": "Atur ulang kata sandi",
     "click-here": "Klik di sini",
@@ -594,6 +595,7 @@ export default {
     role: "Peran",
     logout: "Keluar",
     homepage: "Beranda",
+    close: "Tutup",
   },
   ModalClearChat: {
     clear: "Hapus",

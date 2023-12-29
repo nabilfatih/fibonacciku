@@ -559,6 +559,7 @@ export default {
     "link-not-available": "Link not available",
   },
   ModalAccount: {
+    account: "Account",
     "your-email": "Your email",
     "reset-password": "Reset password",
     "click-here": "Click here",
@@ -577,6 +578,7 @@ export default {
     role: "Role",
     logout: "Logout",
     homepage: "Homepage",
+    close: "Close",
   },
   ModalClearChat: {
     clear: "Clear",

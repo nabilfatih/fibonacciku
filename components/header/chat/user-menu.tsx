@@ -17,7 +17,8 @@ import supabaseClient from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import Avatar, { genConfig } from "react-nice-avatar";
 import { IconExternalLink } from "@tabler/icons-react";
-import Feedback from "./feedback";
+import Feedback from "@/components/header/chat/feedback";
+import Account from "@/components/header/chat/account";
 
 export default function UserMenu() {
   const t = useScopedI18n("ModalAccount");
@@ -59,17 +60,26 @@ export default function UserMenu() {
             )}
           </div>
         </DropdownMenuTrigger>
-        <DropdownMenuContent sideOffset={8} align="end" className="w-full">
+        <DropdownMenuContent sideOffset={8} align="end" className="w-full p-2">
           <DropdownMenuLabel className="flex-col items-start">
             <div className="font-medium">{userDetails.full_name}</div>
             <div className="font-normal text-muted-foreground">
               {userDetails.email}
             </div>
           </DropdownMenuLabel>
+          <DropdownMenuItem
+            asChild
+            className="cursor-pointer rounded-xl font-normal transition-colors hover:bg-accent"
+          >
+            <Account className="w-full" />
+          </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuLabel className="rounded-xl font-normal transition-colors hover:bg-accent">
+          <DropdownMenuItem
+            asChild
+            className="cursor-pointer rounded-xl font-normal transition-colors hover:bg-accent"
+          >
             <Feedback className="w-full" />
-          </DropdownMenuLabel>
+          </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem asChild>
             <Link
