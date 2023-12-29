@@ -61,27 +61,21 @@ export default function UserMenu() {
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent sideOffset={8} align="end" className="w-full p-2">
-          <DropdownMenuLabel className="flex-col items-start">
+          <DropdownMenuLabel className="flex-col items-start py-2">
             <div className="font-medium">{userDetails.full_name}</div>
             <div className="font-normal text-muted-foreground">
               {userDetails.email}
             </div>
           </DropdownMenuLabel>
-          <DropdownMenuItem
-            asChild
-            className="cursor-pointer rounded-xl font-normal transition-colors hover:bg-accent"
-          >
+          <DropdownMenuLabel className="cursor-pointer rounded-xl py-2 font-normal transition-colors hover:bg-accent">
             <Account className="w-full" />
-          </DropdownMenuItem>
+          </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem
-            asChild
-            className="cursor-pointer rounded-xl font-normal transition-colors hover:bg-accent"
-          >
+          <DropdownMenuLabel className="cursor-pointer rounded-xl py-2 font-normal transition-colors hover:bg-accent">
             <Feedback className="w-full" />
-          </DropdownMenuItem>
+          </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem asChild>
+          <DropdownMenuItem asChild className="py-2">
             <Link
               href="/home"
               target="_blank"
@@ -97,7 +91,7 @@ export default function UserMenu() {
               await supabaseClient.auth.signOut();
               router.refresh();
             }}
-            className="cursor-pointer"
+            className="cursor-pointer py-2"
           >
             {t("logout")}
           </DropdownMenuItem>
