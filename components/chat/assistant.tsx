@@ -85,14 +85,14 @@ export default function ChatAssistant({
                 )}
                 {...props}
               >
-                {children}
+                <div className="p-4">{children}</div>
               </pre>
             </div>
           ) : (
             <pre
               className={cn(
                 className,
-                "no-before no-after rounded-xl bg-muted"
+                "no-before no-after rounded-xl bg-muted font-sans"
               )}
               {...props}
             >
