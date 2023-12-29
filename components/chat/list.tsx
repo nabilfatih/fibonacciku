@@ -55,7 +55,6 @@ export default function ChatList({
         initialIndex={messages.length}
         initialOffset={208}
         initialAlignToTop={false}
-        overscan={3}
       >
         {(item, index) => {
           return (
