@@ -29,7 +29,7 @@ async function UserHistory() {
 
         <Link
           href="/chat/assistant"
-          className="ml-2 text-lg font-semibold tracking-tight"
+          className="ml-2 text-lg font-medium tracking-tight"
         >
           FibonacciKu
         </Link>
