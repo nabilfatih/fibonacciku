@@ -101,28 +101,18 @@ const CodeBlock: FC<Props> = memo(({ language, value }) => {
 
   return (
     <div className="codeblock relative w-full bg-[#0a1427] font-sans">
-      <div className="flex w-full items-center justify-between bg-[#15294f] px-6 py-2 pr-4 text-zinc-100">
+      <div className="flex w-full items-center justify-between border border-b-0 border-[#15294f] bg-[#15294f] px-6 py-2 pr-4">
         <div className="flex items-center gap-2">
           <IconCode className="h-5 w-5" />
           <span className="lowercase">{language}</span>
         </div>
 
         <div className="flex items-center space-x-1">
-          <Button
-            variant="ghost"
-            className=""
-            onClick={downloadAsFile}
-            size="icon"
-          >
+          <Button variant="ghost" onClick={downloadAsFile} size="icon">
             <IconDownload className="h-5 w-5" />
             <span className="sr-only">Download</span>
           </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-xs "
-            onClick={onCopy}
-          >
+          <Button variant="ghost" size="icon" onClick={onCopy}>
             {isCopied ? (
               <IconCheck className="h-5 w-5" />
             ) : (
@@ -141,6 +131,8 @@ const CodeBlock: FC<Props> = memo(({ language, value }) => {
           width: "100%",
           background: "transparent",
           padding: "1.5rem 1rem",
+          borderRadius: "0 0 0.75rem 0.75rem",
+          border: "1px solid #15294f",
         }}
         lineNumberStyle={{
           userSelect: "none",
