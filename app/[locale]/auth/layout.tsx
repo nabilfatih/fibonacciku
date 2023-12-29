@@ -22,7 +22,7 @@ export default function AuthenticationLayout({
               many tools that helps my studies to be more effective and it&#39;s
               affordable for us student too.&#34;
             </p>
-            <footer className="text-sm">Asyifa Bila</footer>
+            <footer className="text-sm">Nisrina Hana</footer>
           </blockquote>
         </div>
       </div>
