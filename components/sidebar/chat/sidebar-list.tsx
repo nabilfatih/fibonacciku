@@ -138,6 +138,7 @@ export default function SidebarList({ userId }: Props) {
             }
             className="h-10 pl-10"
             value={searchTerm}
+            autoFocus={false}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </form>
