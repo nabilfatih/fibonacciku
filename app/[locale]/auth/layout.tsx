@@ -34,8 +34,8 @@ export default function AuthenticationLayout({
         <div className="mb-4 flex justify-center lg:hidden">
           <Image
             src="/logo.webp"
-            width={28}
-            height={28}
+            width={32}
+            height={32}
             priority
             alt="FibonacciKu"
           />
