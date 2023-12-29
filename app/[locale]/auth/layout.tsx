@@ -31,6 +31,15 @@ export default function AuthenticationLayout({
         </div>
       </div>
       <div className="lg:p-8">
+        <div className="mb-4 flex justify-center lg:hidden">
+          <Image
+            src="/logo.webp"
+            width={28}
+            height={28}
+            priority
+            alt="FibonacciKu"
+          />
+        </div>
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           {children}
         </div>
