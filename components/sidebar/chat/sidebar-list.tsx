@@ -125,8 +125,6 @@ export default function SidebarList({ userId }: Props) {
     [userChatData, searchTerm]
   );
 
-  if (isLoading) return <LoadingChatHistory />;
-
   return (
     <div className="flex flex-1 flex-col overflow-hidden">
       <div className="my-2 px-2">
@@ -146,16 +144,22 @@ export default function SidebarList({ userId }: Props) {
       </div>
 
       <div ref={ref} className="mb-1 flex-1 overflow-y-auto overflow-x-hidden">
-        {filteredChats.length ? (
-          <div className="space-y-2 px-2">
-            <SidebarItems chats={filteredChats} parentRef={ref} />
-          </div>
+        {isLoading ? (
+          <LoadingChatHistory />
         ) : (
-          <div className="p-8 text-center">
-            <p className="text-sm text-muted-foreground">
-              {t("chat-not-found")}
-            </p>
-          </div>
+          <>
+            {filteredChats.length ? (
+              <div className="space-y-2 px-2">
+                <SidebarItems chats={filteredChats} parentRef={ref} />
+              </div>
+            ) : (
+              <div className="p-8 text-center">
+                <p className="text-sm text-muted-foreground">
+                  {t("chat-not-found")}
+                </p>
+              </div>
+            )}
+          </>
         )}
       </div>
       <div className="flex items-center justify-between border-t px-2 py-4">
