@@ -8,7 +8,7 @@ export default function ChatLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative flex h-[calc(100vh_-_theme(spacing.16))] overflow-hidden">
+    <div className="relative flex h-[calc(100dvh-4rem)] overflow-hidden">
       <SidebarDesktop />
 
       <div className="group w-full overflow-hidden pl-0 duration-300 ease-in-out animate-in peer-[[data-state=open]]:lg:pl-[250px] peer-[[data-state=open]]:xl:pl-[300px]">
