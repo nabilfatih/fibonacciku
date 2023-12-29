@@ -27,6 +27,7 @@ export function ChatMessageActions({
       className={cn("flex items-center justify-between", className)}
       {...props}
     >
+      <span className="text-xs text-muted-foreground">{createdAt}</span>
       <div className="flex items-center">
         <Button variant="ghost" size="icon" onClick={onCopy}>
           {isCopied ? (
@@ -38,8 +39,6 @@ export function ChatMessageActions({
         </Button>
         <ChatMessageActionSpeech text={content} />
       </div>
-
-      <span className="text-xs text-muted-foreground">{createdAt}</span>
     </div>
   );
 }
