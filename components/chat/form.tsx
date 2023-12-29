@@ -8,11 +8,9 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { IconArrowElbow, IconPlus } from "@/components/ui/icons";
 import { useRouter } from "next/navigation";
 import { useScopedI18n } from "@/locales/client";
 import { IconPhoto, IconSend2, IconSettings } from "@tabler/icons-react";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 export type PromptProps = {
   input: string;
@@ -111,7 +109,7 @@ export default function PromptForm({
           placeholder={`${t("ask-anything")}...`}
           spellCheck={false}
           className={cn(
-            "min-h-[60px] w-full resize-none bg-transparent py-[1.3rem] pl-12 pr-4 focus-within:outline-none sm:text-sm",
+            "scrollbar-hide min-h-[60px] w-full resize-none bg-transparent py-[1.3rem] pl-12 pr-4 focus-within:outline-none sm:text-sm",
             !isAssistant && "pl-0 sm:pl-4"
           )}
         />

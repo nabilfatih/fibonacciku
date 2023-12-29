@@ -76,6 +76,7 @@
     "stripe": "^14.10.0",
     "swr": "^2.2.4",
     "tailwind-merge": "^2.2.0",
+    "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss-animate": "^1.0.7",
     "uuid": "^9.0.1",
     "vaul": "^0.8.0",
