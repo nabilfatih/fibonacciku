@@ -56,7 +56,6 @@ export default function ChatList({
         initialOffset={208}
         initialAlignToTop={false}
         onViewportIndexesChange={(indexes) => {
-          console.log(indexes);
           dispatch({ type: "SET_SCROLL_POSITION", payload: indexes[0] });
         }}
       >
