@@ -18,7 +18,7 @@ export default async function ApplicationLayout({
   return (
     <CurrentUserContextProvider session={session}>
       <HeaderChat />
-      <main className="flex flex-col overflow-hidden">
+      <main className="flex flex-1 flex-col">
         <Suspense>{children}</Suspense>
       </main>
     </CurrentUserContextProvider>

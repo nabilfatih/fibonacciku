@@ -131,6 +131,7 @@ export default function RootLayout({
         )}
         suppressHydrationWarning
       >
+        <Toaster />
         <Providers
           locale={params.locale}
           attribute="class"
@@ -138,10 +139,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Toaster />
-
-          <Suspense>{children}</Suspense>
-
+          <div className="flex min-h-screen flex-col">
+            <Suspense>{children}</Suspense>
+          </div>
           <TailwindIndicator />
         </Providers>
       </body>
