@@ -3,6 +3,9 @@ import type { IndexMessage, ShowChatMessage } from "@/types/types";
 import ChatAvatar from "@/components/chat/avatar";
 import ChatAssistant from "@/components/chat/assistant";
 import ChatUser from "./user";
+import { ChatMessageActions } from "./message-action";
+import moment from "moment";
+import { useCurrentLocale } from "@/locales/client";
 
 type Props = {
   index: number;
@@ -18,10 +21,19 @@ export default function ChatMessage({
   type,
   ...props
 }: Props) {
+  const locale = useCurrentLocale();
+
   const isAssistant = message.role === "assistant";
   const contentIndex = currentIndex.currentMessage - 1;
   const messageIndex = currentIndex.index;
   const contentLength = message.content.length;
+
+  const createdAt = moment(message.created_at).locale(locale).calendar(null, {
+    sameDay: "HH:mm",
+    lastDay: "DD/MM/YYYY HH:mm",
+    lastWeek: "DD/MM/YYYY HH:mm",
+    sameElse: "DD/MM/YYYY HH:mm",
+  });
 
   return (
     <div
@@ -46,6 +58,10 @@ export default function ChatMessage({
         ) : (
           <ChatUser content={message.content[contentIndex]} />
         )}
+        <ChatMessageActions
+          content={message.content[contentIndex]}
+          createdAt={createdAt}
+        />
       </div>
     </div>
   );
