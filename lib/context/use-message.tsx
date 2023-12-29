@@ -227,8 +227,8 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
     const tables = ["chat"];
     const channel = supabaseClient.channel("current-chat-data");
 
-    events.forEach((event) => {
-      tables.forEach((table) => {
+    events.forEach(event => {
+      tables.forEach(table => {
         if (!state.currentChat) return;
         const filter = `id=eq.${state.currentChat.id}`;
         channel.on(
@@ -248,7 +248,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
   }, [handleChanges, state.currentChat]);
 
   const updateIndexMessage = useCallback((showMessage: ShowChatMessage[]) => {
-    setIndexMessage((indexMessage) => {
+    setIndexMessage(indexMessage => {
       // If the length of indexMessage is not the same as showMessage
       if (indexMessage.length !== showMessage.length) {
         // If indexMessage is longer than showMessage, slice it to match showMessage's length

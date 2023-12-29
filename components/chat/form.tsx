@@ -43,7 +43,7 @@ export default function PromptForm({
 
   return (
     <form
-      onSubmit={async (e) => {
+      onSubmit={async e => {
         e.preventDefault();
         if (!input?.trim()) {
           return;
@@ -63,7 +63,7 @@ export default function PromptForm({
           <Tooltip>
             <TooltipTrigger asChild>
               <button
-                onClick={(e) => {
+                onClick={e => {
                   e.preventDefault();
                 }}
                 className={cn(
@@ -81,7 +81,7 @@ export default function PromptForm({
           <Tooltip>
             <TooltipTrigger asChild>
               <button
-                onClick={(e) => {
+                onClick={e => {
                   e.preventDefault();
                   router.refresh();
                   router.push("/");
@@ -105,11 +105,11 @@ export default function PromptForm({
           onKeyDown={onKeyDown}
           rows={1}
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={e => setInput(e.target.value)}
           placeholder={`${t("ask-anything")}...`}
           spellCheck={false}
           className={cn(
-            "scrollbar-hide min-h-[60px] w-full resize-none bg-transparent py-[1.3rem] pl-12 pr-4 focus-within:outline-none sm:text-sm",
+            "min-h-[60px] w-full resize-none bg-transparent py-[1.3rem] pl-12 pr-4 scrollbar-hide focus-within:outline-none sm:text-sm",
             !isAssistant && "pl-0 sm:pl-4"
           )}
         />

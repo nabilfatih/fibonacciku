@@ -6,7 +6,7 @@ import {
 import type { ImageResult } from "@/types/types";
 
 const sleep = (ms: number): Promise<void> =>
-  new Promise((r) => setTimeout(r, ms));
+  new Promise(r => setTimeout(r, ms));
 
 export const EDEN_HEADERS = {
   "Content-Type": "application/json",

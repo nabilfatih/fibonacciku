@@ -91,8 +91,8 @@ export const CurrentUserContextProvider: React.FC<
     const tables = ["users", "subscriptions"];
     const channel = supabaseClient.channel("user-data");
 
-    events.forEach((event) => {
-      tables.forEach((table) => {
+    events.forEach(event => {
+      tables.forEach(table => {
         const filter =
           table === "users"
             ? `id=eq.${userDetails.id}`

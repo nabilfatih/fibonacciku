@@ -122,10 +122,10 @@ export async function POST(req: Request) {
           const imageIdArray = String(args.image).replace(/\s/g, "").split(",");
           // get image url in parallel
           const imageUrls = await Promise.all(
-            imageIdArray.map((imageId) =>
+            imageIdArray.map(imageId =>
               getChatAttachmentSignedUrlAdmin(userId, chatId, imageId)
             )
-          ).catch((error) => {
+          ).catch(error => {
             console.error(error);
             return [];
           });
@@ -140,7 +140,7 @@ export async function POST(req: Request) {
                 ...currentMessage,
                 content: [
                   { type: "text", text: currentMessage.content },
-                  ...imageUrls.map((imageUrl) => ({
+                  ...imageUrls.map(imageUrl => ({
                     type: "image_url",
                     image_url: imageUrl,
                   })),

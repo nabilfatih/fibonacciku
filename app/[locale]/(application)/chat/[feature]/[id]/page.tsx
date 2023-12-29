@@ -30,7 +30,7 @@ async function fetchUserChat(chatId: string, userId: string) {
 async function fetchChatTitle(chatId: string) {
   const title = await kv
     .get<string>(chatId)
-    .then((title) => title?.toString().slice(0, 50));
+    .then(title => title?.toString().slice(0, 50));
 
   return title ?? "";
 }

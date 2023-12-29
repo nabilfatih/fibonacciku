@@ -20,11 +20,8 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-geist-sans)", ...defaultTheme.fontFamily.sans],
-        serif: ["Vollkorn", ...defaultTheme.fontFamily.serif],
-        mono: ["var(--font-geist-mono)", ...defaultTheme.fontFamily.mono],
-        display: ["Montserrat", ...defaultTheme.fontFamily.sans],
-        body: ["var(--font-geist-sans)", ...defaultTheme.fontFamily.sans],
+        sans: ["var(--font-geist-sans)"],
+        mono: ["var(--font-geist-mono)"],
       },
       colors: {
         border: "hsl(var(--border))",

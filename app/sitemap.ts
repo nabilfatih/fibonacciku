@@ -25,8 +25,8 @@ const pathnames = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.fibonacciku.com";
 
-  const paths = locales.flatMap((locale) => {
-    return pathnames.map((pathname) => {
+  const paths = locales.flatMap(locale => {
+    return pathnames.map(pathname => {
       return {
         url: `${baseUrl}${locale}${pathname}`,
         lastModified: new Date().toISOString().split("T")[0],

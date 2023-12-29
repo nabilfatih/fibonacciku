@@ -23,30 +23,28 @@ export const callingGoogleYoutubeAcademic = async (
   const typeArray = type.replace(/\s/g, "").split(",");
 
   // Create an array of promises based on the types provided
-  const promises = typeArray.map(async (pluginType) => {
+  const promises = typeArray.map(async pluginType => {
     switch (pluginType) {
       case "google":
-        return await googlePlugin(query).then((data) => data);
+        return await googlePlugin(query).then(data => data);
       case "youtube":
-        return await youtubePlugin(query).then((data) => data);
+        return await youtubePlugin(query).then(data => data);
       case "academic":
-        return await academicPlugin(query).then((data) => data);
+        return await academicPlugin(query).then(data => data);
       default:
         return Promise.resolve(undefined);
     }
   });
 
   // Filter out any undefined results from promises that did not match a case
-  const validPromises = promises.filter((promise) => promise !== undefined);
+  const validPromises = promises.filter(promise => promise !== undefined);
 
   // Execute all promises in parallel using Promise.all
   const results = await Promise.all(validPromises);
 
   // Filter out any undefined results after promises have resolved
   return {
-    results: results.filter(
-      (result) => result !== undefined
-    ) as PluginResponse[],
+    results: results.filter(result => result !== undefined) as PluginResponse[],
   };
 };
 

@@ -84,7 +84,7 @@ export default function ChatPanel({
         </div>
         <div className="space-y-2 border-t bg-background p-2 sm:border-none sm:bg-transparent">
           <PromptForm
-            onSubmit={async (value) => {}}
+            onSubmit={async value => {}}
             input={input}
             setInput={setInput}
             isLoading={isLoading}

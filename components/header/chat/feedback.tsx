@@ -112,7 +112,7 @@ export default function Feedback({ variant, className }: Props) {
             <Textarea
               id="message"
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={e => setMessage(e.target.value)}
               placeholder={t("message-placeholder")}
               rows={3}
             />
@@ -161,7 +161,7 @@ export default function Feedback({ variant, className }: Props) {
             <Textarea
               id="message"
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={e => setMessage(e.target.value)}
               placeholder={t("message-placeholder")}
               rows={3}
             />

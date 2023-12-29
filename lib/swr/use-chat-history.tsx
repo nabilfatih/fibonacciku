@@ -7,7 +7,7 @@ type ResponseData = {
 };
 
 const fetcher = (url: string): Promise<ResponseData> =>
-  axios.get(url).then((res) => res.data);
+  axios.get(url).then(res => res.data);
 
 export default function useChatHistory(userId: string) {
   const { data, error, isLoading } = useSWR<ResponseData>(

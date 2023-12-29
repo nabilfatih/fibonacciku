@@ -140,7 +140,7 @@ export const updateChatInitialMessage = async (
   chatId: string,
   message: SaveDataMessage[]
 ) => {
-  const chatMessage: ChatMessage[] = message.map((message) => {
+  const chatMessage: ChatMessage[] = message.map(message => {
     return {
       id: generateUUID(),
       role: message.role,

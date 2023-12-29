@@ -24,7 +24,7 @@ import { determineModelBasedOnSubscription } from "@/lib/openai/helper";
 export const runtime = "edge";
 
 const formatVercelMessages = (chatHistory: VercelChatMessage[]) => {
-  const formattedDialogueTurns = chatHistory.map((message) => {
+  const formattedDialogueTurns = chatHistory.map(message => {
     if (message.role === "user") {
       return `Human: ${message.content}`;
     } else if (message.role === "assistant") {
@@ -206,7 +206,7 @@ export async function POST(req: NextRequest) {
     ]);
 
     let resolveWithDocuments: (value: Document[]) => void;
-    const documentPromise = new Promise<Document[]>((resolve) => {
+    const documentPromise = new Promise<Document[]>(resolve => {
       resolveWithDocuments = resolve;
     });
 
@@ -215,11 +215,11 @@ export async function POST(req: NextRequest) {
     const answerChain = RunnableSequence.from([
       {
         context: RunnableSequence.from([
-          (input) => input.question,
+          input => input.question,
           retrievalChain,
         ]),
-        chat_history: (input) => input.chat_history,
-        question: (input) => input.question,
+        chat_history: input => input.chat_history,
+        question: input => input.question,
       },
       answerPrompt,
       model,
@@ -228,7 +228,7 @@ export async function POST(req: NextRequest) {
     const conversationalRetrievalQAChain = RunnableSequence.from([
       {
         question: standaloneQuestionChain,
-        chat_history: (input) => input.chat_history,
+        chat_history: input => input.chat_history,
       },
       answerChain,
       new BytesOutputParser(),
@@ -249,7 +249,7 @@ export async function POST(req: NextRequest) {
       JSON.stringify(
         documents
           .slice(0, 7)
-          .map((doc) => {
+          .map(doc => {
             return {
               pageContent: doc.pageContent.slice(0, 50) + "...",
               metadata: doc.metadata,
@@ -259,7 +259,7 @@ export async function POST(req: NextRequest) {
           .filter(
             (v, i, a) =>
               a.findIndex(
-                (t) => t.metadata.page_number === v.metadata.page_number
+                t => t.metadata.page_number === v.metadata.page_number
               ) === i
           )
           // oder by page number

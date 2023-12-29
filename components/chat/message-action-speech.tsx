@@ -44,7 +44,7 @@ export default function ChatMessageActionSpeech({ text }: Props) {
     mediaSourceRef.current = mediaSource;
     audioRef.current.src = URL.createObjectURL(mediaSource);
 
-    return new Promise<void>((resolve) => {
+    return new Promise<void>(resolve => {
       mediaSource.onsourceopen = () => {
         sourceBufferRef.current = mediaSource.addSourceBuffer("audio/mpeg");
         resolve();
@@ -118,7 +118,7 @@ export default function ChatMessageActionSpeech({ text }: Props) {
               handleStreamError(error);
             }
           })
-          .catch((error) => {
+          .catch(error => {
             handleStreamError(error);
           });
 
@@ -129,7 +129,7 @@ export default function ChatMessageActionSpeech({ text }: Props) {
             // Playback started successfully
             setIsPlaying(true);
           })
-          .catch((error) => {
+          .catch(error => {
             // Autoplay was prevented
             setIsPlaying(false);
             toast.error(t("audio-not-supported"));

@@ -25,7 +25,7 @@ function ListContent({
 }) {
   const currentIndex = useMemo(() => {
     return indexMessage.find(
-      (item) => item.index === (type === "document" ? index : index + 1)
+      item => item.index === (type === "document" ? index : index + 1)
     ) as IndexMessage;
   }, [indexMessage, type, index]);
 
@@ -55,7 +55,7 @@ export default function ChatList({
         initialIndex={messages.length}
         initialOffset={208}
         initialAlignToTop={false}
-        onViewportIndexesChange={(indexes) => {
+        onViewportIndexesChange={indexes => {
           dispatch({ type: "SET_SCROLL_POSITION", payload: indexes[0] });
         }}
       >

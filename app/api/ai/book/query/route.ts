@@ -53,7 +53,7 @@ const groupBooksByBookId = (documents: Document[]): BookDocument[] => {
   });
 
   // Convert the map to an array
-  const booksArray: BookDocument[] = Object.values(booksMap).map((book) => ({
+  const booksArray: BookDocument[] = Object.values(booksMap).map(book => ({
     ...book,
     data: book.data,
   }));
@@ -114,7 +114,7 @@ export async function POST(req: NextRequest) {
 
     // get books from books_collection table
     const booksResults = (await Promise.all(
-      books.map(async (book) => {
+      books.map(async book => {
         const data = await getBooksAdmin(book.bookId);
 
         return {

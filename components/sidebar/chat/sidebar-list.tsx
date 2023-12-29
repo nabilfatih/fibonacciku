@@ -35,20 +35,20 @@ export default function SidebarList({ userId }: Props) {
     switch (payload.eventType) {
       case "DELETE":
         // If eventType is delete, remove the object from userChatData
-        setUserChatData((prev) => {
-          return prev.filter((chat) => chat.id !== payload.old.id);
+        setUserChatData(prev => {
+          return prev.filter(chat => chat.id !== payload.old.id);
         });
         break;
       case "INSERT":
         // If eventType is insert, add the object to userChatData at the top of the list (it's the latest)
-        setUserChatData((prev) => {
+        setUserChatData(prev => {
           return [payload.new, ...prev];
         });
         break;
       case "UPDATE":
         // If eventType is update, update the object in userChatData
-        setUserChatData((prev) => {
-          return prev.map((chat) => {
+        setUserChatData(prev => {
+          return prev.map(chat => {
             if (chat.id === payload.new.id) {
               return payload.new;
             }
@@ -89,8 +89,8 @@ export default function SidebarList({ userId }: Props) {
 
     const channel = supabaseClient.channel("user-chat");
 
-    events.forEach((event) => {
-      tables.forEach((table) => {
+    events.forEach(event => {
+      tables.forEach(table => {
         const filter = `user_id=eq.${userDetails.id}`;
         channel.on(
           //@ts-ignore
@@ -119,7 +119,7 @@ export default function SidebarList({ userId }: Props) {
 
   const filteredChats = useMemo(
     () =>
-      userChatData.filter((chat) =>
+      userChatData.filter(chat =>
         chat.title.toLowerCase().includes(searchTerm.toLowerCase())
       ),
     [userChatData, searchTerm]
@@ -138,7 +138,7 @@ export default function SidebarList({ userId }: Props) {
             }
             className="h-10 pl-10"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={e => setSearchTerm(e.target.value)}
           />
         </form>
       </div>

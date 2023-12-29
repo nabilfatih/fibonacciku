@@ -65,7 +65,7 @@ export const priceList: PriceListType = [
 
 // Helper function to get price based on plan and currency
 export const getPrice = (plan: PlanType, currency: CurrencyType): number => {
-  const planDetails = priceList.find((p) => p.plan === plan);
+  const planDetails = priceList.find(p => p.plan === plan);
   return planDetails ? planDetails.price[currency] : 0;
 };
 
@@ -93,7 +93,7 @@ export const getUserCurrency = async (): Promise<CurrencyType> => {
   const countryCode = location.country;
   if (!countryCode) return "usd";
   const countryInfo = countriesList.find(
-    (country) => country.cca2.toLowerCase() === countryCode.toLowerCase()
+    country => country.cca2.toLowerCase() === countryCode.toLowerCase()
   );
   if (!countryInfo) return "usd";
   const currency: CurrencyType = Object.keys(

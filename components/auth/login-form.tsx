@@ -79,7 +79,7 @@ export function LoginAuthForm({
               autoCorrect="off"
               disabled={isLoading}
               value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              onChange={event => setEmail(event.target.value)}
             />
           </div>
           <div className="grid gap-1">
@@ -95,7 +95,7 @@ export function LoginAuthForm({
               autoCorrect="off"
               disabled={isLoading}
               value={password}
-              onChange={(event) => setPassword(event.target.value)}
+              onChange={event => setPassword(event.target.value)}
             />
           </div>
           <Button disabled={isLoading}>
