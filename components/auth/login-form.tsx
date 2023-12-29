@@ -12,10 +12,17 @@ import { useScopedI18n } from "@/locales/client";
 import { toast } from "sonner";
 import supabaseClient from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
+import type { Provider } from "@supabase/supabase-js";
 
-interface LoginAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface LoginAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
+  next: string;
+}
 
-export function LoginAuthForm({ className, ...props }: LoginAuthFormProps) {
+export function LoginAuthForm({
+  className,
+  next,
+  ...props
+}: LoginAuthFormProps) {
   const t = useScopedI18n("Auth");
   const router = useRouter();
 
@@ -40,6 +47,20 @@ export function LoginAuthForm({ className, ...props }: LoginAuthFormProps) {
 
     router.refresh();
   }
+
+  const handleOAuthSignIn = async (provider: Provider) => {
+    const { error } = await supabaseClient.auth.signInWithOAuth({
+      provider,
+      options: {
+        redirectTo: next
+          ? `https://www.fibonacciku.com/api/auth/callback?next=${next}`
+          : "https://www.fibonacciku.com/api/auth/callback",
+      },
+    });
+    if (error) {
+      toast.error(error.message);
+    }
+  };
 
   return (
     <div className={cn("grid gap-6", className)} {...props}>
@@ -93,7 +114,12 @@ export function LoginAuthForm({ className, ...props }: LoginAuthFormProps) {
           </span>
         </div>
       </div>
-      <Button variant="outline" type="button" disabled={isLoading}>
+      <Button
+        variant="outline"
+        type="button"
+        disabled={isLoading}
+        onClick={() => handleOAuthSignIn("google")}
+      >
         {isLoading ? (
           <IconSpinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (

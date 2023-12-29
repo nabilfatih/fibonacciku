@@ -50,7 +50,7 @@ export default async function LoginPage({ searchParams }: Props) {
         </h1>
         <p className="text-sm text-muted-foreground">{t("login-header")}</p>
       </div>
-      <LoginAuthForm />
+      <LoginAuthForm next={next} />
       <p className="px-8 text-center text-sm text-muted-foreground">
         <span>{t("sign-up-desc")}</span>
         {` `}
