@@ -139,7 +139,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Toaster />
-          <div className="flex min-h-screen flex-col">
+          <div className="flex flex-col">
             <Suspense>{children}</Suspense>
           </div>
           <TailwindIndicator />
