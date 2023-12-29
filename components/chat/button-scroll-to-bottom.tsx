@@ -20,6 +20,7 @@ export default function ButtonScrollToBottom({
 
   const isAtBottom = useMemo(() => {
     if (state.scrollPosition === -1) return true;
+    if (showMessage.length === 0) return true;
     return (
       state.scrollPosition + 1 ===
       showMessage.length - (feature === "assistant" ? 1 : 0)
