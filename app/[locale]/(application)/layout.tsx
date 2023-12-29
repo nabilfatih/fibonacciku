@@ -16,13 +16,11 @@ export default async function ApplicationLayout({
   } = await supabase.auth.getSession();
 
   return (
-    <div className="overflow-hidden">
-      <CurrentUserContextProvider session={session}>
-        <HeaderChat />
-        <main className="flex flex-1 flex-col overflow-hidden">
-          <Suspense>{children}</Suspense>
-        </main>
-      </CurrentUserContextProvider>
-    </div>
+    <CurrentUserContextProvider session={session}>
+      <HeaderChat />
+      <main className="flex flex-col overflow-hidden">
+        <Suspense>{children}</Suspense>
+      </main>
+    </CurrentUserContextProvider>
   );
 }
