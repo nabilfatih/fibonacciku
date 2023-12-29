@@ -34,7 +34,7 @@ export default function ChatPanel({
   const [input, setInput] = React.useState("");
 
   return (
-    <div className="fixed inset-x-0 bottom-0 w-full bg-gradient-to-b from-transparent via-muted to-muted duration-300 ease-in-out animate-in peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px] dark:from-transparent dark:via-background dark:to-background">
+    <div className="fixed inset-x-0 bottom-0 w-full bg-gradient-to-b from-transparent via-muted/50 to-muted duration-300 ease-in-out animate-in peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px] dark:from-transparent dark:via-background/50 dark:to-background">
       <ButtonScrollToBottom />
       <div className="mx-auto sm:max-w-2xl sm:px-2">
         <div className="flex h-12 items-center justify-center">
