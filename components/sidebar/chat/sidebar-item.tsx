@@ -30,7 +30,7 @@ export function SidebarItem({ index, chat, children }: SidebarItemProps) {
 
   return (
     <motion.div
-      className="relative mb-2 h-10"
+      className="relative mb-2"
       layout // This prop indicates that the component is part of a shared layout animation
       key={chat.id}
       initial={{ opacity: 0, x: 30 }}
