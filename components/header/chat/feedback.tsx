@@ -91,15 +91,15 @@ export default function Feedback({ variant, className }: Props) {
     return (
       <Dialog>
         <DialogTrigger asChild>
-          <span
+          <button
             className={cn(
               variant && buttonVariants({ variant }),
-              "cursor-pointer",
+              "flex w-full justify-start",
               className
             )}
           >
             {t("feedback")}
-          </span>
+          </button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
@@ -140,15 +140,15 @@ export default function Feedback({ variant, className }: Props) {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-        <span
+        <button
           className={cn(
             variant && buttonVariants({ variant }),
-            "cursor-pointer",
+            "flex w-full justify-start",
             className
           )}
         >
           {t("feedback")}
-        </span>
+        </button>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="text-left">
