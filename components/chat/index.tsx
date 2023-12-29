@@ -79,7 +79,7 @@ export default function ChatMessage({
       <div
         ref={chatMessageRef}
         className={cn(
-          "h-full overflow-x-hidden pb-[200px] pt-4 md:pt-10",
+          "h-full overflow-y-auto overflow-x-hidden pb-[200px] pt-4 md:pt-10",
           className
         )}
       >
