@@ -10,10 +10,21 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 import { IconSpinner } from "@/components/ui/icons";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useCurrentUser } from "@/lib/context/use-current-user";
+import { useMediaQuery } from "@/lib/hooks/use-media-query";
 import { cn } from "@/lib/utils";
 import { useScopedI18n } from "@/locales/client";
 import { IconSend } from "@tabler/icons-react";
@@ -38,6 +49,9 @@ export default function Feedback({ variant, className }: Props) {
 
   const { userDetails } = useCurrentUser();
 
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
+  const [open, setOpen] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
 
@@ -73,9 +87,59 @@ export default function Feedback({ variant, className }: Props) {
     setIsLoading(false);
   };
 
+  if (isDesktop) {
+    return (
+      <Dialog>
+        <DialogTrigger asChild>
+          <span
+            className={cn(
+              variant && buttonVariants({ variant }),
+              "cursor-pointer",
+              className
+            )}
+          >
+            {t("feedback")}
+          </span>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>{t("feedback")}</DialogTitle>
+            <DialogDescription>{t("desc-feedback")}</DialogDescription>
+          </DialogHeader>
+
+          <div className="grid gap-2">
+            <Label htmlFor="message">{t("message")}</Label>
+            <Textarea
+              id="message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder={t("message-placeholder")}
+              rows={3}
+            />
+          </div>
+
+          <DialogFooter>
+            <Button
+              type="submit"
+              onClick={handleSubmit}
+              disabled={isLoading || !message}
+            >
+              {isLoading ? (
+                <IconSpinner className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                <IconSend className="mr-2 h-4 w-4" />
+              )}{" "}
+              {t("send")}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    );
+  }
+
   return (
-    <Dialog>
-      <DialogTrigger asChild>
+    <Drawer open={open} onOpenChange={setOpen}>
+      <DrawerTrigger asChild>
         <span
           className={cn(
             variant && buttonVariants({ variant }),
@@ -85,26 +149,28 @@ export default function Feedback({ variant, className }: Props) {
         >
           {t("feedback")}
         </span>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>{t("feedback")}</DialogTitle>
-          <DialogDescription>{t("desc-feedback")}</DialogDescription>
-        </DialogHeader>
-
-        <div className="flex flex-col gap-2">
-          <Label htmlFor="message">{t("message")}</Label>
-          <Textarea
-            id="message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder={t("message-placeholder")}
-            rows={3}
-          />
-        </div>
-
-        <DialogFooter>
-          <Button type="submit" onClick={handleSubmit} disabled={isLoading}>
+      </DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader className="text-left">
+          <DrawerTitle>{t("feedback")}</DrawerTitle>
+          <DrawerDescription>{t("desc-feedback")}</DrawerDescription>
+        </DrawerHeader>
+        <div className="grid gap-4 px-4">
+          <div className="grid gap-2">
+            <Label htmlFor="message">{t("message")}</Label>
+            <Textarea
+              id="message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder={t("message-placeholder")}
+              rows={3}
+            />
+          </div>
+          <Button
+            type="submit"
+            onClick={handleSubmit}
+            disabled={isLoading || !message}
+          >
             {isLoading ? (
               <IconSpinner className="mr-2 h-4 w-4 animate-spin" />
             ) : (
@@ -112,8 +178,14 @@ export default function Feedback({ variant, className }: Props) {
             )}{" "}
             {t("send")}
           </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+        </div>
+
+        <DrawerFooter className="pt-2">
+          <DrawerClose asChild>
+            <Button variant="outline">Cancel</Button>
+          </DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
   );
 }
