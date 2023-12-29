@@ -607,6 +607,7 @@ export default {
     "link-deleted": "Link deleted",
     messages: "Messages",
     copying: "Copying",
+    close: "Close",
   },
   ModalPluginChat: {
     plugin: "Plugin",
@@ -670,6 +671,7 @@ export default {
     send: "Send",
     "message-send": "Message sent successfully",
     "something-wrong": "Something went wrong, please try again later!",
+    cancel: "Cancel",
   },
   ModalSubscription: {
     subscription: "Subscription",

@@ -624,6 +624,7 @@ export default {
     "link-deleted": "Tautan dihapus",
     messages: "Pesan",
     copying: "Menyalin",
+    close: "Tutup",
   },
   ModalPluginChat: {
     plugin: "Plugin",
@@ -688,6 +689,7 @@ export default {
     send: "Kirim",
     "message-send": "Pesan berhasil dikirim",
     "something-wrong": "Ada yang salah, silakan coba lagi nanti!",
+    cancel: "Batal",
   },
   ModalSubscription: {
     subscription: "Langganan",

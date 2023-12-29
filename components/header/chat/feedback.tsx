@@ -171,11 +171,7 @@ export default function Feedback({ variant, className }: Props) {
             onClick={handleSubmit}
             disabled={isLoading || !message}
           >
-            {isLoading ? (
-              <IconSpinner className="mr-2 h-4 w-4 animate-spin" />
-            ) : (
-              <IconSend className="mr-2 h-4 w-4" />
-            )}{" "}
+            {isLoading && <IconSpinner className="mr-2 h-4 w-4 animate-spin" />}{" "}
             {t("send")}
           </Button>
         </div>

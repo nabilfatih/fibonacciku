@@ -14,10 +14,20 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+} from "@/components/ui/drawer";
 import { IconSpinner } from "@/components/ui/icons";
 import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard";
 import { useScopedI18n } from "@/locales/client";
 import moment from "moment";
+import { useMediaQuery } from "@/lib/hooks/use-media-query";
 
 type ShareChatProps = {
   sharePath: string;
@@ -45,6 +55,8 @@ export function ChatShareDialog({
 }: ChatShareDialogProps) {
   const t = useScopedI18n("ModalShareChat");
 
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
   const { copyToClipboard } = useCopyToClipboard({ timeout: 1000 });
   const [isSharePending, startShareTransition] = React.useTransition();
 
@@ -60,21 +72,68 @@ export function ChatShareDialog({
     [copyToClipboard, onCopy]
   );
 
-  return (
-    <Dialog {...props}>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>{t("share-chat")}</DialogTitle>
-          <DialogDescription>{t("desc-share-chat")}</DialogDescription>
-        </DialogHeader>
-        <div className="space-y-1 rounded-md border p-4 text-sm">
-          <div className="font-medium">{chat.title}</div>
-          <div className="text-muted-foreground">
-            {chat.message.length} {t("messages")} ·{" "}
-            {moment(chat.createdAt).format("MMM DD, YYYY")}
+  if (isDesktop) {
+    return (
+      <Dialog {...props}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{t("share-chat")}</DialogTitle>
+            <DialogDescription>{t("desc-share-chat")}</DialogDescription>
+          </DialogHeader>
+          <div className="space-y-1 rounded-md border p-4 text-sm">
+            <div className="font-medium">{chat.title}</div>
+            <div className="text-muted-foreground">
+              {chat.message.length} {t("messages")} ·{" "}
+              {moment(chat.createdAt).format("MMM DD, YYYY")}
+            </div>
           </div>
-        </div>
-        <DialogFooter className="items-center">
+          <DialogFooter className="items-center">
+            <Button
+              disabled={isSharePending}
+              onClick={() => {
+                startShareTransition(async () => {
+                  const result = await shareChat(chat.id, chat.type);
+
+                  if (result && "error" in result) {
+                    toast.error(result.error);
+                    return;
+                  }
+
+                  copyShareLink(result);
+                });
+              }}
+            >
+              {isSharePending ? (
+                <>
+                  <IconSpinner className="mr-2 animate-spin" />
+                  {t("copying")}...
+                </>
+              ) : (
+                <>{t("copy-link")}</>
+              )}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    );
+  }
+
+  return (
+    <Drawer {...props}>
+      <DrawerContent>
+        <DrawerHeader className="text-left">
+          <DrawerTitle>{t("share-chat")}</DrawerTitle>
+          <DrawerDescription>{t("desc-share-chat")}</DrawerDescription>
+        </DrawerHeader>
+        <div className="grid gap-4 px-4">
+          <div className="space-y-1 rounded-md border p-4 text-sm">
+            <div className="font-medium">{chat.title}</div>
+            <div className="text-muted-foreground">
+              {chat.message.length} {t("messages")} ·{" "}
+              {moment(chat.createdAt).format("MMM DD, YYYY")}
+            </div>
+          </div>
+
           <Button
             disabled={isSharePending}
             onClick={() => {
@@ -99,8 +158,14 @@ export function ChatShareDialog({
               <>{t("copy-link")}</>
             )}
           </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+        </div>
+
+        <DrawerFooter className="pt-2">
+          <DrawerClose asChild>
+            <Button variant="outline">Cancel</Button>
+          </DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
   );
 }
