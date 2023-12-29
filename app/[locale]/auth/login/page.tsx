@@ -39,7 +39,7 @@ export default async function LoginPage({ searchParams }: Props) {
   } = await supabase.auth.getSession();
 
   if (session) {
-    return redirect(next || "/chat/assistant");
+    redirect(next || "/chat/assistant");
   }
 
   return (
