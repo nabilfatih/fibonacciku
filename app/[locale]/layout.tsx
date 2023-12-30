@@ -1,7 +1,6 @@
 import "@/styles/globals.css";
 import type { Metadata, Viewport } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+import { GeistSans, GeistMono } from "geist/font";
 import { cn } from "@/lib/utils";
 import { TailwindIndicator } from "@/components/development/tailwind-indicator";
 import { Providers } from "@/components/providers";
