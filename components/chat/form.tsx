@@ -125,7 +125,9 @@ export default function PromptForm({
                 <span className="sr-only">{t("send")}</span>
               </Button>
             </TooltipTrigger>
-            <TooltipContent>{t("send")}</TooltipContent>
+            <TooltipContent className="text-muted-background bg-muted-foreground">
+              {t("send")}
+            </TooltipContent>
           </Tooltip>
         </div>
       </div>
