@@ -63,7 +63,7 @@ export function SidebarActions({
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="secondary" className="h-6 w-6" size="icon">
-            <IconDotsVertical className="h-5 w-5" />
+            <IconDotsVertical className="h-4 w-4" />
             <span className="sr-only">Actions</span>
           </Button>
         </DropdownMenuTrigger>
@@ -75,7 +75,7 @@ export function SidebarActions({
             }}
             className="cursor-pointer space-x-2"
           >
-            <IconShare3 className="h-5 w-5" />
+            <IconShare3 className="h-4 w-4" />
             <span>{t("share")}</span>
           </DropdownMenuItem>
           <DropdownMenuItem
@@ -85,7 +85,7 @@ export function SidebarActions({
               setRenameDialogOpen(true);
             }}
           >
-            <IconPencil className="h-5 w-5" />
+            <IconPencil className="h-4 w-4" />
             <span>{t("rename")}</span>
           </DropdownMenuItem>
 
@@ -98,7 +98,7 @@ export function SidebarActions({
               setDeleteDialogOpen(true);
             }}
           >
-            <IconTrash className="h-5 w-5" />
+            <IconTrash className="h-4 w-4" />
             <span>{t("delete")}</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
