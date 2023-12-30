@@ -149,9 +149,9 @@ export default function ChatMessageActionSpeech({ text }: Props) {
   return (
     <Button variant="ghost" size="icon" onClick={playSpeech}>
       {isPlaying ? (
-        <IconPlayerStop className="h-5 w-5 animate-pulse" />
+        <IconPlayerStop className="h-4 w-4 animate-pulse" />
       ) : (
-        <IconPlayerPlay className="h-5 w-5" />
+        <IconPlayerPlay className="h-4 w-4" />
       )}
       <span className="sr-only">
         {isPlaying ? "Stop speech" : "Start speech"}
