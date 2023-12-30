@@ -26,17 +26,17 @@ export default function HeaderChatFeature() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="gap-2">
+        <Button variant="outline">
           {type === "assistant" ? (
-            <IconMessageCircle2 className="h-5 w-5" />
+            <IconMessageCircle2 className="mr-2 h-5 w-5" />
           ) : (
-            <IconFile className="h-5 w-5" />
+            <IconFile className="mr-2 h-5 w-5" />
           )}
           {type === "assistant" ? t("assistant") : t("document")}
-          <IconChevronDown className="h-4 w-4" />
+          <IconChevronDown className="ml-1.5 h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent sideOffset={8} align="start" className="w-full p-2">
+      <DropdownMenuContent sideOffset={8} align="end" className="w-full p-2">
         <DropdownMenuLabel
           asChild
           className="cursor-pointer flex-col items-start rounded-sm py-2 transition-colors hover:bg-accent"

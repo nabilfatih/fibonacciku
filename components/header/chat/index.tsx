@@ -6,8 +6,8 @@ import { Suspense } from "react";
 import UserMenu from "@/components/header/chat/user-menu";
 import { SidebarMobile } from "@/components/sidebar/chat/sidebar-mobile";
 import { ChatHistory } from "@/components/sidebar/chat/chat-history";
-import Feedback from "@/components/header/chat/feedback";
 import HeaderChatFeature from "./feature";
+import Link from "next/link";
 
 async function UserHistory() {
   const cookieStore = cookies();
@@ -24,10 +24,12 @@ async function UserHistory() {
         <ChatHistory userId={session.user.id} />
       </SidebarMobile>
       <SidebarToggle />
-      <div className="ml-[10px] flex items-center">
+      <div className="hidden items-center sm:flex">
         <IconSeparator className="h-6 w-6 text-muted-foreground/50" />
 
-        <HeaderChatFeature />
+        <Link href="/" className="ml-2 text-lg font-medium tracking-tight">
+          FibonacciKu
+        </Link>
       </div>
     </div>
   );
@@ -42,9 +44,7 @@ export function HeaderChat() {
         </Suspense>
       </div>
       <div className="flex items-center justify-end space-x-2">
-        <div className="hidden sm:flex">
-          <Feedback variant="outline" />
-        </div>
+        <HeaderChatFeature />
         <UserMenu />
       </div>
     </header>

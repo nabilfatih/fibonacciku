@@ -6,6 +6,8 @@ import type { Chat } from "@/types/types";
 import { useRef, type MutableRefObject } from "react";
 import { ViewportList } from "react-viewport-list";
 import { SidebarItem } from "@/components/sidebar/chat/sidebar-item";
+import { SidebarActions } from "@/components/sidebar/chat/sidebar-actions";
+import { removeChat, shareChat } from "@/app/actions";
 
 type SidebarItemsProps = {
   chats: Chat[];
@@ -29,11 +31,11 @@ export function SidebarItems({ chats, parentRef }: SidebarItemsProps) {
                 }}
               >
                 <SidebarItem index={index} chat={item}>
-                  <div>
-                    {
-                      // TODO: Action buttons
-                    }
-                  </div>
+                  <SidebarActions
+                    chat={item}
+                    removeChat={removeChat}
+                    shareChat={shareChat}
+                  />
                 </SidebarItem>
               </motion.div>
             )}

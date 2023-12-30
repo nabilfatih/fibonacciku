@@ -442,6 +442,7 @@ export default {
     login: "Login",
     "sign-out": "Sign out",
     rename: "Rename",
+    share: "Share",
     delete: "Delete",
     cancel: "Cancel",
     "chat-deleted": "Chat deleted",

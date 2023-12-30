@@ -457,6 +457,7 @@ export default {
     login: "Anmelden",
     "sign-out": "Abmelden",
     rename: "Umbenennen",
+    share: "Teilen",
     delete: "Löschen",
     cancel: "Abbrechen",
     "chat-deleted": "Chat gelöscht",

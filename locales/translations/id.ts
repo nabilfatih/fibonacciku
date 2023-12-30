@@ -457,6 +457,7 @@ export default {
     login: "Masuk",
     "sign-out": "Keluar",
     rename: "Ganti nama",
+    share: "Bagikan",
     delete: "Hapus",
     cancel: "Batal",
     "chat-deleted": "Chat dihapus",

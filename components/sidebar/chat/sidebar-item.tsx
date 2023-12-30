@@ -108,7 +108,7 @@ export function SidebarItem({ index, chat, children }: SidebarItemProps) {
           </span>
         </div>
       </Link>
-      {isActive && <div className="absolute right-2 top-1">{children}</div>}
+      {isActive && <div className="absolute right-2 top-1.5">{children}</div>}
     </motion.div>
   );
 }

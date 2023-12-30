@@ -29,7 +29,7 @@ import { useScopedI18n } from "@/locales/client";
 import moment from "moment";
 import { useMediaQuery } from "@/lib/hooks/use-media-query";
 
-type ShareChatProps = {
+export type ShareChatProps = {
   sharePath: string;
   id: string;
   user_id: string;
