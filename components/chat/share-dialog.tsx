@@ -83,7 +83,7 @@ export function ChatShareDialog({
           <div className="space-y-1 rounded-md border p-4 text-sm">
             <div className="font-medium">{chat.title}</div>
             <div className="text-muted-foreground">
-              {chat.message.length} {t("messages")} ·{" "}
+              {chat.message.length} {t("messages")} · {t(chat.type as never)} ·{" "}
               {moment(chat.createdAt).format("MMM DD, YYYY")}
             </div>
           </div>

@@ -619,6 +619,8 @@ export default {
   },
   ModalShareChat: {
     "share-chat": "Chat teilen",
+    assistant: "Assistent",
+    document: "Dokument",
     "desc-share-chat":
       "Teilen Sie Ihren Chat mit Ihren Freunden oder anderen Personen. Jeder mit diesem Link kann diesen Chat einsehen",
     "share-link": "Link teilen",

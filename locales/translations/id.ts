@@ -615,6 +615,8 @@ export default {
   },
   ModalShareChat: {
     "share-chat": "Bagikan obrolan",
+    assistant: "Asisten",
+    document: "Dokumen",
     "desc-share-chat":
       "Bagikan obrolan Anda dengan teman-teman Anda atau orang lain. Siapa saja dengan tautan ini dapat melihat obrolan ini",
     "share-link": "Bagikan tautan",
