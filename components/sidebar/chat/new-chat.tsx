@@ -29,10 +29,10 @@ export default function NewChat() {
         title={t("new-chat")}
         className={cn(
           buttonVariants({ variant: "outline" }),
-          "h-10 w-full justify-start px-4 shadow-none transition-colors"
+          "flex h-10 w-full items-center justify-start gap-2 px-3 shadow-none transition-colors"
         )}
       >
-        <IconPlus className="-translate-x-2" />
+        <IconPlus className="h-5 w-5" />
         {t("new-chat")}
       </Link>
     </div>

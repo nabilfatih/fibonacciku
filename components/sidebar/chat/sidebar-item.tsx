@@ -47,14 +47,14 @@ export function SidebarItem({ index, chat, children }: SidebarItemProps) {
     >
       <div
         className={cn(
-          "absolute left-3 top-1.5 flex h-6 w-6 items-center justify-center",
+          "absolute left-3 top-1.5 mr-2 flex h-6 w-6 items-center justify-center",
           isActive && "text-primary-foreground hover:text-primary-foreground"
         )}
       >
         {chat.type === "document" ? (
-          <IconFile className="mr-2" />
+          <IconFile className="h-5 w-5" />
         ) : (
-          <IconMessageCircle2 className="mr-2" />
+          <IconMessageCircle2 className="h-5 w-5" />
         )}
       </div>
       <Link
