@@ -15,7 +15,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { IconSpinner } from "@/components/ui/icons";
 import {
   ChatShareDialog,
@@ -35,6 +35,9 @@ import {
   IconTrash,
 } from "@tabler/icons-react";
 import { useScopedI18n } from "@/locales/client";
+import { cn } from "@/lib/utils";
+import { renameChat } from "@/app/actions";
+import { ChatRenameDialog } from "./rename-dialog";
 
 interface SidebarActionsProps {
   chat: Chat;
@@ -52,6 +55,7 @@ export function SidebarActions({
   const router = useRouter();
   const [deleteDialogOpen, setDeleteDialogOpen] = React.useState(false);
   const [shareDialogOpen, setShareDialogOpen] = React.useState(false);
+  const [renameDialogOpen, setRenameDialogOpen] = React.useState(false);
   const [isRemovePending, startRemoveTransition] = React.useTransition();
 
   return (
@@ -74,7 +78,13 @@ export function SidebarActions({
             <IconShare3 className="h-5 w-5" />
             <span>{t("share")}</span>
           </DropdownMenuItem>
-          <DropdownMenuItem role="button" className="cursor-pointer space-x-2">
+          <DropdownMenuItem
+            role="button"
+            className="cursor-pointer space-x-2"
+            onClick={() => {
+              setRenameDialogOpen(true);
+            }}
+          >
             <IconPencil className="h-5 w-5" />
             <span>{t("rename")}</span>
           </DropdownMenuItem>
@@ -106,6 +116,17 @@ export function SidebarActions({
         onOpenChange={setShareDialogOpen}
         onCopy={() => setShareDialogOpen(false)}
       />
+
+      <ChatRenameDialog
+        chat={{
+          id: chat.id,
+        }}
+        renameChat={renameChat}
+        open={shareDialogOpen}
+        onOpenChange={setShareDialogOpen}
+        onRename={() => setShareDialogOpen(false)}
+      />
+
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
@@ -141,6 +162,7 @@ export function SidebarActions({
                   toast.success("Chat deleted");
                 });
               }}
+              className={cn(buttonVariants({ variant: "destructive" }))}
             >
               {isRemovePending && <IconSpinner className="mr-2 animate-spin" />}
               Delete

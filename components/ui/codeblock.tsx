@@ -5,7 +5,7 @@
 
 import { type FC, memo } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { nightOwl } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { nightOwl as highlighterTheme } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard";
 import { Button } from "@/components/ui/button";
@@ -101,7 +101,7 @@ const CodeBlock: FC<Props> = memo(({ language, value }) => {
 
   return (
     <div className="codeblock relative w-full bg-[#0a1427] font-sans">
-      <div className="flex w-full items-center justify-between border border-b-0 border-[#15294f] bg-[#15294f] px-6 py-2 pr-4">
+      <div className="flex w-full items-center justify-between border border-b-0 border-[#15294f] bg-[#15294f] px-6 py-1 pr-4">
         <div className="flex items-center gap-2">
           <IconCode className="h-5 w-5" />
           <span className="lowercase">{language}</span>
@@ -124,7 +124,7 @@ const CodeBlock: FC<Props> = memo(({ language, value }) => {
       </div>
       <SyntaxHighlighter
         language={language}
-        style={nightOwl}
+        style={highlighterTheme}
         PreTag="div"
         customStyle={{
           margin: 0,

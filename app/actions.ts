@@ -5,6 +5,42 @@ import { generateUUID, getCurrentDate } from "@/lib/utils";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
+export async function renameChat(id: string, title: string, path: string) {
+  const cookieStore = cookies();
+  const supabase = createClientServer(cookieStore);
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session?.user?.id) {
+    return {
+      error: "Unauthorized",
+    };
+  }
+
+  const { data, error } = await supabase
+    .from("chat")
+    .update({ title, updated_at: getCurrentDate() })
+    .eq("id", id)
+    .select()
+    .maybeSingle();
+
+  if (error) {
+    return {
+      error: "Something went wrong",
+    };
+  }
+
+  if (!data || data.user_id !== session.user.id) {
+    return {
+      error: "Unauthorized",
+    };
+  }
+
+  revalidatePath("/");
+  return revalidatePath(path);
+}
+
 export async function removeChat(id: string, path: string) {
   const cookieStore = cookies();
   const supabase = createClientServer(cookieStore);
@@ -24,6 +60,12 @@ export async function removeChat(id: string, path: string) {
     .eq("id", id)
     .select()
     .maybeSingle();
+
+  if (error) {
+    return {
+      error: "Something went wrong",
+    };
+  }
 
   if (!data || data.user_id !== session.user.id) {
     return {
@@ -60,7 +102,9 @@ export async function shareChat(id: string, type: string) {
     .maybeSingle();
 
   if (error) {
-    throw error;
+    return {
+      error: "Something went wrong",
+    };
   }
 
   if (!data || data.user_id !== session.user.id) {
