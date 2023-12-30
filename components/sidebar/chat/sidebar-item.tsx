@@ -63,7 +63,7 @@ export function SidebarItem({ index, chat, children }: SidebarItemProps) {
           buttonVariants({ variant: "ghost" }),
           "group w-full pl-10 pr-4 font-normal",
           isActive &&
-            "bg-primary pr-16 text-primary-foreground transition-colors hover:bg-primary/90 hover:text-primary-foreground"
+            "bg-primary pr-12 text-primary-foreground transition-colors hover:bg-primary/90 hover:text-primary-foreground"
         )}
       >
         <div
