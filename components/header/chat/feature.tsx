@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {
   IconChevronDown,
+  IconDotsVertical,
   IconFile,
   IconMessageCircle2,
 } from "@tabler/icons-react";
@@ -26,7 +27,7 @@ export default function HeaderChatFeature() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">
+        <Button variant="outline" className="hidden sm:inline-flex">
           {type === "assistant" ? (
             <IconMessageCircle2 className="mr-2 h-4 w-4" />
           ) : (
@@ -34,6 +35,12 @@ export default function HeaderChatFeature() {
           )}
           {type === "assistant" ? t("assistant") : t("document")}
           <IconChevronDown className="ml-1 h-4 w-4" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon" className="inline-flex sm:hidden">
+          <IconDotsVertical className="h-5 w-5" />
+          <span className="sr-only">Open Menu</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent sideOffset={8} align="end" className="w-full p-2">

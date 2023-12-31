@@ -24,10 +24,10 @@ async function UserHistory() {
         <ChatHistory userId={session.user.id} />
       </SidebarMobile>
       <SidebarToggle />
-      <div className="hidden items-center sm:flex">
+      <div className="flex items-center">
         <IconSeparator className="h-6 w-6 text-muted-foreground/50" />
 
-        <Link href="/" className="ml-2 text-lg font-medium tracking-tight">
+        <Link href="/" className="ml-2 text-lg font-semibold tracking-tight">
           FibonacciKu
         </Link>
       </div>
