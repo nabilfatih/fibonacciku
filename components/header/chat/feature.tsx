@@ -27,20 +27,20 @@ export default function HeaderChatFeature() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="hidden sm:inline-flex">
-          {type === "assistant" ? (
-            <IconMessageCircle2 className="mr-2 h-4 w-4" />
-          ) : (
-            <IconFile className="mr-2 h-4 w-4" />
-          )}
-          {type === "assistant" ? t("assistant") : t("document")}
-          <IconChevronDown className="ml-1 h-4 w-4" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" className="inline-flex sm:hidden">
-          <IconDotsVertical className="h-5 w-5" />
-          <span className="sr-only">Open Menu</span>
+        <Button variant="outline" className="h-9 w-9 sm:h-9 sm:w-auto">
+          <div className="hidden items-center sm:flex">
+            {type === "assistant" ? (
+              <IconMessageCircle2 className="mr-2 h-4 w-4" />
+            ) : (
+              <IconFile className="mr-2 h-4 w-4" />
+            )}
+            {type === "assistant" ? t("assistant") : t("document")}
+            <IconChevronDown className="ml-1 h-4 w-4" />
+          </div>
+          <div className="inline-flex sm:hidden">
+            <IconDotsVertical className="h-5 w-5" />
+            <span className="sr-only">Open Menu</span>
+          </div>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent sideOffset={8} align="end" className="w-full p-2">
