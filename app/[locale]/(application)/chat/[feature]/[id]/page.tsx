@@ -11,18 +11,14 @@ type Props = {
   params: { feature: string; id: string };
 };
 
-async function fetchChatTitle(chatId: string) {
-  const title = await kv
-    .get<string>(chatId)
-    .then(title => title?.toString().slice(0, 50));
-
-  return title ?? "";
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const chatId = params.id;
 
-  const title = await fetchChatTitle(chatId);
+  const title = await kv.get<string>(chatId).then(title => {
+    if (title) {
+      return title.toString().slice(0, 50);
+    }
+  });
 
   if (!title)
     return {
