@@ -78,7 +78,7 @@ export function ChatRenameDialog({
             </DialogClose>
 
             <Button
-              disabled={isRenamePending}
+              disabled={isRenamePending || !title.trim()}
               onClick={() => {
                 startRenameTransition(async () => {
                   const result = await renameChat(chat.id, title);
@@ -131,7 +131,7 @@ export function ChatRenameDialog({
           </div>
 
           <Button
-            disabled={isRenamePending}
+            disabled={isRenamePending || !title.trim()}
             onClick={() => {
               startRenameTransition(async () => {
                 const result = await renameChat(chat.id, title);
