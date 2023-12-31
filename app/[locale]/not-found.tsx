@@ -9,7 +9,7 @@ export default async function NotFound() {
       <h2 className="text-4xl font-bold">404: {t("not-found")}</h2>
       <p>{t("resource-not-found")}</p>
       <Button asChild>
-        <Link href="/chat/assistant">{t("return-home")}</Link>
+        <Link href="/">{t("return-home")}</Link>
       </Button>
     </div>
   );
