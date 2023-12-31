@@ -80,6 +80,8 @@ export default function ChatMessage({
           className
         )}
       >
+        {!id && <EmptyScreen type={type} />}
+
         {showMessageSlice.length > 0 && indexMessage.length > 0 ? (
           <>
             <ChatList
@@ -90,9 +92,7 @@ export default function ChatMessage({
             />
             <ChatScrollAnchor trackVisibility={state.isGenerating} />
           </>
-        ) : (
-          <EmptyScreen type={type} />
-        )}
+        ) : null}
       </div>
 
       <ChatPanel
