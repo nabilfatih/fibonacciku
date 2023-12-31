@@ -2,7 +2,7 @@ import { useMessage } from "@/lib/context/use-message";
 import type { IndexMessage } from "@/types/types";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { useCallback, type Dispatch, type SetStateAction } from "react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   currentIndex: IndexMessage;
