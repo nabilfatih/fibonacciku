@@ -590,7 +590,7 @@ export default {
     "title-clear-conversations": "Delete all conversations",
     "title-clear-history": "Delete all history",
     "desc-clear-history":
-      "Are you sure want to delete all history? This action can not be undone",
+      "Are you sure want to delete all history? This action can not be undone.",
     "desc-clear-conversations":
       "Are you sure want to delete all conversations? This action can not be undone",
     cancel: "Cancel",

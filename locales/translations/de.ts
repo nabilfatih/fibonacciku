@@ -613,7 +613,7 @@ export default {
     "history-clear": "Verlauf wurde gelöscht",
     "title-clear-history": "Verlauf löschen",
     "desc-clear-history":
-      "Sind Sie sicher, dass Sie den Verlauf löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden",
+      "Sind Sie sicher, dass Sie den Verlauf löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
     cancel: "Abbrechen",
     delete: "Löschen",
   },

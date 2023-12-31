@@ -607,7 +607,7 @@ export default {
     "history-clear": "Riwayat telah dihapus",
     "title-clear-history": "Hapus semua riwayat",
     "desc-clear-history":
-      "Anda yakin ingin menghapus semua riwayat? Tindakan ini tidak dapat dibatalkan",
+      "Anda yakin ingin menghapus semua riwayat? Tindakan ini tidak dapat dibatalkan.",
     "desc-clear-conversations":
       "Anda yakin ingin menghapus semua percakapan? Tindakan ini tidak dapat dibatalkan",
     cancel: "Batal",
