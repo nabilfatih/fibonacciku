@@ -5,6 +5,8 @@ import {
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useCurrentUser } from "@/lib/context/use-current-user";
+import EmptyScreenAssistant from "./empty-screen-assistant";
 
 type Props = {
   type: "assistant" | "document";
@@ -26,25 +28,13 @@ const exampleMessages = [
 ];
 
 export function EmptyScreen({ type }: Props) {
+  const { userDetails } = useCurrentUser();
   return (
     <div className="mx-auto max-w-2xl px-4">
-      <div className="rounded-xl border bg-background p-8">
-        <h1 className="mb-2 text-2xl font-semibold">Welcome to FibonacciKu!</h1>
-        <p className="mb-2 leading-normal text-muted-foreground">
-          This is an open source AI chatbot app template.
-        </p>
-        <p className="leading-normal text-muted-foreground">
-          You can start a conversation here or try the following examples:
-        </p>
-        <div className="mt-4 flex flex-col items-start space-y-2">
-          {exampleMessages.map((message, index) => (
-            <Button key={index} variant="link" className="h-auto p-0 text-base">
-              <IconArrowRight className="mr-2 text-muted-foreground" />
-              {message.heading}
-            </Button>
-          ))}
-        </div>
-      </div>
+      <h1 className="mb-2 text-2xl font-semibold">
+        Hi {userDetails?.full_name ?? "there"} 👋
+      </h1>
+      {type === "assistant" ? <EmptyScreenAssistant /> : null}
     </div>
   );
 }
