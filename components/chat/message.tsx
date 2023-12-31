@@ -47,7 +47,7 @@ export default function ChatMessage({
       >
         <ChatAvatar role={message.role} />
       </div>
-      <div className="ml-4 flex-1 space-y-2 overflow-hidden px-1">
+      <div className="ml-4 flex-1 space-y-2 overflow-hidden">
         {isAssistant ? (
           <ChatAssistant
             index={index}
