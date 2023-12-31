@@ -1,6 +1,5 @@
 import ChatMessage from "@/components/chat";
 import { createClientServer } from "@/lib/supabase/server";
-import type { Chat } from "@/types/types";
 import { kv } from "@vercel/kv";
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
@@ -11,21 +10,6 @@ export const runtime = "edge";
 type Props = {
   params: { feature: string; id: string };
 };
-
-async function fetchUserChat(chatId: string, userId: string) {
-  try {
-    const response = await fetch(
-      `https://www.fibonacciku.com/api/app/get-chat/${chatId}/${userId}`,
-      {
-        cache: "no-store", // no catch so we can get the latest chat
-      }
-    );
-    const data = await response.json();
-    return data.chat as Chat | null;
-  } catch (error) {
-    return null;
-  }
-}
 
 async function fetchChatTitle(chatId: string) {
   const title = await kv
@@ -63,15 +47,27 @@ export default async function ChatMessagePage({ params }: Props) {
     redirect(`/auth/login?next=/chat/${params.feature}/${params.id}`);
   }
 
-  const chat = await fetchUserChat(params.id, session.user.id);
+  const { data: chat } = await supabase
+    .from("chat")
+    .select()
+    .eq("id", params.id)
+    .eq("user_id", session.user.id)
+    .limit(1)
+    .maybeSingle();
 
   if (!chat) {
     notFound();
   }
 
-  if (chat?.user_id !== session?.user?.id) {
+  if (chat.user_id !== session.user.id) {
     notFound();
   }
+
+  // expires in 12 hours
+  await kv.set(chat.id, chat.title, {
+    ex: 60 * 60 * 12,
+    nx: true,
+  });
 
   return (
     <ChatMessage
