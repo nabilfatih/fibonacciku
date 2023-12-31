@@ -54,7 +54,7 @@ export default function ChatPanel({
                   <IconRefresh className="mr-2 h-5 w-5" />
                   {t("regenerate")}
                 </Button>
-                {id && title ? (
+                {id && title && createdAt && type ? (
                   <>
                     <Button
                       variant="outline"
@@ -73,7 +73,7 @@ export default function ChatPanel({
                         title,
                         message: messages,
                         type,
-                        createdAt: String(createdAt),
+                        created_at: createdAt,
                       }}
                     />
                   </>

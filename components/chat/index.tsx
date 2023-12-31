@@ -98,7 +98,7 @@ export default function ChatMessage({
       <ChatPanel
         id={id}
         isLoading={false}
-        messages={initialMessages as ShowChatMessage[]}
+        messages={(initialMessages as ShowChatMessage[]) || []}
         type={type}
         title={title}
         createdAt={createdAt}

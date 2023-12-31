@@ -45,7 +45,7 @@ interface SidebarActionsProps {
   shareChat: (id: string, type: string) => ServerActionResult<ShareChatProps>;
 }
 
-export function SidebarActions({
+export default function SidebarActions({
   chat,
   removeChat,
   shareChat,
@@ -68,16 +68,19 @@ export function SidebarActions({
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" className="w-full p-2">
-          <DropdownMenuItem
-            role="button"
-            onClick={() => {
-              setShareDialogOpen(true);
-            }}
-            className="cursor-pointer space-x-2"
-          >
-            <IconShare3 className="h-4 w-4" />
-            <span>{t("share")}</span>
-          </DropdownMenuItem>
+          {chat.messages ? (
+            <DropdownMenuItem
+              role="button"
+              onClick={() => {
+                setShareDialogOpen(true);
+              }}
+              className="cursor-pointer space-x-2"
+            >
+              <IconShare3 className="h-4 w-4" />
+              <span>{t("share")}</span>
+            </DropdownMenuItem>
+          ) : null}
+
           <DropdownMenuItem
             role="button"
             className="cursor-pointer space-x-2"
@@ -103,28 +106,33 @@ export function SidebarActions({
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      <ChatShareDialog
-        chat={{
-          id: chat.id,
-          title: chat.title,
-          message: chat.messages,
-          type: chat.type,
-          createdAt: chat.created_at,
-        }}
-        shareChat={shareChat}
-        open={shareDialogOpen}
-        onOpenChange={setShareDialogOpen}
-        onCopy={() => setShareDialogOpen(false)}
-      />
+
+      {chat.messages ? (
+        <ChatShareDialog
+          chat={{
+            id: chat.id,
+            title: chat.title,
+            message: chat.messages,
+            type: chat.type,
+            created_at: chat.created_at,
+          }}
+          shareChat={shareChat}
+          open={shareDialogOpen}
+          onOpenChange={setShareDialogOpen}
+          onCopy={() => setShareDialogOpen(false)}
+        />
+      ) : null}
 
       <ChatRenameDialog
         chat={{
           id: chat.id,
+          title: chat.title,
+          type: chat.type,
         }}
         renameChat={renameChat}
-        open={shareDialogOpen}
-        onOpenChange={setShareDialogOpen}
-        onRename={() => setShareDialogOpen(false)}
+        open={renameDialogOpen}
+        onOpenChange={setRenameDialogOpen}
+        onRename={() => setRenameDialogOpen(false)}
       />
 
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>

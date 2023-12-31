@@ -5,7 +5,7 @@ import { generateUUID, getCurrentDate } from "@/lib/utils";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
-export async function renameChat(id: string, title: string, path: string) {
+export async function renameChat(id: string, title: string) {
   const cookieStore = cookies();
   const supabase = createClientServer(cookieStore);
   const {
@@ -36,9 +36,6 @@ export async function renameChat(id: string, title: string, path: string) {
       error: "Unauthorized",
     };
   }
-
-  revalidatePath("/");
-  return revalidatePath(path);
 }
 
 export async function removeChat(id: string, path: string) {

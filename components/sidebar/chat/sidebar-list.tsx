@@ -131,6 +131,7 @@ export default function SidebarList({ userId }: Props) {
         <form className="relative">
           <IconSearch className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
           <Input
+            tabIndex={-1} // Prevents the input from being focused when the user presses tab
             ref={refSearch}
             type="text"
             placeholder={

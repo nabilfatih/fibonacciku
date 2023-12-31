@@ -38,10 +38,8 @@ export type ShareChatProps = {
 };
 
 interface ChatShareDialogProps extends DialogProps {
-  chat: Pick<Chat, "id" | "title"> & {
+  chat: Pick<Chat, "id" | "title" | "type" | "created_at"> & {
     message: ShowChatMessage[];
-    type: string;
-    createdAt: string;
   };
   shareChat: (id: string, type: string) => ServerActionResult<ShareChatProps>;
   onCopy: () => void;
@@ -84,7 +82,7 @@ export function ChatShareDialog({
             <div className="font-medium">{chat.title}</div>
             <div className="text-muted-foreground">
               {chat.message.length} {t("messages")} · {t(chat.type as never)} ·{" "}
-              {moment(chat.createdAt).format("MMM DD, YYYY")}
+              {moment(chat.created_at).format("MMM DD, YYYY")}
             </div>
           </div>
           <DialogFooter className="items-center">
@@ -130,7 +128,7 @@ export function ChatShareDialog({
             <div className="font-medium">{chat.title}</div>
             <div className="text-muted-foreground">
               {chat.message.length} {t("messages")} · {t(chat.type as never)} ·{" "}
-              {moment(chat.createdAt).format("MMM DD, YYYY")}
+              {moment(chat.created_at).format("MMM DD, YYYY")}
             </div>
           </div>
 
@@ -162,7 +160,7 @@ export function ChatShareDialog({
 
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
-            <Button variant="outline">Cancel</Button>
+            <Button variant="outline">{t("close")}</Button>
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
