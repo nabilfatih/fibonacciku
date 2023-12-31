@@ -2,10 +2,11 @@ import { cn } from "@/lib/utils";
 import type { IndexMessage, ShowChatMessage } from "@/types/types";
 import ChatAvatar from "@/components/chat/avatar";
 import ChatAssistant from "@/components/chat/assistant";
-import ChatUser from "./user";
-import { ChatMessageActions } from "./message-action";
+import ChatUser from "@/components/chat/user";
+import ChatMessageActions from "@/components/chat/message-action";
 import moment from "moment";
 import { useCurrentLocale } from "@/locales/client";
+import ChatMetadata from "@/components/chat/metadata";
 
 type Props = {
   index: number;
@@ -48,6 +49,12 @@ export default function ChatMessage({
         <ChatAvatar role={message.role} />
       </div>
       <div className="ml-4 flex-1 space-y-2 overflow-hidden">
+        {message.metadata && (
+          <ChatMetadata
+            metadata={message.metadata}
+            contentIndex={contentIndex}
+          />
+        )}
         {isAssistant ? (
           <ChatAssistant
             index={index}

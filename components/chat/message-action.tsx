@@ -3,7 +3,7 @@ import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard";
 import { cn } from "@/lib/utils";
 import { IconCheck, IconCopy } from "@tabler/icons-react";
 import ChatMessageActionSpeech from "@/components/chat/message-action-speech";
-import ChatMessageActionPagination from "./message-action-pagination";
+import ChatMessageActionPagination from "@/components/chat/message-action-pagination";
 import type { IndexMessage } from "@/types/types";
 
 interface ChatMessageActionsProps extends React.ComponentProps<"div"> {
@@ -14,7 +14,7 @@ interface ChatMessageActionsProps extends React.ComponentProps<"div"> {
   isAssistant: boolean;
 }
 
-export function ChatMessageActions({
+export default function ChatMessageActions({
   content,
   createdAt,
   className,
