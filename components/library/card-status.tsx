@@ -25,7 +25,7 @@ export default function LibraryCardStatus({ library }: Props) {
   const t = useScopedI18n("Library");
 
   return (
-    <div className="border-base-100 flex-1 border-t pt-2 sm:border-0 sm:pt-0">
+    <div className="flex-1 border-t pt-2 sm:border-0 sm:pt-0">
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-1">
           <span className="text-xs text-muted-foreground">{t("status")}</span>
