@@ -2,10 +2,10 @@
 
 import { cn } from "@/lib/utils";
 import type { Libraries } from "@/types/types";
-import { AnimatePresence, LayoutGroup } from "framer-motion";
 import { useMemo, useRef, useState } from "react";
-import { ViewportList } from "react-viewport-list";
-import LibraryCard from "@/components/library/card";
+import dynamic from "next/dynamic";
+
+const LibraryList = dynamic(() => import("@/components/library/list"));
 
 export interface LibraryProps extends React.ComponentProps<"div"> {
   libraries: Libraries[];
@@ -16,7 +16,6 @@ export default function LibraryDocument({
   libraries,
 }: LibraryProps) {
   const parentRef = useRef<HTMLDivElement | null>(null);
-  const listRef = useRef<any>({});
 
   const [search, setSearch] = useState<string>("");
 
@@ -35,23 +34,7 @@ export default function LibraryDocument({
         )}
         ref={parentRef}
       >
-        <LayoutGroup>
-          <AnimatePresence initial={false}>
-            {filteredLibraries.length > 0 ? (
-              <div className="relative mx-auto max-w-2xl px-4">
-                <ViewportList
-                  ref={listRef}
-                  viewportRef={parentRef}
-                  items={filteredLibraries}
-                >
-                  {item => {
-                    return <LibraryCard key={item.id} library={item} />;
-                  }}
-                </ViewportList>
-              </div>
-            ) : null}
-          </AnimatePresence>
-        </LayoutGroup>
+        <LibraryList parentRef={parentRef} libraries={filteredLibraries} />
       </div>
 
       {
