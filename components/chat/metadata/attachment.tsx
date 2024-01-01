@@ -47,7 +47,7 @@ export default function ChatMetadataAttachment({ metadata }: Props) {
             return (
               <div key={index} className="relative rounded-xl">
                 {!imageLoaded && (
-                  <div className="m-0 block h-64 w-64 animate-pulse rounded-xl bg-primary bg-opacity-30 object-cover" />
+                  <div className="m-0 block h-64 w-64 animate-pulse rounded-xl border bg-muted/90 object-cover" />
                 )}
                 <Image
                   src={url}
@@ -68,7 +68,7 @@ export default function ChatMetadataAttachment({ metadata }: Props) {
                     return false; // Prevents link from opening in new tab
                   }}
                   className={cn(
-                    "m-0 cursor-pointer rounded-xl bg-muted/90",
+                    "m-0 cursor-pointer rounded-xl border bg-muted/90",
                     imageLoaded ? "block" : "hidden"
                   )}
                 />
@@ -84,7 +84,7 @@ export default function ChatMetadataAttachment({ metadata }: Props) {
 function Loading() {
   return (
     <div className="flex flex-wrap gap-4">
-      <div className="m-0 block h-64 w-64 animate-pulse rounded-xl bg-primary bg-opacity-30 object-cover" />
+      <div className="m-0 block h-64 w-64 animate-pulse rounded-xl border bg-muted/90 object-cover" />
     </div>
   );
 }
