@@ -1,6 +1,9 @@
 import type { ChatMessageMetadata } from "@/types/types";
 import ChatMetadataImage from "@/components/chat/metadata/image";
 import ChatMetadataAttachment from "@/components/chat/metadata/attachment";
+import ChatMetadataGoogle from "@/components/chat/metadata/google";
+import ChatMetadataAcademic from "@/components/chat/metadata/academic";
+import ChatMetadataYoutube from "@/components/chat/metadata/youtube";
 
 type Props = {
   metadata: ChatMessageMetadata[];
@@ -49,5 +52,11 @@ export default function ChatMetadata({ metadata, contentIndex }: Props) {
     );
   }
 
-  return <div className="flex flex-col gap-4 pb-5"></div>;
+  return (
+    <div className="flex flex-col gap-4 pb-5">
+      {google && <ChatMetadataGoogle metadata={google} />}
+      {academic && <ChatMetadataAcademic metadata={academic} />}
+      {youtube && <ChatMetadataYoutube metadata={youtube} />}
+    </div>
+  );
 }
