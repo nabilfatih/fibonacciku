@@ -25,7 +25,7 @@ export default function LibraryCardChatButton({ library }: Props) {
 
   return (
     <Tooltip>
-      <TooltipTrigger>
+      <TooltipTrigger asChild>
         <Button
           variant="ghost"
           disabled={library.status !== "finished"}

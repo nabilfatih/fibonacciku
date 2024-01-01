@@ -21,7 +21,9 @@ export default function LibraryCardInfo({ library, className }: Props) {
       <span className="mr-2 text-xs text-muted-foreground">
         {moment(library.created_at).fromNow()}
       </span>
+
       <LibraryCardChatButton library={library} />
+
       <Button
         variant="ghost"
         size="icon"
