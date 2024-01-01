@@ -27,7 +27,7 @@ export default function ChatMetadataGoogle({ metadata }: Props) {
     <div className="flex flex-col justify-start gap-2">
       <div className="flex flex-row items-center gap-1">
         <IconWorldWww className="h-5 w-5" />
-        <span className="font-semibold">{t("related-links")}:</span>
+        <span className="font-medium">{t("related-links")}:</span>
       </div>
 
       <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
@@ -57,7 +57,7 @@ export default function ChatMetadataGoogle({ metadata }: Props) {
               >
                 <div className="flex h-full w-full flex-col items-start justify-between gap-2">
                   <span
-                    className="line-clamp-2 whitespace-pre-wrap break-all text-sm font-semibold"
+                    className="line-clamp-2 whitespace-pre-wrap break-all text-sm font-medium"
                     title={he.decode(item.title)}
                   >
                     {he.decode(item.title)}
@@ -82,7 +82,7 @@ export default function ChatMetadataGoogle({ metadata }: Props) {
                       />
                     </div>
 
-                    <span className="line-clamp-1 text-xs font-medium text-muted-foreground">
+                    <span className="line-clamp-1 text-xs text-muted-foreground">
                       {item.displayLink.split(".").length > 2
                         ? item.displayLink.split(".")[1]
                         : item.displayLink.split(".")[0]}

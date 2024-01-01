@@ -4,6 +4,7 @@ import ChatMetadataAttachment from "@/components/chat/metadata/attachment";
 import ChatMetadataGoogle from "@/components/chat/metadata/google";
 import ChatMetadataAcademic from "@/components/chat/metadata/academic";
 import ChatMetadataYoutube from "@/components/chat/metadata/youtube";
+import ChatMetadataReferences from "@/components/chat/metadata/references";
 
 type Props = {
   metadata: ChatMessageMetadata[];
@@ -15,11 +16,8 @@ export default function ChatMetadata({ metadata, contentIndex }: Props) {
 
   if (!currentMetadata) return null;
 
-  // Check if currentMetadata is an empty object or fibo document
-  if (
-    !Object.keys(currentMetadata).length ||
-    currentMetadata.source_documents
-  ) {
+  // Check if currentMetadata is an empty object
+  if (!Object.keys(currentMetadata).length) {
     return null;
   }
 
@@ -34,6 +32,7 @@ export default function ChatMetadata({ metadata, contentIndex }: Props) {
     youtube_search: youtube,
     attachments: attachments,
     image_result: imageResults,
+    source_documents: sourceDocuments,
   } = currentMetadata;
 
   if (attachments) {
@@ -57,6 +56,7 @@ export default function ChatMetadata({ metadata, contentIndex }: Props) {
       {google && <ChatMetadataGoogle metadata={google} />}
       {academic && <ChatMetadataAcademic metadata={academic} />}
       {youtube && <ChatMetadataYoutube metadata={youtube} />}
+      {sourceDocuments && <ChatMetadataReferences metadata={sourceDocuments} />}
     </div>
   );
 }

@@ -17,7 +17,7 @@ export default function ChatMetadataAcademic({ metadata }: Props) {
     <div className="flex flex-col justify-start gap-2">
       <div className="flex flex-row items-center gap-1">
         <IconBooks className="h-5 w-5" />
-        <span className="font-semibold">{t("academic-research")}:</span>
+        <span className="font-medium">{t("academic-research")}:</span>
       </div>
 
       <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
@@ -72,7 +72,7 @@ export default function ChatMetadataAcademic({ metadata }: Props) {
                       />
                     </div>
 
-                    <span className="line-clamp-1 text-xs font-medium text-muted-foreground">
+                    <span className="line-clamp-1 text-xs text-muted-foreground">
                       {item.authors
                         ?.map(author => {
                           return author.name;

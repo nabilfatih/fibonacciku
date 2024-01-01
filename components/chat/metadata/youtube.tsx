@@ -17,7 +17,7 @@ export default function ChatMetadataYoutube({ metadata }: Props) {
     <div className="flex flex-col justify-start gap-2">
       <div className="flex flex-row items-center gap-1">
         <IconBrandYoutube className="h-5 w-5" />
-        <span className="font-semibold">{t("youtube-videos")}:</span>
+        <span className="font-medium">{t("youtube-videos")}:</span>
       </div>
 
       <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
@@ -53,7 +53,7 @@ export default function ChatMetadataYoutube({ metadata }: Props) {
               >
                 <div className="flex h-full w-full flex-col items-start justify-between gap-2">
                   <span
-                    className="line-clamp-2 whitespace-pre-wrap break-all text-sm font-semibold text-zinc-100"
+                    className="line-clamp-2 whitespace-pre-wrap break-all text-sm font-medium text-zinc-100"
                     title={he.decode(item.snippet.title)}
                   >
                     {he.decode(item.snippet.title)}
@@ -74,7 +74,7 @@ export default function ChatMetadataYoutube({ metadata }: Props) {
                       />
                     </div>
 
-                    <span className="line-clamp-1 text-xs font-medium text-zinc-100">
+                    <span className="line-clamp-1 text-xs text-zinc-100">
                       {item.snippet.channelTitle}
                     </span>
                   </div>

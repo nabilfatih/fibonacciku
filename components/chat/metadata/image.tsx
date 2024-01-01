@@ -15,7 +15,7 @@ export default function ChatMetadataImage({ metadata }: Props) {
     <div className="flex flex-col justify-start gap-2">
       <div className="flex flex-row items-center gap-2">
         <IconPhoto className="h-5 w-5" />
-        <span className="font-semibold">{t("generated-image")}:</span>
+        <span className="font-medium">{t("generated-image")}:</span>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
