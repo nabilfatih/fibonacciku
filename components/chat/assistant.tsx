@@ -68,6 +68,9 @@ export default function ChatAssistant({
         p({ children }) {
           return <p className="mb-2 last:mb-0">{children}</p>;
         },
+        hr() {
+          return <hr className="my-6 border-foreground/30" />;
+        },
         pre(props) {
           const { children, className, node, ...rest } = props;
 
