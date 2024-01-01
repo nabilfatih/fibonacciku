@@ -1,13 +1,16 @@
+import { Suspense } from "react";
+import Link from "next/link";
+import { cookies } from "next/headers";
+
 import { SidebarToggle } from "@/components/sidebar/sidebar-toggle";
 import { IconSeparator } from "@/components/ui/icons";
-import { createClientServer } from "@/lib/supabase/server";
-import { cookies } from "next/headers";
-import { Suspense } from "react";
 import UserMenu from "@/components/header/chat/user-menu";
 import { SidebarMobile } from "@/components/sidebar/chat/sidebar-mobile";
 import { ChatHistory } from "@/components/sidebar/chat/chat-history";
-import HeaderChatFeature from "./feature";
-import Link from "next/link";
+import HeaderChatFeature from "@/components/header/chat/feature";
+import HeaderChatLibrary from "@/components/header/chat/library";
+
+import { createClientServer } from "@/lib/supabase/server";
 
 async function UserHistory() {
   const cookieStore = cookies();
@@ -45,6 +48,7 @@ export function HeaderChat() {
       </div>
       <div className="flex items-center justify-end space-x-2">
         <HeaderChatFeature />
+        <HeaderChatLibrary />
         <UserMenu />
       </div>
     </header>
