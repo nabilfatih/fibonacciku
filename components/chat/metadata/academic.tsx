@@ -47,7 +47,7 @@ export default function ChatMetadataAcademic({ metadata }: Props) {
               >
                 <div className="flex h-full w-full flex-col items-start justify-between gap-2">
                   <span
-                    className="line-clamp-2 text-sm font-semibold"
+                    className="line-clamp-2 whitespace-pre-wrap break-all text-sm font-semibold"
                     title={he.decode(item.title)}
                   >
                     {he.decode(item.title)}
