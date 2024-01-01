@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard";
 import { cn } from "@/lib/utils";
-import { IconCheck, IconCopy } from "@tabler/icons-react";
+import { IconCheck, IconCopy, IconEdit } from "@tabler/icons-react";
 import ChatMessageActionSpeech from "@/components/chat/message-action-speech";
 import ChatMessageActionPagination from "@/components/chat/message-action-pagination";
 import type { IndexMessage } from "@/types/types";
@@ -45,6 +45,13 @@ export default function ChatMessageActions({
             currentIndex={currentIndex}
             contentLength={contentLength}
           />
+        )}
+
+        {!isAssistant && (
+          <Button variant="ghost" size="icon">
+            <IconEdit className="h-4 w-4" />
+            <span className="sr-only">Edit message</span>
+          </Button>
         )}
 
         <Button variant="ghost" size="icon" onClick={onCopy}>

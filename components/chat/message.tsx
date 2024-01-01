@@ -48,7 +48,7 @@ export default function ChatMessage({
       >
         <ChatAvatar role={message.role} />
       </div>
-      <div className="ml-4 flex-1 space-y-2 overflow-hidden">
+      <div className="ml-4 flex-1 space-y-2 overflow-hidden sm:px-1">
         {message.metadata && (
           <ChatMetadata
             metadata={message.metadata}
