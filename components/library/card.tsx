@@ -24,7 +24,7 @@ export default function LibraryCard({ library }: Props) {
         transition: { duration: 0.15, ease: "easeInOut" },
       }}
       exit={{ opacity: 0, x: 20, transition: { duration: 0.3 } }}
-      className="mb-2 rounded-xl border bg-muted px-4 py-3 shadow-sm"
+      className="mb-2 rounded-xl border px-4 py-3 shadow-sm"
     >
       <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-center">
         <LibraryCardFilename library={library} />
