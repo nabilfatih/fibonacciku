@@ -19,7 +19,11 @@ interface SidebarItemProps {
   children: React.ReactNode;
 }
 
-export function SidebarItem({ index, chat, children }: SidebarItemProps) {
+export default function SidebarItem({
+  index,
+  chat,
+  children,
+}: SidebarItemProps) {
   const params = useParams();
   const chatId = params?.id;
 

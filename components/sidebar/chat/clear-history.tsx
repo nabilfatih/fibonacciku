@@ -26,7 +26,7 @@ type ClearHistoryProps = {
   isEnabled: boolean;
 };
 
-export function ClearHistory({ isEnabled = false }: ClearHistoryProps) {
+export default function ClearHistory({ isEnabled = false }: ClearHistoryProps) {
   const t = useScopedI18n("ModalClearChat");
   const { userDetails } = useCurrentUser();
 

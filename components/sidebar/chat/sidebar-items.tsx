@@ -5,7 +5,7 @@ import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import type { Chat } from "@/types/types";
 import { useRef, type MutableRefObject } from "react";
 import { ViewportList } from "react-viewport-list";
-import { SidebarItem } from "@/components/sidebar/chat/sidebar-item";
+import SidebarItem from "@/components/sidebar/chat/sidebar-item";
 import SidebarActions from "@/components/sidebar/chat/sidebar-actions";
 import { removeChat, shareChat } from "@/app/actions";
 
@@ -14,7 +14,7 @@ type SidebarItemsProps = {
   parentRef: MutableRefObject<HTMLDivElement | null>;
 };
 
-export function SidebarItems({ chats, parentRef }: SidebarItemsProps) {
+export default function SidebarItems({ chats, parentRef }: SidebarItemsProps) {
   const listRef = useRef(null);
 
   return (
