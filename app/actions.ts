@@ -117,3 +117,20 @@ export async function shareChat(id: string, type: string) {
 
   return payload;
 }
+
+export async function removeLibrary(libraryId: string, fileId: string) {
+  const cookieStore = cookies();
+  const supabase = createClientServer(cookieStore);
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session?.user?.id) {
+    return {
+      error: "Unauthorized",
+    };
+  }
+
+  revalidatePath("/");
+  return revalidatePath("/chat/library");
+}

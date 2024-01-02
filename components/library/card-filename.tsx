@@ -5,6 +5,7 @@ import { IconDots } from "@tabler/icons-react";
 import { useCallback } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import LibraryCardActions from "./card-actions";
 
 type Props = {
   library: Libraries;
@@ -35,15 +36,7 @@ export default function LibraryCardFilename({ library }: Props) {
         </p>
       </div>
 
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={() => {}}
-        className="sm:hidden"
-      >
-        <IconDots className="h-5 w-5" />
-        <span className="sr-only">Actions</span>
-      </Button>
+      <LibraryCardActions className="sm:hidden" library={library} />
     </div>
   );
 }

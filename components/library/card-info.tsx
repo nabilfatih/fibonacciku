@@ -4,6 +4,7 @@ import moment from "moment";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import LibraryCardChatButton from "@/components/library/card-chat-button";
+import LibraryCardActions from "./card-actions";
 
 type Props = {
   library: Libraries;
@@ -24,15 +25,7 @@ export default function LibraryCardInfo({ library, className }: Props) {
 
       <LibraryCardChatButton library={library} />
 
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={() => {}}
-        className="hidden sm:inline-flex"
-      >
-        <IconDots className="h-5 w-5" />
-        <span className="sr-only">Actions</span>
-      </Button>
+      <LibraryCardActions className="hidden sm:inline-flex" library={library} />
     </div>
   );
 }
