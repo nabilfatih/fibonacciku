@@ -15,7 +15,13 @@ export default function AuthenticationLayout({
         <div className="absolute inset-0 bg-muted" />
         <div className="relative z-20 flex items-center gap-2 text-lg font-medium">
           <div className="relative h-6 w-6">
-            <Image src="/logo.webp" fill priority alt="FibonacciKu" />
+            <Image
+              src="/logo.webp"
+              sizes="24px"
+              fill
+              priority
+              alt="FibonacciKu"
+            />
           </div>
           <span className="font-semibold">FibonacciKu</span>
         </div>
