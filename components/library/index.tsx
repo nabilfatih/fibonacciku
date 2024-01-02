@@ -52,7 +52,7 @@ export default function LibraryDocument({
     <>
       <div className="border-b py-4">
         <form className="relative mx-auto max-w-2xl px-4 sm:px-5">
-          <IconSearch className="absolute left-7 top-2.5 h-5 w-5 text-muted-foreground" />
+          <IconSearch className="absolute left-7 top-2.5 h-5 w-5 text-muted-foreground sm:left-8" />
           <Input
             tabIndex={-1} // Prevents the input from being focused when the user presses tab
             ref={refSearch}
