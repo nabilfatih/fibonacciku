@@ -32,7 +32,7 @@ export default function UserMenu() {
     return (
       <div className="flex items-center justify-between">
         <Avatar
-          className="h-8 w-8 rounded-full object-cover transition-opacity duration-300 hover:opacity-80"
+          className="h-8 w-8 rounded-full object-cover shadow-sm transition-opacity duration-300 hover:opacity-80"
           {...config}
         />
       </div>
@@ -43,10 +43,10 @@ export default function UserMenu() {
     <div className="flex items-center justify-between">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <div className="cursor-pointer">
+          <div role="button" className="cursor-pointer">
             {userDetails.avatar_url ? (
               <Image
-                className="h-8 w-8 select-none rounded-full transition-opacity duration-300 hover:opacity-80"
+                className="h-8 w-8 select-none rounded-full shadow-sm transition-opacity duration-300 hover:opacity-80"
                 src={userDetails.avatar_url}
                 alt={userDetails.full_name ?? "Avatar"}
                 height={48}
@@ -54,7 +54,7 @@ export default function UserMenu() {
               />
             ) : (
               <Avatar
-                className="h-8 w-8 rounded-full object-cover transition-opacity duration-300 hover:opacity-80"
+                className="h-8 w-8 rounded-full object-cover shadow-sm transition-opacity duration-300 hover:opacity-80"
                 {...config}
               />
             )}

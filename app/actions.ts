@@ -171,12 +171,7 @@ export async function removeLibrary(id: string, fileId: string) {
   }
 
   async function deleteLibrary() {
-    await supabase
-      .from("libraries")
-      .delete()
-      .eq("id", id)
-      .select()
-      .maybeSingle();
+    await supabase.from("libraries").delete().eq("id", id);
   }
   async function deleteChatDocument() {
     await supabase.storage

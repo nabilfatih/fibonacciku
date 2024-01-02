@@ -71,7 +71,7 @@ export default function LibraryDocument({
       </div>
       <div
         className={cn(
-          "h-full overflow-y-auto overflow-x-hidden pb-52 pt-4 sm:pb-60",
+          "h-full overflow-y-auto overflow-x-hidden pb-56 pt-4 sm:pb-64",
           className
         )}
         ref={parentRef}
