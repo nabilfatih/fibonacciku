@@ -31,14 +31,11 @@ export default function SidebarDocument({
         dispatch({ type: "SET_OPEN_DOCUMENT", payload: open })
       }
     >
-      <SheetContent
-        side="right"
-        className="h-auto w-full bg-muted sm:max-w-2xl"
-      >
+      <SheetContent side="right" className="w-full bg-muted sm:max-w-2xl">
         <SheetHeader>
           <SheetTitle>{t("document")}</SheetTitle>
         </SheetHeader>
-        <Sidebar className="flex">{children}</Sidebar>
+        <Sidebar className="flex h-[calc(100%-4rem)]">{children}</Sidebar>
         <SheetFooter>
           <SheetClose asChild>
             <Button variant="outline">{t("close")}</Button>
