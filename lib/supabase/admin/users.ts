@@ -144,9 +144,7 @@ export const manageSubscriptionXendit = async (
       metadata: {},
       status: "one_time",
       price_id: priceId,
-      //TODO check quantity on subscription
-      // @ts-ignore
-      quantity: subscription.quantity,
+      quantity: 1,
       cancel_at_period_end: true,
       cancel_at: endDate,
       canceled_at: endDate,
@@ -256,8 +254,7 @@ export const manageSubscriptionStatusChangeAdmin = async (
   // For a new subscription copy the billing details to the customer object.
   // NOTE: This is a costly operation and should happen at the very end.
   if (createAction && subscription.default_payment_method && uuid)
-    //@ts-ignore
-    await copyBillingDetailsToCustomer(
+    await copyBillingDetailsToCustomerAdmin(
       uuid,
       subscription.default_payment_method as Stripe.PaymentMethod
     );
