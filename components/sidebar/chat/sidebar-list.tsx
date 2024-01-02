@@ -137,7 +137,7 @@ export default function SidebarList({ userId }: Props) {
             placeholder={
               navigator.userAgent.includes("Mac") ? "⌘ + K" : "Alt + K"
             }
-            className="h-10 pl-10"
+            className="h-10 bg-background pl-10"
             value={searchTerm}
             autoFocus={false}
             autoComplete="off"
