@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { IconSearch } from "@tabler/icons-react";
 import { Input } from "@/components/ui/input";
+import LibraryPanel from "@/components/library/panel";
 
 const LibraryList = dynamic(() => import("@/components/library/list"));
 
@@ -50,7 +51,7 @@ export default function LibraryDocument({
   return (
     <>
       <div className="border-b py-4">
-        <form className="relative mx-auto max-w-2xl px-4">
+        <form className="relative mx-auto max-w-2xl px-4 sm:px-5">
           <IconSearch className="absolute left-7 top-2.5 h-5 w-5 text-muted-foreground" />
           <Input
             tabIndex={-1} // Prevents the input from being focused when the user presses tab
@@ -70,7 +71,7 @@ export default function LibraryDocument({
       </div>
       <div
         className={cn(
-          "h-full overflow-y-auto overflow-x-hidden pb-48 pt-4 sm:pb-52",
+          "h-full overflow-y-auto overflow-x-hidden pb-52 pt-4 sm:pb-60",
           className
         )}
         ref={parentRef}
@@ -78,9 +79,7 @@ export default function LibraryDocument({
         <LibraryList parentRef={parentRef} libraries={filteredLibraries} />
       </div>
 
-      {
-        // TODO: Panel
-      }
+      <LibraryPanel />
     </>
   );
 }

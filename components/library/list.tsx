@@ -17,7 +17,7 @@ export default function LibraryList({ parentRef, libraries }: Props) {
     <LayoutGroup>
       <AnimatePresence initial={false}>
         {libraries.length > 0 ? (
-          <div className="relative mx-auto max-w-2xl px-4">
+          <div className="relative mx-auto max-w-2xl px-4 sm:px-5">
             <ViewportList
               ref={listRef}
               viewportRef={parentRef}
