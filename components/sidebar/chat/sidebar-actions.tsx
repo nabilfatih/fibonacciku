@@ -17,8 +17,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { IconSpinner } from "@/components/ui/icons";
-import {
-  ChatShareDialog,
+import ChatShareDialog, {
   type ShareChatProps,
 } from "@/components/chat/share-dialog";
 import {

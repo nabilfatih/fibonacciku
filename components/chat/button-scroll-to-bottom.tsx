@@ -30,7 +30,7 @@ export default function ButtonScrollToBottom({
       onClick={handleScrollToBottom}
       {...props}
     >
-      <IconArrowNarrowDown />
+      <IconArrowNarrowDown className="h-5 w-5" />
       <span className="sr-only">Scroll to bottom</span>
     </Button>
   );

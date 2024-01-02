@@ -45,7 +45,7 @@ interface ChatShareDialogProps extends DialogProps {
   onCopy: () => void;
 }
 
-export function ChatShareDialog({
+export default function ChatShareDialog({
   chat,
   shareChat,
   onCopy,

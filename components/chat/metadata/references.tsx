@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { useMessage } from "@/lib/context/use-message";
 import { useScopedI18n } from "@/locales/client";
 import type { SourceDocument } from "@/types/types";
 import { IconFile } from "@tabler/icons-react";
@@ -9,6 +10,8 @@ type Props = {
 
 export default function ChatMetadataReferences({ metadata }: Props) {
   const t = useScopedI18n("MetadataChat");
+
+  const { pageRef } = useMessage();
 
   return (
     <div className="flex flex-col justify-start gap-2">
@@ -27,7 +30,13 @@ export default function ChatMetadataReferences({ metadata }: Props) {
               key={index}
               size="sm"
               onClick={() => {
-                // TODO: go to page
+                const main = pageRef.current;
+                if (main && typeof main.scrollToIndex === "function") {
+                  main.scrollToIndex({
+                    index: item.page_number - 1,
+                    alignToTop: true,
+                  });
+                }
               }}
             >
               {item.page_number}

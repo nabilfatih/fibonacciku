@@ -513,6 +513,7 @@ export default {
     "max-file-size-5mb": "Ukuran file maksimal adalah 5MB",
     "see-diagram": "Lihat diagram",
     share: "Bagikan",
+    document: "Dokumen",
   },
   FormDocument: {
     "form-document-desc": "Unggah dokumen Anda untuk memulai",

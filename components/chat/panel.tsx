@@ -4,12 +4,15 @@ import { Button } from "@/components/ui/button";
 import ButtonScrollToBottom from "@/components/chat/button-scroll-to-bottom";
 import { IconStop } from "@/components/ui/icons";
 import FooterText from "@/components/chat/footer";
-import { IconRefresh, IconShare3 } from "@tabler/icons-react";
-import PromptForm from "./form";
+import { IconEye, IconRefresh, IconShare3 } from "@tabler/icons-react";
+import PromptForm from "@/components/chat/form";
 import type { ShowChatMessage } from "@/types/types";
 import { useScopedI18n } from "@/locales/client";
-import { ChatShareDialog } from "./share-dialog";
+import ChatShareDialog from "@/components/chat/share-dialog";
 import { shareChat } from "@/app/actions";
+import SidebarDocument from "@/components/chat/sidebar-document";
+import { cn } from "@/lib/utils";
+import { useMessage } from "@/lib/context/use-message";
 
 export type ChatPanelProps = {
   isLoading: boolean;
@@ -30,11 +33,27 @@ export default function ChatPanel({
 }: ChatPanelProps) {
   const t = useScopedI18n("FormChat");
 
+  const { dispatch } = useMessage();
+
   const [shareDialogOpen, setShareDialogOpen] = React.useState(false);
   const [input, setInput] = React.useState("");
 
   return (
     <div className="fixed inset-x-0 bottom-0 w-full bg-gradient-to-b from-transparent via-muted/50 to-muted duration-300 ease-in-out animate-in peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px] dark:from-transparent dark:via-background/50 dark:to-background">
+      <SidebarDocument>
+        <div></div>
+      </SidebarDocument>
+      <Button
+        variant="outline"
+        className={cn(
+          "absolute -top-9 right-4 z-10 bg-background transition-opacity duration-300 sm:-top-10 sm:right-8",
+          type === "document" && id ? "opacity-100" : "opacity-0"
+        )}
+        onClick={() => dispatch({ type: "SET_OPEN_DOCUMENT", payload: true })}
+      >
+        <IconEye className="mr-2 h-5 w-5" />
+        {t("document")}
+      </Button>
       <ButtonScrollToBottom />
       <div className="mx-auto sm:max-w-2xl sm:px-2">
         <div className="flex h-12 items-center justify-center">

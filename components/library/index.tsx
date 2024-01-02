@@ -6,9 +6,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { IconSearch } from "@tabler/icons-react";
 import { Input } from "@/components/ui/input";
-import LibraryPanel from "@/components/library/panel";
 
 const LibraryList = dynamic(() => import("@/components/library/list"));
+const LibraryPanel = dynamic(() => import("@/components/library/panel"));
 
 export interface LibraryProps extends React.ComponentProps<"div"> {
   libraries: Libraries[];

@@ -497,6 +497,7 @@ export default {
     "max-file-size-5mb": "Max file size is 5MB",
     "see-diagram": "See diagram",
     share: "Share",
+    document: "Document",
   },
   FormDocument: {
     "form-document-desc": "Upload your document to get started",

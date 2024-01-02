@@ -516,6 +516,7 @@ export default {
     "max-file-size-5mb": "Maximale Dateigröße ist 5MB",
     "see-diagram": "Diagramm ansehen",
     share: "Teilen",
+    document: "Dokument",
   },
   FormDocument: {
     "form-document-desc": "Laden Sie Ihr Dokument hoch, um zu starten",

@@ -53,6 +53,7 @@ export type StateMessage = {
   grade: string;
   attachment: File | null;
   scrollPosition: number;
+  openDocument: boolean;
   // Add other state properties here if needed
 };
 
@@ -67,7 +68,8 @@ export type ActionMessage =
   | { type: "SET_LANGUAGE"; payload: string }
   | { type: "SET_GRADE"; payload: string }
   | { type: "SET_ATTACHMENT"; payload: File | null }
-  | { type: "SET_SCROLL_POSITION"; payload: number };
+  | { type: "SET_SCROLL_POSITION"; payload: number }
+  | { type: "SET_OPEN_DOCUMENT"; payload: boolean };
 // Add other action types here
 
 // Define the reducer function
@@ -98,6 +100,8 @@ const messageReducer = (
       return { ...state, attachment: action.payload };
     case "SET_SCROLL_POSITION":
       return { ...state, scrollPosition: action.payload };
+    case "SET_OPEN_DOCUMENT":
+      return { ...state, openDocument: action.payload };
     default:
       return state;
   }
@@ -116,6 +120,7 @@ const initialState: StateMessage = {
   grade: "university",
   attachment: null,
   scrollPosition: -1,
+  openDocument: false,
   // Initialize other state properties here
 };
 
