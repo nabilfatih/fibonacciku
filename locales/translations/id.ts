@@ -514,6 +514,7 @@ export default {
     "see-diagram": "Lihat diagram",
     share: "Bagikan",
     document: "Dokumen",
+    close: "Tutup",
   },
   FormDocument: {
     "form-document-desc": "Unggah dokumen Anda untuk memulai",

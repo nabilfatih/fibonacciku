@@ -517,6 +517,7 @@ export default {
     "see-diagram": "Diagramm ansehen",
     share: "Teilen",
     document: "Dokument",
+    close: "Schließen",
   },
   FormDocument: {
     "form-document-desc": "Laden Sie Ihr Dokument hoch, um zu starten",

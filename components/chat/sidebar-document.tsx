@@ -1,6 +1,8 @@
 import {
   Sheet,
+  SheetClose,
   SheetContent,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
@@ -9,6 +11,7 @@ import { Sidebar } from "@/components/sidebar";
 import type { DialogProps } from "@radix-ui/react-dialog";
 import { useMessage } from "@/lib/context/use-message";
 import { useScopedI18n } from "@/locales/client";
+import { Button } from "@/components/ui/button";
 
 interface SidebarMobileProps extends DialogProps {
   children: React.ReactNode;
@@ -36,6 +39,11 @@ export default function SidebarDocument({
           <SheetTitle>{t("document")}</SheetTitle>
         </SheetHeader>
         <Sidebar className="flex">{children}</Sidebar>
+        <SheetFooter>
+          <SheetClose asChild>
+            <Button variant="outline">{t("close")}</Button>
+          </SheetClose>
+        </SheetFooter>
       </SheetContent>
     </Sheet>
   );

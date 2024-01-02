@@ -498,6 +498,7 @@ export default {
     "see-diagram": "See diagram",
     share: "Share",
     document: "Document",
+    close: "Close",
   },
   FormDocument: {
     "form-document-desc": "Upload your document to get started",
