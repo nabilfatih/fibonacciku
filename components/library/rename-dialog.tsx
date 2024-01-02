@@ -4,7 +4,7 @@ import * as React from "react";
 import { type DialogProps } from "@radix-ui/react-dialog";
 import { toast } from "sonner";
 
-import type { Chat, ServerActionResult } from "@/types/types";
+import type { Libraries, ServerActionResult } from "@/types/types";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -29,21 +29,21 @@ import { useMediaQuery } from "@/lib/hooks/use-media-query";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-interface ChatShareDialogProps extends DialogProps {
-  chat: Pick<Chat, "id" | "title" | "type">;
-  renameChat: (id: string, title: string) => ServerActionResult<void>;
+interface LibraryRenameDialogProps extends DialogProps {
+  library: Pick<Libraries, "id" | "name">;
+  renameLibrary: (id: string, title: string) => ServerActionResult<void>;
   onRename: () => void;
 }
 
-export function ChatRenameDialog({
-  chat,
-  renameChat,
+export function LibraryRenameDialog({
+  library,
+  renameLibrary,
   onRename,
   ...props
-}: ChatShareDialogProps) {
+}: LibraryRenameDialogProps) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
-  const [title, setTitle] = React.useState<string>(chat.title);
+  const [title, setTitle] = React.useState<string>(library.name);
 
   const [isRenamePending, startRenameTransition] = React.useTransition();
 
@@ -52,21 +52,21 @@ export function ChatRenameDialog({
       <Dialog {...props}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Rename this chat</DialogTitle>
+            <DialogTitle>Rename this document</DialogTitle>
             <DialogDescription>
-              Change the name of this chat to something more meaningful.
+              Change the name of this document to something more meaningful.
             </DialogDescription>
           </DialogHeader>
 
           <div className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="title">Chat name</Label>
+              <Label htmlFor="title">Document name</Label>
               <Input
                 id="title"
                 type="text"
                 value={title}
                 onChange={e => setTitle(e.target.value)}
-                placeholder="Write a name for this chat"
+                placeholder="Write a name for this document"
                 className="w-full"
               />
             </div>
@@ -81,7 +81,7 @@ export function ChatRenameDialog({
               disabled={isRenamePending || !title.trim()}
               onClick={() => {
                 startRenameTransition(async () => {
-                  const result = await renameChat(chat.id, title);
+                  const result = await renameLibrary(library.id, title);
 
                   if (result && "error" in result) {
                     toast.error(result.error);
@@ -112,20 +112,20 @@ export function ChatRenameDialog({
     <Drawer {...props}>
       <DrawerContent>
         <DrawerHeader className="text-left">
-          <DrawerTitle>Rename this chat</DrawerTitle>
+          <DrawerTitle>Rename this document</DrawerTitle>
           <DrawerDescription>
-            Change the name of this chat to something more meaningful.
+            Change the name of this document to something more meaningful.
           </DrawerDescription>
         </DrawerHeader>
         <div className="grid gap-4 px-4">
           <div className="grid gap-2">
-            <Label htmlFor="title">Chat name</Label>
+            <Label htmlFor="title">Document name</Label>
             <Input
               id="title"
               type="text"
               value={title}
               onChange={e => setTitle(e.target.value)}
-              placeholder="Write a name for this chat"
+              placeholder="Write a name for this document"
               className="w-full"
             />
           </div>
@@ -134,7 +134,7 @@ export function ChatRenameDialog({
             disabled={isRenamePending || !title.trim()}
             onClick={() => {
               startRenameTransition(async () => {
-                const result = await renameChat(chat.id, title);
+                const result = await renameLibrary(library.id, title);
 
                 if (result && "error" in result) {
                   toast.error(result.error);

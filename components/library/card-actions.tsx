@@ -24,7 +24,8 @@ import type { Libraries } from "@/types/types";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { IconSpinner } from "@/components/ui/icons";
-import { removeLibrary } from "@/app/actions";
+import { removeLibrary, renameLibrary } from "@/app/actions";
+import { LibraryRenameDialog } from "./rename-dialog";
 
 type Props = {
   className: string;
@@ -78,6 +79,17 @@ export default function LibraryCardActions({ className, library }: Props) {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+
+      <LibraryRenameDialog
+        library={{
+          id: library.id,
+          name: library.name,
+        }}
+        renameLibrary={renameLibrary}
+        open={renameDialogOpen}
+        onOpenChange={setRenameDialogOpen}
+        onRename={() => setRenameDialogOpen(false)}
+      />
 
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
         <AlertDialogContent>
