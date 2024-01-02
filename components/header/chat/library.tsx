@@ -13,14 +13,21 @@ export default async function HeaderChatLibrary() {
   return (
     <Tooltip>
       <TooltipTrigger>
-        <Button variant="ghost" size="icon" asChild>
+        <Button
+          variant="ghost"
+          asChild
+          className="flex h-9 w-9 p-0 sm:w-auto sm:px-4 sm:py-2"
+        >
           <Link href="/chat/library">
-            <IconBook className="h-6 w-6" />
-            <span className="sr-only">{t("library")}</span>
+            <IconBook className="sm:hidden" />
+            <span className="sr-only sm:hidden">{t("library")}</span>
+            <span className="hidden sm:inline">{t("library")}</span>
           </Link>
         </Button>
       </TooltipTrigger>
-      <TooltipContent align="end">{t("library")}</TooltipContent>
+      <TooltipContent className="sm:hidden" align="end">
+        {t("library")}
+      </TooltipContent>
     </Tooltip>
   );
 }
