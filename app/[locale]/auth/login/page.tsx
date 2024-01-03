@@ -52,6 +52,11 @@ export default async function LoginPage({ searchParams }: Props) {
       </div>
       <LoginAuthForm next={next} />
       <p className="px-8 text-center text-sm text-muted-foreground">
+        <Link href="/auth/forgot-password" className="hover:text-primary">
+          {t("forgot-password")}
+        </Link>
+      </p>
+      <p className="px-8 text-center text-sm text-muted-foreground">
         <span>{t("sign-up-desc")}</span>
         {` `}
         <Link
