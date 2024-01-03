@@ -16,7 +16,7 @@ import ChatSettingsDialog from "@/components/chat/settings-dialog";
 export type PromptProps = {
   input: string;
   setInput: (value: string) => void;
-  onSubmit: (value: string) => void;
+  onSubmit: (value: string) => Promise<void>;
   isLoading: boolean;
   type: string;
 };
