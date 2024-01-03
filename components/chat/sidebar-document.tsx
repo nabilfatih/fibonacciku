@@ -26,7 +26,7 @@ export default function SidebarDocument({
   return (
     <Sheet
       {...props}
-      open={true}
+      open={state.openDocument}
       onOpenChange={open =>
         dispatch({ type: "SET_OPEN_DOCUMENT", payload: open })
       }
