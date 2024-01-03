@@ -66,7 +66,9 @@ export default function ChatLibrary({ userId }: Props) {
 
           <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2">
             {finishedLibraries.map((library, index) => (
-              <motion.div
+              <motion.button
+                key={library.id}
+                type="button"
                 variants={{
                   hidden: { opacity: 0 },
                   visible: { opacity: 1 },
@@ -79,15 +81,13 @@ export default function ChatLibrary({ userId }: Props) {
                   duration: 0.5,
                 }}
                 viewport={{ amount: 0 }}
-                role="button"
-                key={library.id}
                 className="inline-flex cursor-pointer items-center gap-2 rounded-xl border px-4 py-3 shadow-sm transition-colors hover:bg-muted/50"
               >
                 <IconFile className="h-5 w-5 min-w-[1.25rem]" />
                 <span className="max-w-[14rem] truncate text-sm">
                   {library.name}
                 </span>
-              </motion.div>
+              </motion.button>
             ))}
           </div>
           {isShowPagination && (
