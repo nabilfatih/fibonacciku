@@ -1,10 +1,28 @@
 import useUserLibrary from "@/lib/swr/use-user-library";
 import { isMobileOnly } from "react-device-detect";
-import { IconChevronLeft, IconFile } from "@tabler/icons-react";
+import {
+  IconChevronLeft,
+  IconCircleFilled,
+  IconFile,
+} from "@tabler/icons-react";
 import { useCallback, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+
+const statusToColor = (status: string) => {
+  switch (status) {
+    case "processing":
+      return "text-warning animate-pulse";
+    case "invalid":
+      return "text-error";
+    case "finished":
+      return "text-success";
+    default:
+      return "";
+  }
+};
 
 type Props = {
   userId: string;
@@ -47,7 +65,7 @@ export default function ChatLibrary({ userId }: Props) {
   return (
     <div className="mt-6 grid">
       <p className="text-center text-muted-foreground">
-        Or you can choose from your library:
+        Then choose from your library:
       </p>
       <div className="mt-4">
         <div className="flex w-full items-center justify-between gap-2">
@@ -87,6 +105,12 @@ export default function ChatLibrary({ userId }: Props) {
                 <span className="max-w-[14rem] truncate text-sm">
                   {library.name}
                 </span>
+                <IconCircleFilled
+                  className={cn(
+                    "h-4 w-4 min-w-[1rem]",
+                    statusToColor(library.status)
+                  )}
+                />
               </motion.button>
             ))}
           </div>
