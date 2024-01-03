@@ -118,6 +118,42 @@ export async function shareChat(id: string, type: string) {
   return payload;
 }
 
+// TODO: Refactor this library actions
+
+export async function getLibraryFile(fileId: string) {
+  const cookieStore = cookies();
+  const supabase = createClientServer(cookieStore);
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session?.user?.id) {
+    return {
+      error: "Unauthorized",
+    };
+  }
+
+  const { data, error } = await supabase.storage
+    .from("documents")
+    .createSignedUrl(`${session.user.id}/${fileId}`, 60 * 60 * 24);
+
+  if (error) {
+    return {
+      error: "Something went wrong",
+    };
+  }
+
+  if (!data) {
+    return {
+      error: "Unauthorized",
+    };
+  }
+
+  return {
+    data: data.signedUrl,
+  };
+}
+
 export async function renameLibrary(id: string, title: string) {
   const cookieStore = cookies();
   const supabase = createClientServer(cookieStore);
