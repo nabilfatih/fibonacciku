@@ -99,12 +99,13 @@ export default function ChatLibrary({ userId }: Props) {
                   duration: 0.5,
                 }}
                 viewport={{ amount: 0 }}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-xl border px-4 py-3 shadow-sm transition-colors hover:bg-muted/50"
+                className="inline-flex cursor-pointer items-center justify-between gap-2 rounded-xl border px-4 py-3 shadow-sm transition-colors hover:bg-muted/50"
               >
-                <IconFile className="h-5 w-5 min-w-[1.25rem]" />
-                <span className="max-w-[14rem] truncate text-sm">
-                  {library.name}
-                </span>
+                <div className="flex max-w-[10rem] items-start gap-2 sm:max-w-[12rem]">
+                  <IconFile className="h-5 w-5 min-w-[1.25rem]" />
+                  <span className="truncate text-sm">{library.name}</span>
+                </div>
+
                 <IconCircleFilled
                   className={cn(
                     "h-4 w-4 min-w-[1rem]",
