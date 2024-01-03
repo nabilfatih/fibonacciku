@@ -13,7 +13,9 @@ import { shareChat } from "@/app/actions";
 import SidebarDocument from "@/components/chat/sidebar-document";
 import { cn } from "@/lib/utils";
 import { useMessage } from "@/lib/context/use-message";
-import ChatDocument from "@/components/chat/document";
+import dynamic from "next/dynamic";
+
+const ChatDocument = dynamic(() => import("@/components/chat/document"));
 
 export type ChatPanelProps = {
   isLoading: boolean;

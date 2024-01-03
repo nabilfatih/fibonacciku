@@ -4,7 +4,9 @@ import { useScopedI18n } from "@/locales/client";
 import { IconFileUpload } from "@tabler/icons-react";
 import { useCallback, useRef, useState } from "react";
 import { toast } from "sonner";
-import ChatLibrary from "./library";
+import dynamic from "next/dynamic";
+
+const ChatLibrary = dynamic(() => import("@/components/chat/library"));
 
 export default function EmptyScreenDocument() {
   const t = useScopedI18n("Library");
