@@ -34,7 +34,7 @@ export default function ChatMetadataReferences({ metadata }: Props) {
                   type: "SET_OPEN_DOCUMENT",
                   payload: true,
                 });
-                await new Promise(resolve => setTimeout(resolve, 1000));
+                await new Promise(resolve => setTimeout(resolve, 1000)); // wait for the sheet to open
                 const main = pageRef.current;
                 if (main && typeof main.scrollToIndex === "function") {
                   main.scrollToIndex({
