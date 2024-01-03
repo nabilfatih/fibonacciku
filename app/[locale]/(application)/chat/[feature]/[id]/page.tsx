@@ -74,6 +74,7 @@ export default async function ChatMessagePage({ params }: Props) {
       title={chat.title}
       fileId={chat.file_id}
       createdAt={chat.created_at}
+      chat={chat}
     />
   );
 }

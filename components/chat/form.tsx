@@ -11,6 +11,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useScopedI18n } from "@/locales/client";
 import { IconPhoto, IconSend2, IconSettings } from "@tabler/icons-react";
+import ChatSettingsDialog from "@/components/chat/settings-dialog";
 
 export type PromptProps = {
   input: string;
@@ -32,7 +33,9 @@ export default function PromptForm({
   const { formRef, onKeyDown } = useEnterSubmit();
   const inputRef = React.useRef<HTMLTextAreaElement>(null);
 
-  const isAssistant = type === "assistant";
+  const isAssistant = React.useMemo(() => type === "assistant", [type]);
+
+  const [settingsDialogOpen, setSettingsDialogOpen] = React.useState(false);
 
   const router = useRouter();
   React.useEffect(() => {
@@ -65,6 +68,7 @@ export default function PromptForm({
               <button
                 onClick={e => {
                   e.preventDefault();
+                  setSettingsDialogOpen(true);
                 }}
                 className={cn(
                   buttonVariants({ size: "sm", variant: "ghost" }),
@@ -77,6 +81,11 @@ export default function PromptForm({
             </TooltipTrigger>
             <TooltipContent>{t("settings")}</TooltipContent>
           </Tooltip>
+
+          <ChatSettingsDialog
+            open={settingsDialogOpen}
+            onOpenChange={setSettingsDialogOpen}
+          />
 
           <Tooltip>
             <TooltipTrigger asChild>

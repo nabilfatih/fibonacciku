@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import ChatScrollAnchor from "@/components/chat/scroll-anchor";
-import type { ChatMessage, ShowChatMessage } from "@/types/types";
+import type { Chat, ChatMessage, ShowChatMessage } from "@/types/types";
 import dynamic from "next/dynamic";
 import { useMessage } from "@/lib/context/use-message";
 import { downloadChatDocument } from "@/lib/supabase/client/chat";
@@ -14,6 +14,7 @@ const ChatList = dynamic(() => import("@/components/chat/list"));
 
 export interface ChatProps extends React.ComponentProps<"div"> {
   type: "assistant" | "document";
+  chat?: Chat;
   initialMessages?: ChatMessage[];
   id?: string;
   userId?: string;
@@ -24,6 +25,7 @@ export interface ChatProps extends React.ComponentProps<"div"> {
 
 export default function ChatMessage({
   id,
+  chat,
   userId,
   initialMessages,
   className,
@@ -60,6 +62,7 @@ export default function ChatMessage({
     if (initialMessages) {
       setIndexMessage([]);
       setShowMessage(initialMessages);
+      dispatch({ type: "SET_CURRENT_CHAT", payload: chat || null });
       if (fileId && userId) {
         fetchChatDocument(userId, fileId);
       }
