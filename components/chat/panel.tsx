@@ -13,6 +13,7 @@ import { shareChat } from "@/app/actions";
 import SidebarDocument from "@/components/chat/sidebar-document";
 import { cn } from "@/lib/utils";
 import { useMessage } from "@/lib/context/use-message";
+import ChatDocument from "@/components/chat/document";
 
 export type ChatPanelProps = {
   isLoading: boolean;
@@ -41,7 +42,7 @@ export default function ChatPanel({
   return (
     <div className="fixed inset-x-0 bottom-0 w-full bg-gradient-to-b from-transparent via-muted/50 to-muted duration-300 ease-in-out animate-in peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px] dark:from-transparent dark:via-background/50 dark:to-background">
       <SidebarDocument>
-        <div></div>
+        <ChatDocument />
       </SidebarDocument>
       <Button
         variant="outline"

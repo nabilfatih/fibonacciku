@@ -26,7 +26,7 @@ export default function SidebarDocument({
   return (
     <Sheet
       {...props}
-      open={state.openDocument}
+      open={true}
       onOpenChange={open =>
         dispatch({ type: "SET_OPEN_DOCUMENT", payload: open })
       }
@@ -35,7 +35,7 @@ export default function SidebarDocument({
         <SheetHeader>
           <SheetTitle>{t("document")}</SheetTitle>
         </SheetHeader>
-        <Sidebar className="flex h-[calc(100%-4rem)]">{children}</Sidebar>
+        <Sidebar className="grid h-[calc(100%-4rem)]">{children}</Sidebar>
         <SheetFooter>
           <SheetClose asChild>
             <Button variant="outline">{t("close")}</Button>
