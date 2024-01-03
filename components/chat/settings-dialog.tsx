@@ -33,6 +33,7 @@ import { useScopedI18n } from "@/locales/client";
 import { Label } from "@/components/ui/label";
 import { useEffect } from "react";
 import { useCurrentUser } from "@/lib/context/use-current-user";
+import { capitalizeFirstLetter } from "@/lib/utils";
 
 interface ChatShareDialogProps extends DialogProps {}
 
@@ -89,7 +90,7 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
               >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder={t("language")}>
-                    {state.language}
+                    {capitalizeFirstLetter(state.language)}
                   </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
