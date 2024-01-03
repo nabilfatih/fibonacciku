@@ -1,5 +1,6 @@
 import { useCurrentUser } from "@/lib/context/use-current-user";
-import EmptyScreenAssistant from "./empty-screen-assistant";
+import EmptyScreenAssistant from "@/components/chat/empty-screen-assistant";
+import EmptyScreenDocument from "@/components/chat/empty-screen-document";
 
 type Props = {
   type: "assistant" | "document";
@@ -12,7 +13,11 @@ export function EmptyScreen({ type }: Props) {
       <h1 className="mb-2 text-xl font-semibold sm:text-3xl">
         Hi{` ${userDetails?.full_name ?? ""}`} 👋
       </h1>
-      {type === "assistant" ? <EmptyScreenAssistant /> : null}
+      {type === "assistant" ? (
+        <EmptyScreenAssistant />
+      ) : (
+        <EmptyScreenDocument />
+      )}
     </div>
   );
 }
