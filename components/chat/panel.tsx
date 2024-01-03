@@ -50,7 +50,9 @@ export default function ChatPanel({
         variant="outline"
         className={cn(
           "absolute -top-9 right-4 z-10 bg-background transition-opacity duration-300 sm:-top-10 sm:right-8",
-          type === "document" && id ? "opacity-100" : "opacity-0"
+          type === "document" && id
+            ? "opacity-100"
+            : "pointer-events-none opacity-0"
         )}
         onClick={() => dispatch({ type: "SET_OPEN_DOCUMENT", payload: true })}
       >

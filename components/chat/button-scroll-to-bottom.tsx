@@ -24,7 +24,7 @@ export default function ButtonScrollToBottom({
       size="icon"
       className={cn(
         "absolute right-4 top-1.5 z-10 bg-background transition-opacity duration-300 sm:right-8 md:top-2",
-        isAtBottom ? "opacity-0" : "opacity-100",
+        isAtBottom ? "pointer-events-none opacity-0" : "opacity-100",
         className
       )}
       onClick={handleScrollToBottom}
