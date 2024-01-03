@@ -21,6 +21,8 @@ export type ChatPanelProps = {
   isLoading: boolean;
   messages: ShowChatMessage[];
   type: "assistant" | "document";
+  prompt: string;
+  setPrompt: (value: string) => void;
   id?: string;
   title?: string;
   createdAt?: string;
@@ -33,13 +35,14 @@ export default function ChatPanel({
   title,
   createdAt,
   isLoading,
+  prompt,
+  setPrompt,
 }: ChatPanelProps) {
   const t = useScopedI18n("FormChat");
 
   const { dispatch } = useMessage();
 
   const [shareDialogOpen, setShareDialogOpen] = React.useState(false);
-  const [input, setInput] = React.useState("");
 
   return (
     <div className="fixed inset-x-0 bottom-0 w-full bg-gradient-to-b from-transparent via-muted/50 to-muted duration-300 ease-in-out animate-in peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px] dark:from-transparent dark:via-background/50 dark:to-background">
@@ -109,8 +112,8 @@ export default function ChatPanel({
         <div className="space-y-2 border-t bg-background p-2 sm:border-none sm:bg-transparent">
           <PromptForm
             onSubmit={async value => {}}
-            input={input}
-            setInput={setInput}
+            input={prompt}
+            setInput={setPrompt}
             isLoading={isLoading}
             type={type}
           />

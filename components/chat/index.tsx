@@ -99,6 +99,8 @@ export default function ChatMessage({
         id={id}
         isLoading={false}
         messages={(initialMessages as ShowChatMessage[]) || []}
+        prompt={state.prompt}
+        setPrompt={value => dispatch({ type: "SET_PROMPT", payload: value })}
         type={type}
         title={title}
         createdAt={createdAt}

@@ -11,7 +11,6 @@ import {
   useRef,
   useState,
 } from "react";
-import { useCurrentUser } from "@/lib/context/use-current-user";
 import { useParams, usePathname } from "next/navigation";
 import { toast } from "sonner";
 import debounce from "lodash/debounce";
@@ -21,7 +20,7 @@ import { track } from "@vercel/analytics";
 type MessageContextValue = {
   pageRef: React.MutableRefObject<any>;
   messageRef: React.MutableRefObject<any>;
-  stopGenerating: React.MutableRefObject<boolean>;
+  stop: () => void;
   state: StateMessage;
   dispatch: React.Dispatch<ActionMessage>;
   showMessage: ShowChatMessage[];
@@ -152,12 +151,11 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
     return "";
   }, [params.id, pathname]);
 
-  const { userDetails } = useCurrentUser();
-
   // Manage refs
   const pageRef = useRef<any>(null);
   const messageRef = useRef<any>({});
-  const stopGenerating = useRef<boolean>(false);
+  // Abort controller to cancel the current API call.
+  const abortControllerRef = useRef<AbortController | null>(null);
   const isFirstRenderMessage = useRef<boolean>(true);
 
   // State that not use useReducer
@@ -181,6 +179,13 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
       });
     }
   }, [showMessage.length]);
+
+  const stop = useCallback(() => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+      abortControllerRef.current = null;
+    }
+  }, []);
 
   const handleEditMessage = useCallback(
     (isEdit: boolean, content?: string, messageIndex?: number) => {
@@ -212,8 +217,11 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
     dispatch({ type: "SET_IS_LOADING", payload: false });
     dispatch({ type: "SET_CURRENT_DOCUMENT", payload: null });
     dispatch({ type: "SET_ATTACHMENT", payload: null });
-    stopGenerating.current = false;
-  }, []);
+    dispatch({ type: "SET_PROMPT", payload: "" });
+
+    // Clear abort controller
+    stop();
+  }, [stop]);
 
   const handleChanges = useCallback(
     ({ eventType, table, new: newPayload }: any) => {
@@ -223,6 +231,13 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
     },
     []
   );
+
+  // stop the generator if the component is unmounted
+  useEffect(() => {
+    return () => {
+      stop();
+    };
+  }, [stop]);
 
   useEffect(() => {
     // current chat can not be null
@@ -325,7 +340,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
     () => ({
       pageRef,
       messageRef,
-      stopGenerating,
+      stop,
       state,
       dispatch,
       showMessage,
@@ -340,6 +355,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
       handleEditMessage,
     }),
     [
+      stop,
       state,
       showMessage,
       indexMessage,
