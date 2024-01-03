@@ -4,6 +4,7 @@ import { IconChevronLeft, IconFile } from "@tabler/icons-react";
 import { useCallback, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 type Props = {
   userId: string;
@@ -103,6 +104,12 @@ export default function ChatLibrary({ userId }: Props) {
           )}
         </div>
       </div>
+      <Link
+        href="/chat/library"
+        className="mx-auto mt-4 max-w-fit text-center text-sm text-muted-foreground underline underline-offset-4 hover:text-primary"
+      >
+        See all your library
+      </Link>
     </div>
   );
 }
