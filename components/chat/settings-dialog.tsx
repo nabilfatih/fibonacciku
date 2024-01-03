@@ -107,7 +107,7 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
 
             {userDetails.role !== "professional" && (
               <div className="grid gap-2">
-                <Label htmlFor="grade">{t("grade")}</Label>
+                <Label htmlFor="grade">{t("your-grade")}</Label>
                 <Select
                   name="grade"
                   value={state.grade}
@@ -120,7 +120,7 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
                       placeholder={
                         userDetails.role === "teacher"
                           ? t("your-student-grade")
-                          : t("grade")
+                          : t("your-grade")
                       }
                     >
                       {t(state.grade as never)}
@@ -131,7 +131,7 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
                       <SelectLabel>
                         {userDetails.role === "teacher"
                           ? t("your-student-grade")
-                          : t("grade")}
+                          : t("your-grade")}
                       </SelectLabel>
                       {Class.map((item, index) => (
                         <SelectItem key={index} value={item.query}>
