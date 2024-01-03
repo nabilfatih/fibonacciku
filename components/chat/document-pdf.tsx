@@ -76,7 +76,7 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
   if (!stateMessage.currentDocument) {
     return (
       <div ref={parentRef} className="h-full overflow-hidden">
-        <div className="relative h-full bg-background">
+        <div className="relative h-full border border-t-0 bg-background">
           <div className="absolute inset-0 flex items-center justify-center">
             <IconSpinner className="animate-spin" />
           </div>
@@ -92,7 +92,7 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
         onLoadSuccess={onDocumentLoadSuccess}
         options={options}
         externalLinkTarget="_blank"
-        className="relative h-full bg-background"
+        className="relative h-full border border-t-0 bg-background"
         loading={
           <div className="absolute inset-0 flex items-center justify-center">
             <IconSpinner className="animate-spin" />
