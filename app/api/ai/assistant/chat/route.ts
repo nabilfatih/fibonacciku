@@ -196,7 +196,7 @@ export async function POST(req: Request) {
           return appendToolCallMessage({
             tool_call_id: result.toolId,
             function_name: result.toolName,
-            tool_call_result: result.toolResult,
+            tool_call_result: result.toolResult.result,
           });
         })[results.length - 1]; // get the last index
 

@@ -1,6 +1,8 @@
 import type {
   Chat,
+  ChatMessageMetadata,
   DataMessage,
+  ImageResult,
   IndexMessage,
   SaveDataMessage,
   ShowChatMessage,
@@ -345,6 +347,17 @@ export const handleResponseData = async (
 
     if (type === "data") {
       prefixMap["data"].push(...value);
+      const data = prefixMap["data"];
+      const functionData = data as {
+        toolName: string;
+        data: any;
+      }[];
+      const messageMetadata = handleMetadataMessage(functionData);
+      // push metadata to the last metadata of the last message in the updatedShowMessage
+      updatedShowMessage[updatedShowMessage.length - 1].metadata?.push(
+        messageMetadata
+      );
+      setShowMessage([...updatedShowMessage]);
     }
   }
 
@@ -357,10 +370,59 @@ export const handleResponseData = async (
 
 export const handleMetadataMessage = (
   functionData: {
-    functionName: string;
+    toolName: string;
     data: any;
   }[]
-) => {};
+): ChatMessageMetadata => {
+  const messageMetadata = {} as ChatMessageMetadata;
+  // filter out the function that  not get_links_or_videos_or_academic_research
+  const listLinksOrVideosOrAcademicResearch = functionData.filter(
+    item => item.toolName === "get_links_or_videos_or_academic_research"
+  );
+  // update the last metadata of the last message in the updatedShowMessage
+  if (listLinksOrVideosOrAcademicResearch.length) {
+    // get youtubeObject from the list
+    const youtubeObject = listLinksOrVideosOrAcademicResearch.find(item =>
+      item.data.results.find((item: any) => item.type === "youtube")
+    );
+    // get googleObject from the list
+    const googleObject = listLinksOrVideosOrAcademicResearch.find(item =>
+      item.data.results.find((item: any) => item.type === "google")
+    );
+    // get academicObject from the list
+    const academicObject = listLinksOrVideosOrAcademicResearch.find(item =>
+      item.data.results.find((item: any) => item.type === "academic")
+    );
+
+    if (youtubeObject) {
+      messageMetadata.youtube_search = youtubeObject.data.results.find(
+        (item: any) => item.type === "youtube"
+      ).results;
+    }
+    if (googleObject) {
+      messageMetadata.google_search = googleObject.data.results.find(
+        (item: any) => item.type === "google"
+      ).results;
+    }
+    if (academicObject) {
+      messageMetadata.academic_search = academicObject.data.results.find(
+        (item: any) => item.type === "academic"
+      ).results;
+    }
+  }
+
+  const imageResults = functionData.filter(
+    item => item.toolName === "create_image"
+  );
+  if (imageResults.length) {
+    const imageResult = imageResults[0].data.images as ImageResult[];
+    if (imageResult) {
+      messageMetadata.image_result = imageResult;
+    }
+  }
+
+  return messageMetadata;
+};
 
 // This function prepares data for saving.
 export const prepareDataForSaving = (updatedShowMessage: ShowChatMessage[]) => {
