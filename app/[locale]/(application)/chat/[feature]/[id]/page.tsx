@@ -59,9 +59,9 @@ export default async function ChatMessagePage({ params }: Props) {
     notFound();
   }
 
-  // expires in 12 hours
+  // expires in 24 hours
   await kv.set(chat.id, chat.title, {
-    ex: 60 * 60 * 12,
+    ex: 60 * 60 * 24,
     nx: true,
   });
 

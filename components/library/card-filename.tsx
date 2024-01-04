@@ -16,7 +16,7 @@ export default function LibraryCardFilename({ library }: Props) {
   const [isSeeDocumentPending, startSeeDocumentTransition] = useTransition();
 
   return (
-    <div className="flex items-center justify-between sm:mr-12">
+    <div className="flex items-center justify-between sm:mr-4">
       <div className="flex w-[15rem] flex-col gap-1">
         <div className="flex items-center gap-2">
           <span className="text-xs text-muted-foreground">{t("filename")}</span>

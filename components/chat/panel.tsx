@@ -40,7 +40,7 @@ export default function ChatPanel({
 }: ChatPanelProps) {
   const t = useScopedI18n("FormChat");
 
-  const { dispatch } = useMessage();
+  const { dispatch, stop, reload, handleSubmit } = useMessage();
 
   const [shareDialogOpen, setShareDialogOpen] = React.useState(false);
 
@@ -77,7 +77,7 @@ export default function ChatPanel({
           ) : (
             messages?.length >= 2 && (
               <div className="flex space-x-2">
-                <Button variant="outline">
+                <Button variant="outline" onClick={() => reload()}>
                   <IconRefresh className="mr-2 h-5 w-5" />
                   {t("regenerate")}
                 </Button>
@@ -111,7 +111,7 @@ export default function ChatPanel({
         </div>
         <div className="space-y-2 border-t bg-background p-2 sm:border-none sm:bg-transparent">
           <PromptForm
-            onSubmit={async value => {}}
+            onSubmit={handleSubmit}
             input={prompt}
             setInput={setPrompt}
             isLoading={isLoading}

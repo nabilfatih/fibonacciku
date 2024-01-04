@@ -16,7 +16,7 @@ import ChatSettingsDialog from "@/components/chat/settings-dialog";
 export type PromptProps = {
   input: string;
   setInput: (value: string) => void;
-  onSubmit: (value: string) => Promise<void>;
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
   isLoading: boolean;
   type: string;
 };
@@ -52,7 +52,7 @@ export default function PromptForm({
           return;
         }
         setInput("");
-        await onSubmit(input);
+        await onSubmit(e); // is not edit message
       }}
       ref={formRef}
     >
@@ -92,8 +92,6 @@ export default function PromptForm({
               <button
                 onClick={e => {
                   e.preventDefault();
-                  router.refresh();
-                  router.push("/");
                 }}
                 className={cn(
                   buttonVariants({ size: "sm", variant: "ghost" }),

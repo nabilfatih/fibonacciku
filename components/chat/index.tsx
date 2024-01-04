@@ -100,7 +100,7 @@ export default function ChatMessage({
 
       <ChatPanel
         id={id}
-        isLoading={false}
+        isLoading={state.isLoading}
         messages={(initialMessages as ShowChatMessage[]) || []}
         prompt={state.prompt}
         setPrompt={value => dispatch({ type: "SET_PROMPT", payload: value })}

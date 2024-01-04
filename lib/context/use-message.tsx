@@ -1,6 +1,11 @@
 "use client";
 
-import type { Chat, IndexMessage, ShowChatMessage } from "@/types/types";
+import type {
+  Chat,
+  DataMessage,
+  IndexMessage,
+  ShowChatMessage,
+} from "@/types/types";
 import {
   createContext,
   useCallback,
@@ -16,11 +21,18 @@ import { toast } from "sonner";
 import debounce from "lodash/debounce";
 import supabaseClient from "@/lib/supabase/client";
 import { track } from "@vercel/analytics";
+import { useCurrentUser } from "./use-current-user";
+import {
+  createOptions,
+  handleAttachments,
+  prepareChatMessages,
+} from "../chat/helper";
 
 type MessageContextValue = {
   pageRef: React.MutableRefObject<any>;
   messageRef: React.MutableRefObject<any>;
   stop: () => void;
+  reload: () => void;
   state: StateMessage;
   dispatch: React.Dispatch<ActionMessage>;
   showMessage: ShowChatMessage[];
@@ -34,9 +46,19 @@ type MessageContextValue = {
   ) => void;
   handleClearState: () => void;
   handleScrollToBottom: () => void;
-  handleSubmitChat: () => Promise<void>;
-  handleSubmitDocument: () => Promise<void>;
-  handleSubmitBookChat: () => Promise<void>;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
+};
+
+type ChatRequest = {
+  options: {
+    language: string;
+    grade: string;
+    role: string;
+  };
+  dataMessage: DataMessage[];
+  data: {
+    chatId: string;
+  };
 };
 
 // Define the types for our state and actions
@@ -141,8 +163,37 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
   const params = useParams();
   const pathname = usePathname();
 
-  const feature = String(params.feature);
-  const chatId = params?.id ? String(params.id) : "";
+  const { userDetails } = useCurrentUser();
+
+  const feature = useMemo(() => {
+    if (pathname.includes("/book/chat")) {
+      return "book";
+    }
+    if (params?.feature) {
+      return String(params.feature);
+    }
+    return "";
+  }, [params.feature, pathname]);
+
+  const chatId = useMemo(() => {
+    if (params?.id) {
+      return String(params.id);
+    }
+    return "";
+  }, [params.id]);
+
+  const api = useMemo(() => {
+    if (pathname.includes("/book/chat")) {
+      return "/api/ai/book/chat";
+    }
+    if (feature === "assistant") {
+      return "/api/ai/assistant/chat";
+    } else if (feature === "document") {
+      return "/api/ai/document/chat";
+    }
+    return "";
+  }, [feature, pathname]);
+
   const bookId = useMemo(() => {
     if (pathname.includes("/book/chat")) {
       const bookId = params?.id ? String(params.id) : "";
@@ -154,20 +205,31 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
   // Manage refs
   const pageRef = useRef<any>(null);
   const messageRef = useRef<any>({});
+  const isFirstRenderMessage = useRef<boolean>(true);
   // Abort controller to cancel the current API call.
   const abortControllerRef = useRef<AbortController | null>(null);
-  const isFirstRenderMessage = useRef<boolean>(true);
 
   // State that not use useReducer
   const [prevShowMessageLength, setPrevShowMessageLength] = useState<number>(0);
   const [showMessage, setShowMessage] = useState<ShowChatMessage[]>([]);
   const [indexMessage, setIndexMessage] = useState<IndexMessage[]>([]);
 
+  // Keep the latest messages in a ref.
+  const showMessageRef = useRef<ShowChatMessage[]>(showMessage || []);
+  useEffect(() => {
+    showMessageRef.current = showMessage || [];
+  }, [showMessage]);
+  const indexMessageRef = useRef<IndexMessage[]>(indexMessage || []);
+  useEffect(() => {
+    indexMessageRef.current = indexMessage || [];
+  }, [indexMessage]);
+
   // Use a single useReducer hook instead of multiple useState hooks
   const [state, dispatch] = useReducer(messageReducer, initialState, () => {
     return { ...initialState };
   });
 
+  // Handle scroll to bottom
   const handleScrollToBottom = useCallback(() => {
     const main = messageRef.current;
     if (main && typeof main.scrollToIndex === "function") {
@@ -180,6 +242,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
     }
   }, [showMessage.length]);
 
+  // Handle abort controller to cancel the current API call.
   const stop = useCallback(() => {
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
@@ -187,6 +250,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
     }
   }, []);
 
+  // Handle edit message content
   const handleEditMessage = useCallback(
     (isEdit: boolean, content?: string, messageIndex?: number) => {
       if (isEdit) {
@@ -203,11 +267,155 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
     []
   );
 
-  const handleSubmitChat = useCallback(async () => {}, []);
+  const triggerRequest = useCallback(
+    async (chatRequest: ChatRequest): Promise<void> => {
+      try {
+        dispatch({ type: "SET_IS_LOADING", payload: true });
+        const abortController = new AbortController();
+        abortControllerRef.current = abortController;
+      } catch (error: any) {
+        // Ignore abort errors as they are expected.
+        if (error.name === "AbortError") {
+          abortControllerRef.current = null;
+          return;
+        }
 
-  const handleSubmitDocument = useCallback(async () => {}, []);
+        if (error.message) {
+          toast.error(error.message);
+        } else {
+          toast.error("Error! Refresh page.");
+          track(`Error - ${feature}`, {
+            data: `${userDetails?.id} - Function Timeout`,
+          });
+        }
+      } finally {
+        dispatch({ type: "SET_IS_LOADING", payload: false });
+      }
+    },
+    [feature, userDetails?.id]
+  );
 
-  const handleSubmitBookChat = useCallback(async () => {}, []);
+  const append = useCallback(
+    async (isEditMessage = false): Promise<void> => {
+      if (!userDetails) return;
+      const messages = showMessageRef.current;
+      const indexMessages = indexMessageRef.current;
+      // This section is for preparing chat messages and options.
+      const options = createOptions(userDetails, state.language, state.grade);
+      const { dataMessage, updatedShowMessage } = prepareChatMessages(
+        state.prompt,
+        messages,
+        indexMessages,
+        false, // is not regenerate
+        isEditMessage,
+        state.editMessageIndex,
+        state.editMessageContent,
+        options,
+        feature
+      );
+
+      // This section is for handling attachments. and get final data message
+      const finalDataMessage = await handleAttachments(
+        dataMessage,
+        updatedShowMessage,
+        state.attachment,
+        userDetails.id,
+        chatId
+      );
+
+      // remove attachment
+      dispatch({ type: "SET_ATTACHMENT", payload: null });
+
+      const chatRequest: ChatRequest = {
+        options,
+        dataMessage: finalDataMessage,
+        data: {
+          chatId,
+        },
+      };
+
+      return triggerRequest(chatRequest);
+    },
+    [
+      chatId,
+      feature,
+      state.attachment,
+      state.editMessageContent,
+      state.editMessageIndex,
+      state.grade,
+      state.language,
+      state.prompt,
+      triggerRequest,
+      userDetails,
+    ]
+  );
+
+  const reload = useCallback(async (): Promise<void> => {
+    if (showMessageRef.current.length < 2) return;
+    if (!userDetails) return;
+    const messages = showMessageRef.current;
+    const indexMessages = indexMessageRef.current;
+    // This section is for preparing chat messages and options.
+    const options = createOptions(userDetails, state.language, state.grade);
+    const { dataMessage, updatedShowMessage } = prepareChatMessages(
+      state.prompt,
+      messages,
+      indexMessages,
+      true, // is regenerate
+      false, // is not edit message
+      state.editMessageIndex,
+      state.editMessageContent,
+      options,
+      feature
+    );
+
+    // This section is for handling attachments. and get final data message
+    const finalDataMessage = await handleAttachments(
+      dataMessage,
+      updatedShowMessage,
+      state.attachment,
+      userDetails.id,
+      chatId
+    );
+
+    // remove attachment
+    dispatch({ type: "SET_ATTACHMENT", payload: null });
+
+    const chatRequest: ChatRequest = {
+      options,
+      dataMessage: finalDataMessage,
+      data: {
+        chatId,
+      },
+    };
+
+    return triggerRequest(chatRequest);
+  }, [
+    chatId,
+    feature,
+    state.attachment,
+    state.editMessageContent,
+    state.editMessageIndex,
+    state.grade,
+    state.language,
+    state.prompt,
+    triggerRequest,
+    userDetails,
+  ]);
+
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent<HTMLFormElement>, isEditMessage = false) => {
+      e.preventDefault();
+      if (!state.prompt) return;
+      if (isEditMessage) {
+        if (!state.editMessageContent) return;
+      }
+      append(isEditMessage);
+      dispatch({ type: "SET_PROMPT", payload: "" });
+      dispatch({ type: "SET_EDIT_MESSAGE_CONTENT", payload: "" });
+    },
+    [append, state.editMessageContent, state.prompt]
+  );
 
   const handleClearState = useCallback(() => {
     setShowMessage([]);
@@ -341,6 +549,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
       pageRef,
       messageRef,
       stop,
+      reload,
       state,
       dispatch,
       showMessage,
@@ -349,21 +558,18 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
       setIndexMessage,
       handleScrollToBottom,
       handleClearState,
-      handleSubmitChat,
-      handleSubmitDocument,
-      handleSubmitBookChat,
+      handleSubmit,
       handleEditMessage,
     }),
     [
       stop,
+      reload,
       state,
       showMessage,
       indexMessage,
       handleScrollToBottom,
       handleClearState,
-      handleSubmitChat,
-      handleSubmitDocument,
-      handleSubmitBookChat,
+      handleSubmit,
       handleEditMessage,
     ]
   );
