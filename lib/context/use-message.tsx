@@ -24,7 +24,9 @@ import { track } from "@vercel/analytics";
 import { useCurrentUser } from "@/lib/context/use-current-user";
 import {
   createOptions,
+  createSystemMessage,
   handleAttachments,
+  handleResponseData,
   prepareChatMessages,
 } from "@/lib/chat/helper";
 
@@ -55,7 +57,7 @@ type ChatRequest = {
     grade: string;
     role: string;
   };
-  dataMessage: DataMessage[];
+  messages: DataMessage[];
   data: {
     chatId: string;
   };
@@ -268,11 +270,51 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
   );
 
   const triggerRequest = useCallback(
-    async (chatRequest: ChatRequest): Promise<void> => {
+    async (
+      chatRequest: ChatRequest,
+      updatedShowMessage: ShowChatMessage[]
+    ): Promise<void> => {
+      if (!userDetails) return;
+
+      const previousMessages = showMessageRef.current;
+      // Do an optimistic update to the chat state to show the updated messages immediately.
+      // This section is for updating the UI and preparing the request body.
+      setShowMessage([...updatedShowMessage]);
       try {
         dispatch({ type: "SET_IS_LOADING", payload: true });
         const abortController = new AbortController();
         abortControllerRef.current = abortController;
+
+        // streaming chat api
+        const response = await fetch(api, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          signal: abortControllerRef.current.signal,
+          body: JSON.stringify(chatRequest),
+        }).catch(err => {
+          setShowMessage(previousMessages);
+          throw err;
+        });
+
+        if (!response.ok) throw new Error(response.statusText);
+
+        const data = response.body;
+
+        if (!data) throw new Error("No data");
+
+        dispatch({ type: "SET_IS_GENERATING", payload: true });
+
+        await handleResponseData(
+          data,
+          updatedShowMessage,
+          setShowMessage,
+          abortControllerRef
+        );
+
+        abortControllerRef.current = null;
       } catch (error: any) {
         // Ignore abort errors as they are expected.
         if (error.name === "AbortError") {
@@ -285,14 +327,15 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
         } else {
           toast.error("Error! Refresh page.");
           track(`Error - ${feature}`, {
-            data: `${userDetails?.id} - Function Timeout`,
+            data: `${userDetails.id} - Function Timeout`,
           });
         }
       } finally {
         dispatch({ type: "SET_IS_LOADING", payload: false });
+        dispatch({ type: "SET_IS_GENERATING", payload: false });
       }
     },
-    [feature, userDetails?.id]
+    [api, feature, userDetails]
   );
 
   const append = useCallback(
@@ -323,18 +366,22 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
         chatId
       );
 
+      // Injection of system message into the prompt
+      finalDataMessage[finalDataMessage.length - 1].content +=
+        createSystemMessage(options);
+
       // remove attachment
       dispatch({ type: "SET_ATTACHMENT", payload: null });
 
       const chatRequest: ChatRequest = {
         options,
-        dataMessage: finalDataMessage,
+        messages: finalDataMessage,
         data: {
           chatId,
         },
       };
 
-      return triggerRequest(chatRequest);
+      return triggerRequest(chatRequest, updatedShowMessage);
     },
     [
       chatId,
@@ -378,18 +425,22 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
       chatId
     );
 
+    // Injection of system message into the prompt
+    finalDataMessage[finalDataMessage.length - 1].content +=
+      createSystemMessage(options);
+
     // remove attachment
     dispatch({ type: "SET_ATTACHMENT", payload: null });
 
     const chatRequest: ChatRequest = {
       options,
-      dataMessage: finalDataMessage,
+      messages: finalDataMessage,
       data: {
         chatId,
       },
     };
 
-    return triggerRequest(chatRequest);
+    return triggerRequest(chatRequest, updatedShowMessage);
   }, [
     chatId,
     feature,

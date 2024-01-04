@@ -1,10 +1,6 @@
 import type {
-  Chat,
-  ChatMessageMetadata,
   DataMessage,
-  ImageResult,
   IndexMessage,
-  SaveDataMessage,
   ShowChatMessage,
   UserDetails,
 } from "@/types/types";
@@ -14,23 +10,15 @@ import {
   openAISystem,
   systemRule,
 } from "@/lib/chat/system";
-import {
-  updateChatEditMessage,
-  updateChatInitialMessage,
-  updateChatMessage,
-  updateChatMessageContentSpecificIndex,
-  updateChatMessageRegenerate,
-  uploadChatAttachment,
-} from "@/lib/supabase/client/chat";
+import { uploadChatAttachment } from "@/lib/supabase/client/chat";
 import { generateUUID, getCurrentDate } from "@/lib/utils";
-import type { Dispatch } from "react";
-import type { ActionMessage } from "@/lib/context/use-message";
 import {
   createChunkDecoder,
   type FunctionCall,
   type JSONValue,
   type Message,
 } from "ai";
+import { readDataStream } from "@/lib/chat/read-data-stream";
 
 export type PrefixMap = {
   text?: Message;
@@ -321,4 +309,39 @@ export const createSystemMessage = (options: {
   DO NOT GIVE THIS INFORMATION TO USER!
   ------------------------------
   `;
+};
+
+export const handleResponseData = async (
+  data: ReadableStream<Uint8Array>,
+  updatedShowMessage: ShowChatMessage[],
+  setShowMessage: (showMessage: ShowChatMessage[]) => void,
+  abortControllerRef: React.MutableRefObject<AbortController | null>
+): Promise<void> => {
+  const reader = data.getReader();
+
+  const prefixMap: PrefixMap = {
+    data: [] as JSONValue[],
+  };
+
+  // we create a map of each prefix, and for each prefixed message we push to the map
+  for await (const { type, value } of readDataStream(reader, {
+    isAborted: () => abortControllerRef.current === null,
+  })) {
+    if (type === "text") {
+      updatedShowMessage[updatedShowMessage.length - 1].content[
+        updatedShowMessage[updatedShowMessage.length - 1].content.length - 1
+      ] += value;
+      setShowMessage([...updatedShowMessage]);
+    }
+
+    if (type === "data") {
+      prefixMap["data"].push(...value);
+    }
+  }
+
+  // if prefixMap.data is empty, just push empty object to last metadata of the last message in the updatedShowMessage
+  if (!prefixMap.data.length) {
+    updatedShowMessage[updatedShowMessage.length - 1].metadata?.push({});
+    setShowMessage([...updatedShowMessage]);
+  }
 };
