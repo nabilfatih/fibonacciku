@@ -4,9 +4,8 @@ import {
   OpenAIStream,
   StreamingTextResponse,
   experimental_StreamData,
+  type ToolCallPayload,
 } from "ai";
-import type { ChatCompletionCreateParams } from "openai/resources/chat/index.mjs";
-import { callFunction, createTitle } from "./helper";
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
 import { cookies } from "next/headers";
@@ -18,6 +17,7 @@ import { track } from "@vercel/analytics/server";
 import { getChatAttachmentSignedUrlAdmin } from "@/lib/supabase/admin/chat";
 import { kv } from "@vercel/kv";
 import { Ratelimit } from "@upstash/ratelimit";
+import type { ChatRequest } from "@/lib/context/use-message";
 
 export const runtime = "edge";
 
@@ -55,8 +55,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const { messages, chatId, prompt, optionsData, isNewMessage } =
-    await req.json();
+  const { messages, options, data } = (await req.json()) as ChatRequest;
 
   const cookieStore = cookies();
   const supabase = createClientServer(cookieStore);
@@ -76,15 +75,21 @@ export async function POST(req: Request) {
     await determineModelBasedOnSubscription(userId);
 
   // default function call
-  let functionName: any = "auto"; // "auto" | "none" | ChatCompletionCreateParams.FunctionCallOption | undefined
-  let functionCall: ChatCompletionCreateParams.Function[] = [
+  let toolChoice: OpenAI.ChatCompletionToolChoiceOption = "auto";
+  let tools: OpenAI.ChatCompletionTool[] = [
     ...defaultToolsChat,
     ...additionalTools,
   ];
+
   // get the last message
   const lastMessage = messages[messages.length - 1] as DataMessage;
   if (lastMessage.content.includes("fibo-attachment")) {
-    functionName = { name: "image_analysis" };
+    toolChoice = {
+      type: "function",
+      function: {
+        name: "image_analysis",
+      },
+    };
   }
 
   // make sure that message length is always max 15, never remove the first index
@@ -98,75 +103,22 @@ export async function POST(req: Request) {
 
   try {
     const response = await openai.chat.completions.create({
-      model: model,
-      messages: finalMessage,
-      temperature: 0.5,
+      model,
       stream: true,
-      functions: functionCall,
-      function_call: functionName, // can be auto, none, or the name of the function
+      messages: finalMessage as OpenAI.ChatCompletionMessage[],
+      temperature: 0.5,
+      tools,
+      tool_choice: toolChoice,
       user: userId,
     });
 
-    // Instantiate the StreamData. It works with all API providers.
     const data = new experimental_StreamData();
     const stream = OpenAIStream(response, {
-      experimental_onFunctionCall: async (
-        { name, arguments: args },
-        createFunctionCallMessages
-      ) => {
-        // only for image_analysis function
-        if (name === "image_analysis") {
-          const initialMessages = finalMessage.slice(0, -1);
-          const currentMessage = finalMessage[finalMessage.length - 1];
-          // remove space in image and split by comma
-          const imageIdArray = String(args.image).replace(/\s/g, "").split(",");
-          // get image url in parallel
-          const imageUrls = await Promise.all(
-            imageIdArray.map(imageId =>
-              getChatAttachmentSignedUrlAdmin(userId, chatId, imageId)
-            )
-          ).catch(error => {
-            console.error(error);
-            return [];
-          });
-          return openai.chat.completions.create({
-            model: "gpt-4-vision-preview",
-            stream: true,
-            temperature: 0.5,
-            max_tokens: 4096, // I don't know why, but in gpt-4-vision-preview, maxTokens must be specified
-            messages: [
-              ...initialMessages,
-              {
-                ...currentMessage,
-                content: [
-                  { type: "text", text: currentMessage.content },
-                  ...imageUrls.map(imageUrl => ({
-                    type: "image_url",
-                    image_url: imageUrl,
-                  })),
-                ],
-              },
-            ],
-            user: userId,
-          });
-        }
-        const resultFunction = await callFunction(userId, chatId, name, args);
-        data.append(resultFunction);
-        const newMessages = createFunctionCallMessages(resultFunction.data);
-        return openai.chat.completions.create({
-          messages: [...finalMessage, ...newMessages],
-          stream: true,
-          temperature: 0.5,
-          model: model,
-          functions: functionCall,
-          user: userId,
-        });
-      },
-      async onStart() {
-        if (isNewMessage) {
-          await createTitle(chatId, userId, prompt, optionsData);
-        }
-      },
+      experimental_onToolCall: async (
+        call: ToolCallPayload,
+        appendToolCallMessage
+      ) => {},
+      async onStart() {},
       onCompletion(completion) {
         // no need await, because it is not blocking
         updateUserUsageAdmin(userId, 1); // add usage by 1

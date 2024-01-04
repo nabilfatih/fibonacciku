@@ -83,7 +83,7 @@ export default function ChatMessage({
           className
         )}
       >
-        {!id && <EmptyScreen type={type} />}
+        {!id && showMessageSlice.length === 0 && <EmptyScreen type={type} />}
 
         {showMessageSlice.length > 0 && indexMessage.length > 0 ? (
           <>

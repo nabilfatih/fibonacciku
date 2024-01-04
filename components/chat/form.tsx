@@ -8,7 +8,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useRouter } from "next/navigation";
 import { useScopedI18n } from "@/locales/client";
 import { IconPhoto, IconSend2, IconSettings } from "@tabler/icons-react";
 import ChatSettingsDialog from "@/components/chat/settings-dialog";
@@ -37,7 +36,6 @@ export default function PromptForm({
 
   const [settingsDialogOpen, setSettingsDialogOpen] = React.useState(false);
 
-  const router = useRouter();
   React.useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();

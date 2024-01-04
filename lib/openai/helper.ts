@@ -1,9 +1,9 @@
 import { getUserSubscriptionAdmin } from "@/lib/supabase/admin/users";
 import type { Subscription } from "@/types/types";
-import type { ChatCompletionCreateParams } from "openai/resources/index.mjs";
-import { listToolsChat } from "./tools";
+import { listToolsChat } from "@/lib/openai/tools";
 import type { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { Document } from "langchain/document";
+import type { Tool } from "ai";
 
 // Function to determine which model to use based on the user's subscription
 export const determineModelBasedOnSubscription = async (
@@ -11,7 +11,7 @@ export const determineModelBasedOnSubscription = async (
 ): Promise<{
   model: string;
   subscription: Subscription | null;
-  additionalTools: ChatCompletionCreateParams.Function[];
+  additionalTools: Tool[];
 }> => {
   // Retrieve the user's subscription details
   const subscription = await getUserSubscriptionAdmin(userId);
@@ -42,7 +42,7 @@ export const createDocumentsFromPages = async (
   pages: string[],
   textSplitter: RecursiveCharacterTextSplitter,
   metadata: any
-) => {
+): Promise<Document[]> => {
   const docs: Document[] = [];
   // Loop over the pages and split the documents
   for (let i = 0; i < pages.length; i++) {
@@ -59,4 +59,18 @@ export const createDocumentsFromPages = async (
     docs.push(...doc);
   }
   return docs;
+};
+
+export const createSafeTitle = (prompt: string): string => {
+  if (prompt.length <= 50) {
+    return prompt; // If it's short and sweet, just use it as is.
+  }
+
+  // Find the last space before the 50-char limit to avoid word cuts.
+  const lastSpaceIndex = prompt.substring(0, 50).lastIndexOf(" ");
+
+  // If there's a space, we cut the prompt there. If not, it's chop-chop at 50 chars!
+  return lastSpaceIndex > -1
+    ? prompt.substring(0, lastSpaceIndex)
+    : prompt.substring(0, 50);
 };

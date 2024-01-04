@@ -16,7 +16,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import debounce from "lodash/debounce";
 import supabaseClient from "@/lib/supabase/client";
@@ -29,6 +29,7 @@ import {
   handleResponseData,
   prepareChatMessages,
 } from "@/lib/chat/helper";
+import { generateUUID } from "@/lib/utils";
 
 type MessageContextValue = {
   pageRef: React.MutableRefObject<any>;
@@ -51,7 +52,7 @@ type MessageContextValue = {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
 };
 
-type ChatRequest = {
+export type ChatRequest = {
   options: {
     language: string;
     grade: string;
@@ -162,6 +163,7 @@ type MessageContextProviderProps = {
 export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
   props: Props
 ) => {
+  const router = useRouter();
   const params = useParams();
   const pathname = usePathname();
 
@@ -181,7 +183,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
     if (params?.id) {
       return String(params.id);
     }
-    return "";
+    return generateUUID();
   }, [params.id]);
 
   const api = useMemo(() => {
@@ -315,7 +317,18 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
         );
 
         abortControllerRef.current = null;
+
+        // on finished
+        if (!pathname.includes(`/${chatId}`)) {
+          router.push(`/chat/${feature}/${chatId}`, {
+            scroll: false,
+          });
+          router.refresh();
+        }
       } catch (error: any) {
+        // reset the chat state to the previous state.
+        setShowMessage(previousMessages);
+
         // Ignore abort errors as they are expected.
         if (error.name === "AbortError") {
           abortControllerRef.current = null;
@@ -335,7 +348,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
         dispatch({ type: "SET_IS_GENERATING", payload: false });
       }
     },
-    [api, feature, userDetails]
+    [api, chatId, feature, pathname, router, userDetails]
   );
 
   const append = useCallback(
