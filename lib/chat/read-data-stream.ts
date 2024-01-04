@@ -1,4 +1,5 @@
 // TODO: ALWAYS CHECK AI SDK BECAUSE IT IS COPY PASTE FROM IT
+// https://github.com/vercel/ai/blob/main/packages/core/shared/read-data-stream.ts
 
 import { type StreamPartType, parseStreamPart } from "@/lib/chat/stream-parts";
 
