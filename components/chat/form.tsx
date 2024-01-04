@@ -11,6 +11,7 @@ import {
 import { useScopedI18n } from "@/locales/client";
 import { IconPhoto, IconSend2, IconSettings } from "@tabler/icons-react";
 import ChatSettingsDialog from "@/components/chat/settings-dialog";
+import { toast } from "sonner";
 
 export type PromptProps = {
   input: string;
@@ -18,9 +19,11 @@ export type PromptProps = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
   isLoading: boolean;
   type: string;
+  id?: string;
 };
 
 export default function PromptForm({
+  id,
   onSubmit,
   input,
   setInput,
@@ -47,6 +50,10 @@ export default function PromptForm({
       onSubmit={async e => {
         e.preventDefault();
         if (!input?.trim()) {
+          return;
+        }
+        if (type === "document" && !id) {
+          toast.error("Choose document first!");
           return;
         }
         setInput("");

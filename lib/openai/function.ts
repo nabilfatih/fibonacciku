@@ -18,7 +18,7 @@ export const callingSolveMathProblem = async (query: string) => {
 export const callingGoogleYoutubeAcademic = async (
   type: string,
   query: string
-): Promise<{ results: PluginResponse[] }> => {
+): Promise<{ results: PluginResponse[] | string }> => {
   // Remove space in type and split by comma
   const typeArray = type.replace(/\s/g, "").split(",");
 
@@ -43,8 +43,12 @@ export const callingGoogleYoutubeAcademic = async (
   const results = await Promise.all(validPromises);
 
   // Filter out any undefined results after promises have resolved
+  const finalResults = results.filter(
+    result => result !== undefined
+  ) as PluginResponse[];
+
   return {
-    results: results.filter(result => result !== undefined) as PluginResponse[],
+    results: finalResults.length > 0 ? finalResults : "No results found.",
   };
 };
 

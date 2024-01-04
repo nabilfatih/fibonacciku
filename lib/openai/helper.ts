@@ -4,6 +4,13 @@ import { listToolsChat } from "@/lib/openai/tools";
 import type { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { Document } from "langchain/document";
 import type { Tool } from "ai";
+import {
+  callingGenerateImage,
+  callingGoogleYoutubeAcademic,
+  callingSolveMathProblem,
+  callingWeather,
+  callingWebsite,
+} from "@/lib/openai/function";
 
 // Function to determine which model to use based on the user's subscription
 export const determineModelBasedOnSubscription = async (
@@ -73,4 +80,39 @@ export const createSafeTitle = (prompt: string): string => {
   return lastSpaceIndex > -1
     ? prompt.substring(0, lastSpaceIndex)
     : prompt.substring(0, 50);
+};
+
+export const callTools = async (
+  userId: string,
+  chatId: string,
+  name: string,
+  args: Record<string, unknown>
+): Promise<{ result: any }> => {
+  const toolResponse = {
+    result: {},
+  };
+  if (name === "ask_mathematics_question") {
+    toolResponse.result = await callingSolveMathProblem(String(args.query));
+  }
+  if (name === "get_links_or_videos_or_academic_research") {
+    toolResponse.result = await callingGoogleYoutubeAcademic(
+      String(args.type),
+      String(args.query)
+    );
+  }
+  if (name === "get_website_information") {
+    toolResponse.result = await callingWebsite(String(args.url));
+  }
+  if (name === "get_weather_information") {
+    toolResponse.result = await callingWeather(String(args.location));
+  }
+  if (name === "create_image") {
+    toolResponse.result = await callingGenerateImage(
+      userId,
+      chatId,
+      String(args.prompt),
+      String(args.size)
+    );
+  }
+  return toolResponse;
 };

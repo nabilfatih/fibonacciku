@@ -45,10 +45,19 @@ export default function ChatMessage({
 
   const chatMessageRef = useRef<HTMLDivElement | null>(null);
 
-  const showMessageSlice = useMemo(
-    () => (type === "assistant" ? showMessage.slice(1) : showMessage),
-    [showMessage, type]
-  );
+  const showMessageSlice = useMemo(() => {
+    if (type === "assistant") {
+      return showMessage.slice(1);
+    } else {
+      // get the first message
+      const firstMessage = showMessage[0];
+      if (firstMessage.role === "system") {
+        return showMessage.slice(1);
+      } else {
+        return showMessage;
+      }
+    }
+  }, [showMessage, type]);
 
   const fetchChatDocument = useCallback(
     async (userId: string, fileId: string) => {

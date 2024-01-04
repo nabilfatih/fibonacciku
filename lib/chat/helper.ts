@@ -1,6 +1,8 @@
 import type {
+  Chat,
   DataMessage,
   IndexMessage,
+  SaveDataMessage,
   ShowChatMessage,
   UserDetails,
 } from "@/types/types";
@@ -10,13 +12,30 @@ import {
   openAISystem,
   systemRule,
 } from "@/lib/chat/system";
-import { uploadChatAttachment } from "@/lib/supabase/client/chat";
+import {
+  updateChatEditMessage,
+  updateChatInitialMessage,
+  updateChatMessage,
+  updateChatMessageContentSpecificIndex,
+  updateChatMessageRegenerate,
+  uploadChatAttachment,
+} from "@/lib/supabase/client/chat";
 import { generateUUID, getCurrentDate } from "@/lib/utils";
 import { type JSONValue } from "ai";
 import { readDataStream } from "@/lib/chat/read-data-stream";
+import type { ChatRequest } from "@/lib/context/use-message";
 
 export type PrefixMap = {
   data: JSONValue[];
+};
+
+export type SaveChatHistoryType = {
+  chatId: string;
+  feature: string;
+  saveDataMessage: SaveDataMessage[];
+  copyEditMessageIndex: number;
+  additionalData: Pick<ChatRequest, "data" | "options">;
+  currentChat: Chat | null;
 };
 
 export const constructDataMessage = (
@@ -333,5 +352,137 @@ export const handleResponseData = async (
   if (!prefixMap.data.length) {
     updatedShowMessage[updatedShowMessage.length - 1].metadata?.push({});
     setShowMessage([...updatedShowMessage]);
+  }
+};
+
+export const handleMetadataMessage = (
+  functionData: {
+    functionName: string;
+    data: any;
+  }[]
+) => {};
+
+// This function prepares data for saving.
+export const prepareDataForSaving = (updatedShowMessage: ShowChatMessage[]) => {
+  return updatedShowMessage.map(message => {
+    return {
+      role: message.role,
+      content: message.content[message.content.length - 1],
+      metadata: message.metadata,
+    };
+  }) as SaveDataMessage[];
+};
+
+// This function saves chat history.
+export const saveChatHistory = async ({
+  chatId,
+  feature,
+  saveDataMessage,
+  copyEditMessageIndex,
+  additionalData,
+  currentChat,
+}: SaveChatHistoryType): Promise<void> => {
+  switch (feature) {
+    case "assistant":
+      await saveAssistantChatHistory({
+        chatId,
+        saveDataMessage,
+        copyEditMessageIndex,
+        additionalData,
+        currentChat,
+      });
+      break;
+    case "document":
+      await saveDocumentChatHistory({
+        chatId,
+        saveDataMessage,
+        copyEditMessageIndex,
+        additionalData,
+      });
+      break;
+    default:
+      break;
+  }
+};
+
+export const saveAssistantChatHistory = async ({
+  chatId,
+  saveDataMessage,
+  copyEditMessageIndex,
+  additionalData,
+  currentChat,
+}: Pick<
+  SaveChatHistoryType,
+  "chatId" | "saveDataMessage" | "copyEditMessageIndex" | "additionalData"
+> & {
+  currentChat: Chat | null;
+}) => {
+  const { isNewMessage, isEditMessage, isRegenerate } = additionalData.data;
+  const { options } = additionalData;
+
+  // TODO: Refactor this to use server-side API ("use server")
+
+  if (isNewMessage) {
+    await updateChatInitialMessage(chatId, saveDataMessage);
+  } else {
+    const currentId = chatId || currentChat?.id || "";
+    if (!currentChat) return;
+    let updateNeeded = false;
+    if (currentChat.language !== options.language) updateNeeded = true;
+    if (currentChat.grade !== options.grade) updateNeeded = true;
+    if (updateNeeded) {
+      await updateChatMessageContentSpecificIndex(
+        currentId,
+        0,
+        0,
+        openAISystem(options.language, options.grade, options.role),
+        {
+          language: options.language,
+          grade: options.grade,
+        }
+      );
+    }
+    if (isRegenerate) {
+      await updateChatMessageRegenerate(currentId, saveDataMessage);
+    } else if (isEditMessage) {
+      await updateChatEditMessage(
+        currentId,
+        copyEditMessageIndex,
+        saveDataMessage
+      );
+    } else {
+      await updateChatMessage(currentId, saveDataMessage);
+    }
+  }
+};
+
+export const saveDocumentChatHistory = async ({
+  chatId,
+  saveDataMessage,
+  copyEditMessageIndex,
+  additionalData,
+}: Pick<
+  SaveChatHistoryType,
+  "chatId" | "saveDataMessage" | "copyEditMessageIndex" | "additionalData"
+>) => {
+  const { isNewMessage, isEditMessage, isRegenerate } = additionalData.data;
+
+  const currentId = chatId;
+
+  // TODO: Refactor this to use server-side API ("use server")
+
+  if (isNewMessage) {
+  } else {
+    if (isRegenerate) {
+      await updateChatMessageRegenerate(currentId, saveDataMessage);
+    } else if (isEditMessage) {
+      await updateChatEditMessage(
+        currentId,
+        copyEditMessageIndex,
+        saveDataMessage
+      );
+    } else {
+      await updateChatMessage(currentId, saveDataMessage);
+    }
   }
 };

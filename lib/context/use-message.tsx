@@ -28,6 +28,8 @@ import {
   handleAttachments,
   handleResponseData,
   prepareChatMessages,
+  prepareDataForSaving,
+  saveChatHistory,
 } from "@/lib/chat/helper";
 import { generateUUID } from "@/lib/utils";
 
@@ -61,6 +63,9 @@ export type ChatRequest = {
   messages: DataMessage[];
   data: {
     chatId: string;
+    isNewMessage: boolean;
+    isRegenerate: boolean;
+    isEditMessage: boolean;
   };
 };
 
@@ -318,8 +323,28 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
 
         abortControllerRef.current = null;
 
+        // loading state should be false
+        dispatch({ type: "SET_IS_LOADING", payload: false });
+        dispatch({ type: "SET_IS_GENERATING", payload: false });
+
+        // This section is for saving chat history.
+        const saveDataMessage = prepareDataForSaving(updatedShowMessage);
+
+        // save chat history
+        await saveChatHistory({
+          chatId,
+          feature,
+          saveDataMessage,
+          copyEditMessageIndex: state.editMessageIndex,
+          additionalData: {
+            data: chatRequest.data,
+            options: chatRequest.options,
+          },
+          currentChat: state.currentChat,
+        });
+
         // on finished
-        if (!pathname.includes(`/${chatId}`)) {
+        if (!pathname.includes(`/${chatId}`) && feature !== "book") {
           router.push(`/chat/${feature}/${chatId}`, {
             scroll: false,
           });
@@ -348,7 +373,16 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
         dispatch({ type: "SET_IS_GENERATING", payload: false });
       }
     },
-    [api, chatId, feature, pathname, router, userDetails]
+    [
+      api,
+      chatId,
+      feature,
+      pathname,
+      router,
+      state.currentChat,
+      state.editMessageIndex,
+      userDetails,
+    ]
   );
 
   const append = useCallback(
@@ -391,6 +425,9 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
         messages: finalDataMessage,
         data: {
           chatId,
+          isNewMessage: dataMessage.length === 2 && !isEditMessage,
+          isRegenerate: false,
+          isEditMessage,
         },
       };
 
@@ -450,6 +487,9 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
       messages: finalDataMessage,
       data: {
         chatId,
+        isNewMessage: false,
+        isRegenerate: true,
+        isEditMessage: false,
       },
     };
 
