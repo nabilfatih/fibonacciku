@@ -6,7 +6,7 @@ type Props = {
   type: "assistant" | "document";
 };
 
-export function EmptyScreen({ type }: Props) {
+export default function EmptyScreen({ type }: Props) {
   const { userDetails } = useCurrentUser();
   return (
     <div className="mx-auto max-w-2xl px-4">

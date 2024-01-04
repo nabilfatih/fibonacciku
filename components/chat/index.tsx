@@ -7,10 +7,10 @@ import dynamic from "next/dynamic";
 import { useMessage } from "@/lib/context/use-message";
 import { downloadChatDocument } from "@/lib/supabase/client/chat";
 import { useCallback, useEffect, useMemo, useRef } from "react";
-import { EmptyScreen } from "@/components/chat/empty-screen";
 
 const ChatPanel = dynamic(() => import("@/components/chat/panel"));
 const ChatList = dynamic(() => import("@/components/chat/list"));
+const EmptyScreen = dynamic(() => import("@/components/chat/empty-screen"));
 
 export interface ChatProps extends React.ComponentProps<"div"> {
   type: "assistant" | "document";
