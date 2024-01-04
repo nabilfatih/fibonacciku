@@ -20,6 +20,7 @@ import { formatDocumentsAsString } from "langchain/util/document";
 import { kv } from "@vercel/kv";
 import { Ratelimit } from "@upstash/ratelimit";
 import { determineModelBasedOnSubscription } from "@/lib/openai/helper";
+import supabaseAdmin from "@/lib/supabase/admin";
 
 export const runtime = "edge";
 
@@ -175,7 +176,7 @@ export async function POST(req: NextRequest) {
     });
 
     const retriever = new SupabaseHybridSearch(embeddings, {
-      client: supabase,
+      client: supabaseAdmin,
       //  Below are the defaults, expecting that you set up your supabase table and functions according to the guide above. Please change if necessary.
       similarityK: 20,
       keywordK: 20,

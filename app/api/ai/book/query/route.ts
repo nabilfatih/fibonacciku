@@ -6,6 +6,7 @@ import { getBooksAdmin } from "@/lib/supabase/admin/book";
 import { createClientServer } from "@/lib/supabase/server";
 import type { Books } from "@/types/types";
 import type { Document } from "langchain/document";
+import supabaseAdmin from "@/lib/supabase/admin";
 
 export const maxDuration = 300; // This function can run for a maximum of 300 seconds
 
@@ -99,7 +100,7 @@ export async function POST(req: NextRequest) {
     });
 
     const retriever = new SupabaseHybridSearch(embeddings, {
-      client: supabase,
+      client: supabaseAdmin,
       //  Below are the defaults, expecting that you set up your supabase table and functions according to the guide above. Please change if necessary.
       similarityK: 50,
       keywordK: 50,
