@@ -21,12 +21,12 @@ import { toast } from "sonner";
 import debounce from "lodash/debounce";
 import supabaseClient from "@/lib/supabase/client";
 import { track } from "@vercel/analytics";
-import { useCurrentUser } from "./use-current-user";
+import { useCurrentUser } from "@/lib/context/use-current-user";
 import {
   createOptions,
   handleAttachments,
   prepareChatMessages,
-} from "../chat/helper";
+} from "@/lib/chat/helper";
 
 type MessageContextValue = {
   pageRef: React.MutableRefObject<any>;
