@@ -351,14 +351,14 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
           router.refresh();
         }
       } catch (error: any) {
-        // reset the chat state to the previous state.
-        setShowMessage(previousMessages);
-
         // Ignore abort errors as they are expected.
         if (error.name === "AbortError") {
           abortControllerRef.current = null;
           return;
         }
+
+        // reset the chat state to the previous state.
+        setShowMessage(previousMessages);
 
         if (error.message) {
           toast.error(error.message);
