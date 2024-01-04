@@ -71,7 +71,7 @@ export default function ChatPanel({
               onClick={() => stop()}
               className="bg-background"
             >
-              <IconStop className="mr-2 h-5 w-5" />
+              <IconStop className="mr-2 h-5 w-5 animate-pulse" />
               {t("stop-generating")}
             </Button>
           ) : (
