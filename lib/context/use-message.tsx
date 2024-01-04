@@ -34,6 +34,7 @@ import {
 import { generateUUID } from "@/lib/utils";
 
 type MessageContextValue = {
+  chatId: string;
   pageRef: React.MutableRefObject<any>;
   messageRef: React.MutableRefObject<any>;
   stop: () => void;
@@ -650,6 +651,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
 
   const value = useMemo(
     () => ({
+      chatId,
       pageRef,
       messageRef,
       stop,
@@ -666,6 +668,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
       handleEditMessage,
     }),
     [
+      chatId,
       stop,
       reload,
       state,

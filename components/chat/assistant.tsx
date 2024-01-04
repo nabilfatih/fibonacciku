@@ -49,7 +49,7 @@ export default function ChatAssistant({
   }`;
 
   if (message === "" || message === "undefined" || message === "null") {
-    return <div className="animate-pulse">▌</div>;
+    return <div className="animate-pulse pb-0.5">▌</div>;
   }
 
   return (
