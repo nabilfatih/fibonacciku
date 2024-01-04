@@ -93,7 +93,7 @@ export default function UserMenu() {
           <DropdownMenuItem
             onClick={async () => {
               await supabaseClient.auth.signOut();
-              router.refresh();
+              router.replace("/auth/login");
             }}
             className="cursor-pointer py-2"
           >
