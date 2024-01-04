@@ -49,6 +49,7 @@ export default function ChatMessage({
     if (type === "assistant") {
       return showMessage.slice(1);
     } else {
+      if (!showMessage.length) return showMessage;
       // get the first message
       const firstMessage = showMessage[0];
       if (firstMessage.role === "system") {
