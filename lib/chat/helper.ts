@@ -12,20 +12,10 @@ import {
 } from "@/lib/chat/system";
 import { uploadChatAttachment } from "@/lib/supabase/client/chat";
 import { generateUUID, getCurrentDate } from "@/lib/utils";
-import {
-  createChunkDecoder,
-  type FunctionCall,
-  type JSONValue,
-  type Message,
-} from "ai";
+import { type JSONValue } from "ai";
 import { readDataStream } from "@/lib/chat/read-data-stream";
 
 export type PrefixMap = {
-  text?: Message;
-  function_call?: Message & {
-    role: "assistant";
-    function_call: FunctionCall;
-  };
   data: JSONValue[];
 };
 
