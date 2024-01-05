@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { useMessage } from "@/lib/context/use-message";
 
 const statusToColor = (status: string) => {
   switch (status) {
@@ -30,6 +31,7 @@ type Props = {
 
 export default function ChatLibrary({ userId }: Props) {
   const { libraries } = useUserLibrary(userId);
+  const { append } = useMessage();
 
   const [pagination, setPagination] = useState<{
     start: number;
@@ -100,6 +102,12 @@ export default function ChatLibrary({ userId }: Props) {
                 }}
                 viewport={{ amount: 0 }}
                 className="inline-flex cursor-pointer items-center justify-between gap-2 rounded-xl border px-4 py-3 shadow-sm transition-colors hover:bg-muted/50"
+                onClick={() => {
+                  // get random number between 3-5 for the questions
+                  const number = Math.floor(Math.random() * (5 - 3 + 1)) + 3;
+                  const firstPrompt = `Please give me ${number} questions that I can ask to you related to this document.`;
+                  append(false, library.file_id, firstPrompt);
+                }}
               >
                 <div className="flex max-w-[10rem] items-start gap-2 sm:max-w-[12rem]">
                   <IconFile className="h-5 w-5 min-w-[1.25rem]" />
