@@ -70,6 +70,7 @@ export type ChatRequest = {
     isNewMessage: boolean;
     isRegenerate: boolean;
     isEditMessage: boolean;
+    fileId?: string; // for document
   };
 };
 

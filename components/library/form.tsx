@@ -1,20 +1,30 @@
 import { useCurrentUser } from "@/lib/context/use-current-user";
-import { cn } from "@/lib/utils";
+import { cn, generateNanoID } from "@/lib/utils";
 import { useScopedI18n } from "@/locales/client";
 import { IconFileUpload } from "@tabler/icons-react";
 import { useCallback, useRef, useState } from "react";
 import { toast } from "sonner";
+import { IconSpinner } from "@/components/ui/icons";
+import {
+  deleteChatDocument,
+  uploadChatDocument,
+} from "@/lib/supabase/client/chat";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 interface LibraryFormProps extends React.ComponentProps<"button"> {}
 
 export default function LibraryForm({ className, ...props }: LibraryFormProps) {
   const t = useScopedI18n("Library");
 
+  const router = useRouter();
+
   const { userDetails } = useCurrentUser();
 
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [isDragging, setIsDragging] = useState(false);
+  const [isUploadPending, setIsUploadPending] = useState(false);
 
   const handleDragOver = useCallback(
     async (e: React.DragEvent<HTMLButtonElement>) => {
@@ -47,7 +57,6 @@ export default function LibraryForm({ className, ...props }: LibraryFormProps) {
   const handleUploadChange = useCallback(
     async (e: React.ChangeEvent<HTMLInputElement>) => {
       if (!userDetails) return;
-
       const { files } = e.target;
 
       if (!files || files.length === 0) return;
@@ -73,6 +82,28 @@ export default function LibraryForm({ className, ...props }: LibraryFormProps) {
       if (file.size > 30 * 1024 * 1024) {
         toast.error(t("max-file-size-30mb"));
         return;
+      }
+
+      const fileId = generateNanoID();
+
+      setIsUploadPending(true);
+
+      try {
+        await uploadChatDocument(file, userDetails.id, fileId);
+
+        await axios.post("/api/ai/document/upload", {
+          fileId,
+          fileName: file.name,
+          fileType: file.type,
+        });
+
+        toast.success(t("upload-success"));
+        router.refresh();
+      } catch (error) {
+        toast.error(t("invalid-document"));
+        await deleteChatDocument(userDetails.id, fileId); // delete the file if it's invalid
+      } finally {
+        setIsUploadPending(false);
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -125,9 +156,13 @@ export default function LibraryForm({ className, ...props }: LibraryFormProps) {
         />
 
         <div className="pointer-events-none flex w-full flex-col items-center gap-2 text-center transition ease-in-out">
-          <div className={cn(isDragging && "animate-bounce")}>
-            <IconFileUpload className="h-8 w-8" />
-          </div>
+          {isUploadPending ? (
+            <IconSpinner className="h-8 w-8 animate-spin" />
+          ) : (
+            <div className={cn(isDragging && "animate-bounce")}>
+              <IconFileUpload className="h-8 w-8" />
+            </div>
+          )}
           <span>{t("drag-drop-document")}</span>
         </div>
       </button>
