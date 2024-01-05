@@ -5,7 +5,9 @@ import { IconFileUpload } from "@tabler/icons-react";
 import { useCallback, useRef, useState } from "react";
 import { toast } from "sonner";
 
-export default function LibraryForm() {
+interface LibraryFormProps extends React.ComponentProps<"button"> {}
+
+export default function LibraryForm({ className, ...props }: LibraryFormProps) {
   const t = useScopedI18n("Library");
 
   const { userDetails } = useCurrentUser();
@@ -107,7 +109,11 @@ export default function LibraryForm() {
         onDragEnter={handleDragEnter}
         onDragLeave={handleDragLeave}
         onClick={() => inputRef.current?.click()}
-        className="relative flex max-h-60 w-full grow cursor-pointer flex-col overflow-hidden bg-background px-8 py-4 sm:rounded-3xl sm:border sm:px-12 sm:py-8"
+        className={cn(
+          "relative flex max-h-60 w-full grow cursor-pointer flex-col overflow-hidden bg-background px-8 py-4 sm:rounded-3xl sm:border sm:px-12 sm:py-8",
+          className
+        )}
+        {...props}
       >
         <input
           ref={inputRef}
