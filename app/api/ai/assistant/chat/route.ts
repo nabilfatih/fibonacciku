@@ -222,9 +222,9 @@ export async function POST(req: Request) {
       },
       async onStart() {
         if (dataRequest.isNewMessage) {
-          const prompt = lastMessage.content.split(
-            "------------------------------"
-          )[0]; // this is because of injection of prompt
+          const prompt = lastMessage.content
+            .split("------------------------------")[0]
+            .trim();
           const title = createSafeTitle(prompt);
           await insertChatAdmin(chatId, userId, title || "Untitled", options);
         }

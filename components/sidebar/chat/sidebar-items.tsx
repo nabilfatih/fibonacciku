@@ -20,7 +20,7 @@ export default function SidebarItems({ chats, parentRef }: SidebarItemsProps) {
   return (
     <div className="relative flex flex-col">
       <LayoutGroup>
-        <AnimatePresence>
+        <AnimatePresence initial={false}>
           <ViewportList ref={listRef} viewportRef={parentRef} items={chats}>
             {(item, index) => (
               <motion.div
