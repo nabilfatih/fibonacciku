@@ -164,8 +164,7 @@ export default function SidebarActions({
                   }
 
                   setDeleteDialogOpen(false);
-                  router.refresh();
-                  router.push(`/chat/${chat.type}`);
+                  router.replace(`/chat/${chat.type}`);
                   toast.success("Chat deleted");
                 });
               }}
