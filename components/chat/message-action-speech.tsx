@@ -32,11 +32,12 @@ export default function ChatMessageActionSpeech({ text }: Props) {
   const handleStreamError = useCallback((error: any) => {
     if (error.name === "AbortError") {
       // Stream was aborted
-      console.log("Stream reading was aborted.");
+      return;
     } else {
-      console.error("Error reading the stream:", error);
+      toast.error(t("audio-not-supported"));
     }
     setIsPlaying(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const setupMediaSource = async () => {

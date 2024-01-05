@@ -6,6 +6,7 @@ import type {
   IndexMessage,
   SaveDataMessage,
   ShowChatMessage,
+  SourceDocument,
   UserDetails,
 } from "@/types/types";
 import {
@@ -422,6 +423,16 @@ export const handleMetadataMessage = (
     const imageResult = imageResults[0].data.images as ImageResult[];
     if (imageResult) {
       messageMetadata.image_result = imageResult;
+    }
+  }
+
+  const documentResults = functionData.filter(
+    item => item.toolName === "get_document"
+  );
+  if (documentResults.length) {
+    const documentResult = documentResults[0].data.sources as SourceDocument[];
+    if (documentResult) {
+      messageMetadata.source_documents = documentResult;
     }
   }
 

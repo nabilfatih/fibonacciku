@@ -1,7 +1,6 @@
 import supabaseAdmin from "@/lib/supabase/admin";
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { SupabaseHybridSearch } from "langchain/retrievers/supabase";
-import { formatDocumentsAsString } from "langchain/util/document";
 
 export const documentRetrieval = async (
   userId: string,
@@ -28,10 +27,25 @@ export const documentRetrieval = async (
 
   const results = await retriever.getRelevantDocuments(query);
 
-  const content = formatDocumentsAsString(results);
+  const cleanData = results
+    .slice(0, 7)
+    .map(doc => {
+      return {
+        pageContent: doc.pageContent,
+        metadata: doc.metadata,
+        page_number: doc.metadata.page_number,
+      };
+    })
+    .filter(
+      (v, i, a) =>
+        a.findIndex(t => t.metadata.page_number === v.metadata.page_number) ===
+        i
+    )
+    // oder by page number
+    .sort((a, b) => a.page_number - b.page_number);
 
   return {
     message: "The following documents were retrieved:",
-    content: content,
+    sources: cleanData,
   };
 };

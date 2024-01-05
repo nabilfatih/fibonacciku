@@ -4,7 +4,6 @@ import {
   StreamingTextResponse,
   experimental_StreamData,
   OpenAIStream,
-  type ToolCallPayload,
 } from "ai";
 import { createClientServer } from "@/lib/supabase/server";
 import OpenAI from "openai";
@@ -126,6 +125,8 @@ export async function POST(req: NextRequest) {
 
     const data = new experimental_StreamData();
     const stream = OpenAIStream(response, {
+      // Force tools choice still error in AI SDK
+      // thankfully this is only for document feature so it only has 1 tool
       experimental_onFunctionCall: async (
         { name, arguments: args },
         createFunctionCallMessages
@@ -137,7 +138,10 @@ export async function POST(req: NextRequest) {
           args,
           dataRequest.fileId
         );
-        data.append(resultFunction);
+        data.append({
+          toolName: name,
+          data: resultFunction.result,
+        });
         const newMessages = createFunctionCallMessages(resultFunction.result);
         return openai.chat.completions.create({
           messages: [...(finalMessage as any), ...newMessages],
