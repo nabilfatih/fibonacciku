@@ -20,6 +20,7 @@ import type { ChatRequest } from "@/lib/context/use-message";
 import { listToolsChat } from "@/lib/openai/tools";
 import { openai } from "@/lib/openai";
 import { insertChatAdmin } from "@/lib/supabase/admin/chat";
+import { getLibraryByFileIdAdmin } from "@/lib/supabase/admin/library";
 
 export const runtime = "edge";
 
@@ -120,8 +121,8 @@ export async function POST(req: NextRequest) {
       ) => {},
       async onStart() {
         if (dataRequest.isNewMessage) {
-          const prompt = ""; // TODO: Name of file
-          const title = createSafeTitle(prompt);
+          const library = await getLibraryByFileIdAdmin(dataRequest.fileId);
+          const title = createSafeTitle(library?.name || "Untitled");
           await insertChatAdmin(chatId, userId, title || "Untitled", options);
         }
       },
