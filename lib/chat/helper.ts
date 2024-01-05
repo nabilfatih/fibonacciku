@@ -33,7 +33,6 @@ export type PrefixMap = {
 
 export type SaveChatHistoryType = {
   chatId: string;
-  feature: string;
   saveDataMessage: SaveDataMessage[];
   copyEditMessageIndex: number;
   additionalData: Pick<ChatRequest, "data" | "options">;
@@ -447,51 +446,13 @@ export const prepareDataForSaving = (updatedShowMessage: ShowChatMessage[]) => {
 // This function saves chat history.
 export const saveChatHistory = async ({
   chatId,
-  feature,
   saveDataMessage,
   copyEditMessageIndex,
   additionalData,
   currentChat,
 }: SaveChatHistoryType): Promise<void> => {
-  switch (feature) {
-    case "assistant":
-      await saveAssistantChatHistory({
-        chatId,
-        saveDataMessage,
-        copyEditMessageIndex,
-        additionalData,
-        currentChat,
-      });
-      break;
-    case "document":
-      await saveDocumentChatHistory({
-        chatId,
-        saveDataMessage,
-        copyEditMessageIndex,
-        additionalData,
-      });
-      break;
-    default:
-      break;
-  }
-};
-
-export const saveAssistantChatHistory = async ({
-  chatId,
-  saveDataMessage,
-  copyEditMessageIndex,
-  additionalData,
-  currentChat,
-}: Pick<
-  SaveChatHistoryType,
-  "chatId" | "saveDataMessage" | "copyEditMessageIndex" | "additionalData"
-> & {
-  currentChat: Chat | null;
-}) => {
   const { isNewMessage, isEditMessage, isRegenerate } = additionalData.data;
   const { options } = additionalData;
-
-  // TODO: Refactor this to use server-side API ("use server")
 
   if (isNewMessage) {
     await updateChatInitialMessage(chatId, saveDataMessage);
@@ -513,37 +474,6 @@ export const saveAssistantChatHistory = async ({
         }
       );
     }
-    if (isRegenerate) {
-      await updateChatMessageRegenerate(currentId, saveDataMessage);
-    } else if (isEditMessage) {
-      await updateChatEditMessage(
-        currentId,
-        copyEditMessageIndex,
-        saveDataMessage
-      );
-    } else {
-      await updateChatMessage(currentId, saveDataMessage);
-    }
-  }
-};
-
-export const saveDocumentChatHistory = async ({
-  chatId,
-  saveDataMessage,
-  copyEditMessageIndex,
-  additionalData,
-}: Pick<
-  SaveChatHistoryType,
-  "chatId" | "saveDataMessage" | "copyEditMessageIndex" | "additionalData"
->) => {
-  const { isNewMessage, isEditMessage, isRegenerate } = additionalData.data;
-
-  const currentId = chatId;
-
-  // TODO: Refactor this to use server-side API ("use server")
-
-  if (isNewMessage) {
-  } else {
     if (isRegenerate) {
       await updateChatMessageRegenerate(currentId, saveDataMessage);
     } else if (isEditMessage) {

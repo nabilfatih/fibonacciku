@@ -340,7 +340,6 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
         // save chat history
         await saveChatHistory({
           chatId,
-          feature,
           saveDataMessage,
           copyEditMessageIndex: state.editMessageIndex,
           additionalData: {
