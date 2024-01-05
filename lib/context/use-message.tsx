@@ -327,10 +327,6 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
 
         abortControllerRef.current = null;
 
-        // loading state should be false
-        dispatch({ type: "SET_IS_LOADING", payload: false });
-        dispatch({ type: "SET_IS_GENERATING", payload: false });
-
         // This section is for saving chat history.
         const saveDataMessage = prepareDataForSaving(updatedShowMessage);
 
@@ -346,6 +342,10 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
           },
           currentChat: state.currentChat,
         });
+
+        // loading state should be false
+        dispatch({ type: "SET_IS_LOADING", payload: false });
+        dispatch({ type: "SET_IS_GENERATING", payload: false });
 
         // on finished
         if (!pathname.includes(`/${chatId}`) && feature !== "book") {
