@@ -15,11 +15,8 @@ import {
   systemRule,
 } from "@/lib/chat/system";
 import {
-  updateChatEditMessage,
-  updateChatInitialMessage,
   updateChatMessage,
   updateChatMessageContentSpecificIndex,
-  updateChatMessageRegenerate,
   uploadChatAttachment,
 } from "@/lib/supabase/client/chat";
 import { generateUUID, getCurrentDate } from "@/lib/utils";
@@ -34,7 +31,6 @@ export type PrefixMap = {
 export type SaveChatHistoryType = {
   chatId: string;
   saveDataMessage: SaveDataMessage[];
-  copyEditMessageIndex: number;
   additionalData: Pick<ChatRequest, "data" | "options">;
   currentChat: Chat | null;
 };
@@ -278,7 +274,7 @@ export const handleAttachments = async (
 
   const injectionDataMessage = dataMessage.map((message, index) => {
     // get list of metadata attachments from copyUpdatedShowMessage, but only file_id and type e,g {type: "image", file_id: "123"}
-    const metadataAttachment = copyUpdatedShowMessage[index].metadata?.find(
+    const metadataAttachment = copyUpdatedShowMessage[index]?.metadata?.find(
       item => item.attachments
     );
     // now filter the metadataAttachment to get only the file_id and type
@@ -433,57 +429,49 @@ export const handleMetadataMessage = (
 };
 
 // This function prepares data for saving.
-export const prepareDataForSaving = (updatedShowMessage: ShowChatMessage[]) => {
+export const prepareDataForSaving = (
+  updatedShowMessage: ShowChatMessage[]
+): SaveDataMessage[] => {
   return updatedShowMessage.map(message => {
     return {
+      id: message.id,
       role: message.role,
-      content: message.content[message.content.length - 1],
+      content: message.content,
       metadata: message.metadata,
+      created_at: message.created_at,
     };
-  }) as SaveDataMessage[];
+  });
 };
 
 // This function saves chat history.
 export const saveChatHistory = async ({
   chatId,
   saveDataMessage,
-  copyEditMessageIndex,
   additionalData,
   currentChat,
 }: SaveChatHistoryType): Promise<void> => {
-  const { isNewMessage, isEditMessage, isRegenerate } = additionalData.data;
   const { options } = additionalData;
 
-  if (isNewMessage) {
-    await updateChatInitialMessage(chatId, saveDataMessage);
-  } else {
-    const currentId = chatId || currentChat?.id || "";
-    if (!currentChat) return;
-    let updateNeeded = false;
-    if (currentChat.language !== options.language) updateNeeded = true;
-    if (currentChat.grade !== options.grade) updateNeeded = true;
-    if (updateNeeded) {
-      await updateChatMessageContentSpecificIndex(
-        currentId,
-        0,
-        0,
-        openAISystem(options.language, options.grade, options.role),
-        {
-          language: options.language,
-          grade: options.grade,
-        }
-      );
-    }
-    if (isRegenerate) {
-      await updateChatMessageRegenerate(currentId, saveDataMessage);
-    } else if (isEditMessage) {
-      await updateChatEditMessage(
-        currentId,
-        copyEditMessageIndex,
-        saveDataMessage
-      );
-    } else {
-      await updateChatMessage(currentId, saveDataMessage);
-    }
+  const currentId = chatId || currentChat?.id || "";
+
+  // update chat
+  await updateChatMessage(currentId, saveDataMessage);
+
+  // Expensive operation, so we only do it at the end of the chat.
+  if (!currentChat) return;
+  let updateNeeded = false;
+  if (currentChat.language !== options.language) updateNeeded = true;
+  if (currentChat.grade !== options.grade) updateNeeded = true;
+  if (updateNeeded) {
+    await updateChatMessageContentSpecificIndex(
+      currentId,
+      0,
+      0,
+      openAISystem(options.language, options.grade, options.role),
+      {
+        language: options.language,
+        grade: options.grade,
+      }
+    );
   }
 };

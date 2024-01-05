@@ -56,7 +56,7 @@ export default function ChatMessageActions({
             {messageIndex === state.editMessageIndex ? (
               <form
                 onSubmit={e => {
-                  handleSubmit(e, true);
+                  handleSubmit(e, true, state.currentChat?.file_id || "");
                   handleEditMessage(false); // Reset edit message state
                 }}
                 className="flex items-center"

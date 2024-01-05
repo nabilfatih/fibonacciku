@@ -136,57 +136,13 @@ export const insertChat = async (
   return data;
 };
 
-export const updateChatInitialMessage = async (
-  chatId: string,
-  message: SaveDataMessage[]
-) => {
-  const chatMessage: ChatMessage[] = message.map(message => {
-    return {
-      id: generateUUID(),
-      role: message.role,
-      content: [message.content],
-      metadata: message.metadata,
-      created_at: getCurrentDate(),
-    };
-  });
-
-  const { data, error } = await supabaseClient
-    .from("chat")
-    .update({ messages: chatMessage, updated_at: getCurrentDate() })
-    .eq("id", chatId)
-    .select();
-
-  if (error) {
-    throw error;
-  }
-  return data[0];
-};
-
 export const updateChatMessage = async (
   chatId: string,
   message: SaveDataMessage[]
 ) => {
-  const chatMessage = await getChatMessages(chatId);
-  chatMessage.push(
-    {
-      id: generateUUID(),
-      role: message[message.length - 2].role,
-      content: [message[message.length - 2].content],
-      metadata: message[message.length - 2].metadata,
-      created_at: getCurrentDate(),
-    },
-    {
-      id: generateUUID(),
-      role: message[message.length - 1].role,
-      content: [message[message.length - 1].content],
-      metadata: message[message.length - 1].metadata,
-      created_at: getCurrentDate(),
-    }
-  );
-
   const { data, error } = await supabaseClient
     .from("chat")
-    .update({ messages: chatMessage, updated_at: getCurrentDate() })
+    .update({ messages: message, updated_at: getCurrentDate() })
     .eq("id", chatId);
 
   if (error) {
@@ -194,76 +150,6 @@ export const updateChatMessage = async (
   }
 
   return data;
-};
-
-export const updateChatMessageRegenerate = async (
-  chatId: string,
-  message: SaveDataMessage[]
-) => {
-  const chatMessage = await getChatMessages(chatId);
-  chatMessage[chatMessage.length - 1].content.push(
-    message[message.length - 1].content as string
-  );
-  const metadata = message[chatMessage.length - 1].metadata;
-  if (metadata) {
-    const lastItem = metadata[metadata.length - 1];
-    if (lastItem) {
-      if (!chatMessage[chatMessage.length - 1].metadata) {
-        chatMessage[chatMessage.length - 1].metadata = [];
-        for (
-          let i = 0;
-          i < chatMessage[chatMessage.length - 1].content.length - 1;
-          i++
-        ) {
-          chatMessage[chatMessage.length - 1].metadata?.push({});
-        }
-      }
-      chatMessage[chatMessage.length - 1].metadata?.push(lastItem);
-    }
-  }
-  const { error } = await supabaseClient
-    .from("chat")
-    .update({
-      messages: chatMessage,
-      updated_at: getCurrentDate(),
-    })
-    .eq("id", chatId);
-  if (error) {
-    throw error;
-  }
-};
-
-export const updateChatEditMessage = async (
-  chatId: string,
-  editMessageIndex: number,
-  message: SaveDataMessage[]
-) => {
-  const chatMessage = await getChatMessages(chatId);
-  // remove all elements after editMessageIndex
-  chatMessage.splice(editMessageIndex + 1);
-  //change content of editMessageIndex to new content
-  chatMessage[editMessageIndex].content = [
-    message[editMessageIndex].content as string,
-  ];
-  // add new message
-  chatMessage.push({
-    id: generateUUID(),
-    role: message[message.length - 1].role,
-    content: [message[message.length - 1].content],
-    metadata: message[message.length - 1].metadata,
-    created_at: getCurrentDate(),
-  });
-
-  const { error } = await supabaseClient
-    .from("chat")
-    .update({
-      messages: chatMessage,
-      updated_at: getCurrentDate(),
-    })
-    .eq("id", chatId);
-  if (error) {
-    throw error;
-  }
 };
 
 export const updateChatMessageContentSpecificIndex = async (
@@ -277,6 +163,7 @@ export const updateChatMessageContentSpecificIndex = async (
   }
 ) => {
   const chatMessage = await getChatMessages(chatId);
+
   chatMessage[messageIndex].content[contentIndex] = content;
   const { error } = await supabaseClient
     .from("chat")

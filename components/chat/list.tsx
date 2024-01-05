@@ -9,33 +9,23 @@ type Props = {
   chatMessageRef: MutableRefObject<HTMLDivElement | null>;
   messages: ShowChatMessage[];
   indexMessage: IndexMessage[];
-  type: "assistant" | "document";
 };
 
 function ListContent({
   item,
   index,
-  type,
   indexMessage,
 }: {
   item: ShowChatMessage;
   index: number;
-  type: "assistant" | "document";
   indexMessage: IndexMessage[];
 }) {
   const currentIndex = useMemo(() => {
-    return indexMessage.find(
-      item => item.index === (type === "document" ? index : index + 1)
-    ) as IndexMessage;
-  }, [indexMessage, type, index]);
+    return indexMessage.find(item => item.index === index) as IndexMessage;
+  }, [indexMessage, index]);
 
   return (
-    <ChatMessages
-      index={index}
-      message={item}
-      currentIndex={currentIndex}
-      type={type}
-    />
+    <ChatMessages index={index} message={item} currentIndex={currentIndex} />
   );
 }
 
@@ -43,7 +33,6 @@ export default function ChatList({
   chatMessageRef,
   messages,
   indexMessage,
-  type,
 }: Props) {
   const { messageRef, dispatch } = useMessage();
   return (
@@ -66,9 +55,8 @@ export default function ChatList({
                 item={item}
                 index={index}
                 indexMessage={indexMessage}
-                type={type}
               />
-              {index < messages.length - 1 && (
+              {index < messages.length - 1 && item.role !== "system" && (
                 <Separator className="my-4 md:my-8" />
               )}
             </div>

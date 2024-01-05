@@ -3,6 +3,7 @@ import { scrapeWebsite } from "./plugin/ninja";
 import { weatherPlugin } from "./plugin/weather";
 import { generateImage } from "./plugin/ai";
 import { wolframalphaPlugin } from "./plugin/wolframalpha";
+import { documentRetrieval } from "./plugin/document";
 
 export type PluginResponse = {
   type: string;
@@ -74,5 +75,14 @@ export const callingGenerateImage = async (
     prompt,
     size as "1024x1792" | "1024x1024" | "1792x1024"
   );
+  return data;
+};
+
+export const callingDocument = async (
+  userId: string,
+  fileId: string,
+  query: string
+) => {
+  const data = await documentRetrieval(userId, fileId, query);
   return data;
 };

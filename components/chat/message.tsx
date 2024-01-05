@@ -12,14 +12,12 @@ type Props = {
   index: number;
   message: ShowChatMessage;
   currentIndex: IndexMessage;
-  type: "assistant" | "document";
 };
 
 export default function ChatMessage({
   index,
   message,
   currentIndex,
-  type,
   ...props
 }: Props) {
   const locale = useCurrentLocale();
@@ -35,6 +33,8 @@ export default function ChatMessage({
     lastWeek: "DD/MM/YYYY HH:mm",
     sameElse: "DD/MM/YYYY HH:mm",
   });
+
+  if (message.role === "system") return null;
 
   return (
     <div
@@ -60,7 +60,6 @@ export default function ChatMessage({
             index={index}
             content={message.content}
             currentIndex={currentIndex}
-            type={type}
           />
         ) : (
           <ChatUser

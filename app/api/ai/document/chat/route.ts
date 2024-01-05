@@ -82,15 +82,7 @@ export async function POST(req: NextRequest) {
   const userId = user.id;
   const { model } = await determineModelBasedOnSubscription(userId);
 
-  // default function call
-  let toolChoice: OpenAI.ChatCompletionToolChoiceOption = {
-    type: "function",
-    function: {
-      name: "get_document",
-    },
-  };
-
-  let tools: OpenAI.ChatCompletionTool[] = listToolsChat.filter(
+  const tools: OpenAI.ChatCompletionTool[] = listToolsChat.filter(
     tool => tool.function.name === "get_document"
   );
 
@@ -109,42 +101,52 @@ export async function POST(req: NextRequest) {
       stream: true,
       messages: finalMessage,
       temperature: 0.5,
-      tools,
-      tool_choice: toolChoice,
+      functions: [
+        {
+          name: "get_document",
+          description:
+            "Get the document from the database. This is RAG retriever to get the document context.",
+          parameters: {
+            type: "object",
+            properties: {
+              query: {
+                type: "string",
+                description: "the query to get the document context.",
+              },
+            },
+            required: ["query"],
+          },
+        },
+      ],
+      function_call: {
+        name: "get_document",
+      },
       user: userId,
     });
 
     const data = new experimental_StreamData();
     const stream = OpenAIStream(response, {
-      experimental_onToolCall: async (
-        call: ToolCallPayload,
-        appendToolCallMessage
+      experimental_onFunctionCall: async (
+        { name, arguments: args },
+        createFunctionCallMessages
       ) => {
-        // only handle get_document function
-        if (call.tools[0].func.name === "get_document") {
-          const tool = call.tools[0];
-          const result = await callTools(
-            userId,
-            chatId,
-            tool.func.name,
-            JSON.parse(String(tool.func.arguments))
-          );
-
-          const newMessages = appendToolCallMessage({
-            tool_call_id: tool.id,
-            function_name: tool.func.name,
-            tool_call_result: result.result,
-          });
-
-          return openai.chat.completions.create({
-            messages: [...(finalMessage as any), ...newMessages],
-            temperature: 0.5,
-            model,
-            stream: true,
-            tools,
-            tool_choice: "auto",
-          });
-        }
+        const resultFunction = await callTools(
+          userId,
+          chatId,
+          name,
+          args,
+          dataRequest.fileId
+        );
+        data.append(resultFunction);
+        const newMessages = createFunctionCallMessages(resultFunction.result);
+        return openai.chat.completions.create({
+          messages: [...(finalMessage as any), ...newMessages],
+          temperature: 0.5,
+          model,
+          stream: true,
+          tools,
+          tool_choice: "auto",
+        });
       },
       async onStart() {
         if (dataRequest.isNewMessage) {

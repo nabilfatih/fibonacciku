@@ -142,6 +142,7 @@ export const listToolsChat: Tool[] = [
             description: "the query to get the document context.",
           },
         },
+        required: ["query"],
       },
     },
   },

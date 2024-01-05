@@ -5,6 +5,7 @@ import type { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { Document } from "langchain/document";
 import type { Tool } from "ai";
 import {
+  callingDocument,
   callingGenerateImage,
   callingGoogleYoutubeAcademic,
   callingSolveMathProblem,
@@ -86,7 +87,8 @@ export const callTools = async (
   userId: string,
   chatId: string,
   name: string,
-  args: Record<string, unknown>
+  args: Record<string, unknown>,
+  fileId = ""
 ): Promise<{ result: any }> => {
   const toolResponse = {
     result: {},
@@ -112,6 +114,13 @@ export const callTools = async (
       chatId,
       String(args.prompt),
       String(args.size)
+    );
+  }
+  if (name === "get_document") {
+    toolResponse.result = await callingDocument(
+      userId,
+      fileId,
+      String(args.query)
     );
   }
   return toolResponse;

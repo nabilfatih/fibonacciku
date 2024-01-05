@@ -12,17 +12,16 @@ import { useScopedI18n } from "@/locales/client";
 import { IconPhoto, IconSend2, IconSettings } from "@tabler/icons-react";
 import ChatSettingsDialog from "@/components/chat/settings-dialog";
 import { toast } from "sonner";
+import type { MessageContextValue } from "@/lib/context/use-message";
 
 export type PromptProps = {
   input: string;
   setInput: (value: string) => void;
-  onSubmit: (
-    e: React.FormEvent<HTMLFormElement>,
-    isEditMessage?: boolean | undefined
-  ) => void;
+  onSubmit: Pick<MessageContextValue, "handleSubmit">["handleSubmit"];
   isLoading: boolean;
   type: string;
   id?: string;
+  fileId?: string | null;
 };
 
 export default function PromptForm({
@@ -32,6 +31,7 @@ export default function PromptForm({
   setInput,
   isLoading,
   type = "document",
+  fileId,
 }: PromptProps) {
   const t = useScopedI18n("FormChat");
 
@@ -60,7 +60,7 @@ export default function PromptForm({
           return;
         }
         setInput("");
-        onSubmit(e); // is not edit message
+        onSubmit(e, false, fileId || ""); // is edit false and give fileId
       }}
       ref={formRef}
     >

@@ -145,10 +145,13 @@ export type DataMessage = {
   content: string;
 };
 
+// same type like show chat message
 export type SaveDataMessage = {
+  id: string /* primary key */;
   role: RoleAgent;
-  content: string;
+  content: string[];
   metadata?: ChatMessageMetadata[];
+  created_at: string;
 };
 
 export type ShowChatMessage = {

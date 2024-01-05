@@ -77,7 +77,7 @@ export default function ChatPanel({
               {t("stop-generating")}
             </Button>
           ) : (
-            messages?.length >= 2 && (
+            messages?.length > 2 && (
               <div className="flex space-x-2">
                 <Button variant="outline" onClick={() => reload(fileId || "")}>
                   <IconRefresh className="mr-2 h-5 w-5" />
@@ -119,6 +119,7 @@ export default function ChatPanel({
             setInput={setPrompt}
             isLoading={isLoading}
             type={type}
+            fileId={fileId}
           />
           <FooterText
             className="hidden sm:block"

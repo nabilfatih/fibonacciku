@@ -6,7 +6,7 @@ import type { Chat, ChatMessage, ShowChatMessage } from "@/types/types";
 import dynamic from "next/dynamic";
 import { useMessage } from "@/lib/context/use-message";
 import { downloadChatDocument } from "@/lib/supabase/client/chat";
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 const ChatPanel = dynamic(() => import("@/components/chat/panel"));
 const ChatList = dynamic(() => import("@/components/chat/list"));
@@ -45,22 +45,6 @@ export default function ChatMessage({
 
   const chatMessageRef = useRef<HTMLDivElement | null>(null);
 
-  const showMessageSlice = useMemo(() => {
-    if (type === "assistant") {
-      return showMessage.slice(1);
-    } else {
-      if (!showMessage.length) return showMessage;
-      // get the first message
-      // this is because of architecture changes
-      const firstMessage = showMessage[0];
-      if (firstMessage.role === "system") {
-        return showMessage.slice(1);
-      } else {
-        return showMessage;
-      }
-    }
-  }, [showMessage, type]);
-
   const fetchChatDocument = useCallback(
     async (userId: string, fileId: string) => {
       const dataFile = await downloadChatDocument(userId, fileId);
@@ -94,15 +78,14 @@ export default function ChatMessage({
           className
         )}
       >
-        {!id && showMessageSlice.length === 0 && <EmptyScreen type={type} />}
+        {!id && showMessage.length === 0 && <EmptyScreen type={type} />}
 
-        {showMessageSlice.length > 0 && indexMessage.length > 0 ? (
+        {showMessage.length > 0 && indexMessage.length > 0 ? (
           <>
             <ChatList
               chatMessageRef={chatMessageRef}
-              messages={showMessageSlice}
+              messages={showMessage}
               indexMessage={indexMessage}
-              type={type}
             />
             <ChatScrollAnchor trackVisibility={state.isGenerating} />
           </>
@@ -112,7 +95,7 @@ export default function ChatMessage({
       <ChatPanel
         id={id}
         isLoading={state.isLoading}
-        messages={(initialMessages as ShowChatMessage[]) || []}
+        messages={showMessage}
         prompt={state.prompt}
         setPrompt={value => dispatch({ type: "SET_PROMPT", payload: value })}
         type={type}

@@ -16,32 +16,22 @@ import type { Element } from "hast";
 import { useMessage } from "@/lib/context/use-message";
 import type { IndexMessage } from "@/types/types";
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
 
 type Props = {
   index: number;
   content: string[];
   currentIndex: IndexMessage;
-  type: "assistant" | "document";
 };
 
-export default function ChatAssistant({
-  index,
-  content,
-  currentIndex,
-  type,
-}: Props) {
+export default function ChatAssistant({ index, content, currentIndex }: Props) {
   const { state, indexMessage } = useMessage();
   const contentIndex = currentIndex.currentMessage - 1;
 
-  const checkFeature =
-    type === "document"
-      ? index === indexMessage.length - 1
-      : index === indexMessage.length - 2;
+  const checkIndex = index === indexMessage.length - 1;
 
   const isCursorDisplayed =
     state.isGenerating &&
-    checkFeature &&
+    checkIndex &&
     currentIndex.currentMessage === content.length;
 
   const message = `${content[contentIndex]}${

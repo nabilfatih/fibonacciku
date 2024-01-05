@@ -33,7 +33,7 @@ import {
 } from "@/lib/chat/helper";
 import { generateUUID } from "@/lib/utils";
 
-type MessageContextValue = {
+export type MessageContextValue = {
   chatId: string;
   pageRef: React.MutableRefObject<any>;
   messageRef: React.MutableRefObject<any>;
@@ -55,7 +55,8 @@ type MessageContextValue = {
   handleSubmit: (
     e: React.FormEvent<HTMLFormElement>,
     isEditMessage?: boolean,
-    fileId?: string
+    fileId?: string,
+    customPrompt?: string
   ) => void;
   append: (
     isEditMessage?: boolean,
@@ -341,7 +342,6 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
         await saveChatHistory({
           chatId,
           saveDataMessage,
-          copyEditMessageIndex: state.editMessageIndex,
           additionalData: {
             data: chatRequest.data,
             options: chatRequest.options,
@@ -383,16 +383,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
         dispatch({ type: "SET_IS_GENERATING", payload: false });
       }
     },
-    [
-      api,
-      chatId,
-      feature,
-      pathname,
-      router,
-      state.currentChat,
-      state.editMessageIndex,
-      userDetails,
-    ]
+    [api, chatId, feature, pathname, router, state.currentChat, userDetails]
   );
 
   const append = useCallback(
