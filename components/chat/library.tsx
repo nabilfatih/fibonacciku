@@ -47,7 +47,7 @@ export default function ChatLibrary({ userId }: Props) {
   const finishedLibraries = useMemo(() => {
     if (!libraries) return [];
     const filteredLibraries = libraries.filter(
-      library => library.status === "finished"
+      library => library.status !== "invalid"
     );
     return filteredLibraries.slice(pagination.start, pagination.end);
   }, [libraries, pagination.end, pagination.start]);

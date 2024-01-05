@@ -105,7 +105,7 @@ export default function LibraryCardActions({ className, library }: Props) {
               Cancel
             </AlertDialogCancel>
             <AlertDialogAction
-              disabled={isRemovePending}
+              disabled={isRemovePending || library.status === "processing"}
               onClick={event => {
                 event.preventDefault();
 

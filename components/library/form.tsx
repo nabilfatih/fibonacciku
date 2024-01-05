@@ -11,6 +11,7 @@ import {
 } from "@/lib/supabase/client/chat";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import useUserLibrary from "@/lib/swr/use-user-library";
 
 interface LibraryFormProps extends React.ComponentProps<"button"> {}
 
@@ -20,6 +21,7 @@ export default function LibraryForm({ className, ...props }: LibraryFormProps) {
   const router = useRouter();
 
   const { userDetails } = useCurrentUser();
+  const { mutate } = useUserLibrary(userDetails?.id || "");
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -98,6 +100,7 @@ export default function LibraryForm({ className, ...props }: LibraryFormProps) {
         });
 
         toast.success(t("upload-success"));
+        mutate();
         router.refresh();
       } catch (error) {
         toast.error(t("invalid-document"));
