@@ -52,7 +52,10 @@ type MessageContextValue = {
   ) => void;
   handleClearState: () => void;
   handleScrollToBottom: () => void;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
+  handleSubmit: (
+    e: React.FormEvent<HTMLFormElement>,
+    isEditMessage?: boolean
+  ) => void;
 };
 
 export type ChatRequest = {
@@ -511,9 +514,10 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
   const handleSubmit = useCallback(
     async (e: React.FormEvent<HTMLFormElement>, isEditMessage = false) => {
       e.preventDefault();
-      if (!state.prompt) return;
       if (isEditMessage) {
         if (!state.editMessageContent) return;
+      } else {
+        if (!state.prompt) return;
       }
       append(isEditMessage);
       dispatch({ type: "SET_PROMPT", payload: "" });

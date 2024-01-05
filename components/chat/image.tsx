@@ -21,7 +21,7 @@ function ImageMarkdown({ src, alt }: Props) {
           priority
           width={337}
           height={192}
-          className="relative my-4 h-[8rem] w-full cursor-pointer rounded-xl bg-muted/50 object-cover transition-all duration-200 hover:scale-[1.02] hover:transform sm:h-48 sm:w-[337px]"
+          className="relative my-4 h-[8rem] w-full cursor-pointer rounded-xl border bg-muted/90 object-cover sm:h-48 sm:w-[337px]"
         />
       </Link>
     );
@@ -41,7 +41,7 @@ function ImageMarkdown({ src, alt }: Props) {
         priority
         width={256}
         height={256}
-        className="my-4 max-w-[256px] cursor-pointer rounded-xl bg-muted/50 object-cover transition-all duration-200 hover:scale-[1.02] hover:transform"
+        className="my-4 max-w-[256px] cursor-pointer rounded-xl border bg-muted/90 object-cover"
       />
     </Link>
   );

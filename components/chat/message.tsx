@@ -63,7 +63,10 @@ export default function ChatMessage({
             type={type}
           />
         ) : (
-          <ChatUser content={message.content[contentIndex]} />
+          <ChatUser
+            content={message.content[contentIndex]}
+            messageIndex={messageIndex}
+          />
         )}
         <ChatMessageActions
           isAssistant={isAssistant}
@@ -71,6 +74,7 @@ export default function ChatMessage({
           createdAt={createdAt}
           currentIndex={currentIndex}
           contentLength={contentLength}
+          messageIndex={messageIndex}
         />
       </div>
     </div>

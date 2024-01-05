@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard";
 import { cn } from "@/lib/utils";
-import { IconCheck, IconCopy, IconEdit } from "@tabler/icons-react";
+import { IconCheck, IconCopy, IconEdit, IconX } from "@tabler/icons-react";
 import ChatMessageActionSpeech from "@/components/chat/message-action-speech";
 import ChatMessageActionPagination from "@/components/chat/message-action-pagination";
 import type { IndexMessage } from "@/types/types";
+import { useMessage } from "@/lib/context/use-message";
 
 interface ChatMessageActionsProps extends React.ComponentProps<"div"> {
   content: string;
@@ -12,6 +13,7 @@ interface ChatMessageActionsProps extends React.ComponentProps<"div"> {
   currentIndex: IndexMessage;
   contentLength: number;
   isAssistant: boolean;
+  messageIndex: number;
 }
 
 export default function ChatMessageActions({
@@ -21,8 +23,10 @@ export default function ChatMessageActions({
   currentIndex,
   contentLength,
   isAssistant,
+  messageIndex,
   ...props
 }: ChatMessageActionsProps) {
+  const { state, handleEditMessage, handleSubmit } = useMessage();
   const { isCopied, copyToClipboard } = useCopyToClipboard({ timeout: 2000 });
 
   const onCopy = () => {
@@ -48,10 +52,47 @@ export default function ChatMessageActions({
         )}
 
         {!isAssistant && (
-          <Button variant="ghost" size="icon">
-            <IconEdit className="h-4 w-4" />
-            <span className="sr-only">Edit message</span>
-          </Button>
+          <>
+            {messageIndex === state.editMessageIndex ? (
+              <form
+                onSubmit={e => {
+                  handleSubmit(e, true);
+                  handleEditMessage(false); // Reset edit message state
+                }}
+                className="flex items-center"
+              >
+                <Button
+                  type="submit"
+                  variant="outline"
+                  size="icon"
+                  disabled={state.isLoading}
+                >
+                  <IconCheck className="h-4 w-4" />
+                  <span className="sr-only">Submit Edit Message</span>
+                </Button>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon"
+                  disabled={state.isLoading}
+                  onClick={() => handleEditMessage(false)}
+                >
+                  <IconX className="h-4 w-4" />
+                  <span className="sr-only">Cancel Edit message</span>
+                </Button>
+              </form>
+            ) : (
+              <Button
+                variant="ghost"
+                size="icon"
+                disabled={state.isLoading}
+                onClick={() => handleEditMessage(true, content, messageIndex)}
+              >
+                <IconEdit className="h-4 w-4" />
+                <span className="sr-only">Edit message</span>
+              </Button>
+            )}
+          </>
         )}
 
         <Button variant="ghost" size="icon" onClick={onCopy}>
