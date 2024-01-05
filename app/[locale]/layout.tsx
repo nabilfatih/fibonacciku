@@ -130,7 +130,11 @@ export default function RootLayout({
         )}
         suppressHydrationWarning
       >
-        <Toaster />
+        <Toaster
+          style={{
+            borderRadius: "1rem",
+          }}
+        />
         <Providers
           locale={params.locale}
           attribute="class"
