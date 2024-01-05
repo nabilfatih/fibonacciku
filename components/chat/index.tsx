@@ -51,6 +51,7 @@ export default function ChatMessage({
     } else {
       if (!showMessage.length) return showMessage;
       // get the first message
+      // this is because of architecture changes
       const firstMessage = showMessage[0];
       if (firstMessage.role === "system") {
         return showMessage.slice(1);
@@ -117,6 +118,7 @@ export default function ChatMessage({
         type={type}
         title={title}
         createdAt={createdAt}
+        fileId={fileId}
       />
     </>
   );

@@ -38,7 +38,7 @@ type MessageContextValue = {
   pageRef: React.MutableRefObject<any>;
   messageRef: React.MutableRefObject<any>;
   stop: () => void;
-  reload: () => void;
+  reload: (fileId?: string) => Promise<void>;
   state: StateMessage;
   dispatch: React.Dispatch<ActionMessage>;
   showMessage: ShowChatMessage[];
@@ -54,8 +54,14 @@ type MessageContextValue = {
   handleScrollToBottom: () => void;
   handleSubmit: (
     e: React.FormEvent<HTMLFormElement>,
-    isEditMessage?: boolean
+    isEditMessage?: boolean,
+    fileId?: string
   ) => void;
+  append: (
+    isEditMessage?: boolean,
+    fileId?: string,
+    customPrompt?: string
+  ) => Promise<void>;
 };
 
 export type ChatRequest = {
@@ -70,7 +76,7 @@ export type ChatRequest = {
     isNewMessage: boolean;
     isRegenerate: boolean;
     isEditMessage: boolean;
-    fileId?: string; // for document
+    fileId: string; // for document
   };
 };
 
@@ -391,14 +397,18 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
   );
 
   const append = useCallback(
-    async (isEditMessage = false): Promise<void> => {
+    async (
+      isEditMessage = false,
+      fileId = "",
+      customPrompt = ""
+    ): Promise<void> => {
       if (!userDetails) return;
       const messages = showMessageRef.current;
       const indexMessages = indexMessageRef.current;
       // This section is for preparing chat messages and options.
       const options = createOptions(userDetails, state.language, state.grade);
       const { dataMessage, updatedShowMessage } = prepareChatMessages(
-        state.prompt,
+        customPrompt || state.prompt,
         messages,
         indexMessages,
         false, // is not regenerate
@@ -433,6 +443,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
           isNewMessage: dataMessage.length === 2 && !isEditMessage,
           isRegenerate: false,
           isEditMessage,
+          fileId,
         },
       };
 
@@ -452,75 +463,84 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
     ]
   );
 
-  const reload = useCallback(async (): Promise<void> => {
-    if (showMessageRef.current.length < 2) return;
-    if (!userDetails) return;
-    const messages = showMessageRef.current;
-    const indexMessages = indexMessageRef.current;
-    // This section is for preparing chat messages and options.
-    const options = createOptions(userDetails, state.language, state.grade);
-    const { dataMessage, updatedShowMessage } = prepareChatMessages(
-      state.prompt,
-      messages,
-      indexMessages,
-      true, // is regenerate
-      false, // is not edit message
-      state.editMessageIndex,
-      state.editMessageContent,
-      options,
-      feature
-    );
+  const reload = useCallback(
+    async (fileId = ""): Promise<void> => {
+      if (showMessageRef.current.length < 2) return;
+      if (!userDetails) return;
+      const messages = showMessageRef.current;
+      const indexMessages = indexMessageRef.current;
+      // This section is for preparing chat messages and options.
+      const options = createOptions(userDetails, state.language, state.grade);
+      const { dataMessage, updatedShowMessage } = prepareChatMessages(
+        state.prompt,
+        messages,
+        indexMessages,
+        true, // is regenerate
+        false, // is not edit message
+        state.editMessageIndex,
+        state.editMessageContent,
+        options,
+        feature
+      );
 
-    // This section is for handling attachments. and get final data message
-    const finalDataMessage = await handleAttachments(
-      dataMessage,
-      updatedShowMessage,
+      // This section is for handling attachments. and get final data message
+      const finalDataMessage = await handleAttachments(
+        dataMessage,
+        updatedShowMessage,
+        state.attachment,
+        userDetails.id,
+        chatId
+      );
+
+      // Injection of system message into the prompt
+      finalDataMessage[finalDataMessage.length - 1].content +=
+        createSystemMessage(options);
+
+      // remove attachment
+      dispatch({ type: "SET_ATTACHMENT", payload: null });
+
+      const chatRequest: ChatRequest = {
+        options,
+        messages: finalDataMessage,
+        data: {
+          chatId,
+          isNewMessage: false,
+          isRegenerate: true,
+          isEditMessage: false,
+          fileId,
+        },
+      };
+
+      return triggerRequest(chatRequest, updatedShowMessage);
+    },
+    [
+      chatId,
+      feature,
       state.attachment,
-      userDetails.id,
-      chatId
-    );
-
-    // Injection of system message into the prompt
-    finalDataMessage[finalDataMessage.length - 1].content +=
-      createSystemMessage(options);
-
-    // remove attachment
-    dispatch({ type: "SET_ATTACHMENT", payload: null });
-
-    const chatRequest: ChatRequest = {
-      options,
-      messages: finalDataMessage,
-      data: {
-        chatId,
-        isNewMessage: false,
-        isRegenerate: true,
-        isEditMessage: false,
-      },
-    };
-
-    return triggerRequest(chatRequest, updatedShowMessage);
-  }, [
-    chatId,
-    feature,
-    state.attachment,
-    state.editMessageContent,
-    state.editMessageIndex,
-    state.grade,
-    state.language,
-    state.prompt,
-    triggerRequest,
-    userDetails,
-  ]);
+      state.editMessageContent,
+      state.editMessageIndex,
+      state.grade,
+      state.language,
+      state.prompt,
+      triggerRequest,
+      userDetails,
+    ]
+  );
 
   const handleSubmit = useCallback(
-    async (e: React.FormEvent<HTMLFormElement>, isEditMessage = false) => {
+    async (
+      e: React.FormEvent<HTMLFormElement>,
+      isEditMessage = false,
+      fileId = "",
+      customPrompt = ""
+    ) => {
       e.preventDefault();
       if (isEditMessage) {
         if (!state.editMessageContent) return;
       } else {
         if (!state.prompt) return;
       }
-      append(isEditMessage);
+      append(isEditMessage, fileId, customPrompt);
       dispatch({ type: "SET_PROMPT", payload: "" });
       dispatch({ type: "SET_EDIT_MESSAGE_CONTENT", payload: "" });
     },
@@ -670,6 +690,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
       handleScrollToBottom,
       handleClearState,
       handleSubmit,
+      append,
       handleEditMessage,
     }),
     [
@@ -682,6 +703,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
       handleScrollToBottom,
       handleClearState,
       handleSubmit,
+      append,
       handleEditMessage,
     ]
   );

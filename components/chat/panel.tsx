@@ -26,6 +26,7 @@ export type ChatPanelProps = {
   id?: string;
   title?: string;
   createdAt?: string;
+  fileId?: string | null;
 };
 
 export default function ChatPanel({
@@ -36,6 +37,7 @@ export default function ChatPanel({
   createdAt,
   isLoading,
   prompt,
+  fileId,
   setPrompt,
 }: ChatPanelProps) {
   const t = useScopedI18n("FormChat");
@@ -77,7 +79,7 @@ export default function ChatPanel({
           ) : (
             messages?.length >= 2 && (
               <div className="flex space-x-2">
-                <Button variant="outline" onClick={() => reload()}>
+                <Button variant="outline" onClick={() => reload(fileId || "")}>
                   <IconRefresh className="mr-2 h-5 w-5" />
                   {t("regenerate")}
                 </Button>

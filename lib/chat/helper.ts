@@ -42,8 +42,7 @@ export type SaveChatHistoryType = {
 
 export const constructDataMessage = (
   showMessage: ShowChatMessage[],
-  indexMessage: IndexMessage[],
-  feature: string
+  indexMessage: IndexMessage[]
 ): DataMessage[] => {
   let dataMessage: DataMessage[] = [];
   // initial data message
@@ -55,14 +54,6 @@ export const constructDataMessage = (
         content: message.content[contentIndex],
       };
     });
-    if (feature === "document") {
-      // add content to dataMessage before the first element (inclusive for document)
-      dataMessage.unshift({
-        role: "user",
-        content:
-          "What is the main topic of this document? Please summarize it.",
-      });
-    }
   }
   return dataMessage;
 };
@@ -82,7 +73,7 @@ export const createDataMessage = (
   },
   feature: string
 ): { dataMessage: DataMessage[]; updatedShowMessage: ShowChatMessage[] } => {
-  const dataMessage = constructDataMessage(showMessage, indexMessage, feature);
+  const dataMessage = constructDataMessage(showMessage, indexMessage);
 
   // new message created
   if (!dataMessage.length && !isRegenerate && !isEditMessage) {
@@ -134,7 +125,6 @@ export const createDataMessage = (
     } else if (isEditMessage) {
       // get first metadata from the previous message
       const metadata = showMessage[editMessageIndex].metadata;
-      console.log(editMessageIndex);
       // edit particular message
       // remove all elements editMessageIndex and after and then add new message, use then function to wait for the process to finish
       dataMessage.splice(
@@ -181,6 +171,25 @@ export const createDataMessage = (
       options.grade,
       options.role
     );
+  }
+
+  // changing of architecture of document feature, now has role system
+  if (feature === "document") {
+    // get the first message
+    const firstMessage = dataMessage[0];
+    if (firstMessage.role !== "system") {
+      // if the first message is not system, then add system message on first index
+      dataMessage.unshift({
+        role: "system",
+        content: openAISystem(options.language, options.grade, options.role),
+      });
+      showMessage.unshift({
+        id: generateUUID(),
+        role: "system",
+        content: [openAISystem(options.language, options.grade, options.role)],
+        created_at: getCurrentDate(),
+      });
+    }
   }
 
   return {

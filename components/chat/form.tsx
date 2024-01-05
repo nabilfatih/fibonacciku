@@ -50,7 +50,7 @@ export default function PromptForm({
 
   return (
     <form
-      onSubmit={async e => {
+      onSubmit={e => {
         e.preventDefault();
         if (!input?.trim()) {
           return;
@@ -60,7 +60,7 @@ export default function PromptForm({
           return;
         }
         setInput("");
-        await onSubmit(e); // is not edit message
+        onSubmit(e); // is not edit message
       }}
       ref={formRef}
     >
@@ -70,49 +70,48 @@ export default function PromptForm({
           !isAssistant && "pl-0 sm:pl-2"
         )}
       >
-        <div className={cn(!isAssistant && "hidden")}>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <button
-                onClick={e => {
-                  e.preventDefault();
-                  setSettingsDialogOpen(true);
-                }}
-                className={cn(
-                  buttonVariants({ size: "sm", variant: "ghost" }),
-                  "absolute bottom-[18px] left-0 h-8 w-8 rounded-full bg-background p-0 sm:bottom-3.5 sm:left-4"
-                )}
-              >
-                <IconSettings />
-                <span className="sr-only">{t("settings")}</span>
-              </button>
-            </TooltipTrigger>
-            <TooltipContent>{t("settings")}</TooltipContent>
-          </Tooltip>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              onClick={e => {
+                e.preventDefault();
+                setSettingsDialogOpen(true);
+              }}
+              className={cn(
+                buttonVariants({ size: "sm", variant: "ghost" }),
+                "absolute bottom-[18px] left-0 h-8 w-8 rounded-full bg-background p-0 sm:bottom-3.5 sm:left-4"
+              )}
+            >
+              <IconSettings />
+              <span className="sr-only">{t("settings")}</span>
+            </button>
+          </TooltipTrigger>
+          <TooltipContent>{t("settings")}</TooltipContent>
+        </Tooltip>
 
-          <ChatSettingsDialog
-            open={settingsDialogOpen}
-            onOpenChange={setSettingsDialogOpen}
-          />
+        <ChatSettingsDialog
+          open={settingsDialogOpen}
+          onOpenChange={setSettingsDialogOpen}
+        />
 
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <button
-                onClick={e => {
-                  e.preventDefault();
-                }}
-                className={cn(
-                  buttonVariants({ size: "sm", variant: "ghost" }),
-                  "absolute bottom-[18px] left-9 h-8 w-8 rounded-full bg-background p-0 sm:bottom-3.5 sm:left-[3.25rem]"
-                )}
-              >
-                <IconPhoto />
-                <span className="sr-only">{t("image")}</span>
-              </button>
-            </TooltipTrigger>
-            <TooltipContent>{t("image")}</TooltipContent>
-          </Tooltip>
-        </div>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              onClick={e => {
+                e.preventDefault();
+              }}
+              className={cn(
+                buttonVariants({ size: "sm", variant: "ghost" }),
+                "absolute bottom-[18px] left-9 h-8 w-8 rounded-full bg-background p-0 sm:bottom-3.5 sm:left-[3.25rem]",
+                !isAssistant && "hidden"
+              )}
+            >
+              <IconPhoto />
+              <span className="sr-only">{t("image")}</span>
+            </button>
+          </TooltipTrigger>
+          <TooltipContent>{t("image")}</TooltipContent>
+        </Tooltip>
 
         <Textarea
           ref={inputRef}
@@ -124,8 +123,7 @@ export default function PromptForm({
           placeholder={`${t("ask-anything")}...`}
           spellCheck={false}
           className={cn(
-            "min-h-[60px] w-full resize-none bg-transparent py-[1.3rem] pl-12 pr-4 scrollbar-hide focus-within:outline-none sm:text-sm",
-            !isAssistant && "pl-2 sm:pl-4"
+            "min-h-[60px] w-full resize-none bg-transparent py-[1.3rem] pl-12 pr-4 scrollbar-hide focus-within:outline-none sm:text-sm"
           )}
         />
         <div className="absolute bottom-4 right-0 sm:bottom-3 sm:right-4">
