@@ -13,6 +13,7 @@ import { track } from "@vercel/analytics/server";
 import { kv } from "@vercel/kv";
 import { Ratelimit } from "@upstash/ratelimit";
 import {
+  callTools,
   createSafeTitle,
   determineModelBasedOnSubscription,
 } from "@/lib/openai/helper";
@@ -118,7 +119,33 @@ export async function POST(req: NextRequest) {
       experimental_onToolCall: async (
         call: ToolCallPayload,
         appendToolCallMessage
-      ) => {},
+      ) => {
+        // only handle get_document function
+        if (call.tools[0].func.name === "get_document") {
+          const tool = call.tools[0];
+          const result = await callTools(
+            userId,
+            chatId,
+            tool.func.name,
+            JSON.parse(String(tool.func.arguments))
+          );
+
+          const newMessages = appendToolCallMessage({
+            tool_call_id: tool.id,
+            function_name: tool.func.name,
+            tool_call_result: result.result,
+          });
+
+          return openai.chat.completions.create({
+            messages: [...(finalMessage as any), ...newMessages],
+            temperature: 0.5,
+            model,
+            stream: true,
+            tools,
+            tool_choice: "auto",
+          });
+        }
+      },
       async onStart() {
         if (dataRequest.isNewMessage) {
           const library = await getLibraryByFileIdAdmin(dataRequest.fileId);
