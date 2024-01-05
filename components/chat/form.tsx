@@ -16,7 +16,10 @@ import { toast } from "sonner";
 export type PromptProps = {
   input: string;
   setInput: (value: string) => void;
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
+  onSubmit: (
+    e: React.FormEvent<HTMLFormElement>,
+    isEditMessage?: boolean | undefined
+  ) => void;
   isLoading: boolean;
   type: string;
   id?: string;
