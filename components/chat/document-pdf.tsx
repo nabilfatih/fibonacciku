@@ -1,7 +1,14 @@
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 
-import { type Dispatch, memo, useRef, useState, useCallback } from "react";
+import {
+  type Dispatch,
+  memo,
+  useRef,
+  useState,
+  useCallback,
+  useEffect,
+} from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 
 import { ViewportList } from "react-viewport-list";
@@ -107,6 +114,7 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
               items={Array.from({ length: numPages }, (_, i) => ({
                 page: i + 1,
               }))}
+              initialIndex={stateMessage.initialPage - 1}
               onViewportIndexesChange={viewportIndexes => {
                 dispatch({
                   type: "SET_CURRENT_PAGE",
@@ -114,11 +122,14 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
                 });
               }}
             >
-              {item => {
+              {(item, index) => {
                 return (
                   <Page
                     key={`page_${item.page}`}
                     pageNumber={item.page}
+                    pageIndex={index}
+                    renderTextLayer={true}
+                    renderAnnotationLayer={true}
                     onLoadSuccess={onPageLoad}
                     scale={state.zoom}
                     customTextRenderer={textRenderer}
@@ -127,7 +138,7 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
                         <IconSpinner className="animate-spin" />
                       </div>
                     }
-                    className="mb-2 flex items-center justify-center bg-background shadow-sm last:mb-0"
+                    className="relative mb-2 flex h-full items-center justify-center bg-background shadow-sm last:mb-0"
                   />
                 );
               }}

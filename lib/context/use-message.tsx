@@ -95,6 +95,7 @@ export type StateMessage = {
   attachment: File | null;
   scrollPosition: number;
   openDocument: boolean;
+  initialPage: number;
   // Add other state properties here if needed
 };
 
@@ -110,7 +111,8 @@ export type ActionMessage =
   | { type: "SET_GRADE"; payload: string }
   | { type: "SET_ATTACHMENT"; payload: File | null }
   | { type: "SET_SCROLL_POSITION"; payload: number }
-  | { type: "SET_OPEN_DOCUMENT"; payload: boolean };
+  | { type: "SET_OPEN_DOCUMENT"; payload: boolean }
+  | { type: "SET_INITIAL_PAGE"; payload: number };
 // Add other action types here
 
 // Define the reducer function
@@ -143,6 +145,8 @@ const messageReducer = (
       return { ...state, scrollPosition: action.payload };
     case "SET_OPEN_DOCUMENT":
       return { ...state, openDocument: action.payload };
+    case "SET_INITIAL_PAGE":
+      return { ...state, initialPage: action.payload };
     default:
       return state;
   }
@@ -162,6 +166,7 @@ const initialState: StateMessage = {
   attachment: null,
   scrollPosition: -1,
   openDocument: false,
+  initialPage: 1,
   // Initialize other state properties here
 };
 
@@ -294,6 +299,8 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
       updatedShowMessage: ShowChatMessage[]
     ): Promise<void> => {
       if (!userDetails) return;
+
+      console.log("chatRequest", chatRequest);
 
       const previousMessages = showMessageRef.current;
       // Do an optimistic update to the chat state to show the updated messages immediately.

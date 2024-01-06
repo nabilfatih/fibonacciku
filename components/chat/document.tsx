@@ -12,7 +12,8 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Input } from "@/components/ui/input";
 import dynamic from "next/dynamic";
-import { IconSpinner } from "@/components/ui/icons";
+import { IconSeparator, IconSpinner } from "@/components/ui/icons";
+import { useMessage } from "@/lib/context/use-message";
 
 const ChatDocumentPdf = dynamic(
   () => import("@/components/chat/document-pdf"),
@@ -45,6 +46,7 @@ const documentReducer = (state: StateDocument, action: ActionDocument) => {
       return { ...state, searchText: action.payload };
     case "SET_CURRENT_PAGE":
       return { ...state, currentPage: action.payload };
+
     default:
       return state;
   }
@@ -59,6 +61,8 @@ const initialState: StateDocument = {
 
 export default function ChatDocument() {
   const t = useScopedI18n("Chat");
+
+  const { pageRef } = useMessage();
 
   const [state, dispatch] = useReducer(documentReducer, initialState, () => {
     return { ...initialState };
@@ -132,9 +136,32 @@ export default function ChatDocument() {
               </div>
 
               <div className="col-span-1 flex items-start justify-center">
-                <span className="text-sm">
-                  {state.currentPage[0]} / {state.currentPage[1]}
-                </span>
+                <div className="flex items-center">
+                  <Input
+                    type="text"
+                    min={1}
+                    max={state.currentPage[1]}
+                    value={state.currentPage[0]}
+                    onChange={e => {
+                      // if not number, return
+                      if (isNaN(parseInt(e.target.value))) return;
+                      const pageNumber = parseInt(e.target.value);
+                      const main = pageRef.current;
+                      if (main && typeof main.scrollToIndex === "function") {
+                        main.scrollToIndex({
+                          index: pageNumber - 1,
+                          alignToTop: true,
+                        });
+                      }
+                    }}
+                    // remove the default browser styling
+                    className="h-10 w-10 bg-transparent p-0 text-center text-sm text-muted-foreground"
+                  />
+                  <IconSeparator className="h-5 w-5 text-muted-foreground" />
+                  <span className="text-sm text-muted-foreground">
+                    {state.currentPage[1]}
+                  </span>
+                </div>
               </div>
 
               <div className="col-span-2 w-full">

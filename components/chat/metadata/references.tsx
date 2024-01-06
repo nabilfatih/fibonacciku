@@ -31,6 +31,10 @@ export default function ChatMetadataReferences({ metadata }: Props) {
               size="sm"
               onClick={async () => {
                 dispatch({
+                  type: "SET_INITIAL_PAGE",
+                  payload: item.page_number,
+                });
+                dispatch({
                   type: "SET_OPEN_DOCUMENT",
                   payload: true,
                 });
