@@ -4,6 +4,7 @@ import {
   IconChevronLeft,
   IconCircleFilled,
   IconFile,
+  IconX,
 } from "@tabler/icons-react";
 import { useCallback, useMemo, useState } from "react";
 import { motion } from "framer-motion";
@@ -96,63 +97,77 @@ export default function ChatLibrary({ userId }: Props) {
 
           <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2">
             {finishedLibraries.map((library, index) => (
-              <motion.button
-                key={library.id}
-                type="button"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: { opacity: 1 },
-                }}
-                initial="hidden"
-                animate="visible"
-                transition={{
-                  delay: index * 0.05,
-                  ease: "easeInOut",
-                  duration: 0.5,
-                }}
-                viewport={{ amount: 0 }}
-                disabled={
-                  library.status !== "finished" || typeof loadingId === "string"
-                }
-                className={cn(
-                  "inline-flex cursor-pointer items-center justify-between gap-2 rounded-xl border px-4 py-3 shadow-sm transition-colors hover:bg-muted/50",
-                  libraryId === library.id && "animate-bounce"
-                )}
-                onClick={async () => {
-                  if (loadingId === library.id) return;
-                  setLoadingId(library.id);
-                  const currentDocument = await downloadChatDocument(
-                    userId,
-                    library.file_id
-                  );
-                  dispatch({
-                    type: "SET_CURRENT_DOCUMENT",
-                    payload: currentDocument,
-                  });
-                  // get random number between 3-5 for the questions
-                  const number = Math.floor(Math.random() * (5 - 3 + 1)) + 3;
-                  // TODO: Must be in locale language (Refactor this!)
-                  const firstPrompt = `Give me ${number} questions that I can ask to you related to this document.`;
-                  append(false, library.file_id, firstPrompt);
-                  setLoadingId(null);
-                }}
-              >
-                <div className="flex max-w-[10rem] items-start gap-2 sm:max-w-[12rem]">
-                  {loadingId === library.id ? (
-                    <IconSpinner className="h-5 w-5 min-w-[1.25rem] animate-spin" />
-                  ) : (
-                    <IconFile className="h-5 w-5 min-w-[1.25rem]" />
-                  )}
-                  <span className="truncate text-sm">{library.name}</span>
-                </div>
-
-                <IconCircleFilled
+              <div key={library.id} className="relative">
+                <motion.button
+                  key={library.id}
+                  type="button"
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: { opacity: 1 },
+                  }}
+                  initial="hidden"
+                  animate="visible"
+                  transition={{
+                    delay: index * 0.05,
+                    ease: "easeInOut",
+                    duration: 0.5,
+                  }}
+                  viewport={{ amount: 0 }}
+                  disabled={
+                    library.status !== "finished" ||
+                    typeof loadingId === "string"
+                  }
                   className={cn(
-                    "h-4 w-4 min-w-[1rem]",
-                    statusToColor(library.status)
+                    "inline-flex cursor-pointer items-center justify-between gap-2 rounded-xl border px-4 py-3 shadow-sm transition-colors hover:bg-muted/50",
+                    libraryId === library.id && "animate-bounce"
                   )}
-                />
-              </motion.button>
+                  onClick={async () => {
+                    if (loadingId === library.id) return;
+                    setLoadingId(library.id);
+                    const currentDocument = await downloadChatDocument(
+                      userId,
+                      library.file_id
+                    );
+                    dispatch({
+                      type: "SET_CURRENT_DOCUMENT",
+                      payload: currentDocument,
+                    });
+                    // get random number between 3-5 for the questions
+                    const number = Math.floor(Math.random() * (5 - 3 + 1)) + 3;
+                    // TODO: Must be in locale language (Refactor this!)
+                    const firstPrompt = `Give me ${number} questions that I can ask to you related to this document.`;
+                    append(false, library.file_id, firstPrompt);
+                    setLoadingId(null);
+                  }}
+                >
+                  <div className="flex max-w-[10rem] items-start gap-2 sm:max-w-[12rem]">
+                    {loadingId === library.id ? (
+                      <IconSpinner className="h-5 w-5 min-w-[1.25rem] animate-spin" />
+                    ) : (
+                      <IconFile className="h-5 w-5 min-w-[1.25rem]" />
+                    )}
+                    <span className="truncate text-sm">{library.name}</span>
+                  </div>
+
+                  <IconCircleFilled
+                    className={cn(
+                      "h-4 w-4 min-w-[1rem]",
+                      statusToColor(library.status)
+                    )}
+                  />
+                </motion.button>
+                <Button
+                  asChild
+                  size="icon"
+                  variant="ghost"
+                  className="rounded-full"
+                >
+                  <Link href="/chat/document">
+                    <IconX className="h-5 w-5" />
+                    <span className="sr-only">Close</span>
+                  </Link>
+                </Button>
+              </div>
             ))}
           </div>
           {isShowPagination && (
