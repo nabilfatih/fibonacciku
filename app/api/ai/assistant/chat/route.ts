@@ -96,14 +96,15 @@ export async function POST(req: Request) {
 
   // get the last message
   const lastMessage = messages[messages.length - 1] as DataMessage;
-  if (lastMessage.content.includes("fibo-attachment")) {
-    toolChoice = {
-      type: "function",
-      function: {
-        name: "image_analysis",
-      },
-    };
-  }
+  // TODO: AI SDK is getting error if force to use function, wait until the sdk is stable
+  // if (lastMessage.content.includes("fibo-attachment")) {
+  //   toolChoice = {
+  //     type: "function",
+  //     function: {
+  //       name: "image_analysis",
+  //     },
+  //   };
+  // }
 
   // make sure that message length is always max 15, never remove the first index
   // if more than 15, remove from index 1 until the total length is 15
@@ -134,7 +135,7 @@ export async function POST(req: Request) {
         if (call.tools[0].func.name === "image_analysis") {
           const initialMessages = finalMessage.slice(0, -1);
           const currentMessage = finalMessage[finalMessage.length - 1];
-          const args = call.tools[0].func.arguments;
+          const args = JSON.parse(String(call.tools[0].func.arguments));
           // remove space in image and split by comma
           const imageIdArray = String(args.image).replace(/\s/g, "").split(",");
           // get image url in parallel
