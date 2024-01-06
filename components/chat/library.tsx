@@ -104,7 +104,9 @@ export default function ChatLibrary({ userId }: Props) {
                   duration: 0.5,
                 }}
                 viewport={{ amount: 0 }}
-                disabled={library.status !== "finished"}
+                disabled={
+                  library.status !== "finished" || typeof loadingId === "string"
+                }
                 className="inline-flex cursor-pointer items-center justify-between gap-2 rounded-xl border px-4 py-3 shadow-sm transition-colors hover:bg-muted/50"
                 onClick={async () => {
                   if (loadingId === library.id) return;
