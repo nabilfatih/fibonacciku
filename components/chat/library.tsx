@@ -117,7 +117,10 @@ export default function ChatLibrary({ userId }: Props) {
                     library.status !== "finished" ||
                     typeof loadingId === "string"
                   }
-                  className="inline-flex w-full cursor-pointer items-center justify-between gap-2 rounded-xl border px-4 py-3 shadow-sm transition-colors hover:bg-muted/50"
+                  className={cn(
+                    "inline-flex w-full cursor-pointer items-center justify-between gap-2 rounded-xl border px-4 py-3 shadow-sm transition-colors hover:bg-muted/50",
+                    libraryId === library.id && "animate-bounce"
+                  )}
                   onClick={async () => {
                     if (loadingId === library.id) return;
                     setLoadingId(library.id);
@@ -141,12 +144,7 @@ export default function ChatLibrary({ userId }: Props) {
                     {loadingId === library.id ? (
                       <IconSpinner className="h-5 w-5 min-w-[1.25rem] animate-spin" />
                     ) : (
-                      <IconFile
-                        className={cn(
-                          "h-5 w-5 min-w-[1.25rem]",
-                          libraryId === library.id && "animate-bounce"
-                        )}
-                      />
+                      <IconFile className="h-5 w-5 min-w-[1.25rem]" />
                     )}
                     <span className="truncate text-sm">{library.name}</span>
                   </div>
