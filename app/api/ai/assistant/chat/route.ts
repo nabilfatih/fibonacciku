@@ -226,7 +226,13 @@ export async function POST(req: Request) {
             .split("------------------------------")[0]
             .trim();
           const title = createSafeTitle(prompt);
-          await insertChatAdmin(chatId, userId, title || "Untitled", options);
+          await insertChatAdmin(
+            chatId,
+            userId,
+            title || "Untitled",
+            options,
+            "assistant"
+          );
         }
       },
       onCompletion(completion) {

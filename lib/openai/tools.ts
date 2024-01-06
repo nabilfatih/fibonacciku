@@ -139,7 +139,8 @@ export const listToolsChat: Tool[] = [
         properties: {
           query: {
             type: "string",
-            description: "the query to get the document context.",
+            description:
+              "the query to get the document context. Must be a standalone question.",
           },
         },
         required: ["query"],

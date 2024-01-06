@@ -45,7 +45,8 @@ export const documentRetrieval = async (
     .sort((a, b) => a.page_number - b.page_number);
 
   return {
-    message: "The following documents were retrieved:",
+    message:
+      "You're only allowed to use the documents below to answer the question. Answer the question based only on the following sources:",
     sources: cleanData,
   };
 };

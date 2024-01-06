@@ -11,6 +11,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useMessage } from "@/lib/context/use-message";
+import { downloadChatDocument } from "@/lib/supabase/client/chat";
+import { IconSpinner } from "../ui/icons";
 
 const statusToColor = (status: string) => {
   switch (status) {
@@ -31,8 +33,9 @@ type Props = {
 
 export default function ChatLibrary({ userId }: Props) {
   const { libraries } = useUserLibrary(userId);
-  const { append } = useMessage();
+  const { append, dispatch } = useMessage();
 
+  const [loadingId, setLoadingId] = useState<string | null>(null);
   const [pagination, setPagination] = useState<{
     start: number;
     end: number;
@@ -101,16 +104,32 @@ export default function ChatLibrary({ userId }: Props) {
                   duration: 0.5,
                 }}
                 viewport={{ amount: 0 }}
+                disabled={library.status !== "finished"}
                 className="inline-flex cursor-pointer items-center justify-between gap-2 rounded-xl border px-4 py-3 shadow-sm transition-colors hover:bg-muted/50"
-                onClick={() => {
+                onClick={async () => {
+                  if (loadingId === library.id) return;
+                  setLoadingId(library.id);
+                  const currentDocument = await downloadChatDocument(
+                    userId,
+                    library.file_id
+                  );
+                  dispatch({
+                    type: "SET_CURRENT_DOCUMENT",
+                    payload: currentDocument,
+                  });
                   // get random number between 3-5 for the questions
                   const number = Math.floor(Math.random() * (5 - 3 + 1)) + 3;
-                  const firstPrompt = `Please give me ${number} questions that I can ask to you related to this document.`;
+                  const firstPrompt = `Give me ${number} questions that I can ask to you related to this document.`;
                   append(false, library.file_id, firstPrompt);
+                  setLoadingId(null);
                 }}
               >
                 <div className="flex max-w-[10rem] items-start gap-2 sm:max-w-[12rem]">
-                  <IconFile className="h-5 w-5 min-w-[1.25rem]" />
+                  {loadingId === library.id ? (
+                    <IconSpinner className="h-5 w-5 min-w-[1.25rem] animate-spin" />
+                  ) : (
+                    <IconFile className="h-5 w-5 min-w-[1.25rem]" />
+                  )}
                   <span className="truncate text-sm">{library.name}</span>
                 </div>
 

@@ -17,7 +17,7 @@ import {
   determineModelBasedOnSubscription,
 } from "@/lib/openai/helper";
 import type { ChatRequest } from "@/lib/context/use-message";
-import { listToolsChat } from "@/lib/openai/tools";
+import { documentRule } from "@/lib/openai/system";
 import { openai } from "@/lib/openai";
 import { insertChatAdmin } from "@/lib/supabase/admin/chat";
 import { getLibraryByFileIdAdmin } from "@/lib/supabase/admin/library";
@@ -81,9 +81,24 @@ export async function POST(req: NextRequest) {
   const userId = user.id;
   const { model } = await determineModelBasedOnSubscription(userId);
 
-  const tools: OpenAI.ChatCompletionTool[] = listToolsChat.filter(
-    tool => tool.function.name === "get_document"
-  );
+  const functions = [
+    {
+      name: "get_document",
+      description:
+        "Get the document from the database. This is RAG retriever to get the document context.",
+      parameters: {
+        type: "object",
+        properties: {
+          query: {
+            type: "string",
+            description:
+              "the query to get the document context. Must be a standalone question.",
+          },
+        },
+        required: ["query"],
+      },
+    },
+  ];
 
   // make sure that message length is always max 15, never remove the first index
   // if more than 15, remove from index 1 until the total length is 15
@@ -94,29 +109,20 @@ export async function POST(req: NextRequest) {
     finalMessage = [firstMessage, ...finalMessage.slice(-14)];
   }
 
+  // inject system message with additional rules
+  finalMessage[0].content += documentRule;
+  // inject last message with additional rules
+  finalMessage[finalMessage.length - 1].content += documentRule;
+
+  console.log(finalMessage);
+
   try {
     const response = await openai.chat.completions.create({
       model,
       stream: true,
       messages: finalMessage,
       temperature: 0.5,
-      functions: [
-        {
-          name: "get_document",
-          description:
-            "Get the document from the database. This is RAG retriever to get the document context.",
-          parameters: {
-            type: "object",
-            properties: {
-              query: {
-                type: "string",
-                description: "the query to get the document context.",
-              },
-            },
-            required: ["query"],
-          },
-        },
-      ],
+      functions: functions,
       function_call: {
         name: "get_document",
       },
@@ -148,15 +154,22 @@ export async function POST(req: NextRequest) {
           temperature: 0.5,
           model,
           stream: true,
-          tools,
-          tool_choice: "auto",
+          functions: functions,
+          function_call: "auto",
         });
       },
       async onStart() {
         if (dataRequest.isNewMessage) {
           const library = await getLibraryByFileIdAdmin(dataRequest.fileId);
           const title = createSafeTitle(library?.name || "Untitled");
-          await insertChatAdmin(chatId, userId, title || "Untitled", options);
+          await insertChatAdmin(
+            chatId,
+            userId,
+            title || "Untitled",
+            options,
+            "document",
+            dataRequest.fileId
+          );
         }
       },
       onCompletion(completion) {

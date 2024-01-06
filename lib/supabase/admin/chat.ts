@@ -84,7 +84,9 @@ export const insertChatAdmin = async (
   chatId: string,
   userId: string,
   title: string,
-  optionsData: { language: string; grade: string }
+  optionsData: { language: string; grade: string },
+  type: "assistant" | "document",
+  fileId = ""
 ) => {
   const { error } = await supabaseAdmin.from("chat").insert({
     id: chatId,
@@ -93,6 +95,8 @@ export const insertChatAdmin = async (
     messages: [],
     grade: optionsData.grade.toLowerCase(),
     language: optionsData.language.toLowerCase(),
+    file_id: fileId,
+    type: type,
   });
 
   if (error) {
