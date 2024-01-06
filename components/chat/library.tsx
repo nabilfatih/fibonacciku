@@ -81,23 +81,23 @@ export default function ChatLibrary({ userId }: Props) {
         Then choose from your library:
       </p>
       <div className="mt-4">
-        <div className="flex w-full items-center justify-between gap-2">
-          {isShowPagination && (
-            <Button
-              variant="outline"
-              size="icon"
-              className="rounded-full"
-              disabled={pagination.start <= 0}
-              onClick={() => changePagination(-1)}
-            >
-              <IconChevronLeft className="h-5 w-5" />
-              <span className="sr-only">Previous</span>
-            </Button>
-          )}
+        <div className="flex flex-col items-center justify-center">
+          <div className="flex w-full items-center justify-between gap-2">
+            {isShowPagination && (
+              <Button
+                variant="outline"
+                size="icon"
+                className="rounded-full"
+                disabled={pagination.start <= 0}
+                onClick={() => changePagination(-1)}
+              >
+                <IconChevronLeft className="h-5 w-5" />
+                <span className="sr-only">Previous</span>
+              </Button>
+            )}
 
-          <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2">
-            {finishedLibraries.map((library, index) => (
-              <div key={library.id} className="relative">
+            <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2">
+              {finishedLibraries.map((library, index) => (
                 <motion.button
                   key={library.id}
                   type="button"
@@ -117,10 +117,7 @@ export default function ChatLibrary({ userId }: Props) {
                     library.status !== "finished" ||
                     typeof loadingId === "string"
                   }
-                  className={cn(
-                    "inline-flex cursor-pointer items-center justify-between gap-2 rounded-xl border px-4 py-3 shadow-sm transition-colors hover:bg-muted/50",
-                    libraryId === library.id && "animate-bounce"
-                  )}
+                  className="inline-flex w-full cursor-pointer items-center justify-between gap-2 rounded-xl border px-4 py-3 shadow-sm transition-colors hover:bg-muted/50"
                   onClick={async () => {
                     if (loadingId === library.id) return;
                     setLoadingId(library.id);
@@ -144,7 +141,12 @@ export default function ChatLibrary({ userId }: Props) {
                     {loadingId === library.id ? (
                       <IconSpinner className="h-5 w-5 min-w-[1.25rem] animate-spin" />
                     ) : (
-                      <IconFile className="h-5 w-5 min-w-[1.25rem]" />
+                      <IconFile
+                        className={cn(
+                          "h-5 w-5 min-w-[1.25rem]",
+                          libraryId === library.id && "animate-bounce"
+                        )}
+                      />
                     )}
                     <span className="truncate text-sm">{library.name}</span>
                   </div>
@@ -156,30 +158,32 @@ export default function ChatLibrary({ userId }: Props) {
                     )}
                   />
                 </motion.button>
-                <Button
-                  asChild
-                  size="icon"
-                  variant="ghost"
-                  className="rounded-full"
-                >
-                  <Link href="/chat/document">
-                    <IconX className="h-5 w-5" />
-                    <span className="sr-only">Close</span>
-                  </Link>
-                </Button>
-              </div>
-            ))}
+              ))}
+            </div>
+            {isShowPagination && (
+              <Button
+                variant="outline"
+                size="icon"
+                className="rounded-full"
+                disabled={pagination.end >= libraries.length}
+                onClick={() => changePagination(1)}
+              >
+                <span className="sr-only">Next</span>
+                <IconChevronLeft className="h-5 w-5 rotate-180" />
+              </Button>
+            )}
           </div>
-          {isShowPagination && (
+          {libraryId && (
             <Button
+              asChild
               variant="outline"
               size="icon"
-              className="rounded-full"
-              disabled={pagination.end >= libraries.length}
-              onClick={() => changePagination(1)}
+              className="mt-2 rounded-full"
             >
-              <span className="sr-only">Next</span>
-              <IconChevronLeft className="h-5 w-5 rotate-180" />
+              <Link href="/chat/document">
+                <IconX className="h-5 w-5" />
+                <span className="sr-only">Close</span>
+              </Link>
             </Button>
           )}
         </div>
