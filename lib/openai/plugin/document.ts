@@ -53,7 +53,6 @@ export const documentRetrieval = async (
   });
 
   const cleanData = results
-    .slice(0, 7)
     .map(doc => {
       return {
         pageContent: doc.pageContent,
@@ -61,6 +60,7 @@ export const documentRetrieval = async (
         page_number: doc.metadata.page_number,
       };
     })
+    // remove duplicate page number
     .filter(
       (v, i, a) =>
         a.findIndex(t => t.metadata.page_number === v.metadata.page_number) ===
@@ -68,6 +68,8 @@ export const documentRetrieval = async (
       // this is only temporary solution
       // TODO: Maybe there is a better way to do this
     )
+    // only get the first 7 documents
+    .slice(0, 7)
     // oder by page number
     .sort((a, b) => a.page_number - b.page_number);
 
