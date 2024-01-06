@@ -14,14 +14,14 @@ export const documentRetrieval = async (
 
   const retriever = new SupabaseHybridSearch(embeddings, {
     client: supabaseAdmin,
-    similarityK: 20,
-    keywordK: 20,
+    similarityK: 10,
+    keywordK: 10,
     tableName: "documents",
     similarityQueryName: "match_documents",
     keywordQueryName: "kw_match_documents",
     metadata: {
-      user_id: userId,
       file_id: fileId,
+      user_id: userId,
     },
   });
 
