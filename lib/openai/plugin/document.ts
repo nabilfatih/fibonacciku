@@ -1,6 +1,6 @@
 import supabaseAdmin from "@/lib/supabase/admin";
-import { OpenAIEmbeddings } from "langchain/embeddings/openai";
-import { SupabaseHybridSearch } from "langchain/retrievers/supabase";
+import { OpenAIEmbeddings } from "@langchain/openai";
+import { SupabaseHybridSearch } from "@langchain/community/retrievers/supabase";
 
 export const documentRetrieval = async (
   userId: string,
