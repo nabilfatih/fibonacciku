@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import ChatScrollAnchor from "@/components/chat/scroll-anchor";
-import type { Chat, ChatMessage, ShowChatMessage } from "@/types/types";
+import type { Chat, ChatMessage } from "@/types/types";
 import dynamic from "next/dynamic";
 import { useMessage } from "@/lib/context/use-message";
 import { downloadChatDocument } from "@/lib/supabase/client/chat";
@@ -41,6 +41,7 @@ export default function ChatMessage({
     dispatch,
     setShowMessage,
     setIndexMessage,
+    stop,
   } = useMessage();
 
   const chatMessageRef = useRef<HTMLDivElement | null>(null);
@@ -66,6 +67,9 @@ export default function ChatMessage({
       setShowMessage([]);
       dispatch({ type: "SET_CURRENT_DOCUMENT", payload: null });
     }
+    return () => {
+      stop();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialMessages]);
 
