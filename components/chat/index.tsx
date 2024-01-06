@@ -56,6 +56,7 @@ export default function ChatMessage({
 
   useEffect(() => {
     if (initialMessages) {
+      stop();
       setIndexMessage([]);
       setShowMessage(initialMessages);
       dispatch({ type: "SET_CURRENT_CHAT", payload: chat || null });

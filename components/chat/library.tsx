@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import { useMessage } from "@/lib/context/use-message";
 import { downloadChatDocument } from "@/lib/supabase/client/chat";
 import { IconSpinner } from "../ui/icons";
+import { useSearchParams } from "next/navigation";
 
 const statusToColor = (status: string) => {
   switch (status) {
@@ -35,6 +36,9 @@ export default function ChatLibrary({ userId }: Props) {
   const { libraries } = useUserLibrary(userId);
   const { append, dispatch } = useMessage();
 
+  const searchParams = useSearchParams();
+  const libraryId = searchParams.get("library");
+
   const [loadingId, setLoadingId] = useState<string | null>(null);
   const [pagination, setPagination] = useState<{
     start: number;
@@ -51,11 +55,14 @@ export default function ChatLibrary({ userId }: Props) {
 
   const finishedLibraries = useMemo(() => {
     if (!libraries) return [];
-    const filteredLibraries = libraries.filter(
-      library => library.status !== "invalid"
-    );
+    const filteredLibraries = libraries.filter(library => {
+      if (libraryId) {
+        return library.id === libraryId && library.status !== "invalid";
+      }
+      return library.status !== "invalid";
+    });
     return filteredLibraries.slice(pagination.start, pagination.end);
-  }, [libraries, pagination.end, pagination.start]);
+  }, [libraries, libraryId, pagination.end, pagination.start]);
 
   // Helper function to change pagination
   const changePagination = useCallback((delta: number) => {
@@ -107,7 +114,10 @@ export default function ChatLibrary({ userId }: Props) {
                 disabled={
                   library.status !== "finished" || typeof loadingId === "string"
                 }
-                className="inline-flex cursor-pointer items-center justify-between gap-2 rounded-xl border px-4 py-3 shadow-sm transition-colors hover:bg-muted/50"
+                className={cn(
+                  "inline-flex cursor-pointer items-center justify-between gap-2 rounded-xl border px-4 py-3 shadow-sm transition-colors hover:bg-muted/50",
+                  libraryId === library.id && "animate-bounce"
+                )}
                 onClick={async () => {
                   if (loadingId === library.id) return;
                   setLoadingId(library.id);

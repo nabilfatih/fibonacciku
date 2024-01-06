@@ -114,8 +114,6 @@ export async function POST(req: NextRequest) {
   // inject last message with additional rules
   finalMessage[finalMessage.length - 1].content += documentRule;
 
-  console.log(finalMessage);
-
   try {
     const response = await openai.chat.completions.create({
       model,

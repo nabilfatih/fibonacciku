@@ -361,6 +361,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
           router.refresh();
         }
       } catch (error: any) {
+        console.error(error);
         // Ignore abort errors as they are expected.
         if (error.name === "AbortError") {
           abortControllerRef.current = null;

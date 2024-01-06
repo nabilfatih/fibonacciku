@@ -17,10 +17,9 @@ export default function LibraryCardChatButton({ library }: Props) {
   const t = useScopedI18n("Library");
   const router = useRouter();
 
-  const handleChatWithDocument = (library: Libraries) => {
+  const handleChatWithDocument = async (library: Libraries) => {
     if (library.status !== "finished") return;
-
-    router.push("/chat/document");
+    router.push(`/chat/document?library=${library.id}`);
   };
 
   return (
