@@ -119,6 +119,7 @@ export default function ChatLibrary({ userId }: Props) {
                   });
                   // get random number between 3-5 for the questions
                   const number = Math.floor(Math.random() * (5 - 3 + 1)) + 3;
+                  // TODO: Must be in locale language (Refactor this!)
                   const firstPrompt = `Give me ${number} questions that I can ask to you related to this document.`;
                   append(false, library.file_id, firstPrompt);
                   setLoadingId(null);
