@@ -128,8 +128,6 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
                     key={`page_${item.page}`}
                     pageNumber={item.page}
                     pageIndex={index}
-                    renderTextLayer={true}
-                    renderAnnotationLayer={true}
                     onLoadSuccess={onPageLoad}
                     scale={state.zoom}
                     customTextRenderer={textRenderer}
