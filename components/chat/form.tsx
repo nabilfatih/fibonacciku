@@ -2,7 +2,7 @@ import * as React from "react";
 import Textarea from "react-textarea-autosize";
 import { useEnterSubmit } from "@/lib/hooks/use-enter-submit";
 import { cn } from "@/lib/utils";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
@@ -17,6 +17,7 @@ import {
   type MessageContextValue,
 } from "@/lib/context/use-message";
 import FormAttachment from "@/components/chat/form-attachment";
+import { Input } from "@/components/ui/input";
 
 export type PromptProps = {
   input: string;
@@ -128,7 +129,7 @@ export default function PromptForm({
           onOpenChange={setSettingsDialogOpen}
         />
 
-        <input
+        <Input
           ref={fileRef}
           type="file"
           // only accept image files
