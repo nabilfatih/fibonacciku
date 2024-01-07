@@ -12,7 +12,11 @@ import { useScopedI18n } from "@/locales/client";
 import { IconPhoto, IconSend2, IconSettings } from "@tabler/icons-react";
 import ChatSettingsDialog from "@/components/chat/settings-dialog";
 import { toast } from "sonner";
-import type { MessageContextValue } from "@/lib/context/use-message";
+import {
+  useMessage,
+  type MessageContextValue,
+} from "@/lib/context/use-message";
+import FormAttachment from "@/components/chat/form-attachment";
 
 export type PromptProps = {
   input: string;
@@ -35,7 +39,10 @@ export default function PromptForm({
 }: PromptProps) {
   const t = useScopedI18n("FormChat");
 
+  const { dispatch } = useMessage();
+
   const { formRef, onKeyDown } = useEnterSubmit();
+  const fileRef = React.useRef<HTMLInputElement>(null);
   const inputRef = React.useRef<HTMLTextAreaElement>(null);
 
   const isAssistant = React.useMemo(() => type === "assistant", [type]);
@@ -47,6 +54,31 @@ export default function PromptForm({
       inputRef.current.focus();
     }
   }, []);
+
+  const handleUploadChange = React.useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      try {
+        const { files } = e.target;
+        if (!files || files.length === 0) return;
+
+        const file = files[0];
+        if (!file) {
+          toast.error(t("no-image-selected"));
+          return;
+        }
+        if (file.size > 5 * 1024 * 1024) {
+          toast.error(t("max-file-size-5mb"));
+          return;
+        }
+        dispatch({ type: "SET_ATTACHMENT", payload: file });
+      } finally {
+        // Clear the input value after each operation
+        e.target.value = "";
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [dispatch]
+  );
 
   return (
     <form
@@ -64,6 +96,7 @@ export default function PromptForm({
       }}
       ref={formRef}
     >
+      <FormAttachment />
       <div
         className={cn(
           "relative flex max-h-40 w-full grow flex-col overflow-hidden bg-background px-8 sm:rounded-3xl sm:border sm:px-12",
@@ -72,19 +105,20 @@ export default function PromptForm({
       >
         <Tooltip>
           <TooltipTrigger asChild>
-            <button
+            <Button
               onClick={e => {
                 e.preventDefault();
                 setSettingsDialogOpen(true);
               }}
+              variant="ghost"
+              size="icon"
               className={cn(
-                buttonVariants({ size: "sm", variant: "ghost" }),
-                "absolute bottom-[18px] left-0 h-8 w-8 rounded-full bg-background p-0 sm:bottom-3.5 sm:left-4"
+                "absolute bottom-[18px] left-0 h-8 w-8 rounded-full bg-background sm:bottom-3.5 sm:left-4"
               )}
             >
               <IconSettings />
               <span className="sr-only">{t("settings")}</span>
-            </button>
+            </Button>
           </TooltipTrigger>
           <TooltipContent>{t("settings")}</TooltipContent>
         </Tooltip>
@@ -94,21 +128,32 @@ export default function PromptForm({
           onOpenChange={setSettingsDialogOpen}
         />
 
+        <input
+          ref={fileRef}
+          type="file"
+          // only accept image files
+          accept="image/*"
+          className="hidden"
+          onChange={handleUploadChange}
+        />
+
         <Tooltip>
           <TooltipTrigger asChild>
-            <button
+            <Button
               onClick={e => {
                 e.preventDefault();
+                fileRef.current?.click();
               }}
+              variant="ghost"
+              size="icon"
               className={cn(
-                buttonVariants({ size: "sm", variant: "ghost" }),
-                "absolute bottom-[18px] left-9 h-8 w-8 rounded-full bg-background p-0 sm:bottom-3.5 sm:left-[3.25rem]",
+                "absolute bottom-[18px] left-9 h-8 w-8 rounded-full bg-background sm:bottom-3.5 sm:left-[3.25rem]",
                 !isAssistant && "hidden"
               )}
             >
               <IconPhoto />
               <span className="sr-only">{t("image")}</span>
-            </button>
+            </Button>
           </TooltipTrigger>
           <TooltipContent>{t("image")}</TooltipContent>
         </Tooltip>
