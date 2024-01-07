@@ -155,8 +155,11 @@ export default function ChatDocument() {
                       }
                     }}
                     // remove the default browser styling
-                    className="h-10 w-10 bg-transparent p-0 text-center text-sm text-muted-foreground"
+                    className="hidden h-10 w-10 bg-transparent p-0 text-center text-sm text-muted-foreground sm:block"
                   />
+                  <span className="text-sm text-muted-foreground sm:hidden">
+                    {state.currentPage[0]}
+                  </span>
                   <IconSeparator className="h-5 w-5 text-muted-foreground" />
                   <span className="text-sm text-muted-foreground">
                     {state.currentPage[1]}
