@@ -871,4 +871,8 @@ export default {
     "document-desc": "Upload dokumen Anda dan chat dengannya.",
     "new-chat": "Chat Baru",
   },
+  Account: {
+    account: "Akun",
+    subscription: "Berlangganan",
+  },
 } as const;

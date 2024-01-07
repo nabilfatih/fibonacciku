@@ -885,4 +885,8 @@ export default {
     "document-desc": "Laden Sie Ihr Dokument hoch und chatten Sie damit.",
     "new-chat": "Neuer Chat",
   },
+  Account: {
+    account: "Konto",
+    subscription: "Abonnement",
+  },
 } as const;

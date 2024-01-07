@@ -855,4 +855,8 @@ export default {
     "document-desc": "Upload your document and chat with it.",
     "new-chat": "New chat",
   },
+  Account: {
+    account: "Account",
+    subscription: "Subscription",
+  },
 } as const;

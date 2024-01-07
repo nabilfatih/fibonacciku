@@ -1,3 +1,9 @@
+import AccountHeader from "@/components/account/header";
+
 export default function AccountPage() {
-  return <div></div>;
+  return (
+    <>
+      <AccountHeader text="account" />
+    </>
+  );
 }
