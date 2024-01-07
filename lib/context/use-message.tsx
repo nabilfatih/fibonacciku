@@ -161,7 +161,7 @@ const initialState: StateMessage = {
   editMessageIndex: -1,
   editMessageContent: "",
   prompt: "",
-  language: "auto detect",
+  language: "Auto Detect",
   grade: "university",
   attachment: null,
   scrollPosition: -1,
