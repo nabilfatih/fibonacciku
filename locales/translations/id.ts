@@ -266,6 +266,8 @@ export default {
     pricing: "Harga",
     title: "Jelajahi Pengetahuan Tanpa Batas",
     desc: "Kami ingin memberdayakan semua orang untuk belajar apa saja, di mana saja, kapan saja. Itulah sebabnya kami menawarkan paket yang sesuai dengan kebutuhan Anda",
+    "desc-2":
+      "Kami ingin memberdayakan semua orang untuk belajar apa saja, di mana saja, kapan saja.",
     starter: "Pemula",
     free: "Gratis",
     "starter-desc": "Untuk orang yang ingin menjelajahi kekuatan FibonacciKu",
@@ -599,6 +601,8 @@ export default {
     logout: "Keluar",
     homepage: "Beranda",
     close: "Tutup",
+    premium: "Premium",
+    "try-premium": "Coba premium",
   },
   ModalClearChat: {
     clear: "Hapus",

@@ -16,7 +16,11 @@ import Link from "next/link";
 import supabaseClient from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import Avatar, { genConfig } from "react-nice-avatar";
-import { IconExternalLink, IconUser } from "@tabler/icons-react";
+import {
+  IconDiscountCheck,
+  IconExternalLink,
+  IconUser,
+} from "@tabler/icons-react";
 import Feedback from "@/components/header/feedback";
 
 export default function UserMenu() {
@@ -73,6 +77,15 @@ export default function UserMenu() {
             >
               {t("account")}
               <IconUser className="ml-auto h-4 w-4" />
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild className="py-2">
+            <Link
+              href="/premium"
+              className="inline-flex w-full cursor-pointer items-center justify-between"
+            >
+              {t("premium")}
+              <IconDiscountCheck className="ml-auto h-4 w-4" />
             </Link>
           </DropdownMenuItem>
 

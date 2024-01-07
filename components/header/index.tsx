@@ -30,7 +30,7 @@ async function UserHistory() {
       <div className="flex items-center">
         <IconSeparator className="h-6 w-6 text-muted-foreground/50" />
 
-        <Link href="/" className="ml-2 text-lg font-semibold tracking-tight">
+        <Link href="/" className="ml-2 text-lg font-semibold tracking-tighter">
           FibonacciKu
         </Link>
       </div>

@@ -268,6 +268,8 @@ export default {
     pricing: "Preise",
     title: "Unbegrenztes Wissen entdecken",
     desc: "Wir möchten es jedem ermöglichen, jederzeit und überall alles zu lernen. Deshalb bieten wir Pläne an, die Ihren Bedürfnissen entsprechen",
+    "desc-2":
+      "Wir möchten es jedem ermöglichen, jederzeit und überall alles zu lernen.",
     free: "Kostenlos",
     starter: "Starter",
     "starter-desc":
@@ -602,6 +604,8 @@ export default {
     logout: "Abmelden",
     homepage: "Startseite",
     close: "Schließen",
+    premium: "Premium",
+    "try-premium": "Premium ausprobieren",
   },
   ModalClearChat: {
     clear: "Leeren",

@@ -262,6 +262,7 @@ export default {
     pricing: "Pricing",
     title: "Explore Limitless Knowledge",
     desc: "We want empower everyone to learn anything, anywhere, anytime. That's why we offer plans that fit your needs",
+    "desc-2": "We want empower everyone to learn anything, anywhere, anytime.",
     free: "Free",
     starter: "Starter",
     "starter-desc": "For person that want to explore the power of FibonacciKu",
@@ -582,6 +583,8 @@ export default {
     logout: "Logout",
     homepage: "Homepage",
     close: "Close",
+    premium: "Premium",
+    "try-premium": "Try premium",
   },
   ModalClearChat: {
     clear: "Clear",
