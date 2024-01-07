@@ -88,7 +88,9 @@ export default function ChatLibrary({ userId }: Props) {
                 variant="outline"
                 size="icon"
                 className="rounded-full"
-                disabled={pagination.start <= 0}
+                disabled={
+                  pagination.start <= 0 || typeof loadingId === "string"
+                }
                 onClick={() => changePagination(-1)}
               >
                 <IconChevronLeft className="h-5 w-5" />
@@ -163,7 +165,10 @@ export default function ChatLibrary({ userId }: Props) {
                 variant="outline"
                 size="icon"
                 className="rounded-full"
-                disabled={pagination.end >= libraries.length}
+                disabled={
+                  pagination.end >= libraries.length ||
+                  typeof loadingId === "string"
+                }
                 onClick={() => changePagination(1)}
               >
                 <span className="sr-only">Next</span>
