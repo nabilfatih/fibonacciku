@@ -4,11 +4,11 @@ import { cookies } from "next/headers";
 
 import { SidebarToggle } from "@/components/sidebar/sidebar-toggle";
 import { IconSeparator } from "@/components/ui/icons";
-import UserMenu from "@/components/header/chat/user-menu";
+import UserMenu from "@/components/header/user-menu";
 import { SidebarMobile } from "@/components/sidebar/chat/sidebar-mobile";
 import { ChatHistory } from "@/components/sidebar/chat/chat-history";
-import HeaderChatFeature from "@/components/header/chat/feature";
-import HeaderChatLibrary from "@/components/header/chat/library";
+import HeaderChatFeature from "@/components/header/feature";
+import HeaderChatLibrary from "@/components/header/library";
 
 import { createClientServer } from "@/lib/supabase/server";
 

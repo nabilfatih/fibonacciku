@@ -1,4 +1,4 @@
-import { HeaderChat } from "@/components/header/chat";
+import { HeaderChat } from "@/components/header";
 import { CurrentUserContextProvider } from "@/lib/context/use-current-user";
 import { createClientServer } from "@/lib/supabase/server";
 import { cookies } from "next/headers";

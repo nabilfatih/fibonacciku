@@ -16,9 +16,8 @@ import Link from "next/link";
 import supabaseClient from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import Avatar, { genConfig } from "react-nice-avatar";
-import { IconExternalLink } from "@tabler/icons-react";
-import Feedback from "@/components/header/chat/feedback";
-import Account from "@/components/header/chat/account";
+import { IconExternalLink, IconUser } from "@tabler/icons-react";
+import Feedback from "@/components/header/feedback";
 
 export default function UserMenu() {
   const t = useScopedI18n("ModalAccount");
@@ -67,9 +66,15 @@ export default function UserMenu() {
               {userDetails.email}
             </div>
           </DropdownMenuLabel>
-          <DropdownMenuLabel className="cursor-pointer rounded-sm py-2 font-normal transition-colors hover:bg-accent">
-            <Account className="w-full" />
-          </DropdownMenuLabel>
+          <DropdownMenuItem asChild className="py-2">
+            <Link
+              href="/account"
+              className="inline-flex w-full cursor-pointer items-center justify-between"
+            >
+              {t("account")}
+              <IconUser className="ml-auto h-4 w-4" />
+            </Link>
+          </DropdownMenuItem>
 
           <DropdownMenuSeparator className="my-2" />
 
