@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,14 +15,39 @@ import {
   IconDotsVertical,
   IconFile,
   IconMessageCircle2,
+  IconPlus,
 } from "@tabler/icons-react";
 import { useScopedI18n } from "@/locales/client";
 
+const features = new Set(["assistant", "document"]);
+
 export default function HeaderChatFeature() {
   const t = useScopedI18n("Feature");
+  const pathname = usePathname();
   const params = useParams();
 
-  const type = params.feature;
+  const type = params.feature as string;
+
+  if (!features.has(type)) {
+    return (
+      <Button asChild variant="outline" className="h-9 w-9 sm:h-9 sm:w-auto">
+        <Link
+          href={
+            pathname.includes("/library") ? "/chat/document" : "/chat/assistant"
+          }
+        >
+          <div className="hidden items-center sm:flex">
+            <IconPlus className="mr-2 h-4 w-4" />
+            {t("new-chat")}
+          </div>
+          <div className="inline-flex sm:hidden">
+            <IconPlus className="h-5 w-5" />
+            <span className="sr-only">New chat</span>
+          </div>
+        </Link>
+      </Button>
+    );
+  }
 
   return (
     <DropdownMenu>

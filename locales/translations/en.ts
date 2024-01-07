@@ -853,5 +853,6 @@ export default {
     "assistant-desc": "Ask me anything and I will answer you.",
     document: "Document",
     "document-desc": "Upload your document and chat with it.",
+    "new-chat": "New chat",
   },
 } as const;

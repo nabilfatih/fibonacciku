@@ -869,5 +869,6 @@ export default {
     "assistant-desc": "Tanyakan apa saja dan saya akan menjawab Anda.",
     document: "Dokumen",
     "document-desc": "Upload dokumen Anda dan chat dengannya.",
+    "new-chat": "Chat Baru",
   },
 } as const;

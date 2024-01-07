@@ -883,5 +883,6 @@ export default {
     "assistant-desc": "Fragen Sie irgendetwas und ich werde Ihnen antworten.",
     document: "Dokument",
     "document-desc": "Laden Sie Ihr Dokument hoch und chatten Sie damit.",
+    "new-chat": "Neuer Chat",
   },
 } as const;
