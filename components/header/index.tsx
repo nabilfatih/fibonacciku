@@ -11,6 +11,7 @@ import HeaderChatFeature from "@/components/header/feature";
 import HeaderChatLibrary from "@/components/header/library";
 
 import { createClientServer } from "@/lib/supabase/server";
+import HeaderBadge from "@/components/header/badge";
 
 async function UserHistory() {
   const cookieStore = cookies();
@@ -33,6 +34,8 @@ async function UserHistory() {
         <Link href="/" className="ml-2 text-lg font-semibold tracking-tighter">
           FibonacciKu
         </Link>
+
+        <HeaderBadge />
       </div>
     </div>
   );
