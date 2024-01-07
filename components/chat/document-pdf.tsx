@@ -136,7 +136,7 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
                         <IconSpinner className="animate-spin" />
                       </div>
                     }
-                    className="relative mb-2 flex h-full items-center justify-center bg-background shadow-sm last:mb-0"
+                    className="relative mb-2 flex min-h-full items-center justify-center bg-background shadow-sm last:mb-0"
                   />
                 );
               }}
