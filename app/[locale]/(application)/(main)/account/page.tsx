@@ -29,7 +29,7 @@ export default async function AccountPage() {
     <>
       <AccountHeader text="account" />
 
-      <main className="h-full overflow-y-auto overflow-x-hidden py-4">
+      <main className="h-[calc(100%-81px)] overflow-y-auto overflow-x-hidden pb-4 pt-4">
         <AccountSubscription userId={session.user.id} />
       </main>
     </>

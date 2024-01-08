@@ -136,7 +136,8 @@ export default function LibraryDocument({
       </div>
       <div
         className={cn(
-          "h-full overflow-y-auto overflow-x-hidden pb-56 pt-4 sm:pb-64",
+          // minus header height
+          "h-[calc(100%-73px)] overflow-y-auto overflow-x-hidden pb-48 pt-4 sm:pb-56",
           className
         )}
         ref={parentRef}
