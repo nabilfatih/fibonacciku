@@ -1,7 +1,8 @@
 import { createClientServer } from "@/lib/supabase/server";
 import type { Subscription } from "@/types/types";
 import { cookies } from "next/headers";
-import AccountSubscriptionManage from "./subscription-manage";
+import AccountSubscriptionManage from "@/components/account/subscription-manage";
+import AccountSubscriptionEmpty from "@/components/account/subscription-empty";
 
 type Props = {
   userId: string;
@@ -22,7 +23,7 @@ export default async function AccountSubscription({ userId }: Props) {
     .maybeSingle();
 
   if (!data) {
-    return null;
+    return <AccountSubscriptionEmpty />;
   }
 
   // check with plan that user use, just the sake of simplicity in the frontend
