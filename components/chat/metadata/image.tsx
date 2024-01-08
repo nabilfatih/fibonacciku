@@ -49,7 +49,7 @@ export default function ChatMetadataImage({ metadata }: Props) {
                   priority
                   width={256}
                   height={256}
-                  className="m-0 cursor-pointer rounded-xl border bg-muted/90 object-cover"
+                  className="m-0 cursor-pointer rounded-xl border bg-muted/90 object-cover shadow-sm"
                 />
               </Link>
             </motion.div>
