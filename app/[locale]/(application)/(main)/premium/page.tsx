@@ -16,6 +16,8 @@ export default async function PremiumPage() {
           <p className="mt-2 text-muted-foreground">{t("desc-2")}</p>
         </div>
       </header>
+
+      <main className="h-[calc(100%-113px)] overflow-y-auto overflow-x-hidden pb-4 pt-4"></main>
     </>
   );
 }
