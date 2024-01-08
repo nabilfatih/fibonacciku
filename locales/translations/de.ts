@@ -725,6 +725,7 @@ export default {
     "days-left": "Tage verbleiben bis Ihr Abonnement endet",
     "do-not-have-plan":
       "Sie haben noch keinen Plan, sehen Sie sich die Preise an, um zu beginnen",
+    "see-premium": "Premium ansehen",
   },
   DrawerTools: {
     calculator: "Rechner",

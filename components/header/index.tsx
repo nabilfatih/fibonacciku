@@ -12,6 +12,7 @@ import HeaderChatLibrary from "@/components/header/library";
 
 import { createClientServer } from "@/lib/supabase/server";
 import HeaderBadge from "@/components/header/badge";
+import Image from "next/image";
 
 async function UserHistory() {
   const cookieStore = cookies();
@@ -20,14 +21,28 @@ async function UserHistory() {
     data: { session },
   } = await supabase.auth.getSession();
 
-  if (!session?.user?.id) return null;
-
   return (
     <div className="flex items-center">
-      <SidebarMobile>
-        <ChatHistory userId={session.user.id} />
-      </SidebarMobile>
-      <SidebarToggle />
+      {session?.user?.id ? (
+        <>
+          <SidebarMobile>
+            <ChatHistory userId={session.user.id} />
+          </SidebarMobile>
+          <SidebarToggle />
+        </>
+      ) : (
+        <Link href="/">
+          <Image
+            src="/logo.webp"
+            alt="FibonacciKu"
+            width={24}
+            height={24}
+            priority
+            className="mr-2 rounded-full object-cover shadow-sm"
+          />
+        </Link>
+      )}
+
       <div className="flex items-center">
         <IconSeparator className="h-6 w-6 text-muted-foreground/50" />
 

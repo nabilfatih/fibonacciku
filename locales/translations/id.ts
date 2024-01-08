@@ -718,6 +718,7 @@ export default {
     "manage-plan": "Kelola paket",
     "days-left": "hari lagi sampai langganan Anda berakhir",
     "do-not-have-plan": "Anda belum memiliki paket, lihat harga untuk memulai",
+    "see-premium": "Lihat premium",
   },
   DrawerTools: {
     calculator: "Kalkulator",

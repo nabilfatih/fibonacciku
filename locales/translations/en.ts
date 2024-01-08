@@ -700,6 +700,7 @@ export default {
     "days-left": "days left until your subscription ends",
     "do-not-have-plan":
       "You do not have any plan yet, see pricing to get started",
+    "see-premium": "See premium",
   },
   DrawerTools: {
     calculator: "Calculator",
