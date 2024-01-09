@@ -12,10 +12,12 @@ import {
 import { getScopedI18n } from "@/locales/server";
 import { Label } from "@/components/ui/label";
 import AccountResetPassword from "@/components/account/reset-password";
-import AccountTheme from "@/components/account/theme";
-import AccountLanguage from "@/components/account/language";
-import AccountRole from "@/components/account/role";
 import AccountLogout from "@/components/account/logout";
+import dynamic from "next/dynamic";
+
+const AccountRole = dynamic(() => import("@/components/account/role"));
+const AccountTheme = dynamic(() => import("@/components/account/theme"));
+const AccountLanguage = dynamic(() => import("@/components/account/language"));
 
 type Props = {
   userId: string;
