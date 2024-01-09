@@ -6,7 +6,7 @@ export default async function PremiumPage() {
   return (
     <>
       <header className="border-b py-6">
-        <div className="relative mx-auto max-w-2xl px-4">
+        <div className="relative mx-auto max-w-3xl px-4">
           <div className="flex items-center">
             <h2 className="text-2xl font-semibold tracking-tighter">
               FibonacciKu
