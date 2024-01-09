@@ -99,12 +99,11 @@ export default function UserMenu() {
 
           <DropdownMenuItem asChild className="py-2">
             <Link
-              href="/home"
+              href="https://nakafa.com"
               target="_blank"
-              rel="noopener noreferrer"
               className="inline-flex w-full cursor-pointer items-center justify-between"
             >
-              {t("homepage")}
+              Nakafa
               <IconExternalLink className="ml-auto h-4 w-4" />
             </Link>
           </DropdownMenuItem>
