@@ -10,8 +10,8 @@ import {
 import { getScopedI18n } from "@/locales/server";
 import { Badge } from "@/components/ui/badge";
 import moment from "moment";
-import SubscriptionManageButton from "@/components/account/subscription-manage-button";
 import { Label } from "@/components/ui/label";
+import SubscriptionManageButton from "@/components/account/subscription-manage-button";
 
 type Props = {
   subscription: Subscription;

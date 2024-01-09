@@ -11,13 +11,11 @@ import {
 } from "@/components/ui/card";
 import { getScopedI18n } from "@/locales/server";
 import { Label } from "@/components/ui/label";
-import AccountResetPassword from "@/components/account/reset-password";
 import AccountLogout from "@/components/account/logout";
-import dynamic from "next/dynamic";
-
-const AccountRole = dynamic(() => import("@/components/account/role"));
-const AccountTheme = dynamic(() => import("@/components/account/theme"));
-const AccountLanguage = dynamic(() => import("@/components/account/language"));
+import AccountResetPassword from "@/components/account/reset-password";
+import AccountLanguage from "@/components/account/language";
+import AccountTheme from "@/components/account/theme";
+import AccountRole from "@/components/account/role";
 
 type Props = {
   userId: string;
