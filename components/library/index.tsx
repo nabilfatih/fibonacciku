@@ -115,7 +115,7 @@ export default function LibraryDocument({
 
   return (
     <>
-      <div className="border-b py-4">
+      <header className="border-b py-4">
         <form className="relative mx-auto max-w-2xl px-4 sm:px-5">
           <IconSearch className="absolute left-7 top-2.5 h-5 w-5 text-muted-foreground sm:left-8" />
           <Input
@@ -133,8 +133,8 @@ export default function LibraryDocument({
             onChange={e => setSearch(e.target.value)}
           />
         </form>
-      </div>
-      <div
+      </header>
+      <main
         className={cn(
           // minus header height
           "h-[calc(100%-73px)] overflow-y-auto overflow-x-hidden pb-48 pt-4 sm:pb-56",
@@ -143,7 +143,7 @@ export default function LibraryDocument({
         ref={parentRef}
       >
         <LibraryList parentRef={parentRef} libraries={filteredLibraries} />
-      </div>
+      </main>
 
       <LibraryPanel />
     </>

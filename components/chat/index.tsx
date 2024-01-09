@@ -76,7 +76,7 @@ export default function ChatMessage({
 
   return (
     <>
-      <div
+      <main
         ref={chatMessageRef}
         className={cn(
           "h-full overflow-y-auto overflow-x-hidden pb-48 pt-4 sm:pb-52 md:pt-10",
@@ -95,7 +95,7 @@ export default function ChatMessage({
             <ChatScrollAnchor trackVisibility={state.isGenerating} />
           </>
         ) : null}
-      </div>
+      </main>
 
       <ChatPanel
         id={id}

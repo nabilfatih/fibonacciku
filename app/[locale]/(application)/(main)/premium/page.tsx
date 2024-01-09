@@ -8,9 +8,9 @@ export default async function PremiumPage() {
       <header className="border-b py-6">
         <div className="relative mx-auto max-w-2xl px-4">
           <div className="flex items-center">
-            <h1 className="text-2xl font-semibold tracking-tighter">
+            <h2 className="text-2xl font-semibold tracking-tighter">
               FibonacciKu
-            </h1>
+            </h2>
             <Badge className="ml-2">Premium</Badge>
           </div>
           <p className="mt-2 text-muted-foreground">{t("desc-2")}</p>

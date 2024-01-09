@@ -43,7 +43,7 @@ async function UserHistory() {
         </Link>
       )}
 
-      <div className="flex items-center">
+      <h1 className="flex items-center">
         <IconSeparator className="h-6 w-6 text-muted-foreground/50" />
 
         <Link href="/" className="ml-2 text-lg font-semibold tracking-tighter">
@@ -51,7 +51,7 @@ async function UserHistory() {
         </Link>
 
         <HeaderBadge />
-      </div>
+      </h1>
     </div>
   );
 }

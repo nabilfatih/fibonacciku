@@ -9,7 +9,7 @@ export default async function AccountHeader({ text }: Props) {
   return (
     <header className="border-b py-6">
       <div className="relative mx-auto max-w-2xl px-4">
-        <h1 className="text-2xl font-semibold">{t(text as never)}</h1>
+        <h2 className="text-2xl font-semibold">{t(text as never)}</h2>
       </div>
     </header>
   );

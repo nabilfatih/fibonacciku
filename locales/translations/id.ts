@@ -879,5 +879,6 @@ export default {
   Account: {
     account: "Akun",
     subscription: "Berlangganan",
+    contact: "Kontak",
   },
 } as const;
