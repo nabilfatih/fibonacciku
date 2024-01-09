@@ -9,6 +9,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 type Props = {
   userId: string;
@@ -37,8 +39,14 @@ export default async function AccountGeneral({ userId }: Props) {
             You can update your account information here.
           </CardDescription>
         </CardHeader>
-        <CardContent></CardContent>
-        <CardFooter className="flex justify-between"></CardFooter>
+        <CardContent>
+          <div className="grid"></div>
+        </CardContent>
+        <CardFooter className="flex justify-between">
+          <Button asChild>
+            <Link href="/account/contact">Contact us</Link>
+          </Button>
+        </CardFooter>
       </Card>
     </section>
   );
