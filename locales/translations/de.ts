@@ -606,6 +606,7 @@ export default {
     close: "Schließen",
     premium: "Premium",
     "try-premium": "Premium ausprobieren",
+    nakafa: "Nakafa Startseite",
   },
   ModalClearChat: {
     clear: "Leeren",

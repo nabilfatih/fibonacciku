@@ -603,6 +603,7 @@ export default {
     close: "Tutup",
     premium: "Premium",
     "try-premium": "Coba premium",
+    nakafa: "Beranda Nakafa",
   },
   ModalClearChat: {
     clear: "Hapus",

@@ -585,6 +585,7 @@ export default {
     close: "Close",
     premium: "Premium",
     "try-premium": "Try premium",
+    nakafa: "Nakafa homepage",
   },
   ModalClearChat: {
     clear: "Clear",

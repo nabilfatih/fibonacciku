@@ -103,7 +103,7 @@ export default function UserMenu() {
               target="_blank"
               className="inline-flex w-full cursor-pointer items-center justify-between"
             >
-              Nakafa
+              {t("nakafa")}
               <IconExternalLink className="ml-auto h-4 w-4" />
             </Link>
           </DropdownMenuItem>
