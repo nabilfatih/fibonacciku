@@ -22,51 +22,47 @@ export default async function AccountSubscriptionManage({
   const t = await getScopedI18n("ModalSubscription");
 
   return (
-    <section className="mx-auto max-w-2xl px-4">
-      <Card>
-        <CardHeader>
-          <CardTitle>Subscription</CardTitle>
-          <div className="flex flex-row items-center gap-2">
-            <CardDescription>{t("plan-summary")}</CardDescription>
-            <Badge>{t(subscription.planName as never)}</Badge>
-            {subscription.status === "trialing" && (
-              <Badge variant="outline">{t("trial")}</Badge>
-            )}
-          </div>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-2 pb-4">
-            <div className="flex flex-col items-start gap-2">
-              <label className="text-xs text-muted-foreground">
-                {t("start-date")}
-              </label>
-              <p className="text-sm leading-none">
-                {moment(subscription.current_period_start).format(
-                  "MMM D, YYYY"
-                )}
-              </p>
-            </div>
-
-            <div className="flex flex-col items-start gap-2">
-              <label className="text-xs text-muted-foreground">
-                {t("end-date")}
-              </label>
-
-              <p className="text-sm leading-none">
-                {moment(subscription.current_period_end).format("MMM D, YYYY")}
-              </p>
-            </div>
+    <Card>
+      <CardHeader>
+        <CardTitle>Subscription</CardTitle>
+        <div className="flex flex-row items-center gap-2">
+          <CardDescription>{t("plan-summary")}</CardDescription>
+          <Badge>{t(subscription.planName as never)}</Badge>
+          {subscription.status === "trialing" && (
+            <Badge variant="outline">{t("trial")}</Badge>
+          )}
+        </div>
+      </CardHeader>
+      <CardContent>
+        <div className="grid grid-cols-2 pb-4">
+          <div className="flex flex-col items-start gap-2">
+            <label className="text-xs text-muted-foreground">
+              {t("start-date")}
+            </label>
+            <p className="text-sm leading-none">
+              {moment(subscription.current_period_start).format("MMM D, YYYY")}
+            </p>
           </div>
 
-          <p className="text-sm text-muted-foreground">
-            {moment(subscription.current_period_end).diff(moment(), "days")}{" "}
-            {t("days-left")}
-          </p>
-        </CardContent>
-        <CardFooter className="flex justify-between">
-          <SubscriptionManageButton subscription={subscription} />
-        </CardFooter>
-      </Card>
-    </section>
+          <div className="flex flex-col items-start gap-2">
+            <label className="text-xs text-muted-foreground">
+              {t("end-date")}
+            </label>
+
+            <p className="text-sm leading-none">
+              {moment(subscription.current_period_end).format("MMM D, YYYY")}
+            </p>
+          </div>
+        </div>
+
+        <p className="text-sm text-muted-foreground">
+          {moment(subscription.current_period_end).diff(moment(), "days")}{" "}
+          {t("days-left")}
+        </p>
+      </CardContent>
+      <CardFooter className="flex justify-between">
+        <SubscriptionManageButton subscription={subscription} />
+      </CardFooter>
+    </Card>
   );
 }

@@ -49,5 +49,9 @@ export default async function AccountSubscription({ userId }: Props) {
     planName: plan?.toLocaleLowerCase() || "free",
   };
 
-  return <AccountSubscriptionManage subscription={subscription} />;
+  return (
+    <section className="mx-auto max-w-2xl px-4">
+      <AccountSubscriptionManage subscription={subscription} />
+    </section>
+  );
 }
