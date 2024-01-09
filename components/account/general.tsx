@@ -9,14 +9,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { getScopedI18n } from "@/locales/server";
 import { Label } from "@/components/ui/label";
 import AccountResetPassword from "@/components/account/reset-password";
 import AccountTheme from "@/components/account/theme";
 import AccountLanguage from "@/components/account/language";
-import AccountRole from "./role";
+import AccountRole from "@/components/account/role";
+import AccountLogout from "@/components/account/logout";
 
 type Props = {
   userId: string;
@@ -64,9 +63,7 @@ export default async function AccountGeneral({ userId }: Props) {
         </CardContent>
         <CardFooter className="flex items-center justify-between">
           <AccountResetPassword email={data.email} />
-          <Button variant="outline" asChild>
-            <Link href="/account/contact">Contact us</Link>
-          </Button>
+          <AccountLogout />
         </CardFooter>
       </Card>
     </section>
