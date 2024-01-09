@@ -11,6 +11,7 @@ import { getScopedI18n } from "@/locales/server";
 import { Badge } from "@/components/ui/badge";
 import moment from "moment";
 import SubscriptionManageButton from "@/components/account/subscription-manage-button";
+import { Label } from "@/components/ui/label";
 
 type Props = {
   subscription: Subscription;
@@ -36,19 +37,18 @@ export default async function AccountSubscriptionManage({
       <CardContent>
         <div className="grid grid-cols-2 pb-4">
           <div className="flex flex-col items-start gap-2">
-            <label className="text-xs text-muted-foreground">
+            <Label className="text-xs text-muted-foreground">
               {t("start-date")}
-            </label>
+            </Label>
             <p className="text-sm leading-none">
               {moment(subscription.current_period_start).format("MMM D, YYYY")}
             </p>
           </div>
 
           <div className="flex flex-col items-start gap-2">
-            <label className="text-xs text-muted-foreground">
+            <Label className="text-xs text-muted-foreground">
               {t("end-date")}
-            </label>
-
+            </Label>
             <p className="text-sm leading-none">
               {moment(subscription.current_period_end).format("MMM D, YYYY")}
             </p>

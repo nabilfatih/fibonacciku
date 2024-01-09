@@ -9,14 +9,21 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { getScopedI18n } from "@/locales/server";
+import { Label } from "@/components/ui/label";
+import AccountResetPassword from "@/components/account/reset-password";
+import AccountTheme from "@/components/account/theme";
+import AccountLanguage from "@/components/account/language";
+import AccountRole from "./role";
 
 type Props = {
   userId: string;
 };
 
 export default async function AccountGeneral({ userId }: Props) {
+  const t = await getScopedI18n("ModalAccount");
   const cookieStore = cookies();
   const supabase = createClientServer(cookieStore);
   const { data } = await supabase
@@ -40,10 +47,24 @@ export default async function AccountGeneral({ userId }: Props) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid"></div>
+          <div className="grid gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b pb-4">
+              <Label className="text-sm text-muted-foreground">
+                {t("your-email")}
+              </Label>
+              <p className="text-sm leading-none">{data.email}</p>
+            </div>
+
+            <AccountRole userId={userId} role={data.role} />
+
+            <AccountTheme />
+
+            <AccountLanguage userId={userId} />
+          </div>
         </CardContent>
-        <CardFooter className="flex justify-between">
-          <Button asChild>
+        <CardFooter className="flex items-center justify-between">
+          <AccountResetPassword email={data.email} />
+          <Button variant="outline" asChild>
             <Link href="/account/contact">Contact us</Link>
           </Button>
         </CardFooter>
