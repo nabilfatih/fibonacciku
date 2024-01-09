@@ -18,9 +18,11 @@ const nextConfig = {
 };
 
 const millionConfig = {
-  auto: true,
   // if you're using RSC:
-  auto: { rsc: true },
+  auto: {
+    threshold: 0.05, // default: 0.1,
+    rsc: true,
+  },
 };
 
 export default million.next(nextConfig, millionConfig);
