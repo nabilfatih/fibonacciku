@@ -21,7 +21,7 @@ export default async function AccountPage() {
     <>
       <AccountHeader text="account" />
 
-      <main className="h-[calc(100%-81px)] overflow-y-auto overflow-x-hidden pb-4 pt-4">
+      <main className="h-[calc(100%-81px)] space-y-4 overflow-y-auto overflow-x-hidden pb-4 pt-4">
         <Suspense>
           <AccountGeneral userId={session.user.id} />
         </Suspense>
