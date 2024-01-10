@@ -674,6 +674,7 @@ export default {
     send: "Kirim",
     "message-send": "Pesan Anda telah terkirim",
     "something-wrong": "Ada yang salah, silakan coba lagi nanti!",
+    close: "Tutup",
   },
   ModalSocialMedia: {
     "social-media": "Media sosial",

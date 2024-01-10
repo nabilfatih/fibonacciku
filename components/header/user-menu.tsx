@@ -22,6 +22,7 @@ import {
   IconUser,
 } from "@tabler/icons-react";
 import Feedback from "@/components/header/feedback";
+import Contact from "@/components/header/contact";
 
 export default function UserMenu() {
   const t = useScopedI18n("ModalAccount");
@@ -93,6 +94,10 @@ export default function UserMenu() {
 
           <DropdownMenuLabel className="cursor-pointer rounded-sm py-2 font-normal transition-colors hover:bg-accent">
             <Feedback className="w-full" />
+          </DropdownMenuLabel>
+
+          <DropdownMenuLabel className="cursor-pointer rounded-sm py-2 font-normal transition-colors hover:bg-accent">
+            <Contact className="w-full" />
           </DropdownMenuLabel>
 
           <DropdownMenuSeparator className="my-2" />

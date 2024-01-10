@@ -655,6 +655,7 @@ export default {
     send: "Send",
     "message-send": "Message sent successfully",
     "something-wrong": "Something went wrong, please try again later!",
+    close: "Close",
   },
   ModalSocialMedia: {
     "social-media": "Social media",

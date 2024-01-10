@@ -678,6 +678,7 @@ export default {
     "message-send": "Nachricht erfolgreich gesendet",
     "something-wrong":
       "Etwas ist schief gelaufen, bitte versuchen Sie es später noch einmal!",
+    close: "Schließen",
   },
   ModalSocialMedia: {
     "social-media": "Soziale Medien",
