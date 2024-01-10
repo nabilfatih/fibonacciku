@@ -43,7 +43,7 @@ export default function PremiumPrice({ user, subscription }: Props) {
   const handleChoosePlan = useCallback(
     async (price: (typeof priceList)[0]) => {
       if (price.redirect) return router.push("/contact");
-      if (!user) return router.push("/auth/login?next=/pricing");
+      if (!user) return router.push("/auth/login?next=/premium");
 
       setPriceIdLoading(price.priceId);
 
