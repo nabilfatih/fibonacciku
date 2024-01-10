@@ -11,13 +11,11 @@ import { useScopedI18n } from "@/locales/client";
 import { toast } from "sonner";
 import supabaseClient from "@/lib/supabase/client";
 
-interface ForgotPasswordFormProps extends React.HTMLAttributes<HTMLDivElement> {
-  next: string;
-}
+interface ForgotPasswordFormProps
+  extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function ForgotPasswordForm({
   className,
-  next,
   ...props
 }: ForgotPasswordFormProps) {
   const t = useScopedI18n("Auth");

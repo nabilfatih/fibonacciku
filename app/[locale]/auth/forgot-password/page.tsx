@@ -1,4 +1,6 @@
+import { ForgotPasswordForm } from "@/components/auth/forgot-password-form";
 import { getScopedI18n } from "@/locales/server";
+import Link from "next/link";
 
 export default async function ForgotPasswordPage() {
   const t = await getScopedI18n("Auth");
@@ -12,6 +14,34 @@ export default async function ForgotPasswordPage() {
           {t("forgot-password-desc")}
         </p>
       </header>
+
+      <ForgotPasswordForm />
+
+      <p className="px-8 text-center text-sm text-muted-foreground">
+        <span>{t("login-desc")}</span>
+        {` `}
+        <Link
+          href="/auth/login"
+          className="underline underline-offset-4 hover:text-primary"
+        >
+          {t("login")}
+        </Link>
+      </p>
+      <p className="px-8 text-center text-sm text-muted-foreground">
+        <Link
+          href="/terms"
+          className="underline underline-offset-4 hover:text-primary"
+        >
+          {t("terms-of-service")}
+        </Link>{" "}
+        &{" "}
+        <Link
+          href="/privacy"
+          className="underline underline-offset-4 hover:text-primary"
+        >
+          {t("privacy-policy")}
+        </Link>
+      </p>
     </>
   );
 }
