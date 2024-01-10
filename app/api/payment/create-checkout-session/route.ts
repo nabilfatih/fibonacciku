@@ -57,7 +57,7 @@ export async function POST(req: Request) {
         automatic_tax: { enabled: true },
         tax_id_collection: { enabled: true },
         mode: "subscription",
-        allow_promotion_codes: true,
+        allow_promotion_codes: price.type === "monthly" ? true : false,
         subscription_data: {
           trial_period_days: 7,
           metadata,
