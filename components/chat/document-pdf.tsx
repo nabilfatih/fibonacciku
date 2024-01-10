@@ -144,8 +144,10 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
           </div>
         ) : (
           <div ref={listRef} className="scroll-gutter h-full overflow-auto">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <IconSpinner className="animate-spin" />
+            <div className="relative mb-2 flex min-h-full items-center justify-center bg-background shadow-sm last:mb-0">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <IconSpinner className="animate-spin" />
+              </div>
             </div>
           </div>
         )}
