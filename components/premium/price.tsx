@@ -99,7 +99,7 @@ export default function PremiumPrice({ user, subscription }: Props) {
               <CardContent>
                 <div className="grid gap-4">
                   <div className="inline-block whitespace-nowrap align-bottom">
-                    <span className="align-bottom text-3xl font-bold tabular-nums">
+                    <span className="align-bottom text-3xl font-semibold tabular-nums">
                       {formatCurrency(priceData, currency, price.type)}
                     </span>
                     <span className="leading-none">
