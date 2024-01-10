@@ -11,7 +11,7 @@ export default function AuthenticationLayout({
       <div className="absolute right-4 top-4 md:right-8 md:top-8">
         <ThemeToggle />
       </div>
-      <div className="relative hidden h-full flex-col bg-muted p-10 lg:flex dark:border-r">
+      <div className="relative hidden h-full flex-col bg-muted p-10 dark:border-r lg:flex">
         <div className="absolute inset-0 bg-muted" />
         <div className="relative z-20 flex items-center gap-2 text-lg font-medium">
           <div className="relative h-6 w-6">
@@ -46,9 +46,9 @@ export default function AuthenticationLayout({
             alt="FibonacciKu"
           />
         </div>
-        <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+        <main className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           {children}
-        </div>
+        </main>
       </div>
     </div>
   );

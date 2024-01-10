@@ -44,12 +44,12 @@ export default async function LoginPage({ searchParams }: Props) {
 
   return (
     <>
-      <div className="flex flex-col space-y-2 text-center">
+      <header className="flex flex-col space-y-2 text-center">
         <h1 className="text-2xl font-semibold tracking-tight">
           {t("welcome")}
         </h1>
         <p className="text-sm text-muted-foreground">{t("login-header")}</p>
-      </div>
+      </header>
       <LoginAuthForm next={next} />
       <p className="px-8 text-center text-sm text-muted-foreground">
         <Link href="/auth/forgot-password" className="hover:text-primary">
