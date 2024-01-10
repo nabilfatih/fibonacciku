@@ -98,7 +98,7 @@ export function LoginAuthForm({
               onChange={event => setPassword(event.target.value)}
             />
           </div>
-          <Button disabled={isLoading}>
+          <Button disabled={isLoading || !email || !password} type="submit">
             {isLoading && <IconSpinner className="mr-2 h-4 w-4 animate-spin" />}
             {t("sign-in")}
           </Button>
