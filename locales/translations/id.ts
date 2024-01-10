@@ -304,6 +304,7 @@ export default {
     "tailored-onboarding": "Onboarding yang disesuaikan",
     "select-plan": "Pilih paket",
     month: "Bulan",
+    year: "Tahun",
     "contact-us": "Hubungi kami",
     "check-product": "Periksa produk",
     "not-sure": "Masih belum yakin?",
@@ -312,7 +313,7 @@ export default {
     "all-features-in-starter": "Semua fitur di pemula",
     "all-features-in-hobby": "Semua fitur di hobi",
     "all-features-in-premium": "Semua fitur di premium",
-    "see-account": "Klik akun Anda untuk melihat paket Anda",
+    "see-account": "Lihat paket Anda di akun Anda",
     faq: "Tanya Jawab",
     "faq-desc": "Pertanyaan yang sering diajukan",
     "have-question": "Punya pertanyaan?",
@@ -330,6 +331,8 @@ export default {
     "dedicated-support": "Dukungan khusus",
     "chat-with-founder": "Chat dengan pendiri",
     "download-book": "Unduh buku",
+    "get-started": "Mulai sekarang",
+    "7-free-trial": "7 hari gratis",
   },
 
   PricingFAQ: {

@@ -4,20 +4,13 @@ import type {
   PlanDetailsType,
   PlanType,
   PriceListType,
-} from "@/types/types";
+} from "@/lib/premium/type";
 import { countriesList } from "@/lib/data/countries";
 import type { Geo } from "@vercel/edge";
 
-export const planOptions: PlanType[] = ["starter", "hobby", "premium"];
+export const planOptions: PlanType[] = ["premium"];
 
 export const planDetails: PlanDetailsType = {
-  starter: ["unlimited-use", "internet-access", "plugin-support"],
-  hobby: [
-    "all-features-in-starter",
-    "unlimited-document-upload",
-    "library-access",
-    "document-analysis",
-  ],
   premium: [
     "all-features-in-hobby",
     "you-can-do-anything",
@@ -32,27 +25,8 @@ export const planDetails: PlanDetailsType = {
 
 export const priceList: PriceListType = [
   {
-    plan: "starter",
-    redirect: false,
-    priceId: "price_1O4gvJApEKbNyVi655JjtKse",
-    price: {
-      usd: 5,
-      eur: 5,
-      idr: 50000,
-    },
-  },
-  {
-    plan: "hobby",
-    redirect: false,
-    priceId: "price_1O4gxlApEKbNyVi6aQLu2dNA",
-    price: {
-      usd: 10,
-      eur: 10,
-      idr: 100000,
-    },
-  },
-  {
     plan: "premium",
+    type: "monthly",
     redirect: false,
     priceId: "price_1O4h0CApEKbNyVi6Tf1DTZGV",
     price: {
@@ -61,16 +35,35 @@ export const priceList: PriceListType = [
       idr: 200000,
     },
   },
+  {
+    plan: "premium",
+    type: "yearly",
+    redirect: false,
+    priceId: "price_1OX6qLApEKbNyVi6E1uDd5Cp",
+    price: {
+      usd: 180,
+      eur: 180,
+      idr: 2000000,
+    },
+  },
 ];
 
 // Helper function to get price based on plan and currency
-export const getPrice = (plan: PlanType, currency: CurrencyType): number => {
-  const planDetails = priceList.find(p => p.plan === plan);
+export const getPrice = (
+  plan: PlanType,
+  currency: CurrencyType,
+  type: "monthly" | "yearly"
+): number => {
+  const planDetails = priceList.find(p => p.plan === plan && p.type === type);
   return planDetails ? planDetails.price[currency] : 0;
 };
 
 // Helper functions
-export const formatCurrency = (amount: number, currency: string) => {
+export const formatCurrency = (
+  amount: number,
+  currency: string,
+  type: "monthly" | "yearly"
+): string => {
   if (currency === "idr") {
     // Convert to 'K' format for IDR
     const amountInK = Math.round(amount / 1000);

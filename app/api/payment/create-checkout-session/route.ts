@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import type { priceList } from "@/lib/helpers";
+import { priceList } from "@/lib/premium/helpers";
 import { createOrRetrieveCustomerAdmin } from "@/lib/supabase/admin/users";
 import { stripe } from "@/lib/stripe/admin";
 import { getURL } from "@/lib/utils";

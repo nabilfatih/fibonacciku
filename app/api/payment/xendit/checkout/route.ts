@@ -1,4 +1,4 @@
-import type { priceList } from "@/lib/helpers";
+import { priceList } from "@/lib/premium/helpers";
 import { createOrRetrieveCustomerAdmin } from "@/lib/supabase/admin/users";
 import { createClientServer } from "@/lib/supabase/server";
 import { xenditClient } from "@/lib/xendit/admin";
@@ -49,8 +49,10 @@ export async function POST(req: Request) {
 
       // create how long subscription will be, e.g 1 Nov 2023 - 1 Dec 2023 (for 1 month)
       const startDate = moment().format("DD MMM YYYY"); // today
-      // 1 month later
-      const endDate = moment().add(1, "months").format("DD MMM YYYY");
+      const endDate =
+        price.type === "monthly"
+          ? moment().add(1, "months").format("DD MMM YYYY") // 1 month from today
+          : moment().add(1, "years").format("DD MMM YYYY"); // 1 year from today
 
       const data: CreateInvoiceRequest = {
         amount:

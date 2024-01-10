@@ -3,8 +3,8 @@ import { twMerge } from "tailwind-merge";
 import { v4 as uuidv4 } from "uuid";
 import { nanoid } from "nanoid";
 import axios from "axios";
-import type { CurrencyType } from "@/types/types";
-import { priceList } from "@/lib/helpers";
+import type { CurrencyType } from "@/lib/premium/type";
+import { priceList } from "@/lib/premium/helpers";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

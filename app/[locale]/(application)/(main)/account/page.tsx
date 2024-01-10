@@ -18,16 +18,14 @@ export default async function AccountPage() {
   }
 
   return (
-    <>
-      <main className="h-full space-y-4 overflow-y-auto overflow-x-hidden pb-6">
-        <AccountHeader text="account" />
+    <main className="h-full space-y-4 overflow-y-auto overflow-x-hidden pb-6">
+      <AccountHeader text="account" />
 
-        <Suspense>
-          <AccountGeneral userId={session.user.id} />
+      <Suspense>
+        <AccountGeneral userId={session.user.id} />
 
-          <AccountSubscription userId={session.user.id} />
-        </Suspense>
-      </main>
-    </>
+        <AccountSubscription userId={session.user.id} />
+      </Suspense>
+    </main>
   );
 }
