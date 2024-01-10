@@ -25,6 +25,7 @@ import { Button } from "../ui/button";
 import { IconGift } from "@tabler/icons-react";
 import { getStripe } from "@/lib/stripe/client";
 import { toast } from "sonner";
+import { IconSpinner } from "../ui/icons";
 
 type Props = {
   user: User | null;
@@ -135,6 +136,9 @@ export default function PremiumPrice({ user, subscription }: Props) {
                   className="w-full"
                   disabled={typeof priceIdLoading === "string"}
                 >
+                  {priceIdLoading === price.priceId && (
+                    <IconSpinner className="mr-2 animate-spin" />
+                  )}
                   {t("get-started")}
                 </Button>
               </CardFooter>
