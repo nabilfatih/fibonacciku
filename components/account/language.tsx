@@ -62,7 +62,7 @@ export default function AccountLanguage({ userId }: Props) {
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
-            <SelectLabel>Language</SelectLabel>
+            <SelectLabel>{t("language")}</SelectLabel>
             {languages.map((item, index) => (
               <SelectItem key={index} value={item.value}>
                 {item.name}
