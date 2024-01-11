@@ -172,7 +172,7 @@ export default function PremiumPrice({ user, subscription }: Props) {
                   </div>
 
                   {currency !== "idr" && (
-                    <p className="flex items-center gap-1 text-sm text-primary">
+                    <p className="flex items-center gap-1 text-sm leading-none text-primary">
                       <IconGift className="h-4 w-4" />
                       {t("7-free-trial")}
                     </p>
