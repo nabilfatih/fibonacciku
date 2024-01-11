@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/card";
 import { getScopedI18n } from "@/locales/server";
 import { Label } from "@/components/ui/label";
-import AccountLogout from "@/components/account/logout";
 import AccountResetPassword from "@/components/account/reset-password";
 import AccountLanguage from "@/components/account/language";
 import AccountTheme from "@/components/account/theme";
@@ -61,9 +60,8 @@ export default async function AccountGeneral({ userId }: Props) {
             <AccountLanguage userId={userId} />
           </div>
         </CardContent>
-        <CardFooter className="flex items-center justify-between">
+        <CardFooter className="flex flex-wrap items-center gap-2">
           <AccountResetPassword email={data.email} />
-          <AccountLogout />
         </CardFooter>
       </Card>
     </section>

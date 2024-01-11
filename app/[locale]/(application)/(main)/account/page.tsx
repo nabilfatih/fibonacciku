@@ -1,6 +1,7 @@
 import AccountGeneral from "@/components/account/general";
 import AccountHeader from "@/components/account/header";
 import AccountSubscription from "@/components/account/subscription";
+import AccountSystem from "@/components/account/system";
 import { createClientServer } from "@/lib/supabase/server";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -25,6 +26,8 @@ export default async function AccountPage() {
         <AccountGeneral userId={session.user.id} />
 
         <AccountSubscription userId={session.user.id} />
+
+        <AccountSystem />
       </Suspense>
     </main>
   );
