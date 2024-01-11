@@ -1,5 +1,10 @@
 import { ThemeToggle } from "@/components/theme/toggle";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const Particles = dynamic(() => import("@/components/ui/particles"), {
+  ssr: false,
+});
 
 export default function AuthenticationLayout({
   children,
@@ -12,7 +17,10 @@ export default function AuthenticationLayout({
         <ThemeToggle />
       </div>
       <div className="relative hidden h-full flex-col bg-muted p-10 dark:border-r lg:flex">
-        <div className="absolute inset-0 bg-muted" />
+        <Particles
+          className="pointer-events-none absolute inset-0"
+          quantity={50}
+        />
         <div className="relative z-20 flex items-center gap-2 text-lg font-medium">
           <div className="relative h-6 w-6">
             <Image
