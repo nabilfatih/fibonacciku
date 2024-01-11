@@ -78,7 +78,7 @@ export default function HeaderChatFeature() {
             className="flex w-full cursor-pointer flex-col"
           >
             <p className="font-medium">{t("assistant")}</p>
-            <span className="font-normal text-muted-foreground">
+            <span className="max-w-xs whitespace-pre-wrap break-words font-normal text-muted-foreground sm:max-w-none">
               {t("assistant-desc")}
             </span>
           </Link>
@@ -95,7 +95,7 @@ export default function HeaderChatFeature() {
             className="flex w-full cursor-pointer flex-col"
           >
             <p className="font-medium">{t("document")}</p>
-            <span className="font-normal text-muted-foreground">
+            <span className="max-w-xs whitespace-pre-wrap break-words font-normal text-muted-foreground sm:max-w-none">
               {t("document-desc")}
             </span>
           </Link>
