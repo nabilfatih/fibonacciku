@@ -26,11 +26,11 @@ export default async function PremiumPlugins() {
             return (
               <div
                 key={index}
-                className="hover:bg-neutral flex-grow rounded-xl border px-4 py-2 shadow-sm"
+                className="flex-grow rounded-xl border px-4 py-2 shadow-sm"
               >
                 <div className="relative flex items-center gap-4">
-                  <div className="rounded-xl bg-primary p-2">
-                    <plugin.icon className="h-5 w-5 text-secondary" />
+                  <div className="rounded-xl bg-muted p-2">
+                    <plugin.icon className="h-5 w-5 text-primary" />
                   </div>
                   <h3>{t(plugin.title as never)}</h3>
                 </div>
