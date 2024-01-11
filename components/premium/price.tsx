@@ -22,10 +22,16 @@ import { postData } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { useScopedI18n } from "@/locales/client";
 import { Button } from "../ui/button";
-import { IconDiscount2, IconGift } from "@tabler/icons-react";
+import {
+  IconCheck,
+  IconCopy,
+  IconDiscount2,
+  IconGift,
+} from "@tabler/icons-react";
 import { getStripe } from "@/lib/stripe/client";
 import { toast } from "sonner";
 import { IconSpinner } from "@/components/ui/icons";
+import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard";
 
 type Props = {
   user: User | null;
@@ -37,9 +43,19 @@ export default function PremiumPrice({ user, subscription }: Props) {
   const router = useRouter();
   const t = useScopedI18n("MarketingPricing");
 
+  const { isCopied, copyToClipboard } = useCopyToClipboard({ timeout: 2000 });
+
   const [priceIdLoading, setPriceIdLoading] = useState<string>();
 
   const currency = useMemo(() => data || "usd", [data]);
+
+  const onCopy = useCallback(
+    (value: string) => {
+      if (isCopied) return;
+      copyToClipboard(value);
+    },
+    [copyToClipboard, isCopied]
+  );
 
   const redirectToCustomerPortal = useCallback(
     async (price: (typeof priceList)[0]) => {
@@ -101,14 +117,28 @@ export default function PremiumPrice({ user, subscription }: Props) {
 
   return (
     <section className="mx-auto max-w-4xl px-4">
-      {!subscription && (
-        <Alert>
-          <IconDiscount2 className="h-4 w-4" />
-          <AlertTitle>Heads up!</AlertTitle>
-          <AlertDescription>
-            You can add components and dependencies to your app using the cli.
-          </AlertDescription>
-        </Alert>
+      {!subscription && currency !== "idr" && (
+        <div className="mx-auto mb-2 sm:max-w-xs">
+          <div className="flex items-center justify-center gap-2 rounded-xl border py-2 shadow-sm">
+            <IconDiscount2 className="h-5 w-5 min-w-5 text-primary" />
+            <div className="flex items-center">
+              <p className="text-sm leading-none">40% off for new comers</p>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="ml-1 h-5 w-5 rounded-full p-0"
+                onClick={() => onCopy("ILOVEFIBO")}
+              >
+                {isCopied ? (
+                  <IconCheck className="h-4 w-4" />
+                ) : (
+                  <IconCopy className="h-4 w-4" />
+                )}
+                <span className="sr-only">Copy code</span>
+              </Button>
+            </div>
+          </div>
+        </div>
       )}
 
       <div className="grid gap-4 sm:grid-cols-2">
