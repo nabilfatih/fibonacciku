@@ -29,7 +29,7 @@ import { useMediaQuery } from "@/lib/hooks/use-media-query";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-interface ChatShareDialogProps extends DialogProps {
+interface ChatRenameDialogProps extends DialogProps {
   chat: Pick<Chat, "id" | "title" | "type">;
   renameChat: (id: string, title: string) => ServerActionResult<void>;
   onRename: () => void;
@@ -40,7 +40,7 @@ export function ChatRenameDialog({
   renameChat,
   onRename,
   ...props
-}: ChatShareDialogProps) {
+}: ChatRenameDialogProps) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const [title, setTitle] = React.useState<string>(chat.title);
