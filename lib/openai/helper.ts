@@ -27,7 +27,8 @@ export const determineModelBasedOnSubscription = async (
   // Default model for non-subscribers or basic plans
   const defaultModel = "gpt-3.5-turbo-1106";
   // Model for premium or enterprise subscribers
-  const premiumModel = "gpt-4-1106-preview";
+  // const premiumModel = "gpt-4-1106-preview";
+  const premiumModel = "gpt-3.5-turbo-1106"; // for now, for cost reasons
 
   // Determine the model based on the subscription plan
   if (
