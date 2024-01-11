@@ -1,3 +1,5 @@
+import PremiumFeatures from "@/components/premium/features";
+import PremiumPlugins from "@/components/premium/plugins";
 import PremiumPrice from "@/components/premium/price";
 import { Badge } from "@/components/ui/badge";
 import { createClientServer } from "@/lib/supabase/server";
@@ -68,6 +70,10 @@ export default async function PremiumPage() {
       </header>
 
       <PremiumPrice user={session?.user || null} subscription={subscription} />
+
+      <PremiumFeatures />
+
+      <PremiumPlugins />
     </main>
   );
 }
