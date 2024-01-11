@@ -14,10 +14,13 @@ export default async function PremiumPlugins() {
 
   return (
     <section className="mx-auto max-w-4xl px-4">
-      <div className="text-center">
+      <div className="grid gap-1 text-center">
         <h2 className="text-xl font-semibold leading-none tracking-tight">
           Our plugins
         </h2>
+        <p className="text-sm text-muted-foreground">
+          And will be more in the future.
+        </p>
       </div>
 
       <div className="pt-4">
