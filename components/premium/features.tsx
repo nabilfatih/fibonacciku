@@ -73,7 +73,7 @@ export default async function PremiumFeatures() {
             </h2>
             <p className="text-sm text-muted-foreground">
               Upload your image and ask anything about it. Full integration with
-              the fibo.
+              fibo.
             </p>
           </div>
         </div>

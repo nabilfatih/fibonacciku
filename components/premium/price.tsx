@@ -3,11 +3,11 @@
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
   formatCurrency,
   getPrice,
@@ -18,14 +18,14 @@ import type { Subscription } from "@/types/types";
 import type { User } from "@supabase/supabase-js";
 import useSWR from "swr";
 import { useCallback, useMemo, useState } from "react";
-import { cn, postData } from "@/lib/utils";
+import { postData } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { useScopedI18n } from "@/locales/client";
 import { Button } from "../ui/button";
-import { IconGift } from "@tabler/icons-react";
+import { IconDiscount2, IconGift } from "@tabler/icons-react";
 import { getStripe } from "@/lib/stripe/client";
 import { toast } from "sonner";
-import { IconSpinner } from "../ui/icons";
+import { IconSpinner } from "@/components/ui/icons";
 
 type Props = {
   user: User | null;
@@ -41,10 +41,28 @@ export default function PremiumPrice({ user, subscription }: Props) {
 
   const currency = useMemo(() => data || "usd", [data]);
 
+  const redirectToCustomerPortal = useCallback(
+    async (price: (typeof priceList)[0]) => {
+      setPriceIdLoading(price.priceId);
+
+      try {
+        const { url, error } = await postData({
+          url: "/api/payment/create-portal-link",
+        });
+        if (error) return toast.error((error as Error).message);
+        window.location.assign(url);
+      } catch (error) {
+        if (error) return toast.error((error as Error).message);
+      } finally {
+        setPriceIdLoading(undefined);
+      }
+    },
+    []
+  );
+
   const handleChoosePlan = useCallback(
     async (price: (typeof priceList)[0]) => {
       if (price.redirect) return router.push("/contact");
-      if (!user) return router.push("/auth/login?next=/premium");
 
       setPriceIdLoading(price.priceId);
 
@@ -78,11 +96,21 @@ export default function PremiumPrice({ user, subscription }: Props) {
         setPriceIdLoading(undefined);
       }
     },
-    [currency, router, user]
+    [currency, router]
   );
 
   return (
     <section className="mx-auto max-w-4xl px-4">
+      {!subscription && (
+        <Alert>
+          <IconDiscount2 className="h-4 w-4" />
+          <AlertTitle>Heads up!</AlertTitle>
+          <AlertDescription>
+            You can add components and dependencies to your app using the cli.
+          </AlertDescription>
+        </Alert>
+      )}
+
       <div className="grid gap-4 sm:grid-cols-2">
         {priceList.map((price, index) => {
           const plan = price.plan;
@@ -124,12 +152,9 @@ export default function PremiumPrice({ user, subscription }: Props) {
               <CardFooter>
                 <Button
                   onClick={() => {
-                    if (subscription?.price_id === price.priceId) {
-                      router.push("/account");
-                      toast(t("see-account"), {
-                        icon: <span className="ml-2">👀</span>,
-                      });
-                      return;
+                    if (!user) return router.push("/auth/login?next=/premium");
+                    if (subscription) {
+                      return redirectToCustomerPortal(price);
                     }
                     handleChoosePlan(price);
                   }}
