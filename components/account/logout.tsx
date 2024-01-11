@@ -14,7 +14,7 @@ export default function AccountLogout() {
       variant="destructive"
       onClick={async () => {
         await supabaseClient.auth.signOut();
-        router.push("/auth/login");
+        router.replace("/auth/login");
       }}
     >
       <IconLogout className="mr-2 h-4 w-4" />
