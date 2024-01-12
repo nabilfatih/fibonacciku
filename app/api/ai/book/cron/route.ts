@@ -86,6 +86,7 @@ export async function GET(req: Request) {
         const metadata = {
           book_id: book.id,
           file_id: book.file_id,
+          num_pages: cleanData.length,
         };
 
         const splitDocs = await createDocumentsFromPages(
