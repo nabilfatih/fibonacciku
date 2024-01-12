@@ -79,6 +79,7 @@ export default function ChatMetadataGoogle({ metadata }: Props) {
                         priority
                         onError={() => handleImageError(item.link)}
                         alt={he.decode(item.title)}
+                        unoptimized // because we want to decrease cost of image optimization
                       />
                     </div>
 
