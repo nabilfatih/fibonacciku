@@ -1,4 +1,4 @@
-import { OpenAIEmbeddings } from "langchain/embeddings/openai";
+import { OpenAIEmbeddings } from "@langchain/openai";
 import { cookies } from "next/headers";
 import { ChatOpenAI } from "langchain/chat_models/openai";
 import { Document } from "langchain/document";

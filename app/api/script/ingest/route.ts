@@ -1,9 +1,9 @@
 import { createDocumentsFromPages } from "@/lib/openai/helper";
 import { EDEN_HEADERS, ENDPOINTS } from "@/lib/openai/plugin/ai";
 import { NextResponse } from "next/server";
-import { OpenAIEmbeddings } from "langchain/embeddings/openai";
+import { OpenAIEmbeddings } from "@langchain/openai";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
-import { SupabaseVectorStore } from "langchain/vectorstores/supabase";
+import { SupabaseVectorStore } from "@langchain/community/vectorstores/supabase";
 import supabaseAdmin from "@/lib/supabase/admin";
 import {
   getLibraryAll,

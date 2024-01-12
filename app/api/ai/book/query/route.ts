@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { cookies } from "next/headers";
 import { SupabaseHybridSearch } from "langchain/retrievers/supabase";
-import { OpenAIEmbeddings } from "langchain/embeddings/openai";
+import { OpenAIEmbeddings } from "@langchain/openai";
 import { getBooksAdmin } from "@/lib/supabase/admin/book";
 import { createClientServer } from "@/lib/supabase/server";
 import type { Books } from "@/types/types";
