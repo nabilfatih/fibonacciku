@@ -35,7 +35,7 @@ export default async function AccountSubscriptionManage({
         </div>
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-2 pb-4">
+        <div className="grid grid-cols-2 pb-6">
           <div className="flex flex-col items-start gap-2">
             <Label className="text-xs text-muted-foreground">
               {t("start-date")}
