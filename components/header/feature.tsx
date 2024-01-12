@@ -11,8 +11,8 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {
+  IconApps,
   IconChevronDown,
-  IconDotsVertical,
   IconFile,
   IconMessageCircle2,
   IconPlus,
@@ -63,7 +63,7 @@ export default function HeaderChatFeature() {
             <IconChevronDown className="ml-1 h-4 w-4" />
           </div>
           <div className="inline-flex sm:hidden">
-            <IconDotsVertical className="h-5 w-5" />
+            <IconApps className="h-5 w-5" />
             <span className="sr-only">Open Menu</span>
           </div>
         </Button>
