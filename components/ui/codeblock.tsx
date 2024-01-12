@@ -131,7 +131,7 @@ const CodeBlock: FC<Props> = memo(({ language, value }) => {
           width: "100%",
           background: "transparent",
           padding: "1.5rem 1rem",
-          borderRadius: "0 0 0.75rem 0.75rem",
+          borderRadius: "0 0 1rem 1rem",
           border: "1px solid #15294f",
         }}
         lineNumberStyle={{
