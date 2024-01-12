@@ -300,8 +300,6 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
     ): Promise<void> => {
       if (!userDetails) return;
 
-      console.log("chatRequest", chatRequest);
-
       const previousMessages = showMessageRef.current;
       // Do an optimistic update to the chat state to show the updated messages immediately.
       // This section is for updating the UI and preparing the request body.
