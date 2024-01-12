@@ -890,9 +890,11 @@ export default {
   },
   Feature: {
     assistant: "Assistent",
-    "assistant-desc": "Fragen Sie irgendetwas und ich werde Ihnen antworten.",
+    "assistant-desc": "Fragen Sie irgendetwas, jederzeit, überall.",
     document: "Dokument",
-    "document-desc": "Laden Sie Ihr Dokument hoch und chatten Sie damit.",
+    "document-desc": "Hochladen und chatten Sie mit Ihrem Dokument.",
+    detector: "Detektor",
+    "detector-desc": "Einfacher KI-Detektor und Plagiatsprüfer.",
     "new-chat": "Neuer Chat",
   },
   Account: {

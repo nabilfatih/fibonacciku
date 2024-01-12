@@ -100,6 +100,23 @@ export default function HeaderChatFeature() {
             </span>
           </Link>
         </DropdownMenuLabel>
+
+        <DropdownMenuSeparator className="my-2" />
+
+        <DropdownMenuLabel
+          asChild
+          className="cursor-pointer flex-col items-start rounded-sm py-2 transition-colors hover:bg-accent"
+        >
+          <Link
+            href="/detector/ai"
+            className="flex w-full cursor-pointer flex-col"
+          >
+            <p className="font-medium">{t("detector")}</p>
+            <span className="max-w-xs whitespace-pre-wrap break-words font-normal text-muted-foreground sm:max-w-none">
+              {t("detector-desc")}
+            </span>
+          </Link>
+        </DropdownMenuLabel>
       </DropdownMenuContent>
     </DropdownMenu>
   );

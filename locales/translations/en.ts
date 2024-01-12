@@ -859,9 +859,11 @@ export default {
   },
   Feature: {
     assistant: "Assistant",
-    "assistant-desc": "Ask me anything and I will answer you.",
+    "assistant-desc": "Ask me anything, anytime, anywhere.",
     document: "Document",
-    "document-desc": "Upload your document and chat with it.",
+    "document-desc": "Upload and chat with your own document.",
+    detector: "Detector",
+    "detector-desc": "Easy AI detector and plagiarism checker.",
     "new-chat": "New chat",
   },
   Account: {

@@ -876,9 +876,11 @@ export default {
   },
   Feature: {
     assistant: "Asisten",
-    "assistant-desc": "Tanyakan apa saja dan saya akan menjawab Anda.",
+    "assistant-desc": "Tanya apa saja, kapan saja, di mana saja.",
     document: "Dokumen",
-    "document-desc": "Upload dokumen Anda dan chat dengannya.",
+    "document-desc": "Unggah dan chat dengan dokumen Anda sendiri.",
+    detector: "Detektor",
+    "detector-desc": "Detektor AI dan checker plagiarisme yang mudah.",
     "new-chat": "Chat Baru",
   },
   Account: {
