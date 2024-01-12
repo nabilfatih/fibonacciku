@@ -431,7 +431,7 @@ export const handleMetadataMessage = (
   );
   if (documentResults.length) {
     const documentResult = documentResults[0].data.sources as SourceDocument[];
-    if (documentResult) {
+    if (documentResult.length) {
       messageMetadata.source_documents = documentResult;
     }
   }

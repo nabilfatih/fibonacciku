@@ -128,23 +128,4 @@ export const listToolsChat: Tool[] = [
       },
     },
   },
-  {
-    type: "function",
-    function: {
-      name: "get_document",
-      description:
-        "Get the document from the database. This is RAG retriever to get the document context.",
-      parameters: {
-        type: "object",
-        properties: {
-          query: {
-            type: "string",
-            description:
-              "the query to get the document context. Must be a standalone question.",
-          },
-        },
-        required: ["query"],
-      },
-    },
-  },
 ];
