@@ -130,7 +130,6 @@ export default function RootLayout({
         )}
         suppressHydrationWarning
       >
-        <Toaster />
         <Providers
           locale={params.locale}
           attribute="class"
@@ -138,6 +137,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Toaster />
           <div className="flex min-h-[100dvh] flex-col">
             <Suspense>{children}</Suspense>
           </div>
