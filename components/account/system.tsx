@@ -19,7 +19,7 @@ export default function AccountSystem() {
           </CardDescription>
         </CardHeader>
         <CardFooter className="flex flex-wrap items-center justify-between gap-2">
-          <Feedback variant="outline" className="w-auto" />
+          <Feedback variant="default" className="w-auto" />
           <AccountLogout />
         </CardFooter>
       </Card>
