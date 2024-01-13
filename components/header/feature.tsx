@@ -82,36 +82,42 @@ export default function HeaderChatFeature() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent sideOffset={8} align="end" className="w-full p-2">
-        <DropdownMenuLabel
-          asChild
-          className="cursor-pointer items-center rounded-sm py-2 transition-colors hover:bg-accent"
-        >
-          <Link href="/chat/assistant" className="flex w-full cursor-pointer">
-            <IconMessageCircle2 className="mr-2 h-4 w-4" />
-            <p className="font-medium">{t("assistant")}</p>
-          </Link>
-        </DropdownMenuLabel>
-
-        <DropdownMenuLabel
-          asChild
-          className="cursor-pointer items-center rounded-sm py-2 transition-colors hover:bg-accent"
-        >
-          <Link href="/chat/document" className="flex w-full cursor-pointer">
-            <IconFile className="mr-2 h-4 w-4" />
-            <p className="font-medium">{t("document")}</p>
-          </Link>
-        </DropdownMenuLabel>
-
-        <DropdownMenuLabel
-          asChild
-          className="cursor-pointer items-center rounded-sm py-2 transition-colors hover:bg-accent"
-        >
-          <Link href="/book" className="flex w-full cursor-pointer">
-            <IconBook2 className="mr-2 h-4 w-4" />
-            <p className="font-medium">{t("book")}</p>
-          </Link>
-        </DropdownMenuLabel>
+        {featuresData.map(feature => (
+          <DropdownMenuLabel
+            key={feature.type}
+            asChild
+            className="cursor-pointer items-center rounded-sm py-2 transition-colors hover:bg-accent"
+          >
+            <Link href={feature.link} className="flex w-full cursor-pointer">
+              <feature.icon className="mr-2 h-4 w-4" />
+              <p className="font-medium">{t(feature.type as never)}</p>
+            </Link>
+          </DropdownMenuLabel>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );
 }
+
+const featuresData = [
+  {
+    type: "assistant",
+    link: "/chat/assistant",
+    icon: IconMessageCircle2,
+  },
+  {
+    type: "document",
+    link: "/chat/document",
+    icon: IconFile,
+  },
+  {
+    type: "book",
+    link: "/book",
+    icon: IconBook2,
+  },
+  {
+    type: "detector",
+    link: "/detector/ai",
+    icon: IconSpy,
+  },
+];
