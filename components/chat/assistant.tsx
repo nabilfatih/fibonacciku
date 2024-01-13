@@ -15,7 +15,7 @@ import CodeBlock from "@/components/ui/codeblock";
 import type { Element } from "hast";
 import { useMessage } from "@/lib/context/use-message";
 import type { IndexMessage } from "@/types/types";
-import { cn } from "@/lib/utils";
+import { cn, replaceDelimiters } from "@/lib/utils";
 
 type Props = {
   index: number;
@@ -34,7 +34,8 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
     checkIndex &&
     currentIndex.currentMessage === content.length;
 
-  const message = `${content[contentIndex]}${
+  // replace delimiters if latex not use dollar sign delimiter
+  const message = `${replaceDelimiters(content[contentIndex])}${
     isCursorDisplayed ? ". . . ▌" : ""
   }`;
 

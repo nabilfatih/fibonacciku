@@ -90,3 +90,9 @@ export const generateUUID = () => {
 export const generateNanoID = (number = 21) => {
   return nanoid(number);
 };
+
+export const replaceDelimiters = (markdown: string): string => {
+  return markdown
+    .replace(/\\\[([\s\S]*?)\\\]/g, "$$$1$$")
+    .replace(/\\\(([\s\S]*?)\\\)/g, "$$$1$$");
+};
