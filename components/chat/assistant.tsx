@@ -7,7 +7,6 @@ import rehypeKatex from "rehype-katex";
 import rehypeRaw from "rehype-raw";
 import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
 import Link from "next/link";
 import ImageMarkdown from "@/components/chat/image";
 import MemoizedReactMarkdown from "@/components/markdown";
@@ -52,7 +51,6 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
         remarkGfm,
         emoji,
         remarkParse,
-        remarkRehype,
       ]}
       rehypePlugins={[rehypeKatex, rehypeRaw, rehypeStringify]}
       components={{
