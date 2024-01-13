@@ -5,6 +5,7 @@ import { SupabaseHybridSearch } from "@langchain/community/retrievers/supabase"
 import { OpenAIEmbeddings } from "@langchain/openai"
 import type { Document } from "langchain/document"
 import BookContent from "@/components/book/content"
+import { formatDocumentsAsString } from "langchain/util/document"
 
 export const runtime = "edge"
 
@@ -100,5 +101,11 @@ export default async function BookSearch({ query }: Props) {
     })
   )) as BookDocumentWithBooks[]
 
-  return <BookContent books={booksResults} query={query} document={query} />
+  return (
+    <BookContent
+      books={booksResults}
+      query={query}
+      document={formatDocumentsAsString(results.slice(0, 20))}
+    />
+  )
 }
