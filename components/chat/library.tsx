@@ -191,7 +191,7 @@ export default function ChatLibrary({ userId }: Props) {
         href="/chat/library"
         className="mx-auto mt-4 max-w-fit text-center text-sm text-muted-foreground underline underline-offset-4 hover:text-primary"
       >
-        See all your library
+        See your library
       </Link>
     </div>
   );
