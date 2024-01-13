@@ -1,4 +1,3 @@
-import * as React from "react";
 import BookForm from "@/components/book/form";
 import FooterText from "@/components/chat/footer";
 
