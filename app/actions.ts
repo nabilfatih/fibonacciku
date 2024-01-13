@@ -262,7 +262,6 @@ export async function updateUser(id: string, data: any) {
     .maybeSingle();
 
   if (error) {
-    console.log(error);
     return {
       error: "Something went wrong",
     };
