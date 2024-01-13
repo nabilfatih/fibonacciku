@@ -15,12 +15,9 @@ import {
   IconChevronDown,
   IconFile,
   IconMessageCircle2,
-  IconPlus,
   IconSpy,
 } from "@tabler/icons-react";
 import { useScopedI18n } from "@/locales/client";
-
-const features = new Set(["assistant", "document", "book", "detector"]);
 
 function FeatureIcon({ type }: { type: string }) {
   switch (type) {
@@ -44,27 +41,6 @@ export default function HeaderChatFeature() {
 
   // get type from params, but for book get from /book
   const type = (params.feature as string) || pathname.split("/")[1];
-
-  if (!features.has(type)) {
-    return (
-      <Button asChild variant="outline" className="h-9 w-9 sm:h-9 sm:w-auto">
-        <Link
-          href={
-            pathname.includes("/library") ? "/chat/document" : "/chat/assistant"
-          }
-        >
-          <div className="hidden items-center sm:flex">
-            <IconPlus className="mr-2 h-4 w-4" />
-            {t("new-chat")}
-          </div>
-          <div className="inline-flex sm:hidden">
-            <IconPlus className="h-5 w-5" />
-            <span className="sr-only">New chat</span>
-          </div>
-        </Link>
-      </Button>
-    );
-  }
 
   return (
     <DropdownMenu>
