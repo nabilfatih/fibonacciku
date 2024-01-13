@@ -12,7 +12,7 @@ export default async function PremiumFeatures() {
   const t = await getScopedI18n("MarketingPricing");
   return (
     <section className="mx-auto max-w-4xl px-4">
-      <div className="grid grid-cols-1 gap-4 gap-y-8 py-4 sm:grid-cols-2 sm:grid-rows-3">
+      <div className="grid grid-cols-1 gap-4 gap-y-8 py-2 sm:grid-cols-2 sm:grid-rows-3">
         <div className="flex items-start gap-2">
           <IconSparkles className="h-6 w-6 min-w-6" />
           <div className="flex flex-col gap-1">
