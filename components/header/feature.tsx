@@ -19,6 +19,8 @@ import {
 } from "@tabler/icons-react";
 import { useScopedI18n } from "@/locales/client";
 
+const features = new Set(["assistant", "document", "book", "detector"]);
+
 function FeatureIcon({ type }: { type: string }) {
   switch (type) {
     case "assistant":
@@ -30,7 +32,7 @@ function FeatureIcon({ type }: { type: string }) {
     case "detector":
       return <IconSpy className="mr-2 h-4 w-4" />;
     default:
-      return null;
+      return <IconApps className="mr-2 h-4 w-4" />;
   }
 }
 
@@ -48,7 +50,7 @@ export default function HeaderChatFeature() {
         <Button variant="outline" className="h-9 w-9 sm:h-9 sm:w-auto">
           <div className="hidden items-center sm:flex">
             <FeatureIcon type={type} />
-            {t(type as never)}
+            {features.has(type) ? t(type as never) : t("application")}
             <IconChevronDown className="ml-1 h-4 w-4" />
           </div>
           <div className="inline-flex sm:hidden">

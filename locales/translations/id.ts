@@ -884,6 +884,7 @@ export default {
     book: "Buku",
     "book-desc": "Tanyakan pertanyaan dan dapatkan buku, jurnal, dan lainnya.",
     "new-chat": "Chat Baru",
+    application: "Aplikasi",
   },
   Account: {
     account: "Akun",

@@ -867,6 +867,7 @@ export default {
     book: "Book",
     "book-desc": "Ask questions and get book, journal, and more.",
     "new-chat": "New chat",
+    application: "Application",
   },
   Account: {
     account: "Account",

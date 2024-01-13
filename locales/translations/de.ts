@@ -899,6 +899,7 @@ export default {
     "book-desc":
       "Fragen Sie und erhalten Sie Bücher, Zeitschriftenartikel und mehr.",
     "new-chat": "Neuer Chat",
+    application: "Applikation",
   },
   Account: {
     account: "Konto",
