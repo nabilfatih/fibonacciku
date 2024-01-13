@@ -64,10 +64,14 @@ export default function UserMenu() {
             )}
           </div>
         </DropdownMenuTrigger>
-        <DropdownMenuContent sideOffset={8} align="end" className="w-full p-2">
+        <DropdownMenuContent
+          sideOffset={8}
+          align="end"
+          className="w-full max-w-xs p-2"
+        >
           <DropdownMenuLabel className="flex-col items-start py-2">
-            <div className="font-medium">{userDetails.full_name}</div>
-            <div className="font-normal text-muted-foreground">
+            <div className="truncate font-medium">{userDetails.full_name}</div>
+            <div className="truncate font-normal text-muted-foreground">
               {userDetails.email}
             </div>
           </DropdownMenuLabel>
