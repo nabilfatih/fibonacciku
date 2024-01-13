@@ -5,28 +5,45 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {
   IconApps,
+  IconBook2,
   IconChevronDown,
   IconFile,
   IconMessageCircle2,
   IconPlus,
+  IconSpy,
 } from "@tabler/icons-react";
 import { useScopedI18n } from "@/locales/client";
 
-const features = new Set(["assistant", "document"]);
+const features = new Set(["assistant", "document", "book", "detector"]);
+
+function FeatureIcon({ type }: { type: string }) {
+  switch (type) {
+    case "assistant":
+      return <IconMessageCircle2 className="mr-2 h-4 w-4" />;
+    case "document":
+      return <IconFile className="mr-2 h-4 w-4" />;
+    case "book":
+      return <IconBook2 className="mr-2 h-4 w-4" />;
+    case "detector":
+      return <IconSpy className="mr-2 h-4 w-4" />;
+    default:
+      return null;
+  }
+}
 
 export default function HeaderChatFeature() {
   const t = useScopedI18n("Feature");
   const pathname = usePathname();
   const params = useParams();
 
-  const type = params.feature as string;
+  // get type from params, but for book get from /book
+  const type = (params.feature as string) || pathname.split("/")[1];
 
   if (!features.has(type)) {
     return (
@@ -54,12 +71,8 @@ export default function HeaderChatFeature() {
       <DropdownMenuTrigger asChild>
         <Button variant="outline" className="h-9 w-9 sm:h-9 sm:w-auto">
           <div className="hidden items-center sm:flex">
-            {type === "assistant" ? (
-              <IconMessageCircle2 className="mr-2 h-4 w-4" />
-            ) : (
-              <IconFile className="mr-2 h-4 w-4" />
-            )}
-            {type === "assistant" ? t("assistant") : t("document")}
+            <FeatureIcon type={type} />
+            {t(type as never)}
             <IconChevronDown className="ml-1 h-4 w-4" />
           </div>
           <div className="inline-flex sm:hidden">
@@ -71,50 +84,31 @@ export default function HeaderChatFeature() {
       <DropdownMenuContent sideOffset={8} align="end" className="w-full p-2">
         <DropdownMenuLabel
           asChild
-          className="cursor-pointer flex-col items-start rounded-sm py-2 transition-colors hover:bg-accent"
+          className="cursor-pointer items-center rounded-sm py-2 transition-colors hover:bg-accent"
         >
-          <Link
-            href="/chat/assistant"
-            className="flex w-full cursor-pointer flex-col"
-          >
+          <Link href="/chat/assistant" className="flex w-full cursor-pointer">
+            <IconMessageCircle2 className="mr-2 h-4 w-4" />
             <p className="font-medium">{t("assistant")}</p>
-            <span className="max-w-xs whitespace-pre-wrap break-words font-normal text-muted-foreground sm:max-w-none">
-              {t("assistant-desc")}
-            </span>
           </Link>
         </DropdownMenuLabel>
 
-        <DropdownMenuSeparator className="my-2" />
-
         <DropdownMenuLabel
           asChild
-          className="cursor-pointer flex-col items-start rounded-sm py-2 transition-colors hover:bg-accent"
+          className="cursor-pointer items-center rounded-sm py-2 transition-colors hover:bg-accent"
         >
-          <Link
-            href="/chat/document"
-            className="flex w-full cursor-pointer flex-col"
-          >
+          <Link href="/chat/document" className="flex w-full cursor-pointer">
+            <IconFile className="mr-2 h-4 w-4" />
             <p className="font-medium">{t("document")}</p>
-            <span className="max-w-xs whitespace-pre-wrap break-words font-normal text-muted-foreground sm:max-w-none">
-              {t("document-desc")}
-            </span>
           </Link>
         </DropdownMenuLabel>
 
-        <DropdownMenuSeparator className="my-2" />
-
         <DropdownMenuLabel
           asChild
-          className="cursor-pointer flex-col items-start rounded-sm py-2 transition-colors hover:bg-accent"
+          className="cursor-pointer items-center rounded-sm py-2 transition-colors hover:bg-accent"
         >
-          <Link
-            href="/detector/ai"
-            className="flex w-full cursor-pointer flex-col"
-          >
-            <p className="font-medium">{t("detector")}</p>
-            <span className="max-w-xs whitespace-pre-wrap break-words font-normal text-muted-foreground sm:max-w-none">
-              {t("detector-desc")}
-            </span>
+          <Link href="/book" className="flex w-full cursor-pointer">
+            <IconBook2 className="mr-2 h-4 w-4" />
+            <p className="font-medium">{t("book")}</p>
           </Link>
         </DropdownMenuLabel>
       </DropdownMenuContent>

@@ -881,6 +881,8 @@ export default {
     "document-desc": "Unggah dan chat dengan dokumen Anda sendiri.",
     detector: "Detektor",
     "detector-desc": "Detektor AI dan checker plagiarisme yang mudah.",
+    book: "Buku",
+    "book-desc": "Tanyakan pertanyaan dan dapatkan buku, jurnal, dan lainnya.",
     "new-chat": "Chat Baru",
   },
   Account: {

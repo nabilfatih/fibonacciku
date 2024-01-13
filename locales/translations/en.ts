@@ -864,6 +864,8 @@ export default {
     "document-desc": "Upload and chat with your own document.",
     detector: "Detector",
     "detector-desc": "Easy AI detector and plagiarism checker.",
+    book: "Book",
+    "book-desc": "Ask questions and get book, journal, and more.",
     "new-chat": "New chat",
   },
   Account: {

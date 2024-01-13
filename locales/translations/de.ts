@@ -895,6 +895,9 @@ export default {
     "document-desc": "Hochladen und chatten Sie mit Ihrem Dokument.",
     detector: "Detektor",
     "detector-desc": "Einfacher KI-Detektor und Plagiatsprüfer.",
+    book: "Buch",
+    "book-desc":
+      "Fragen Sie und erhalten Sie Bücher, Zeitschriftenartikel und mehr.",
     "new-chat": "Neuer Chat",
   },
   Account: {
