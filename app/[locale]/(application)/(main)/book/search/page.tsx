@@ -1,5 +1,7 @@
+import { createClientServer } from "@/lib/supabase/server";
 import { getScopedI18n } from "@/locales/server";
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 type Props = {
@@ -25,7 +27,17 @@ export async function generateMetadata({
   };
 }
 
-export default function BookSearchPage({ searchParams }: Props) {
+export default async function BookSearchPage({ searchParams }: Props) {
+  const cookieStore = cookies();
+  const supabase = createClientServer(cookieStore);
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session?.user) {
+    redirect("/auth/login?next=/book");
+  }
+
   const q = searchParams.q;
 
   if (!q) redirect("/book");

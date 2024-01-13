@@ -13,7 +13,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useMessage } from "@/lib/context/use-message";
 import { downloadChatDocument } from "@/lib/supabase/client/chat";
-import { IconSpinner } from "../ui/icons";
+import { IconSpinner } from "@/components/ui/icons";
 import { useSearchParams } from "next/navigation";
 
 const statusToColor = (status: string) => {
