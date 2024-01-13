@@ -1,46 +1,46 @@
-import ChatMessage from "@/components/chat";
-import { createClientServer } from "@/lib/supabase/server";
-import { kv } from "@vercel/kv";
-import type { Metadata } from "next";
-import { cookies } from "next/headers";
-import { notFound, redirect } from "next/navigation";
+import ChatMessage from "@/components/chat"
+import { createClientServer } from "@/lib/supabase/server"
+import { kv } from "@vercel/kv"
+import type { Metadata } from "next"
+import { cookies } from "next/headers"
+import { notFound, redirect } from "next/navigation"
 
-export const runtime = "edge";
+export const runtime = "edge"
 
 type Props = {
-  params: { feature: string; id: string };
-};
+  params: { feature: string; id: string }
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const chatId = params.id;
+  const chatId = params.id
 
   const title = await kv.get<string>(chatId).then(title => {
     if (title) {
-      return title.toString().slice(0, 50);
+      return title.toString().slice(0, 50)
     }
-  });
+  })
 
   if (!title)
     return {
       title: {
-        absolute: "FibonacciKu",
-      },
-    };
+        absolute: "FibonacciKu"
+      }
+    }
 
   return {
-    title: title,
-  };
+    title: title
+  }
 }
 
 export default async function ChatMessagePage({ params }: Props) {
-  const cookieStore = cookies();
-  const supabase = createClientServer(cookieStore);
+  const cookieStore = cookies()
+  const supabase = createClientServer(cookieStore)
   const {
-    data: { session },
-  } = await supabase.auth.getSession();
+    data: { session }
+  } = await supabase.auth.getSession()
 
   if (!session?.user) {
-    redirect(`/auth/login?next=/chat/${params.feature}/${params.id}`);
+    redirect(`/auth/login?next=/chat/${params.feature}/${params.id}`)
   }
 
   const { data: chat } = await supabase
@@ -49,21 +49,21 @@ export default async function ChatMessagePage({ params }: Props) {
     .eq("id", params.id)
     .eq("user_id", session.user.id)
     .limit(1)
-    .maybeSingle();
+    .maybeSingle()
 
   if (!chat) {
-    notFound();
+    notFound()
   }
 
   if (chat.user_id !== session.user.id) {
-    notFound();
+    notFound()
   }
 
   // expires in 24 hours
   await kv.set(chat.id, chat.title, {
     ex: 60 * 60 * 24,
-    nx: true,
-  });
+    nx: true
+  })
 
   return (
     <ChatMessage
@@ -76,5 +76,5 @@ export default async function ChatMessagePage({ params }: Props) {
       createdAt={chat.created_at}
       chat={chat}
     />
-  );
+  )
 }
