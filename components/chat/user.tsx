@@ -22,27 +22,25 @@ export default function ChatUser({ content, messageIndex }: Props) {
 
   return (
     <div className="prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0">
-      <div className="whitespace-pre-wrap">
-        {messageIndex === state.editMessageIndex ? (
-          <Textarea
-            ref={promptRef}
-            className="m-0 min-w-full resize-none border-none bg-transparent p-0 outline-none ring-0 scrollbar-hide"
-            value={state.editMessageContent}
-            autoFocus
-            autoCorrect="off"
-            spellCheck={false}
-            aria-autocomplete="none"
-            onChange={e =>
-              dispatch({
-                type: "SET_EDIT_MESSAGE_CONTENT",
-                payload: e.target.value,
-              })
-            }
-          />
-        ) : (
-          content
-        )}
-      </div>
+      {messageIndex === state.editMessageIndex ? (
+        <Textarea
+          ref={promptRef}
+          className="m-0 min-w-full resize-none border-none bg-transparent p-0 outline-none ring-0 scrollbar-hide"
+          value={state.editMessageContent}
+          autoFocus
+          autoCorrect="off"
+          spellCheck={false}
+          aria-autocomplete="none"
+          onChange={e =>
+            dispatch({
+              type: "SET_EDIT_MESSAGE_CONTENT",
+              payload: e.target.value,
+            })
+          }
+        />
+      ) : (
+        <div className="whitespace-pre-wrap">{content}</div>
+      )}
     </div>
   );
 }
