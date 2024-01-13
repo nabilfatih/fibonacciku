@@ -3,9 +3,7 @@
 import type { BookDocumentWithBooks } from "@/components/book/search"
 import { cn } from "@/lib/utils"
 import { useRef } from "react"
-import dynamic from "next/dynamic"
-
-const BookPanel = dynamic(() => import("@/components/book/panel"))
+import BookPanel from "@/components/book/panel"
 
 type Props = {
   books: BookDocumentWithBooks[]
