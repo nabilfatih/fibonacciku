@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: {
       template: "%s · FibonacciKu",
-      default: t("title"),
+      default: t("title")
     },
     description: t("desc"),
     generator: "FibonacciKu",
@@ -33,14 +33,14 @@ export async function generateMetadata(): Promise<Metadata> {
       "Data Science",
       "Technology Education",
       "AI Chatbot",
-      "Educational Platform",
+      "Educational Platform"
     ],
     authors: [{ name: "Nabil Akbarazzima Fatih" }],
     publisher: "Nabil Akbarazzima Fatih",
     formatDetection: {
       telephone: true,
       email: true,
-      address: true,
+      address: true
     },
     metadataBase: new URL("https://www.fibonacciku.com"),
     alternates: {
@@ -48,11 +48,11 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         en: "/en",
         id: "/id",
-        de: "/de",
+        de: "/de"
       },
       types: {
-        "application/rss+xml": "https://www.fibonacciku.com/rss",
-      },
+        "application/rss+xml": "https://www.fibonacciku.com/rss"
+      }
     },
     openGraph: {
       title: t("title"),
@@ -61,7 +61,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "FibonacciKu",
       locale: "en",
       type: "website",
-      alternateLocale: ["en", "id", "de"],
+      alternateLocale: ["en", "id", "de"]
     },
     robots: {
       index: true,
@@ -73,33 +73,33 @@ export async function generateMetadata(): Promise<Metadata> {
         noimageindex: false,
         "max-video-preview": -1,
         "max-image-preview": "large",
-        "max-snippet": -1,
-      },
+        "max-snippet": -1
+      }
     },
     icons: {
       icon: [
         { url: "/logo.png" },
-        new URL("/logo.png", "https://www.fibonacciku.com"),
+        new URL("/logo.png", "https://www.fibonacciku.com")
       ],
       shortcut: "/logo.png",
       apple: [
         { url: "/apple-touch-icon.png" },
-        { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+        { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
       ],
       other: [
         {
           rel: "apple-touch-icon",
-          url: "/apple-touch-icon.png",
-        },
-      ],
+          url: "/apple-touch-icon.png"
+        }
+      ]
     },
     twitter: {
       card: "summary_large_image",
       title: t("title"),
       description: t("desc"),
-      creator: "@fibonacciku",
+      creator: "@fibonacciku"
     },
-    category: "Education, Artificial Intelligence",
+    category: "Education, Artificial Intelligence"
   };
 }
 
@@ -108,12 +108,12 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-  interactiveWidget: "resizes-visual",
+  interactiveWidget: "resizes-visual"
 };
 
 export default function RootLayout({
   children,
-  params,
+  params
 }: {
   children: React.ReactNode;
   params: { locale: string };
