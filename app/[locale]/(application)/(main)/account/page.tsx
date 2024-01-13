@@ -19,7 +19,7 @@ export default async function AccountPage() {
   }
 
   return (
-    <main className="h-full space-y-6 overflow-y-auto overflow-x-hidden pb-6">
+    <main className="h-full space-y-4 overflow-y-auto overflow-x-hidden pb-6">
       <AccountHeader text="account" />
 
       <Suspense>
