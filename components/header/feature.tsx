@@ -1,48 +1,48 @@
-"use client";
+"use client"
 
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+  DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
 import {
   IconApps,
   IconBook2,
   IconChevronDown,
   IconFile,
   IconMessageCircle2,
-  IconSpy,
-} from "@tabler/icons-react";
-import { useScopedI18n } from "@/locales/client";
+  IconSpy
+} from "@tabler/icons-react"
+import { useScopedI18n } from "@/locales/client"
 
-const features = new Set(["assistant", "document", "book", "detector"]);
+const features = new Set(["assistant", "document", "book", "detector"])
 
 function FeatureIcon({ type }: { type: string }) {
   switch (type) {
     case "assistant":
-      return <IconMessageCircle2 className="mr-2 h-4 w-4" />;
+      return <IconMessageCircle2 className="mr-2 h-4 w-4" />
     case "document":
-      return <IconFile className="mr-2 h-4 w-4" />;
+      return <IconFile className="mr-2 h-4 w-4" />
     case "book":
-      return <IconBook2 className="mr-2 h-4 w-4" />;
+      return <IconBook2 className="mr-2 h-4 w-4" />
     case "detector":
-      return <IconSpy className="mr-2 h-4 w-4" />;
+      return <IconSpy className="mr-2 h-4 w-4" />
     default:
-      return <IconApps className="mr-2 h-4 w-4" />;
+      return <IconApps className="mr-2 h-4 w-4" />
   }
 }
 
 export default function HeaderChatFeature() {
-  const t = useScopedI18n("Feature");
-  const pathname = usePathname();
-  const params = useParams();
+  const t = useScopedI18n("Feature")
+  const pathname = usePathname()
+  const params = useParams()
 
   // get type from params, but for book get from /book
-  const type = (params.feature as string) || pathname.split("/")[1];
+  const type = (params.feature as string) || pathname.split("/")[1]
 
   return (
     <DropdownMenu>
@@ -66,7 +66,10 @@ export default function HeaderChatFeature() {
             asChild
             className="cursor-pointer items-center rounded-sm py-2 transition-colors hover:bg-accent"
           >
-            <Link href={feature.link} className="flex w-full cursor-pointer">
+            <Link
+              href={feature.link}
+              className="flex w-full items-center cursor-pointer"
+            >
               <feature.icon className="mr-2 h-4 w-4" />
               <p className="font-medium">{t(feature.type as never)}</p>
             </Link>
@@ -74,28 +77,28 @@ export default function HeaderChatFeature() {
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }
 
 const featuresData = [
   {
     type: "assistant",
     link: "/chat/assistant",
-    icon: IconMessageCircle2,
+    icon: IconMessageCircle2
   },
   {
     type: "document",
     link: "/chat/document",
-    icon: IconFile,
+    icon: IconFile
   },
   {
     type: "book",
     link: "/book",
-    icon: IconBook2,
+    icon: IconBook2
   },
   {
     type: "detector",
     link: "/detector/ai",
-    icon: IconSpy,
-  },
-];
+    icon: IconSpy
+  }
+]
