@@ -56,7 +56,7 @@ export default async function PremiumPage() {
   }
 
   return (
-    <main className="h-full space-y-4 overflow-y-auto overflow-x-hidden pb-6">
+    <main className="h-full space-y-6 overflow-y-auto overflow-x-hidden pb-6">
       <header className="border-b py-6">
         <div className="relative mx-auto max-w-4xl px-4">
           <div className="flex items-center">

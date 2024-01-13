@@ -767,7 +767,7 @@ export default {
     "fibo-assistant": "Fibo Asisten",
     "placeholder-search": "Apa sifat logaritma?",
     "desc-search":
-      "Tanyakan pertanyaan dan dapatkan buku, jurnal, artikel, dan lainnya...",
+      "Tanyakan pertanyaan dan dapatkan buku, jurnal, artikel, dan lainnya.",
     "request-book": "Permintaan buku",
     "book-collection": "Koleksi buku",
   },

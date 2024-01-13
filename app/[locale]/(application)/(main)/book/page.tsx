@@ -1,3 +1,5 @@
+import BookEmptyScreen from "@/components/book/empty-screen";
+import BookPanel from "@/components/book/panel";
 import { createClientServer } from "@/lib/supabase/server";
 import { getScopedI18n } from "@/locales/server";
 import type { Metadata } from "next";
@@ -36,5 +38,13 @@ export default async function BookPage() {
     redirect("/auth/login?next=/book");
   }
 
-  return <main></main>;
+  return (
+    <>
+      <main className="h-full overflow-y-auto overflow-x-hidden pb-48 pt-4 sm:pb-52 md:pt-10">
+        <BookEmptyScreen />
+      </main>
+
+      <BookPanel />
+    </>
+  );
 }

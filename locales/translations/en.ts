@@ -750,7 +750,7 @@ export default {
     "fibo-assistant": "Fibo Assistant",
     "placeholder-search": "How does the immune system work?",
     "desc-search":
-      "Ask questions and get book, journal, and article, and more...",
+      "Ask questions and get book, journal, and article, and more.",
     "request-book": "Request book",
     "book-collection": "Book collection",
   },

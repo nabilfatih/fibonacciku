@@ -776,7 +776,7 @@ export default {
     "fibo-assistant": "Fibo Assistent",
     "placeholder-search": "Wie funktioniert das Immunsystem?",
     "desc-search":
-      "Stellen Sie Fragen und erhalten Sie Bücher, Zeitschriftenartikel und mehr...",
+      "Stellen Sie Fragen und erhalten Sie Bücher, Zeitschriftenartikel und mehr.",
     "request-book": "Buch anfordern",
     "book-collection": "Buchsammlung",
   },
