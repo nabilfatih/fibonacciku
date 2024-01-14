@@ -1,19 +1,19 @@
-import { HeaderChat } from "@/components/header";
-import { CurrentUserContextProvider } from "@/lib/context/use-current-user";
-import { createClientServer } from "@/lib/supabase/server";
-import { cookies } from "next/headers";
-import { Suspense } from "react";
+import { HeaderChat } from "@/components/header"
+import { CurrentUserContextProvider } from "@/lib/context/use-current-user"
+import { createClientServer } from "@/lib/supabase/server"
+import { cookies } from "next/headers"
+import { Suspense } from "react"
 
 export default async function ApplicationLayout({
-  children,
+  children
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
-  const cookieStore = cookies();
-  const supabase = createClientServer(cookieStore);
+  const cookieStore = cookies()
+  const supabase = createClientServer(cookieStore)
   const {
-    data: { session },
-  } = await supabase.auth.getSession();
+    data: { session }
+  } = await supabase.auth.getSession()
 
   return (
     <CurrentUserContextProvider session={session}>
@@ -22,5 +22,5 @@ export default async function ApplicationLayout({
         <Suspense>{children}</Suspense>
       </main>
     </CurrentUserContextProvider>
-  );
+  )
 }
