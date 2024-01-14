@@ -26,7 +26,7 @@ export default {
       "Kontaktieren Sie uns gerne bei Fragen, Partnerschaften oder für sonstige Anliegen",
     product: "Produkt",
     "privacy-policy": "Datenschutzrichtlinie",
-    "terms-of-service": "Nutzungsbedingungen",
+    "terms-of-service": "Nutzungsbedingungen"
   },
   Home: {
     title: "Personalisierter KI-Lernassistent für Schüler und Lehrer",
@@ -84,7 +84,7 @@ export default {
     "try-it-now": "Probieren Sie es jetzt aus",
     "what-is-this": "Was ist das?",
     "talk-to-founder": "Mit dem Gründer sprechen",
-    "trusted-by": "Vertraut von den Schulen und Organisationen",
+    "trusted-by": "Vertraut von den Schulen und Organisationen"
   },
   MarketingNav: {
     product: "Produkt",
@@ -98,7 +98,7 @@ export default {
     application: "Anwendung",
     "fibo-assistant": "Fibo Assistent",
     "fibo-book": "Fibo Buch",
-    "fibo-school": "Fibo Schule",
+    "fibo-school": "Fibo Schule"
   },
   MarketingFooter: {
     product: "Produkt",
@@ -116,7 +116,7 @@ export default {
     "made-with": "Gemacht mit",
     "fibo-assistant": "Fibo Assistent",
     "fibo-book": "Fibo Buch",
-    "fibo-school": "Fibo Schule",
+    "fibo-school": "Fibo Schule"
   },
   MarketingContact: {
     contact: "Kontakt",
@@ -133,7 +133,7 @@ export default {
     submit: "Absenden",
     success: "Nachricht erfolgreich gesendet",
     error:
-      "Etwas ist schief gelaufen, bitte versuchen Sie es später noch einmal",
+      "Etwas ist schief gelaufen, bitte versuchen Sie es später noch einmal"
   },
   MarketingPartner: {
     partner: "Partner",
@@ -152,7 +152,7 @@ export default {
     "desc-vendor":
       "Wir bieten direkte Unterstützung für Ihre Organisation, Schule oder Institution, um Ihnen bei der Erreichung Ihrer Ziele zu helfen. Wir arbeiten gemeinsam daran, eine Lösung zu schaffen, die Ihren Bedürfnissen entspricht",
     "powered-by": "Angetrieben von den besten Technologien",
-    "trusted-by": "Vertraut von den besten Organisationen",
+    "trusted-by": "Vertraut von den besten Organisationen"
   },
   MarketingProduct: {
     product: "Produkt",
@@ -214,7 +214,7 @@ export default {
     "header-desc-1":
       "Beginnen Sie, KI für Ihren persönlichen Tutor zu verwenden, anstatt für ein Schummelwerkzeug",
     "see-pricing": "Preise ansehen",
-    "fibo-document": "Fibo Dokument",
+    "fibo-document": "Fibo Dokument"
   },
   ProductFiboAssistant: {
     "fibo-assistant": "Fibo Assistent",
@@ -225,7 +225,7 @@ export default {
     "see-pricing": "Preise ansehen",
     "fibo-assistant-helper":
       "Fibo Assistent ist ein Chatbot, der Ihnen unbegrenztes Wissen bietet und Ihre Fragen beantwortet. Er ist benutzerfreundlich, einfach zu bedienen und hochgradig personalisiert",
-    "try-it-now": "Jetzt ausprobieren",
+    "try-it-now": "Jetzt ausprobieren"
   },
   ProductFiboBook: {
     "fibo-book": "Fibo Buch",
@@ -234,7 +234,7 @@ export default {
       "Stellen Sie Fragen, statt zu suchen, und erhalten Sie relevante Bücher zum Lesen und zum Austausch im Chat",
     "get-started": "Loslegen",
     "see-pricing": "Preise ansehen",
-    "try-it-now": "Jetzt ausprobieren",
+    "try-it-now": "Jetzt ausprobieren"
   },
   ProductFiboSchool: {
     "fibo-school": "Fibo Schule",
@@ -243,7 +243,7 @@ export default {
       "Einfaches Lernmanagementsystem für Lehrer und Schüler, das mit KI integriert ist",
     "get-started": "Loslegen",
     "see-pricing": "Preise ansehen",
-    "try-it-now": "Jetzt ausprobieren",
+    "try-it-now": "Jetzt ausprobieren"
   },
   ProductPlugin: {
     header: "Reiche Plugins",
@@ -262,7 +262,7 @@ export default {
     "website-scraping": "Webseiten-Scraping",
     "website-scraping-helper": "Hole Informationen von https://...",
     "solve-math": "Löse Mathe",
-    "solve-math-helper": "Hilf mir, Mathe zu lösen...",
+    "solve-math-helper": "Hilf mir, Mathe zu lösen..."
   },
   MarketingPricing: {
     pricing: "Preise",
@@ -334,7 +334,7 @@ export default {
     "chat-with-founder": "Chatten Sie mit dem Gründer",
     "download-book": "Buch herunterladen",
     "get-started": "Loslegen",
-    "7-free-trial": "7 Tage kostenlos testen",
+    "7-free-trial": "7 Tage kostenlos testen"
   },
   PricingFAQ: {
     faq: "Häufig gestellte Fragen",
@@ -358,7 +358,7 @@ export default {
       "Internetzugang bedeutet, dass Sie innerhalb von FibonacciKu auf das Internet zugreifen können, wie z.B. die Suche auf Google, Youtube und mehr. Es ist mit unserer KI-Technologie integriert",
     "what-is-library-access-mean": "Was bedeutet Bibliothekszugang?",
     "what-is-library-access-mean-desc":
-      "Bibliothekszugang bedeutet, dass Sie Ihr eigenes Dokument zu FibonacciKu hochladen und damit chatten können. Sie können beliebig viele Dokumente hochladen, es gibt keine Begrenzung. Egal, ob Ihr Dokument Text, Bilder oder beides enthält, FibonacciKu kann damit umgehen",
+      "Bibliothekszugang bedeutet, dass Sie Ihr eigenes Dokument zu FibonacciKu hochladen und damit chatten können. Sie können beliebig viele Dokumente hochladen, es gibt keine Begrenzung. Egal, ob Ihr Dokument Text, Bilder oder beides enthält, FibonacciKu kann damit umgehen"
   },
   MarketingAbout: {
     about: "Über uns",
@@ -383,7 +383,7 @@ export default {
     ceo: "Geschäftsführer",
     "public-relation": "Öffentlichkeitsarbeit",
     marketing: "Marketing",
-    advisor: "Berater",
+    advisor: "Berater"
   },
   Auth: {
     welcome: "Willkommen bei FibonacciKu",
@@ -426,7 +426,7 @@ export default {
     "user-exist": "Benutzer existiert bereits",
     "or-continue-with": "Oder fortfahren mit",
     "login-header":
-      "Geben Sie Ihre E-Mail-Adresse und Ihr Passwort ein, um sich anzumelden",
+      "Geben Sie Ihre E-Mail-Adresse und Ihr Passwort ein, um sich anzumelden"
   },
   Chat: {
     chat: "Chat",
@@ -483,7 +483,7 @@ export default {
     "search-text": "Text suchen",
     show: "Zeigen",
     hide: "Verbergen",
-    "click-here": "Klicken Sie hier",
+    "click-here": "Klicken Sie hier"
   },
   FormChat: {
     "fibonacciku-make-mistake": "Auch FibonacciKu macht manchmal Fehler",
@@ -493,7 +493,7 @@ export default {
       "FibonacciKu-Antwort basierend auf dem Dokument",
     "ask-anything": "Fragen Sie irgendetwas",
     send: "Senden",
-    regenerate: "Neu generieren",
+    regenerate: "Regenerieren",
     "stop-generating": "Generierung stoppen",
     settings: "Einstellungen",
     attachment: "Anhang",
@@ -522,7 +522,7 @@ export default {
     "see-diagram": "Diagramm ansehen",
     share: "Teilen",
     document: "Dokument",
-    close: "Schließen",
+    close: "Schließen"
   },
   FormDocument: {
     "form-document-desc": "Laden Sie Ihr Dokument hoch, um zu starten",
@@ -538,7 +538,7 @@ export default {
     "processing-loading":
       "Es kann ein paar Minuten dauern, bitte haben Sie Geduld 🤗",
     "recent-documents": "Kürzlich verwendete Dokumente",
-    "upload-document": "Dokument hochladen",
+    "upload-document": "Dokument hochladen"
   },
   Library: {
     library: "Bibliothek",
@@ -573,7 +573,7 @@ export default {
     "chat-with-document": "Mit Dokument chatten",
     "invalid-document": "Ungültiges Dokument",
     "only-one-document": "Nur ein Dokument kann ausgewählt werden",
-    "drag-drop-document": "Ziehen Sie Ihr Dokument hierher oder",
+    "drag-drop-document": "Ziehen Sie Ihr Dokument hierher oder"
   },
   MetadataChat: {
     "academic-research": "Akademische Forschung",
@@ -581,10 +581,10 @@ export default {
     references: "Referenzen",
     "youtube-videos": "Youtube-Videos",
     page: "Seite",
-    "generated-image": "Generiertes Bild",
+    "generated-image": "Generiertes Bild"
   },
   Markdown: {
-    "link-not-available": "Link nicht verfügbar",
+    "link-not-available": "Link nicht verfügbar"
   },
   ModalAccount: {
     account: "Konto",
@@ -609,7 +609,7 @@ export default {
     close: "Schließen",
     premium: "Premium",
     "try-premium": "Premium ausprobieren",
-    nakafa: "Nakafa Startseite",
+    nakafa: "Nakafa Startseite"
   },
   ModalClearChat: {
     clear: "Leeren",
@@ -625,7 +625,7 @@ export default {
     "desc-clear-history":
       "Sind Sie sicher, dass Sie den Verlauf löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
     cancel: "Abbrechen",
-    delete: "Löschen",
+    delete: "Löschen"
   },
   ModalShareChat: {
     "share-chat": "Chat teilen",
@@ -643,7 +643,7 @@ export default {
     "link-deleted": "Link gelöscht",
     messages: "Nachrichten",
     copying: "Kopieren",
-    close: "Schließen",
+    close: "Schließen"
   },
   ModalPluginChat: {
     plugin: "Plugin",
@@ -664,7 +664,7 @@ export default {
     "website-scraping": "Webseiten-Scraping",
     "website-scraping-helper": "Hole Informationen von https://...",
     "solve-math": "Löse Mathe",
-    "solve-math-helper": "Hilf mir, Mathe zu lösen...",
+    "solve-math-helper": "Hilf mir, Mathe zu lösen..."
   },
   ModalContact: {
     contact: "Kontakt",
@@ -681,17 +681,17 @@ export default {
     "message-send": "Nachricht erfolgreich gesendet",
     "something-wrong":
       "Etwas ist schief gelaufen, bitte versuchen Sie es später noch einmal!",
-    close: "Schließen",
+    close: "Schließen"
   },
   ModalSocialMedia: {
     "social-media": "Soziale Medien",
     "desc-social-media":
-      "Folgen Sie uns in den sozialen Medien! Lassen Sie uns in Kontakt bleiben",
+      "Folgen Sie uns in den sozialen Medien! Lassen Sie uns in Kontakt bleiben"
   },
   ModalDonate: {
     "title-donate": "Wählen Sie Ihre Zahlungsmethode",
     "desc-donate":
-      "Vielen Dank für Ihre Unterstützung! Ihre Spende hilft uns, FibonacciKu am Leben und kostenlos zu halten",
+      "Vielen Dank für Ihre Unterstützung! Ihre Spende hilft uns, FibonacciKu am Leben und kostenlos zu halten"
   },
   ModalInitiateRole: {
     "who-are-you": "Wer sind Sie?",
@@ -699,7 +699,7 @@ export default {
     student: "Schüler",
     professional: "Fachkraft",
     helper: "Sie können Ihre Rolle später in den Einstellungen ändern",
-    welcome: "Willkommen bei FibonacciKu!",
+    welcome: "Willkommen bei FibonacciKu!"
   },
   ModalFeedback: {
     feedback: "Feedback",
@@ -711,7 +711,7 @@ export default {
     "message-send": "Nachricht erfolgreich gesendet",
     "something-wrong":
       "Etwas ist schief gelaufen, bitte versuchen Sie es später noch einmal!",
-    cancel: "Abbrechen",
+    cancel: "Abbrechen"
   },
   ModalSubscription: {
     subscription: "Abonnement",
@@ -730,7 +730,7 @@ export default {
     "days-left": "Tage verbleiben bis Ihr Abonnement endet",
     "do-not-have-plan":
       "Sie haben noch keinen Plan, sehen Sie sich die Preise an, um zu beginnen",
-    "see-premium": "Premium ansehen",
+    "see-premium": "Premium ansehen"
   },
   DrawerTools: {
     calculator: "Rechner",
@@ -739,7 +739,7 @@ export default {
     "google-search": "Google-Suche",
     "pdf-viewer": "PDF-Betrachter",
     translator: "Übersetzer",
-    close: "Schließen",
+    close: "Schließen"
   },
   BackendRouter: {
     "high-traffic": "Starkes Verkehrsaufkommen",
@@ -762,13 +762,13 @@ export default {
     "return-home": "Zur Startseite zurückkehren",
     "resource-not-found": "Angeforderte Ressource konnte nicht gefunden werden",
     "try-again": "Erneut versuchen",
-    "audio-not-supported": "Audio wird nicht unterstützt",
+    "audio-not-supported": "Audio wird nicht unterstützt"
   },
   Beta: {
     beta: "Beta",
     "beta-desc":
       "FibonacciKu befindet sich derzeit in der Beta-Phase, wir arbeiten noch daran, es zu verbessern. Verwenden Sie das Formular in der linken unteren Ecke, um uns Feedback zu geben",
-    "days-left": "Tage verbleiben bis zum offiziellen Start",
+    "days-left": "Tage verbleiben bis zum offiziellen Start"
   },
   Book: {
     book: "Buch",
@@ -778,7 +778,7 @@ export default {
     "desc-search":
       "Stellen Sie Fragen und erhalten Sie Bücher, Zeitschriftenartikel und mehr.",
     "request-book": "Buch anfordern",
-    "book-collection": "Buchsammlung",
+    "book-collection": "Buchsammlung"
   },
   BookRequest: {
     "request-book": "Buch anfordern",
@@ -789,13 +789,13 @@ export default {
     request: "Anfragen",
     "request-sent": "Anfrage gesendet",
     error:
-      "Etwas ist schief gelaufen, bitte versuchen Sie es später noch einmal!",
+      "Etwas ist schief gelaufen, bitte versuchen Sie es später noch einmal!"
   },
   DrawerBook: {
     home: "Startseite",
     "fibo-book": "Fibo Buch",
     "fibo-assistant": "Fibo Assistent",
-    "fibo-document": "Fibo Dokument",
+    "fibo-document": "Fibo Dokument"
   },
   CardBook: {
     education: "Bildung",
@@ -808,7 +808,7 @@ export default {
     collapse: "Zusammenklappen",
     en: "Englisch",
     id: "Indonesisch",
-    de: "Deutsch",
+    de: "Deutsch"
   },
   CollectionBook: {
     "book-detail": "Buchdetails",
@@ -824,7 +824,7 @@ export default {
     article: "Artikel",
     en: "Englisch",
     id: "Indonesisch",
-    de: "Deutsch",
+    de: "Deutsch"
   },
   BookChat: {
     download: "Herunterladen",
@@ -847,7 +847,7 @@ export default {
     premium: "Premium",
     "get-premium": "Premium erhalten",
     new: "NEU",
-    "exclusive-for-premium": "Exklusiv für Premium",
+    "exclusive-for-premium": "Exklusiv für Premium"
   },
   ModalBookRequest: {
     "request-book": "Buch anfordern",
@@ -862,7 +862,7 @@ export default {
     request: "Anfragen",
     "request-sent": "Anfrage gesendet",
     error:
-      "Etwas ist schief gelaufen, bitte versuchen Sie es später noch einmal!",
+      "Etwas ist schief gelaufen, bitte versuchen Sie es später noch einmal!"
   },
   MockupHome: {
     "new-chat": "Neuer Chat",
@@ -886,7 +886,7 @@ export default {
     "what-is-fibonacciku?": "Was ist FibonacciKu?",
     "redis-presentation": "Redis-Präsentation",
     "related-links": "Verwandte Links",
-    "youtube-videos": "YouTube-Videos",
+    "youtube-videos": "YouTube-Videos"
   },
   Feature: {
     assistant: "Assistent",
@@ -899,11 +899,11 @@ export default {
     "book-desc":
       "Fragen Sie und erhalten Sie Bücher, Zeitschriftenartikel und mehr.",
     "new-chat": "Neuer Chat",
-    application: "Applikation",
+    application: "Applikation"
   },
   Account: {
     account: "Konto",
     subscription: "Abonnement",
-    contact: "Kontakt",
-  },
-} as const;
+    contact: "Kontakt"
+  }
+} as const
