@@ -1,4 +1,4 @@
-import type { Tool } from "ai";
+import type { Tool } from "ai"
 
 export const defaultToolsChat: Tool[] = [
   {
@@ -6,19 +6,19 @@ export const defaultToolsChat: Tool[] = [
     function: {
       name: "image_analysis",
       description:
-        "Analysis images, can be multiple images or one image. Must be used when 'fibo-attachment' is provided in current message or the previous message. Must be used when the questions is related to the image from previous message or the current message. User no need to say image to use this function.",
+        "Computer vision when asking about something in image and if 'fibo-attachment' is in the message. Analysis images, can be multiple images or one image. Must be used when 'fibo-attachment' is provided in current message or the previous message. Must be used when the questions is related to the image from previous message or the current message. User no need to say image to use this function.",
       parameters: {
         type: "object",
         properties: {
           image: {
             type: "string",
             description:
-              "This can be multiple or single value, grab the file_id from current message and previous messages. separated by comma. for example: 'file_id1, file_id2, file_id3' or 'file_id1' or 'file_id2' or 'file_id3'",
-          },
+              "This can be multiple or single value, grab the file_id from current message and previous messages. separated by comma. for example: 'file_id1, file_id2, file_id3' or 'file_id1, file_id2' or 'file_id1'"
+          }
         },
-        required: ["image"],
-      },
-    },
+        required: ["image"]
+      }
+    }
   },
   {
     type: "function",
@@ -32,12 +32,12 @@ export const defaultToolsChat: Tool[] = [
           query: {
             type: "string",
             description:
-              "the mathematics question to solve, must be clear and specific what to solve and what is the questions. Must have prefix 'solve' at first and query must always in english language.",
-          },
+              "the mathematics question to solve, must be clear and specific what to solve and what is the questions. Must have prefix 'solve' at first and query must always in english language."
+          }
         },
-        required: ["query"],
-      },
-    },
+        required: ["query"]
+      }
+    }
   },
   {
     type: "function",
@@ -51,17 +51,17 @@ export const defaultToolsChat: Tool[] = [
           type: {
             type: "string",
             description:
-              "This can be multiple value. Multiple if user ask more than one. for example: 'google, youtube, academic' or 'google, youtube' or 'google, academic' or 'youtube, academic' or 'google' or 'youtube' or 'academic'",
+              "This can be multiple value. Multiple if user ask more than one. for example: 'google, youtube, academic' or 'google, youtube' or 'google, academic' or 'youtube, academic' or 'google' or 'youtube' or 'academic'"
           },
           query: {
             type: "string",
             description:
-              "the query to search, this query will be used to search the related links from internet or google search. This can also be used to get the youtube videos that use YouTube API or academic research that use Semantic Scholar API",
-          },
+              "the query to search, this query will be used to search the related links from internet or google search. This can also be used to get the youtube videos that use YouTube API or academic research that use Semantic Scholar API"
+          }
         },
-        required: ["type", "query"],
-      },
-    },
+        required: ["type", "query"]
+      }
+    }
   },
   {
     type: "function",
@@ -75,12 +75,12 @@ export const defaultToolsChat: Tool[] = [
           url: {
             type: "string",
             description:
-              "the url to get the website information. It will be used to scrape the website and get the information. Must start with https://",
-          },
+              "the url to get the website information. It will be used to scrape the website and get the information. Must start with https://"
+          }
         },
-        required: ["url"],
-      },
-    },
+        required: ["url"]
+      }
+    }
   },
   {
     type: "function",
@@ -94,14 +94,14 @@ export const defaultToolsChat: Tool[] = [
           location: {
             type: "string",
             description:
-              "the location to get the weather information, if location is not provided, it will use the user's location and location is an empty string e.g. ''.",
-          },
+              "the location to get the weather information, if location is not provided, it will use the user's location and location is an empty string e.g. ''."
+          }
         },
-        required: ["location"],
-      },
-    },
-  },
-];
+        required: ["location"]
+      }
+    }
+  }
+]
 
 export const listToolsChat: Tool[] = [
   {
@@ -116,16 +116,16 @@ export const listToolsChat: Tool[] = [
           prompt: {
             type: "string",
             description:
-              "the prompt to generate image, must be descriptive, detailed, and clear to get the best result. The prompt must be specific for DALL-E 3.",
+              "the prompt to generate image, must be descriptive, detailed, and clear to get the best result. The prompt must be specific for DALL-E 3."
           },
           size: {
             type: "string",
             description:
-              "Size of the generated image. Must be one of 1024x1024, 1792x1024, or 1024x1792. Depend on the style and prompt for the best result.",
-          },
+              "Size of the generated image. Must be one of 1024x1024, 1792x1024, or 1024x1792. Depend on the style and prompt for the best result."
+          }
         },
-        required: ["text", "size"],
-      },
-    },
-  },
-];
+        required: ["text", "size"]
+      }
+    }
+  }
+]
