@@ -23,10 +23,10 @@ export default async function FeatureBook() {
   if (!data) return null
 
   return (
-    <section>
+    <section className="max-w-xs sm:max-w-none">
       <h2 className="mb-2 font-semibold tracking-tight">Our latest books:</h2>
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 mb-4 max-w-xs sm:max-w-none">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 mb-4">
         {data.map(book => {
           const publishedDate = moment(book.published_date)
             .locale(locale)
@@ -60,7 +60,11 @@ export default async function FeatureBook() {
         })}
       </div>
 
-      <Button asChild variant="outline">
+      <Button
+        asChild
+        variant="outline"
+        className="flex justify-center sm:w-fit mx-auto"
+      >
         <Link href="/book/collection">See our collection</Link>
       </Button>
     </section>
