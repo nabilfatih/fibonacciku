@@ -37,6 +37,10 @@ export default function BookForm({ className }: FormProps) {
     }
   }, [input.length])
 
+  React.useEffect(() => {
+    setInput(q)
+  }, [q])
+
   return (
     <form
       onSubmit={e => {
@@ -62,7 +66,7 @@ export default function BookForm({ className }: FormProps) {
           tabIndex={0}
           onKeyDown={onKeyDown}
           rows={1}
-          value={input || q}
+          value={input}
           onChange={e => setInput(e.target.value)}
           placeholder={t("placeholder-search")}
           spellCheck={false}
