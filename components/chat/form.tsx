@@ -1,33 +1,30 @@
-import * as React from "react";
-import Textarea from "react-textarea-autosize";
-import { useEnterSubmit } from "@/lib/hooks/use-enter-submit";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import * as React from "react"
+import Textarea from "react-textarea-autosize"
+import { useEnterSubmit } from "@/lib/hooks/use-enter-submit"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import {
   Tooltip,
   TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { useScopedI18n } from "@/locales/client";
-import { IconPhoto, IconSend2, IconSettings } from "@tabler/icons-react";
-import ChatSettingsDialog from "@/components/chat/settings-dialog";
-import { toast } from "sonner";
-import {
-  useMessage,
-  type MessageContextValue,
-} from "@/lib/context/use-message";
-import FormAttachment from "@/components/chat/form-attachment";
-import { Input } from "@/components/ui/input";
+  TooltipTrigger
+} from "@/components/ui/tooltip"
+import { useScopedI18n } from "@/locales/client"
+import { IconPhoto, IconSend2, IconSettings } from "@tabler/icons-react"
+import ChatSettingsDialog from "@/components/chat/settings-dialog"
+import { toast } from "sonner"
+import { useMessage, type MessageContextValue } from "@/lib/context/use-message"
+import FormAttachment from "@/components/chat/form-attachment"
+import { Input } from "@/components/ui/input"
 
 export type PromptProps = {
-  input: string;
-  setInput: (value: string) => void;
-  onSubmit: Pick<MessageContextValue, "handleSubmit">["handleSubmit"];
-  isLoading: boolean;
-  type: string;
-  id?: string;
-  fileId?: string | null;
-};
+  input: string
+  setInput: (value: string) => void
+  onSubmit: Pick<MessageContextValue, "handleSubmit">["handleSubmit"]
+  isLoading: boolean
+  type: string
+  id?: string
+  fileId?: string | null
+}
 
 export default function PromptForm({
   id,
@@ -36,64 +33,64 @@ export default function PromptForm({
   setInput,
   isLoading,
   type = "document",
-  fileId,
+  fileId
 }: PromptProps) {
-  const t = useScopedI18n("FormChat");
+  const t = useScopedI18n("FormChat")
 
-  const { dispatch } = useMessage();
+  const { dispatch } = useMessage()
 
-  const { formRef, onKeyDown } = useEnterSubmit();
-  const fileRef = React.useRef<HTMLInputElement>(null);
-  const inputRef = React.useRef<HTMLTextAreaElement>(null);
+  const { formRef, onKeyDown } = useEnterSubmit()
+  const fileRef = React.useRef<HTMLInputElement>(null)
+  const inputRef = React.useRef<HTMLTextAreaElement>(null)
 
-  const isAssistant = React.useMemo(() => type === "assistant", [type]);
+  const isAssistant = React.useMemo(() => type === "assistant", [type])
 
-  const [settingsDialogOpen, setSettingsDialogOpen] = React.useState(false);
+  const [settingsDialogOpen, setSettingsDialogOpen] = React.useState(false)
 
   React.useEffect(() => {
     if (inputRef.current) {
-      inputRef.current.focus();
+      inputRef.current.focus()
     }
-  }, []);
+  }, [])
 
   const handleUploadChange = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       try {
-        const { files } = e.target;
-        if (!files || files.length === 0) return;
+        const { files } = e.target
+        if (!files || files.length === 0) return
 
-        const file = files[0];
+        const file = files[0]
         if (!file) {
-          toast.error(t("no-image-selected"));
-          return;
+          toast.error(t("no-image-selected"))
+          return
         }
         if (file.size > 5 * 1024 * 1024) {
-          toast.error(t("max-file-size-5mb"));
-          return;
+          toast.error(t("max-file-size-5mb"))
+          return
         }
-        dispatch({ type: "SET_ATTACHMENT", payload: file });
+        dispatch({ type: "SET_ATTACHMENT", payload: file })
       } finally {
         // Clear the input value after each operation
-        e.target.value = "";
+        e.target.value = ""
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [dispatch]
-  );
+  )
 
   return (
     <form
       onSubmit={e => {
-        e.preventDefault();
+        e.preventDefault()
         if (!input?.trim()) {
-          return;
+          return
         }
         if (type === "document" && !id) {
-          toast.error("Choose document first!");
-          return;
+          toast.error("Choose document first!")
+          return
         }
-        setInput("");
-        onSubmit(e, false, fileId || ""); // is edit false and give fileId
+        setInput("")
+        onSubmit(e, false, fileId || "") // is edit false and give fileId
       }}
       ref={formRef}
     >
@@ -108,8 +105,8 @@ export default function PromptForm({
           <TooltipTrigger asChild>
             <Button
               onClick={e => {
-                e.preventDefault();
-                setSettingsDialogOpen(true);
+                e.preventDefault()
+                setSettingsDialogOpen(true)
               }}
               variant="ghost"
               size="icon"
@@ -142,8 +139,8 @@ export default function PromptForm({
           <TooltipTrigger asChild>
             <Button
               onClick={e => {
-                e.preventDefault();
-                fileRef.current?.click();
+                e.preventDefault()
+                fileRef.current?.click()
               }}
               variant="ghost"
               size="icon"
@@ -191,5 +188,5 @@ export default function PromptForm({
         </div>
       </div>
     </form>
-  );
+  )
 }

@@ -1,18 +1,18 @@
-import { useCurrentUser } from "@/lib/context/use-current-user";
-import { useScopedI18n } from "@/locales/client";
-import dynamic from "next/dynamic";
-import LibraryForm from "@/components/library/form";
+import { useCurrentUser } from "@/lib/context/use-current-user"
+import { useScopedI18n } from "@/locales/client"
+import dynamic from "next/dynamic"
+import LibraryForm from "@/components/library/form"
 
-const ChatLibrary = dynamic(() => import("@/components/chat/library"));
+const ChatLibrary = dynamic(() => import("@/components/chat/library"))
 
 export default function EmptyScreenDocument() {
-  const t = useScopedI18n("Library");
+  const t = useScopedI18n("Library")
 
-  const { userDetails } = useCurrentUser();
+  const { userDetails } = useCurrentUser()
 
   return (
-    <div className="mb-2">
-      <p className="mb-4 leading-normal text-muted-foreground">
+    <div>
+      <p className="mb-6 leading-normal text-muted-foreground">
         Upload your document and chat with it.
       </p>
 
@@ -20,5 +20,5 @@ export default function EmptyScreenDocument() {
 
       {userDetails && <ChatLibrary userId={userDetails.id} />}
     </div>
-  );
+  )
 }

@@ -1,17 +1,19 @@
-import BookEmptyScreen from "@/components/book/empty-screen";
-import BookPanel from "@/components/book/panel";
-import { createClientServer } from "@/lib/supabase/server";
-import { getScopedI18n } from "@/locales/server";
-import type { Metadata } from "next";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import BookEmptyScreen from "@/components/book/empty-screen"
+import FeatureBook from "@/components/book/feature-book"
+import BookPanel from "@/components/book/panel"
+import { createClientServer } from "@/lib/supabase/server"
+import { getScopedI18n } from "@/locales/server"
+import type { Metadata } from "next"
+import { cookies } from "next/headers"
+import { redirect } from "next/navigation"
+import { Suspense } from "react"
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getScopedI18n("ProductFiboBook");
+  const t = await getScopedI18n("ProductFiboBook")
 
   return {
     title: {
-      absolute: t("fibo-book"),
+      absolute: t("fibo-book")
     },
     description: `${t("header")}. ${t("fibo-book-description")}`,
     alternates: {
@@ -19,32 +21,34 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         en: "/en/book",
         id: "/id/book",
-        ms: "/de/book",
-      },
-    },
-  };
+        ms: "/de/book"
+      }
+    }
+  }
 }
 
 export default async function BookPage() {
-  const t = await getScopedI18n("Book");
-
-  const cookieStore = cookies();
-  const supabase = createClientServer(cookieStore);
+  const cookieStore = cookies()
+  const supabase = createClientServer(cookieStore)
   const {
-    data: { session },
-  } = await supabase.auth.getSession();
+    data: { session }
+  } = await supabase.auth.getSession()
 
   if (!session?.user) {
-    redirect("/auth/login?next=/book");
+    redirect("/auth/login?next=/book")
   }
 
   return (
     <>
       <main className="h-full overflow-y-auto overflow-x-hidden pb-48 pt-4 sm:pb-52 md:pt-10">
-        <BookEmptyScreen />
+        <BookEmptyScreen>
+          <Suspense>
+            <FeatureBook />
+          </Suspense>
+        </BookEmptyScreen>
       </main>
 
       <BookPanel />
     </>
-  );
+  )
 }
