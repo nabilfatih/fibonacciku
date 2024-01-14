@@ -57,6 +57,7 @@
     "next": "14.0.4",
     "next-international": "^1.2.3",
     "next-themes": "^0.2.1",
+    "nextjs-toploader": "^1.6.4",
     "openai": "^4.24.7",
     "react": "^18",
     "react-confetti": "^6.1.0",

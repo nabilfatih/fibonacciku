@@ -1,19 +1,20 @@
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans"
+import { GeistMono } from "geist/font/mono"
 
-import "@/styles/globals.css";
+import "@/styles/globals.css"
 
-import type { Metadata, Viewport } from "next";
-import { cn } from "@/lib/utils";
-import { TailwindIndicator } from "@/components/development/tailwind-indicator";
-import { Providers } from "@/components/providers";
-import { notFound } from "next/navigation";
-import { getScopedI18n } from "@/locales/server";
-import { Toaster } from "@/components/ui/sonner";
-import { Suspense } from "react";
+import type { Metadata, Viewport } from "next"
+import { cn } from "@/lib/utils"
+import { TailwindIndicator } from "@/components/development/tailwind-indicator"
+import { Providers } from "@/components/providers"
+import { notFound } from "next/navigation"
+import { getScopedI18n } from "@/locales/server"
+import { Toaster } from "@/components/ui/sonner"
+import { Suspense } from "react"
+import NextTopLoader from "nextjs-toploader"
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getScopedI18n("Metadata");
+  const t = await getScopedI18n("Metadata")
   return {
     title: {
       template: "%s · FibonacciKu",
@@ -100,7 +101,7 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: "@fibonacciku"
     },
     category: "Education, Artificial Intelligence"
-  };
+  }
 }
 
 export const viewport: Viewport = {
@@ -109,19 +110,19 @@ export const viewport: Viewport = {
   maximumScale: 5,
   userScalable: true,
   interactiveWidget: "resizes-visual"
-};
+}
 
 export default function RootLayout({
   children,
   params
 }: {
-  children: React.ReactNode;
-  params: { locale: string };
+  children: React.ReactNode
+  params: { locale: string }
 }) {
-  const locales = new Set(["en", "id", "de"]);
+  const locales = new Set(["en", "id", "de"])
 
-  const isValidLocale = locales.has(params.locale);
-  if (!isValidLocale) notFound();
+  const isValidLocale = locales.has(params.locale)
+  if (!isValidLocale) notFound()
 
   return (
     <html lang={params.locale} suppressHydrationWarning>
@@ -133,6 +134,7 @@ export default function RootLayout({
         )}
         suppressHydrationWarning
       >
+        <NextTopLoader color="#15294f" shadow={false} showSpinner={false} />
         <Toaster />
         <Providers
           locale={params.locale}
@@ -148,5 +150,5 @@ export default function RootLayout({
         </Providers>
       </body>
     </html>
-  );
+  )
 }
