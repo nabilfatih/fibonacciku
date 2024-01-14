@@ -24,7 +24,7 @@ export default async function FeatureBook() {
 
   return (
     <section className="max-w-xs sm:max-w-none">
-      <h2 className="mb-2 font-semibold tracking-tight">Our latest books:</h2>
+      <h2 className="mb-2 font-medium tracking-tight">Our latest books:</h2>
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 mb-4">
         {data.map(book => {
