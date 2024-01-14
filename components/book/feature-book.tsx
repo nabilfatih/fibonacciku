@@ -43,9 +43,10 @@ export default async function FeatureBook() {
                 <Image
                   src={coverUrl}
                   alt={book.title}
+                  sizes="100vw"
                   priority
                   fill
-                  className="rounded-lg border shadow-sm object-cover"
+                  className="rounded-xl border shadow-sm object-cover bg-muted/90"
                 />
               </div>
 

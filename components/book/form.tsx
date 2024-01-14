@@ -7,7 +7,7 @@ import React from "react"
 import Textarea from "react-textarea-autosize"
 import { Button } from "@/components/ui/button"
 import { IconSearch } from "@tabler/icons-react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import {
   Tooltip,
   TooltipContent,
@@ -21,6 +21,9 @@ export default function BookForm({ className }: FormProps) {
   const { formRef, onKeyDown } = useEnterSubmit()
 
   const router = useRouter()
+  const searchParams = useSearchParams()
+
+  const q = searchParams.get("q")?.toString() || ""
 
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
 
@@ -28,9 +31,11 @@ export default function BookForm({ className }: FormProps) {
 
   React.useEffect(() => {
     if (inputRef.current) {
+      // auto focus and cursor in the end of the text
       inputRef.current.focus()
+      inputRef.current.setSelectionRange(input.length, input.length)
     }
-  }, [])
+  }, [input.length])
 
   return (
     <form
@@ -57,7 +62,7 @@ export default function BookForm({ className }: FormProps) {
           tabIndex={0}
           onKeyDown={onKeyDown}
           rows={1}
-          value={input}
+          value={input || q}
           onChange={e => setInput(e.target.value)}
           placeholder={t("placeholder-search")}
           spellCheck={false}

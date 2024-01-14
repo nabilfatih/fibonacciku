@@ -4,6 +4,7 @@ import type { BookDocumentWithBooks } from "@/components/book/search"
 import { cn } from "@/lib/utils"
 import { useRef } from "react"
 import BookPanel from "@/components/book/panel"
+import BookList from "@/components/book/list"
 
 type Props = {
   books: BookDocumentWithBooks[]
@@ -28,7 +29,9 @@ export default function BookContent({
           "h-full overflow-y-auto overflow-x-hidden pb-48 pt-4 sm:pb-52 md:pt-10",
           className
         )}
-      ></main>
+      >
+        <BookList bookRef={bookRef} books={books} />
+      </main>
 
       <BookPanel />
     </>
