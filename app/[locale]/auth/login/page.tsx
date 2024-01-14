@@ -1,17 +1,17 @@
-import { LoginAuthForm } from "@/components/auth/login-form";
-import { createClientServer } from "@/lib/supabase/server";
-import { getScopedI18n } from "@/locales/server";
-import type { Metadata } from "next";
-import { cookies } from "next/headers";
-import Link from "next/link";
-import { redirect } from "next/navigation";
+import { LoginAuthForm } from "@/components/auth/login-form"
+import { createClientServer } from "@/lib/supabase/server"
+import { getScopedI18n } from "@/locales/server"
+import type { Metadata } from "next"
+import { cookies } from "next/headers"
+import Link from "next/link"
+import { redirect } from "next/navigation"
 
 type Props = {
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+  searchParams: { [key: string]: string | string[] | undefined }
+}
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getScopedI18n("Auth");
+  const t = await getScopedI18n("Auth")
 
   return {
     title: t("login"),
@@ -20,26 +20,26 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         en: "/en/auth/login",
         id: "/id/auth/login",
-        de: "/de/auth/login",
-      },
-    },
-  };
+        de: "/de/auth/login"
+      }
+    }
+  }
 }
 
 export default async function LoginPage({ searchParams }: Props) {
-  const t = await getScopedI18n("Auth");
+  const t = await getScopedI18n("Auth")
 
   // get next url, it is always a string
-  const next = searchParams.next ? String(searchParams.next) : "";
+  const next = searchParams.next ? String(searchParams.next) : ""
 
-  const cookieStore = cookies();
-  const supabase = createClientServer(cookieStore);
+  const cookieStore = cookies()
+  const supabase = createClientServer(cookieStore)
   const {
-    data: { session },
-  } = await supabase.auth.getSession();
+    data: { session }
+  } = await supabase.auth.getSession()
 
   if (session) {
-    redirect(next || "/chat/assistant");
+    redirect(next || "/chat/assistant")
   }
 
   return (
@@ -73,6 +73,7 @@ export default async function LoginPage({ searchParams }: Props) {
       <p className="px-8 text-center text-sm text-muted-foreground">
         <Link
           href="/terms"
+          target="_blank"
           className="underline underline-offset-4 hover:text-primary"
         >
           {t("terms-of-service")}
@@ -80,11 +81,12 @@ export default async function LoginPage({ searchParams }: Props) {
         &{" "}
         <Link
           href="/privacy"
+          target="_blank"
           className="underline underline-offset-4 hover:text-primary"
         >
           {t("privacy-policy")}
         </Link>
       </p>
     </>
-  );
+  )
 }
