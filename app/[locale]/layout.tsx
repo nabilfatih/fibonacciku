@@ -134,7 +134,7 @@ export default function RootLayout({
         )}
         suppressHydrationWarning
       >
-        <NextTopLoader color="#15294f" shadow={false} showSpinner={false} />
+        <NextTopLoader color="#ee3554" shadow={false} showSpinner={false} />
         <Toaster />
         <Providers
           locale={params.locale}
