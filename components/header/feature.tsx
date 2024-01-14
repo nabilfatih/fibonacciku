@@ -95,10 +95,10 @@ const featuresData = [
     type: "book",
     link: "/book",
     icon: IconBook2
-  },
-  {
-    type: "detector",
-    link: "/detector/ai",
-    icon: IconSpy
   }
+  // {
+  //   type: "detector",
+  //   link: "/detector/ai",
+  //   icon: IconSpy
+  // }
 ]
