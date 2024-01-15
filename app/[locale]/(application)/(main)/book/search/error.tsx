@@ -27,7 +27,7 @@ export default function Error({
             {t("something-wrong")}
           </p>
 
-          <Button asChild>
+          <Button asChild onClick={() => reset()}>
             <Link href="/book">{t("try-again")}</Link>
           </Button>
         </div>

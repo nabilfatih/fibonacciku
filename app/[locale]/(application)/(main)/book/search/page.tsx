@@ -1,3 +1,4 @@
+import BookLoading from "@/components/book/loading"
 import BookSearch from "@/components/book/search"
 import { createClientServer } from "@/lib/supabase/server"
 import { getScopedI18n } from "@/locales/server"
@@ -47,7 +48,7 @@ export default async function BookSearchPage({ searchParams }: Props) {
   const query = String(q)
 
   return (
-    <Suspense>
+    <Suspense fallback={<BookLoading />}>
       <BookSearch query={query} />
     </Suspense>
   )

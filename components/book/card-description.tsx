@@ -34,7 +34,7 @@ export default function BookCardDescription({ book }: Props) {
         }
       })}
 
-      <IconPointFilled className="h-2 w-2" />
+      <IconPointFilled className="h-2 w-2 text-muted-foreground" />
 
       <span className="text-xs text-muted-foreground">
         {moment(book.published_date).format("MMM YYYY")}
