@@ -13,7 +13,7 @@ export default function BookCard({ book }: Props) {
   const coverUrl = getBooksCoverPublicUrl(book.bookId, book.fileId)
 
   return (
-    <div className="flex items-start">
+    <div className="flex items-start sm:px-1">
       <div className="relative mr-2 h-24 w-16 flex-none sm:mr-4 sm:h-48 sm:w-36">
         <Image
           src={coverUrl}
