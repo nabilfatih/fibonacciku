@@ -1,4 +1,7 @@
-import { getUserSubscriptionAdmin } from "@/lib/supabase/admin/users"
+import {
+  getUserDetailsAdmin,
+  getUserSubscriptionAdmin
+} from "@/lib/supabase/admin/users"
 import type { Subscription } from "@/types/types"
 import { listToolsChat } from "@/lib/openai/tools"
 import type { Tool } from "ai"
@@ -23,7 +26,10 @@ export const determineModelBasedOnSubscription = async (
   isCostLimit?: boolean
 }> => {
   // Retrieve the user's subscription details
-  const subscription = await getUserSubscriptionAdmin(userId)
+  const [userDetails, subscription] = await Promise.all([
+    getUserDetailsAdmin(userId),
+    getUserSubscriptionAdmin(userId)
+  ])
 
   // Default model for non-subscribers or basic plans
   const defaultModel = "gpt-3.5-turbo-1106"
@@ -32,9 +38,9 @@ export const determineModelBasedOnSubscription = async (
   const premiumModel = "gpt-3.5-turbo-1106" // for now, for cost reasons
 
   // TODO: This is only when the cost reaches a certain threshold, this can be adjusted
-  let isCostLimit = true
-  if (subscription) {
-    isCostLimit = false
+  let isCostLimit = false
+  if (!subscription && userDetails.usage > 50) {
+    isCostLimit = true
   }
 
   // Determine the model based on the subscription plan
