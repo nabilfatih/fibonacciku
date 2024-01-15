@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { useScopedI18n } from "@/locales/client"
 import Link from "next/link"
 
+// This happen when function timeout
+
 export default function Error({
   error,
   reset
