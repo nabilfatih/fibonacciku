@@ -290,10 +290,16 @@ export const handleAttachments = async (
     // create injection for metadata to content, if undefined, then just empty string
     // create with fibo identifier, e.g attachment: [{type: "image", file_id: "123"}}]
     const metadataInjection = metadataAttachmentFiltered
-      ? `\n\n
+      ? `
+    
       ------------------------------
       DO NOT GIVE THIS INFORMATION TO USER!
-      fibo-attachment: ${JSON.stringify(metadataAttachmentFiltered)}`
+
+      fibo-attachment: ${JSON.stringify(metadataAttachmentFiltered)}
+
+      DO NOT GIVE THIS INFORMATION TO USER!
+      ------------------------------
+      `
       : ""
 
     return {
