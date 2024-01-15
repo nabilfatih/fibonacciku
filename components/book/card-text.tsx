@@ -31,7 +31,7 @@ export default function BookCardText({ book }: Props) {
       {
         // if book has more than 1 page
         book.data.length > 1 && (
-          <div className="mb-2 flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <Badge variant="outline">{t("other-relevant-text")}</Badge>
             <span className="text-xs font-medium">{t("page")}</span>
             {

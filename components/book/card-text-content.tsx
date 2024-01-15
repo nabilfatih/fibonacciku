@@ -37,7 +37,7 @@ export default function BookCardTextContent({ book }: Props) {
       <p
         ref={textRef}
         className={cn(
-          "mb-1 max-w-[263px] break-words text-sm sm:max-w-none",
+          "break-words text-sm",
           contentExpand !== book.bookId ? "line-clamp-3" : "line-clamp-none"
         )}
       >
