@@ -29,7 +29,7 @@ export default function BookCard({ book }: Props) {
           <Link
             href={`/book/chat/${dataBook.id}`}
             passHref
-            className="mb-1 text-xl font-medium tracking-tight leading-none"
+            className="mb-1 text-xl font-medium tracking-tight leading-none w-fit"
           >
             {dataBook.title}
           </Link>
