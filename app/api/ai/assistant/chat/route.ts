@@ -84,8 +84,23 @@ export async function POST(req: Request) {
 
   const chatId = dataRequest.chatId
   const userId = user.id
-  const { model, additionalTools } =
+  const { model, additionalTools, isCostLimit } =
     await determineModelBasedOnSubscription(userId)
+
+  if (isCostLimit) {
+    // return that is in limit access, please consider to buy premium
+    return NextResponse.json(
+      {
+        error: {
+          statusCode: 402,
+          message: "Limit access, please consider to buy premium"
+        }
+      },
+      {
+        status: 402
+      }
+    )
+  }
 
   // default function call
   let toolChoice: OpenAI.ChatCompletionToolChoiceOption = "auto"
