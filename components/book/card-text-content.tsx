@@ -31,6 +31,7 @@ export default function BookCardTextContent({ book }: Props) {
     // Cleanup the event listener
     return () => window.removeEventListener("resize", checkOverflow)
   }, [])
+
   return (
     <div className="mb-6">
       <p
@@ -44,11 +45,12 @@ export default function BookCardTextContent({ book }: Props) {
       </p>
       {isOverflow && (
         <Button
-          variant="outline"
+          variant="link"
           size="sm"
           onClick={() => {
             setContentExpand(prev => (prev === book.bookId ? "" : book.bookId))
           }}
+          className="p-0"
         >
           {contentExpand === book.bookId ? t("collapse") : t("expand")}
         </Button>
