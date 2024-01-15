@@ -2,6 +2,8 @@ import { getBooksCoverPublicUrl } from "@/lib/supabase/client/book"
 import type { BookDocumentWithBooks } from "@/components/book/search"
 import Image from "next/image"
 import Link from "next/link"
+import BookCardDescription from "@/components/book/card-description"
+import BookCardText from "@/components/book/card-text"
 
 type Props = {
   book: BookDocumentWithBooks
@@ -29,10 +31,14 @@ export default function BookCard({ book }: Props) {
           <Link
             href={`/book/chat/${dataBook.id}`}
             passHref
-            className="mb-1 sm:text-lg font-medium tracking-tight leading-none w-fit"
+            className="mb-2 sm:text-lg font-medium tracking-tight leading-none w-fit"
           >
             {dataBook.title}
           </Link>
+
+          <BookCardDescription book={dataBook} />
+
+          <BookCardText book={book} />
         </div>
       </div>
     </div>

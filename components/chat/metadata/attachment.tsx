@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
-import type { Attachment } from "@/types/types";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
-import { useCurrentUser } from "@/lib/context/use-current-user";
-import { getChatAttachmentSignedUrl } from "@/lib/supabase/client/chat";
-import { useParams } from "next/navigation";
+import React, { useEffect, useState } from "react"
+import type { Attachment } from "@/types/types"
+import Image from "next/image"
+import { cn } from "@/lib/utils"
+import { useCurrentUser } from "@/lib/context/use-current-user"
+import { getChatAttachmentSignedUrl } from "@/lib/supabase/client/chat"
+import { useParams } from "next/navigation"
 
 type Props = {
-  metadata: Attachment[];
-};
+  metadata: Attachment[]
+}
 
 export default function ChatMetadataAttachment({ metadata }: Props) {
-  const [loaded, setLoaded] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const [loaded, setLoaded] = useState(false)
+  const [imageLoaded, setImageLoaded] = useState(false)
+  const [imageUrls, setImageUrls] = useState<string[]>([])
 
-  const { userDetails } = useCurrentUser();
-  const params = useParams();
-  const chatId = params.id;
+  const { userDetails } = useCurrentUser()
+  const params = useParams()
+  const chatId = params.id
 
   // We'll fetch all URLs at once and store them in our imageUrls state.
   useEffect(() => {
@@ -31,11 +31,11 @@ export default function ChatMetadataAttachment({ metadata }: Props) {
           )
         )
       ).then(urls => {
-        setImageUrls(urls);
-        setLoaded(true); // Now we set loaded true after all URLs are fetched.
-      });
+        setImageUrls(urls)
+        setLoaded(true) // Now we set loaded true after all URLs are fetched.
+      })
     }
-  }, [chatId, metadata, userDetails]);
+  }, [chatId, metadata, userDetails])
 
   return (
     <>
@@ -56,16 +56,16 @@ export default function ChatMetadataAttachment({ metadata }: Props) {
                   style={{
                     width: "100%",
                     height: "auto",
-                    maxHeight: "16rem",
+                    maxHeight: "16rem"
                   }}
                   priority
                   width={256}
                   height={256}
                   onLoad={() => setImageLoaded(true)}
                   onClick={async () => {
-                    const imageUrl = url;
-                    window.open(imageUrl, "_blank");
-                    return false; // Prevents link from opening in new tab
+                    const imageUrl = url
+                    window.open(imageUrl, "_blank")
+                    return false // Prevents link from opening in new tab
                   }}
                   className={cn(
                     "m-0 cursor-pointer rounded-xl border bg-muted/90 shadow-sm",
@@ -73,12 +73,12 @@ export default function ChatMetadataAttachment({ metadata }: Props) {
                   )}
                 />
               </div>
-            );
+            )
           })}
         </div>
       )}
     </>
-  );
+  )
 }
 
 function Loading() {
@@ -86,5 +86,5 @@ function Loading() {
     <div className="flex flex-wrap gap-4">
       <div className="m-0 block h-64 w-64 animate-pulse rounded-xl border bg-muted/90 object-cover" />
     </div>
-  );
+  )
 }

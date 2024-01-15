@@ -14,19 +14,21 @@ export default function Error({
   const t = useScopedI18n("BackendRouter")
 
   return (
-    <main className="mx-auto max-w-2xl px-4">
-      <h1 className="mb-2 text-xl font-semibold sm:text-3xl">
-        {t("high-traffic")}
-      </h1>
+    <main className="h-full overflow-y-auto overflow-x-hidden pb-48 pt-4 sm:pb-52 md:pt-10">
+      <div className="mx-auto max-w-2xl px-4">
+        <h1 className="mb-2 text-xl font-semibold sm:text-3xl">
+          {t("high-traffic")}
+        </h1>
 
-      <div>
-        <p className="mb-6 leading-normal text-muted-foreground">
-          {t("something-wrong")}
-        </p>
+        <div>
+          <p className="mb-6 leading-normal text-muted-foreground">
+            {t("something-wrong")}
+          </p>
 
-        <Button asChild>
-          <Link href="/book">{t("try-again")}</Link>
-        </Button>
+          <Button asChild>
+            <Link href="/book">{t("try-again")}</Link>
+          </Button>
+        </div>
       </div>
     </main>
   )

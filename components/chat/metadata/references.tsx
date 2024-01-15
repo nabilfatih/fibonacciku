@@ -1,17 +1,17 @@
-import { Button } from "@/components/ui/button";
-import { useMessage } from "@/lib/context/use-message";
-import { useScopedI18n } from "@/locales/client";
-import type { SourceDocument } from "@/types/types";
-import { IconFile } from "@tabler/icons-react";
+import { Button } from "@/components/ui/button"
+import { useMessage } from "@/lib/context/use-message"
+import { useScopedI18n } from "@/locales/client"
+import type { SourceDocument } from "@/types/types"
+import { IconFile } from "@tabler/icons-react"
 
 type Props = {
-  metadata: SourceDocument[];
-};
+  metadata: SourceDocument[]
+}
 
 export default function ChatMetadataReferences({ metadata }: Props) {
-  const t = useScopedI18n("MetadataChat");
+  const t = useScopedI18n("MetadataChat")
 
-  const { pageRef, dispatch } = useMessage();
+  const { pageRef, dispatch } = useMessage()
 
   return (
     <div className="flex flex-col justify-start gap-2">
@@ -29,30 +29,31 @@ export default function ChatMetadataReferences({ metadata }: Props) {
               title={`${t("page")} ${item.page_number}`}
               key={index}
               size="sm"
+              className="rounded-full"
               onClick={async () => {
                 dispatch({
                   type: "SET_INITIAL_PAGE",
-                  payload: item.page_number,
-                });
+                  payload: item.page_number
+                })
                 dispatch({
                   type: "SET_OPEN_DOCUMENT",
-                  payload: true,
-                });
-                await new Promise(resolve => setTimeout(resolve, 1000)); // wait for the sheet to open
-                const main = pageRef.current;
+                  payload: true
+                })
+                await new Promise(resolve => setTimeout(resolve, 1000)) // wait for the sheet to open
+                const main = pageRef.current
                 if (main && typeof main.scrollToIndex === "function") {
                   main.scrollToIndex({
                     index: item.page_number - 1,
-                    alignToTop: true,
-                  });
+                    alignToTop: true
+                  })
                 }
               }}
             >
               {item.page_number}
             </Button>
-          );
+          )
         })}
       </div>
     </div>
-  );
+  )
 }
