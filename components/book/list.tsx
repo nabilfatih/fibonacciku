@@ -13,7 +13,7 @@ type Props = {
 export default function BookList({ bookRef, books }: Props) {
   const listRef = useRef<any>({})
   return (
-    <div className="relative mx-auto max-w-4xl px-4">
+    <div className="relative mx-auto max-w-2xl px-4">
       <ViewportList ref={listRef} viewportRef={bookRef} items={books}>
         {(item, index) => {
           return (
