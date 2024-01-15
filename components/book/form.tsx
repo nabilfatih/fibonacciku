@@ -31,11 +31,9 @@ export default function BookForm({ className }: FormProps) {
 
   React.useEffect(() => {
     if (inputRef.current) {
-      // auto focus and cursor in the end of the text
       inputRef.current.focus()
-      inputRef.current.setSelectionRange(input.length, input.length)
     }
-  }, [input.length])
+  }, [])
 
   React.useEffect(() => {
     setInput(q)
