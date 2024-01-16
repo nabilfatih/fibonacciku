@@ -29,7 +29,7 @@ export default function BookCard({ book }: Props) {
       <div className="flex-1">
         <div className="flex flex-col">
           <Link
-            href={`/book/chat/${dataBook.id}`}
+            href={`/book/collection/${book.bookId}`}
             passHref
             className="mb-2 sm:text-lg font-medium tracking-tight leading-none w-fit"
           >

@@ -49,7 +49,7 @@ export default function BookCardText({ book }: Props) {
                     className="rounded-full"
                   >
                     <Link
-                      href={`/book/chat/${book.bookId}?page=${page.metadata.page_number}`}
+                      href={`/book/collection/${book.bookId}?page=${page.metadata.page_number}`}
                     >
                       {page.metadata.page_number}
                     </Link>
