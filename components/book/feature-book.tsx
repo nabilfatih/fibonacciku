@@ -38,12 +38,13 @@ export default async function FeatureBook() {
               href={`/book/collection/${book.id}`}
               key={book.id}
               className="flex flex-col justify-between gap-2"
+              passHref
             >
               <div className="relative w-auto h-48">
                 <Image
                   src={coverUrl}
                   alt={book.title}
-                  sizes="100vw"
+                  sizes="148px"
                   priority
                   fill
                   className="rounded-xl border shadow-sm object-cover bg-muted/90"
