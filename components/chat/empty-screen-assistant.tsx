@@ -51,7 +51,7 @@ export default function EmptyScreenAssistant() {
           Explore what you can do with me:
         </h2>
 
-        <Button asChild variant="outline" className="w-fit">
+        <Button asChild variant="outline" className="sm:w-fit">
           <Link href="/chat/explore" className="inline-flex items-center">
             <IconRocket className="h-5 w-5 mr-2" />
             Start exploring
