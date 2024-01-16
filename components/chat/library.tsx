@@ -76,7 +76,7 @@ export default function ChatLibrary({ userId }: Props) {
   if (!libraries) return null
 
   return (
-    <div className="mt-6 grid">
+    <div className="grid">
       <p className="text-center text-muted-foreground">
         Then choose from your library:
       </p>
@@ -187,7 +187,7 @@ export default function ChatLibrary({ userId }: Props) {
           )}
         </div>
       </div>
-      <Button asChild variant="link" className="mt-4 w-fit mx-auto">
+      <Button asChild variant="link" className="w-fit mx-auto">
         <Link href="/chat/library">See your library</Link>
       </Button>
     </div>

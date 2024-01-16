@@ -1,15 +1,21 @@
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 import { useScopedI18n } from "@/locales/client"
-import { IconBook2, IconFile, IconMessageCircle2 } from "@tabler/icons-react"
+import {
+  IconBook2,
+  IconFile,
+  IconMessageCircle2,
+  IconRocket
+} from "@tabler/icons-react"
 import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 export default function EmptyScreenAssistant() {
   const t = useScopedI18n("Feature")
 
   return (
-    <div>
-      <p className="mb-6 leading-normal text-muted-foreground">
+    <div className="space-y-6">
+      <p className="leading-normal text-muted-foreground">
         Ask me anything, whatever you want to know.
       </p>
 
@@ -39,6 +45,19 @@ export default function EmptyScreenAssistant() {
           </Link>
         ))}
       </section>
+
+      <div className="grid">
+        <h2 className="mb-2 font-medium tracking-tight">
+          Explore what you can do with me:
+        </h2>
+
+        <Button asChild variant="outline" className="w-fit">
+          <Link href="/chat/explore" className="inline-flex items-center">
+            <IconRocket className="h-5 w-5 mr-2" />
+            Start exploring
+          </Link>
+        </Button>
+      </div>
     </div>
   )
 }

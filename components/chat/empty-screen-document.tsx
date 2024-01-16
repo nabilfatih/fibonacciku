@@ -11,8 +11,8 @@ export default function EmptyScreenDocument() {
   const { userDetails } = useCurrentUser()
 
   return (
-    <div>
-      <p className="mb-6 leading-normal text-muted-foreground">
+    <div className="space-y-6">
+      <p className="leading-normal text-muted-foreground">
         Upload your document and chat with it.
       </p>
 
