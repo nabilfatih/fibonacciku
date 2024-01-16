@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import Image from "next/image";
+import Image from "next/image"
 
 import {
   DropdownMenu,
@@ -8,29 +8,29 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { useScopedI18n } from "@/locales/client";
-import { useCurrentUser } from "@/lib/context/use-current-user";
-import Link from "next/link";
-import supabaseClient from "@/lib/supabase/client";
-import { useRouter } from "next/navigation";
-import Avatar, { genConfig } from "react-nice-avatar";
+  DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu"
+import { useScopedI18n } from "@/locales/client"
+import { useCurrentUser } from "@/lib/context/use-current-user"
+import Link from "next/link"
+import supabaseClient from "@/lib/supabase/client"
+import { useRouter } from "next/navigation"
+import Avatar, { genConfig } from "react-nice-avatar"
 import {
   IconDiscountCheck,
   IconExternalLink,
-  IconUser,
-} from "@tabler/icons-react";
-import Feedback from "@/components/header/feedback";
-import Contact from "@/components/header/contact";
+  IconUser
+} from "@tabler/icons-react"
+import Feedback from "@/components/header/feedback"
+import Contact from "@/components/header/contact"
 
 export default function UserMenu() {
-  const t = useScopedI18n("ModalAccount");
-  const router = useRouter();
+  const t = useScopedI18n("ModalAccount")
+  const router = useRouter()
 
-  const { userDetails } = useCurrentUser();
+  const { userDetails } = useCurrentUser()
 
-  const config = genConfig(userDetails?.full_name ?? "Avatar");
+  const config = genConfig(userDetails?.full_name ?? "Avatar")
 
   if (!userDetails) {
     return (
@@ -40,7 +40,7 @@ export default function UserMenu() {
           {...config}
         />
       </div>
-    );
+    )
   }
 
   return (
@@ -112,14 +112,14 @@ export default function UserMenu() {
               target="_blank"
               className="inline-flex w-full cursor-pointer items-center justify-between"
             >
-              {t("nakafa")}
+              {t("homepage")}
               <IconExternalLink className="ml-auto h-4 w-4" />
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={async () => {
-              await supabaseClient.auth.signOut();
-              router.replace("/auth/login");
+              await supabaseClient.auth.signOut()
+              router.replace("/auth/login")
             }}
             className="cursor-pointer py-2"
           >
@@ -128,5 +128,5 @@ export default function UserMenu() {
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
-  );
+  )
 }

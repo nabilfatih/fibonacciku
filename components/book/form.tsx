@@ -28,6 +28,7 @@ export default function BookForm({ className }: FormProps) {
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
 
   const [input, setInput] = React.useState("")
+  const [isLoading, setIsLoading] = React.useState(false)
 
   React.useEffect(() => {
     if (inputRef.current) {
@@ -46,6 +47,7 @@ export default function BookForm({ className }: FormProps) {
         if (!input?.trim()) {
           return
         }
+        setIsLoading(true)
         // replace all question mark with %3F and space with +
         router.push(
           `/book/search?q=${input.replaceAll(" ", "+").replaceAll("?", "%3F")}`
@@ -75,7 +77,11 @@ export default function BookForm({ className }: FormProps) {
         <div className="absolute bottom-4 right-0 sm:bottom-3 sm:right-4">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button type="submit" size="icon" disabled={input === ""}>
+              <Button
+                type="submit"
+                size="icon"
+                disabled={input === "" || isLoading}
+              >
                 <IconSearch />
                 <span className="sr-only">Search</span>
               </Button>
