@@ -17,6 +17,7 @@ export default function EmptyScreenAssistant() {
         {featuresList.map((feature, index) => (
           <Link key={index} passHref href={feature.link}>
             <Card
+              className="overflow-hidden"
               style={{
                 backgroundImage: feature.backgroundImage,
                 backgroundSize: "cover",
@@ -25,8 +26,8 @@ export default function EmptyScreenAssistant() {
             >
               <CardHeader
                 className={cn(
-                  "flex-row items-center space-y-0 space-x-2 bg-muted/70 hover:bg-muted/30 transition-colors",
-                  feature.title === "assistant" && "bg-muted/50"
+                  "flex-row items-center space-y-0 space-x-2 bg-muted/70 hover:bg-muted/50 transition-colors",
+                  feature.title === "assistant" && "bg-muted/60"
                 )}
               >
                 <feature.icon className="h-5 w-5" />
