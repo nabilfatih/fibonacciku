@@ -1,20 +1,26 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from "next/image"
+import Link from "next/link"
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="relative">
+    <main className="relative mx-auto prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 prose-p:mb-2 prose-p:last:mb-0">
       <section className="z-40 m-auto my-12 flex w-full max-w-4xl flex-col justify-between px-4">
-        <header className="flex flex-col items-center justify-center gap-2 pb-3">
+        <header className="flex flex-col items-center justify-center pb-3">
           <Link href="/">
-            <Image src="/logo.webp" width={36} height={36} alt="FibonacciKu" />
+            <Image
+              src="/logo.webp"
+              width={36}
+              height={36}
+              alt="FibonacciKu"
+              className="my-2"
+            />
           </Link>
           <h1 className="text-lg font-bold">
             Welcome to FibonacciKu Privacy Policy
           </h1>
         </header>
         <main className="flex flex-col space-y-6 text-sm">
-          <section className="flex flex-col gap-3">
+          <section className="flex flex-col">
             <p className="font-medium italic">Last update: 20 June 2023</p>
             <p>
               At FibonacciKu, your privacy is of the utmost importance to us.
@@ -25,11 +31,11 @@ export default function PrivacyPolicyPage() {
               and use of information in accordance with this policy.
             </p>
           </section>
-          <section className="flex flex-col gap-3">
+          <section className="flex flex-col">
             <h2 className="text-xl font-bold">
               Information Collection and Use
             </h2>
-            <section className="flex flex-col gap-2">
+            <section className="flex flex-col">
               <h3 className="text-lg font-semibold">Personal Information</h3>
               <p>
                 While using our site, we may ask you to provide us with certain
@@ -61,7 +67,7 @@ export default function PrivacyPolicyPage() {
               </ul>
             </section>
 
-            <section className="flex flex-col gap-2">
+            <section className="flex flex-col">
               <h3 className="text-lg font-semibold">Log Data</h3>
               <p>
                 Like many site operators, we collect information that your
@@ -84,7 +90,7 @@ export default function PrivacyPolicyPage() {
               </p>
             </section>
 
-            <section className="flex flex-col gap-2">
+            <section className="flex flex-col">
               <h3 className="text-lg font-semibold">Cookies</h3>
               <p>
                 Cookies are small files containing a string of characters that
@@ -109,11 +115,11 @@ export default function PrivacyPolicyPage() {
               </p>
             </section>
           </section>
-          <section className="flex flex-col gap-3">
+          <section className="flex flex-col">
             <h2 className="text-xl font-bold">
               Payment Information and Security
             </h2>
-            <section className="flex flex-col gap-2">
+            <section className="flex flex-col">
               <h3 className="text-lg font-semibold">
                 Collection of Payment Information
               </h3>
@@ -137,7 +143,7 @@ export default function PrivacyPolicyPage() {
               </p>
             </section>
 
-            <section className="flex flex-col gap-2">
+            <section className="flex flex-col">
               <h3 className="text-lg font-semibold">Stripe Payment Gateway</h3>
               <p>
                 We use Stripe, a secure and widely recognized payment gateway,
@@ -170,7 +176,7 @@ export default function PrivacyPolicyPage() {
               </p>
             </section>
 
-            <section className="flex flex-col gap-2">
+            <section className="flex flex-col">
               <h3 className="text-lg font-semibold">
                 Protection of Payment Information
               </h3>
@@ -189,7 +195,7 @@ export default function PrivacyPolicyPage() {
               </p>
             </section>
 
-            <section className="flex flex-col gap-2">
+            <section className="flex flex-col">
               <h3 className="text-lg font-semibold">
                 Changes to Payment Information
               </h3>
@@ -201,8 +207,8 @@ export default function PrivacyPolicyPage() {
               </p>
             </section>
           </section>
-          <section className="flex flex-col gap-3">
-            <section className="flex flex-col gap-2">
+          <section className="flex flex-col">
+            <section className="flex flex-col">
               <h2 className="text-xl font-bold">Third-Party Services</h2>
               <p>
                 We may employ third-party companies and individuals to
@@ -216,7 +222,7 @@ export default function PrivacyPolicyPage() {
                 to disclose or use it for any other purpose.
               </p>
             </section>
-            <section className="flex flex-col gap-2">
+            <section className="flex flex-col">
               <h3 className="text-lg font-semibold">Security</h3>
               <p>
                 The security of your personal information is important to us,
@@ -226,7 +232,7 @@ export default function PrivacyPolicyPage() {
                 information, we cannot guarantee its absolute security.
               </p>
             </section>
-            <section className="flex flex-col gap-2">
+            <section className="flex flex-col">
               <h3 className="text-lg font-semibold">Your Rights</h3>
               <p>
                 You have the right to access, update, or delete your personal
@@ -236,7 +242,7 @@ export default function PrivacyPolicyPage() {
                 well as the right to data portability.
               </p>
             </section>
-            <section className="flex flex-col gap-2">
+            <section className="flex flex-col">
               <h3 className="text-lg font-semibold">
                 Changes to This Privacy Policy
               </h3>
@@ -261,7 +267,7 @@ export default function PrivacyPolicyPage() {
               </p>
             </section>
           </section>
-          <section className="flex flex-col gap-2">
+          <section className="flex flex-col">
             <h2 className="text-xl font-bold">Contact Us</h2>
             <p>
               If you have any questions or concerns about this Privacy Policy,
@@ -269,11 +275,11 @@ export default function PrivacyPolicyPage() {
               hesitate to contact us to this email: support@fibonacciku.com
             </p>
           </section>
-          <section className="flex flex-col gap-2">
+          <section className="flex flex-col">
             <p className="text-lg font-semibold italic">FibonacciKu Team</p>
           </section>
         </main>
       </section>
     </main>
-  );
+  )
 }

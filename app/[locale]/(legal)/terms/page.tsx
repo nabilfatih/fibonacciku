@@ -1,20 +1,26 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from "next/image"
+import Link from "next/link"
 
 export default function TermsOfUsePage() {
   return (
-    <main className="relative">
+    <main className="relative mx-auto prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 prose-p:mb-2 prose-p:last:mb-0">
       <section className="z-40 m-auto my-12 flex w-full max-w-4xl flex-col justify-between px-4">
-        <header className="flex flex-col items-center justify-center gap-2 pb-3">
-          <Link href="/">
-            <Image src="/logo.webp" width={36} height={36} alt="FibonacciKu" />
+        <header className="flex flex-col items-center justify-center pb-3">
+          <Link href="/" passHref>
+            <Image
+              src="/logo.webp"
+              width={36}
+              height={36}
+              alt="FibonacciKu"
+              className="my-2"
+            />
           </Link>
           <h1 className="text-lg font-bold">
             Welcome to FibonacciKu Terms of Use
           </h1>
         </header>
         <main className="flex flex-col space-y-6 text-sm">
-          <section className="flex flex-col gap-3">
+          <section className="flex flex-col">
             <p className="font-medium italic">Last update: 20 June 2023</p>
             <p>
               Please read these Terms of Use (&#34;Terms&#34;) carefully before
@@ -33,7 +39,7 @@ export default function TermsOfUsePage() {
               have permission to access the Service.
             </p>
           </section>
-          <section className="flex flex-col gap-3">
+          <section className="flex flex-col">
             <h2 className="text-xl font-bold">Intellectual Property</h2>
             <p>
               The Service and its original content, features, and functionality
@@ -44,7 +50,7 @@ export default function TermsOfUsePage() {
               product or service without the prior written consent of
               FibonacciKu.
             </p>
-            <section className="flex flex-col gap-2">
+            <section className="flex flex-col">
               <h3 className="text-lg font-semibold">Copyrights</h3>
               <p>
                 All content on the Service, including but not limited to text,
@@ -55,7 +61,7 @@ export default function TermsOfUsePage() {
                 FibonacciKu and is protected by international copyright laws.
               </p>
             </section>
-            <section className="flex flex-col gap-2">
+            <section className="flex flex-col">
               <h3 className="text-lg font-semibold">Trademarks</h3>
               <p>
                 FibonacciKu, the FibonacciKu logo, and other FibonacciKu
@@ -68,7 +74,7 @@ export default function TermsOfUsePage() {
               </p>
             </section>
           </section>
-          <section className="flex flex-col gap-3">
+          <section className="flex flex-col">
             <h2 className="text-xl font-bold">User Conduct</h2>
             <p>By using our Service, you agree to:</p>
             <ul className="list-inside list-disc">
@@ -111,7 +117,7 @@ export default function TermsOfUsePage() {
               </li>
             </ul>
           </section>
-          <section className="flex flex-col gap-3">
+          <section className="flex flex-col">
             <h2 className="text-xl font-bold">User Content</h2>
             <p>
               You are solely responsible for any content, including but not
@@ -149,9 +155,9 @@ export default function TermsOfUsePage() {
               monitor, remove, or edit any User Content at its sole discretion.
             </p>
           </section>
-          <section className="flex flex-col gap-3">
+          <section className="flex flex-col">
             <h2 className="text-xl font-bold">Payments and Billing</h2>
-            <section className="flex flex-col gap-2">
+            <section className="flex flex-col">
               <h3 className="text-lg font-semibold">Payment Methods</h3>
               <p>
                 We use Stripe as our payment gateway to process payments for our
@@ -178,7 +184,7 @@ export default function TermsOfUsePage() {
                 payment information up-to-date and accurate.
               </p>
             </section>
-            <section className="flex flex-col gap-2">
+            <section className="flex flex-col">
               <h3 className="text-lg font-semibold">Subscription Plans</h3>
               <p>
                 FibonacciKu offers subscription-based products, which grant you
@@ -199,7 +205,7 @@ export default function TermsOfUsePage() {
                 services under the new terms or cancel your subscription.
               </p>
             </section>
-            <section className="flex flex-col gap-2">
+            <section className="flex flex-col">
               <h3 className="text-lg font-semibold">Automatic Renewal</h3>
               <p>
                 Your subscription will automatically renew at the end of each
@@ -209,7 +215,7 @@ export default function TermsOfUsePage() {
                 support.
               </p>
             </section>
-            <section className="flex flex-col gap-2">
+            <section className="flex flex-col">
               <h3 className="text-lg font-semibold">Refund Policy</h3>
               <p>
                 We strive to provide a high-quality service to our users.
@@ -230,7 +236,7 @@ export default function TermsOfUsePage() {
               </p>
             </section>
           </section>
-          <section className="flex flex-col gap-3">
+          <section className="flex flex-col">
             <h2 className="text-xl font-bold">Links to Other Web Sites</h2>
             <p>
               Our Service may contain links to third-party websites or services
@@ -255,7 +261,7 @@ export default function TermsOfUsePage() {
               visit.
             </p>
           </section>
-          <section className="flex flex-col gap-3">
+          <section className="flex flex-col">
             <h2 className="text-xl font-bold">Termination</h2>
             <p>
               We may terminate or suspend your access to the Service
@@ -270,7 +276,7 @@ export default function TermsOfUsePage() {
               and limitations of liability.
             </p>
           </section>
-          <section className="flex flex-col gap-3">
+          <section className="flex flex-col">
             <h2 className="text-xl font-bold">Indemnification</h2>
             <p>
               You agree to defend, indemnify, and hold harmless FibonacciKu and
@@ -285,7 +291,7 @@ export default function TermsOfUsePage() {
               your User Content caused damage to a third party.
             </p>
           </section>
-          <section className="flex flex-col gap-3">
+          <section className="flex flex-col">
             <h2 className="text-xl font-bold">Limitation of Liability</h2>
             <p>
               In no event shall FibonacciKu, nor its directors, employees,
@@ -303,7 +309,7 @@ export default function TermsOfUsePage() {
               herein is found to have failed of its essential purpose.
             </p>
           </section>
-          <section className="flex flex-col gap-3">
+          <section className="flex flex-col">
             <h2 className="text-xl font-bold">Changes</h2>
             <p>
               We reserve the right, at our sole discretion, to modify or replace
@@ -319,7 +325,7 @@ export default function TermsOfUsePage() {
               use the Service.
             </p>
           </section>
-          <section className="flex flex-col gap-3">
+          <section className="flex flex-col">
             <h2 className="text-xl font-bold">Governing Law</h2>
             <p>
               These Terms shall be governed and construed in accordance with the
@@ -336,18 +342,18 @@ export default function TermsOfUsePage() {
               have had between us regarding the Service.
             </p>
           </section>
-          <section className="flex flex-col gap-3">
+          <section className="flex flex-col">
             <h2 className="text-xl font-bold">Contact Us</h2>
             <p>
               If you have any questions about these Terms, please don&#39;t
               hesitate to contact us to support@fibonacciku.com
             </p>
           </section>
-          <section className="flex flex-col gap-2">
+          <section className="flex flex-col">
             <p className="text-lg font-semibold italic">FibonacciKu Team</p>
           </section>
         </main>
       </section>
     </main>
-  );
+  )
 }
