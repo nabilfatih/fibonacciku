@@ -1,32 +1,32 @@
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
-import type { Libraries } from "@/types/types";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import dynamic from "next/dynamic";
-import { IconSearch } from "@tabler/icons-react";
-import { Input } from "@/components/ui/input";
-import supabaseClient from "@/lib/supabase/client";
-import { useCurrentUser } from "@/lib/context/use-current-user";
+import { cn } from "@/lib/utils"
+import type { Libraries } from "@/types/types"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import dynamic from "next/dynamic"
+import { IconSearch } from "@tabler/icons-react"
+import { Input } from "@/components/ui/input"
+import supabaseClient from "@/lib/supabase/client"
+import { useCurrentUser } from "@/lib/context/use-current-user"
 
-const LibraryList = dynamic(() => import("@/components/library/list"));
-const LibraryPanel = dynamic(() => import("@/components/library/panel"));
+const LibraryList = dynamic(() => import("@/components/library/list"))
+const LibraryPanel = dynamic(() => import("@/components/library/panel"))
 
 export interface LibraryProps extends React.ComponentProps<"div"> {
-  libraries: Libraries[];
+  libraries: Libraries[]
 }
 
 export default function LibraryDocument({
   className,
-  libraries,
+  libraries
 }: LibraryProps) {
-  const { userDetails } = useCurrentUser();
+  const { userDetails } = useCurrentUser()
 
-  const refSearch = useRef<HTMLInputElement | null>(null);
-  const parentRef = useRef<HTMLDivElement | null>(null);
+  const refSearch = useRef<HTMLInputElement | null>(null)
+  const parentRef = useRef<HTMLDivElement | null>(null)
 
-  const [search, setSearch] = useState<string>("");
-  const [stateLibraries, setStateLibraries] = useState<Libraries[]>([]);
+  const [search, setSearch] = useState<string>("")
+  const [stateLibraries, setStateLibraries] = useState<Libraries[]>([])
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -37,15 +37,15 @@ export default function LibraryDocument({
           e.altKey &&
           e.key.toLocaleLowerCase() === "j")
       ) {
-        e.preventDefault();
-        refSearch.current?.focus();
+        e.preventDefault()
+        refSearch.current?.focus()
       }
-    };
+    }
 
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown)
 
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [])
 
   const handleChanges = useCallback(
     async (payload: any) => {
@@ -55,63 +55,63 @@ export default function LibraryDocument({
           // If eventType is delete, dispatch an action to filter out the deleted library
           setStateLibraries(
             stateLibraries.filter(library => library.id !== payload.old.id)
-          );
-          break;
+          )
+          break
         case "INSERT":
-          setStateLibraries([payload.new, ...(stateLibraries || [])]);
-          break;
+          setStateLibraries([payload.new, ...(stateLibraries || [])])
+          break
         case "UPDATE":
           // If eventType is update, dispatch an action to update the library in the list
           setStateLibraries(
             stateLibraries.map(library =>
               library.id === payload.new.id ? payload.new : library
             )
-          );
-          break;
+          )
+          break
         default:
           // If we've got an action type that's out of this world, just break
-          break;
+          break
       }
     },
     [stateLibraries]
-  );
+  )
 
   useEffect(() => {
-    if (!userDetails) return;
+    if (!userDetails) return
 
-    const events = ["INSERT", "UPDATE", "DELETE"];
-    const tables = ["libraries"];
+    const events = ["INSERT", "UPDATE", "DELETE"]
+    const tables = ["libraries"]
 
-    const channel = supabaseClient.channel("user-libraries");
+    const channel = supabaseClient.channel("user-libraries")
 
     events.forEach(event => {
       tables.forEach(table => {
-        const filter = `user_id=eq.${userDetails.id}`;
+        const filter = `user_id=eq.${userDetails.id}`
         channel.on(
           //@ts-ignore
           "postgres_changes",
           { event, schema: "public", table, filter },
           handleChanges
-        );
-      });
-    });
+        )
+      })
+    })
 
-    channel.subscribe();
+    channel.subscribe()
 
     return () => {
-      supabaseClient.removeChannel(channel);
-    };
-  }, [handleChanges, userDetails]);
+      supabaseClient.removeChannel(channel)
+    }
+  }, [handleChanges, userDetails])
 
   useEffect(() => {
-    setStateLibraries(libraries);
-  }, [libraries]);
+    setStateLibraries(libraries)
+  }, [libraries])
 
   const filteredLibraries = useMemo(() => {
     return stateLibraries.filter(library => {
-      return library.name.toLowerCase().includes(search.toLowerCase());
-    });
-  }, [search, stateLibraries]);
+      return library.name.toLowerCase().includes(search.toLowerCase())
+    })
+  }, [search, stateLibraries])
 
   return (
     <>
@@ -147,5 +147,5 @@ export default function LibraryDocument({
 
       <LibraryPanel />
     </>
-  );
+  )
 }

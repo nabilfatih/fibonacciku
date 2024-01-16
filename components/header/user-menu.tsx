@@ -108,7 +108,7 @@ export default function UserMenu() {
 
           <DropdownMenuItem asChild className="py-2">
             <Link
-              href="https://nakafa.com"
+              href="https://blog.fibonacciku.com"
               target="_blank"
               className="inline-flex w-full cursor-pointer items-center justify-between"
             >
