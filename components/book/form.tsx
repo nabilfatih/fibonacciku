@@ -73,6 +73,7 @@ export default function BookForm({ className }: FormProps) {
           className={cn(
             "min-h-[60px] w-full resize-none bg-transparent py-[1.3rem] px-4 scrollbar-hide focus-within:outline-none sm:text-sm"
           )}
+          data-enable-grammarly="false"
         />
         <div className="absolute bottom-4 right-0 sm:bottom-3 sm:right-4">
           <Tooltip>
