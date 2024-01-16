@@ -1,46 +1,50 @@
-import ChatMessage from "@/components/chat";
-import supabaseAdmin from "@/lib/supabase/admin";
-import { kv } from "@vercel/kv";
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import ChatMessage from "@/components/chat"
+import supabaseAdmin from "@/lib/supabase/admin"
+import { kv } from "@vercel/kv"
+import type { Metadata } from "next"
+import { notFound } from "next/navigation"
 
 type Props = {
-  params: { feature: string; id: string };
-};
+  params: { feature: string; id: string }
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const chatId = params.id;
+  const chatId = params.id
 
   const title = await kv.get<string>(chatId).then(title => {
     if (title) {
-      return title.toString().slice(0, 50);
+      return title.toString().slice(0, 50)
     }
-  });
+  })
 
   if (!title)
     return {
       title: {
-        absolute: "FibonacciKu",
-      },
-    };
+        absolute: "FibonacciKu"
+      }
+    }
 
   return {
-    title: title,
-  };
+    title: title
+  }
 }
 
 export default async function ChatMessagePage({ params }: Props) {
   // can be open without login
-  const { data: chat } = await supabaseAdmin
-    .from("chat")
-    .select()
-    .eq("id", params.id)
+  const { data } = await supabaseAdmin
+    .from("share_chat")
+    .select("*, chat(*, users(*))")
+    .eq("chat_id", params.id)
     .limit(1)
-    .maybeSingle();
+    .maybeSingle()
+
+  // this is because of typescript
+  const chat = Array.isArray(data?.chat) ? data?.chat[0] : data?.chat
 
   if (!chat) {
-    notFound();
+    notFound()
   }
+
   return (
     <ChatMessage
       id={chat.id}
@@ -52,5 +56,5 @@ export default async function ChatMessagePage({ params }: Props) {
       createdAt={chat.created_at}
       chat={chat}
     />
-  );
+  )
 }
