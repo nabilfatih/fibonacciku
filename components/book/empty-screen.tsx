@@ -16,8 +16,8 @@ export default function BookEmptyScreen({ children }: Props) {
         Hi{` ${userDetails?.full_name ?? ""}`} 👋
       </h1>
 
-      <div>
-        <p className="mb-6 leading-normal text-muted-foreground">
+      <div className="space-y-6">
+        <p className="leading-normal text-muted-foreground">
           {t("desc-search")}
         </p>
 

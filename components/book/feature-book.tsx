@@ -23,7 +23,7 @@ export default async function FeatureBook() {
   if (!data) return null
 
   return (
-    <section className="max-w-xs sm:max-w-none">
+    <section className="grid">
       <h2 className="mb-2 font-medium tracking-tight">Our latest books:</h2>
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 mb-4">
@@ -40,7 +40,7 @@ export default async function FeatureBook() {
               className="flex flex-col justify-between gap-2"
               passHref
             >
-              <div className="relative w-auto h-48">
+              <div className="relative w-auto h-52 sm:h-48">
                 <Image
                   src={coverUrl}
                   alt={book.title}
