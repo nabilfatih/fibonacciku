@@ -50,7 +50,7 @@ export default function UserMenu() {
           <div role="button" className="cursor-pointer">
             {userDetails.avatar_url ? (
               <Image
-                className="h-8 w-8 select-none rounded-full shadow-sm transition-opacity duration-300 hover:opacity-80"
+                className="h-8 w-8 min-w-8 select-none rounded-full shadow-sm transition-opacity duration-300 hover:opacity-80"
                 src={userDetails.avatar_url}
                 alt={userDetails.full_name ?? "Avatar"}
                 height={48}
