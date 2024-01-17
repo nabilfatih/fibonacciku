@@ -127,10 +127,10 @@ function BookDocumentPdf({
                       </div>
                     }
                     className={cn(
-                      "relative border-y mb-4 flex min-h-full items-center justify-center bg-background shadow-sm",
-                      index === 0 && "border-t-0 mt-0",
+                      "relative mb-4 flex min-h-full items-center justify-center border-y bg-background shadow-sm",
+                      index === 0 && "mt-0 border-t-0",
                       // last index
-                      index === numPages - 1 && "border-b-0 mb-0"
+                      index === numPages - 1 && "mb-0 border-b-0"
                     )}
                   />
                 )
