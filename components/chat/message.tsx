@@ -1,18 +1,18 @@
-import { cn } from "@/lib/utils";
-import type { IndexMessage, ShowChatMessage } from "@/types/types";
-import ChatAvatar from "@/components/chat/avatar";
-import ChatAssistant from "@/components/chat/assistant";
-import ChatUser from "@/components/chat/user";
-import ChatMessageActions from "@/components/chat/message-action";
-import moment from "moment";
-import { useCurrentLocale } from "@/locales/client";
-import ChatMetadata from "@/components/chat/metadata";
+import { cn } from "@/lib/utils"
+import type { IndexMessage, ShowChatMessage } from "@/types/types"
+import ChatAvatar from "@/components/chat/avatar"
+import ChatAssistant from "@/components/chat/assistant"
+import ChatUser from "@/components/chat/user"
+import ChatMessageActions from "@/components/chat/message-action"
+import moment from "moment"
+import { useCurrentLocale } from "@/locales/client"
+import ChatMetadata from "@/components/chat/metadata"
 
 type Props = {
-  index: number;
-  message: ShowChatMessage;
-  currentIndex: IndexMessage;
-};
+  index: number
+  message: ShowChatMessage
+  currentIndex: IndexMessage
+}
 
 export default function ChatMessage({
   index,
@@ -20,21 +20,21 @@ export default function ChatMessage({
   currentIndex,
   ...props
 }: Props) {
-  const locale = useCurrentLocale();
+  const locale = useCurrentLocale()
 
-  const isAssistant = message.role === "assistant";
-  const contentIndex = currentIndex.currentMessage - 1;
-  const messageIndex = currentIndex.index;
-  const contentLength = message.content.length;
+  const isAssistant = message.role === "assistant"
+  const contentIndex = currentIndex.currentMessage - 1
+  const messageIndex = currentIndex.index
+  const contentLength = message.content.length
 
   const createdAt = moment(message.created_at).locale(locale).calendar(null, {
     sameDay: "HH:mm",
     lastDay: "DD/MM/YYYY HH:mm",
     lastWeek: "DD/MM/YYYY HH:mm",
-    sameElse: "DD/MM/YYYY HH:mm",
-  });
+    sameElse: "DD/MM/YYYY HH:mm"
+  })
 
-  if (message.role === "system") return null;
+  if (message.role === "system") return null
 
   return (
     <div
@@ -77,5 +77,5 @@ export default function ChatMessage({
         />
       </div>
     </div>
-  );
+  )
 }

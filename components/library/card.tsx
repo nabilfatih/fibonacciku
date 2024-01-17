@@ -1,12 +1,12 @@
-import type { Libraries } from "@/types/types";
-import { motion } from "framer-motion";
-import LibraryCardFilename from "@/components/library/card-filename";
-import LibraryCardStatus from "@/components/library/card-status";
-import LibraryCardInfo from "@/components/library/card-info";
+import type { Libraries } from "@/types/types"
+import { motion } from "framer-motion"
+import LibraryCardFilename from "@/components/library/card-filename"
+import LibraryCardStatus from "@/components/library/card-status"
+import LibraryCardInfo from "@/components/library/card-info"
 
 type Props = {
-  library: Libraries;
-};
+  library: Libraries
+}
 
 export default function LibraryCard({ library }: Props) {
   return (
@@ -17,12 +17,12 @@ export default function LibraryCard({ library }: Props) {
       animate={{
         opacity: 1,
         x: 0,
-        transition: { duration: 0.25, ease: "easeInOut" },
+        transition: { duration: 0.25, ease: "easeInOut" }
       }}
       exit={{ opacity: 0, x: 20, transition: { duration: 0.3 } }}
       transition={{
         duration: 0.25,
-        ease: "easeInOut",
+        ease: "easeInOut"
       }}
       className="mb-2 rounded-xl border px-4 py-3 shadow-sm"
     >
@@ -34,5 +34,5 @@ export default function LibraryCard({ library }: Props) {
         <LibraryCardInfo library={library} />
       </div>
     </motion.div>
-  );
+  )
 }

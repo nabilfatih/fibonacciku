@@ -1,6 +1,6 @@
-import type { MetadataRoute } from "next";
+import type { MetadataRoute } from "next"
 
-const locales = ["", "/en", "/id", "/de"];
+const locales = ["", "/en", "/id", "/de"]
 
 const pathnames = [
   "/",
@@ -19,11 +19,11 @@ const pathnames = [
   "/chat/document",
   "/chat/library",
   "/school",
-  "/share",
-];
+  "/share"
+]
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.fibonacciku.com";
+  const baseUrl = "https://www.fibonacciku.com"
 
   const paths = locales.flatMap(locale => {
     return pathnames.map(pathname => {
@@ -31,18 +31,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: `${baseUrl}${locale}${pathname}`,
         lastModified: new Date().toISOString().split("T")[0],
         changeFrequency: "weekly",
-        priority: 0.8,
-      } satisfies MetadataRoute.Sitemap[0];
-    });
-  });
+        priority: 0.8
+      } satisfies MetadataRoute.Sitemap[0]
+    })
+  })
 
   return [
     {
       url: baseUrl,
       lastModified: new Date().toISOString().split("T")[0],
       changeFrequency: "daily",
-      priority: 1,
+      priority: 1
     },
-    ...paths,
-  ];
+    ...paths
+  ]
 }

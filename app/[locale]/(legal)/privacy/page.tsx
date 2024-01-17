@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="relative mx-auto prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 prose-p:mb-2 prose-p:last:mb-0">
+    <main className="prose relative mx-auto break-words dark:prose-invert prose-p:mb-2 prose-p:leading-relaxed prose-p:last:mb-0 prose-pre:p-0">
       <section className="z-40 m-auto my-12 flex w-full max-w-4xl flex-col justify-between px-4">
         <header className="flex flex-col items-center justify-center pb-3">
           <Link href="/">

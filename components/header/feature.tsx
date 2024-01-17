@@ -68,7 +68,7 @@ export default function HeaderChatFeature() {
           >
             <Link
               href={feature.link}
-              className="flex w-full items-center cursor-pointer"
+              className="flex w-full cursor-pointer items-center"
             >
               <feature.icon className="mr-2 h-4 w-4" />
               <p className="font-medium">{t(feature.type as never)}</p>

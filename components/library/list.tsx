@@ -1,18 +1,18 @@
-"use client";
+"use client"
 
-import type { Libraries } from "@/types/types";
-import { useRef } from "react";
-import { AnimatePresence, LayoutGroup } from "framer-motion";
-import { ViewportList } from "react-viewport-list";
-import LibraryCard from "@/components/library/card";
+import type { Libraries } from "@/types/types"
+import { useRef } from "react"
+import { AnimatePresence, LayoutGroup } from "framer-motion"
+import { ViewportList } from "react-viewport-list"
+import LibraryCard from "@/components/library/card"
 
 type Props = {
-  parentRef: React.MutableRefObject<HTMLDivElement | null>;
-  libraries: Libraries[];
-};
+  parentRef: React.MutableRefObject<HTMLDivElement | null>
+  libraries: Libraries[]
+}
 
 export default function LibraryList({ parentRef, libraries }: Props) {
-  const listRef = useRef<any>({});
+  const listRef = useRef<any>({})
   return (
     <LayoutGroup>
       <AnimatePresence initial={false}>
@@ -24,12 +24,12 @@ export default function LibraryList({ parentRef, libraries }: Props) {
               items={libraries}
             >
               {item => {
-                return <LibraryCard key={item.id} library={item} />;
+                return <LibraryCard key={item.id} library={item} />
               }}
             </ViewportList>
           </div>
         ) : null}
       </AnimatePresence>
     </LayoutGroup>
-  );
+  )
 }

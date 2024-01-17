@@ -27,7 +27,7 @@ export default function BookContent({
       <main
         ref={bookRef}
         className={cn(
-          "h-full overflow-y-auto overflow-x-hidden space-y-4 pb-48 sm:pb-52",
+          "h-full space-y-4 overflow-y-auto overflow-x-hidden pb-48 sm:pb-52",
           className
         )}
       >

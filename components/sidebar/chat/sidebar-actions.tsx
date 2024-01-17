@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
-import { useRouter } from "next/navigation";
-import * as React from "react";
-import { toast } from "sonner";
+import { useRouter } from "next/navigation"
+import * as React from "react"
+import { toast } from "sonner"
 
-import type { ServerActionResult, Chat } from "@/types/types";
+import type { ServerActionResult, Chat } from "@/types/types"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,49 +13,49 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { IconSpinner } from "@/components/ui/icons";
+  AlertDialogTitle
+} from "@/components/ui/alert-dialog"
+import { Button, buttonVariants } from "@/components/ui/button"
+import { IconSpinner } from "@/components/ui/icons"
 import ChatShareDialog, {
-  type ShareChatProps,
-} from "@/components/chat/share-dialog";
+  type ShareChatProps
+} from "@/components/chat/share-dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu"
 import {
   IconDotsVertical,
   IconPencil,
   IconShare3,
-  IconTrash,
-} from "@tabler/icons-react";
-import { useScopedI18n } from "@/locales/client";
-import { cn } from "@/lib/utils";
-import { renameChat } from "@/app/actions";
-import { ChatRenameDialog } from "./rename-dialog";
+  IconTrash
+} from "@tabler/icons-react"
+import { useScopedI18n } from "@/locales/client"
+import { cn } from "@/lib/utils"
+import { renameChat } from "@/app/actions"
+import { ChatRenameDialog } from "./rename-dialog"
 
 interface SidebarActionsProps {
-  chat: Chat;
-  removeChat: (id: string, path: string) => ServerActionResult<void>;
-  shareChat: (id: string, type: string) => ServerActionResult<ShareChatProps>;
+  chat: Chat
+  removeChat: (id: string, path: string) => ServerActionResult<void>
+  shareChat: (id: string, type: string) => ServerActionResult<ShareChatProps>
 }
 
 export default function SidebarActions({
   chat,
   removeChat,
-  shareChat,
+  shareChat
 }: SidebarActionsProps) {
-  const t = useScopedI18n("Chat");
+  const t = useScopedI18n("Chat")
 
-  const router = useRouter();
-  const [deleteDialogOpen, setDeleteDialogOpen] = React.useState(false);
-  const [shareDialogOpen, setShareDialogOpen] = React.useState(false);
-  const [renameDialogOpen, setRenameDialogOpen] = React.useState(false);
-  const [isRemovePending, startRemoveTransition] = React.useTransition();
+  const router = useRouter()
+  const [deleteDialogOpen, setDeleteDialogOpen] = React.useState(false)
+  const [shareDialogOpen, setShareDialogOpen] = React.useState(false)
+  const [renameDialogOpen, setRenameDialogOpen] = React.useState(false)
+  const [isRemovePending, startRemoveTransition] = React.useTransition()
 
   return (
     <>
@@ -71,7 +71,7 @@ export default function SidebarActions({
             <DropdownMenuItem
               role="button"
               onClick={() => {
-                setShareDialogOpen(true);
+                setShareDialogOpen(true)
               }}
               className="cursor-pointer space-x-2"
             >
@@ -84,7 +84,7 @@ export default function SidebarActions({
             role="button"
             className="cursor-pointer space-x-2"
             onClick={() => {
-              setRenameDialogOpen(true);
+              setRenameDialogOpen(true)
             }}
           >
             <IconPencil className="h-4 w-4" />
@@ -97,7 +97,7 @@ export default function SidebarActions({
             role="button"
             className="cursor-pointer space-x-2 !text-destructive"
             onClick={() => {
-              setDeleteDialogOpen(true);
+              setDeleteDialogOpen(true)
             }}
           >
             <IconTrash className="h-4 w-4" />
@@ -113,7 +113,7 @@ export default function SidebarActions({
             title: chat.title,
             message: chat.messages,
             type: chat.type,
-            created_at: chat.created_at,
+            created_at: chat.created_at
           }}
           shareChat={shareChat}
           open={shareDialogOpen}
@@ -126,7 +126,7 @@ export default function SidebarActions({
         chat={{
           id: chat.id,
           title: chat.title,
-          type: chat.type,
+          type: chat.type
         }}
         renameChat={renameChat}
         open={renameDialogOpen}
@@ -150,23 +150,20 @@ export default function SidebarActions({
             <AlertDialogAction
               disabled={isRemovePending}
               onClick={event => {
-                event.preventDefault();
+                event.preventDefault()
 
                 startRemoveTransition(async () => {
-                  const result = await removeChat(
-                    chat.id,
-                    `/chat/${chat.type}`
-                  );
+                  const result = await removeChat(chat.id, `/chat/${chat.type}`)
 
                   if (result && "error" in result) {
-                    toast.error(result.error);
-                    return;
+                    toast.error(result.error)
+                    return
                   }
 
-                  setDeleteDialogOpen(false);
-                  router.replace(`/chat/${chat.type}`);
-                  toast.success("Chat deleted");
-                });
+                  setDeleteDialogOpen(false)
+                  router.replace(`/chat/${chat.type}`)
+                  toast.success("Chat deleted")
+                })
               }}
               className={cn(buttonVariants({ variant: "destructive" }))}
             >
@@ -177,5 +174,5 @@ export default function SidebarActions({
         </AlertDialogContent>
       </AlertDialog>
     </>
-  );
+  )
 }

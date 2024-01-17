@@ -1,6 +1,6 @@
-import { useMediaQuery } from "@/lib/hooks/use-media-query";
-import type { DialogProps } from "@radix-ui/react-dialog";
-import { Button } from "@/components/ui/button";
+import { useMediaQuery } from "@/lib/hooks/use-media-query"
+import type { DialogProps } from "@radix-ui/react-dialog"
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -8,8 +8,8 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+  DialogTitle
+} from "@/components/ui/dialog"
 import {
   Drawer,
   DrawerClose,
@@ -17,8 +17,8 @@ import {
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
-  DrawerTitle,
-} from "@/components/ui/drawer";
+  DrawerTitle
+} from "@/components/ui/drawer"
 import {
   Select,
   SelectContent,
@@ -26,46 +26,46 @@ import {
   SelectItem,
   SelectLabel,
   SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { useMessage } from "@/lib/context/use-message";
-import { useScopedI18n } from "@/locales/client";
-import { Label } from "@/components/ui/label";
-import { useEffect } from "react";
-import { useCurrentUser } from "@/lib/context/use-current-user";
-import { capitalizeFirstLetter } from "@/lib/utils";
+  SelectValue
+} from "@/components/ui/select"
+import { useMessage } from "@/lib/context/use-message"
+import { useScopedI18n } from "@/locales/client"
+import { Label } from "@/components/ui/label"
+import { useEffect } from "react"
+import { useCurrentUser } from "@/lib/context/use-current-user"
+import { capitalizeFirstLetter } from "@/lib/utils"
 
 interface ChatShareDialogProps extends DialogProps {}
 
 export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
-  const t = useScopedI18n("FormChat");
+  const t = useScopedI18n("FormChat")
 
-  const { userDetails } = useCurrentUser();
-  const { state, dispatch } = useMessage();
+  const { userDetails } = useCurrentUser()
+  const { state, dispatch } = useMessage()
 
   useEffect(() => {
-    if (!userDetails) return;
+    if (!userDetails) return
     if (!state.currentChat) {
-      dispatch({ type: "SET_LANGUAGE", payload: "Auto Detect" });
+      dispatch({ type: "SET_LANGUAGE", payload: "Auto Detect" })
       dispatch({
         type: "SET_GRADE",
         payload:
-          userDetails.role === "professional" ? "professional" : state.grade,
-      });
-      return;
+          userDetails.role === "professional" ? "professional" : state.grade
+      })
+      return
     }
     if (state.currentChat.language) {
-      dispatch({ type: "SET_LANGUAGE", payload: state.currentChat.language });
+      dispatch({ type: "SET_LANGUAGE", payload: state.currentChat.language })
     }
     if (state.currentChat.grade) {
-      dispatch({ type: "SET_GRADE", payload: state.currentChat.grade });
+      dispatch({ type: "SET_GRADE", payload: state.currentChat.grade })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.currentChat, userDetails]);
+  }, [state.currentChat, userDetails])
 
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isDesktop = useMediaQuery("(min-width: 768px)")
 
-  if (!userDetails) return null;
+  if (!userDetails) return null
 
   if (isDesktop) {
     return (
@@ -153,7 +153,7 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    );
+    )
   }
 
   return (
@@ -241,7 +241,7 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
-  );
+  )
 }
 
 const LanguageOption = [
@@ -285,32 +285,32 @@ const LanguageOption = [
   "Ukrainian",
   "Urdu",
   "Vietnamese",
-  "Welsh",
-];
+  "Welsh"
+]
 
 const Class = [
   {
     name: "Kindergarten",
-    query: "kindergarten",
+    query: "kindergarten"
   },
   {
     name: "Elementary",
-    query: "elementary",
+    query: "elementary"
   },
   {
     name: "Middle School",
-    query: "middle",
+    query: "middle"
   },
   {
     name: "High School",
-    query: "high",
+    query: "high"
   },
   {
     name: "University",
-    query: "university",
+    query: "university"
   },
   {
     name: "Professional",
-    query: "professional",
-  },
-];
+    query: "professional"
+  }
+]

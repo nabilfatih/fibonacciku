@@ -1,21 +1,21 @@
-"use client";
+"use client"
 
-import * as React from "react";
+import * as React from "react"
 
-import { cn } from "@/lib/utils";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { IconSpinner } from "@/components/ui/icons";
-import { IconBrandGoogleFilled } from "@tabler/icons-react";
-import { useScopedI18n } from "@/locales/client";
-import { toast } from "sonner";
-import supabaseClient from "@/lib/supabase/client";
-import { useRouter } from "next/navigation";
-import type { Provider } from "@supabase/supabase-js";
+import { cn } from "@/lib/utils"
+import { Label } from "@/components/ui/label"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { IconSpinner } from "@/components/ui/icons"
+import { IconBrandGoogleFilled } from "@tabler/icons-react"
+import { useScopedI18n } from "@/locales/client"
+import { toast } from "sonner"
+import supabaseClient from "@/lib/supabase/client"
+import { useRouter } from "next/navigation"
+import type { Provider } from "@supabase/supabase-js"
 
 interface LoginAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
-  next: string;
+  next: string
 }
 
 export function LoginAuthForm({
@@ -23,29 +23,29 @@ export function LoginAuthForm({
   next,
   ...props
 }: LoginAuthFormProps) {
-  const t = useScopedI18n("Auth");
-  const router = useRouter();
+  const t = useScopedI18n("Auth")
+  const router = useRouter()
 
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const [email, setEmail] = React.useState<string>("");
-  const [password, setPassword] = React.useState<string>("");
+  const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const [email, setEmail] = React.useState<string>("")
+  const [password, setPassword] = React.useState<string>("")
 
   async function onSubmit(event: React.SyntheticEvent) {
-    event.preventDefault();
+    event.preventDefault()
 
-    setIsLoading(true);
+    setIsLoading(true)
 
     const { error } = await supabaseClient.auth.signInWithPassword({
       email,
-      password,
-    });
+      password
+    })
 
     if (error) {
-      toast.error(error.message);
-      return setIsLoading(false);
+      toast.error(error.message)
+      return setIsLoading(false)
     }
 
-    router.refresh();
+    router.refresh()
   }
 
   const handleOAuthSignIn = async (provider: Provider) => {
@@ -54,13 +54,13 @@ export function LoginAuthForm({
       options: {
         redirectTo: next
           ? `https://www.fibonacciku.com/api/auth/callback?next=${next}`
-          : "https://www.fibonacciku.com/api/auth/callback",
-      },
-    });
+          : "https://www.fibonacciku.com/api/auth/callback"
+      }
+    })
     if (error) {
-      toast.error(error.message);
+      toast.error(error.message)
     }
-  };
+  }
 
   return (
     <div className={cn("grid gap-6", className)} {...props}>
@@ -128,5 +128,5 @@ export function LoginAuthForm({
         Google
       </Button>
     </div>
-  );
+  )
 }

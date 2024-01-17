@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 import {
   AlertDialog,
@@ -8,36 +8,36 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+  AlertDialogTitle
+} from "@/components/ui/alert-dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { IconDots, IconPencil, IconTrash } from "@tabler/icons-react";
-import { cn } from "@/lib/utils";
-import type { Libraries } from "@/types/types";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
-import { IconSpinner } from "@/components/ui/icons";
-import { removeLibrary, renameLibrary } from "@/app/actions";
-import { LibraryRenameDialog } from "./rename-dialog";
+  DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu"
+import { Button, buttonVariants } from "@/components/ui/button"
+import { IconDots, IconPencil, IconTrash } from "@tabler/icons-react"
+import { cn } from "@/lib/utils"
+import type { Libraries } from "@/types/types"
+import { useRouter } from "next/navigation"
+import { toast } from "sonner"
+import { IconSpinner } from "@/components/ui/icons"
+import { removeLibrary, renameLibrary } from "@/app/actions"
+import { LibraryRenameDialog } from "./rename-dialog"
 
 type Props = {
-  className: string;
-  library: Libraries;
-};
+  className: string
+  library: Libraries
+}
 
 export default function LibraryCardActions({ className, library }: Props) {
-  const router = useRouter();
+  const router = useRouter()
 
-  const [deleteDialogOpen, setDeleteDialogOpen] = React.useState(false);
-  const [renameDialogOpen, setRenameDialogOpen] = React.useState(false);
-  const [isRemovePending, startRemoveTransition] = React.useTransition();
+  const [deleteDialogOpen, setDeleteDialogOpen] = React.useState(false)
+  const [renameDialogOpen, setRenameDialogOpen] = React.useState(false)
+  const [isRemovePending, startRemoveTransition] = React.useTransition()
 
   return (
     <>
@@ -58,7 +58,7 @@ export default function LibraryCardActions({ className, library }: Props) {
             role="button"
             className="cursor-pointer space-x-2"
             onClick={() => {
-              setRenameDialogOpen(true);
+              setRenameDialogOpen(true)
             }}
           >
             <IconPencil className="h-4 w-4" />
@@ -71,7 +71,7 @@ export default function LibraryCardActions({ className, library }: Props) {
             role="button"
             className="cursor-pointer space-x-2 !text-destructive"
             onClick={() => {
-              setDeleteDialogOpen(true);
+              setDeleteDialogOpen(true)
             }}
           >
             <IconTrash className="h-4 w-4" />
@@ -83,7 +83,7 @@ export default function LibraryCardActions({ className, library }: Props) {
       <LibraryRenameDialog
         library={{
           id: library.id,
-          name: library.name,
+          name: library.name
         }}
         renameLibrary={renameLibrary}
         open={renameDialogOpen}
@@ -107,24 +107,24 @@ export default function LibraryCardActions({ className, library }: Props) {
             <AlertDialogAction
               disabled={isRemovePending || library.status === "processing"}
               onClick={event => {
-                event.preventDefault();
+                event.preventDefault()
 
                 startRemoveTransition(async () => {
                   const result = await removeLibrary(
                     library.id,
                     library.file_id
-                  );
+                  )
 
                   if (result && "error" in result) {
-                    toast.error(result.error);
-                    return;
+                    toast.error(result.error)
+                    return
                   }
 
-                  setDeleteDialogOpen(false);
-                  router.refresh();
-                  router.push("/chat/library");
-                  toast.success("Document deleted");
-                });
+                  setDeleteDialogOpen(false)
+                  router.refresh()
+                  router.push("/chat/library")
+                  toast.success("Document deleted")
+                })
               }}
               className={cn(buttonVariants({ variant: "destructive" }))}
             >
@@ -135,5 +135,5 @@ export default function LibraryCardActions({ className, library }: Props) {
         </AlertDialogContent>
       </AlertDialog>
     </>
-  );
+  )
 }

@@ -1,19 +1,19 @@
-import { useMessage } from "@/lib/context/use-message";
-import { IconX } from "@tabler/icons-react";
-import Image from "next/image";
-import { useMemo } from "react";
-import { Button } from "@/components/ui/button";
+import { useMessage } from "@/lib/context/use-message"
+import { IconX } from "@tabler/icons-react"
+import Image from "next/image"
+import { useMemo } from "react"
+import { Button } from "@/components/ui/button"
 
 export default function FormAttachment() {
-  const { state, dispatch } = useMessage();
+  const { state, dispatch } = useMessage()
 
   // prevent re-rendering the image
   const url = useMemo(() => {
-    if (!state.attachment) return "";
-    return URL.createObjectURL(state.attachment);
-  }, [state.attachment]);
+    if (!state.attachment) return ""
+    return URL.createObjectURL(state.attachment)
+  }, [state.attachment])
 
-  if (!state.attachment) return null;
+  if (!state.attachment) return null
 
   return (
     <div className="absolute -top-1 flex items-center sm:px-4">
@@ -44,5 +44,5 @@ export default function FormAttachment() {
         </div>
       </div>
     </div>
-  );
+  )
 }

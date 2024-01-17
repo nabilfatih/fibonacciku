@@ -1,26 +1,26 @@
-import type { Subscription } from "@/types/types";
+import type { Subscription } from "@/types/types"
 import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { getScopedI18n } from "@/locales/server";
-import { Badge } from "@/components/ui/badge";
-import moment from "moment";
-import { Label } from "@/components/ui/label";
-import SubscriptionManageButton from "@/components/account/subscription-manage-button";
+  CardTitle
+} from "@/components/ui/card"
+import { getScopedI18n } from "@/locales/server"
+import { Badge } from "@/components/ui/badge"
+import moment from "moment"
+import { Label } from "@/components/ui/label"
+import SubscriptionManageButton from "@/components/account/subscription-manage-button"
 
 type Props = {
-  subscription: Subscription;
-};
+  subscription: Subscription
+}
 
 export default async function AccountSubscriptionManage({
-  subscription,
+  subscription
 }: Props) {
-  const t = await getScopedI18n("ModalSubscription");
+  const t = await getScopedI18n("ModalSubscription")
 
   return (
     <Card>
@@ -64,5 +64,5 @@ export default async function AccountSubscriptionManage({
         <SubscriptionManageButton subscription={subscription} />
       </CardFooter>
     </Card>
-  );
+  )
 }

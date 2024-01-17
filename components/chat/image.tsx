@@ -1,16 +1,16 @@
-import Image from "next/image";
-import { memo } from "react";
-import Link from "next/link";
+import Image from "next/image"
+import { memo } from "react"
+import Link from "next/link"
 
 type Props = {
-  src: string | undefined;
-  alt: string | undefined;
-};
+  src: string | undefined
+  alt: string | undefined
+}
 
 function ImageMarkdown({ src, alt }: Props) {
-  if (!src) return null;
+  if (!src) return null
 
-  const dataSrc = src.trim();
+  const dataSrc = src.trim()
 
   if (dataSrc.includes("i.ytimg.com")) {
     return (
@@ -24,7 +24,7 @@ function ImageMarkdown({ src, alt }: Props) {
           className="relative my-4 h-[8rem] w-full cursor-pointer rounded-xl border bg-muted/90 object-cover sm:h-48 sm:w-[337px]"
         />
       </Link>
-    );
+    )
   }
 
   return (
@@ -36,7 +36,7 @@ function ImageMarkdown({ src, alt }: Props) {
         style={{
           width: "100%",
           height: "auto",
-          maxHeight: "28rem",
+          maxHeight: "28rem"
         }}
         priority
         width={256}
@@ -44,10 +44,10 @@ function ImageMarkdown({ src, alt }: Props) {
         className="my-4 max-w-[256px] cursor-pointer rounded-xl border bg-muted/90 object-cover"
       />
     </Link>
-  );
+  )
 }
 
 // custom memo based on src
 export default memo(ImageMarkdown, (prevProps, nextProps) => {
-  return prevProps.src === nextProps.src;
-});
+  return prevProps.src === nextProps.src
+})

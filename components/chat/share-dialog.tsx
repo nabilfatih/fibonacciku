@@ -1,19 +1,19 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import { type DialogProps } from "@radix-ui/react-dialog";
-import { toast } from "sonner";
+import * as React from "react"
+import { type DialogProps } from "@radix-ui/react-dialog"
+import { toast } from "sonner"
 
-import type { Chat, ServerActionResult, ShowChatMessage } from "@/types/types";
-import { Button } from "@/components/ui/button";
+import type { Chat, ServerActionResult, ShowChatMessage } from "@/types/types"
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+  DialogTitle
+} from "@/components/ui/dialog"
 import {
   Drawer,
   DrawerClose,
@@ -21,28 +21,28 @@ import {
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
-  DrawerTitle,
-} from "@/components/ui/drawer";
-import { IconSpinner } from "@/components/ui/icons";
-import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard";
-import { useScopedI18n } from "@/locales/client";
-import moment from "moment";
-import { useMediaQuery } from "@/lib/hooks/use-media-query";
+  DrawerTitle
+} from "@/components/ui/drawer"
+import { IconSpinner } from "@/components/ui/icons"
+import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard"
+import { useScopedI18n } from "@/locales/client"
+import moment from "moment"
+import { useMediaQuery } from "@/lib/hooks/use-media-query"
 
 export type ShareChatProps = {
-  sharePath: string;
-  id: string;
-  user_id: string;
-  chat_id: string;
-  created_at: string;
-};
+  sharePath: string
+  id: string
+  user_id: string
+  chat_id: string
+  created_at: string
+}
 
 interface ChatShareDialogProps extends DialogProps {
   chat: Pick<Chat, "id" | "title" | "type" | "created_at"> & {
-    message: ShowChatMessage[];
-  };
-  shareChat: (id: string, type: string) => ServerActionResult<ShareChatProps>;
-  onCopy: () => void;
+    message: ShowChatMessage[]
+  }
+  shareChat: (id: string, type: string) => ServerActionResult<ShareChatProps>
+  onCopy: () => void
 }
 
 export default function ChatShareDialog({
@@ -51,24 +51,24 @@ export default function ChatShareDialog({
   onCopy,
   ...props
 }: ChatShareDialogProps) {
-  const t = useScopedI18n("ModalShareChat");
+  const t = useScopedI18n("ModalShareChat")
 
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isDesktop = useMediaQuery("(min-width: 768px)")
 
-  const { copyToClipboard } = useCopyToClipboard({ timeout: 1000 });
-  const [isSharePending, startShareTransition] = React.useTransition();
+  const { copyToClipboard } = useCopyToClipboard({ timeout: 1000 })
+  const [isSharePending, startShareTransition] = React.useTransition()
 
   const copyShareLink = React.useCallback(
     async (chat: ShareChatProps) => {
-      const url = new URL(window.location.href);
-      url.pathname = chat.sharePath;
-      copyToClipboard(url.toString());
-      onCopy();
-      toast.success(t("link-copied"));
+      const url = new URL(window.location.href)
+      url.pathname = chat.sharePath
+      copyToClipboard(url.toString())
+      onCopy()
+      toast.success(t("link-copied"))
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [copyToClipboard, onCopy]
-  );
+  )
 
   if (isDesktop) {
     return (
@@ -90,15 +90,15 @@ export default function ChatShareDialog({
               disabled={isSharePending}
               onClick={() => {
                 startShareTransition(async () => {
-                  const result = await shareChat(chat.id, chat.type);
+                  const result = await shareChat(chat.id, chat.type)
 
                   if (result && "error" in result) {
-                    toast.error(result.error);
-                    return;
+                    toast.error(result.error)
+                    return
                   }
 
-                  copyShareLink(result);
-                });
+                  copyShareLink(result)
+                })
               }}
             >
               {isSharePending ? (
@@ -113,7 +113,7 @@ export default function ChatShareDialog({
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    );
+    )
   }
 
   return (
@@ -136,15 +136,15 @@ export default function ChatShareDialog({
             disabled={isSharePending}
             onClick={() => {
               startShareTransition(async () => {
-                const result = await shareChat(chat.id, chat.type);
+                const result = await shareChat(chat.id, chat.type)
 
                 if (result && "error" in result) {
-                  toast.error(result.error);
-                  return;
+                  toast.error(result.error)
+                  return
                 }
 
-                copyShareLink(result);
-              });
+                copyShareLink(result)
+              })
             }}
           >
             {isSharePending ? (
@@ -165,5 +165,5 @@ export default function ChatShareDialog({
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
-  );
+  )
 }

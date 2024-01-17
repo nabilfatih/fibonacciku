@@ -1,10 +1,10 @@
-import { SidebarDesktop } from "@/components/sidebar/chat/sidebar-desktop";
-import { Suspense } from "react";
+import { SidebarDesktop } from "@/components/sidebar/chat/sidebar-desktop"
+import { Suspense } from "react"
 
 export default function ApplicationMainLayout({
-  children,
+  children
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <div className="relative flex h-[calc(100dvh-4rem)] overflow-hidden">
@@ -14,5 +14,5 @@ export default function ApplicationMainLayout({
         <Suspense>{children}</Suspense>
       </div>
     </div>
-  );
+  )
 }

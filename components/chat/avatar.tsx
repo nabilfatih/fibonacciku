@@ -1,15 +1,15 @@
-import { useCurrentUser } from "@/lib/context/use-current-user";
-import Image from "next/image";
-import Avatar, { genConfig } from "react-nice-avatar";
+import { useCurrentUser } from "@/lib/context/use-current-user"
+import Image from "next/image"
+import Avatar, { genConfig } from "react-nice-avatar"
 
 type Props = {
-  role: string;
-};
+  role: string
+}
 
 export default function ChatAvatar({ role }: Props) {
-  const { userDetails } = useCurrentUser();
+  const { userDetails } = useCurrentUser()
 
-  const config = genConfig(userDetails?.full_name || "Avatar");
+  const config = genConfig(userDetails?.full_name || "Avatar")
 
   if (role === "assistant") {
     return (
@@ -24,7 +24,7 @@ export default function ChatAvatar({ role }: Props) {
           alt="FibonacciKu Avatar"
         />
       </div>
-    );
+    )
   }
 
   return (
@@ -43,5 +43,5 @@ export default function ChatAvatar({ role }: Props) {
         <Avatar className="h-8 w-8 rounded-full object-cover" {...config} />
       )}
     </div>
-  );
+  )
 }

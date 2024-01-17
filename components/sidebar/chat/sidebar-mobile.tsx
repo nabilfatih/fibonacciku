@@ -1,13 +1,13 @@
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
-import { Sidebar } from "@/components/sidebar";
-import { Button } from "@/components/ui/button";
+import { Sidebar } from "@/components/sidebar"
+import { Button } from "@/components/ui/button"
 
-import { IconLayoutSidebar } from "@tabler/icons-react";
+import { IconLayoutSidebar } from "@tabler/icons-react"
 
 type SidebarMobileProps = {
-  children: React.ReactNode;
-};
+  children: React.ReactNode
+}
 
 export function SidebarMobile({ children }: SidebarMobileProps) {
   return (
@@ -25,5 +25,5 @@ export function SidebarMobile({ children }: SidebarMobileProps) {
         <Sidebar className="flex">{children}</Sidebar>
       </SheetContent>
     </Sheet>
-  );
+  )
 }

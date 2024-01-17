@@ -1,36 +1,36 @@
-"use client";
+"use client"
 
-import * as React from "react";
+import * as React from "react"
 
-import Link from "next/link";
-import { useParams } from "next/navigation";
+import Link from "next/link"
+import { useParams } from "next/navigation"
 
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"
 
-import { buttonVariants } from "@/components/ui/button";
-import { useLocalStorage } from "@/lib/hooks/use-local-storage";
-import { type Chat } from "@/types/types";
-import { cn } from "@/lib/utils";
-import { IconFile, IconMessageCircle2 } from "@tabler/icons-react";
+import { buttonVariants } from "@/components/ui/button"
+import { useLocalStorage } from "@/lib/hooks/use-local-storage"
+import { type Chat } from "@/types/types"
+import { cn } from "@/lib/utils"
+import { IconFile, IconMessageCircle2 } from "@tabler/icons-react"
 
 interface SidebarItemProps {
-  index: number;
-  chat: Chat;
-  children: React.ReactNode;
+  index: number
+  chat: Chat
+  children: React.ReactNode
 }
 
 export default function SidebarItem({
   index,
   chat,
-  children,
+  children
 }: SidebarItemProps) {
-  const params = useParams();
-  const chatId = params?.id;
+  const params = useParams()
+  const chatId = params?.id
 
-  const isActive = React.useMemo(() => chatId === chat.id, [chatId, chat.id]);
+  const isActive = React.useMemo(() => chatId === chat.id, [chatId, chat.id])
 
-  const [newChatId, setNewChatId] = useLocalStorage("newChatId", null);
-  const shouldAnimate = index === 0 && isActive && newChatId;
+  const [newChatId, setNewChatId] = useLocalStorage("newChatId", null)
+  const shouldAnimate = index === 0 && isActive && newChatId
 
   return (
     <motion.div
@@ -41,12 +41,12 @@ export default function SidebarItem({
       animate={{
         opacity: 1,
         x: 0,
-        transition: { duration: 0.25, ease: "easeInOut" },
+        transition: { duration: 0.25, ease: "easeInOut" }
       }}
       exit={{ opacity: 0, x: 20, transition: { duration: 0.3 } }}
       transition={{
         duration: 0.25,
-        ease: "easeInOut",
+        ease: "easeInOut"
       }}
     >
       <div
@@ -82,12 +82,12 @@ export default function SidebarItem({
                   variants={{
                     initial: {
                       opacity: 0,
-                      x: -100,
+                      x: -100
                     },
                     animate: {
                       opacity: 1,
-                      x: 0,
-                    },
+                      x: 0
+                    }
                   }}
                   initial={shouldAnimate ? "initial" : undefined}
                   animate={shouldAnimate ? "animate" : undefined}
@@ -95,11 +95,11 @@ export default function SidebarItem({
                     duration: 0.25,
                     ease: "easeIn",
                     delay: index * 0.05,
-                    staggerChildren: 0.05,
+                    staggerChildren: 0.05
                   }}
                   onAnimationComplete={() => {
                     if (index === chat.title.length - 1) {
-                      setNewChatId(null);
+                      setNewChatId(null)
                     }
                   }}
                 >
@@ -114,5 +114,5 @@ export default function SidebarItem({
       </Link>
       {isActive && <div className="absolute right-2 top-1.5">{children}</div>}
     </motion.div>
-  );
+  )
 }

@@ -1,22 +1,22 @@
-"use client";
+"use client"
 
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { useScopedI18n } from "@/locales/client";
-import { IconPlus } from "@tabler/icons-react";
-import Link from "next/link";
-import { useParams, usePathname } from "next/navigation";
+import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { useScopedI18n } from "@/locales/client"
+import { IconPlus } from "@tabler/icons-react"
+import Link from "next/link"
+import { useParams, usePathname } from "next/navigation"
 
-const chatFeatures = ["assistant", "document"];
+const chatFeatures = ["assistant", "document"]
 
 export default function NewChat() {
-  const t = useScopedI18n("Chat");
+  const t = useScopedI18n("Chat")
 
-  const pathname = usePathname();
-  const params = useParams();
+  const pathname = usePathname()
+  const params = useParams()
 
-  const feature = String(params.feature);
-  const isLibrary = pathname.includes("/library");
+  const feature = String(params.feature)
+  const isLibrary = pathname.includes("/library")
 
   return (
     <div className="mt-4 px-2">
@@ -36,5 +36,5 @@ export default function NewChat() {
         {t("new-chat")}
       </Link>
     </div>
-  );
+  )
 }

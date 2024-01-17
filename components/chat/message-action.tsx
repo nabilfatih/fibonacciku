@@ -1,19 +1,19 @@
-import { Button } from "@/components/ui/button";
-import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard";
-import { cn } from "@/lib/utils";
-import { IconCheck, IconCopy, IconEdit, IconX } from "@tabler/icons-react";
-import ChatMessageActionSpeech from "@/components/chat/message-action-speech";
-import ChatMessageActionPagination from "@/components/chat/message-action-pagination";
-import type { IndexMessage } from "@/types/types";
-import { useMessage } from "@/lib/context/use-message";
+import { Button } from "@/components/ui/button"
+import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard"
+import { cn } from "@/lib/utils"
+import { IconCheck, IconCopy, IconEdit, IconX } from "@tabler/icons-react"
+import ChatMessageActionSpeech from "@/components/chat/message-action-speech"
+import ChatMessageActionPagination from "@/components/chat/message-action-pagination"
+import type { IndexMessage } from "@/types/types"
+import { useMessage } from "@/lib/context/use-message"
 
 interface ChatMessageActionsProps extends React.ComponentProps<"div"> {
-  content: string;
-  createdAt: string;
-  currentIndex: IndexMessage;
-  contentLength: number;
-  isAssistant: boolean;
-  messageIndex: number;
+  content: string
+  createdAt: string
+  currentIndex: IndexMessage
+  contentLength: number
+  isAssistant: boolean
+  messageIndex: number
 }
 
 export default function ChatMessageActions({
@@ -26,13 +26,13 @@ export default function ChatMessageActions({
   messageIndex,
   ...props
 }: ChatMessageActionsProps) {
-  const { state, handleEditMessage, handleSubmit } = useMessage();
-  const { isCopied, copyToClipboard } = useCopyToClipboard({ timeout: 2000 });
+  const { state, handleEditMessage, handleSubmit } = useMessage()
+  const { isCopied, copyToClipboard } = useCopyToClipboard({ timeout: 2000 })
 
   const onCopy = () => {
-    if (isCopied) return;
-    copyToClipboard(content);
-  };
+    if (isCopied) return
+    copyToClipboard(content)
+  }
 
   return (
     <div
@@ -56,8 +56,8 @@ export default function ChatMessageActions({
             {messageIndex === state.editMessageIndex ? (
               <form
                 onSubmit={e => {
-                  handleSubmit(e, true, state.currentChat?.file_id || "");
-                  handleEditMessage(false); // Reset edit message state
+                  handleSubmit(e, true, state.currentChat?.file_id || "")
+                  handleEditMessage(false) // Reset edit message state
                 }}
                 className="flex items-center"
               >
@@ -106,5 +106,5 @@ export default function ChatMessageActions({
         <ChatMessageActionSpeech text={content} />
       </div>
     </div>
-  );
+  )
 }

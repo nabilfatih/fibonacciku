@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
 
 const config = {
   darkMode: ["class"],
@@ -6,7 +6,7 @@ const config = {
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}"
   ],
   prefix: "",
   theme: {
@@ -14,13 +14,13 @@ const config = {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
-      },
+        "2xl": "1400px"
+      }
     },
     extend: {
       fontFamily: {
         sans: ["var(--font-geist-sans)"],
-        mono: ["var(--font-geist-mono)"],
+        mono: ["var(--font-geist-mono)"]
       },
       colors: {
         border: "hsl(var(--border))",
@@ -30,70 +30,70 @@ const config = {
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          foreground: "hsl(var(--primary-foreground))"
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          foreground: "hsl(var(--secondary-foreground))"
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          foreground: "hsl(var(--destructive-foreground))"
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          foreground: "hsl(var(--muted-foreground))"
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          foreground: "hsl(var(--accent-foreground))"
         },
         warning: {
-          DEFAULT: "hsl(var(--warning))",
+          DEFAULT: "hsl(var(--warning))"
         },
         success: {
-          DEFAULT: "hsl(var(--success))",
+          DEFAULT: "hsl(var(--success))"
         },
         error: {
-          DEFAULT: "hsl(var(--error))",
+          DEFAULT: "hsl(var(--error))"
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          foreground: "hsl(var(--popover-foreground))"
         },
         card: {
           DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
+          foreground: "hsl(var(--card-foreground))"
+        }
       },
       borderRadius: {
         xl: "var(--radius)",
         lg: "calc(var(--radius) - 2px)",
         md: "calc(var(--radius) - 4px)",
         sm: "calc(var(--radius) - 6px)",
-        xs: "calc(var(--radius) - 8px)",
+        xs: "calc(var(--radius) - 8px)"
       },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "var(--radix-accordion-content-height)" }
         },
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
+          to: { height: "0" }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
-    },
+        "accordion-up": "accordion-up 0.2s ease-out"
+      }
+    }
   },
   plugins: [
     require("@tailwindcss/typography"),
     require("tailwindcss-animate"),
-    require("tailwind-scrollbar-hide"),
-  ],
-} satisfies Config;
+    require("tailwind-scrollbar-hide")
+  ]
+} satisfies Config
 
-export default config;
+export default config

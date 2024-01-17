@@ -1,15 +1,15 @@
-import { ThemeToggle } from "@/components/theme/toggle";
-import Image from "next/image";
-import dynamic from "next/dynamic";
+import { ThemeToggle } from "@/components/theme/toggle"
+import Image from "next/image"
+import dynamic from "next/dynamic"
 
 const Particles = dynamic(() => import("@/components/ui/particles"), {
-  ssr: false,
-});
+  ssr: false
+})
 
 export default function AuthenticationLayout({
-  children,
+  children
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <div className="container relative grid h-[100dvh] flex-col items-center justify-center text-foreground lg:max-w-none lg:grid-cols-2 lg:px-0">
@@ -59,5 +59,5 @@ export default function AuthenticationLayout({
         </main>
       </div>
     </div>
-  );
+  )
 }

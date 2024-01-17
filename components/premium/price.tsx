@@ -1,90 +1,90 @@
-"use client";
+"use client"
 
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+  CardTitle
+} from "@/components/ui/card"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import {
   formatCurrency,
   getPrice,
   getUserCurrency,
-  priceList,
-} from "@/lib/premium/helpers";
-import type { Subscription } from "@/types/types";
-import type { User } from "@supabase/supabase-js";
-import useSWR from "swr";
-import { useCallback, useMemo, useState } from "react";
-import { postData } from "@/lib/utils";
-import { useRouter } from "next/navigation";
-import { useScopedI18n } from "@/locales/client";
-import { Button } from "../ui/button";
+  priceList
+} from "@/lib/premium/helpers"
+import type { Subscription } from "@/types/types"
+import type { User } from "@supabase/supabase-js"
+import useSWR from "swr"
+import { useCallback, useMemo, useState } from "react"
+import { postData } from "@/lib/utils"
+import { useRouter } from "next/navigation"
+import { useScopedI18n } from "@/locales/client"
+import { Button } from "../ui/button"
 import {
   IconCheck,
   IconCopy,
   IconDiscount2,
-  IconGift,
-} from "@tabler/icons-react";
-import { getStripe } from "@/lib/stripe/client";
-import { toast } from "sonner";
-import { IconSpinner } from "@/components/ui/icons";
-import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard";
+  IconGift
+} from "@tabler/icons-react"
+import { getStripe } from "@/lib/stripe/client"
+import { toast } from "sonner"
+import { IconSpinner } from "@/components/ui/icons"
+import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard"
 
 type Props = {
-  user: User | null;
-  subscription: Subscription | null;
-};
+  user: User | null
+  subscription: Subscription | null
+}
 
 export default function PremiumPrice({ user, subscription }: Props) {
-  const { data } = useSWR("user-currency", getUserCurrency);
-  const router = useRouter();
-  const t = useScopedI18n("MarketingPricing");
+  const { data } = useSWR("user-currency", getUserCurrency)
+  const router = useRouter()
+  const t = useScopedI18n("MarketingPricing")
 
-  const { isCopied, copyToClipboard } = useCopyToClipboard({ timeout: 2000 });
+  const { isCopied, copyToClipboard } = useCopyToClipboard({ timeout: 2000 })
 
-  const [priceIdLoading, setPriceIdLoading] = useState<string>();
+  const [priceIdLoading, setPriceIdLoading] = useState<string>()
 
-  const currency = useMemo(() => data || "usd", [data]);
+  const currency = useMemo(() => data || "usd", [data])
 
   const onCopy = useCallback(
     (value: string) => {
-      if (isCopied) return;
-      copyToClipboard(value);
+      if (isCopied) return
+      copyToClipboard(value)
     },
     [copyToClipboard, isCopied]
-  );
+  )
 
   const redirectToCustomerPortal = useCallback(
     async (price: (typeof priceList)[0]) => {
-      setPriceIdLoading(price.priceId);
+      setPriceIdLoading(price.priceId)
 
       try {
         const { url, error } = await postData({
-          url: "/api/payment/create-portal-link",
-        });
-        if (error) return toast.error((error as Error).message);
-        window.location.assign(url);
+          url: "/api/payment/create-portal-link"
+        })
+        if (error) return toast.error((error as Error).message)
+        window.location.assign(url)
       } catch (error) {
-        if (error) return toast.error((error as Error).message);
+        if (error) return toast.error((error as Error).message)
       } finally {
-        setPriceIdLoading(undefined);
+        setPriceIdLoading(undefined)
       }
     },
     []
-  );
+  )
 
   const handleChoosePlan = useCallback(
     async (price: (typeof priceList)[0]) => {
-      if (price.redirect) return router.push("/contact");
+      if (price.redirect) return router.push("/contact")
 
-      setPriceIdLoading(price.priceId);
+      setPriceIdLoading(price.priceId)
 
-      let url = "/api/payment/create-checkout-session";
+      let url = "/api/payment/create-checkout-session"
       if (currency === "idr") {
-        url = "/api/payment/xendit/checkout";
+        url = "/api/payment/xendit/checkout"
       }
 
       try {
@@ -93,27 +93,27 @@ export default function PremiumPrice({ user, subscription }: Props) {
           data: {
             price,
             currency,
-            quantity: 1,
-          },
-        });
+            quantity: 1
+          }
+        })
         if (response.provider === "stripe") {
-          const sessionId = response.sessionId;
-          const stripe = await getStripe();
-          stripe?.redirectToCheckout({ sessionId });
+          const sessionId = response.sessionId
+          const stripe = await getStripe()
+          stripe?.redirectToCheckout({ sessionId })
         } else if (response.provider === "xendit") {
-          const invoiceUrl = response.invoiceUrl;
-          router.push(invoiceUrl);
+          const invoiceUrl = response.invoiceUrl
+          router.push(invoiceUrl)
         } else {
-          throw new Error("Unknown payment provider");
+          throw new Error("Unknown payment provider")
         }
       } catch (error) {
-        return alert((error as Error)?.message);
+        return alert((error as Error)?.message)
       } finally {
-        setPriceIdLoading(undefined);
+        setPriceIdLoading(undefined)
       }
     },
     [currency, router]
-  );
+  )
 
   return (
     <section className="mx-auto max-w-4xl px-4">
@@ -143,9 +143,9 @@ export default function PremiumPrice({ user, subscription }: Props) {
 
       <div className="grid gap-4 sm:grid-cols-2">
         {priceList.map((price, index) => {
-          const plan = price.plan;
+          const plan = price.plan
           // get the price from the key of the price object, based on currency
-          const priceData = getPrice(plan, currency, price.type);
+          const priceData = getPrice(plan, currency, price.type)
 
           return (
             <Card key={index}>
@@ -182,11 +182,11 @@ export default function PremiumPrice({ user, subscription }: Props) {
               <CardFooter>
                 <Button
                   onClick={() => {
-                    if (!user) return router.push("/auth/login?next=/premium");
+                    if (!user) return router.push("/auth/login?next=/premium")
                     if (subscription) {
-                      return redirectToCustomerPortal(price);
+                      return redirectToCustomerPortal(price)
                     }
-                    handleChoosePlan(price);
+                    handleChoosePlan(price)
                   }}
                   className="w-full"
                   disabled={typeof priceIdLoading === "string"}
@@ -198,9 +198,9 @@ export default function PremiumPrice({ user, subscription }: Props) {
                 </Button>
               </CardFooter>
             </Card>
-          );
+          )
         })}
       </div>
     </section>
-  );
+  )
 }

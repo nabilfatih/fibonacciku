@@ -1,5 +1,5 @@
-import { generateUUID, getCurrentDate } from "@/lib/utils";
-import supabaseClient from ".";
+import { generateUUID, getCurrentDate } from "@/lib/utils"
+import supabaseClient from "."
 
 export const insertShareChat = async (userId: string, chatId: string) => {
   const { data, error } = await supabaseClient
@@ -8,25 +8,25 @@ export const insertShareChat = async (userId: string, chatId: string) => {
       id: generateUUID(),
       user_id: userId,
       chat_id: chatId,
-      created_at: getCurrentDate(),
+      created_at: getCurrentDate()
     })
     .select()
-    .single();
+    .single()
 
   if (error) {
-    throw error;
+    throw error
   }
 
-  return data;
-};
+  return data
+}
 
 export const deleteShareChatByChatId = async (chatId: string) => {
   const { error } = await supabaseClient
     .from("share_chat")
     .delete()
-    .eq("chat_id", chatId);
+    .eq("chat_id", chatId)
 
   if (error) {
-    throw error;
+    throw error
   }
-};
+}

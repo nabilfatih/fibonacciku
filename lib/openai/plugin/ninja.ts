@@ -1,29 +1,26 @@
-export const ninjaBaseUrl = "https://api.api-ninjas.com/v1/";
+export const ninjaBaseUrl = "https://api.api-ninjas.com/v1/"
 
 export const fetchNinja = async (endpoint: string, query: string) => {
   const response = await fetch(ninjaBaseUrl + endpoint + "?" + query, {
     method: "GET",
     headers: {
-      "X-Api-Key": process.env.NINJA_API_KEY!,
-    },
-  });
+      "X-Api-Key": process.env.NINJA_API_KEY!
+    }
+  })
   if (!response.ok) {
-    throw new Error(`Error searching Ninja: ${response.statusText}`);
+    throw new Error(`Error searching Ninja: ${response.statusText}`)
   }
-  return await response.json();
-};
+  return await response.json()
+}
 
 export const scrapeWebsite = async (url: string) => {
   try {
     // use ninja api
-    const response = await fetchNinja(
-      "webscraper",
-      `url=${url}&text_only=true`
-    );
-    return response;
+    const response = await fetchNinja("webscraper", `url=${url}&text_only=true`)
+    return response
   } catch (error) {
     return {
-      message: "Sorry but I can't get the information from that website.",
-    };
+      message: "Sorry but I can't get the information from that website."
+    }
   }
-};
+}

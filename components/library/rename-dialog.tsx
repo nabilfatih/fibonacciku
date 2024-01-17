@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import { type DialogProps } from "@radix-ui/react-dialog";
-import { toast } from "sonner";
+import * as React from "react"
+import { type DialogProps } from "@radix-ui/react-dialog"
+import { toast } from "sonner"
 
-import type { Libraries, ServerActionResult } from "@/types/types";
-import { Button } from "@/components/ui/button";
+import type { Libraries, ServerActionResult } from "@/types/types"
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -13,8 +13,8 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+  DialogTitle
+} from "@/components/ui/dialog"
 import {
   Drawer,
   DrawerClose,
@@ -22,17 +22,17 @@ import {
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
-  DrawerTitle,
-} from "@/components/ui/drawer";
-import { IconSpinner } from "@/components/ui/icons";
-import { useMediaQuery } from "@/lib/hooks/use-media-query";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+  DrawerTitle
+} from "@/components/ui/drawer"
+import { IconSpinner } from "@/components/ui/icons"
+import { useMediaQuery } from "@/lib/hooks/use-media-query"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 
 interface LibraryRenameDialogProps extends DialogProps {
-  library: Pick<Libraries, "id" | "name">;
-  renameLibrary: (id: string, title: string) => ServerActionResult<void>;
-  onRename: () => void;
+  library: Pick<Libraries, "id" | "name">
+  renameLibrary: (id: string, title: string) => ServerActionResult<void>
+  onRename: () => void
 }
 
 export function LibraryRenameDialog({
@@ -41,11 +41,11 @@ export function LibraryRenameDialog({
   onRename,
   ...props
 }: LibraryRenameDialogProps) {
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isDesktop = useMediaQuery("(min-width: 768px)")
 
-  const [title, setTitle] = React.useState<string>(library.name);
+  const [title, setTitle] = React.useState<string>(library.name)
 
-  const [isRenamePending, startRenameTransition] = React.useTransition();
+  const [isRenamePending, startRenameTransition] = React.useTransition()
 
   if (isDesktop) {
     return (
@@ -81,16 +81,16 @@ export function LibraryRenameDialog({
               disabled={isRenamePending || !title.trim()}
               onClick={() => {
                 startRenameTransition(async () => {
-                  const result = await renameLibrary(library.id, title);
+                  const result = await renameLibrary(library.id, title)
 
                   if (result && "error" in result) {
-                    toast.error(result.error);
-                    return;
+                    toast.error(result.error)
+                    return
                   }
 
-                  onRename();
-                  toast.success("Chat renamed");
-                });
+                  onRename()
+                  toast.success("Chat renamed")
+                })
               }}
             >
               {isRenamePending ? (
@@ -105,7 +105,7 @@ export function LibraryRenameDialog({
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    );
+    )
   }
 
   return (
@@ -134,16 +134,16 @@ export function LibraryRenameDialog({
             disabled={isRenamePending || !title.trim()}
             onClick={() => {
               startRenameTransition(async () => {
-                const result = await renameLibrary(library.id, title);
+                const result = await renameLibrary(library.id, title)
 
                 if (result && "error" in result) {
-                  toast.error(result.error);
-                  return;
+                  toast.error(result.error)
+                  return
                 }
 
-                onRename();
-                toast.success("Chat renamed");
-              });
+                onRename()
+                toast.success("Chat renamed")
+              })
             }}
           >
             {isRenamePending ? (
@@ -164,5 +164,5 @@ export function LibraryRenameDialog({
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
-  );
+  )
 }

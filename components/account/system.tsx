@@ -3,10 +3,10 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import AccountLogout from "@/components/account/logout";
-import Feedback from "@/components/header/feedback";
+  CardTitle
+} from "@/components/ui/card"
+import AccountLogout from "@/components/account/logout"
+import Feedback from "@/components/header/feedback"
 
 export default function AccountSystem() {
   return (
@@ -24,5 +24,5 @@ export default function AccountSystem() {
         </CardFooter>
       </Card>
     </section>
-  );
+  )
 }

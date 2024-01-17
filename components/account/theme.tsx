@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import { useTheme } from "next-themes";
-import React from "react";
-import { Label } from "@/components/ui/label";
+import { useTheme } from "next-themes"
+import React from "react"
+import { Label } from "@/components/ui/label"
 import {
   Select,
   SelectContent,
@@ -10,15 +10,15 @@ import {
   SelectItem,
   SelectLabel,
   SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { capitalizeFirstLetter } from "@/lib/utils";
+  SelectValue
+} from "@/components/ui/select"
+import { capitalizeFirstLetter } from "@/lib/utils"
 
 export default function AccountTheme() {
-  const { setTheme, theme } = useTheme();
-  const [_, startTransition] = React.useTransition();
+  const { setTheme, theme } = useTheme()
+  const [_, startTransition] = React.useTransition()
 
-  if (!theme) return null;
+  if (!theme) return null
 
   return (
     <div className="flex flex-wrap items-center justify-between gap-2 border-b pb-4">
@@ -27,8 +27,8 @@ export default function AccountTheme() {
         value={capitalizeFirstLetter(theme)}
         onValueChange={value => {
           startTransition(() => {
-            setTheme(value.toLowerCase());
-          });
+            setTheme(value.toLowerCase())
+          })
         }}
       >
         <SelectTrigger className="w-28">
@@ -44,5 +44,5 @@ export default function AccountTheme() {
         </SelectContent>
       </Select>
     </div>
-  );
+  )
 }

@@ -1,24 +1,24 @@
-import { useMessage } from "@/lib/context/use-message";
-import { useEffect, useRef } from "react";
-import Textarea from "react-textarea-autosize";
+import { useMessage } from "@/lib/context/use-message"
+import { useEffect, useRef } from "react"
+import Textarea from "react-textarea-autosize"
 
 type Props = {
-  content: string;
-  messageIndex: number;
-};
+  content: string
+  messageIndex: number
+}
 
 export default function ChatUser({ content, messageIndex }: Props) {
-  const { state, dispatch } = useMessage();
+  const { state, dispatch } = useMessage()
 
-  const promptRef = useRef<HTMLTextAreaElement>(null);
+  const promptRef = useRef<HTMLTextAreaElement>(null)
 
   useEffect(() => {
     if (messageIndex === state.editMessageIndex && promptRef.current) {
-      const textLength = promptRef.current.value.length;
-      promptRef.current.focus();
-      promptRef.current.setSelectionRange(textLength, textLength);
+      const textLength = promptRef.current.value.length
+      promptRef.current.focus()
+      promptRef.current.setSelectionRange(textLength, textLength)
     }
-  }, [messageIndex, state.editMessageIndex]);
+  }, [messageIndex, state.editMessageIndex])
 
   return (
     <div className="prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0">
@@ -34,7 +34,7 @@ export default function ChatUser({ content, messageIndex }: Props) {
           onChange={e =>
             dispatch({
               type: "SET_EDIT_MESSAGE_CONTENT",
-              payload: e.target.value,
+              payload: e.target.value
             })
           }
         />
@@ -42,5 +42,5 @@ export default function ChatUser({ content, messageIndex }: Props) {
         <div className="whitespace-pre-wrap">{content}</div>
       )}
     </div>
-  );
+  )
 }

@@ -1,12 +1,12 @@
-import LibraryDocument from "@/components/library";
-import { createClientServer } from "@/lib/supabase/server";
-import { getScopedI18n } from "@/locales/server";
-import type { Metadata } from "next";
-import { cookies } from "next/headers";
-import { notFound, redirect } from "next/navigation";
+import LibraryDocument from "@/components/library"
+import { createClientServer } from "@/lib/supabase/server"
+import { getScopedI18n } from "@/locales/server"
+import type { Metadata } from "next"
+import { cookies } from "next/headers"
+import { notFound, redirect } from "next/navigation"
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getScopedI18n("Library");
+  const t = await getScopedI18n("Library")
 
   return {
     title: t("library"),
@@ -15,21 +15,21 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         en: "/en/chat/library",
         id: "/id/chat/library",
-        de: "/de/chat/library",
-      },
-    },
-  };
+        de: "/de/chat/library"
+      }
+    }
+  }
 }
 
 export default async function ChatLibraryPage() {
-  const cookieStore = cookies();
-  const supabase = createClientServer(cookieStore);
+  const cookieStore = cookies()
+  const supabase = createClientServer(cookieStore)
   const {
-    data: { session },
-  } = await supabase.auth.getSession();
+    data: { session }
+  } = await supabase.auth.getSession()
 
   if (!session?.user) {
-    redirect("/auth/login?next=/chat/library");
+    redirect("/auth/login?next=/chat/library")
   }
 
   const { data: libraries } = await supabase
@@ -37,11 +37,11 @@ export default async function ChatLibraryPage() {
     .select("*")
     .eq("user_id", session.user.id)
     .order("created_at", { ascending: false })
-    .limit(100);
+    .limit(100)
 
   if (!libraries) {
-    notFound();
+    notFound()
   }
 
-  return <LibraryDocument libraries={libraries} />;
+  return <LibraryDocument libraries={libraries} />
 }

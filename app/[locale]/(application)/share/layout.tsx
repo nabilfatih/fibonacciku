@@ -1,10 +1,10 @@
-import { MessageContextProvider } from "@/lib/context/use-message";
-import { Suspense } from "react";
+import { MessageContextProvider } from "@/lib/context/use-message"
+import { Suspense } from "react"
 
 export default function ChatLayout({
-  children,
+  children
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <div className="relative flex h-[calc(100dvh-4rem)] overflow-hidden">
@@ -14,5 +14,5 @@ export default function ChatLayout({
         </MessageContextProvider>
       </div>
     </div>
-  );
+  )
 }

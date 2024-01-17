@@ -1,15 +1,15 @@
-import type { Libraries } from "@/types/types";
-import { IconDots } from "@tabler/icons-react";
-import moment from "moment";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import LibraryCardChatButton from "@/components/library/card-chat-button";
-import LibraryCardActions from "./card-actions";
+import type { Libraries } from "@/types/types"
+import { IconDots } from "@tabler/icons-react"
+import moment from "moment"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import LibraryCardChatButton from "@/components/library/card-chat-button"
+import LibraryCardActions from "./card-actions"
 
 type Props = {
-  library: Libraries;
-  className?: string;
-};
+  library: Libraries
+  className?: string
+}
 
 export default function LibraryCardInfo({ library, className }: Props) {
   return (
@@ -27,5 +27,5 @@ export default function LibraryCardInfo({ library, className }: Props) {
 
       <LibraryCardActions className="hidden sm:inline-flex" library={library} />
     </div>
-  );
+  )
 }

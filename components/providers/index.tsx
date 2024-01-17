@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
-import type { ThemeProviderProps } from "next-themes/dist/types";
-import { SidebarProvider } from "@/lib/hooks/use-sidebar";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { I18nProviderClient } from "@/locales/client";
+import * as React from "react"
+import { ThemeProvider as NextThemesProvider } from "next-themes"
+import type { ThemeProviderProps } from "next-themes/dist/types"
+import { SidebarProvider } from "@/lib/hooks/use-sidebar"
+import { TooltipProvider } from "@/components/ui/tooltip"
+import { I18nProviderClient } from "@/locales/client"
 
 export function Providers({
   children,
@@ -19,5 +19,5 @@ export function Providers({
         </SidebarProvider>
       </I18nProviderClient>
     </NextThemesProvider>
-  );
+  )
 }

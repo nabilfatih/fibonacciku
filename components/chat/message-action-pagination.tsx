@@ -1,13 +1,13 @@
-import { useMessage } from "@/lib/context/use-message";
-import type { IndexMessage } from "@/types/types";
-import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
-import { useCallback, type Dispatch, type SetStateAction } from "react";
-import { Button } from "@/components/ui/button";
+import { useMessage } from "@/lib/context/use-message"
+import type { IndexMessage } from "@/types/types"
+import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react"
+import { useCallback, type Dispatch, type SetStateAction } from "react"
+import { Button } from "@/components/ui/button"
 
 type Props = {
-  currentIndex: IndexMessage;
-  contentLength: number;
-};
+  currentIndex: IndexMessage
+  contentLength: number
+}
 
 // Function to update the indexMessage state
 const updateIndexMessage = (
@@ -17,32 +17,32 @@ const updateIndexMessage = (
   setIndexMessage((prevIndexMessage: IndexMessage[]) => {
     const updatedIndexMessage = prevIndexMessage.map((item: IndexMessage) =>
       item.index === currentIndex.index ? currentIndex : item
-    );
-    return updatedIndexMessage;
-  });
-};
+    )
+    return updatedIndexMessage
+  })
+}
 
 export default function ChatMessageActionPagination({
   currentIndex,
-  contentLength,
+  contentLength
 }: Props) {
-  const { setIndexMessage } = useMessage();
+  const { setIndexMessage } = useMessage()
 
   // Function to decrease the index of current array
   const handlePrevClick = useCallback(() => {
     if (currentIndex.currentMessage) {
-      currentIndex.currentMessage -= 1;
-      updateIndexMessage(currentIndex, setIndexMessage);
+      currentIndex.currentMessage -= 1
+      updateIndexMessage(currentIndex, setIndexMessage)
     }
-  }, [currentIndex, setIndexMessage]);
+  }, [currentIndex, setIndexMessage])
 
   // Function to increase the index of current array
   const handleNextClick = useCallback(() => {
     if (currentIndex.currentMessage) {
-      currentIndex.currentMessage += 1;
-      updateIndexMessage(currentIndex, setIndexMessage);
+      currentIndex.currentMessage += 1
+      updateIndexMessage(currentIndex, setIndexMessage)
     }
-  }, [currentIndex, setIndexMessage]);
+  }, [currentIndex, setIndexMessage])
 
   return (
     <div className="flex items-center space-x-2">
@@ -68,5 +68,5 @@ export default function ChatMessageActionPagination({
         <span className="sr-only">Next message</span>
       </Button>
     </div>
-  );
+  )
 }

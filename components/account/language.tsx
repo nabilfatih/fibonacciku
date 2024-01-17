@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import React from "react";
-import { Label } from "@/components/ui/label";
+import React from "react"
+import { Label } from "@/components/ui/label"
 import {
   Select,
   SelectContent,
@@ -9,47 +9,47 @@ import {
   SelectItem,
   SelectLabel,
   SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  SelectValue
+} from "@/components/ui/select"
 import {
   useChangeLocale,
   useCurrentLocale,
-  useScopedI18n,
-} from "@/locales/client";
-import { updateUserLang } from "@/lib/supabase/client/users";
+  useScopedI18n
+} from "@/locales/client"
+import { updateUserLang } from "@/lib/supabase/client/users"
 
 const languages = [
   {
     icon: "🇬🇧",
     name: "English",
-    value: "en",
+    value: "en"
   },
   {
     icon: "🇮🇩",
     name: "Indonesia",
-    value: "id",
+    value: "id"
   },
   {
     icon: "🇩🇪",
     name: "Deutsch",
-    value: "de",
-  },
-];
+    value: "de"
+  }
+]
 
 type Props = {
-  userId: string;
-};
+  userId: string
+}
 
 export default function AccountLanguage({ userId }: Props) {
-  const lang = useCurrentLocale();
+  const lang = useCurrentLocale()
 
-  const t = useScopedI18n("ModalAccount");
-  const changeLocale = useChangeLocale({ preserveSearchParams: true });
+  const t = useScopedI18n("ModalAccount")
+  const changeLocale = useChangeLocale({ preserveSearchParams: true })
 
   const handleChangeLocale = async (value: string) => {
-    changeLocale(value as never);
-    await updateUserLang(userId, value);
-  };
+    changeLocale(value as never)
+    await updateUserLang(userId, value)
+  }
 
   return (
     <div className="flex flex-wrap items-center justify-between gap-2 border-b pb-4">
@@ -72,5 +72,5 @@ export default function AccountLanguage({ userId }: Props) {
         </SelectContent>
       </Select>
     </div>
-  );
+  )
 }

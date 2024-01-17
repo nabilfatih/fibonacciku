@@ -1,33 +1,33 @@
-import * as React from "react";
+import * as React from "react"
 
-import { Button } from "@/components/ui/button";
-import ButtonScrollToBottom from "@/components/chat/button-scroll-to-bottom";
-import { IconStop } from "@/components/ui/icons";
-import FooterText from "@/components/chat/footer";
-import { IconEye, IconRefresh, IconShare3 } from "@tabler/icons-react";
-import PromptForm from "@/components/chat/form";
-import type { ShowChatMessage } from "@/types/types";
-import { useScopedI18n } from "@/locales/client";
-import ChatShareDialog from "@/components/chat/share-dialog";
-import { shareChat } from "@/app/actions";
-import SidebarDocument from "@/components/chat/sidebar-document";
-import { cn } from "@/lib/utils";
-import { useMessage } from "@/lib/context/use-message";
-import dynamic from "next/dynamic";
+import { Button } from "@/components/ui/button"
+import ButtonScrollToBottom from "@/components/chat/button-scroll-to-bottom"
+import { IconStop } from "@/components/ui/icons"
+import FooterText from "@/components/chat/footer"
+import { IconEye, IconRefresh, IconShare3 } from "@tabler/icons-react"
+import PromptForm from "@/components/chat/form"
+import type { ShowChatMessage } from "@/types/types"
+import { useScopedI18n } from "@/locales/client"
+import ChatShareDialog from "@/components/chat/share-dialog"
+import { shareChat } from "@/app/actions"
+import SidebarDocument from "@/components/chat/sidebar-document"
+import { cn } from "@/lib/utils"
+import { useMessage } from "@/lib/context/use-message"
+import dynamic from "next/dynamic"
 
-const ChatDocument = dynamic(() => import("@/components/chat/document"));
+const ChatDocument = dynamic(() => import("@/components/chat/document"))
 
 export type ChatPanelProps = {
-  isLoading: boolean;
-  messages: ShowChatMessage[];
-  type: "assistant" | "document";
-  prompt: string;
-  setPrompt: (value: string) => void;
-  id?: string;
-  title?: string;
-  createdAt?: string;
-  fileId?: string | null;
-};
+  isLoading: boolean
+  messages: ShowChatMessage[]
+  type: "assistant" | "document"
+  prompt: string
+  setPrompt: (value: string) => void
+  id?: string
+  title?: string
+  createdAt?: string
+  fileId?: string | null
+}
 
 export default function ChatPanel({
   id,
@@ -38,13 +38,13 @@ export default function ChatPanel({
   isLoading,
   prompt,
   fileId,
-  setPrompt,
+  setPrompt
 }: ChatPanelProps) {
-  const t = useScopedI18n("FormChat");
+  const t = useScopedI18n("FormChat")
 
-  const { dispatch, stop, reload, handleSubmit } = useMessage();
+  const { dispatch, stop, reload, handleSubmit } = useMessage()
 
-  const [shareDialogOpen, setShareDialogOpen] = React.useState(false);
+  const [shareDialogOpen, setShareDialogOpen] = React.useState(false)
 
   return (
     <div className="fixed inset-x-0 bottom-0 w-full bg-gradient-to-b from-transparent via-muted/50 to-muted duration-300 ease-in-out animate-in dark:from-transparent dark:via-background/50 dark:to-background peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
@@ -102,7 +102,7 @@ export default function ChatPanel({
                         title,
                         message: messages,
                         type,
-                        created_at: createdAt,
+                        created_at: createdAt
                       }}
                     />
                   </>
@@ -132,5 +132,5 @@ export default function ChatPanel({
         </div>
       </div>
     </div>
-  );
+  )
 }

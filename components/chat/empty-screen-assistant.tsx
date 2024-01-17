@@ -19,7 +19,7 @@ export default function EmptyScreenAssistant() {
         Ask me anything, whatever you want to know.
       </p>
 
-      <section className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <section className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         {featuresList.map((feature, index) => (
           <Link key={index} passHref href={feature.link}>
             <Card
@@ -32,7 +32,7 @@ export default function EmptyScreenAssistant() {
             >
               <CardHeader
                 className={cn(
-                  "flex-row items-center space-y-0 space-x-2 bg-muted/70 hover:bg-muted/50 transition-colors",
+                  "flex-row items-center space-x-2 space-y-0 bg-muted/70 transition-colors hover:bg-muted/50",
                   feature.title === "assistant" && "bg-muted/60"
                 )}
               >
@@ -53,7 +53,7 @@ export default function EmptyScreenAssistant() {
 
         <Button asChild variant="outline" className="w-fit">
           <Link href="/chat/explore" className="inline-flex items-center">
-            <IconRocket className="h-5 w-5 mr-2" />
+            <IconRocket className="mr-2 h-5 w-5" />
             Start exploring
           </Link>
         </Button>

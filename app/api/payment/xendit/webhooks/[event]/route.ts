@@ -1,28 +1,28 @@
-import { manageSubscriptionXendit } from "@/lib/supabase/admin/users";
-import type { InvoiceCallbackPayload } from "@/types/types";
-import { NextResponse } from "next/server";
+import { manageSubscriptionXendit } from "@/lib/supabase/admin/users"
+import type { InvoiceCallbackPayload } from "@/types/types"
+import { NextResponse } from "next/server"
 
-const relevantEvents = new Set(["invoices"]);
+const relevantEvents = new Set(["invoices"])
 
 export async function POST(
   req: Request,
   { params }: { params: { event: string } }
 ) {
-  const payload = (await req.json()) as InvoiceCallbackPayload;
+  const payload = (await req.json()) as InvoiceCallbackPayload
 
-  const event = params.event;
-  const sig = req.headers.get("x-callback-token") as string;
+  const event = params.event
+  const sig = req.headers.get("x-callback-token") as string
 
   if (!sig || sig !== process.env.XENDIT_WEBHOOK_TOKEN) {
     return NextResponse.json(
       {
         error: {
           statusCode: 400,
-          message: `❌ Webhook Error: Invalid signature`,
-        },
+          message: `❌ Webhook Error: Invalid signature`
+        }
       },
       { status: 400 }
-    );
+    )
   }
 
   if (relevantEvents.has(event)) {
@@ -30,34 +30,34 @@ export async function POST(
       switch (event) {
         case "invoices":
           if (payload.status === "PAID") {
-            await manageSubscriptionXendit(payload);
+            await manageSubscriptionXendit(payload)
           }
-          break;
+          break
         default:
-          throw new Error("Unhandled relevant event!");
+          throw new Error("Unhandled relevant event!")
       }
     } catch (error: any) {
-      console.error(error);
+      console.error(error)
       return NextResponse.json(
         {
           error: {
             statusCode: 400,
-            message: "Webhook handler failed. View your NextJS function logs.",
-          },
+            message: "Webhook handler failed. View your NextJS function logs."
+          }
         },
         { status: 400 }
-      );
+      )
     }
   } else {
     return NextResponse.json(
       {
         error: {
           statusCode: 400,
-          message: `❌ Webhook Error: Unhandled event type ${event}`,
-        },
+          message: `❌ Webhook Error: Unhandled event type ${event}`
+        }
       },
       { status: 400 }
-    );
+    )
   }
-  return NextResponse.json({ received: true }, { status: 200 });
+  return NextResponse.json({ received: true }, { status: 200 })
 }

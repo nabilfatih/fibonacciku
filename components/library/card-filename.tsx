@@ -1,19 +1,19 @@
-import { useScopedI18n } from "@/locales/client";
-import type { Libraries } from "@/types/types";
-import { useTransition } from "react";
-import { toast } from "sonner";
-import LibraryCardActions from "./card-actions";
-import { getLibraryFile } from "@/app/actions";
-import { IconSpinner } from "../ui/icons";
+import { useScopedI18n } from "@/locales/client"
+import type { Libraries } from "@/types/types"
+import { useTransition } from "react"
+import { toast } from "sonner"
+import LibraryCardActions from "./card-actions"
+import { getLibraryFile } from "@/app/actions"
+import { IconSpinner } from "../ui/icons"
 
 type Props = {
-  library: Libraries;
-};
+  library: Libraries
+}
 
 export default function LibraryCardFilename({ library }: Props) {
-  const t = useScopedI18n("Library");
+  const t = useScopedI18n("Library")
 
-  const [isSeeDocumentPending, startSeeDocumentTransition] = useTransition();
+  const [isSeeDocumentPending, startSeeDocumentTransition] = useTransition()
 
   return (
     <div className="flex items-center justify-between sm:mr-4">
@@ -27,15 +27,15 @@ export default function LibraryCardFilename({ library }: Props) {
           className="cursor-pointer truncate text-sm hover:underline"
           onClick={() => {
             startSeeDocumentTransition(async () => {
-              const result = await getLibraryFile(library.file_id);
+              const result = await getLibraryFile(library.file_id)
 
               if (result && "error" in result) {
-                toast.error(result.error);
-                return;
+                toast.error(result.error)
+                return
               }
 
-              window.open(result.data, "_blank");
-            });
+              window.open(result.data, "_blank")
+            })
           }}
         >
           {library.name}
@@ -44,5 +44,5 @@ export default function LibraryCardFilename({ library }: Props) {
 
       <LibraryCardActions className="sm:hidden" library={library} />
     </div>
-  );
+  )
 }

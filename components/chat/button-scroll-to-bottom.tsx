@@ -1,22 +1,22 @@
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
-import { Button, type ButtonProps } from "@/components/ui/button";
-import { IconArrowNarrowDown } from "@tabler/icons-react";
-import { useMessage } from "@/lib/context/use-message";
-import { useMemo } from "react";
+import { cn } from "@/lib/utils"
+import { Button, type ButtonProps } from "@/components/ui/button"
+import { IconArrowNarrowDown } from "@tabler/icons-react"
+import { useMessage } from "@/lib/context/use-message"
+import { useMemo } from "react"
 
 export default function ButtonScrollToBottom({
   className,
   ...props
 }: ButtonProps) {
-  const { state, showMessage, handleScrollToBottom } = useMessage();
+  const { state, showMessage, handleScrollToBottom } = useMessage()
 
   const isAtBottom = useMemo(() => {
-    if (state.scrollPosition === -1) return true;
-    if (showMessage.length === 0) return true;
-    if (state.scrollPosition - showMessage.length > -5) return true;
-  }, [showMessage.length, state.scrollPosition]);
+    if (state.scrollPosition === -1) return true
+    if (showMessage.length === 0) return true
+    if (state.scrollPosition - showMessage.length > -5) return true
+  }, [showMessage.length, state.scrollPosition])
 
   return (
     <Button
@@ -33,5 +33,5 @@ export default function ButtonScrollToBottom({
       <IconArrowNarrowDown className="h-5 w-5" />
       <span className="sr-only">Scroll to bottom</span>
     </Button>
-  );
+  )
 }

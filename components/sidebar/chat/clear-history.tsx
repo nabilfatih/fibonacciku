@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import { useRouter } from "next/navigation";
+import * as React from "react"
+import { useRouter } from "next/navigation"
 
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,41 +13,41 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { IconSpinner } from "@/components/ui/icons";
-import { toast } from "sonner";
-import { useScopedI18n } from "@/locales/client";
-import { useCurrentUser } from "@/lib/context/use-current-user";
-import { deleteUserChat } from "@/lib/supabase/client/users";
-import { cn } from "@/lib/utils";
+  AlertDialogTrigger
+} from "@/components/ui/alert-dialog"
+import { IconSpinner } from "@/components/ui/icons"
+import { toast } from "sonner"
+import { useScopedI18n } from "@/locales/client"
+import { useCurrentUser } from "@/lib/context/use-current-user"
+import { deleteUserChat } from "@/lib/supabase/client/users"
+import { cn } from "@/lib/utils"
 
 type ClearHistoryProps = {
-  isEnabled: boolean;
-};
+  isEnabled: boolean
+}
 
 export default function ClearHistory({ isEnabled = false }: ClearHistoryProps) {
-  const t = useScopedI18n("ModalClearChat");
-  const { userDetails } = useCurrentUser();
+  const t = useScopedI18n("ModalClearChat")
+  const { userDetails } = useCurrentUser()
 
-  const [open, setOpen] = React.useState(false);
-  const [isPending, setIsPending] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
+  const [isPending, setIsPending] = React.useState(false)
 
-  const router = useRouter();
+  const router = useRouter()
 
   const handleClearConversations = async () => {
-    if (!userDetails) return;
-    setIsPending(true);
+    if (!userDetails) return
+    setIsPending(true)
     try {
-      await deleteUserChat(userDetails.id);
-      router.replace("/chat/assistant");
-      toast.success(t("conversations-clear"));
+      await deleteUserChat(userDetails.id)
+      router.replace("/chat/assistant")
+      toast.success(t("conversations-clear"))
     } catch (error) {
-      toast.error(t("something-wrong"));
+      toast.error(t("something-wrong"))
     } finally {
-      setIsPending(false);
+      setIsPending(false)
     }
-  };
+  }
 
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
@@ -79,5 +79,5 @@ export default function ClearHistory({ isEnabled = false }: ClearHistoryProps) {
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  );
+  )
 }

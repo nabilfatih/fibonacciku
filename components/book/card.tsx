@@ -23,14 +23,14 @@ export default function BookCard({ book }: Props) {
           sizes="144px"
           fill
           priority
-          className="rounded-xl border shadow-sm object-cover bg-muted/90"
+          className="rounded-xl border bg-muted/90 object-cover shadow-sm"
         />
       </div>
       <div className="flex-1">
         <div className="flex flex-col">
           <Link
             href={`/book/collection/${book.bookId}`}
-            className="mb-2 sm:text-lg font-medium tracking-tight leading-none w-fit"
+            className="mb-2 w-fit font-medium leading-none tracking-tight sm:text-lg"
           >
             {dataBook.title}
           </Link>

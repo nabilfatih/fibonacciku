@@ -1,4 +1,4 @@
-import supabaseClient from ".";
+import supabaseClient from "."
 
 export const uploadBooksFile = async (
   file: File,
@@ -9,13 +9,13 @@ export const uploadBooksFile = async (
     .from("books")
     .upload(`${bookId}/${fileId}`, file, {
       cacheControl: "3600",
-      upsert: true,
-    });
+      upsert: true
+    })
   if (error) {
-    throw error;
+    throw error
   }
-  return data;
-};
+  return data
+}
 
 export const uploadBooksCoverFile = async (
   cover: File,
@@ -26,31 +26,31 @@ export const uploadBooksCoverFile = async (
     .from("books")
     .upload(`${bookId}/${coverId}`, cover, {
       cacheControl: "3600",
-      upsert: true,
-    });
+      upsert: true
+    })
   if (error) {
-    throw error;
+    throw error
   }
-  return data;
-};
+  return data
+}
 
 export const deleteBooksFile = async (bookId: string, fileId: string) => {
   const { error } = await supabaseClient.storage
     .from("books")
-    .remove([`${bookId}/${fileId}`]);
+    .remove([`${bookId}/${fileId}`])
   if (error) {
-    throw error;
+    throw error
   }
-};
+}
 
 export const deleteBooksCoverFile = async (bookId: string, coverId: string) => {
   const { error } = await supabaseClient.storage
     .from("books")
-    .remove([`${bookId}/${coverId}`]);
+    .remove([`${bookId}/${coverId}`])
   if (error) {
-    throw error;
+    throw error
   }
-};
+}
 
 export const getBooksCoverPublicUrl = (
   bookId: string,
@@ -58,10 +58,10 @@ export const getBooksCoverPublicUrl = (
 ): string => {
   const { data } = supabaseClient.storage
     .from("books")
-    .getPublicUrl(`${bookId}/cover_${fileId}`);
+    .getPublicUrl(`${bookId}/cover_${fileId}`)
 
-  return data.publicUrl;
-};
+  return data.publicUrl
+}
 
 export const getBooksFileSignedUrl = async (
   bookId: string,
@@ -69,10 +69,10 @@ export const getBooksFileSignedUrl = async (
 ): Promise<string> => {
   const { data, error } = await supabaseClient.storage
     .from("books")
-    .createSignedUrl(`${bookId}/${fileId}`, 60 * 60 * 24);
+    .createSignedUrl(`${bookId}/${fileId}`, 60 * 60 * 24)
   if (error) {
-    throw error;
+    throw error
   }
 
-  return data.signedUrl;
-};
+  return data.signedUrl
+}

@@ -1,5 +1,5 @@
-import FooterText from "@/components/chat/footer";
-import LibraryForm from "@/components/library/form";
+import FooterText from "@/components/chat/footer"
+import LibraryForm from "@/components/library/form"
 
 export default function LibraryPanel() {
   return (
@@ -14,5 +14,5 @@ export default function LibraryPanel() {
         </div>
       </div>
     </div>
-  );
+  )
 }

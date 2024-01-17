@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -8,8 +8,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+  DialogTrigger
+} from "@/components/ui/dialog"
 import {
   Drawer,
   DrawerClose,
@@ -18,19 +18,19 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
-import { IconSpinner } from "@/components/ui/icons";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { useCurrentUser } from "@/lib/context/use-current-user";
-import { useMediaQuery } from "@/lib/hooks/use-media-query";
-import { cn } from "@/lib/utils";
-import { useScopedI18n } from "@/locales/client";
-import { IconSend } from "@tabler/icons-react";
-import axios from "axios";
-import { useState } from "react";
-import { toast } from "sonner";
+  DrawerTrigger
+} from "@/components/ui/drawer"
+import { IconSpinner } from "@/components/ui/icons"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { useCurrentUser } from "@/lib/context/use-current-user"
+import { useMediaQuery } from "@/lib/hooks/use-media-query"
+import { cn } from "@/lib/utils"
+import { useScopedI18n } from "@/locales/client"
+import { IconSend } from "@tabler/icons-react"
+import axios from "axios"
+import { useState } from "react"
+import { toast } from "sonner"
 
 type Props = {
   variant?:
@@ -40,25 +40,25 @@ type Props = {
     | "outline"
     | "secondary"
     | "ghost"
-    | null;
-  className?: string;
-};
+    | null
+  className?: string
+}
 
 export default function Feedback({ variant, className }: Props) {
-  const t = useScopedI18n("ModalFeedback");
+  const t = useScopedI18n("ModalFeedback")
 
-  const { userDetails } = useCurrentUser();
+  const { userDetails } = useCurrentUser()
 
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isDesktop = useMediaQuery("(min-width: 768px)")
 
-  const [open, setOpen] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("");
+  const [open, setOpen] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [message, setMessage] = useState<string>("")
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    if (!userDetails) return;
-    setIsLoading(true);
+    e.preventDefault()
+    if (!userDetails) return
+    setIsLoading(true)
 
     try {
       const res = await axios.post(
@@ -66,26 +66,26 @@ export default function Feedback({ variant, className }: Props) {
         {
           email: userDetails.email,
           subject: "Feedback Form",
-          message,
+          message
         },
         {
           headers: {
-            "Content-Type": "application/json",
-          },
+            "Content-Type": "application/json"
+          }
         }
-      );
+      )
       if (res.status === 200) {
-        setMessage("");
-        toast.success(t("message-send"));
+        setMessage("")
+        toast.success(t("message-send"))
       }
       if (res.status === 400) {
-        toast.error(res.data.message);
+        toast.error(res.data.message)
       }
     } catch (error) {
-      toast.error(t("something-wrong"));
+      toast.error(t("something-wrong"))
     }
-    setIsLoading(false);
-  };
+    setIsLoading(false)
+  }
 
   if (isDesktop) {
     return (
@@ -134,7 +134,7 @@ export default function Feedback({ variant, className }: Props) {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    );
+    )
   }
 
   return (
@@ -183,5 +183,5 @@ export default function Feedback({ variant, className }: Props) {
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
-  );
+  )
 }

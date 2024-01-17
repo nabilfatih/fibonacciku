@@ -1,8 +1,8 @@
-export const AppId = process.env.WOLFRAMALPHA_APP_ID as string;
+export const AppId = process.env.WOLFRAMALPHA_APP_ID as string
 
 type XMLData = {
-  [key: string]: string;
-};
+  [key: string]: string
+}
 
 export const extractDataFromXML = (xml: string): XMLData => {
   const regexPatterns = {
@@ -45,45 +45,45 @@ export const extractDataFromXML = (xml: string): XMLData => {
     pAdicExpansion:
       /<pod title='p-adic expansion'[^>]*>[\s\S]*?<subpod title=''>[\s\S]*?<plaintext>([^<]*)<\/plaintext>/,
     expansionOverFiniteField:
-      /<pod title='Expansion over finite field'[^>]*>[\s\S]*?<subpod title=''>[\s\S]*?<plaintext>([^<]*)<\/plaintext>/,
-  };
+      /<pod title='Expansion over finite field'[^>]*>[\s\S]*?<subpod title=''>[\s\S]*?<plaintext>([^<]*)<\/plaintext>/
+  }
 
   return Object.entries(regexPatterns).reduce((data, [key, regex]) => {
-    const match = xml.match(regex);
-    data[key] = match ? match[1].trim() : "";
-    return data;
-  }, {} as XMLData);
-};
+    const match = xml.match(regex)
+    data[key] = match ? match[1].trim() : ""
+    return data
+  }, {} as XMLData)
+}
 
 export const wolframalphaPlugin = async (query: string) => {
   // replace + with %2B and space with %20
-  query = query.replace(/\+/g, "%2B").replace(/\s/g, "%20");
+  query = query.replace(/\+/g, "%2B").replace(/\s/g, "%20")
   try {
     const response = await fetch(
       `https://www.fibonacciku.com/api/ai/plugin/wolframalpha`,
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify({ query }),
+        body: JSON.stringify({ query })
       }
-    );
+    )
     if (!response.ok) {
-      throw new Error(`Error searching WolframAlpha: ${response.statusText}`);
+      throw new Error(`Error searching WolframAlpha: ${response.statusText}`)
     }
-    const data = await response.json();
+    const data = await response.json()
 
     return {
       message:
         "Must show complete steps for the solution! Do not give direct answer!",
-      results: data,
-    };
+      results: data
+    }
   } catch (error) {
-    console.log("WolframAlpha Error: ", error);
+    console.log("WolframAlpha Error: ", error)
     return {
       message: "Quota exceeded for searching WolframAlpha",
-      results: {},
-    };
+      results: {}
+    }
   }
-};
+}

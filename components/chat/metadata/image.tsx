@@ -1,16 +1,16 @@
-import { useScopedI18n } from "@/locales/client";
-import type { ImageResult } from "@/types/types";
-import { IconPhoto } from "@tabler/icons-react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
+import { useScopedI18n } from "@/locales/client"
+import type { ImageResult } from "@/types/types"
+import { IconPhoto } from "@tabler/icons-react"
+import { motion } from "framer-motion"
+import Image from "next/image"
+import Link from "next/link"
 
 type Props = {
-  metadata: ImageResult[];
-};
+  metadata: ImageResult[]
+}
 
 export default function ChatMetadataImage({ metadata }: Props) {
-  const t = useScopedI18n("MetadataChat");
+  const t = useScopedI18n("MetadataChat")
   return (
     <div className="flex flex-col justify-start gap-2">
       <div className="flex flex-row items-center gap-2">
@@ -25,14 +25,14 @@ export default function ChatMetadataImage({ metadata }: Props) {
               key={index}
               variants={{
                 hidden: { opacity: 0 },
-                visible: { opacity: 1 },
+                visible: { opacity: 1 }
               }}
               initial="hidden"
               animate="visible"
               transition={{
                 delay: index * 0.1,
                 ease: "easeInOut",
-                duration: 0.5,
+                duration: 0.5
               }}
               viewport={{ amount: 0 }}
             >
@@ -44,7 +44,7 @@ export default function ChatMetadataImage({ metadata }: Props) {
                   style={{
                     width: "100%",
                     height: "auto",
-                    maxHeight: "28rem",
+                    maxHeight: "28rem"
                   }}
                   priority
                   width={256}
@@ -53,9 +53,9 @@ export default function ChatMetadataImage({ metadata }: Props) {
                 />
               </Link>
             </motion.div>
-          );
+          )
         })}
       </div>
     </div>
-  );
+  )
 }

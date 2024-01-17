@@ -1,19 +1,19 @@
-"use client";
+"use client"
 
-import * as React from "react";
+import * as React from "react"
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { IconSpinner } from "@/components/ui/icons";
-import { IconBrandGoogleFilled } from "@tabler/icons-react";
-import { useScopedI18n } from "@/locales/client";
-import { toast } from "sonner";
-import supabaseClient from "@/lib/supabase/client";
-import { useRouter } from "next/navigation";
-import type { Provider } from "@supabase/supabase-js";
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { IconSpinner } from "@/components/ui/icons"
+import { IconBrandGoogleFilled } from "@tabler/icons-react"
+import { useScopedI18n } from "@/locales/client"
+import { toast } from "sonner"
+import supabaseClient from "@/lib/supabase/client"
+import { useRouter } from "next/navigation"
+import type { Provider } from "@supabase/supabase-js"
 
 interface SignupAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
-  next: string;
+  next: string
 }
 
 export function SignupAuthForm({
@@ -21,23 +21,23 @@ export function SignupAuthForm({
   next,
   ...props
 }: SignupAuthFormProps) {
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
   const handleOAuthSignIn = async (provider: Provider) => {
-    setIsLoading(true);
+    setIsLoading(true)
     const { error } = await supabaseClient.auth.signInWithOAuth({
       provider,
       options: {
         redirectTo: next
           ? `https://www.fibonacciku.com/api/auth/callback?next=${next}`
-          : "https://www.fibonacciku.com/api/auth/callback",
-      },
-    });
+          : "https://www.fibonacciku.com/api/auth/callback"
+      }
+    })
     if (error) {
-      toast.error(error.message);
+      toast.error(error.message)
     }
-    setIsLoading(false);
-  };
+    setIsLoading(false)
+  }
 
   return (
     <div className={cn("grid gap-6", className)} {...props}>
@@ -55,5 +55,5 @@ export function SignupAuthForm({
         Google
       </Button>
     </div>
-  );
+  )
 }

@@ -26,7 +26,7 @@ export default {
       "Jangan ragu untuk menghubungi kami untuk pertanyaan, kemitraan, atau apa pun",
     product: "Produk",
     "privacy-policy": "Kebijakan Privasi",
-    "terms-of-service": "Syarat dan Ketentuan",
+    "terms-of-service": "Syarat dan Ketentuan"
   },
   Home: {
     title: "Asisten Pembelajaran AI Personalisasi untuk siswa dan guru",
@@ -84,7 +84,7 @@ export default {
     "try-it-now": "Coba sekarang",
     "what-is-this": "Apa ini?",
     "talk-to-founder": "Bicara dengan pendiri",
-    "trusted-by": "Dipercaya oleh sekolah dan organisasi",
+    "trusted-by": "Dipercaya oleh sekolah dan organisasi"
   },
   MarketingNav: {
     product: "Produk",
@@ -98,7 +98,7 @@ export default {
     application: "Aplikasi",
     "fibo-assistant": "Fibo Asisten",
     "fibo-book": "Fibo Buku",
-    "fibo-school": "Fibo School",
+    "fibo-school": "Fibo School"
   },
   MarketingFooter: {
     product: "Produk",
@@ -116,7 +116,7 @@ export default {
     "made-with": "Dibuat dengan",
     "fibo-assistant": "Fibo Asisten",
     "fibo-book": "Fibo Buku",
-    "fibo-school": "Fibo School",
+    "fibo-school": "Fibo School"
   },
   MarketingContact: {
     contact: "Kontak",
@@ -132,7 +132,7 @@ export default {
     "message-placeholder": "Masukkan pesan Anda",
     submit: "Kirim",
     success: "Pesan Anda telah terkirim",
-    error: "Pesan Anda gagal terkirim, silakan coba lagi",
+    error: "Pesan Anda gagal terkirim, silakan coba lagi"
   },
   MarketingPartner: {
     partner: "Mitra",
@@ -150,7 +150,7 @@ export default {
     "desc-vendor":
       "Kami dapat menawarkan dukungan langsung ke organisasi, sekolah, atau institusi Anda untuk membantu Anda mencapai tujuan Anda. Kita akan bekerja sama untuk menciptakan solusi yang sesuai dengan kebutuhan Anda",
     "powered-by": "Didukung oleh teknologi terbaik",
-    "trusted-by": "Dipercaya oleh organisasi terbaik",
+    "trusted-by": "Dipercaya oleh organisasi terbaik"
   },
   MarketingProduct: {
     product: "Produk",
@@ -211,7 +211,7 @@ export default {
     "header-desc-1":
       "Mulai gunakan AI sebagai tutor pribadi Anda bukan alat mencontek",
     "see-pricing": "Lihat harga",
-    "fibo-document": "Fibo Dokumen",
+    "fibo-document": "Fibo Dokumen"
   },
   ProductFiboAssistant: {
     "fibo-assistant": "Fibo Asisten",
@@ -222,7 +222,7 @@ export default {
     "see-pricing": "Lihat Harga",
     "fibo-assistant-helper":
       "Fibo Asisten adalah chatbot yang menyediakan pengetahuan tanpa batas dan jawaban atas pertanyaan Anda. Dirancang agar mudah digunakan, ramah pengguna, dan sangat dipersonalisasi",
-    "try-it-now": "Coba Sekarang",
+    "try-it-now": "Coba Sekarang"
   },
   ProductFiboBook: {
     "fibo-book": "Fibo Buku",
@@ -231,7 +231,7 @@ export default {
       "Ajukan pertanyaan, daripada mencari, dan dapatkan buku yang relevan untuk dibaca dan berdiskusi",
     "get-started": "Mulai",
     "see-pricing": "Lihat harga",
-    "try-it-now": "Coba sekarang",
+    "try-it-now": "Coba sekarang"
   },
   ProductFiboSchool: {
     "fibo-school": "Fibo School",
@@ -240,7 +240,7 @@ export default {
       "Sistem manajemen pembelajaran yang mudah untuk guru dan siswa yang terintegrasi dengan AI",
     "get-started": "Mulai",
     "see-pricing": "Lihat harga",
-    "try-it-now": "Coba sekarang",
+    "try-it-now": "Coba sekarang"
   },
   ProductPlugin: {
     header: "Kaya akan plugin",
@@ -260,7 +260,7 @@ export default {
     "website-scraping": "Website Scraping",
     "website-scraping-helper": "Dapatkan informasi dari https://...",
     "solve-math": "Pecahkan matematika",
-    "solve-math-helper": "Bantu pecahkan masalah matematika...",
+    "solve-math-helper": "Bantu pecahkan masalah matematika..."
   },
   MarketingPricing: {
     pricing: "Harga",
@@ -332,7 +332,7 @@ export default {
     "chat-with-founder": "Chat dengan pendiri",
     "download-book": "Unduh buku",
     "get-started": "Mulai sekarang",
-    "7-free-trial": "7 hari gratis",
+    "7-free-trial": "7 hari gratis"
   },
 
   PricingFAQ: {
@@ -359,7 +359,7 @@ export default {
     "what-is-library-access-mean":
       "Apa yang dimaksud dengan akses perpustakaan?",
     "what-is-library-access-mean-desc":
-      "Akses perpustakaan berarti kamu dapat mengunggah dokumenmu sendiri ke FibonacciKu dan berinteraksi dengannya. Kamu dapat mengunggah sebanyak yang kamu mau, tidak ada batas. Tidak masalah jika dokumenmu mengandung teks, gambar, atau keduanya, FibonacciKu dapat menanganinya",
+      "Akses perpustakaan berarti kamu dapat mengunggah dokumenmu sendiri ke FibonacciKu dan berinteraksi dengannya. Kamu dapat mengunggah sebanyak yang kamu mau, tidak ada batas. Tidak masalah jika dokumenmu mengandung teks, gambar, atau keduanya, FibonacciKu dapat menanganinya"
   },
   MarketingAbout: {
     about: "Tentang",
@@ -385,7 +385,7 @@ export default {
     ceo: "CEO",
     "public-relation": "Hubungan Masyarakat",
     marketing: "Pemasaran",
-    advisor: "Penasehat",
+    advisor: "Penasehat"
   },
   Auth: {
     welcome: "Selamat datang di FibonacciKu",
@@ -427,7 +427,7 @@ export default {
     "user-exist": "Pengguna sudah ada",
     "or-continue-with": "Atau lanjutkan dengan",
     "login-header":
-      "Masukkan email dan kata sandi Anda di bawah ini untuk masuk",
+      "Masukkan email dan kata sandi Anda di bawah ini untuk masuk"
   },
   Chat: {
     chat: "Chat",
@@ -482,7 +482,7 @@ export default {
     "search-text": "Cari teks",
     show: "Tampilkan",
     hide: "Sembunyikan",
-    "click-here": "Klik di sini",
+    "click-here": "Klik di sini"
   },
   FormChat: {
     "fibonacciku-make-mistake": "FibonacciKu terkadang membuat kesalahan",
@@ -519,7 +519,7 @@ export default {
     "see-diagram": "Lihat diagram",
     share: "Bagikan",
     document: "Dokumen",
-    close: "Tutup",
+    close: "Tutup"
   },
   FormDocument: {
     "form-document-desc": "Unggah dokumen Anda untuk memulai",
@@ -535,7 +535,7 @@ export default {
     "processing-loading":
       "Ini bisa memakan waktu beberapa menit, mohon bersabar 🤗",
     "recent-documents": "Dokumen terbaru",
-    "upload-document": "Unggah dokumen Anda",
+    "upload-document": "Unggah dokumen Anda"
   },
   Library: {
     library: "Perpustakaan",
@@ -570,7 +570,7 @@ export default {
     "chat-with-document": "Chat dengan dokumen",
     "invalid-document": "Dokumen tidak valid",
     "only-one-document": "Hanya satu dokumen yang dapat diproses",
-    "drag-drop-document": "Seret dan lepaskan dokumen Anda di sini",
+    "drag-drop-document": "Seret dan lepaskan dokumen Anda di sini"
   },
   MetadataChat: {
     "academic-research": "Penelitian akademik",
@@ -578,10 +578,10 @@ export default {
     references: "Referensi",
     "youtube-videos": "Video YouTube",
     page: "Halaman",
-    "generated-image": "Generasi gambar",
+    "generated-image": "Generasi gambar"
   },
   Markdown: {
-    "link-not-available": "Tautan tidak tersedia",
+    "link-not-available": "Tautan tidak tersedia"
   },
   ModalAccount: {
     account: "Akun",
@@ -606,7 +606,7 @@ export default {
     close: "Tutup",
     premium: "Premium",
     "try-premium": "Coba premium",
-    nakafa: "Beranda Nakafa",
+    nakafa: "Beranda Nakafa"
   },
   ModalClearChat: {
     clear: "Hapus",
@@ -621,7 +621,7 @@ export default {
     "desc-clear-conversations":
       "Anda yakin ingin menghapus semua percakapan? Tindakan ini tidak dapat dibatalkan",
     cancel: "Batal",
-    delete: "Hapus",
+    delete: "Hapus"
   },
   ModalShareChat: {
     "share-chat": "Bagikan obrolan",
@@ -639,7 +639,7 @@ export default {
     "link-deleted": "Tautan dihapus",
     messages: "Pesan",
     copying: "Menyalin",
-    close: "Tutup",
+    close: "Tutup"
   },
   ModalPluginChat: {
     plugin: "Plugin",
@@ -661,7 +661,7 @@ export default {
     "website-scraping": "Website Scraping",
     "website-scraping-helper": "Dapatkan informasi dari https://...",
     "solve-math": "Pecahkan matematika",
-    "solve-math-helper": "Bantu pecahkan masalah matematika...",
+    "solve-math-helper": "Bantu pecahkan masalah matematika..."
   },
   ModalContact: {
     contact: "Kontak",
@@ -677,16 +677,16 @@ export default {
     send: "Kirim",
     "message-send": "Pesan Anda telah terkirim",
     "something-wrong": "Ada yang salah, silakan coba lagi nanti!",
-    close: "Tutup",
+    close: "Tutup"
   },
   ModalSocialMedia: {
     "social-media": "Media sosial",
-    "desc-social-media": "Ikuti kami di media sosial! Mari tetap berhubungan",
+    "desc-social-media": "Ikuti kami di media sosial! Mari tetap berhubungan"
   },
   ModalDonate: {
     "title-donate": "Pilih metode pembayaran Anda",
     "desc-donate":
-      "Terima kasih atas dukungan Anda! Donasi Anda akan membantu kami menjaga FibonacciKu tetap hidup dan gratis",
+      "Terima kasih atas dukungan Anda! Donasi Anda akan membantu kami menjaga FibonacciKu tetap hidup dan gratis"
   },
   ModalInitiateRole: {
     "who-are-you": "Siapa Anda?",
@@ -694,7 +694,7 @@ export default {
     student: "Siswa",
     professional: "Profesional",
     helper: "Anda dapat mengubah peran Anda di Pengaturan",
-    welcome: "Selamat datang di FibonacciKu!",
+    welcome: "Selamat datang di FibonacciKu!"
   },
   ModalFeedback: {
     feedback: "Masukan",
@@ -705,7 +705,7 @@ export default {
     send: "Kirim",
     "message-send": "Pesan berhasil dikirim",
     "something-wrong": "Ada yang salah, silakan coba lagi nanti!",
-    cancel: "Batal",
+    cancel: "Batal"
   },
   ModalSubscription: {
     subscription: "Langganan",
@@ -723,7 +723,7 @@ export default {
     "manage-plan": "Kelola paket",
     "days-left": "hari lagi sampai langganan Anda berakhir",
     "do-not-have-plan": "Anda belum memiliki paket, lihat harga untuk memulai",
-    "see-premium": "Lihat premium",
+    "see-premium": "Lihat premium"
   },
   DrawerTools: {
     calculator: "Kalkulator",
@@ -732,7 +732,7 @@ export default {
     "google-search": "Pencarian Google",
     "pdf-viewer": "Pengelola PDF",
     translator: "Penerjemah",
-    close: "Tutup",
+    close: "Tutup"
   },
   BackendRouter: {
     "high-traffic": "Lalu Lintas Tinggi",
@@ -753,13 +753,13 @@ export default {
     "return-home": "Kembali ke Beranda",
     "resource-not-found": "Tidak dapat menemukan sumber yang diminta",
     "try-again": "Coba lagi",
-    "audio-not-supported": "Audio tidak didukung",
+    "audio-not-supported": "Audio tidak didukung"
   },
   Beta: {
     beta: "Beta",
     "beta-desc":
       "FibonacciKu saat ini dalam tahap beta, kami masih bekerja keras untuk membuatnya lebih baik. Gunakan formulir di pojok kiri bawah untuk memberikan kami umpan balik",
-    "days-left": "hari tersisa hingga peluncuran resmi",
+    "days-left": "hari tersisa hingga peluncuran resmi"
   },
   Book: {
     book: "Buku",
@@ -769,7 +769,7 @@ export default {
     "desc-search":
       "Tanyakan pertanyaan dan dapatkan buku, jurnal, artikel, dan lainnya.",
     "request-book": "Permintaan buku",
-    "book-collection": "Koleksi buku",
+    "book-collection": "Koleksi buku"
   },
   BookRequest: {
     "request-book": "Permintaan buku",
@@ -779,13 +779,13 @@ export default {
     "additional-info-placeholder": "Tulis informasi tambahan di sini...",
     request: "Minta",
     "request-sent": "Permintaan terkirim",
-    error: "Ada yang salah, silakan coba lagi nanti!",
+    error: "Ada yang salah, silakan coba lagi nanti!"
   },
   DrawerBook: {
     home: "Beranda",
     "fibo-book": "Fibo Buku",
     "fibo-assistant": "Fibo Asisten",
-    "fibo-document": "Fibo Dokumen",
+    "fibo-document": "Fibo Dokumen"
   },
   CardBook: {
     education: "Pendidikan",
@@ -798,7 +798,7 @@ export default {
     collapse: "Ciutkan",
     en: "Inggris",
     id: "Indonesia",
-    de: "Jerman",
+    de: "Jerman"
   },
   CollectionBook: {
     "book-detail": "Detail buku",
@@ -814,7 +814,7 @@ export default {
     article: "Artikel",
     en: "Inggris",
     id: "Indonesia",
-    de: "Jerman",
+    de: "Jerman"
   },
   BookChat: {
     download: "Unduh",
@@ -836,7 +836,7 @@ export default {
     premium: "Premium",
     "get-premium": "Dapatkan premium",
     new: "BARU",
-    "exclusive-for-premium": "Eksklusif untuk premium",
+    "exclusive-for-premium": "Eksklusif untuk premium"
   },
   ModalBookRequest: {
     "request-book": "Permintaan buku",
@@ -849,7 +849,7 @@ export default {
     "message-placeholder": "Tulis pertanyaan Anda di sini...",
     request: "Minta",
     "request-sent": "Permintaan terkirim",
-    error: "Ada yang salah, silakan coba lagi nanti!",
+    error: "Ada yang salah, silakan coba lagi nanti!"
   },
   MockupHome: {
     "new-chat": "Chat Baru",
@@ -872,7 +872,7 @@ export default {
     "what-is-fibonacciku?": "Apa itu FibonacciKu?",
     "redis-presentation": "Presentasi Redis",
     "related-links": "Tautan Terkait",
-    "youtube-videos": "Video Youtube",
+    "youtube-videos": "Video Youtube"
   },
   Feature: {
     assistant: "Asisten",
@@ -884,11 +884,11 @@ export default {
     book: "Buku",
     "book-desc": "Tanyakan pertanyaan dan dapatkan buku, jurnal, dan lainnya.",
     "new-chat": "Chat Baru",
-    application: "Aplikasi",
+    application: "Aplikasi"
   },
   Account: {
     account: "Akun",
     subscription: "Berlangganan",
-    contact: "Kontak",
-  },
-} as const;
+    contact: "Kontak"
+  }
+} as const

@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import type { UserRole } from "@/types/types";
-import { Label } from "@/components/ui/label";
+import type { UserRole } from "@/types/types"
+import { Label } from "@/components/ui/label"
 import {
   Select,
   SelectContent,
@@ -9,22 +9,22 @@ import {
   SelectItem,
   SelectLabel,
   SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { useScopedI18n } from "@/locales/client";
-import React from "react";
-import { updateUser } from "@/app/actions";
-import { toast } from "sonner";
+  SelectValue
+} from "@/components/ui/select"
+import { useScopedI18n } from "@/locales/client"
+import React from "react"
+import { updateUser } from "@/app/actions"
+import { toast } from "sonner"
 
 type Props = {
-  userId: string;
-  role: UserRole;
-};
+  userId: string
+  role: UserRole
+}
 
 export default function AccountRole({ userId, role }: Props) {
-  const t = useScopedI18n("ModalAccount");
+  const t = useScopedI18n("ModalAccount")
 
-  const [_, startTransition] = React.useTransition();
+  const [_, startTransition] = React.useTransition()
 
   return (
     <div className="flex flex-wrap items-center justify-between gap-2 border-b pb-4">
@@ -34,14 +34,14 @@ export default function AccountRole({ userId, role }: Props) {
         onValueChange={(value: string) => {
           startTransition(async () => {
             const result = await updateUser(userId, {
-              role: value as UserRole,
-            });
+              role: value as UserRole
+            })
 
             if (result && "error" in result) {
-              toast.error(result.error);
-              return;
+              toast.error(result.error)
+              return
             }
-          });
+          })
         }}
       >
         <SelectTrigger className="w-28">
@@ -57,5 +57,5 @@ export default function AccountRole({ userId, role }: Props) {
         </SelectContent>
       </Select>
     </div>
-  );
+  )
 }

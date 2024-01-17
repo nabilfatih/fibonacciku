@@ -11,33 +11,33 @@ import {
   Preview,
   Section,
   Text,
-  Tailwind,
-} from "@react-email/components";
+  Tailwind
+} from "@react-email/components"
 
-const baseUrl = "https://www.fibonacciku.com";
+const baseUrl = "https://www.fibonacciku.com"
 
 type WelcomeEmailProps = {
-  name?: string;
-  role?: string;
-};
+  name?: string
+  role?: string
+}
 
 export default function WelcomeEmail({
   name = "Nabil",
-  role = "student",
+  role = "student"
 }: WelcomeEmailProps) {
-  const company = "FibonacciKu";
+  const company = "FibonacciKu"
 
-  const previewText = `We are thrilled to have you here 🚀`;
+  const previewText = `We are thrilled to have you here 🚀`
 
   const textRole = (role: string) => {
     if (role === "student") {
-      return "embark on a journey to transform learning experiences through";
+      return "embark on a journey to transform learning experiences through"
     } else if (role === "teacher") {
-      return "collaborate on revolutionizing teaching experiences through";
+      return "collaborate on revolutionizing teaching experiences through"
     } else {
-      return "embark on a journey to enhance your work through";
+      return "embark on a journey to enhance your work through"
     }
-  };
+  }
 
   return (
     <Html>
@@ -140,5 +140,5 @@ export default function WelcomeEmail({
         </Body>
       </Tailwind>
     </Html>
-  );
+  )
 }

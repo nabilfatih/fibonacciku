@@ -1,14 +1,14 @@
-import axios from "axios";
+import axios from "axios"
 import type {
   CurrencyType,
   PlanDetailsType,
   PlanType,
-  PriceListType,
-} from "@/lib/premium/type";
-import { countriesList } from "@/lib/data/countries";
-import type { Geo } from "@vercel/edge";
+  PriceListType
+} from "@/lib/premium/type"
+import { countriesList } from "@/lib/data/countries"
+import type { Geo } from "@vercel/edge"
 
-export const planOptions: PlanType[] = ["premium"];
+export const planOptions: PlanType[] = ["premium"]
 
 export const planDetails: PlanDetailsType = {
   premium: [
@@ -19,9 +19,9 @@ export const planDetails: PlanDetailsType = {
     "image-generation",
     "gpt-4-support",
     "priority-access",
-    "dedicated-support",
-  ],
-};
+    "dedicated-support"
+  ]
+}
 
 export const priceList: PriceListType = [
   {
@@ -32,8 +32,8 @@ export const priceList: PriceListType = [
     price: {
       usd: 18,
       eur: 18,
-      idr: 200000,
-    },
+      idr: 200000
+    }
   },
   {
     plan: "premium",
@@ -43,10 +43,10 @@ export const priceList: PriceListType = [
     price: {
       usd: 180,
       eur: 180,
-      idr: 2000000,
-    },
-  },
-];
+      idr: 2000000
+    }
+  }
+]
 
 // Helper function to get price based on plan and currency
 export const getPrice = (
@@ -54,9 +54,9 @@ export const getPrice = (
   currency: CurrencyType,
   type: "monthly" | "yearly"
 ): number => {
-  const planDetails = priceList.find(p => p.plan === plan && p.type === type);
-  return planDetails ? planDetails.price[currency] : 0;
-};
+  const planDetails = priceList.find(p => p.plan === plan && p.type === type)
+  return planDetails ? planDetails.price[currency] : 0
+}
 
 // Helper functions
 export const formatCurrency = (
@@ -66,31 +66,31 @@ export const formatCurrency = (
 ): string => {
   if (currency === "idr") {
     // Convert to 'K' format for IDR
-    const amountInK = Math.round(amount / 1000);
-    return `IDR ${amountInK}K`;
+    const amountInK = Math.round(amount / 1000)
+    return `IDR ${amountInK}K`
   } else {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
       currency,
-      minimumFractionDigits: 0,
-    }).format(amount);
+      minimumFractionDigits: 0
+    }).format(amount)
   }
-};
+}
 
-export const validCurrencies = ["usd", "eur", "idr"];
+export const validCurrencies = ["usd", "eur", "idr"]
 
 export const getUserCurrency = async (): Promise<CurrencyType> => {
-  const { data } = await axios.get("/api/info/location");
-  if (!data) return "usd";
-  const location: Geo = data.location;
-  const countryCode = location.country;
-  if (!countryCode) return "usd";
+  const { data } = await axios.get("/api/info/location")
+  if (!data) return "usd"
+  const location: Geo = data.location
+  const countryCode = location.country
+  if (!countryCode) return "usd"
   const countryInfo = countriesList.find(
     country => country.cca2.toLowerCase() === countryCode.toLowerCase()
-  );
-  if (!countryInfo) return "usd";
+  )
+  if (!countryInfo) return "usd"
   const currency: CurrencyType = Object.keys(
     countryInfo.currencies
-  )[0].toLowerCase() as CurrencyType;
-  return validCurrencies.includes(currency) ? currency : "usd";
-};
+  )[0].toLowerCase() as CurrencyType
+  return validCurrencies.includes(currency) ? currency : "usd"
+}

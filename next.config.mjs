@@ -1,4 +1,4 @@
-import million from "million/compiler";
+import million from "million/compiler"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -7,22 +7,22 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**",
-      },
-    ],
+        hostname: "**"
+      }
+    ]
   },
   webpack: config => {
-    config.resolve.alias.canvas = false;
-    return config;
-  },
-};
+    config.resolve.alias.canvas = false
+    return config
+  }
+}
 
 const millionConfig = {
   // if you're using RSC:
   auto: {
     threshold: 0.05, // default: 0.1,
-    rsc: true,
-  },
-};
+    rsc: true
+  }
+}
 
-export default million.next(nextConfig, millionConfig);
+export default million.next(nextConfig, millionConfig)

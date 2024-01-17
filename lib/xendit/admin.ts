@@ -1,5 +1,5 @@
-import { Xendit } from "xendit-node";
+import { Xendit } from "xendit-node"
 
 export const xenditClient = new Xendit({
-  secretKey: process.env.XENDIT_API_KEY!,
-});
+  secretKey: process.env.XENDIT_API_KEY!
+})

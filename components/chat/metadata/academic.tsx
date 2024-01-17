@@ -1,17 +1,17 @@
-import { useScopedI18n } from "@/locales/client";
-import type { AcademicSearchResult } from "@/types/types";
-import { IconBooks } from "@tabler/icons-react";
-import Link from "next/link";
-import he from "he";
-import Image from "next/image";
-import { motion } from "framer-motion";
+import { useScopedI18n } from "@/locales/client"
+import type { AcademicSearchResult } from "@/types/types"
+import { IconBooks } from "@tabler/icons-react"
+import Link from "next/link"
+import he from "he"
+import Image from "next/image"
+import { motion } from "framer-motion"
 
 type Props = {
-  metadata: AcademicSearchResult[];
-};
+  metadata: AcademicSearchResult[]
+}
 
 export default function ChatMetadataAcademic({ metadata }: Props) {
-  const t = useScopedI18n("MetadataChat");
+  const t = useScopedI18n("MetadataChat")
 
   return (
     <div className="flex flex-col justify-start gap-2">
@@ -27,14 +27,14 @@ export default function ChatMetadataAcademic({ metadata }: Props) {
               key={index}
               variants={{
                 hidden: { opacity: 0 },
-                visible: { opacity: 1 },
+                visible: { opacity: 1 }
               }}
               initial="hidden"
               animate="visible"
               transition={{
                 delay: index * 0.1,
                 ease: "easeInOut",
-                duration: 0.5,
+                duration: 0.5
               }}
               viewport={{ amount: 0 }}
               className="group min-h-[82px] rounded-xl border p-2 shadow-sm transition-colors hover:bg-muted/50"
@@ -65,7 +65,7 @@ export default function ChatMetadataAcademic({ metadata }: Props) {
                         height={16}
                         style={{
                           width: "16px",
-                          height: "auto",
+                          height: "auto"
                         }}
                         priority
                         alt={he.decode(item.title)}
@@ -75,7 +75,7 @@ export default function ChatMetadataAcademic({ metadata }: Props) {
                     <span className="line-clamp-1 text-xs text-muted-foreground">
                       {item.authors
                         ?.map(author => {
-                          return author.name;
+                          return author.name
                         })
                         .join(", ")}
                     </span>
@@ -83,9 +83,9 @@ export default function ChatMetadataAcademic({ metadata }: Props) {
                 </div>
               </Link>
             </motion.div>
-          );
+          )
         })}
       </div>
     </div>
-  );
+  )
 }

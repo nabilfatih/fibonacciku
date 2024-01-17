@@ -4,25 +4,25 @@ import {
   SheetContent,
   SheetFooter,
   SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet";
+  SheetTitle
+} from "@/components/ui/sheet"
 
-import { Sidebar } from "@/components/sidebar";
-import type { DialogProps } from "@radix-ui/react-dialog";
-import { useMessage } from "@/lib/context/use-message";
-import { useScopedI18n } from "@/locales/client";
-import { Button } from "@/components/ui/button";
+import { Sidebar } from "@/components/sidebar"
+import type { DialogProps } from "@radix-ui/react-dialog"
+import { useMessage } from "@/lib/context/use-message"
+import { useScopedI18n } from "@/locales/client"
+import { Button } from "@/components/ui/button"
 
 interface SidebarMobileProps extends DialogProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export default function SidebarDocument({
   children,
   ...props
 }: SidebarMobileProps) {
-  const t = useScopedI18n("FormChat");
-  const { state, dispatch } = useMessage();
+  const t = useScopedI18n("FormChat")
+  const { state, dispatch } = useMessage()
   return (
     <Sheet
       {...props}
@@ -43,5 +43,5 @@ export default function SidebarDocument({
         </SheetFooter>
       </SheetContent>
     </Sheet>
-  );
+  )
 }

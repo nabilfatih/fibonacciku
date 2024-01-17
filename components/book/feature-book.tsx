@@ -26,7 +26,7 @@ export default async function FeatureBook() {
     <section className="grid">
       <h2 className="mb-2 font-medium tracking-tight">Our latest books:</h2>
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 mb-4">
+      <div className="mb-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
         {data.map(book => {
           const publishedDate = moment(book.published_date)
             .locale(locale)
@@ -40,14 +40,14 @@ export default async function FeatureBook() {
               className="flex flex-col justify-between gap-2"
               passHref
             >
-              <div className="relative w-auto h-52 sm:h-48">
+              <div className="relative h-52 w-auto sm:h-48">
                 <Image
                   src={coverUrl}
                   alt={book.title}
                   sizes="148px"
                   priority
                   fill
-                  className="rounded-xl border shadow-sm object-cover bg-muted/90"
+                  className="rounded-xl border bg-muted/90 object-cover shadow-sm"
                 />
               </div>
 
@@ -65,7 +65,7 @@ export default async function FeatureBook() {
       <Button
         asChild
         variant="outline"
-        className="flex justify-center sm:w-fit mx-auto"
+        className="mx-auto flex justify-center sm:w-fit"
       >
         <Link href="/book/collection">See our collection</Link>
       </Button>

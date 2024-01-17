@@ -187,7 +187,7 @@ export default function ChatLibrary({ userId }: Props) {
           )}
         </div>
       </div>
-      <Button asChild variant="link" className="w-fit mx-auto">
+      <Button asChild variant="link" className="mx-auto w-fit">
         <Link href="/chat/library">See your library</Link>
       </Button>
     </div>

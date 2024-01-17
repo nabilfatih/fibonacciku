@@ -1,15 +1,15 @@
-"use client";
+"use client"
 
-import * as React from "react";
+import * as React from "react"
 
-import { cn } from "@/lib/utils";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { IconSpinner } from "@/components/ui/icons";
-import { useScopedI18n } from "@/locales/client";
-import { toast } from "sonner";
-import supabaseClient from "@/lib/supabase/client";
+import { cn } from "@/lib/utils"
+import { Label } from "@/components/ui/label"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { IconSpinner } from "@/components/ui/icons"
+import { useScopedI18n } from "@/locales/client"
+import { toast } from "sonner"
+import supabaseClient from "@/lib/supabase/client"
 
 interface ForgotPasswordFormProps
   extends React.HTMLAttributes<HTMLDivElement> {}
@@ -18,33 +18,33 @@ export function ForgotPasswordForm({
   className,
   ...props
 }: ForgotPasswordFormProps) {
-  const t = useScopedI18n("Auth");
+  const t = useScopedI18n("Auth")
 
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const [email, setEmail] = React.useState<string>("");
+  const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const [email, setEmail] = React.useState<string>("")
 
   const onSubmit = async (event: React.SyntheticEvent) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    setIsLoading(true);
+    setIsLoading(true)
 
     const { error, data } = await supabaseClient.auth.resetPasswordForEmail(
       email,
       {
-        redirectTo: "https://www.fibonacciku.com/auth/reset-password",
+        redirectTo: "https://www.fibonacciku.com/auth/reset-password"
       }
-    );
+    )
 
     if (error) {
-      toast.error(error.message);
+      toast.error(error.message)
     } else {
       if (data) {
-        toast.success(t("check-email"));
+        toast.success(t("check-email"))
       }
     }
 
-    setIsLoading(false);
-  };
+    setIsLoading(false)
+  }
 
   return (
     <div className={cn("grid gap-6", className)} {...props}>
@@ -73,5 +73,5 @@ export function ForgotPasswordForm({
         </div>
       </form>
     </div>
-  );
+  )
 }

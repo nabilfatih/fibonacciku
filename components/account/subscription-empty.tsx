@@ -1,18 +1,18 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { getScopedI18n } from "@/locales/server";
-import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
+  CardTitle
+} from "@/components/ui/card"
+import { getScopedI18n } from "@/locales/server"
+import { Badge } from "@/components/ui/badge"
+import Link from "next/link"
 
 export default async function AccountSubscriptionEmpty() {
-  const t = await getScopedI18n("ModalSubscription");
+  const t = await getScopedI18n("ModalSubscription")
   return (
     <section className="mx-auto max-w-2xl px-4">
       <Card>
@@ -35,5 +35,5 @@ export default async function AccountSubscriptionEmpty() {
         </CardFooter>
       </Card>
     </section>
-  );
+  )
 }

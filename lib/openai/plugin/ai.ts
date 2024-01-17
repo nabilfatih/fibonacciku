@@ -1,32 +1,31 @@
-import { openai } from "..";
+import { openai } from ".."
 import {
   getChatImagePublicUrlAdmin,
-  uploadChatImageAdmin,
-} from "@/lib/supabase/admin/chat";
-import type { ImageResult } from "@/types/types";
+  uploadChatImageAdmin
+} from "@/lib/supabase/admin/chat"
+import type { ImageResult } from "@/types/types"
 
-const sleep = (ms: number): Promise<void> =>
-  new Promise(r => setTimeout(r, ms));
+const sleep = (ms: number): Promise<void> => new Promise(r => setTimeout(r, ms))
 
 export const EDEN_HEADERS = {
   "Content-Type": "application/json",
   Accept: "application/json",
-  Authorization: `Bearer ${process.env.EDENAI_API_KEY}`,
-};
+  Authorization: `Bearer ${process.env.EDENAI_API_KEY}`
+}
 
-export const EDEN_URL = "https://api.edenai.run/v2";
+export const EDEN_URL = "https://api.edenai.run/v2"
 export const ENDPOINTS = {
   ocr: `${EDEN_URL}/ocr/ocr`,
   objectDetection: `${EDEN_URL}/image/object_detection`,
-  ocrAsync: `${EDEN_URL}/ocr/ocr_async`,
-};
-export const WEBHOOK_RECEIVER_DOCUMENT = `https://www.fibonacciku.com/api/ai/document/webhooks`;
+  ocrAsync: `${EDEN_URL}/ocr/ocr_async`
+}
+export const WEBHOOK_RECEIVER_DOCUMENT = `https://www.fibonacciku.com/api/ai/document/webhooks`
 
 type FetchDataProps = {
-  provider: string;
-  apiUrl: string;
-  publicUrl: string;
-};
+  provider: string
+  apiUrl: string
+  publicUrl: string
+}
 
 const fetchData = async ({ provider, apiUrl, publicUrl }: FetchDataProps) => {
   try {
@@ -38,17 +37,17 @@ const fetchData = async ({ provider, apiUrl, publicUrl }: FetchDataProps) => {
         fallback_providers: "",
         providers: provider,
         language: "auto-detect",
-        file_url: publicUrl,
-      }),
-    });
+        file_url: publicUrl
+      })
+    })
 
-    if (!response.ok) throw new Error(response.statusText);
-    return (await response.json())[provider];
+    if (!response.ok) throw new Error(response.statusText)
+    return (await response.json())[provider]
   } catch (error) {
-    console.error(`Error Fetching Eden AI: ${error}`);
-    return null;
+    console.error(`Error Fetching Eden AI: ${error}`)
+    return null
   }
-};
+}
 
 export const ocrDocument = async (publicUrl: string): Promise<string[]> => {
   try {
@@ -59,36 +58,36 @@ export const ocrDocument = async (publicUrl: string): Promise<string[]> => {
         show_original_response: false,
         fallback_providers: "",
         providers: "amazon",
-        file_url: publicUrl,
-      }),
-    });
+        file_url: publicUrl
+      })
+    })
 
-    if (!responseLaunch.ok) throw new Error(responseLaunch.statusText);
-    const dataLaunch = await responseLaunch.json();
-    const publicId: string = dataLaunch.public_id;
+    if (!responseLaunch.ok) throw new Error(responseLaunch.statusText)
+    const dataLaunch = await responseLaunch.json()
+    const publicId: string = dataLaunch.public_id
 
-    let finalData;
+    let finalData
     while (true) {
-      await sleep(2500); // Sleep for 2.5 seconds
+      await sleep(2500) // Sleep for 2.5 seconds
       const responseStatus = await fetch(`${ENDPOINTS.ocrAsync}/${publicId}`, {
         method: "GET",
-        headers: EDEN_HEADERS,
-      });
-      if (!responseStatus.ok) throw new Error(responseStatus.statusText);
-      const dataStatus = await responseStatus.json();
+        headers: EDEN_HEADERS
+      })
+      if (!responseStatus.ok) throw new Error(responseStatus.statusText)
+      const dataStatus = await responseStatus.json()
       if (dataStatus.status === "finished") {
-        finalData = dataStatus.results.amazon.pages;
-        break;
+        finalData = dataStatus.results.amazon.pages
+        break
       }
     }
     return finalData.map((data: any) =>
       data.lines.map((line: any) => line.text).join(" ")
-    );
+    )
   } catch (error) {
-    console.error(`Error Fetching Eden AI: ${error}`);
-    return [];
+    console.error(`Error Fetching Eden AI: ${error}`)
+    return []
   }
-};
+}
 
 export const generateImage = async (
   userId: string,
@@ -96,13 +95,13 @@ export const generateImage = async (
   prompt: string,
   size: "1024x1792" | "1024x1024" | "1792x1024"
 ): Promise<{
-  message: string;
-  images: ImageResult[];
+  message: string
+  images: ImageResult[]
 }> => {
   // if size is not the correct value, then set it to 1024x1024
-  const validSizes = new Set(["1024x1024", "1024x1792", "1792x1024"]);
+  const validSizes = new Set(["1024x1024", "1024x1792", "1792x1024"])
   if (!validSizes.has(size)) {
-    size = "1024x1024";
+    size = "1024x1024"
   }
 
   try {
@@ -114,34 +113,34 @@ export const generateImage = async (
         style: "vivid",
         size,
         response_format: "b64_json",
-        user: userId,
-      });
+        user: userId
+      })
 
-      const image = imageResponse.data[0];
+      const image = imageResponse.data[0]
       const { fileId } = await uploadChatImageAdmin(
         userId,
         chatId,
         String(image.b64_json)
-      );
-      const url = await getChatImagePublicUrlAdmin(userId, chatId, fileId);
+      )
+      const url = await getChatImagePublicUrlAdmin(userId, chatId, fileId)
       return {
         prompt: image.revised_prompt || prompt,
-        image: url,
-      };
-    });
+        image: url
+      }
+    })
 
-    const finalData = await Promise.all(imagePromises);
+    const finalData = await Promise.all(imagePromises)
 
     return {
       message:
         "Describe very shortly the image using one of the prompt, no need to show the image as it is already shown in the UI metadata.",
-      images: finalData,
-    };
+      images: finalData
+    }
   } catch (error: any) {
-    console.error(`Error Fetching OpenAI: ${error}`);
+    console.error(`Error Fetching OpenAI: ${error}`)
     return {
       message: "Cannot generate image, traffic limit exceeded.",
-      images: [],
-    };
+      images: []
+    }
   }
-};
+}

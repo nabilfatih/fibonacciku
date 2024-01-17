@@ -1,15 +1,15 @@
-import { Button } from "@/components/ui/button";
-import { IconBook } from "@tabler/icons-react";
+import { Button } from "@/components/ui/button"
+import { IconBook } from "@tabler/icons-react"
 import {
   Tooltip,
   TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import Link from "next/link";
-import { getScopedI18n } from "@/locales/server";
+  TooltipTrigger
+} from "@/components/ui/tooltip"
+import Link from "next/link"
+import { getScopedI18n } from "@/locales/server"
 
 export default async function HeaderChatLibrary() {
-  const t = await getScopedI18n("Library");
+  const t = await getScopedI18n("Library")
   return (
     <Tooltip>
       <TooltipTrigger>
@@ -29,5 +29,5 @@ export default async function HeaderChatLibrary() {
         {t("library")}
       </TooltipContent>
     </Tooltip>
-  );
+  )
 }

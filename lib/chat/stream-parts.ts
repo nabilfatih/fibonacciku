@@ -7,13 +7,13 @@ import type {
   FunctionCall,
   JSONValue,
   ToolCall,
-  StreamString,
-} from "ai";
+  StreamString
+} from "ai"
 
 export interface StreamPart<CODE extends string, NAME extends string, TYPE> {
-  code: CODE;
-  name: NAME;
-  parse: (value: JSONValue) => { type: NAME; value: TYPE };
+  code: CODE
+  name: NAME
+  parse: (value: JSONValue) => { type: NAME; value: TYPE }
 }
 
 const textStreamPart: StreamPart<"0", "text", string> = {
@@ -21,11 +21,11 @@ const textStreamPart: StreamPart<"0", "text", string> = {
   name: "text",
   parse: (value: JSONValue) => {
     if (typeof value !== "string") {
-      throw new Error('"text" parts expect a string value.');
+      throw new Error('"text" parts expect a string value.')
     }
-    return { type: "text", value };
-  },
-};
+    return { type: "text", value }
+  }
+}
 
 const functionCallStreamPart: StreamPart<
   "1",
@@ -48,38 +48,38 @@ const functionCallStreamPart: StreamPart<
     ) {
       throw new Error(
         '"function_call" parts expect an object with a "function_call" property.'
-      );
+      )
     }
 
     return {
       type: "function_call",
-      value: value as unknown as { function_call: FunctionCall },
-    };
-  },
-};
+      value: value as unknown as { function_call: FunctionCall }
+    }
+  }
+}
 
 const dataStreamPart: StreamPart<"2", "data", Array<JSONValue>> = {
   code: "2",
   name: "data",
   parse: (value: JSONValue) => {
     if (!Array.isArray(value)) {
-      throw new Error('"data" parts expect an array value.');
+      throw new Error('"data" parts expect an array value.')
     }
 
-    return { type: "data", value };
-  },
-};
+    return { type: "data", value }
+  }
+}
 
 const errorStreamPart: StreamPart<"3", "error", string> = {
   code: "3",
   name: "error",
   parse: (value: JSONValue) => {
     if (typeof value !== "string") {
-      throw new Error('"error" parts expect a string value.');
+      throw new Error('"error" parts expect a string value.')
     }
-    return { type: "error", value };
-  },
-};
+    return { type: "error", value }
+  }
+}
 
 const assistantMessageStreamPart: StreamPart<
   "4",
@@ -114,22 +114,22 @@ const assistantMessageStreamPart: StreamPart<
     ) {
       throw new Error(
         '"assistant_message" parts expect an object with an "id", "role", and "content" property.'
-      );
+      )
     }
 
     return {
       type: "assistant_message",
-      value: value as AssistantMessage,
-    };
-  },
-};
+      value: value as AssistantMessage
+    }
+  }
+}
 
 const assistantControlDataStreamPart: StreamPart<
   "5",
   "assistant_control_data",
   {
-    threadId: string;
-    messageId: string;
+    threadId: string
+    messageId: string
   }
 > = {
   code: "5",
@@ -145,18 +145,18 @@ const assistantControlDataStreamPart: StreamPart<
     ) {
       throw new Error(
         '"assistant_control_data" parts expect an object with a "threadId" and "messageId" property.'
-      );
+      )
     }
 
     return {
       type: "assistant_control_data",
       value: {
         threadId: value.threadId,
-        messageId: value.messageId,
-      },
-    };
-  },
-};
+        messageId: value.messageId
+      }
+    }
+  }
+}
 
 const dataMessageStreamPart: StreamPart<"6", "data_message", DataMessage> = {
   code: "6",
@@ -172,15 +172,15 @@ const dataMessageStreamPart: StreamPart<"6", "data_message", DataMessage> = {
     ) {
       throw new Error(
         '"data_message" parts expect an object with a "role" and "data" property.'
-      );
+      )
     }
 
     return {
       type: "data_message",
-      value: value as DataMessage,
-    };
-  },
-};
+      value: value as DataMessage
+    }
+  }
+}
 
 const toolCallStreamPart: StreamPart<
   "7",
@@ -209,20 +209,20 @@ const toolCallStreamPart: StreamPart<
           typeof tc.function !== "object" ||
           !("arguments" in tc.function) ||
           typeof tc.function.name !== "string" ||
-          typeof tc.function.arguments !== "string";
+          typeof tc.function.arguments !== "string"
       })
     ) {
       throw new Error(
         '"tool_calls" parts expect an object with a ToolCallPayload.'
-      );
+      )
     }
 
     return {
       type: "tool_calls",
-      value: value as unknown as { tool_calls: ToolCall[] },
-    };
-  },
-};
+      value: value as unknown as { tool_calls: ToolCall[] }
+    }
+  }
+}
 
 const streamParts = [
   textStreamPart,
@@ -232,8 +232,8 @@ const streamParts = [
   assistantMessageStreamPart,
   assistantControlDataStreamPart,
   dataMessageStreamPart,
-  toolCallStreamPart,
-] as const;
+  toolCallStreamPart
+] as const
 
 // union type of all stream parts
 type StreamParts =
@@ -244,14 +244,14 @@ type StreamParts =
   | typeof assistantMessageStreamPart
   | typeof assistantControlDataStreamPart
   | typeof dataMessageStreamPart
-  | typeof toolCallStreamPart;
+  | typeof toolCallStreamPart
 
 /**
  * Maps the type of a stream part to its value type.
  */
 type StreamPartValueType = {
-  [P in StreamParts as P["name"]]: ReturnType<P["parse"]>["value"];
-};
+  [P in StreamParts as P["name"]]: ReturnType<P["parse"]>["value"]
+}
 
 export type StreamPartType =
   | ReturnType<typeof textStreamPart.parse>
@@ -261,7 +261,7 @@ export type StreamPartType =
   | ReturnType<typeof assistantMessageStreamPart.parse>
   | ReturnType<typeof assistantControlDataStreamPart.parse>
   | ReturnType<typeof dataMessageStreamPart.parse>
-  | ReturnType<typeof toolCallStreamPart.parse>;
+  | ReturnType<typeof toolCallStreamPart.parse>
 
 export const streamPartsByCode = {
   [textStreamPart.code]: textStreamPart,
@@ -271,8 +271,8 @@ export const streamPartsByCode = {
   [assistantMessageStreamPart.code]: assistantMessageStreamPart,
   [assistantControlDataStreamPart.code]: assistantControlDataStreamPart,
   [dataMessageStreamPart.code]: dataMessageStreamPart,
-  [toolCallStreamPart.code]: toolCallStreamPart,
-} as const;
+  [toolCallStreamPart.code]: toolCallStreamPart
+} as const
 
 /**
  * The map of prefixes for data in the stream
@@ -304,10 +304,10 @@ export const StreamStringPrefixes = {
   [assistantMessageStreamPart.name]: assistantMessageStreamPart.code,
   [assistantControlDataStreamPart.name]: assistantControlDataStreamPart.code,
   [dataMessageStreamPart.name]: dataMessageStreamPart.code,
-  [toolCallStreamPart.name]: toolCallStreamPart.code,
-} as const;
+  [toolCallStreamPart.name]: toolCallStreamPart.code
+} as const
 
-export const validCodes = streamParts.map(part => part.code);
+export const validCodes = streamParts.map(part => part.code)
 
 /**
  * Parses a stream part from a string.
@@ -317,25 +317,25 @@ export const validCodes = streamParts.map(part => part.code);
  * @throws An error if the string cannot be parsed.
  */
 export const parseStreamPart = (line: string): StreamPartType => {
-  const firstSeparatorIndex = line.indexOf(":");
+  const firstSeparatorIndex = line.indexOf(":")
 
   if (firstSeparatorIndex === -1) {
-    throw new Error("Failed to parse stream string. No separator found.");
+    throw new Error("Failed to parse stream string. No separator found.")
   }
 
-  const prefix = line.slice(0, firstSeparatorIndex);
+  const prefix = line.slice(0, firstSeparatorIndex)
 
   if (!validCodes.includes(prefix as keyof typeof streamPartsByCode)) {
-    throw new Error(`Failed to parse stream string. Invalid code ${prefix}.`);
+    throw new Error(`Failed to parse stream string. Invalid code ${prefix}.`)
   }
 
-  const code = prefix as keyof typeof streamPartsByCode;
+  const code = prefix as keyof typeof streamPartsByCode
 
-  const textValue = line.slice(firstSeparatorIndex + 1);
-  const jsonValue: JSONValue = JSON.parse(textValue);
+  const textValue = line.slice(firstSeparatorIndex + 1)
+  const jsonValue: JSONValue = JSON.parse(textValue)
 
-  return streamPartsByCode[code].parse(jsonValue);
-};
+  return streamPartsByCode[code].parse(jsonValue)
+}
 
 /**
  * Prepends a string with a prefix from the `StreamChunkPrefixes`, JSON-ifies it,
@@ -347,11 +347,11 @@ export function formatStreamPart<T extends keyof StreamPartValueType>(
   type: T,
   value: StreamPartValueType[T]
 ): StreamString {
-  const streamPart = streamParts.find(part => part.name === type);
+  const streamPart = streamParts.find(part => part.name === type)
 
   if (!streamPart) {
-    throw new Error(`Invalid stream part type: ${type}`);
+    throw new Error(`Invalid stream part type: ${type}`)
   }
 
-  return `${streamPart.code}:${JSON.stringify(value)}\n`;
+  return `${streamPart.code}:${JSON.stringify(value)}\n`
 }

@@ -25,7 +25,7 @@ export default {
       "Feel free to contact us for any queries, partnership, or anything",
     product: "Product",
     "privacy-policy": "Privacy Policy",
-    "terms-of-service": "Terms of Service",
+    "terms-of-service": "Terms of Service"
   },
   Home: {
     title: "Personalized AI Learning Assistant for students and teachers",
@@ -81,7 +81,7 @@ export default {
     "try-it-now": "Try it now",
     "what-is-this": "What is this?",
     "talk-to-founder": "Talk to founder",
-    "trusted-by": "Trusted by Schools and Organizations",
+    "trusted-by": "Trusted by Schools and Organizations"
   },
   MarketingNav: {
     product: "Product",
@@ -95,7 +95,7 @@ export default {
     application: "Application",
     "fibo-assistant": "Fibo Assistant",
     "fibo-book": "Fibo Book",
-    "fibo-school": "Fibo School",
+    "fibo-school": "Fibo School"
   },
   MarketingFooter: {
     product: "Product",
@@ -113,7 +113,7 @@ export default {
     "made-with": "Made with",
     "fibo-assistant": "Fibo Assistant",
     "fibo-book": "Fibo Book",
-    "fibo-school": "Fibo School",
+    "fibo-school": "Fibo School"
   },
   MarketingContact: {
     contact: "Contact",
@@ -129,7 +129,7 @@ export default {
     "message-placeholder": "Enter your message",
     submit: "Submit",
     success: "Message sent successfully",
-    error: "Something went wrong, please try again later",
+    error: "Something went wrong, please try again later"
   },
   MarketingPartner: {
     partner: "Partner",
@@ -147,7 +147,7 @@ export default {
     "desc-vendor":
       "We can offer direct support to your organization, school, or institution to help you achieve your goals. We will work together to create a solution that fits your needs",
     "powered-by": "Powered by the best technologies",
-    "trusted-by": "Trusted by the best organizations",
+    "trusted-by": "Trusted by the best organizations"
   },
   MarketingProduct: {
     product: "Product",
@@ -208,7 +208,7 @@ export default {
     "header-desc-1":
       "Start using AI for your personal tutor instead of cheating tool",
     "see-pricing": "See pricing",
-    "fibo-document": "Fibo Document",
+    "fibo-document": "Fibo Document"
   },
   ProductFiboAssistant: {
     "fibo-assistant": "Fibo Assistant",
@@ -219,7 +219,7 @@ export default {
     "see-pricing": "See pricing",
     "fibo-assistant-helper":
       "Fibo Assistant is a chatbot that provides you with unlimited knowledge and answers to your questions. It's designed to be user-friendly, easy to use, and highly personalized",
-    "try-it-now": "Try it now",
+    "try-it-now": "Try it now"
   },
   ProductFiboBook: {
     "fibo-book": "Fibo Book",
@@ -228,7 +228,7 @@ export default {
       "Ask questions, instead search, and get relevant books to read and chat",
     "get-started": "Get started",
     "see-pricing": "See pricing",
-    "try-it-now": "Try it now",
+    "try-it-now": "Try it now"
   },
   ProductFiboSchool: {
     "fibo-school": "Fibo School",
@@ -237,7 +237,7 @@ export default {
       "Easy learning management system for teachers and students that integrates with AI",
     "get-started": "Get started",
     "see-pricing": "See pricing",
-    "try-it-now": "Try it now",
+    "try-it-now": "Try it now"
   },
   ProductPlugin: {
     header: "Rich plugins",
@@ -256,7 +256,7 @@ export default {
     "website-scraping": "Website scraping",
     "website-scraping-helper": "Get information from https://...",
     "solve-math": "Solve math",
-    "solve-math-helper": "Help solve math problem...",
+    "solve-math-helper": "Help solve math problem..."
   },
   MarketingPricing: {
     pricing: "Pricing",
@@ -324,7 +324,7 @@ export default {
     "chat-with-founder": "Chat with founder",
     "download-book": "Download book",
     "get-started": "Get started",
-    "7-free-trial": "7 days free trial",
+    "7-free-trial": "7 days free trial"
   },
   PricingFAQ: {
     faq: "FAQs",
@@ -347,7 +347,7 @@ export default {
       "Internet access means you can access the internet inside FibonacciKu, such as searching on Google, Youtube, and more. It is integrated with our AI technology",
     "what-is-library-access-mean": "What is library access mean?",
     "what-is-library-access-mean-desc":
-      "Library access means you can upload your own document to FibonacciKu and chat with it. You can upload as many as you want, there is no limit. No matter if your document contains text, image, or both, FibonacciKu can handle it",
+      "Library access means you can upload your own document to FibonacciKu and chat with it. You can upload as many as you want, there is no limit. No matter if your document contains text, image, or both, FibonacciKu can handle it"
   },
   MarketingAbout: {
     about: "About",
@@ -371,7 +371,7 @@ export default {
     ceo: "CEO",
     "public-relation": "Public Relation",
     marketing: "Marketing",
-    advisor: "Advisor",
+    advisor: "Advisor"
   },
   Auth: {
     welcome: "Welcome to FibonacciKu",
@@ -411,7 +411,7 @@ export default {
     "something-wrong": "Something went wrong, please try again later",
     "user-exist": "User already exist",
     "or-continue-with": "Or continue with",
-    "login-header": "Enter your email and password below to login",
+    "login-header": "Enter your email and password below to login"
   },
   Chat: {
     chat: "Chat",
@@ -465,7 +465,7 @@ export default {
     "search-text": "Search text",
     show: "Show",
     hide: "Hide",
-    "click-here": "Click here",
+    "click-here": "Click here"
   },
   FormChat: {
     "fibonacciku-make-mistake": "FibonacciKu makes mistakes sometimes",
@@ -502,7 +502,7 @@ export default {
     "see-diagram": "See diagram",
     share: "Share",
     document: "Document",
-    close: "Close",
+    close: "Close"
   },
   FormDocument: {
     "form-document-desc": "Upload your document to get started",
@@ -517,7 +517,7 @@ export default {
     "document-not-supported": "Document is not supported",
     "processing-loading": "It can take a few minutes, please be patient 🤗",
     "recent-documents": "Recent documents",
-    "upload-document": "Upload your document",
+    "upload-document": "Upload your document"
   },
   Library: {
     library: "Library",
@@ -552,7 +552,7 @@ export default {
     "chat-with-document": "Chat with document",
     "invalid-document": "Invalid document",
     "only-one-document": "Only one document can be selected",
-    "drag-drop-document": "Drag and drop your document here",
+    "drag-drop-document": "Drag and drop your document here"
   },
   MetadataChat: {
     "academic-research": "Academic research",
@@ -560,10 +560,10 @@ export default {
     references: "References",
     "youtube-videos": "Youtube videos",
     page: "Page",
-    "generated-image": "Generated image",
+    "generated-image": "Generated image"
   },
   Markdown: {
-    "link-not-available": "Link not available",
+    "link-not-available": "Link not available"
   },
   ModalAccount: {
     account: "Account",
@@ -588,7 +588,7 @@ export default {
     close: "Close",
     premium: "Premium",
     "try-premium": "Try premium",
-    nakafa: "Nakafa homepage",
+    nakafa: "Nakafa homepage"
   },
   ModalClearChat: {
     clear: "Clear",
@@ -603,7 +603,7 @@ export default {
     "desc-clear-conversations":
       "Are you sure want to delete all conversations? This action can not be undone",
     cancel: "Cancel",
-    delete: "Delete",
+    delete: "Delete"
   },
   ModalShareChat: {
     "share-chat": "Share chat",
@@ -621,7 +621,7 @@ export default {
     "link-deleted": "Link deleted",
     messages: "Messages",
     copying: "Copying",
-    close: "Close",
+    close: "Close"
   },
   ModalPluginChat: {
     plugin: "Plugin",
@@ -642,7 +642,7 @@ export default {
     "website-scraping": "Website scraping",
     "website-scraping-helper": "Get information from https://...",
     "solve-math": "Solve math",
-    "solve-math-helper": "Help solve math problem...",
+    "solve-math-helper": "Help solve math problem..."
   },
   ModalContact: {
     contact: "Contact",
@@ -658,16 +658,16 @@ export default {
     send: "Send",
     "message-send": "Message sent successfully",
     "something-wrong": "Something went wrong, please try again later!",
-    close: "Close",
+    close: "Close"
   },
   ModalSocialMedia: {
     "social-media": "Social media",
-    "desc-social-media": "Follow us on social media! Let's keep in touch",
+    "desc-social-media": "Follow us on social media! Let's keep in touch"
   },
   ModalDonate: {
     "title-donate": "Choose your payment method",
     "desc-donate":
-      "Thank you for your support! Your donation will help us to keep FibonacciKu live and free",
+      "Thank you for your support! Your donation will help us to keep FibonacciKu live and free"
   },
   ModalInitiateRole: {
     "who-are-you": "Who are you?",
@@ -675,7 +675,7 @@ export default {
     student: "Student",
     professional: "Professional",
     helper: "You can change your role later in settings",
-    welcome: "Welcome to FibonacciKu!",
+    welcome: "Welcome to FibonacciKu!"
   },
   ModalFeedback: {
     feedback: "Feedback",
@@ -686,7 +686,7 @@ export default {
     send: "Send",
     "message-send": "Message sent successfully",
     "something-wrong": "Something went wrong, please try again later!",
-    cancel: "Cancel",
+    cancel: "Cancel"
   },
   ModalSubscription: {
     subscription: "Subscription",
@@ -705,7 +705,7 @@ export default {
     "days-left": "days left until your subscription ends",
     "do-not-have-plan":
       "You do not have any plan yet, see pricing to get started",
-    "see-premium": "See premium",
+    "see-premium": "See premium"
   },
   DrawerTools: {
     calculator: "Calculator",
@@ -714,7 +714,7 @@ export default {
     "google-search": "Google search",
     "pdf-viewer": "PDF viewer",
     translator: "Translator",
-    close: "Close",
+    close: "Close"
   },
   BackendRouter: {
     "high-traffic": "High traffic",
@@ -736,13 +736,13 @@ export default {
     "return-home": "Return home",
     "resource-not-found": "Could not find requested resource",
     "try-again": "Try again",
-    "audio-not-supported": "Audio not supported",
+    "audio-not-supported": "Audio not supported"
   },
   Beta: {
     beta: "Beta",
     "beta-desc":
       "FibonacciKu is currently in beta, we are still working on it to make it better. Use the form in the bottom left corner to give us feedback",
-    "days-left": "days left until official launch",
+    "days-left": "days left until official launch"
   },
   Book: {
     book: "Book",
@@ -752,7 +752,7 @@ export default {
     "desc-search":
       "Ask questions and get book, journal, and article, and more.",
     "request-book": "Request book",
-    "book-collection": "Book collection",
+    "book-collection": "Book collection"
   },
   BookRequest: {
     "request-book": "Request book",
@@ -762,13 +762,13 @@ export default {
     "additional-info-placeholder": "Write additional info here...",
     request: "Request",
     "request-sent": "Request sent",
-    error: "Something went wrong, please try again later!",
+    error: "Something went wrong, please try again later!"
   },
   DrawerBook: {
     home: "Home",
     "fibo-book": "Fibo Book",
     "fibo-assistant": "Fibo Assistant",
-    "fibo-document": "Fibo Document",
+    "fibo-document": "Fibo Document"
   },
   CardBook: {
     education: "Education",
@@ -781,7 +781,7 @@ export default {
     collapse: "Collapse",
     en: "English",
     id: "Indonesian",
-    de: "German",
+    de: "German"
   },
   CollectionBook: {
     "book-detail": "Book detail",
@@ -797,7 +797,7 @@ export default {
     article: "Article",
     en: "English",
     id: "Indonesian",
-    de: "German",
+    de: "German"
   },
   BookChat: {
     download: "Download",
@@ -819,7 +819,7 @@ export default {
     premium: "Premium",
     "get-premium": "Get premium",
     new: "NEW",
-    "exclusive-for-premium": "Exclusive for premium",
+    "exclusive-for-premium": "Exclusive for premium"
   },
   ModalBookRequest: {
     "request-book": "Request book",
@@ -832,7 +832,7 @@ export default {
     "message-placeholder": "Enter your message",
     request: "Request",
     "request-sent": "Request sent",
-    error: "Something went wrong, please try again later!",
+    error: "Something went wrong, please try again later!"
   },
   MockupHome: {
     "new-chat": "New chat",
@@ -855,7 +855,7 @@ export default {
     "what-is-fibonacciku?": "What is FibonacciKu?",
     "redis-presentation": "Redis presentation",
     "related-links": "Related links",
-    "youtube-videos": "Youtube videos",
+    "youtube-videos": "Youtube videos"
   },
   Feature: {
     assistant: "Assistant",
@@ -867,11 +867,11 @@ export default {
     book: "Book",
     "book-desc": "Ask questions and get book, journal, and more.",
     "new-chat": "New chat",
-    application: "Application",
+    application: "Application"
   },
   Account: {
     account: "Account",
     subscription: "Subscription",
-    contact: "Contact",
-  },
-} as const;
+    contact: "Contact"
+  }
+} as const

@@ -1,4 +1,4 @@
-import Stripe from "stripe";
+import Stripe from "stripe"
 
 export const stripe = new Stripe(
   process.env.STRIPE_SECRET_KEY_LIVE ?? process.env.STRIPE_SECRET_KEY ?? "",
@@ -9,7 +9,7 @@ export const stripe = new Stripe(
     // https://stripe.com/docs/building-plugins#setappinfo
     appInfo: {
       name: "FibonacciKu",
-      version: "0.1.0",
-    },
+      version: "0.1.0"
+    }
   }
-);
+)

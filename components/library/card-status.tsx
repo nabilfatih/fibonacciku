@@ -1,28 +1,28 @@
-import { useScopedI18n } from "@/locales/client";
-import { IconCircleFilled } from "@tabler/icons-react";
-import type { Libraries } from "@/types/types";
-import { cn } from "@/lib/utils";
-import LibraryCardInfo from "@/components/library/card-info";
+import { useScopedI18n } from "@/locales/client"
+import { IconCircleFilled } from "@tabler/icons-react"
+import type { Libraries } from "@/types/types"
+import { cn } from "@/lib/utils"
+import LibraryCardInfo from "@/components/library/card-info"
 
 type Props = {
-  library: Libraries;
-};
+  library: Libraries
+}
 
 const statusToColor = (status: string) => {
   switch (status) {
     case "processing":
-      return "text-warning animate-pulse";
+      return "text-warning animate-pulse"
     case "invalid":
-      return "text-error";
+      return "text-error"
     case "finished":
-      return "text-success";
+      return "text-success"
     default:
-      return "";
+      return ""
   }
-};
+}
 
 export default function LibraryCardStatus({ library }: Props) {
-  const t = useScopedI18n("Library");
+  const t = useScopedI18n("Library")
 
   return (
     <div className="flex-1 border-t pt-2 sm:border-0 sm:pt-0">
@@ -40,5 +40,5 @@ export default function LibraryCardStatus({ library }: Props) {
         <LibraryCardInfo library={library} className="flex sm:hidden" />
       </div>
     </div>
-  );
+  )
 }

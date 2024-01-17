@@ -1,10 +1,10 @@
-import supabaseAdmin from "@/lib/supabase/admin";
-import { OpenAIEmbeddings } from "@langchain/openai";
-import { SupabaseHybridSearch } from "@langchain/community/retrievers/supabase";
+import supabaseAdmin from "@/lib/supabase/admin"
+import { OpenAIEmbeddings } from "@langchain/openai"
+import { SupabaseHybridSearch } from "@langchain/community/retrievers/supabase"
 import {
   type SupabaseFilterRPCCall,
-  SupabaseVectorStore,
-} from "@langchain/community/vectorstores/supabase";
+  SupabaseVectorStore
+} from "@langchain/community/vectorstores/supabase"
 
 export const documentRetrieval = async (
   userId: string,
@@ -13,8 +13,8 @@ export const documentRetrieval = async (
 ) => {
   const embeddings = new OpenAIEmbeddings({
     modelName: "text-embedding-ada-002",
-    openAIApiKey: process.env.OPENAI_API_KEY,
-  });
+    openAIApiKey: process.env.OPENAI_API_KEY
+  })
 
   // const filter: SupabaseFilterRPCCall = rpc =>
   //   rpc
@@ -29,8 +29,8 @@ export const documentRetrieval = async (
 
   const metadata = {
     file_id: fileId,
-    user_id: userId,
-  };
+    user_id: userId
+  }
 
   const retriever = new SupabaseHybridSearch(embeddings, {
     client: supabaseAdmin,
@@ -39,8 +39,8 @@ export const documentRetrieval = async (
     tableName: "documents",
     similarityQueryName: "match_documents",
     keywordQueryName: "kw_match_documents",
-    metadata,
-  });
+    metadata
+  })
 
   // const results = await store.maxMarginalRelevanceSearch(query, {
   //   k: 10,
@@ -49,16 +49,16 @@ export const documentRetrieval = async (
   // });
 
   const results = await retriever.getRelevantDocuments(query, {
-    metadata,
-  });
+    metadata
+  })
 
   const cleanData = results
     .map(doc => {
       return {
         pageContent: doc.pageContent,
         metadata: doc.metadata,
-        page_number: doc.metadata.page_number,
-      };
+        page_number: doc.metadata.page_number
+      }
     })
     // remove duplicate page number
     .filter(
@@ -71,11 +71,11 @@ export const documentRetrieval = async (
     // only get the first 7 documents
     .slice(0, 7)
     // oder by page number
-    .sort((a, b) => a.page_number - b.page_number);
+    .sort((a, b) => a.page_number - b.page_number)
 
   return {
     message:
       "You're only allowed to use the documents below to answer the question. Answer the question based only on the following sources:",
-    sources: cleanData,
-  };
-};
+    sources: cleanData
+  }
+}

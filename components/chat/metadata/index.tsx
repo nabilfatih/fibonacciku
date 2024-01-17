@@ -1,29 +1,29 @@
-import type { ChatMessageMetadata } from "@/types/types";
-import ChatMetadataImage from "@/components/chat/metadata/image";
-import ChatMetadataAttachment from "@/components/chat/metadata/attachment";
-import ChatMetadataGoogle from "@/components/chat/metadata/google";
-import ChatMetadataAcademic from "@/components/chat/metadata/academic";
-import ChatMetadataYoutube from "@/components/chat/metadata/youtube";
-import ChatMetadataReferences from "@/components/chat/metadata/references";
+import type { ChatMessageMetadata } from "@/types/types"
+import ChatMetadataImage from "@/components/chat/metadata/image"
+import ChatMetadataAttachment from "@/components/chat/metadata/attachment"
+import ChatMetadataGoogle from "@/components/chat/metadata/google"
+import ChatMetadataAcademic from "@/components/chat/metadata/academic"
+import ChatMetadataYoutube from "@/components/chat/metadata/youtube"
+import ChatMetadataReferences from "@/components/chat/metadata/references"
 
 type Props = {
-  metadata: ChatMessageMetadata[];
-  contentIndex: number;
-};
+  metadata: ChatMessageMetadata[]
+  contentIndex: number
+}
 
 export default function ChatMetadata({ metadata, contentIndex }: Props) {
-  const currentMetadata = metadata[contentIndex];
+  const currentMetadata = metadata[contentIndex]
 
-  if (!currentMetadata) return null;
+  if (!currentMetadata) return null
 
   // Check if currentMetadata is an empty object
   if (!Object.keys(currentMetadata).length) {
-    return null;
+    return null
   }
 
   // Check if the metadata is empty, e.g [{}]
   if (metadata.length === 1 && !Object.keys(metadata[0]).length) {
-    return null;
+    return null
   }
 
   const {
@@ -32,15 +32,15 @@ export default function ChatMetadata({ metadata, contentIndex }: Props) {
     youtube_search: youtube,
     attachments: attachments,
     image_result: imageResults,
-    source_documents: sourceDocuments,
-  } = currentMetadata;
+    source_documents: sourceDocuments
+  } = currentMetadata
 
   if (attachments) {
     return (
       <div className="flex flex-col gap-4 pb-5">
         <ChatMetadataAttachment metadata={attachments} />
       </div>
-    );
+    )
   }
 
   if (imageResults) {
@@ -48,7 +48,7 @@ export default function ChatMetadata({ metadata, contentIndex }: Props) {
       <div className="flex flex-col gap-4 pb-5">
         <ChatMetadataImage metadata={imageResults} />
       </div>
-    );
+    )
   }
 
   return (
@@ -58,5 +58,5 @@ export default function ChatMetadata({ metadata, contentIndex }: Props) {
       {youtube && <ChatMetadataYoutube metadata={youtube} />}
       {sourceDocuments && <ChatMetadataReferences metadata={sourceDocuments} />}
     </div>
-  );
+  )
 }
