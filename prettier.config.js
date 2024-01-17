@@ -32,6 +32,7 @@ const config = {
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
   importOrderMergeDuplicateImports: true,
   importOrderCombineTypeAndValueImports: true,
+  tailwindConfig: "./tailwind.config.ts",
   plugins: ["prettier-plugin-tailwindcss"]
 }
 

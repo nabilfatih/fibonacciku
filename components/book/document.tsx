@@ -67,8 +67,8 @@ export default function BookDocument({
 
   return (
     <>
-      <header className="border-b py-4">
-        <div className="grid grid-cols-5 items-center max-w-2xl px-4 mx-auto">
+      <header className="border-b h-16 flex items-center">
+        <div className="grid grid-cols-5 items-center max-w-2xl px-4 mx-auto w-full">
           <div className="col-span-2 flex items-center gap-1">
             <Button
               name="zoom-out"
@@ -192,7 +192,7 @@ export default function BookDocument({
         pageRef={pageRef}
         state={state}
         dispatch={dispatch}
-        className="h-[calc(100%-73px)] max-w-2xl mx-auto sm:px-4"
+        className="h-[calc(100%-4rem)] max-w-2xl mx-auto sm:px-4 pb-16"
       />
     </>
   )
