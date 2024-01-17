@@ -91,7 +91,6 @@
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
-    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/common-tags": "^1.8.4",
     "@types/he": "^1.2.3",
     "@types/lodash": "^4.14.202",
