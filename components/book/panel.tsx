@@ -1,5 +1,5 @@
-import BookForm from "@/components/book/form";
-import FooterText from "@/components/chat/footer";
+import BookForm from "@/components/book/form"
+import FooterText from "@/components/chat/footer"
 
 export default function BookPanel() {
   return (
@@ -14,5 +14,5 @@ export default function BookPanel() {
         </div>
       </div>
     </div>
-  );
+  )
 }

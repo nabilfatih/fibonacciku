@@ -1,40 +1,40 @@
-import type { IndexMessage, ShowChatMessage } from "@/types/types";
-import { useMemo, type MutableRefObject } from "react";
-import { ViewportList } from "react-viewport-list";
-import { useMessage } from "@/lib/context/use-message";
-import ChatMessages from "@/components/chat/message";
-import { Separator } from "@/components/ui/separator";
+import type { IndexMessage, ShowChatMessage } from "@/types/types"
+import { useMemo, type MutableRefObject } from "react"
+import { ViewportList } from "react-viewport-list"
+import { useMessage } from "@/lib/context/use-message"
+import ChatMessages from "@/components/chat/message"
+import { Separator } from "@/components/ui/separator"
 
 type Props = {
-  chatMessageRef: MutableRefObject<HTMLDivElement | null>;
-  messages: ShowChatMessage[];
-  indexMessage: IndexMessage[];
-};
+  chatMessageRef: MutableRefObject<HTMLDivElement | null>
+  messages: ShowChatMessage[]
+  indexMessage: IndexMessage[]
+}
 
 function ListContent({
   item,
   index,
-  indexMessage,
+  indexMessage
 }: {
-  item: ShowChatMessage;
-  index: number;
-  indexMessage: IndexMessage[];
+  item: ShowChatMessage
+  index: number
+  indexMessage: IndexMessage[]
 }) {
   const currentIndex = useMemo(() => {
-    return indexMessage.find(item => item.index === index) as IndexMessage;
-  }, [indexMessage, index]);
+    return indexMessage.find(item => item.index === index) as IndexMessage
+  }, [indexMessage, index])
 
   return (
     <ChatMessages index={index} message={item} currentIndex={currentIndex} />
-  );
+  )
 }
 
 export default function ChatList({
   chatMessageRef,
   messages,
-  indexMessage,
+  indexMessage
 }: Props) {
-  const { messageRef, dispatch } = useMessage();
+  const { messageRef, dispatch } = useMessage()
   return (
     <div className="relative mx-auto max-w-2xl px-4">
       <ViewportList
@@ -45,7 +45,7 @@ export default function ChatList({
         initialOffset={208}
         initialAlignToTop={false}
         onViewportIndexesChange={indexes => {
-          dispatch({ type: "SET_SCROLL_POSITION", payload: indexes[0] });
+          dispatch({ type: "SET_SCROLL_POSITION", payload: indexes[0] })
         }}
       >
         {(item, index) => {
@@ -60,9 +60,9 @@ export default function ChatList({
                 <Separator className="my-4 md:my-8" />
               )}
             </div>
-          );
+          )
         }}
       </ViewportList>
     </div>
-  );
+  )
 }

@@ -1,38 +1,38 @@
-import { createClientServer } from "@/lib/supabase/server";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import { createClientServer } from "@/lib/supabase/server"
+import { cookies } from "next/headers"
+import { redirect } from "next/navigation"
 import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { getScopedI18n } from "@/locales/server";
-import { Label } from "@/components/ui/label";
-import AccountResetPassword from "@/components/account/reset-password";
-import AccountLanguage from "@/components/account/language";
-import AccountTheme from "@/components/account/theme";
-import AccountRole from "@/components/account/role";
+  CardTitle
+} from "@/components/ui/card"
+import { getScopedI18n } from "@/locales/server"
+import { Label } from "@/components/ui/label"
+import AccountResetPassword from "@/components/account/reset-password"
+import AccountLanguage from "@/components/account/language"
+import AccountTheme from "@/components/account/theme"
+import AccountRole from "@/components/account/role"
 
 type Props = {
-  userId: string;
-};
+  userId: string
+}
 
 export default async function AccountGeneral({ userId }: Props) {
-  const t = await getScopedI18n("ModalAccount");
-  const cookieStore = cookies();
-  const supabase = createClientServer(cookieStore);
+  const t = await getScopedI18n("ModalAccount")
+  const cookieStore = cookies()
+  const supabase = createClientServer(cookieStore)
   const { data } = await supabase
     .from("users")
     .select()
     .eq("id", userId)
-    .maybeSingle();
+    .maybeSingle()
 
   if (!data) {
-    await supabase.auth.signOut();
-    redirect("/auth/login?next=/account");
+    await supabase.auth.signOut()
+    redirect("/auth/login?next=/account")
   }
 
   return (
@@ -65,5 +65,5 @@ export default async function AccountGeneral({ userId }: Props) {
         </CardFooter>
       </Card>
     </section>
-  );
+  )
 }

@@ -2,7 +2,8 @@ import type { Metadata } from "next"
 import { getBooksAdmin } from "@/lib/supabase/admin/book"
 import { cookies } from "next/headers"
 import { createClientServer } from "@/lib/supabase/server"
-import { redirect } from "next/navigation"
+import { notFound, redirect } from "next/navigation"
+import BookCollection from "@/components/book/collection"
 
 type Props = {
   params: { id: string }
@@ -32,6 +33,9 @@ export default async function BookCollectionSpecificPage({
 }: Props) {
   const bookId = params.id
 
+  // from string to number
+  const page = parseInt(searchParams.page as string) || null
+
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
@@ -42,5 +46,27 @@ export default async function BookCollectionSpecificPage({
     redirect(`/auth/login?next=/book/collection/${bookId}`)
   }
 
-  return <main></main>
+  const { data: book } = await supabase
+    .from("books_collection")
+    .select("*")
+    .eq("id", bookId)
+    .limit(1)
+    .maybeSingle()
+
+  if (!book) {
+    notFound()
+  }
+
+  // get signed url of book
+  const { data } = await supabase.storage
+    .from("books")
+    .createSignedUrl(`${bookId}/${book.file_id}`, 3600 * 24) // 1 day
+
+  if (!data) {
+    notFound()
+  }
+
+  const signedUrl = data.signedUrl
+
+  return <BookCollection book={book} file={signedUrl} page={page} />
 }

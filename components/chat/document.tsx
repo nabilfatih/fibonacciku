@@ -1,77 +1,77 @@
-"use client";
+"use client"
 
-import { useScopedI18n } from "@/locales/client";
+import { useScopedI18n } from "@/locales/client"
 import {
   IconMinus,
   IconPlus,
   IconRefresh,
-  IconSearch,
-} from "@tabler/icons-react";
-import { useReducer } from "react";
-import { Button } from "@/components/ui/button";
-import { Slider } from "@/components/ui/slider";
-import { Input } from "@/components/ui/input";
-import dynamic from "next/dynamic";
-import { IconSeparator, IconSpinner } from "@/components/ui/icons";
-import { useMessage } from "@/lib/context/use-message";
+  IconSearch
+} from "@tabler/icons-react"
+import { useReducer } from "react"
+import { Button } from "@/components/ui/button"
+import { Slider } from "@/components/ui/slider"
+import { Input } from "@/components/ui/input"
+import dynamic from "next/dynamic"
+import { IconSeparator, IconSpinner } from "@/components/ui/icons"
+import { useMessage } from "@/lib/context/use-message"
 
 const ChatDocumentPdf = dynamic(
   () => import("@/components/chat/document-pdf"),
   {
     loading: () => <LoadingChatDocumentPdf />,
-    ssr: false,
+    ssr: false
   }
-);
+)
 
 export type StateDocument = {
-  zoom: number;
-  defaultZoom: number;
-  searchText: string;
-  currentPage: [number, number];
-};
+  zoom: number
+  defaultZoom: number
+  searchText: string
+  currentPage: [number, number]
+}
 
 export type ActionDocument =
   | { type: "SET_ZOOM"; payload: number }
   | { type: "SET_DEFAULT_ZOOM"; payload: number }
   | { type: "SET_SEARCH_TEXT"; payload: string }
-  | { type: "SET_CURRENT_PAGE"; payload: [number, number] };
+  | { type: "SET_CURRENT_PAGE"; payload: [number, number] }
 
 const documentReducer = (state: StateDocument, action: ActionDocument) => {
   switch (action.type) {
     case "SET_ZOOM":
-      return { ...state, zoom: action.payload };
+      return { ...state, zoom: action.payload }
     case "SET_DEFAULT_ZOOM":
-      return { ...state, defaultZoom: action.payload };
+      return { ...state, defaultZoom: action.payload }
     case "SET_SEARCH_TEXT":
-      return { ...state, searchText: action.payload };
+      return { ...state, searchText: action.payload }
     case "SET_CURRENT_PAGE":
-      return { ...state, currentPage: action.payload };
+      return { ...state, currentPage: action.payload }
 
     default:
-      return state;
+      return state
   }
-};
+}
 
 const initialState: StateDocument = {
   zoom: 0.8,
   defaultZoom: 1,
   searchText: "",
-  currentPage: [1, 1],
-};
+  currentPage: [1, 1]
+}
 
 export default function ChatDocument() {
-  const t = useScopedI18n("Chat");
+  const t = useScopedI18n("Chat")
 
-  const { pageRef } = useMessage();
+  const { pageRef } = useMessage()
 
   const [state, dispatch] = useReducer(documentReducer, initialState, () => {
-    return { ...initialState };
-  });
+    return { ...initialState }
+  })
 
   return (
     <div className="relative overflow-hidden py-2">
       <section className="h-full">
-        <div className="flex h-full flex-col ">
+        <div className="flex h-full flex-col">
           <div className="rounded-t-xl border bg-background p-3">
             <div className="grid grid-cols-5 items-center">
               <div className="col-span-2 flex items-center gap-1">
@@ -83,7 +83,7 @@ export default function ChatDocument() {
                   disabled={state.zoom <= 0.1}
                   onClick={() => {
                     if (state.zoom > 0.1)
-                      dispatch({ type: "SET_ZOOM", payload: state.zoom - 0.1 });
+                      dispatch({ type: "SET_ZOOM", payload: state.zoom - 0.1 })
                   }}
                 >
                   <IconMinus className="h-4 w-4" />
@@ -100,8 +100,8 @@ export default function ChatDocument() {
                   onValueChange={value => {
                     dispatch({
                       type: "SET_ZOOM",
-                      payload: value[0],
-                    });
+                      payload: value[0]
+                    })
                   }}
                 />
                 <Button
@@ -112,7 +112,7 @@ export default function ChatDocument() {
                   disabled={state.zoom >= 2}
                   onClick={() => {
                     if (state.zoom < 2)
-                      dispatch({ type: "SET_ZOOM", payload: state.zoom + 0.1 });
+                      dispatch({ type: "SET_ZOOM", payload: state.zoom + 0.1 })
                   }}
                 >
                   <IconPlus className="h-4 w-4" />
@@ -126,8 +126,8 @@ export default function ChatDocument() {
                   onClick={() => {
                     dispatch({
                       type: "SET_ZOOM",
-                      payload: state.defaultZoom,
-                    });
+                      payload: state.defaultZoom
+                    })
                   }}
                 >
                   <IconRefresh className="h-4 w-4" />
@@ -144,14 +144,14 @@ export default function ChatDocument() {
                     value={state.currentPage[0]}
                     onChange={e => {
                       // if not number, return
-                      if (isNaN(parseInt(e.target.value))) return;
-                      const pageNumber = parseInt(e.target.value);
-                      const main = pageRef.current;
+                      if (isNaN(parseInt(e.target.value))) return
+                      const pageNumber = parseInt(e.target.value)
+                      const main = pageRef.current
                       if (main && typeof main.scrollToIndex === "function") {
                         main.scrollToIndex({
                           index: pageNumber - 1,
-                          alignToTop: true,
-                        });
+                          alignToTop: true
+                        })
                       }
                     }}
                     // remove the default browser styling
@@ -182,8 +182,8 @@ export default function ChatDocument() {
                     onChange={e => {
                       dispatch({
                         type: "SET_SEARCH_TEXT",
-                        payload: e.target.value,
-                      });
+                        payload: e.target.value
+                      })
                     }}
                   />
                 </form>
@@ -195,7 +195,7 @@ export default function ChatDocument() {
         </div>
       </section>
     </div>
-  );
+  )
 }
 
 function LoadingChatDocumentPdf() {
@@ -207,5 +207,5 @@ function LoadingChatDocumentPdf() {
         </div>
       </div>
     </div>
-  );
+  )
 }

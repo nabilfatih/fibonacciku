@@ -31,7 +31,8 @@ const config = {
   importOrderBuiltinModulesToTop: true,
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
   importOrderMergeDuplicateImports: true,
-  importOrderCombineTypeAndValueImports: true
+  importOrderCombineTypeAndValueImports: true,
+  plugins: ["prettier-plugin-tailwindcss"]
 }
 
-module.exports = config
+export default config

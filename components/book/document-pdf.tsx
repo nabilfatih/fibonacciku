@@ -5,8 +5,7 @@ import { type Dispatch, memo, useRef, useState, useCallback } from "react"
 import { Document, Page, pdfjs } from "react-pdf"
 
 import { ViewportList } from "react-viewport-list"
-import type { ActionDocument, StateDocument } from "@/components/chat/document"
-import { useMessage } from "@/lib/context/use-message"
+import type { ActionDocument, StateDocument } from "@/components/book/document"
 import { IconSpinner } from "@/components/ui/icons"
 import { cn } from "@/lib/utils"
 
@@ -27,15 +26,24 @@ function highlightPattern(text: string, pattern: string) {
 }
 
 type Props = {
+  pdfFile: string
+  page: number | null
+  pageRef: React.MutableRefObject<any>
   state: StateDocument
   dispatch: Dispatch<ActionDocument>
+  className?: string
 }
 
-function ChatDocumentPdf({ state, dispatch }: Props) {
-  const { state: stateMessage, pageRef } = useMessage()
-
-  const parentRef = useRef<HTMLDivElement | null>(null)
+function BookDocumentPdf({
+  pdfFile,
+  page,
+  pageRef,
+  state,
+  dispatch,
+  className
+}: Props) {
   const listRef = useRef<HTMLDivElement | null>(null)
+  const parentRef = useRef<HTMLDivElement | null>(null)
 
   const [numPages, setNumPages] = useState<number>(-1)
   const [firstInit, setFirstInit] = useState<boolean>(true)
@@ -74,26 +82,14 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
     [dispatch, firstInit]
   )
 
-  if (!stateMessage.currentDocument) {
-    return (
-      <div ref={parentRef} className="h-full overflow-hidden">
-        <div className="relative h-full border border-t-0 bg-background">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <IconSpinner className="animate-spin" />
-          </div>
-        </div>
-      </div>
-    )
-  }
-
   return (
-    <div ref={parentRef} className="h-full overflow-hidden">
+    <div ref={parentRef} className={cn("h-full overflow-hidden", className)}>
       <Document
-        file={stateMessage.currentDocument}
+        file={pdfFile}
         onLoadSuccess={onDocumentLoadSuccess}
         options={options}
         externalLinkTarget="_blank"
-        className="relative h-full border border-t-0 bg-background"
+        className="relative h-full border-x bg-background"
         loading={
           <div className="absolute inset-0 flex items-center justify-center">
             <IconSpinner className="animate-spin" />
@@ -108,7 +104,7 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
               items={Array.from({ length: numPages }, (_, i) => ({
                 page: i + 1
               }))}
-              initialIndex={stateMessage.initialPage - 1}
+              initialIndex={page ? page - 1 : 0}
               onViewportIndexesChange={viewportIndexes => {
                 dispatch({
                   type: "SET_CURRENT_PAGE",
@@ -155,4 +151,4 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
   )
 }
 
-export default memo(ChatDocumentPdf)
+export default memo(BookDocumentPdf)

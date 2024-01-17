@@ -1,21 +1,21 @@
-import AccountGeneral from "@/components/account/general";
-import AccountHeader from "@/components/account/header";
-import AccountSubscription from "@/components/account/subscription";
-import AccountSystem from "@/components/account/system";
-import { createClientServer } from "@/lib/supabase/server";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import { Suspense } from "react";
+import AccountGeneral from "@/components/account/general"
+import AccountHeader from "@/components/account/header"
+import AccountSubscription from "@/components/account/subscription"
+import AccountSystem from "@/components/account/system"
+import { createClientServer } from "@/lib/supabase/server"
+import { cookies } from "next/headers"
+import { redirect } from "next/navigation"
+import { Suspense } from "react"
 
 export default async function AccountPage() {
-  const cookieStore = cookies();
-  const supabase = createClientServer(cookieStore);
+  const cookieStore = cookies()
+  const supabase = createClientServer(cookieStore)
   const {
-    data: { session },
-  } = await supabase.auth.getSession();
+    data: { session }
+  } = await supabase.auth.getSession()
 
   if (!session?.user) {
-    redirect("/auth/login?next=/account");
+    redirect("/auth/login?next=/account")
   }
 
   return (
@@ -30,5 +30,5 @@ export default async function AccountPage() {
         <AccountSystem />
       </Suspense>
     </main>
-  );
+  )
 }
