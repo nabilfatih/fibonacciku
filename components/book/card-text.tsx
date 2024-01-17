@@ -19,7 +19,7 @@ export default function BookCardText({ book }: Props) {
         <span className="text-xs font-medium">{t("page")}</span>
         <Button asChild size="sm" className="rounded-full">
           <Link
-            href={`/book/chat/${book.bookId}?page=${book.data[0].metadata.page_number}`}
+            href={`/book/collection/${book.bookId}?page=${book.data[0].metadata.page_number}`}
             target="_blank"
           >
             {book.data[0].metadata.page_number}
