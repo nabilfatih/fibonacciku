@@ -63,7 +63,7 @@ export default function BookCardText({ book }: Props) {
       }
 
       <Button asChild size="sm" variant="link" className="p-0">
-        <Link href={`/book/chat/${book.books.id}`}>{t("read-more")}</Link>
+        <Link href={`/book/collection/${book.bookId}`}>{t("read-more")}</Link>
       </Button>
     </div>
   )
