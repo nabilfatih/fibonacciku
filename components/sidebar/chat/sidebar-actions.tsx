@@ -35,9 +35,8 @@ import { IconSpinner } from "@/components/ui/icons"
 import ChatShareDialog, {
   type ShareChatProps
 } from "@/components/chat/share-dialog"
+import { ChatRenameDialog } from "@/components/sidebar/chat/rename-dialog"
 import { renameChat } from "@/app/actions"
-
-import { ChatRenameDialog } from "./rename-dialog"
 
 interface SidebarActionsProps {
   chat: Chat

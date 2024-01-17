@@ -24,6 +24,7 @@ import {
 import { getStripe } from "@/lib/stripe/client"
 import { postData } from "@/lib/utils"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -32,8 +33,6 @@ import {
   CardTitle
 } from "@/components/ui/card"
 import { IconSpinner } from "@/components/ui/icons"
-
-import { Button } from "../ui/button"
 
 type Props = {
   user: User | null

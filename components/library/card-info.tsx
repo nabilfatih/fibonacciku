@@ -1,12 +1,9 @@
-import { IconDots } from "@tabler/icons-react"
 import moment from "moment"
 
 import type { Libraries } from "@/types/types"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import LibraryCardActions from "@/components/library/card-actions"
 import LibraryCardChatButton from "@/components/library/card-chat-button"
-
-import LibraryCardActions from "./card-actions"
 
 type Props = {
   library: Libraries

@@ -30,10 +30,9 @@ import {
   DrawerTrigger
 } from "@/components/ui/drawer"
 import { IconSpinner } from "@/components/ui/icons"
+import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-
-import { Input } from "../ui/input"
 
 type Props = {
   variant?:
