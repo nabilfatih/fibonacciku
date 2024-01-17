@@ -10,7 +10,9 @@ type Props = {
 export default function ChatAvatar({ role }: Props) {
   const { userDetails } = useCurrentUser()
 
-  const config = genConfig(userDetails?.full_name || "Avatar")
+  const config = genConfig(
+    userDetails?.full_name || userDetails?.email || "Anonymous"
+  )
 
   if (role === "assistant") {
     return (

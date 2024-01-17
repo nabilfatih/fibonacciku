@@ -13,8 +13,8 @@ export type ServerActionResult<Result> = Promise<
 
 export type UserDetails = {
   id: string /* primary key */
-  full_name: string
-  avatar_url?: string
+  full_name?: string | null
+  avatar_url?: string | null
   billing_address: Stripe.Address | Json
   payment_method: Stripe.PaymentMethod[Stripe.PaymentMethod.Type] | Json
   email: string

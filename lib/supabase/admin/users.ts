@@ -88,10 +88,10 @@ export const createCustomerXendit = async (uuid: string) => {
       referenceId: uuid,
       type: "INDIVIDUAL",
       individualDetail: {
-        givenNames: userDetails.full_name
+        givenNames: userDetails.full_name || userDetails.email
       },
       email: userDetails.email,
-      clientName: userDetails.full_name,
+      clientName: userDetails.full_name || userDetails.email,
       metadata: {
         supabaseUUID: uuid
       }

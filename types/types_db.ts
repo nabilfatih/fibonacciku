@@ -18,8 +18,8 @@ export type Database = {
           id: string
           billing_address: Stripe.Address | Json
           payment_method: Stripe.PaymentMethod[Stripe.PaymentMethod.Type] | Json
-          full_name: string
-          avatar_url: string
+          full_name: string | null
+          avatar_url: string | null
           email: string
           access_token: string
           usage: number

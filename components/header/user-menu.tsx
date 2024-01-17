@@ -30,7 +30,9 @@ export default function UserMenu() {
 
   const { userDetails } = useCurrentUser()
 
-  const config = genConfig(userDetails?.full_name ?? "Avatar")
+  const config = genConfig(
+    userDetails?.full_name ?? userDetails?.email ?? "Anonymous"
+  )
 
   if (!userDetails) {
     return (
@@ -52,7 +54,7 @@ export default function UserMenu() {
               <Image
                 className="h-8 w-8 min-w-8 select-none rounded-full shadow-sm transition-opacity duration-300 hover:opacity-80"
                 src={userDetails.avatar_url}
-                alt={userDetails.full_name ?? "Avatar"}
+                alt={userDetails.full_name ?? userDetails.email ?? "Avatar"}
                 height={48}
                 width={48}
               />
@@ -70,7 +72,9 @@ export default function UserMenu() {
           className="w-full max-w-xs p-2"
         >
           <DropdownMenuLabel className="flex-col items-start py-2">
-            <div className="truncate font-medium">{userDetails.full_name}</div>
+            <div className="truncate font-medium">
+              {userDetails.full_name ?? userDetails.email ?? "Anonymous"}
+            </div>
             <div className="truncate font-normal text-muted-foreground">
               {userDetails.email}
             </div>
