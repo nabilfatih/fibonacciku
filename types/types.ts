@@ -1,4 +1,5 @@
 import Stripe from "stripe"
+
 import type { Database, Json } from "./types_db"
 
 export type UserRole = "student" | "teacher" | "professional"

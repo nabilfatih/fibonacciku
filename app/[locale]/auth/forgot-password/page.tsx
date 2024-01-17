@@ -1,6 +1,7 @@
-import { ForgotPasswordForm } from "@/components/auth/forgot-password-form"
-import { getScopedI18n } from "@/locales/server"
 import Link from "next/link"
+import { getScopedI18n } from "@/locales/server"
+
+import { ForgotPasswordForm } from "@/components/auth/forgot-password-form"
 
 export default async function ForgotPasswordPage() {
   const t = await getScopedI18n("Auth")

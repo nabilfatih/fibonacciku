@@ -1,20 +1,21 @@
-import useUserLibrary from "@/lib/swr/use-user-library"
-import { isMobileOnly } from "react-device-detect"
+import { useCallback, useMemo, useState } from "react"
+import Link from "next/link"
+import { useSearchParams } from "next/navigation"
 import {
   IconChevronLeft,
   IconCircleFilled,
   IconFile,
   IconX
 } from "@tabler/icons-react"
-import { useCallback, useMemo, useState } from "react"
 import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import { cn } from "@/lib/utils"
+import { isMobileOnly } from "react-device-detect"
+
 import { useMessage } from "@/lib/context/use-message"
 import { downloadChatDocument } from "@/lib/supabase/client/chat"
+import useUserLibrary from "@/lib/swr/use-user-library"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import { IconSpinner } from "@/components/ui/icons"
-import { useSearchParams } from "next/navigation"
 
 const statusToColor = (status: string) => {
   switch (status) {

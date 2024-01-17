@@ -1,12 +1,13 @@
 "use client"
 
-import { cn } from "@/lib/utils"
-import ChatScrollAnchor from "@/components/chat/scroll-anchor"
-import type { Chat, ChatMessage } from "@/types/types"
+import { useCallback, useEffect, useRef } from "react"
 import dynamic from "next/dynamic"
+
+import type { Chat, ChatMessage } from "@/types/types"
 import { useMessage } from "@/lib/context/use-message"
 import { downloadChatDocument } from "@/lib/supabase/client/chat"
-import { useCallback, useEffect, useRef } from "react"
+import { cn } from "@/lib/utils"
+import ChatScrollAnchor from "@/components/chat/scroll-anchor"
 
 const ChatPanel = dynamic(() => import("@/components/chat/panel"))
 const ChatList = dynamic(() => import("@/components/chat/list"))

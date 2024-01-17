@@ -1,5 +1,6 @@
-import { AppId, extractDataFromXML } from "@/lib/openai/plugin/wolframalpha"
 import { NextResponse } from "next/server"
+
+import { AppId, extractDataFromXML } from "@/lib/openai/plugin/wolframalpha"
 
 export async function POST(req: Request) {
   const { query } = (await req.json()) as { query: string }

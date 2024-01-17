@@ -1,11 +1,5 @@
 "use client"
 
-import type {
-  Chat,
-  DataMessage,
-  IndexMessage,
-  ShowChatMessage
-} from "@/types/types"
 import {
   createContext,
   useCallback,
@@ -17,11 +11,16 @@ import {
   useState
 } from "react"
 import { useParams, usePathname, useRouter } from "next/navigation"
-import { toast } from "sonner"
-import debounce from "lodash/debounce"
-import supabaseClient from "@/lib/supabase/client"
 import { track } from "@vercel/analytics"
-import { useCurrentUser } from "@/lib/context/use-current-user"
+import debounce from "lodash/debounce"
+import { toast } from "sonner"
+
+import type {
+  Chat,
+  DataMessage,
+  IndexMessage,
+  ShowChatMessage
+} from "@/types/types"
 import {
   createOptions,
   createSystemMessage,
@@ -31,6 +30,8 @@ import {
   prepareDataForSaving,
   saveChatHistory
 } from "@/lib/chat/helper"
+import { useCurrentUser } from "@/lib/context/use-current-user"
+import supabaseClient from "@/lib/supabase/client"
 import { generateUUID } from "@/lib/utils"
 
 export type MessageContextValue = {

@@ -1,6 +1,7 @@
-import { Button } from "@/components/ui/button"
-import { getScopedI18n } from "@/locales/server"
 import Link from "next/link"
+import { getScopedI18n } from "@/locales/server"
+
+import { Button } from "@/components/ui/button"
 
 export default async function NotFound() {
   const t = await getScopedI18n("BackendRouter")

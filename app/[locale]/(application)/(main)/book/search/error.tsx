@@ -1,8 +1,10 @@
-"use client" // Error components must be Client Components
+"use client"
+
+// Error components must be Client Components
+import Link from "next/link"
+import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
-import { useScopedI18n } from "@/locales/client"
-import Link from "next/link"
 
 // This happen when function timeout
 

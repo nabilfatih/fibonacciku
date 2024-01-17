@@ -1,9 +1,10 @@
 import { useRef } from "react"
 import type { MutableRefObject } from "react"
 import { ViewportList } from "react-viewport-list"
-import type { BookDocumentWithBooks } from "@/components/book/search"
-import BookCard from "@/components/book/card"
+
 import { Separator } from "@/components/ui/separator"
+import BookCard from "@/components/book/card"
+import type { BookDocumentWithBooks } from "@/components/book/search"
 
 type Props = {
   bookRef: MutableRefObject<HTMLDivElement | null>

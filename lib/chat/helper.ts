@@ -1,3 +1,5 @@
+import { type JSONValue } from "ai"
+
 import type {
   Chat,
   ChatMessageMetadata,
@@ -9,21 +11,20 @@ import type {
   SourceDocument,
   UserDetails
 } from "@/types/types"
+import { readDataStream } from "@/lib/chat/read-data-stream"
 import {
   determineGrade,
   getLanguage,
   openAISystem,
   systemRule
 } from "@/lib/chat/system"
+import type { ChatRequest } from "@/lib/context/use-message"
 import {
   updateChatMessage,
   updateChatMessageContentSpecificIndex,
   uploadChatAttachment
 } from "@/lib/supabase/client/chat"
 import { generateUUID, getCurrentDate } from "@/lib/utils"
-import { type JSONValue } from "ai"
-import { readDataStream } from "@/lib/chat/read-data-stream"
-import type { ChatRequest } from "@/lib/context/use-message"
 
 export type PrefixMap = {
   data: JSONValue[]

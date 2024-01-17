@@ -1,5 +1,14 @@
 "use client"
 
+import { useState } from "react"
+import { useScopedI18n } from "@/locales/client"
+import { IconSend } from "@tabler/icons-react"
+import axios from "axios"
+import { toast } from "sonner"
+
+import { useCurrentUser } from "@/lib/context/use-current-user"
+import { useMediaQuery } from "@/lib/hooks/use-media-query"
+import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/components/ui/button"
 import {
   Dialog,
@@ -23,14 +32,6 @@ import {
 import { IconSpinner } from "@/components/ui/icons"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { useCurrentUser } from "@/lib/context/use-current-user"
-import { useMediaQuery } from "@/lib/hooks/use-media-query"
-import { cn } from "@/lib/utils"
-import { useScopedI18n } from "@/locales/client"
-import { IconSend } from "@tabler/icons-react"
-import axios from "axios"
-import { useState } from "react"
-import { toast } from "sonner"
 
 type Props = {
   variant?:

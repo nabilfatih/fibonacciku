@@ -1,9 +1,10 @@
-import { createClientServer } from "@/lib/supabase/server"
-import { openai } from "@/lib/openai"
-import { track } from "@vercel/analytics/server"
 import { cookies } from "next/headers"
 import { NextResponse, type NextRequest } from "next/server"
+import { track } from "@vercel/analytics/server"
 import OpenAI from "openai"
+
+import { openai } from "@/lib/openai"
+import { createClientServer } from "@/lib/supabase/server"
 
 export const runtime = "edge"
 

@@ -1,4 +1,8 @@
+import { getScopedI18n } from "@/locales/server"
+import moment from "moment"
+
 import type { Subscription } from "@/types/types"
+import { Badge } from "@/components/ui/badge"
 import {
   Card,
   CardContent,
@@ -7,9 +11,6 @@ import {
   CardHeader,
   CardTitle
 } from "@/components/ui/card"
-import { getScopedI18n } from "@/locales/server"
-import { Badge } from "@/components/ui/badge"
-import moment from "moment"
 import { Label } from "@/components/ui/label"
 import SubscriptionManageButton from "@/components/account/subscription-manage-button"
 

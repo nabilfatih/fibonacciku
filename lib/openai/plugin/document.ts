@@ -1,10 +1,11 @@
-import supabaseAdmin from "@/lib/supabase/admin"
-import { OpenAIEmbeddings } from "@langchain/openai"
 import { SupabaseHybridSearch } from "@langchain/community/retrievers/supabase"
 import {
-  type SupabaseFilterRPCCall,
-  SupabaseVectorStore
+  SupabaseVectorStore,
+  type SupabaseFilterRPCCall
 } from "@langchain/community/vectorstores/supabase"
+import { OpenAIEmbeddings } from "@langchain/openai"
+
+import supabaseAdmin from "@/lib/supabase/admin"
 
 export const documentRetrieval = async (
   userId: string,

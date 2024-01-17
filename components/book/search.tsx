@@ -1,11 +1,12 @@
-import supabaseAdmin from "@/lib/supabase/admin"
-import { getBooksAdmin } from "@/lib/supabase/admin/book"
-import type { Books } from "@/types/types"
 import { SupabaseHybridSearch } from "@langchain/community/retrievers/supabase"
 import { OpenAIEmbeddings } from "@langchain/openai"
 import type { Document } from "langchain/document"
-import BookContent from "@/components/book/content"
 import { formatDocumentsAsString } from "langchain/util/document"
+
+import type { Books } from "@/types/types"
+import supabaseAdmin from "@/lib/supabase/admin"
+import { getBooksAdmin } from "@/lib/supabase/admin/book"
+import BookContent from "@/components/book/content"
 
 export const runtime = "edge"
 

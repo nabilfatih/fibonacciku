@@ -1,7 +1,8 @@
-import { useMessage } from "@/lib/context/use-message"
-import type { IndexMessage } from "@/types/types"
-import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react"
 import { useCallback, type Dispatch, type SetStateAction } from "react"
+import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react"
+
+import type { IndexMessage } from "@/types/types"
+import { useMessage } from "@/lib/context/use-message"
 import { Button } from "@/components/ui/button"
 
 type Props = {

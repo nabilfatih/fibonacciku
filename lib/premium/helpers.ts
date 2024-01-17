@@ -1,12 +1,13 @@
+import type { Geo } from "@vercel/edge"
 import axios from "axios"
+
+import { countriesList } from "@/lib/data/countries"
 import type {
   CurrencyType,
   PlanDetailsType,
   PlanType,
   PriceListType
 } from "@/lib/premium/type"
-import { countriesList } from "@/lib/data/countries"
-import type { Geo } from "@vercel/edge"
 
 export const planOptions: PlanType[] = ["premium"]
 

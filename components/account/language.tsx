@@ -1,6 +1,13 @@
 "use client"
 
 import React from "react"
+import {
+  useChangeLocale,
+  useCurrentLocale,
+  useScopedI18n
+} from "@/locales/client"
+
+import { updateUserLang } from "@/lib/supabase/client/users"
 import { Label } from "@/components/ui/label"
 import {
   Select,
@@ -11,12 +18,6 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select"
-import {
-  useChangeLocale,
-  useCurrentLocale,
-  useScopedI18n
-} from "@/locales/client"
-import { updateUserLang } from "@/lib/supabase/client/users"
 
 const languages = [
   {

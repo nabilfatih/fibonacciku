@@ -1,10 +1,12 @@
 "use client"
 
-import { useScopedI18n } from "@/locales/client"
-import { Button } from "../ui/button"
-import supabaseClient from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
+import { useScopedI18n } from "@/locales/client"
 import { IconLogout } from "@tabler/icons-react"
+
+import supabaseClient from "@/lib/supabase/client"
+
+import { Button } from "../ui/button"
 
 export default function AccountLogout() {
   const t = useScopedI18n("ModalAccount")

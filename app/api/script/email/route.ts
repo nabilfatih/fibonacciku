@@ -1,5 +1,6 @@
-import supabaseAdmin from "@/lib/supabase/admin"
 import { NextResponse } from "next/server"
+
+import supabaseAdmin from "@/lib/supabase/admin"
 
 export async function POST(request: Request) {
   if (process.env.NODE_ENV === "production") {

@@ -1,5 +1,6 @@
-import { MessageContextProvider } from "@/lib/context/use-message"
 import { Suspense } from "react"
+
+import { MessageContextProvider } from "@/lib/context/use-message"
 
 export default function ChatLayout({
   children

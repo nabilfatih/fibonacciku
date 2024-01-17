@@ -1,12 +1,13 @@
+import { cookies } from "next/headers"
+import { NextResponse, type NextRequest } from "next/server"
+import { track } from "@vercel/analytics/server"
+
+import { EDEN_HEADERS, ENDPOINTS } from "@/lib/openai/plugin/ai"
 import {
   getBooksSignedUrlAdmin,
   insertBooksAdmin
 } from "@/lib/supabase/admin/book"
 import { createClientServer } from "@/lib/supabase/server"
-import { EDEN_HEADERS, ENDPOINTS } from "@/lib/openai/plugin/ai"
-import { track } from "@vercel/analytics/server"
-import { cookies } from "next/headers"
-import { NextResponse, type NextRequest } from "next/server"
 
 export const maxDuration = 300 // This function can run for a maximum of 300 seconds
 

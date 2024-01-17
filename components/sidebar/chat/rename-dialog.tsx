@@ -5,6 +5,7 @@ import { type DialogProps } from "@radix-ui/react-dialog"
 import { toast } from "sonner"
 
 import type { Chat, ServerActionResult } from "@/types/types"
+import { useMediaQuery } from "@/lib/hooks/use-media-query"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -25,7 +26,6 @@ import {
   DrawerTitle
 } from "@/components/ui/drawer"
 import { IconSpinner } from "@/components/ui/icons"
-import { useMediaQuery } from "@/lib/hooks/use-media-query"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 

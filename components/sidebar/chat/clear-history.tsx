@@ -2,8 +2,12 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
+import { useScopedI18n } from "@/locales/client"
+import { toast } from "sonner"
 
-import { Button, buttonVariants } from "@/components/ui/button"
+import { useCurrentUser } from "@/lib/context/use-current-user"
+import { deleteUserChat } from "@/lib/supabase/client/users"
+import { cn } from "@/lib/utils"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -15,12 +19,8 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger
 } from "@/components/ui/alert-dialog"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { IconSpinner } from "@/components/ui/icons"
-import { toast } from "sonner"
-import { useScopedI18n } from "@/locales/client"
-import { useCurrentUser } from "@/lib/context/use-current-user"
-import { deleteUserChat } from "@/lib/supabase/client/users"
-import { cn } from "@/lib/utils"
 
 type ClearHistoryProps = {
   isEnabled: boolean

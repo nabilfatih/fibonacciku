@@ -1,5 +1,9 @@
 "use client"
 
+import React from "react"
+import { useScopedI18n } from "@/locales/client"
+import { toast } from "sonner"
+
 import type { UserRole } from "@/types/types"
 import { Label } from "@/components/ui/label"
 import {
@@ -11,10 +15,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select"
-import { useScopedI18n } from "@/locales/client"
-import React from "react"
 import { updateUser } from "@/app/actions"
-import { toast } from "sonner"
 
 type Props = {
   userId: string

@@ -1,5 +1,6 @@
-import { SidebarDesktop } from "@/components/sidebar/chat/sidebar-desktop"
 import { Suspense } from "react"
+
+import { SidebarDesktop } from "@/components/sidebar/chat/sidebar-desktop"
 
 export default function ApplicationMainLayout({
   children

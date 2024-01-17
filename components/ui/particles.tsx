@@ -1,11 +1,12 @@
 "use client"
 
-import React, { useRef, useEffect } from "react"
+import React, { useEffect, useRef } from "react"
 import type { FC } from "react"
-import useMousePosition from "@/lib/hooks/use-mouse"
 import dynamic from "next/dynamic"
-import { cn } from "@/lib/utils"
 import { useTheme } from "next-themes"
+
+import useMousePosition from "@/lib/hooks/use-mouse"
+import { cn } from "@/lib/utils"
 
 type ParticlesProps = {
   className?: string

@@ -1,8 +1,9 @@
-import type { Libraries } from "@/types/types"
 import { motion } from "framer-motion"
+
+import type { Libraries } from "@/types/types"
 import LibraryCardFilename from "@/components/library/card-filename"
-import LibraryCardStatus from "@/components/library/card-status"
 import LibraryCardInfo from "@/components/library/card-info"
+import LibraryCardStatus from "@/components/library/card-status"
 
 type Props = {
   library: Libraries

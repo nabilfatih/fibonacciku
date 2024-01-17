@@ -1,8 +1,9 @@
+import { useCallback, useEffect, useRef, useState } from "react"
 import { useScopedI18n } from "@/locales/client"
 import { IconPlayerPlay, IconPlayerStop } from "@tabler/icons-react"
 import markdownToTxt from "markdown-to-txt"
-import { useState, useCallback, useRef, useEffect } from "react"
 import { toast } from "sonner"
+
 import { Button } from "@/components/ui/button"
 
 type Props = {

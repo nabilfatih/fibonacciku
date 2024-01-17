@@ -1,6 +1,7 @@
-import { manageSubscriptionXendit } from "@/lib/supabase/admin/users"
-import type { InvoiceCallbackPayload } from "@/types/types"
 import { NextResponse } from "next/server"
+
+import type { InvoiceCallbackPayload } from "@/types/types"
+import { manageSubscriptionXendit } from "@/lib/supabase/admin/users"
 
 const relevantEvents = new Set(["invoices"])
 

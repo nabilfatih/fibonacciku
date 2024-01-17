@@ -1,7 +1,9 @@
 "use client"
 
-import { useTheme } from "next-themes"
 import React from "react"
+import { useTheme } from "next-themes"
+
+import { capitalizeFirstLetter } from "@/lib/utils"
 import { Label } from "@/components/ui/label"
 import {
   Select,
@@ -12,7 +14,6 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select"
-import { capitalizeFirstLetter } from "@/lib/utils"
 
 export default function AccountTheme() {
   const { setTheme, theme } = useTheme()

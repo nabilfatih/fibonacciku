@@ -1,10 +1,10 @@
 import type { ChatMessageMetadata } from "@/types/types"
-import ChatMetadataImage from "@/components/chat/metadata/image"
+import ChatMetadataAcademic from "@/components/chat/metadata/academic"
 import ChatMetadataAttachment from "@/components/chat/metadata/attachment"
 import ChatMetadataGoogle from "@/components/chat/metadata/google"
-import ChatMetadataAcademic from "@/components/chat/metadata/academic"
-import ChatMetadataYoutube from "@/components/chat/metadata/youtube"
+import ChatMetadataImage from "@/components/chat/metadata/image"
 import ChatMetadataReferences from "@/components/chat/metadata/references"
+import ChatMetadataYoutube from "@/components/chat/metadata/youtube"
 
 type Props = {
   metadata: ChatMessageMetadata[]

@@ -1,10 +1,8 @@
-import {
-  getUserDetailsAdmin,
-  getUserSubscriptionAdmin
-} from "@/lib/supabase/admin/users"
-import type { Subscription } from "@/types/types"
-import { listToolsChat } from "@/lib/openai/tools"
+import { Document } from "@langchain/core/documents"
 import type { Tool } from "ai"
+import type { RecursiveCharacterTextSplitter } from "langchain/text_splitter"
+
+import type { Subscription } from "@/types/types"
 import {
   callingDocument,
   callingGenerateImage,
@@ -13,8 +11,11 @@ import {
   callingWeather,
   callingWebsite
 } from "@/lib/openai/function"
-import type { RecursiveCharacterTextSplitter } from "langchain/text_splitter"
-import { Document } from "@langchain/core/documents"
+import { listToolsChat } from "@/lib/openai/tools"
+import {
+  getUserDetailsAdmin,
+  getUserSubscriptionAdmin
+} from "@/lib/supabase/admin/users"
 
 // Function to determine which model to use based on the user's subscription
 export const determineModelBasedOnSubscription = async (

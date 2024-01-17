@@ -1,10 +1,11 @@
 import { cookies } from "next/headers"
-import { priceList } from "@/lib/premium/helpers"
-import { createOrRetrieveCustomerAdmin } from "@/lib/supabase/admin/users"
-import { stripe } from "@/lib/stripe/admin"
-import { getURL } from "@/lib/utils"
 import { NextResponse } from "next/server"
+
+import { priceList } from "@/lib/premium/helpers"
+import { stripe } from "@/lib/stripe/admin"
+import { createOrRetrieveCustomerAdmin } from "@/lib/supabase/admin/users"
 import { createClientServer } from "@/lib/supabase/server"
+import { getURL } from "@/lib/utils"
 
 export async function POST(req: Request) {
   if (req.method === "POST") {

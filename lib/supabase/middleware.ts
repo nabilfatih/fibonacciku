@@ -1,6 +1,7 @@
-import { type Database } from "@/types/types_db"
+import { NextResponse, type NextRequest } from "next/server"
 import { createServerClient, type CookieOptions } from "@supabase/ssr"
-import { type NextRequest, NextResponse } from "next/server"
+
+import { type Database } from "@/types/types_db"
 
 export const createClientMiddleware = (
   request: NextRequest,

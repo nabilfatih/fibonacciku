@@ -1,15 +1,16 @@
-import { getChatDocumentSignedUrlAdmin } from "@/lib/supabase/admin/chat"
-import { insertLibraryAdmin } from "@/lib/supabase/admin/library"
-import { createClientServer } from "@/lib/supabase/server"
-import { generateUUID } from "@/lib/utils"
+import { cookies } from "next/headers"
+import { NextResponse, type NextRequest } from "next/server"
+import { track } from "@vercel/analytics/server"
+
 import {
   EDEN_HEADERS,
   ENDPOINTS,
   WEBHOOK_RECEIVER_DOCUMENT
 } from "@/lib/openai/plugin/ai"
-import { track } from "@vercel/analytics/server"
-import { cookies } from "next/headers"
-import { NextResponse, type NextRequest } from "next/server"
+import { getChatDocumentSignedUrlAdmin } from "@/lib/supabase/admin/chat"
+import { insertLibraryAdmin } from "@/lib/supabase/admin/library"
+import { createClientServer } from "@/lib/supabase/server"
+import { generateUUID } from "@/lib/utils"
 
 export const maxDuration = 300 // This function can run for a maximum of 300 seconds
 

@@ -1,17 +1,18 @@
-import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
+import { GeistSans } from "geist/font/sans"
 
 import "@/styles/globals.css"
 
+import { Suspense } from "react"
 import type { Metadata, Viewport } from "next"
-import { cn } from "@/lib/utils"
-import { TailwindIndicator } from "@/components/development/tailwind-indicator"
-import { Providers } from "@/components/providers"
 import { notFound } from "next/navigation"
 import { getScopedI18n } from "@/locales/server"
-import { Toaster } from "@/components/ui/sonner"
-import { Suspense } from "react"
 import NextTopLoader from "nextjs-toploader"
+
+import { cn } from "@/lib/utils"
+import { Toaster } from "@/components/ui/sonner"
+import { TailwindIndicator } from "@/components/development/tailwind-indicator"
+import { Providers } from "@/components/providers"
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getScopedI18n("Metadata")

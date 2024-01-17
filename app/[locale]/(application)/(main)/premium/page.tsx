@@ -1,11 +1,12 @@
+import { cookies } from "next/headers"
+import { getScopedI18n } from "@/locales/server"
+
+import type { Subscription } from "@/types/types"
+import { createClientServer } from "@/lib/supabase/server"
+import { Badge } from "@/components/ui/badge"
 import PremiumFeatures from "@/components/premium/features"
 import PremiumPlugins from "@/components/premium/plugins"
 import PremiumPrice from "@/components/premium/price"
-import { Badge } from "@/components/ui/badge"
-import { createClientServer } from "@/lib/supabase/server"
-import { getScopedI18n } from "@/locales/server"
-import type { Subscription } from "@/types/types"
-import { cookies } from "next/headers"
 
 export default async function PremiumPage() {
   const t = await getScopedI18n("MarketingPricing")

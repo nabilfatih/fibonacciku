@@ -1,5 +1,6 @@
-import { getUserChatHistoryAdmin } from "@/lib/supabase/admin/users"
 import { NextResponse } from "next/server"
+
+import { getUserChatHistoryAdmin } from "@/lib/supabase/admin/users"
 
 export const runtime = "edge"
 export const dynamic = "force-dynamic"

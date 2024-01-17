@@ -1,6 +1,6 @@
 import type { Books } from "@/types/types"
-import BookDocument from "@/components/book/document"
 import BookActions from "@/components/book/actions"
+import BookDocument from "@/components/book/document"
 
 export interface BookCollectionProps extends React.ComponentProps<"div"> {
   book: Books

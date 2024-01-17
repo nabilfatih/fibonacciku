@@ -1,9 +1,10 @@
-import type { IndexMessage, ShowChatMessage } from "@/types/types"
 import { useMemo, type MutableRefObject } from "react"
 import { ViewportList } from "react-viewport-list"
+
+import type { IndexMessage, ShowChatMessage } from "@/types/types"
 import { useMessage } from "@/lib/context/use-message"
-import ChatMessages from "@/components/chat/message"
 import { Separator } from "@/components/ui/separator"
+import ChatMessages from "@/components/chat/message"
 
 type Props = {
   chatMessageRef: MutableRefObject<HTMLDivElement | null>

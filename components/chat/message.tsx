@@ -1,12 +1,13 @@
-import { cn } from "@/lib/utils"
-import type { IndexMessage, ShowChatMessage } from "@/types/types"
-import ChatAvatar from "@/components/chat/avatar"
-import ChatAssistant from "@/components/chat/assistant"
-import ChatUser from "@/components/chat/user"
-import ChatMessageActions from "@/components/chat/message-action"
-import moment from "moment"
 import { useCurrentLocale } from "@/locales/client"
+import moment from "moment"
+
+import type { IndexMessage, ShowChatMessage } from "@/types/types"
+import { cn } from "@/lib/utils"
+import ChatAssistant from "@/components/chat/assistant"
+import ChatAvatar from "@/components/chat/avatar"
+import ChatMessageActions from "@/components/chat/message-action"
 import ChatMetadata from "@/components/chat/metadata"
+import ChatUser from "@/components/chat/user"
 
 type Props = {
   index: number

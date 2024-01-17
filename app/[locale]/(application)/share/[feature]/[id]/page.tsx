@@ -1,8 +1,9 @@
-import ChatMessage from "@/components/chat"
-import supabaseAdmin from "@/lib/supabase/admin"
-import { kv } from "@vercel/kv"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { kv } from "@vercel/kv"
+
+import supabaseAdmin from "@/lib/supabase/admin"
+import ChatMessage from "@/components/chat"
 
 type Props = {
   params: { feature: string; id: string }

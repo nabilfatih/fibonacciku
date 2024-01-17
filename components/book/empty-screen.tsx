@@ -1,7 +1,8 @@
 "use client"
 
-import { useCurrentUser } from "@/lib/context/use-current-user"
 import { useScopedI18n } from "@/locales/client"
+
+import { useCurrentUser } from "@/lib/context/use-current-user"
 
 type Props = {
   children: React.ReactNode

@@ -1,8 +1,9 @@
+import { NextResponse } from "next/server"
+
 import {
   getUserDetailsAdmin,
   getUserSubscriptionAdmin
 } from "@/lib/supabase/admin/users"
-import { NextResponse } from "next/server"
 
 export const runtime = "edge"
 export const dynamic = "force-dynamic"

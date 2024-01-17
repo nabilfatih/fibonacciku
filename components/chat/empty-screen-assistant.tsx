@@ -1,5 +1,4 @@
-import { Card, CardHeader, CardTitle } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
+import Link from "next/link"
 import { useScopedI18n } from "@/locales/client"
 import {
   IconBook2,
@@ -7,8 +6,10 @@ import {
   IconMessageCircle2,
   IconRocket
 } from "@tabler/icons-react"
-import Link from "next/link"
+
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function EmptyScreenAssistant() {
   const t = useScopedI18n("Feature")

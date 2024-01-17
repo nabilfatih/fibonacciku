@@ -1,6 +1,7 @@
+import { getScopedI18n } from "@/locales/server"
+
 import NewChat from "@/components/sidebar/chat/new-chat"
 import SidebarList from "@/components/sidebar/chat/sidebar-list"
-import { getScopedI18n } from "@/locales/server"
 
 type ChatHistoryProps = {
   userId: string

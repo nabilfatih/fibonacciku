@@ -1,17 +1,15 @@
 "use client"
 
 import * as React from "react"
-
 import Link from "next/link"
 import { useParams } from "next/navigation"
-
+import { IconFile, IconMessageCircle2 } from "@tabler/icons-react"
 import { motion } from "framer-motion"
 
-import { buttonVariants } from "@/components/ui/button"
-import { useLocalStorage } from "@/lib/hooks/use-local-storage"
 import { type Chat } from "@/types/types"
+import { useLocalStorage } from "@/lib/hooks/use-local-storage"
 import { cn } from "@/lib/utils"
-import { IconFile, IconMessageCircle2 } from "@tabler/icons-react"
+import { buttonVariants } from "@/components/ui/button"
 
 interface SidebarItemProps {
   index: number

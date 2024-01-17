@@ -1,5 +1,11 @@
-import { useMediaQuery } from "@/lib/hooks/use-media-query"
+import { useEffect } from "react"
+import { useScopedI18n } from "@/locales/client"
 import type { DialogProps } from "@radix-ui/react-dialog"
+
+import { useCurrentUser } from "@/lib/context/use-current-user"
+import { useMessage } from "@/lib/context/use-message"
+import { useMediaQuery } from "@/lib/hooks/use-media-query"
+import { capitalizeFirstLetter } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -19,6 +25,7 @@ import {
   DrawerHeader,
   DrawerTitle
 } from "@/components/ui/drawer"
+import { Label } from "@/components/ui/label"
 import {
   Select,
   SelectContent,
@@ -28,12 +35,6 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select"
-import { useMessage } from "@/lib/context/use-message"
-import { useScopedI18n } from "@/locales/client"
-import { Label } from "@/components/ui/label"
-import { useEffect } from "react"
-import { useCurrentUser } from "@/lib/context/use-current-user"
-import { capitalizeFirstLetter } from "@/lib/utils"
 
 interface ChatShareDialogProps extends DialogProps {}
 

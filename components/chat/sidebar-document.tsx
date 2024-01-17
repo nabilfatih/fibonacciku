@@ -1,3 +1,8 @@
+import { useScopedI18n } from "@/locales/client"
+import type { DialogProps } from "@radix-ui/react-dialog"
+
+import { useMessage } from "@/lib/context/use-message"
+import { Button } from "@/components/ui/button"
 import {
   Sheet,
   SheetClose,
@@ -6,12 +11,7 @@ import {
   SheetHeader,
   SheetTitle
 } from "@/components/ui/sheet"
-
 import { Sidebar } from "@/components/sidebar"
-import type { DialogProps } from "@radix-ui/react-dialog"
-import { useMessage } from "@/lib/context/use-message"
-import { useScopedI18n } from "@/locales/client"
-import { Button } from "@/components/ui/button"
 
 interface SidebarMobileProps extends DialogProps {
   children: React.ReactNode

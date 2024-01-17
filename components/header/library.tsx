@@ -1,12 +1,13 @@
-import { Button } from "@/components/ui/button"
+import Link from "next/link"
+import { getScopedI18n } from "@/locales/server"
 import { IconBook } from "@tabler/icons-react"
+
+import { Button } from "@/components/ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger
 } from "@/components/ui/tooltip"
-import Link from "next/link"
-import { getScopedI18n } from "@/locales/server"
 
 export default async function HeaderChatLibrary() {
   const t = await getScopedI18n("Library")

@@ -1,14 +1,15 @@
+import { NextResponse } from "next/server"
+import { SupabaseVectorStore } from "@langchain/community/vectorstores/supabase"
+import { OpenAIEmbeddings } from "@langchain/openai"
+import { RecursiveCharacterTextSplitter } from "langchain/text_splitter"
+
+import { createDocumentsFromPages } from "@/lib/openai/helper"
+import { EDEN_HEADERS, ENDPOINTS } from "@/lib/openai/plugin/ai"
+import supabaseAdmin from "@/lib/supabase/admin"
 import {
   getLibraryProcessingAdmin,
   updateLibraryStatusAdmin
 } from "@/lib/supabase/admin/library"
-import { createDocumentsFromPages } from "@/lib/openai/helper"
-import { EDEN_HEADERS, ENDPOINTS } from "@/lib/openai/plugin/ai"
-import { NextResponse } from "next/server"
-import { OpenAIEmbeddings } from "@langchain/openai"
-import { RecursiveCharacterTextSplitter } from "langchain/text_splitter"
-import { SupabaseVectorStore } from "@langchain/community/vectorstores/supabase"
-import supabaseAdmin from "@/lib/supabase/admin"
 
 export const maxDuration = 300 // This function can run for a maximum of 300 seconds
 export const dynamic = "force-dynamic"

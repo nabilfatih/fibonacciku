@@ -1,9 +1,10 @@
-import { openai } from ".."
+import type { ImageResult } from "@/types/types"
 import {
   getChatImagePublicUrlAdmin,
   uploadChatImageAdmin
 } from "@/lib/supabase/admin/chat"
-import type { ImageResult } from "@/types/types"
+
+import { openai } from ".."
 
 const sleep = (ms: number): Promise<void> => new Promise(r => setTimeout(r, ms))
 

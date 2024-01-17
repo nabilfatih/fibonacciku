@@ -1,11 +1,12 @@
-import { useScopedI18n } from "@/locales/client"
-import type { SearchResult } from "@/types/types"
-import { IconWorldWww } from "@tabler/icons-react"
-import Link from "next/link"
 import { useState } from "react"
-import he from "he"
 import Image from "next/image"
+import Link from "next/link"
+import { useScopedI18n } from "@/locales/client"
+import { IconWorldWww } from "@tabler/icons-react"
 import { motion } from "framer-motion"
+import he from "he"
+
+import type { SearchResult } from "@/types/types"
 
 type Props = {
   metadata: SearchResult[]

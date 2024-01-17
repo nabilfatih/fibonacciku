@@ -1,20 +1,21 @@
 import * as React from "react"
+import { useScopedI18n } from "@/locales/client"
+import { IconPhoto, IconSend2, IconSettings } from "@tabler/icons-react"
 import Textarea from "react-textarea-autosize"
+import { toast } from "sonner"
+
+import { useMessage, type MessageContextValue } from "@/lib/context/use-message"
 import { useEnterSubmit } from "@/lib/hooks/use-enter-submit"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger
 } from "@/components/ui/tooltip"
-import { useScopedI18n } from "@/locales/client"
-import { IconPhoto, IconSend2, IconSettings } from "@tabler/icons-react"
-import ChatSettingsDialog from "@/components/chat/settings-dialog"
-import { toast } from "sonner"
-import { useMessage, type MessageContextValue } from "@/lib/context/use-message"
 import FormAttachment from "@/components/chat/form-attachment"
-import { Input } from "@/components/ui/input"
+import ChatSettingsDialog from "@/components/chat/settings-dialog"
 
 export type PromptProps = {
   input: string

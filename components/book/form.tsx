@@ -1,13 +1,14 @@
 "use client"
 
+import React from "react"
+import { useRouter, useSearchParams } from "next/navigation"
+import { useScopedI18n } from "@/locales/client"
+import { IconSearch } from "@tabler/icons-react"
+import Textarea from "react-textarea-autosize"
+
 import { useEnterSubmit } from "@/lib/hooks/use-enter-submit"
 import { cn } from "@/lib/utils"
-import { useScopedI18n } from "@/locales/client"
-import React from "react"
-import Textarea from "react-textarea-autosize"
 import { Button } from "@/components/ui/button"
-import { IconSearch } from "@tabler/icons-react"
-import { useRouter, useSearchParams } from "next/navigation"
 import {
   Tooltip,
   TooltipContent,

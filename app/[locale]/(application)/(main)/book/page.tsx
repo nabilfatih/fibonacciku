@@ -1,12 +1,13 @@
-import BookEmptyScreen from "@/components/book/empty-screen"
-import FeatureBook from "@/components/book/feature-book"
-import BookPanel from "@/components/book/panel"
-import { createClientServer } from "@/lib/supabase/server"
-import { getScopedI18n } from "@/locales/server"
+import { Suspense } from "react"
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-import { Suspense } from "react"
+import { getScopedI18n } from "@/locales/server"
+
+import { createClientServer } from "@/lib/supabase/server"
+import BookEmptyScreen from "@/components/book/empty-screen"
+import FeatureBook from "@/components/book/feature-book"
+import BookPanel from "@/components/book/panel"
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getScopedI18n("ProductFiboBook")

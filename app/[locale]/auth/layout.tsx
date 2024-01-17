@@ -1,6 +1,7 @@
-import { ThemeToggle } from "@/components/theme/toggle"
-import Image from "next/image"
 import dynamic from "next/dynamic"
+import Image from "next/image"
+
+import { ThemeToggle } from "@/components/theme/toggle"
 
 const Particles = dynamic(() => import("@/components/ui/particles"), {
   ssr: false

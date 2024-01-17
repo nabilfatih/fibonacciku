@@ -1,6 +1,7 @@
-import { useCurrentUser } from "@/lib/context/use-current-user"
 import Image from "next/image"
 import Avatar, { genConfig } from "react-nice-avatar"
+
+import { useCurrentUser } from "@/lib/context/use-current-user"
 
 type Props = {
   role: string

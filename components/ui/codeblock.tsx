@@ -3,18 +3,18 @@
 
 "use client"
 
-import { type FC, memo } from "react"
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import { nightOwl as highlighterTheme } from "react-syntax-highlighter/dist/cjs/styles/prism"
-
-import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard"
-import { Button } from "@/components/ui/button"
+import { memo, type FC } from "react"
 import {
   IconCheck,
   IconCode,
   IconCopy,
   IconDownload
 } from "@tabler/icons-react"
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
+import { nightOwl as highlighterTheme } from "react-syntax-highlighter/dist/cjs/styles/prism"
+
+import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard"
+import { Button } from "@/components/ui/button"
 
 interface Props {
   language: string

@@ -1,10 +1,11 @@
-import { useScopedI18n } from "@/locales/client"
-import type { YoutubeSearchResult } from "@/types/types"
-import { IconBrandYoutube } from "@tabler/icons-react"
 import Image from "next/image"
 import Link from "next/link"
-import he from "he"
+import { useScopedI18n } from "@/locales/client"
+import { IconBrandYoutube } from "@tabler/icons-react"
 import { motion } from "framer-motion"
+import he from "he"
+
+import type { YoutubeSearchResult } from "@/types/types"
 
 type Props = {
   metadata: YoutubeSearchResult[]

@@ -1,17 +1,18 @@
-import { useCurrentUser } from "@/lib/context/use-current-user"
-import { cn, generateNanoID } from "@/lib/utils"
+import { useCallback, useRef, useState } from "react"
+import { useRouter } from "next/navigation"
 import { useScopedI18n } from "@/locales/client"
 import { IconFileUpload } from "@tabler/icons-react"
-import { useCallback, useRef, useState } from "react"
+import axios from "axios"
 import { toast } from "sonner"
-import { IconSpinner } from "@/components/ui/icons"
+
+import { useCurrentUser } from "@/lib/context/use-current-user"
 import {
   deleteChatDocument,
   uploadChatDocument
 } from "@/lib/supabase/client/chat"
-import axios from "axios"
-import { useRouter } from "next/navigation"
 import useUserLibrary from "@/lib/swr/use-user-library"
+import { cn, generateNanoID } from "@/lib/utils"
+import { IconSpinner } from "@/components/ui/icons"
 
 interface LibraryFormProps extends React.ComponentProps<"button"> {}
 

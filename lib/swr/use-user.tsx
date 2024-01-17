@@ -1,6 +1,7 @@
-import useSWR from "swr"
 import axios from "axios"
-import type { UserDetails, Subscription } from "@/types/types"
+import useSWR from "swr"
+
+import type { Subscription, UserDetails } from "@/types/types"
 
 type ResponseData = {
   userDetails: UserDetails

@@ -1,12 +1,13 @@
-import { NextResponse, type NextRequest } from "next/server"
 import { cookies } from "next/headers"
-import { SupabaseHybridSearch } from "langchain/retrievers/supabase"
+import { NextResponse, type NextRequest } from "next/server"
 import { OpenAIEmbeddings } from "@langchain/openai"
+import type { Document } from "langchain/document"
+import { SupabaseHybridSearch } from "langchain/retrievers/supabase"
+
+import type { Books } from "@/types/types"
+import supabaseAdmin from "@/lib/supabase/admin"
 import { getBooksAdmin } from "@/lib/supabase/admin/book"
 import { createClientServer } from "@/lib/supabase/server"
-import type { Books } from "@/types/types"
-import type { Document } from "langchain/document"
-import supabaseAdmin from "@/lib/supabase/admin"
 
 export const maxDuration = 300 // This function can run for a maximum of 300 seconds
 

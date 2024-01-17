@@ -6,8 +6,8 @@ import type {
   DataMessage,
   FunctionCall,
   JSONValue,
-  ToolCall,
-  StreamString
+  StreamString,
+  ToolCall
 } from "ai"
 
 export interface StreamPart<CODE extends string, NAME extends string, TYPE> {

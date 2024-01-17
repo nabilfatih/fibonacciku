@@ -1,17 +1,18 @@
 "use client"
 
-import { ThemeToggle } from "@/components/theme/toggle"
-import useChatHistory from "@/lib/swr/use-chat-history"
-import LoadingChatHistory from "@/components/sidebar/chat/loading-chat-history"
-import { useScopedI18n } from "@/locales/client"
-import SidebarItems from "@/components/sidebar/chat/sidebar-items"
-import { IconSearch } from "@tabler/icons-react"
-import { Input } from "@/components/ui/input"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { useCurrentUser } from "@/lib/context/use-current-user"
+import { useScopedI18n } from "@/locales/client"
+import { IconSearch } from "@tabler/icons-react"
+
 import type { Chat } from "@/types/types"
+import { useCurrentUser } from "@/lib/context/use-current-user"
 import supabaseClient from "@/lib/supabase/client"
+import useChatHistory from "@/lib/swr/use-chat-history"
+import { Input } from "@/components/ui/input"
 import ClearHistory from "@/components/sidebar/chat/clear-history"
+import LoadingChatHistory from "@/components/sidebar/chat/loading-chat-history"
+import SidebarItems from "@/components/sidebar/chat/sidebar-items"
+import { ThemeToggle } from "@/components/theme/toggle"
 
 type Props = {
   userId: string

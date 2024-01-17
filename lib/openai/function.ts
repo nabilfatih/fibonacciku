@@ -1,9 +1,9 @@
+import { generateImage } from "./plugin/ai"
+import { documentRetrieval } from "./plugin/document"
 import { academicPlugin, googlePlugin, youtubePlugin } from "./plugin/internet"
 import { scrapeWebsite } from "./plugin/ninja"
 import { weatherPlugin } from "./plugin/weather"
-import { generateImage } from "./plugin/ai"
 import { wolframalphaPlugin } from "./plugin/wolframalpha"
-import { documentRetrieval } from "./plugin/document"
 
 export type PluginResponse = {
   type: string

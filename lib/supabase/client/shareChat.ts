@@ -1,4 +1,5 @@
 import { generateUUID, getCurrentDate } from "@/lib/utils"
+
 import supabaseClient from "."
 
 export const insertShareChat = async (userId: string, chatId: string) => {

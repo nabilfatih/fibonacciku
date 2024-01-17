@@ -1,7 +1,8 @@
 "use client"
 
-import { useCurrentUser } from "@/lib/context/use-current-user"
 import { IconDiscountCheckFilled } from "@tabler/icons-react"
+
+import { useCurrentUser } from "@/lib/context/use-current-user"
 
 export default function HeaderBadge() {
   const { subscription } = useCurrentUser()

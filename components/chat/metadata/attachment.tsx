@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react"
-import type { Attachment } from "@/types/types"
 import Image from "next/image"
-import { cn } from "@/lib/utils"
+import { useParams } from "next/navigation"
+
+import type { Attachment } from "@/types/types"
 import { useCurrentUser } from "@/lib/context/use-current-user"
 import { getChatAttachmentSignedUrl } from "@/lib/supabase/client/chat"
-import { useParams } from "next/navigation"
+import { cn } from "@/lib/utils"
 
 type Props = {
   metadata: Attachment[]

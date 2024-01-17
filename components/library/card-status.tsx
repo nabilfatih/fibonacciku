@@ -1,5 +1,6 @@
 import { useScopedI18n } from "@/locales/client"
 import { IconCircleFilled } from "@tabler/icons-react"
+
 import type { Libraries } from "@/types/types"
 import { cn } from "@/lib/utils"
 import LibraryCardInfo from "@/components/library/card-info"

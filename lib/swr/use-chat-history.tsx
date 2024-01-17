@@ -1,5 +1,6 @@
-import useSWR from "swr"
 import axios from "axios"
+import useSWR from "swr"
+
 import type { Chat } from "@/types/types"
 
 type ResponseData = {

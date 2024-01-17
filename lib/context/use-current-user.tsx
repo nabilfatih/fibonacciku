@@ -1,7 +1,5 @@
 "use client"
 
-import type { Subscription, UserDetails } from "@/types/types"
-import type { Session } from "@supabase/supabase-js"
 import {
   createContext,
   useCallback,
@@ -10,8 +8,11 @@ import {
   useMemo,
   useState
 } from "react"
-import useUser from "@/lib/swr/use-user"
+import type { Session } from "@supabase/supabase-js"
+
+import type { Subscription, UserDetails } from "@/types/types"
 import supabaseClient from "@/lib/supabase/client"
+import useUser from "@/lib/swr/use-user"
 
 // Define type for context value
 type CurrentUserContextValue = {

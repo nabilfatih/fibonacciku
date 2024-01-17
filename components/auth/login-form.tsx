@@ -1,18 +1,18 @@
 "use client"
 
 import * as React from "react"
+import { useRouter } from "next/navigation"
+import { useScopedI18n } from "@/locales/client"
+import type { Provider } from "@supabase/supabase-js"
+import { IconBrandGoogleFilled } from "@tabler/icons-react"
+import { toast } from "sonner"
 
+import supabaseClient from "@/lib/supabase/client"
 import { cn } from "@/lib/utils"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { IconSpinner } from "@/components/ui/icons"
-import { IconBrandGoogleFilled } from "@tabler/icons-react"
-import { useScopedI18n } from "@/locales/client"
-import { toast } from "sonner"
-import supabaseClient from "@/lib/supabase/client"
-import { useRouter } from "next/navigation"
-import type { Provider } from "@supabase/supabase-js"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 
 interface LoginAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
   next: string

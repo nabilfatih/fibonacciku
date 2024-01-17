@@ -1,12 +1,12 @@
 "use client"
 
+import { useRef, type MutableRefObject } from "react"
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion"
+import { ViewportList } from "react-viewport-list"
 
 import type { Chat } from "@/types/types"
-import { useRef, type MutableRefObject } from "react"
-import { ViewportList } from "react-viewport-list"
-import SidebarItem from "@/components/sidebar/chat/sidebar-item"
 import SidebarActions from "@/components/sidebar/chat/sidebar-actions"
+import SidebarItem from "@/components/sidebar/chat/sidebar-item"
 import { removeChat, shareChat } from "@/app/actions"
 
 type SidebarItemsProps = {

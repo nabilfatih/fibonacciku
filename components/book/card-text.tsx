@@ -1,9 +1,10 @@
-import type { BookDocumentWithBooks } from "@/components/book/search"
-import { useScopedI18n } from "@/locales/client"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { useScopedI18n } from "@/locales/client"
+
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import BookCardTextContent from "@/components/book/card-text-content"
+import type { BookDocumentWithBooks } from "@/components/book/search"
 
 type Props = {
   book: BookDocumentWithBooks

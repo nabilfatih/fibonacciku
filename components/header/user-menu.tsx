@@ -1,7 +1,18 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useScopedI18n } from "@/locales/client"
+import {
+  IconDiscountCheck,
+  IconExternalLink,
+  IconUser
+} from "@tabler/icons-react"
+import Avatar, { genConfig } from "react-nice-avatar"
 
+import { useCurrentUser } from "@/lib/context/use-current-user"
+import supabaseClient from "@/lib/supabase/client"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,19 +21,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
-import { useScopedI18n } from "@/locales/client"
-import { useCurrentUser } from "@/lib/context/use-current-user"
-import Link from "next/link"
-import supabaseClient from "@/lib/supabase/client"
-import { useRouter } from "next/navigation"
-import Avatar, { genConfig } from "react-nice-avatar"
-import {
-  IconDiscountCheck,
-  IconExternalLink,
-  IconUser
-} from "@tabler/icons-react"
-import Feedback from "@/components/header/feedback"
 import Contact from "@/components/header/contact"
+import Feedback from "@/components/header/feedback"
 
 export default function UserMenu() {
   const t = useScopedI18n("ModalAccount")

@@ -1,15 +1,15 @@
 "use client"
 
 import * as React from "react"
-
-import { cn } from "@/lib/utils"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { IconSpinner } from "@/components/ui/icons"
 import { useScopedI18n } from "@/locales/client"
 import { toast } from "sonner"
+
 import supabaseClient from "@/lib/supabase/client"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { IconSpinner } from "@/components/ui/icons"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 
 interface ForgotPasswordFormProps
   extends React.HTMLAttributes<HTMLDivElement> {}

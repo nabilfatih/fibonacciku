@@ -1,6 +1,7 @@
 import type { ChatMessage, RoleAgent, SaveDataMessage } from "@/types/types"
-import supabaseClient from "."
 import { generateNanoID, generateUUID, getCurrentDate } from "@/lib/utils"
+
+import supabaseClient from "."
 
 export const getChat = async (chatId: string) => {
   const { data, error } = await supabaseClient

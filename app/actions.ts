@@ -1,9 +1,10 @@
 "use server"
 
-import { createClientServer } from "@/lib/supabase/server"
-import { generateUUID, getCurrentDate } from "@/lib/utils"
 import { revalidatePath } from "next/cache"
 import { cookies } from "next/headers"
+
+import { createClientServer } from "@/lib/supabase/server"
+import { generateUUID, getCurrentDate } from "@/lib/utils"
 
 export async function renameChat(id: string, title: string) {
   const cookieStore = cookies()

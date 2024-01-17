@@ -1,10 +1,11 @@
-import { useScopedI18n } from "@/locales/client"
-import type { AcademicSearchResult } from "@/types/types"
-import { IconBooks } from "@tabler/icons-react"
-import Link from "next/link"
-import he from "he"
 import Image from "next/image"
+import Link from "next/link"
+import { useScopedI18n } from "@/locales/client"
+import { IconBooks } from "@tabler/icons-react"
 import { motion } from "framer-motion"
+import he from "he"
+
+import type { AcademicSearchResult } from "@/types/types"
 
 type Props = {
   metadata: AcademicSearchResult[]

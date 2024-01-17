@@ -1,5 +1,6 @@
-import supabaseClient from "."
 import type { GeoLocation, UserRole } from "@/types/types"
+
+import supabaseClient from "."
 
 export const getUserByEmail = async (email: string) => {
   const { data, error } = await supabaseClient

@@ -1,8 +1,9 @@
-import { createClientServer } from "@/lib/supabase/server"
-import type { Subscription } from "@/types/types"
 import { cookies } from "next/headers"
-import AccountSubscriptionManage from "@/components/account/subscription-manage"
+
+import type { Subscription } from "@/types/types"
+import { createClientServer } from "@/lib/supabase/server"
 import AccountSubscriptionEmpty from "@/components/account/subscription-empty"
+import AccountSubscriptionManage from "@/components/account/subscription-manage"
 
 type Props = {
   userId: string

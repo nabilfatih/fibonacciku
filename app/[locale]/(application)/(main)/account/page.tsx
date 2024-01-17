@@ -1,11 +1,12 @@
+import { Suspense } from "react"
+import { cookies } from "next/headers"
+import { redirect } from "next/navigation"
+
+import { createClientServer } from "@/lib/supabase/server"
 import AccountGeneral from "@/components/account/general"
 import AccountHeader from "@/components/account/header"
 import AccountSubscription from "@/components/account/subscription"
 import AccountSystem from "@/components/account/system"
-import { createClientServer } from "@/lib/supabase/server"
-import { cookies } from "next/headers"
-import { redirect } from "next/navigation"
-import { Suspense } from "react"
 
 export default async function AccountPage() {
   const cookieStore = cookies()

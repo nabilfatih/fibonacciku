@@ -1,18 +1,17 @@
 import { Suspense } from "react"
-import Link from "next/link"
 import { cookies } from "next/headers"
-
-import { SidebarToggle } from "@/components/sidebar/sidebar-toggle"
-import { IconSeparator } from "@/components/ui/icons"
-import UserMenu from "@/components/header/user-menu"
-import { SidebarMobile } from "@/components/sidebar/chat/sidebar-mobile"
-import { ChatHistory } from "@/components/sidebar/chat/chat-history"
-import HeaderChatFeature from "@/components/header/feature"
-import HeaderChatLibrary from "@/components/header/library"
+import Image from "next/image"
+import Link from "next/link"
 
 import { createClientServer } from "@/lib/supabase/server"
+import { IconSeparator } from "@/components/ui/icons"
 import HeaderBadge from "@/components/header/badge"
-import Image from "next/image"
+import HeaderChatFeature from "@/components/header/feature"
+import HeaderChatLibrary from "@/components/header/library"
+import UserMenu from "@/components/header/user-menu"
+import { ChatHistory } from "@/components/sidebar/chat/chat-history"
+import { SidebarMobile } from "@/components/sidebar/chat/sidebar-mobile"
+import { SidebarToggle } from "@/components/sidebar/sidebar-toggle"
 
 async function UserHistory() {
   const cookieStore = cookies()

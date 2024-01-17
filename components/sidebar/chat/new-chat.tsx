@@ -1,11 +1,12 @@
 "use client"
 
-import { buttonVariants } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-import { useScopedI18n } from "@/locales/client"
-import { IconPlus } from "@tabler/icons-react"
 import Link from "next/link"
 import { useParams, usePathname } from "next/navigation"
+import { useScopedI18n } from "@/locales/client"
+import { IconPlus } from "@tabler/icons-react"
+
+import { cn } from "@/lib/utils"
+import { buttonVariants } from "@/components/ui/button"
 
 const chatFeatures = ["assistant", "document"]
 

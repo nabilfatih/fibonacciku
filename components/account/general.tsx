@@ -1,6 +1,8 @@
-import { createClientServer } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
+import { getScopedI18n } from "@/locales/server"
+
+import { createClientServer } from "@/lib/supabase/server"
 import {
   Card,
   CardContent,
@@ -9,12 +11,11 @@ import {
   CardHeader,
   CardTitle
 } from "@/components/ui/card"
-import { getScopedI18n } from "@/locales/server"
 import { Label } from "@/components/ui/label"
-import AccountResetPassword from "@/components/account/reset-password"
 import AccountLanguage from "@/components/account/language"
-import AccountTheme from "@/components/account/theme"
+import AccountResetPassword from "@/components/account/reset-password"
 import AccountRole from "@/components/account/role"
+import AccountTheme from "@/components/account/theme"
 
 type Props = {
   userId: string

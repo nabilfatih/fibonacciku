@@ -1,13 +1,14 @@
 "use client"
 
-import { useScopedI18n } from "@/locales/client"
-import type { Subscription } from "@/types/types"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import { useState } from "react"
-import { IconSpinner } from "@/components/ui/icons"
-import { postData } from "@/lib/utils"
+import Link from "next/link"
+import { useScopedI18n } from "@/locales/client"
 import { toast } from "sonner"
+
+import type { Subscription } from "@/types/types"
+import { postData } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { IconSpinner } from "@/components/ui/icons"
 
 type Props = {
   subscription: Subscription

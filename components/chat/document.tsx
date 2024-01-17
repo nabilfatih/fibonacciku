@@ -1,5 +1,7 @@
 "use client"
 
+import { useReducer } from "react"
+import dynamic from "next/dynamic"
 import { useScopedI18n } from "@/locales/client"
 import {
   IconMinus,
@@ -7,13 +9,12 @@ import {
   IconRefresh,
   IconSearch
 } from "@tabler/icons-react"
-import { useReducer } from "react"
-import { Button } from "@/components/ui/button"
-import { Slider } from "@/components/ui/slider"
-import { Input } from "@/components/ui/input"
-import dynamic from "next/dynamic"
-import { IconSeparator, IconSpinner } from "@/components/ui/icons"
+
 import { useMessage } from "@/lib/context/use-message"
+import { Button } from "@/components/ui/button"
+import { IconSeparator, IconSpinner } from "@/components/ui/icons"
+import { Input } from "@/components/ui/input"
+import { Slider } from "@/components/ui/slider"
 
 const ChatDocumentPdf = dynamic(
   () => import("@/components/chat/document-pdf"),

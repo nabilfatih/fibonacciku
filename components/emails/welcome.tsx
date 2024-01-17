@@ -10,8 +10,8 @@ import {
   Link,
   Preview,
   Section,
-  Text,
-  Tailwind
+  Tailwind,
+  Text
 } from "@react-email/components"
 
 const baseUrl = "https://www.fibonacciku.com"

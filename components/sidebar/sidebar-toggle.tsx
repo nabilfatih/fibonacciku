@@ -1,10 +1,10 @@
 "use client"
 
 import * as React from "react"
+import { IconLayoutSidebar } from "@tabler/icons-react"
 
 import { useSidebar } from "@/lib/hooks/use-sidebar"
 import { Button } from "@/components/ui/button"
-import { IconLayoutSidebar } from "@tabler/icons-react"
 
 export function SidebarToggle() {
   const { toggleSidebar } = useSidebar()

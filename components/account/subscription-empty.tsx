@@ -1,3 +1,7 @@
+import Link from "next/link"
+import { getScopedI18n } from "@/locales/server"
+
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -7,9 +11,6 @@ import {
   CardHeader,
   CardTitle
 } from "@/components/ui/card"
-import { getScopedI18n } from "@/locales/server"
-import { Badge } from "@/components/ui/badge"
-import Link from "next/link"
 
 export default async function AccountSubscriptionEmpty() {
   const t = await getScopedI18n("ModalSubscription")

@@ -1,6 +1,8 @@
-import { Sidebar } from "@/components/sidebar"
-import { createClientServer } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
+
+import { createClientServer } from "@/lib/supabase/server"
+import { Sidebar } from "@/components/sidebar"
+
 import { ChatHistory } from "./chat-history"
 
 export async function SidebarDesktop() {

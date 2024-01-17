@@ -1,10 +1,12 @@
-import { useScopedI18n } from "@/locales/client"
-import type { Libraries } from "@/types/types"
 import { useTransition } from "react"
+import { useScopedI18n } from "@/locales/client"
 import { toast } from "sonner"
-import LibraryCardActions from "./card-actions"
+
+import type { Libraries } from "@/types/types"
 import { getLibraryFile } from "@/app/actions"
+
 import { IconSpinner } from "../ui/icons"
+import LibraryCardActions from "./card-actions"
 
 type Props = {
   library: Libraries

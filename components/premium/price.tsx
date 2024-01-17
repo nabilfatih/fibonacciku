@@ -1,5 +1,29 @@
 "use client"
 
+import { useCallback, useMemo, useState } from "react"
+import { useRouter } from "next/navigation"
+import { useScopedI18n } from "@/locales/client"
+import type { User } from "@supabase/supabase-js"
+import {
+  IconCheck,
+  IconCopy,
+  IconDiscount2,
+  IconGift
+} from "@tabler/icons-react"
+import { toast } from "sonner"
+import useSWR from "swr"
+
+import type { Subscription } from "@/types/types"
+import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard"
+import {
+  formatCurrency,
+  getPrice,
+  getUserCurrency,
+  priceList
+} from "@/lib/premium/helpers"
+import { getStripe } from "@/lib/stripe/client"
+import { postData } from "@/lib/utils"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import {
   Card,
   CardContent,
@@ -7,31 +31,9 @@ import {
   CardHeader,
   CardTitle
 } from "@/components/ui/card"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import {
-  formatCurrency,
-  getPrice,
-  getUserCurrency,
-  priceList
-} from "@/lib/premium/helpers"
-import type { Subscription } from "@/types/types"
-import type { User } from "@supabase/supabase-js"
-import useSWR from "swr"
-import { useCallback, useMemo, useState } from "react"
-import { postData } from "@/lib/utils"
-import { useRouter } from "next/navigation"
-import { useScopedI18n } from "@/locales/client"
-import { Button } from "../ui/button"
-import {
-  IconCheck,
-  IconCopy,
-  IconDiscount2,
-  IconGift
-} from "@tabler/icons-react"
-import { getStripe } from "@/lib/stripe/client"
-import { toast } from "sonner"
 import { IconSpinner } from "@/components/ui/icons"
-import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard"
+
+import { Button } from "../ui/button"
 
 type Props = {
   user: User | null

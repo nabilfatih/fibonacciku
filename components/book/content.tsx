@@ -1,11 +1,12 @@
 "use client"
 
-import type { BookDocumentWithBooks } from "@/components/book/search"
-import { cn } from "@/lib/utils"
 import { useRef } from "react"
-import BookPanel from "@/components/book/panel"
-import BookList from "@/components/book/list"
+
+import { cn } from "@/lib/utils"
 import BookAssistant from "@/components/book/assistant"
+import BookList from "@/components/book/list"
+import BookPanel from "@/components/book/panel"
+import type { BookDocumentWithBooks } from "@/components/book/search"
 
 type Props = {
   books: BookDocumentWithBooks[]

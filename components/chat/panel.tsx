@@ -1,19 +1,19 @@
 import * as React from "react"
-
-import { Button } from "@/components/ui/button"
-import ButtonScrollToBottom from "@/components/chat/button-scroll-to-bottom"
-import { IconStop } from "@/components/ui/icons"
-import FooterText from "@/components/chat/footer"
-import { IconEye, IconRefresh, IconShare3 } from "@tabler/icons-react"
-import PromptForm from "@/components/chat/form"
-import type { ShowChatMessage } from "@/types/types"
-import { useScopedI18n } from "@/locales/client"
-import ChatShareDialog from "@/components/chat/share-dialog"
-import { shareChat } from "@/app/actions"
-import SidebarDocument from "@/components/chat/sidebar-document"
-import { cn } from "@/lib/utils"
-import { useMessage } from "@/lib/context/use-message"
 import dynamic from "next/dynamic"
+import { useScopedI18n } from "@/locales/client"
+import { IconEye, IconRefresh, IconShare3 } from "@tabler/icons-react"
+
+import type { ShowChatMessage } from "@/types/types"
+import { useMessage } from "@/lib/context/use-message"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { IconStop } from "@/components/ui/icons"
+import ButtonScrollToBottom from "@/components/chat/button-scroll-to-bottom"
+import FooterText from "@/components/chat/footer"
+import PromptForm from "@/components/chat/form"
+import ChatShareDialog from "@/components/chat/share-dialog"
+import SidebarDocument from "@/components/chat/sidebar-document"
+import { shareChat } from "@/app/actions"
 
 const ChatDocument = dynamic(() => import("@/components/chat/document"))
 

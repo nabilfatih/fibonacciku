@@ -1,10 +1,11 @@
 "use client"
 
+import { useMemo } from "react"
+import { IconArrowNarrowDown } from "@tabler/icons-react"
+
+import { useMessage } from "@/lib/context/use-message"
 import { cn } from "@/lib/utils"
 import { Button, type ButtonProps } from "@/components/ui/button"
-import { IconArrowNarrowDown } from "@tabler/icons-react"
-import { useMessage } from "@/lib/context/use-message"
-import { useMemo } from "react"
 
 export default function ButtonScrollToBottom({
   className,

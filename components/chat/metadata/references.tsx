@@ -1,8 +1,9 @@
-import { Button } from "@/components/ui/button"
-import { useMessage } from "@/lib/context/use-message"
 import { useScopedI18n } from "@/locales/client"
-import type { SourceDocument } from "@/types/types"
 import { IconFile } from "@tabler/icons-react"
+
+import type { SourceDocument } from "@/types/types"
+import { useMessage } from "@/lib/context/use-message"
+import { Button } from "@/components/ui/button"
 
 type Props = {
   metadata: SourceDocument[]

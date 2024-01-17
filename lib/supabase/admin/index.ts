@@ -1,4 +1,5 @@
 import { createClient } from "@supabase/supabase-js"
+
 import type { Database } from "@/types/types_db"
 
 // Note: supabaseAdmin uses the SERVICE_ROLE_KEY which you must only use in a secure server-side context

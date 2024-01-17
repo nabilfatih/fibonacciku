@@ -1,9 +1,10 @@
 import { cookies } from "next/headers"
+import { NextResponse } from "next/server"
+
 import { stripe } from "@/lib/stripe/admin"
 import { createOrRetrieveCustomerAdmin } from "@/lib/supabase/admin/users"
-import { getURL } from "@/lib/utils"
-import { NextResponse } from "next/server"
 import { createClientServer } from "@/lib/supabase/server"
+import { getURL } from "@/lib/utils"
 
 export async function POST(req: Request) {
   if (req.method === "POST") {

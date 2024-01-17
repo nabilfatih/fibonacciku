@@ -1,8 +1,8 @@
-import { createClientServer } from "@/lib/supabase/server"
 import { cookies } from "next/headers"
 import { NextResponse } from "next/server"
-
 import type { NextRequest } from "next/server"
+
+import { createClientServer } from "@/lib/supabase/server"
 
 export const dynamic = "force-dynamic"
 

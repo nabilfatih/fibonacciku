@@ -1,14 +1,14 @@
 import "react-pdf/dist/esm/Page/AnnotationLayer.css"
 import "react-pdf/dist/esm/Page/TextLayer.css"
 
-import { type Dispatch, memo, useRef, useState, useCallback } from "react"
+import { memo, useCallback, useRef, useState, type Dispatch } from "react"
 import { Document, Page, pdfjs } from "react-pdf"
-
 import { ViewportList } from "react-viewport-list"
-import type { ActionDocument, StateDocument } from "@/components/chat/document"
+
 import { useMessage } from "@/lib/context/use-message"
-import { IconSpinner } from "@/components/ui/icons"
 import { cn } from "@/lib/utils"
+import { IconSpinner } from "@/components/ui/icons"
+import type { ActionDocument, StateDocument } from "@/components/chat/document"
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.js",

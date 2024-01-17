@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react"
-import type { BookDocumentWithBooks } from "@/components/book/search"
-import { cn } from "@/lib/utils"
 import { useScopedI18n } from "@/locales/client"
+
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import type { BookDocumentWithBooks } from "@/components/book/search"
 
 type Props = {
   book: BookDocumentWithBooks

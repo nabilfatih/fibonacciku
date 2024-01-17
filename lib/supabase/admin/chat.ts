@@ -1,7 +1,9 @@
-import type { ChatMessage } from "@/types/types"
-import supabaseAdmin from "."
-import { generateNanoID } from "@/lib/utils"
 import { decode } from "base64-arraybuffer"
+
+import type { ChatMessage } from "@/types/types"
+import { generateNanoID } from "@/lib/utils"
+
+import supabaseAdmin from "."
 
 export const getChatAdmin = async (chatId: string) => {
   const { data, error } = await supabaseAdmin

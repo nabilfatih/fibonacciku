@@ -1,5 +1,6 @@
-import useSWR from "swr"
 import axios from "axios"
+import useSWR from "swr"
+
 import type { Libraries } from "@/types/types"
 
 type ResponseData = {

@@ -1,8 +1,9 @@
-import { HeaderChat } from "@/components/header"
+import { Suspense } from "react"
+import { cookies } from "next/headers"
+
 import { CurrentUserContextProvider } from "@/lib/context/use-current-user"
 import { createClientServer } from "@/lib/supabase/server"
-import { cookies } from "next/headers"
-import { Suspense } from "react"
+import { HeaderChat } from "@/components/header"
 
 export default async function ApplicationLayout({
   children

@@ -1,19 +1,20 @@
 "use client"
 
-import type { BookCollectionProps } from "@/components/book/collection"
 import { useReducer, useRef } from "react"
+import dynamic from "next/dynamic"
+import { useScopedI18n } from "@/locales/client"
 import {
   IconMinus,
   IconPlus,
   IconRefresh,
   IconSearch
 } from "@tabler/icons-react"
-import { IconSeparator } from "@/components/ui/icons"
+
 import { Button } from "@/components/ui/button"
-import { Slider } from "@/components/ui/slider"
+import { IconSeparator } from "@/components/ui/icons"
 import { Input } from "@/components/ui/input"
-import { useScopedI18n } from "@/locales/client"
-import dynamic from "next/dynamic"
+import { Slider } from "@/components/ui/slider"
+import type { BookCollectionProps } from "@/components/book/collection"
 
 const BookDocumentPdf = dynamic(() => import("@/components/book/document-pdf"))
 

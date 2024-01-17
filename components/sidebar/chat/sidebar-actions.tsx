@@ -1,10 +1,18 @@
 "use client"
 
-import { useRouter } from "next/navigation"
 import * as React from "react"
+import { useRouter } from "next/navigation"
+import { useScopedI18n } from "@/locales/client"
+import {
+  IconDotsVertical,
+  IconPencil,
+  IconShare3,
+  IconTrash
+} from "@tabler/icons-react"
 import { toast } from "sonner"
 
-import type { ServerActionResult, Chat } from "@/types/types"
+import type { Chat, ServerActionResult } from "@/types/types"
+import { cn } from "@/lib/utils"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,10 +24,6 @@ import {
   AlertDialogTitle
 } from "@/components/ui/alert-dialog"
 import { Button, buttonVariants } from "@/components/ui/button"
-import { IconSpinner } from "@/components/ui/icons"
-import ChatShareDialog, {
-  type ShareChatProps
-} from "@/components/chat/share-dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,15 +31,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
-import {
-  IconDotsVertical,
-  IconPencil,
-  IconShare3,
-  IconTrash
-} from "@tabler/icons-react"
-import { useScopedI18n } from "@/locales/client"
-import { cn } from "@/lib/utils"
+import { IconSpinner } from "@/components/ui/icons"
+import ChatShareDialog, {
+  type ShareChatProps
+} from "@/components/chat/share-dialog"
 import { renameChat } from "@/app/actions"
+
 import { ChatRenameDialog } from "./rename-dialog"
 
 interface SidebarActionsProps {

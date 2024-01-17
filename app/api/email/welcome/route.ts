@@ -1,6 +1,7 @@
-import WelcomeEmail from "@/components/emails/welcome"
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
+
+import WelcomeEmail from "@/components/emails/welcome"
 
 export async function POST(request: Request) {
   const { name, role, email } = (await request.json()) as {

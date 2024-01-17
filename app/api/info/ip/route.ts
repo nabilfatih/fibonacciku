@@ -1,5 +1,5 @@
-import { ipAddress } from "@vercel/edge"
 import { NextResponse } from "next/server"
+import { ipAddress } from "@vercel/edge"
 
 export const runtime = "edge"
 

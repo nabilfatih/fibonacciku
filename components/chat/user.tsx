@@ -1,6 +1,7 @@
-import { useMessage } from "@/lib/context/use-message"
 import { useEffect, useRef } from "react"
 import Textarea from "react-textarea-autosize"
+
+import { useMessage } from "@/lib/context/use-message"
 
 type Props = {
   content: string
