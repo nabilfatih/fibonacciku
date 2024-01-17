@@ -30,7 +30,6 @@ export default function BookCard({ book }: Props) {
         <div className="flex flex-col">
           <Link
             href={`/book/collection/${book.bookId}`}
-            target="_blank"
             className="mb-2 sm:text-lg font-medium tracking-tight leading-none w-fit"
           >
             {dataBook.title}

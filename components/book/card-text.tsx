@@ -20,7 +20,6 @@ export default function BookCardText({ book }: Props) {
         <Button asChild size="sm" className="rounded-full">
           <Link
             href={`/book/collection/${book.bookId}?page=${book.data[0].metadata.page_number}`}
-            target="_blank"
           >
             {book.data[0].metadata.page_number}
           </Link>
@@ -51,7 +50,6 @@ export default function BookCardText({ book }: Props) {
                   >
                     <Link
                       href={`/book/collection/${book.bookId}?page=${page.metadata.page_number}`}
-                      target="_blank"
                     >
                       {page.metadata.page_number}
                     </Link>
