@@ -98,7 +98,7 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
         className="relative h-full border border-t-0 bg-background"
         error={
           <div className="absolute inset-0 flex items-center justify-center">
-            <IconMoodSad className="animate-spin" />
+            <IconMoodSad />
           </div>
         }
         loading={

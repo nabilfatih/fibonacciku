@@ -1,6 +1,6 @@
 import Link from "next/link"
 import {
-  IconChevronLeft,
+  IconBook2,
   IconDownload,
   IconMessageCirclePlus
 } from "@tabler/icons-react"
@@ -27,8 +27,8 @@ export default function BookActions({ book }: Props) {
             <TooltipTrigger asChild>
               <Button asChild variant="outline" size="icon">
                 <Link href="/book">
-                  <IconChevronLeft className="h-5 w-5" />
-                  <span className="sr-only">Back</span>
+                  <IconBook2 className="h-5 w-5" />
+                  <span className="sr-only">Search again</span>
                 </Link>
               </Button>
             </TooltipTrigger>

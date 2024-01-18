@@ -96,7 +96,7 @@ function BookDocumentPdf({
         className="relative h-full border-x bg-background"
         error={
           <div className="absolute inset-0 flex items-center justify-center">
-            <IconMoodSad className="animate-spin" />
+            <IconMoodSad />
           </div>
         }
         loading={
