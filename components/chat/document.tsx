@@ -82,6 +82,7 @@ export default function ChatDocument() {
                   title={t("zoom-out")}
                   variant="ghost"
                   size="icon"
+                  className="rounded-full"
                   disabled={state.zoom <= 0.1}
                   onClick={() => {
                     if (state.zoom > 0.1)
@@ -116,6 +117,7 @@ export default function ChatDocument() {
                     if (state.zoom < 2)
                       dispatch({ type: "SET_ZOOM", payload: state.zoom + 0.1 })
                   }}
+                  className="rounded-full"
                 >
                   <IconPlus className="h-4 w-4" />
                   <span className="sr-only">{t("zoom-in")}</span>
@@ -131,6 +133,7 @@ export default function ChatDocument() {
                       payload: state.defaultZoom
                     })
                   }}
+                  className="rounded-full"
                 >
                   <IconRefresh className="h-4 w-4" />
                   <span className="sr-only">{t("reset")}</span>

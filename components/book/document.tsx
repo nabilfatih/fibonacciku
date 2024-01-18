@@ -82,6 +82,7 @@ export default function BookDocument({
                 if (state.zoom > 0.1)
                   dispatch({ type: "SET_ZOOM", payload: state.zoom - 0.1 })
               }}
+              className="rounded-full"
             >
               <IconMinus className="h-4 w-4" />
               <span className="sr-only">{t("zoom-out")}</span>
@@ -111,6 +112,7 @@ export default function BookDocument({
                 if (state.zoom < 2)
                   dispatch({ type: "SET_ZOOM", payload: state.zoom + 0.1 })
               }}
+              className="rounded-full"
             >
               <IconPlus className="h-4 w-4" />
               <span className="sr-only">{t("zoom-in")}</span>
@@ -126,6 +128,7 @@ export default function BookDocument({
                   payload: state.defaultZoom
                 })
               }}
+              className="rounded-full"
             >
               <IconRefresh className="h-4 w-4" />
               <span className="sr-only">{t("reset")}</span>
