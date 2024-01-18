@@ -1,3 +1,4 @@
+import { unstable_cache as cache } from "next/cache"
 import { Document } from "@langchain/core/documents"
 import type { Tool } from "ai"
 import type { RecursiveCharacterTextSplitter } from "langchain/text_splitter"
@@ -18,48 +19,59 @@ import {
 } from "@/lib/supabase/admin/users"
 
 // Function to determine which model to use based on the user's subscription
-export const determineModelBasedOnSubscription = async (
-  userId: string
-): Promise<{
-  model: string
-  subscription: Subscription | null
-  additionalTools: Tool[]
-  isCostLimit?: boolean
-}> => {
-  // Retrieve the user's subscription details
-  const [userDetails, subscription] = await Promise.all([
-    getUserDetailsAdmin(userId),
-    getUserSubscriptionAdmin(userId)
-  ])
+export const determineModelBasedOnSubscription = cache(
+  async (
+    userId: string
+  ): Promise<{
+    model: string
+    subscription: Subscription | null
+    additionalTools: Tool[]
+    isCostLimit?: boolean
+  }> => {
+    // Retrieve the user's subscription details
+    const [userDetails, subscription] = await Promise.all([
+      getUserDetailsAdmin(userId),
+      getUserSubscriptionAdmin(userId)
+    ])
 
-  // Default model for non-subscribers or basic plans
-  const defaultModel = "gpt-3.5-turbo-1106"
-  // Model for premium or enterprise subscribers
-  // const premiumModel = "gpt-4-1106-preview";
-  const premiumModel = "gpt-3.5-turbo-1106" // for now, for cost reasons
+    // Default model for non-subscribers or basic plans
+    const defaultModel = "gpt-3.5-turbo-1106"
+    // Model for premium or enterprise subscribers
+    // const premiumModel = "gpt-4-1106-preview";
+    const premiumModel = "gpt-3.5-turbo-1106" // for now, for cost reasons
 
-  // TODO: This is only when the cost reaches a certain threshold, this can be adjusted
-  let isCostLimit = false
-  if (!subscription && userDetails.usage > 50) {
-    isCostLimit = true
-  }
+    // TODO: This is only when the cost reaches a certain threshold, this can be adjusted
+    let isCostLimit = false
+    if (!subscription && userDetails.usage > 50) {
+      isCostLimit = true
+    }
 
-  // Determine the model based on the subscription plan
-  if (
-    subscription &&
-    (subscription.planName === "premium" ||
-      subscription.planName === "enterprise")
-  ) {
+    // Determine the model based on the subscription plan
+    if (
+      subscription &&
+      (subscription.planName === "premium" ||
+        subscription.planName === "enterprise")
+    ) {
+      return {
+        model: premiumModel,
+        subscription,
+        additionalTools: listToolsChat,
+        isCostLimit
+      }
+    }
+
     return {
-      model: premiumModel,
+      model: defaultModel,
       subscription,
-      additionalTools: listToolsChat,
+      additionalTools: [],
       isCostLimit
     }
+  },
+  ["determineModelBasedOnSubscription"], // cache key
+  {
+    revalidate: 3600
   }
-
-  return { model: defaultModel, subscription, additionalTools: [], isCostLimit }
-}
+)
 
 // Function to create documents from pages
 export const createDocumentsFromPages = async (
