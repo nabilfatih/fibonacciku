@@ -193,14 +193,11 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
   const { userDetails } = useCurrentUser()
 
   const feature = useMemo(() => {
-    if (pathname.includes("/book/chat")) {
-      return "book"
-    }
     if (params?.feature) {
       return String(params.feature)
     }
     return ""
-  }, [params.feature, pathname])
+  }, [params.feature])
 
   const chatId = useMemo(() => {
     if (params?.id) {
@@ -210,24 +207,9 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
   }, [params.id])
 
   const api = useMemo(() => {
-    if (pathname.includes("/book/chat")) {
-      return "/api/ai/book/chat"
-    }
-    if (feature === "assistant") {
-      return "/api/ai/assistant/chat"
-    } else if (feature === "document") {
-      return "/api/ai/document/chat"
-    }
-    return ""
-  }, [feature, pathname])
-
-  const bookId = useMemo(() => {
-    if (pathname.includes("/book/chat")) {
-      const bookId = params?.id ? String(params.id) : ""
-      return bookId
-    }
-    return ""
-  }, [params.id, pathname])
+    if (!feature) return ""
+    return `/api/ai/${feature}/chat`
+  }, [feature])
 
   // Manage refs
   const pageRef = useRef<any>(null)
