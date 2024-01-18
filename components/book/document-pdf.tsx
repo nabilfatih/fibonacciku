@@ -93,7 +93,7 @@ function BookDocumentPdf({
         onLoadSuccess={onDocumentLoadSuccess}
         options={options}
         externalLinkTarget="_blank"
-        className="relative h-full border-x bg-background"
+        className="relative h-full sm:border-x bg-background"
         error={
           <div className="absolute inset-0 flex items-center justify-center">
             <IconMoodSad />
