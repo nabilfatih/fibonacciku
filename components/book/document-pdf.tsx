@@ -8,6 +8,8 @@ import { ViewportList } from "react-viewport-list"
 import { cn } from "@/lib/utils"
 import { IconSpinner } from "@/components/ui/icons"
 import type { ActionDocument, StateDocument } from "@/components/book/document"
+import { IconMoodSad } from "@tabler/icons-react"
+import { isMobileOnly } from "react-device-detect"
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.js",
@@ -65,7 +67,8 @@ function BookDocumentPdf({
     (page: any) => {
       if (parentRef.current) {
         const pageScale =
-          parentRef.current.clientWidth / page.originalWidth - 0.02 // make sure the page is not x overflow
+          parentRef.current.clientWidth / page.originalWidth -
+          (isMobileOnly ? 0.02 : 0.3) // make sure the page is not x overflow
         if (firstInit) {
           dispatch({
             type: "SET_ZOOM",
@@ -90,6 +93,11 @@ function BookDocumentPdf({
         options={options}
         externalLinkTarget="_blank"
         className="relative h-full border-x bg-background"
+        error={
+          <div className="absolute inset-0 flex items-center justify-center">
+            <IconMoodSad className="animate-spin" />
+          </div>
+        }
         loading={
           <div className="absolute inset-0 flex items-center justify-center">
             <IconSpinner className="animate-spin" />

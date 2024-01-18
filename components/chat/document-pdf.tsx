@@ -9,6 +9,7 @@ import { useMessage } from "@/lib/context/use-message"
 import { cn } from "@/lib/utils"
 import { IconSpinner } from "@/components/ui/icons"
 import type { ActionDocument, StateDocument } from "@/components/chat/document"
+import { IconMoodSad } from "@tabler/icons-react"
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.js",
@@ -94,6 +95,11 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
         options={options}
         externalLinkTarget="_blank"
         className="relative h-full border border-t-0 bg-background"
+        error={
+          <div className="absolute inset-0 flex items-center justify-center">
+            <IconMoodSad className="animate-spin" />
+          </div>
+        }
         loading={
           <div className="absolute inset-0 flex items-center justify-center">
             <IconSpinner className="animate-spin" />

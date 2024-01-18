@@ -18,7 +18,7 @@ export default function BookCollection({
     <>
       <BookDocument book={book} file={file} page={page} className={className} />
 
-      <BookActions />
+      <BookActions book={book} />
     </>
   )
 }
