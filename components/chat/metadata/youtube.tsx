@@ -38,7 +38,7 @@ export default function ChatMetadataYoutube({ metadata }: Props) {
                 duration: 0.5
               }}
               viewport={{ amount: 0 }}
-              className="group min-h-[82px] rounded-xl border p-2 shadow-sm transition-colors hover:bg-muted/50"
+              className="group min-h-[82px] rounded-xl border px-3 py-2 shadow-sm transition-colors hover:bg-muted/50"
               style={{
                 backgroundImage: `linear-gradient(rgb(10, 20, 39), rgba(0, 0, 0, 0.1)), url(${item.snippet.thumbnails.high.url})`,
                 backgroundSize: "cover",
