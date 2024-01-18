@@ -1,8 +1,9 @@
 import { cookies } from "next/headers"
-import { getScopedI18n } from "@/locales/server"
 
 import type { Subscription } from "@/types/types"
 import { createClientServer } from "@/lib/supabase/server"
+import { getScopedI18n } from "@/locales/server"
+
 import { Badge } from "@/components/ui/badge"
 import PremiumFeatures from "@/components/premium/features"
 import PremiumPlugins from "@/components/premium/plugins"

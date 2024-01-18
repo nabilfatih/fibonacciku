@@ -1,6 +1,7 @@
 import Link from "next/link"
-import { getScopedI18n } from "@/locales/server"
 import { IconBook } from "@tabler/icons-react"
+
+import { getScopedI18n } from "@/locales/server"
 
 import { Button } from "@/components/ui/button"
 import {

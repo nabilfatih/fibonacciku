@@ -1,12 +1,12 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { useScopedI18n } from "@/locales/client"
 import { IconWorldWww } from "@tabler/icons-react"
 import { motion } from "framer-motion"
 import he from "he"
 
 import type { SearchResult } from "@/types/types"
+import { useScopedI18n } from "@/locales/client"
 
 type Props = {
   metadata: SearchResult[]

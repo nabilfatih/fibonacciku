@@ -6,6 +6,7 @@ import { formatDocumentsAsString } from "langchain/util/document"
 import type { Books } from "@/types/types"
 import supabaseAdmin from "@/lib/supabase/admin"
 import { getBooksAdmin } from "@/lib/supabase/admin/book"
+
 import BookContent from "@/components/book/content"
 
 export const runtime = "edge"

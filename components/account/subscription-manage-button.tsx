@@ -2,11 +2,12 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { useScopedI18n } from "@/locales/client"
 import { toast } from "sonner"
 
 import type { Subscription } from "@/types/types"
 import { postData } from "@/lib/utils"
+import { useScopedI18n } from "@/locales/client"
+
 import { Button } from "@/components/ui/button"
 import { IconSpinner } from "@/components/ui/icons"
 

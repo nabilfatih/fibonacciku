@@ -1,7 +1,8 @@
 import dynamic from "next/dynamic"
-import { useScopedI18n } from "@/locales/client"
 
 import { useCurrentUser } from "@/lib/context/use-current-user"
+import { useScopedI18n } from "@/locales/client"
+
 import LibraryForm from "@/components/library/form"
 
 const ChatLibrary = dynamic(() => import("@/components/chat/library"))

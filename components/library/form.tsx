@@ -1,6 +1,5 @@
 import { useCallback, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
-import { useScopedI18n } from "@/locales/client"
 import { IconFileUpload } from "@tabler/icons-react"
 import axios from "axios"
 import { toast } from "sonner"
@@ -12,6 +11,8 @@ import {
 } from "@/lib/supabase/client/chat"
 import useUserLibrary from "@/lib/swr/use-user-library"
 import { cn, generateNanoID } from "@/lib/utils"
+import { useScopedI18n } from "@/locales/client"
+
 import { IconSpinner } from "@/components/ui/icons"
 
 interface LibraryFormProps extends React.ComponentProps<"button"> {}

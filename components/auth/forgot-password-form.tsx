@@ -1,11 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { useScopedI18n } from "@/locales/client"
 import { toast } from "sonner"
 
 import supabaseClient from "@/lib/supabase/client"
 import { cn } from "@/lib/utils"
+import { useScopedI18n } from "@/locales/client"
+
 import { Button } from "@/components/ui/button"
 import { IconSpinner } from "@/components/ui/icons"
 import { Input } from "@/components/ui/input"

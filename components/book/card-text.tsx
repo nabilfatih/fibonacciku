@@ -1,4 +1,5 @@
 import Link from "next/link"
+
 import { useScopedI18n } from "@/locales/client"
 
 import { Badge } from "@/components/ui/badge"

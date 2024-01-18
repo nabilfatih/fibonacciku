@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { createClientServer } from "@/lib/supabase/server"
+
 import { IconSeparator } from "@/components/ui/icons"
 import HeaderBadge from "@/components/header/badge"
 import HeaderChatFeature from "@/components/header/feature"

@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react"
-import { useScopedI18n } from "@/locales/client"
 
 import { cn } from "@/lib/utils"
+import { useScopedI18n } from "@/locales/client"
+
 import { Button } from "@/components/ui/button"
 import type { BookDocumentWithBooks } from "@/components/book/search"
 

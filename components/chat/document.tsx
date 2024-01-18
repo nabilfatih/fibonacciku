@@ -2,7 +2,6 @@
 
 import { useReducer } from "react"
 import dynamic from "next/dynamic"
-import { useScopedI18n } from "@/locales/client"
 import {
   IconMinus,
   IconPlus,
@@ -11,6 +10,8 @@ import {
 } from "@tabler/icons-react"
 
 import { useMessage } from "@/lib/context/use-message"
+import { useScopedI18n } from "@/locales/client"
+
 import { Button } from "@/components/ui/button"
 import { IconSeparator, IconSpinner } from "@/components/ui/icons"
 import { Input } from "@/components/ui/input"

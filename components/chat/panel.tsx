@@ -1,11 +1,12 @@
 import * as React from "react"
 import dynamic from "next/dynamic"
-import { useScopedI18n } from "@/locales/client"
 import { IconEye, IconRefresh, IconShare3 } from "@tabler/icons-react"
 
 import type { Features, ShowChatMessage } from "@/types/types"
 import { useMessage } from "@/lib/context/use-message"
 import { cn } from "@/lib/utils"
+import { useScopedI18n } from "@/locales/client"
+
 import { Button } from "@/components/ui/button"
 import { IconStop } from "@/components/ui/icons"
 import ButtonScrollToBottom from "@/components/chat/button-scroll-to-bottom"

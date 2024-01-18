@@ -1,8 +1,9 @@
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-import { getScopedI18n } from "@/locales/server"
 
 import { createClientServer } from "@/lib/supabase/server"
+import { getScopedI18n } from "@/locales/server"
+
 import {
   Card,
   CardContent,

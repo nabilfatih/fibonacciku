@@ -2,6 +2,7 @@
 
 // Error components must be Client Components
 import Link from "next/link"
+
 import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"

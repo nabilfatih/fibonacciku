@@ -1,13 +1,14 @@
 "use client"
 
 import React from "react"
+
+import { updateUserLang } from "@/lib/supabase/client/users"
 import {
   useChangeLocale,
   useCurrentLocale,
   useScopedI18n
 } from "@/locales/client"
 
-import { updateUserLang } from "@/lib/supabase/client/users"
 import { Label } from "@/components/ui/label"
 import {
   Select,

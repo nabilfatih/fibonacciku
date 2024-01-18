@@ -1,6 +1,7 @@
 import { useState } from "react"
-import { useScopedI18n } from "@/locales/client"
 import { IconBulb } from "@tabler/icons-react"
+
+import { useScopedI18n } from "@/locales/client"
 
 type Props = {
   query: string

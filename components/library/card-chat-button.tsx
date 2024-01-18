@@ -1,8 +1,9 @@
 import { useRouter } from "next/navigation"
-import { useScopedI18n } from "@/locales/client"
 import { IconMessageCirclePlus } from "@tabler/icons-react"
 
 import type { Libraries } from "@/types/types"
+import { useScopedI18n } from "@/locales/client"
+
 import { Button } from "@/components/ui/button"
 import {
   Tooltip,

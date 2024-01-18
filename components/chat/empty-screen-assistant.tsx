@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { useScopedI18n } from "@/locales/client"
 import {
   IconBook2,
   IconFile,
@@ -8,6 +7,8 @@ import {
 } from "@tabler/icons-react"
 
 import { cn } from "@/lib/utils"
+import { useScopedI18n } from "@/locales/client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 

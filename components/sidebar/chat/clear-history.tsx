@@ -2,12 +2,13 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
-import { useScopedI18n } from "@/locales/client"
 import { toast } from "sonner"
 
 import { useCurrentUser } from "@/lib/context/use-current-user"
 import { deleteUserChat } from "@/lib/supabase/client/users"
 import { cn } from "@/lib/utils"
+import { useScopedI18n } from "@/locales/client"
+
 import {
   AlertDialog,
   AlertDialogAction,

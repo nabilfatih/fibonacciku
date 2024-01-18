@@ -5,6 +5,7 @@ import { AnimatePresence, LayoutGroup } from "framer-motion"
 import { ViewportList } from "react-viewport-list"
 
 import type { Libraries } from "@/types/types"
+
 import LibraryCard from "@/components/library/card"
 
 type Props = {

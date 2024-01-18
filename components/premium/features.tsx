@@ -1,4 +1,3 @@
-import { getScopedI18n } from "@/locales/server"
 import {
   IconBook2,
   IconFiles,
@@ -7,6 +6,8 @@ import {
   IconPuzzle,
   IconSparkles
 } from "@tabler/icons-react"
+
+import { getScopedI18n } from "@/locales/server"
 
 export default async function PremiumFeatures() {
   const t = await getScopedI18n("MarketingPricing")

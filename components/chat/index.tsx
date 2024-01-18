@@ -7,6 +7,7 @@ import type { Chat, ChatMessage, Features } from "@/types/types"
 import { useMessage } from "@/lib/context/use-message"
 import { downloadChatDocument } from "@/lib/supabase/client/chat"
 import { cn } from "@/lib/utils"
+
 import ChatScrollAnchor from "@/components/chat/scroll-anchor"
 
 const ChatPanel = dynamic(() => import("@/components/chat/panel"))

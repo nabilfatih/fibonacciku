@@ -3,7 +3,6 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useScopedI18n } from "@/locales/client"
 import {
   IconDiscountCheck,
   IconExternalLink,
@@ -13,6 +12,8 @@ import Avatar, { genConfig } from "react-nice-avatar"
 
 import { useCurrentUser } from "@/lib/context/use-current-user"
 import supabaseClient from "@/lib/supabase/client"
+import { useScopedI18n } from "@/locales/client"
+
 import {
   DropdownMenu,
   DropdownMenuContent,

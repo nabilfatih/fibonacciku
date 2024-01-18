@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { getBooksCoverPublicUrl } from "@/lib/supabase/client/book"
+
 import BookCardDescription from "@/components/book/card-description"
 import BookCardText from "@/components/book/card-text"
 import type { BookDocumentWithBooks } from "@/components/book/search"

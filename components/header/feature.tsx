@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import { useParams, usePathname } from "next/navigation"
-import { useScopedI18n } from "@/locales/client"
 import {
   IconApps,
   IconBook2,
@@ -11,6 +10,8 @@ import {
   IconMessageCircle2,
   IconSpy
 } from "@tabler/icons-react"
+
+import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
 import {

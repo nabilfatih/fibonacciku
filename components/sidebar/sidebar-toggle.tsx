@@ -4,6 +4,7 @@ import * as React from "react"
 import { IconLayoutSidebar } from "@tabler/icons-react"
 
 import { useSidebar } from "@/lib/hooks/use-sidebar"
+
 import { Button } from "@/components/ui/button"
 
 export function SidebarToggle() {

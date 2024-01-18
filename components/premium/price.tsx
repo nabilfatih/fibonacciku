@@ -2,7 +2,6 @@
 
 import { useCallback, useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
-import { useScopedI18n } from "@/locales/client"
 import type { User } from "@supabase/supabase-js"
 import {
   IconCheck,
@@ -23,6 +22,8 @@ import {
 } from "@/lib/premium/helpers"
 import { getStripe } from "@/lib/stripe/client"
 import { postData } from "@/lib/utils"
+import { useScopedI18n } from "@/locales/client"
+
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import {

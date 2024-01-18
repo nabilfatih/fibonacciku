@@ -2,13 +2,14 @@
 
 import { useReducer, useRef } from "react"
 import dynamic from "next/dynamic"
-import { useScopedI18n } from "@/locales/client"
 import {
   IconMinus,
   IconPlus,
   IconRefresh,
   IconSearch
 } from "@tabler/icons-react"
+
+import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
 import { IconSeparator } from "@/components/ui/icons"

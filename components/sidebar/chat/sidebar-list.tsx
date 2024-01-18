@@ -1,13 +1,14 @@
 "use client"
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { useScopedI18n } from "@/locales/client"
 import { IconSearch } from "@tabler/icons-react"
 
 import type { Chat } from "@/types/types"
 import { useCurrentUser } from "@/lib/context/use-current-user"
 import supabaseClient from "@/lib/supabase/client"
 import useChatHistory from "@/lib/swr/use-chat-history"
+import { useScopedI18n } from "@/locales/client"
+
 import { Input } from "@/components/ui/input"
 import ClearHistory from "@/components/sidebar/chat/clear-history"
 import LoadingChatHistory from "@/components/sidebar/chat/loading-chat-history"

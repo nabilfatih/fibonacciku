@@ -5,6 +5,7 @@ import { IconArrowNarrowDown } from "@tabler/icons-react"
 
 import { useMessage } from "@/lib/context/use-message"
 import { cn } from "@/lib/utils"
+
 import { Button, type ButtonProps } from "@/components/ui/button"
 
 export default function ButtonScrollToBottom({

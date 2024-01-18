@@ -5,13 +5,14 @@ import {
   IconMessageCirclePlus
 } from "@tabler/icons-react"
 
+import type { Books } from "@/types/types"
+
 import { Button } from "@/components/ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger
 } from "@/components/ui/tooltip"
-import type { Books } from "@/types/types"
 
 type Props = {
   book: Books

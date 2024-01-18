@@ -1,10 +1,11 @@
 "use client"
 
 import React from "react"
-import { useScopedI18n } from "@/locales/client"
 import { toast } from "sonner"
 
 import type { UserRole } from "@/types/types"
+import { useScopedI18n } from "@/locales/client"
+
 import { Label } from "@/components/ui/label"
 import {
   Select,

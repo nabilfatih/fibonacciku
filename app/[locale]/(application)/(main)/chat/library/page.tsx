@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import { notFound, redirect } from "next/navigation"
-import { getScopedI18n } from "@/locales/server"
 
 import { createClientServer } from "@/lib/supabase/server"
+import { getScopedI18n } from "@/locales/server"
+
 import LibraryDocument from "@/components/library"
 
 export async function generateMetadata(): Promise<Metadata> {

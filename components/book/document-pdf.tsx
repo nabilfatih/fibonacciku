@@ -2,14 +2,15 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css"
 import "react-pdf/dist/esm/Page/TextLayer.css"
 
 import { memo, useCallback, useRef, useState, type Dispatch } from "react"
+import { IconMoodSad } from "@tabler/icons-react"
+import { isMobileOnly } from "react-device-detect"
 import { Document, Page, pdfjs } from "react-pdf"
 import { ViewportList } from "react-viewport-list"
 
 import { cn } from "@/lib/utils"
+
 import { IconSpinner } from "@/components/ui/icons"
 import type { ActionDocument, StateDocument } from "@/components/book/document"
-import { IconMoodSad } from "@tabler/icons-react"
-import { isMobileOnly } from "react-device-detect"
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.js",

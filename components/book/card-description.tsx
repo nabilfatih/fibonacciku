@@ -1,8 +1,9 @@
-import { useScopedI18n } from "@/locales/client"
 import { IconPointFilled } from "@tabler/icons-react"
 import moment from "moment"
 
 import type { Books } from "@/types/types"
+import { useScopedI18n } from "@/locales/client"
+
 import { Badge } from "@/components/ui/badge"
 
 type Props = {

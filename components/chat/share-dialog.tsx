@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { useScopedI18n } from "@/locales/client"
 import { type DialogProps } from "@radix-ui/react-dialog"
 import moment from "moment"
 import { toast } from "sonner"
@@ -9,6 +8,8 @@ import { toast } from "sonner"
 import type { Chat, ServerActionResult, ShowChatMessage } from "@/types/types"
 import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard"
 import { useMediaQuery } from "@/lib/hooks/use-media-query"
+import { useScopedI18n } from "@/locales/client"
+
 import { Button } from "@/components/ui/button"
 import {
   Dialog,

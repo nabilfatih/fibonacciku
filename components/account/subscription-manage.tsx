@@ -1,7 +1,8 @@
-import { getScopedI18n } from "@/locales/server"
 import moment from "moment"
 
 import type { Subscription } from "@/types/types"
+import { getScopedI18n } from "@/locales/server"
+
 import { Badge } from "@/components/ui/badge"
 import {
   Card,

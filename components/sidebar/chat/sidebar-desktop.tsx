@@ -1,6 +1,7 @@
 import { cookies } from "next/headers"
 
 import { createClientServer } from "@/lib/supabase/server"
+
 import { Sidebar } from "@/components/sidebar"
 import { ChatHistory } from "@/components/sidebar/chat/chat-history"
 

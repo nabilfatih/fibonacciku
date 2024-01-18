@@ -6,10 +6,11 @@ import "@/styles/globals.css"
 import { Suspense } from "react"
 import type { Metadata, Viewport } from "next"
 import { notFound } from "next/navigation"
-import { getScopedI18n } from "@/locales/server"
 import NextTopLoader from "nextjs-toploader"
 
 import { cn } from "@/lib/utils"
+import { getScopedI18n } from "@/locales/server"
+
 import { Toaster } from "@/components/ui/sonner"
 import { TailwindIndicator } from "@/components/development/tailwind-indicator"
 import { Providers } from "@/components/providers"

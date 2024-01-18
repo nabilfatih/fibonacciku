@@ -1,4 +1,5 @@
 import type { ChatMessageMetadata } from "@/types/types"
+
 import ChatMetadataAcademic from "@/components/chat/metadata/academic"
 import ChatMetadataAttachment from "@/components/chat/metadata/attachment"
 import ChatMetadataGoogle from "@/components/chat/metadata/google"

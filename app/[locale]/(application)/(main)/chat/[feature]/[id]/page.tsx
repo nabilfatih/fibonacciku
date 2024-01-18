@@ -3,9 +3,10 @@ import { cookies } from "next/headers"
 import { notFound, redirect } from "next/navigation"
 import { kv } from "@vercel/kv"
 
-import { createClientServer } from "@/lib/supabase/server"
-import ChatMessage from "@/components/chat"
 import type { Features } from "@/types/types"
+import { createClientServer } from "@/lib/supabase/server"
+
+import ChatMessage from "@/components/chat"
 
 export const runtime = "edge"
 

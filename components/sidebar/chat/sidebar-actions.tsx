@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
-import { useScopedI18n } from "@/locales/client"
 import {
   IconDotsVertical,
   IconPencil,
@@ -13,6 +12,8 @@ import { toast } from "sonner"
 
 import type { Chat, ServerActionResult } from "@/types/types"
 import { cn } from "@/lib/utils"
+import { useScopedI18n } from "@/locales/client"
+
 import {
   AlertDialog,
   AlertDialogAction,

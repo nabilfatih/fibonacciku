@@ -1,8 +1,9 @@
-import { useCurrentLocale } from "@/locales/client"
 import moment from "moment"
 
 import type { IndexMessage, ShowChatMessage } from "@/types/types"
 import { cn } from "@/lib/utils"
+import { useCurrentLocale } from "@/locales/client"
+
 import ChatAssistant from "@/components/chat/assistant"
 import ChatAvatar from "@/components/chat/avatar"
 import ChatMessageActions from "@/components/chat/message-action"

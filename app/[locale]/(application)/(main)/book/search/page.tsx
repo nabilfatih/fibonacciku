@@ -2,9 +2,10 @@ import { Suspense } from "react"
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-import { getScopedI18n } from "@/locales/server"
 
 import { createClientServer } from "@/lib/supabase/server"
+import { getScopedI18n } from "@/locales/server"
+
 import BookLoading from "@/components/book/loading"
 import BookSearch from "@/components/book/search"
 

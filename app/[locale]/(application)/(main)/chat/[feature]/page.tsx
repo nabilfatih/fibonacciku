@@ -1,11 +1,12 @@
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
+
+import type { Features } from "@/types/types"
+import { createClientServer } from "@/lib/supabase/server"
 import { getScopedI18n } from "@/locales/server"
 
-import { createClientServer } from "@/lib/supabase/server"
 import ChatMessage from "@/components/chat"
-import type { Features } from "@/types/types"
 
 type Props = {
   params: { feature: string }

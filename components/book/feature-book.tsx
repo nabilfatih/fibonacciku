@@ -1,11 +1,12 @@
 import { cookies } from "next/headers"
 import Image from "next/image"
 import Link from "next/link"
-import { getCurrentLocale } from "@/locales/server"
 import moment from "moment"
 
 import { getBooksCoverPublicUrl } from "@/lib/supabase/client/book"
 import { createClientServer } from "@/lib/supabase/server"
+import { getCurrentLocale } from "@/locales/server"
+
 import { Button } from "@/components/ui/button"
 
 export default async function FeatureBook() {
