@@ -188,7 +188,7 @@ export default function ChatLibrary({ userId }: Props) {
               size="icon"
               className="mt-2 rounded-full"
             >
-              <Link href="/chat/document">
+              <Link href="/chat/library">
                 <IconX className="h-5 w-5" />
                 <span className="sr-only">Close</span>
               </Link>
