@@ -6,10 +6,14 @@ import { kv } from "@vercel/kv"
 import {
   experimental_StreamData,
   OpenAIStream,
-  StreamingTextResponse
+  StreamingTextResponse,
+  type JSONValue,
+  type ToolCallPayload
 } from "ai"
+import { formatDocumentsAsString } from "langchain/util/document"
 import OpenAI from "openai"
 
+import type { DataMessage } from "@/types/types"
 import type { ChatRequest } from "@/lib/context/use-message"
 import { openai } from "@/lib/openai"
 import {
@@ -17,8 +21,13 @@ import {
   createSafeTitle,
   determineModelBasedOnSubscription
 } from "@/lib/openai/helper"
+import { documentRetrieval } from "@/lib/openai/plugin/document"
 import { documentRule } from "@/lib/openai/system"
-import { insertChatAdmin } from "@/lib/supabase/admin/chat"
+import { defaultToolsChat } from "@/lib/openai/tools"
+import {
+  getChatAttachmentSignedUrlAdmin,
+  insertChatAdmin
+} from "@/lib/supabase/admin/chat"
 import { getLibraryByFileIdAdmin } from "@/lib/supabase/admin/library"
 import { updateUserUsageAdmin } from "@/lib/supabase/admin/users"
 import { createClientServer } from "@/lib/supabase/server"
@@ -80,7 +89,8 @@ export async function POST(req: NextRequest) {
 
   const chatId = dataRequest.chatId
   const userId = user.id
-  const { model, isCostLimit } = await determineModelBasedOnSubscription(userId)
+  const { model, isCostLimit, additionalTools } =
+    await determineModelBasedOnSubscription(userId)
 
   if (isCostLimit) {
     // return that is in limit access, please consider to buy premium
@@ -97,38 +107,38 @@ export async function POST(req: NextRequest) {
     )
   }
 
-  const functions = [
-    {
-      name: "get_document",
-      description:
-        "Get the document from the database. This is RAG retriever to get the document context.",
-      parameters: {
-        type: "object",
-        properties: {
-          query: {
-            type: "string",
-            description:
-              "the query to get the document context. Must be a standalone question."
-          }
-        },
-        required: ["query"]
-      }
-    }
+  // default function call
+  let toolChoice: OpenAI.ChatCompletionToolChoiceOption = "auto"
+  let tools: OpenAI.ChatCompletionTool[] = [
+    ...defaultToolsChat,
+    ...additionalTools
   ]
 
-  // make sure that message length is always max 15, never remove the first index
-  // if more than 15, remove from index 1 until the total length is 15
+  // get the last message
+  const lastMessage = messages[messages.length - 1] as DataMessage
+
+  // make sure that message length is always max 10, never remove the first index
+  // if more than 10, remove from index 1 until the total length is 10
   // This is for make sure there is no spike in cost of openai
   let finalMessage = [...messages] as OpenAI.ChatCompletionMessage[]
-  if (finalMessage.length > 15) {
+  if (finalMessage.length > 10) {
     const firstMessage = finalMessage[0]
-    finalMessage = [firstMessage, ...finalMessage.slice(-14)]
+    finalMessage = [firstMessage, ...finalMessage.slice(-9)]
   }
 
   // inject system message with additional rules
   finalMessage[0].content += documentRule
-  // inject last message with additional rules
-  finalMessage[finalMessage.length - 1].content += documentRule
+
+  // Retrieve the document
+  const query = lastMessage.content
+    .split("------------------------------")[0]
+    .trim()
+  const document = await documentRetrieval(userId, dataRequest.fileId, query)
+  const documentContent = formatDocumentsAsString(document.sources)
+
+  // inject document in the last message with prefix 'document:(newline)', without
+  finalMessage[finalMessage.length - 1].content +=
+    `\ndocument:\n${documentContent}`
 
   try {
     const response = await openai.chat.completions.create({
@@ -136,40 +146,104 @@ export async function POST(req: NextRequest) {
       stream: true,
       messages: finalMessage,
       temperature: 0.5,
-      functions: functions,
-      function_call: {
-        name: "get_document"
-      },
+      tools,
+      tool_choice: toolChoice,
       user: userId
     })
 
     const data = new experimental_StreamData()
     const stream = OpenAIStream(response, {
-      // Force tools choice still error in AI SDK
-      // thankfully this is only for document feature so it only has 1 tool
-      experimental_onFunctionCall: async (
-        { name, arguments: args },
-        createFunctionCallMessages
+      experimental_onToolCall: async (
+        call: ToolCallPayload,
+        appendToolCallMessage
       ) => {
-        const resultFunction = await callTools(
-          userId,
-          chatId,
-          name,
-          args,
-          dataRequest.fileId
-        )
-        data.append({
-          toolName: name,
-          data: resultFunction.result
+        if (call.tools[0].func.name === "image_analysis") {
+          const initialMessages = finalMessage.slice(0, -1)
+          const currentMessage = finalMessage[finalMessage.length - 1]
+          const args = JSON.parse(String(call.tools[0].func.arguments))
+          // remove space in image and split by comma
+          const imageIdArray = String(args.image).replace(/\s/g, "").split(",")
+          // get image url in parallel
+          const imageUrls = await Promise.all(
+            imageIdArray.map(imageId =>
+              getChatAttachmentSignedUrlAdmin(userId, chatId, imageId)
+            )
+          ).catch(error => {
+            console.error(error)
+            return []
+          })
+          // the function still not handle the types from ai sdk
+          // @ts-ignore
+          return openai.chat.completions.create({
+            model: "gpt-4-vision-preview",
+            stream: true,
+            temperature: 0.5,
+            max_tokens: 4096, // I don't know why, but in gpt-4-vision-preview, maxTokens must be specified
+            messages: [
+              ...initialMessages,
+              {
+                ...currentMessage,
+                content: [
+                  { type: "text", text: currentMessage.content },
+                  ...imageUrls.map(imageUrl => ({
+                    type: "image_url",
+                    image_url: imageUrl
+                  }))
+                ]
+              }
+            ],
+            user: userId
+          })
+        }
+
+        // map over call.tools to get the tool name
+        const results = await Promise.all(
+          call.tools.map(async tool => {
+            return await callTools(
+              userId,
+              chatId,
+              tool.func.name,
+              JSON.parse(String(tool.func.arguments))
+            ).then(data => {
+              return {
+                toolId: tool.id,
+                toolName: tool.func.name,
+                toolResult: data
+              }
+            })
+          })
+        ).catch(error => {
+          console.error(error)
+          throw new Error("Error calling tools")
         })
-        const newMessages = createFunctionCallMessages(resultFunction.result)
+
+        // map over results to get the new messages
+        const newMessages = results.map(result => {
+          return appendToolCallMessage({
+            tool_call_id: result.toolId,
+            function_name: result.toolName,
+            tool_call_result: result.toolResult.result
+          })
+        })[results.length - 1] // get the last index
+
+        // append data
+        for (const message of newMessages) {
+          if (message.role === "tool") {
+            const value = {
+              toolName: message.name,
+              data: JSON.parse(String(message.content))
+            } as JSONValue
+            data.append(value)
+          }
+        }
+
         return openai.chat.completions.create({
           messages: [...(finalMessage as any), ...newMessages],
           temperature: 0.5,
           model,
           stream: true,
-          functions: functions,
-          function_call: "auto"
+          tools,
+          tool_choice: "auto"
         })
       },
       async onStart() {
@@ -196,6 +270,12 @@ export async function POST(req: NextRequest) {
       },
       // IMPORTANT! until this is stable, you must explicitly opt in to supporting streamData.
       experimental_streamData: true
+    })
+
+    // append the document data
+    data.append({
+      toolName: "get_document",
+      data: document
     })
 
     return new StreamingTextResponse(stream, {}, data)

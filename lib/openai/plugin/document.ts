@@ -69,8 +69,8 @@ export const documentRetrieval = async (
       // this is only temporary solution
       // TODO: Maybe there is a better way to do this
     )
-    // only get the first 7 documents
-    .slice(0, 7)
+    // only get the first 10 documents
+    .slice(0, 10)
     // oder by page number
     .sort((a, b) => a.page_number - b.page_number)
 
