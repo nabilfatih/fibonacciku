@@ -4,6 +4,7 @@ import { kv } from "@vercel/kv"
 
 import supabaseAdmin from "@/lib/supabase/admin"
 import ChatMessage from "@/components/chat"
+import type { Features } from "@/types/types"
 
 type Props = {
   params: { feature: string; id: string }
@@ -51,7 +52,7 @@ export default async function ChatMessagePage({ params }: Props) {
       id={chat.id}
       userId={chat.user_id}
       initialMessages={chat.messages}
-      type={chat.type as "assistant" | "document"}
+      type={chat.type as Features}
       title={chat.title}
       fileId={chat.file_id}
       createdAt={chat.created_at}

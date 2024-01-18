@@ -5,6 +5,7 @@ import { getScopedI18n } from "@/locales/server"
 
 import { createClientServer } from "@/lib/supabase/server"
 import ChatMessage from "@/components/chat"
+import type { Features } from "@/types/types"
 
 type Props = {
   params: { feature: string }
@@ -45,9 +46,6 @@ export default async function ChatFeaturePage({ params }: Props) {
   }
 
   return (
-    <ChatMessage
-      userId={session.user.id}
-      type={params.feature as "assistant" | "document"}
-    />
+    <ChatMessage userId={session.user.id} type={params.feature as Features} />
   )
 }

@@ -3,7 +3,7 @@ import dynamic from "next/dynamic"
 import { useScopedI18n } from "@/locales/client"
 import { IconEye, IconRefresh, IconShare3 } from "@tabler/icons-react"
 
-import type { ShowChatMessage } from "@/types/types"
+import type { Features, ShowChatMessage } from "@/types/types"
 import { useMessage } from "@/lib/context/use-message"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -20,7 +20,7 @@ const ChatDocument = dynamic(() => import("@/components/chat/document"))
 export type ChatPanelProps = {
   isLoading: boolean
   messages: ShowChatMessage[]
-  type: "assistant" | "document"
+  type: Features
   prompt: string
   setPrompt: (value: string) => void
   id?: string

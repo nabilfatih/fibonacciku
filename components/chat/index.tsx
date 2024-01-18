@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef } from "react"
 import dynamic from "next/dynamic"
 
-import type { Chat, ChatMessage } from "@/types/types"
+import type { Chat, ChatMessage, Features } from "@/types/types"
 import { useMessage } from "@/lib/context/use-message"
 import { downloadChatDocument } from "@/lib/supabase/client/chat"
 import { cn } from "@/lib/utils"
@@ -14,7 +14,7 @@ const ChatList = dynamic(() => import("@/components/chat/list"))
 const EmptyScreen = dynamic(() => import("@/components/chat/empty-screen"))
 
 export interface ChatProps extends React.ComponentProps<"div"> {
-  type: "assistant" | "document"
+  type: Features
   chat?: Chat
   initialMessages?: ChatMessage[]
   id?: string

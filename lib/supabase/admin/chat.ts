@@ -1,6 +1,6 @@
 import { decode } from "base64-arraybuffer"
 
-import type { ChatMessage } from "@/types/types"
+import type { ChatMessage, Features } from "@/types/types"
 import { generateNanoID } from "@/lib/utils"
 
 import supabaseAdmin from "."
@@ -87,7 +87,7 @@ export const insertChatAdmin = async (
   userId: string,
   title: string,
   optionsData: { language: string; grade: string },
-  type: "assistant" | "document",
+  type: Features,
   fileId = ""
 ) => {
   const { error } = await supabaseAdmin.from("chat").insert({

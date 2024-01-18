@@ -17,6 +17,9 @@
     "^@/config/(.*)$",
     "^@/lib/(.*)$",
     "^@/hooks/(.*)$",
+    "^@/utils/(.*)$",
+    "^@/locales/(.*)$",
+    "",
     "^@/components/ui/(.*)$",
     "^@/components/(.*)$",
     "^@/registry/(.*)$",
@@ -28,7 +31,7 @@
   "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"],
   "tailwindConfig": "./tailwind.config.ts",
   "plugins": [
-    "@ianvs/prettier-plugin-sort-imports",
-    "prettier-plugin-tailwindcss"
+    "prettier-plugin-tailwindcss",
+    "@ianvs/prettier-plugin-sort-imports"
   ]
 }

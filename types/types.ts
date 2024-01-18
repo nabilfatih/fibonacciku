@@ -11,6 +11,8 @@ export type ServerActionResult<Result> = Promise<
     }
 >
 
+export type Features = "assistant" | "document" | "book"
+
 export type UserDetails = {
   id: string /* primary key */
   full_name?: string | null

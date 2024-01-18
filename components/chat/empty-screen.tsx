@@ -1,9 +1,26 @@
+import type { Features } from "@/types/types"
 import { useCurrentUser } from "@/lib/context/use-current-user"
+
 import EmptyScreenAssistant from "@/components/chat/empty-screen-assistant"
+import EmptyScreenBook from "@/components/chat/empty-screen-book"
 import EmptyScreenDocument from "@/components/chat/empty-screen-document"
 
 type Props = {
-  type: "assistant" | "document"
+  type: Features
+}
+
+function EmptyScreenFeatures({ type }: Props) {
+  switch (type) {
+    case "assistant":
+      return <EmptyScreenAssistant />
+    case "document":
+      return <EmptyScreenDocument />
+    case "book":
+      return <EmptyScreenBook />
+
+    default:
+      return <EmptyScreenAssistant /> // default to assistant screen if type is not recognized
+  }
 }
 
 export default function EmptyScreen({ type }: Props) {
