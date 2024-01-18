@@ -13,7 +13,7 @@ const fetcher = (url: string): Promise<ResponseData> =>
 
 export default function useUser(userId: string) {
   const { data, error, isLoading, isValidating } = useSWR<ResponseData>(
-    `/api/auth/get-user/${userId}`,
+    userId ? `/api/auth/get-user/${userId}` : null,
     fetcher
   )
 
