@@ -75,7 +75,14 @@ export default function ChatLibrary({ userId }: Props) {
     }))
   }, [])
 
-  if (!libraries) return null
+  if (!libraries || libraries.length === 0)
+    return (
+      <div className="grid">
+        <Button asChild variant="link" className="mx-auto w-fit">
+          <Link href="/chat/library">See your library</Link>
+        </Button>
+      </div>
+    )
 
   return (
     <div className="grid">

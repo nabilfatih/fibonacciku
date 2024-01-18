@@ -30,11 +30,7 @@ export default function EmptyScreen({ type }: Props) {
       <h1 className="mb-2 text-xl font-semibold sm:text-3xl">
         Hi{` ${userDetails?.full_name ?? ""}`} 👋
       </h1>
-      {type === "assistant" ? (
-        <EmptyScreenAssistant />
-      ) : (
-        <EmptyScreenDocument />
-      )}
+      <EmptyScreenFeatures type={type} />
     </div>
   )
 }
