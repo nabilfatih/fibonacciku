@@ -519,6 +519,7 @@ export default {
     "see-diagram": "Lihat diagram",
     share: "Bagikan",
     document: "Dokumen",
+    book: "Buku",
     close: "Tutup"
   },
   FormDocument: {

@@ -61,7 +61,7 @@ export default function ChatPanel({
         onClick={() => dispatch({ type: "SET_OPEN_DOCUMENT", payload: true })}
       >
         <IconEye className="mr-2 h-5 w-5" />
-        {t("document")}
+        {t(type as never)}
       </Button>
       <ButtonScrollToBottom />
       <div className="mx-auto sm:max-w-2xl sm:px-2">

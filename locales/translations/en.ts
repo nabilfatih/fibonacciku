@@ -502,6 +502,7 @@ export default {
     "see-diagram": "See diagram",
     share: "Share",
     document: "Document",
+    book: "Book",
     close: "Close"
   },
   FormDocument: {

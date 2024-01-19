@@ -522,6 +522,7 @@ export default {
     "see-diagram": "Diagramm ansehen",
     share: "Teilen",
     document: "Dokument",
+    book: "Buch",
     close: "Schließen"
   },
   FormDocument: {
