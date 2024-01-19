@@ -32,7 +32,8 @@ export default function ChatMetadataAttachment({ metadata }: Props) {
     fetchChatAttachment,
     {
       revalidateOnFocus: false,
-      revalidateOnReconnect: false
+      revalidateOnReconnect: false,
+      revalidateIfStale: false
     }
   )
 
