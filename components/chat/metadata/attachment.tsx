@@ -1,42 +1,47 @@
 import React, { useEffect, useState } from "react"
 import Image from "next/image"
-import { useParams } from "next/navigation"
+import useSWR from "swr"
 
-import type { Attachment } from "@/types/types"
+import type { Attachment, UserDetails } from "@/types/types"
 import { useCurrentUser } from "@/lib/context/use-current-user"
 import { getChatAttachmentSignedUrl } from "@/lib/supabase/client/chat"
 import { cn } from "@/lib/utils"
+
+async function fetchChatAttachment([userDetails, metadata]: [
+  UserDetails,
+  Attachment[]
+]) {
+  const userId = userDetails.id
+  if (!userId) return []
+  const urls = await Promise.all(
+    metadata.map(item =>
+      getChatAttachmentSignedUrl(userId, item.chat_id, item.file_id)
+    )
+  )
+  return urls
+}
 
 type Props = {
   metadata: Attachment[]
 }
 
 export default function ChatMetadataAttachment({ metadata }: Props) {
+  const { userDetails } = useCurrentUser()
+  const { data } = useSWR(
+    userDetails && metadata.length > 0 ? [userDetails, metadata] : null,
+    fetchChatAttachment
+  )
+
   const [loaded, setLoaded] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
   const [imageUrls, setImageUrls] = useState<string[]>([])
 
-  const { userDetails } = useCurrentUser()
-  const params = useParams()
-  const chatId = params.id
-
-  // We'll fetch all URLs at once and store them in our imageUrls state.
   useEffect(() => {
-    if (userDetails && metadata.length > 0) {
-      Promise.all(
-        metadata.map(item =>
-          getChatAttachmentSignedUrl(
-            userDetails.id,
-            item.chat_id || String(chatId),
-            item.file_id
-          )
-        )
-      ).then(urls => {
-        setImageUrls(urls)
-        setLoaded(true) // Now we set loaded true after all URLs are fetched.
-      })
+    if (data) {
+      setImageUrls(data)
+      setLoaded(true)
     }
-  }, [chatId, metadata, userDetails])
+  }, [data])
 
   return (
     <>
