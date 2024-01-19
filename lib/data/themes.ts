@@ -3,6 +3,7 @@ export const themes = [
   "light",
   "dark",
   "cotton",
+  "cyberpunk",
   "espresso",
   "matilda"
 ]
