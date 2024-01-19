@@ -87,8 +87,12 @@ export default function PromptForm({
         if (!input?.trim()) {
           return
         }
-        if (type === "document" && !id) {
+        if (type == "document" && !id) {
           toast.error("Choose document first!")
+          return
+        }
+        if (type === "book" && !id) {
+          toast.error("Choose book first!")
           return
         }
         setInput("")

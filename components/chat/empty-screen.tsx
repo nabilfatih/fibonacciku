@@ -17,7 +17,6 @@ function EmptyScreenFeatures({ type }: Props) {
       return <EmptyScreenDocument />
     case "book":
       return <EmptyScreenBook />
-
     default:
       return <EmptyScreenAssistant /> // default to assistant screen if type is not recognized
   }

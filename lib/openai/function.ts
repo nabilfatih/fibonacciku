@@ -1,5 +1,5 @@
 import { generateImage } from "./plugin/ai"
-import { documentRetrieval } from "./plugin/document"
+import { documentRetrieval } from "./plugin/retrieval"
 import { academicPlugin, googlePlugin, youtubePlugin } from "./plugin/internet"
 import { scrapeWebsite } from "./plugin/ninja"
 import { weatherPlugin } from "./plugin/weather"

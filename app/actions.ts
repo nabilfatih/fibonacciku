@@ -257,6 +257,42 @@ export async function removeLibrary(id: string, fileId: string) {
   return revalidatePath("/chat/library")
 }
 
+// TODO: Refactor this book actions
+export async function getBookCollection(bookId: string) {
+  const cookieStore = cookies()
+  const supabase = createClientServer(cookieStore)
+  const {
+    data: { session }
+  } = await supabase.auth.getSession()
+
+  if (!session?.user?.id) {
+    return {
+      error: "Unauthorized"
+    }
+  }
+
+  const { data, error } = await supabase
+    .from("books_collection")
+    .select()
+    .eq("id", bookId)
+    .limit(1)
+    .maybeSingle()
+
+  if (error) {
+    return {
+      error: "Something went wrong"
+    }
+  }
+
+  if (!data) {
+    return {
+      error: "Unauthorized"
+    }
+  }
+
+  return data
+}
+
 // TODO: Refactor this user actions
 
 export async function updateUser(id: string, data: any) {

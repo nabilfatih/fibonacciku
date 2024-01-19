@@ -5,6 +5,7 @@ import dynamic from "next/dynamic"
 
 import type { Chat, ChatMessage, Features } from "@/types/types"
 import { useMessage } from "@/lib/context/use-message"
+import { downloadBooksFile } from "@/lib/supabase/client/book"
 import { downloadChatDocument } from "@/lib/supabase/client/chat"
 import { cn } from "@/lib/utils"
 
@@ -48,9 +49,16 @@ export default function ChatMessage({
 
   const chatMessageRef = useRef<HTMLDivElement | null>(null)
 
-  const fetchChatDocument = useCallback(
-    async (userId: string, fileId: string) => {
-      const dataFile = await downloadChatDocument(userId, fileId)
+  const fetchChatFile = useCallback(
+    async (userId: string, fileId: string, type: Features) => {
+      let dataFile = null
+      if (type === "document") {
+        dataFile = await downloadChatDocument(userId, fileId)
+      }
+      if (type === "book") {
+        const [bookId, bookFileId] = fileId.split("--") // bookId--bookFileId -> this is keyId
+        dataFile = await downloadBooksFile(bookId, bookFileId)
+      }
       dispatch({ type: "SET_CURRENT_DOCUMENT", payload: dataFile })
     },
     [dispatch]
@@ -63,7 +71,7 @@ export default function ChatMessage({
       setShowMessage(initialMessages)
       dispatch({ type: "SET_CURRENT_CHAT", payload: chat || null })
       if (fileId && userId) {
-        fetchChatDocument(userId, fileId)
+        fetchChatFile(userId, fileId, type)
       }
     } else {
       setIndexMessage([])

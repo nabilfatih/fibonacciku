@@ -10,6 +10,7 @@ import ChatMessage from "@/components/chat"
 
 type Props = {
   params: { feature: string }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function ChatFeaturePage({ params }: Props) {
+export default async function ChatFeaturePage({ params, searchParams }: Props) {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
@@ -44,6 +45,10 @@ export default async function ChatFeaturePage({ params }: Props) {
 
   if (!session?.user) {
     redirect(`/auth/login?next=/chat/${params.feature}`)
+  }
+
+  if (params.feature === "book" && !searchParams.collection) {
+    redirect("/book")
   }
 
   return (

@@ -21,14 +21,14 @@ import {
   createSafeTitle,
   determineModelBasedOnSubscription
 } from "@/lib/openai/helper"
-import { documentRetrieval } from "@/lib/openai/plugin/retrieval"
+import { bookRetrieval } from "@/lib/openai/plugin/retrieval"
 import { documentRule } from "@/lib/openai/system"
 import { defaultToolsChat } from "@/lib/openai/tools"
+import { getBooksAdmin } from "@/lib/supabase/admin/book"
 import {
   getChatAttachmentSignedUrlAdmin,
   insertChatAdmin
 } from "@/lib/supabase/admin/chat"
-import { getLibraryByFileIdAdmin } from "@/lib/supabase/admin/library"
 import { updateUserUsageAdmin } from "@/lib/supabase/admin/users"
 import { createClientServer } from "@/lib/supabase/server"
 
@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
   )
 
   if (!success) {
-    await track("Error - AI Chat Document", {
+    await track("Error - AI Chat Book", {
       data: `${ip} - Rate Limit Exceeded`
     })
     return NextResponse.json(
@@ -129,16 +129,27 @@ export async function POST(req: NextRequest) {
   // inject system message with additional rules
   finalMessage[0].content += documentRule
 
-  // Retrieve the document
+  // Retrieve the book
   const query = lastMessage.content
     .split("------------------------------")[0]
     .trim()
-  const document = await documentRetrieval(userId, dataRequest.fileId, query)
-  const documentContent = formatDocumentsAsString(document.sources)
+  // keyId contain bookId and fileId
+  const [bookId, fileId] = dataRequest.fileId.split("--") // this is keyId
+  let bookTitle = ""
+  if (dataRequest.isNewMessage) {
+    const book = await getBooksAdmin(bookId)
+    // title as query for the first time to get better book content
+    if (book) {
+      bookTitle = book.title
+    }
+  }
 
-  // inject document in the last message with prefix 'document:(newline)', without
-  finalMessage[finalMessage.length - 1].content +=
-    `\ndocument:\n${documentContent}`
+  // get the book content
+  const book = await bookRetrieval(bookId, fileId, bookTitle || query)
+  const bookContent = formatDocumentsAsString(book.sources)
+
+  // inject book in the last message with prefix 'book:(newline)', without
+  finalMessage[finalMessage.length - 1].content += `\nbook:\n${bookContent}`
 
   try {
     const response = await openai.chat.completions.create({
@@ -248,14 +259,14 @@ export async function POST(req: NextRequest) {
       },
       async onStart() {
         if (dataRequest.isNewMessage) {
-          const library = await getLibraryByFileIdAdmin(dataRequest.fileId)
-          const title = createSafeTitle(library?.name || "Untitled")
+          const book = await getBooksAdmin(bookId)
+          const title = createSafeTitle(book?.title || "Untitled")
           await insertChatAdmin(
             chatId,
             userId,
             title || "Untitled",
             options,
-            "document",
+            "book",
             dataRequest.fileId
           )
         }
@@ -272,16 +283,16 @@ export async function POST(req: NextRequest) {
       experimental_streamData: true
     })
 
-    // append the document data
+    // append the book data
     data.append({
-      toolName: "get_document",
-      data: document
+      toolName: "get_document", // same as document tools cause it save the reference in metadata
+      data: book
     })
 
     return new StreamingTextResponse(stream, {}, data)
   } catch (error: any) {
     console.error(`Error - Internal Server Error: ${error}`)
-    await track("Error - AI Chat Document", {
+    await track("Error - AI Chat Book", {
       data: `${userId} - ${error.message || "High Traffic"}`
     })
     // Check if the error is an APIError

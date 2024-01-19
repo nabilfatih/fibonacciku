@@ -346,7 +346,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
         dispatch({ type: "SET_IS_GENERATING", payload: false })
 
         // on finished
-        if (!pathname.includes(`/${chatId}`) && feature !== "book") {
+        if (!pathname.includes(`/${chatId}`)) {
           router.push(`/chat/${feature}/${chatId}`, {
             scroll: false
           })

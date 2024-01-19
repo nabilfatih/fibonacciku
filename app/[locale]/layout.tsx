@@ -135,6 +135,7 @@ export default function RootLayout({
           GeistSans.variable,
           GeistMono.variable
         )}
+        suppressHydrationWarning
       >
         <Toaster />
         <Providers

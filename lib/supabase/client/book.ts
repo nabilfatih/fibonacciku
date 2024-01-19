@@ -34,6 +34,17 @@ export const uploadBooksCoverFile = async (
   return data
 }
 
+export const downloadBooksFile = async (bookId: string, fileId: string) => {
+  const { data, error } = await supabaseClient.storage
+    .from("books")
+    .download(`${bookId}/${fileId}`)
+  if (error) {
+    console.error(error)
+    throw error
+  }
+  return data
+}
+
 export const deleteBooksFile = async (bookId: string, fileId: string) => {
   const { error } = await supabaseClient.storage
     .from("books")

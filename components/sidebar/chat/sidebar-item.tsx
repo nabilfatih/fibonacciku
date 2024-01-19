@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { useParams } from "next/navigation"
-import { IconFile, IconMessageCircle2 } from "@tabler/icons-react"
+import { IconBook2, IconFile, IconMessageCircle2 } from "@tabler/icons-react"
 import { motion } from "framer-motion"
 
 import { type Chat } from "@/types/types"
@@ -56,6 +56,8 @@ export default function SidebarItem({
       >
         {chat.type === "document" ? (
           <IconFile className="h-4 w-4" />
+        ) : chat.type === "book" ? (
+          <IconBook2 className="h-4 w-4" />
         ) : (
           <IconMessageCircle2 className="h-4 w-4" />
         )}
