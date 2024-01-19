@@ -56,8 +56,6 @@ export default function ChatMessage({
     [dispatch]
   )
 
-  console.log(showMessage.at(-11))
-
   useEffect(() => {
     if (initialMessages) {
       stop()
