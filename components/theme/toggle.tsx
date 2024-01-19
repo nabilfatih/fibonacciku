@@ -17,7 +17,12 @@ import {
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
 
-export function ThemeToggle() {
+type Props = {
+  side?: "right" | "top" | "bottom" | "left"
+  align?: "start" | "center" | "end"
+}
+
+export function ThemeToggle({ side = "right", align = "end" }: Props) {
   const { setTheme } = useTheme()
   const [_, startTransition] = React.useTransition()
 
@@ -29,7 +34,7 @@ export function ThemeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent side="right" align="end">
+      <DropdownMenuContent side={side} align={align}>
         <DropdownMenuLabel>Theme</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {themes.map(theme => (
