@@ -143,7 +143,7 @@ export default function RootLayout({
           locale={params.locale}
           attribute="class"
           defaultTheme="system"
-          themes={themes}
+          themes={themes.slice(1)} // remove system theme
           enableSystem
           enableColorScheme
           disableTransitionOnChange
