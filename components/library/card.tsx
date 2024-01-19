@@ -28,7 +28,10 @@ export default function LibraryCard({ library, className }: Props) {
         duration: 0.25,
         ease: "easeInOut"
       }}
-      className={cn("rounded-xl border px-4 py-3 shadow-sm", className)}
+      className={cn(
+        "rounded-xl border px-4 py-3 bg-card text-card-foreground shadow",
+        className
+      )}
     >
       <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-center">
         <LibraryCardFilename library={library} />
