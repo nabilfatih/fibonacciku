@@ -53,30 +53,13 @@
     --input: 219.31 58% 19.61%;
     --ring: 219.31 58% 19.61%;
   }
-
-  .cotton {
-    --background: 44 31.91% 90.78%;
-    --foreground: 240 5.88% 10%;
-    --card: 44 31.91% 90.78%;
-    --popover: 44 31.91% 90.78%;
-    --primary: 349.64 93.22% 76.86%;
-    --secondary: 344.58 94.74% 70.2%;
-    --primary-foreground: 240 5.88% 10%;
-    --accent: 348.62 100% 88.63%;
-    --muted: 35.56 40.3% 86.86%;
-    --muted-foreground: 323.72 82.69% 20.39%;
-    --destructive: 329.88 100% 50%;
-    --border: 349.55 100% 69.61%;
-    --input: 349.55 100% 69.61%;
-    --ring: 349.64 93.22% 76.86%;
-    --radius: 0.7rem;
-  }
 }
 
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }

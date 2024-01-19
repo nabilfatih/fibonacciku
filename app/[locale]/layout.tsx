@@ -2,6 +2,7 @@ import { GeistMono } from "geist/font/mono"
 import { GeistSans } from "geist/font/sans"
 
 import "@/styles/globals.css"
+import "@/styles/themes.css"
 
 import { Suspense } from "react"
 import type { Metadata, Viewport } from "next"
