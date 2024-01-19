@@ -135,7 +135,6 @@ export default function RootLayout({
           GeistSans.variable,
           GeistMono.variable
         )}
-        suppressHydrationWarning
       >
         <NextTopLoader color="#ee3554" shadow={false} showSpinner={false} />
         <Toaster />
