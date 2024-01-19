@@ -24,17 +24,10 @@ export default function EmptyScreenAssistant() {
       <section className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         {featuresList.map((feature, index) => (
           <Link key={index} passHref href={feature.link}>
-            <Card
-              className="overflow-hidden"
-              style={{
-                backgroundImage: feature.backgroundImage,
-                backgroundSize: "cover",
-                backgroundPosition: "center"
-              }}
-            >
+            <Card className="overflow-hidden">
               <CardHeader
                 className={cn(
-                  "flex-row items-center space-x-2 space-y-0 bg-muted/50 transition-colors hover:bg-muted/30",
+                  "flex-row items-center space-x-2 space-y-0 bg-muted/70 transition-colors hover:bg-muted/10",
                   feature.title === "assistant" && "bg-muted/40"
                 )}
               >
