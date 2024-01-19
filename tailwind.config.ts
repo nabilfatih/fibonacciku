@@ -17,13 +17,37 @@ const config = {
         "2xl": "1400px"
       }
     },
-
     extend: {
       typography: {
         DEFAULT: {
           css: {
+            color: "hsl(var(--foreground) / 0.8)",
+            strong: {
+              color: "hsl(var(--foreground) / 0.9)"
+            },
+            h1: {
+              color: "hsl(var(--foreground) / 0.9)"
+            },
+            h2: {
+              color: "hsl(var(--foreground) / 0.9)"
+            },
+            h3: {
+              color: "hsl(var(--foreground) / 0.9)"
+            },
+            h4: {
+              color: "hsl(var(--foreground) / 0.9)"
+            },
+            h5: {
+              color: "hsl(var(--foreground) / 0.9)"
+            },
+            h6: {
+              color: "hsl(var(--foreground) / 0.9)"
+            },
             "ul > li::marker": {
               color: "hsl(var(--muted-foreground))"
+            },
+            "ul > li": {
+              color: "hsl(var(--foreground) / 0.8)"
             }
           }
         }

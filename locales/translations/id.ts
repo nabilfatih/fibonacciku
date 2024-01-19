@@ -628,6 +628,7 @@ export default {
     "share-chat": "Bagikan obrolan",
     assistant: "Asisten",
     document: "Dokumen",
+    book: "Buku",
     "desc-share-chat":
       "Bagikan obrolan Anda dengan teman-teman Anda atau orang lain. Siapa saja dengan tautan ini dapat melihat obrolan ini",
     "share-link": "Bagikan tautan",

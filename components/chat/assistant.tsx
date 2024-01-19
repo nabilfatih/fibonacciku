@@ -47,7 +47,7 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
 
   return (
     <MemoizedReactMarkdown
-      className="prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0"
+      className="prose break-words prose-p:leading-relaxed prose-pre:p-0"
       remarkPlugins={[remarkBreaks, remarkMath, remarkGfm, emoji, remarkParse]}
       rehypePlugins={[rehypeKatex, rehypeRaw, rehypeStringify]}
       components={{
@@ -122,7 +122,9 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
           )
         },
         th({ children }) {
-          return <th className="break-words border-b">{children}</th>
+          return (
+            <th className="break-words border-b text-foreground">{children}</th>
+          )
         },
         td({ children }) {
           return <td className="break-words border-b">{children}</td>

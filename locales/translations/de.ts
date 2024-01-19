@@ -632,6 +632,7 @@ export default {
     "share-chat": "Chat teilen",
     assistant: "Assistent",
     document: "Dokument",
+    book: "Buch",
     "desc-share-chat":
       "Teilen Sie Ihren Chat mit Ihren Freunden oder anderen Personen. Jeder mit diesem Link kann diesen Chat einsehen",
     "share-link": "Link teilen",

@@ -610,6 +610,7 @@ export default {
     "share-chat": "Share chat",
     assistant: "Assistant",
     document: "Document",
+    book: "Book",
     "desc-share-chat":
       "Share your chat with your friends or others people. Anyone with this link can view this chat",
     "share-link": "Share link",
