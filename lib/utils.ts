@@ -88,7 +88,7 @@ export const generateUUID = () => {
 }
 
 export const generateNanoID = (number = 21) => {
-  return nanoid(number)
+  return uuidv4().slice(0, number)
 }
 
 export const replaceDelimiters = (markdown: string): string => {
