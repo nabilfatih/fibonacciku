@@ -8,6 +8,7 @@ import type { Metadata, Viewport } from "next"
 import { notFound } from "next/navigation"
 import NextTopLoader from "nextjs-toploader"
 
+import { themes } from "@/lib/data/themes"
 import { cn } from "@/lib/utils"
 import { getScopedI18n } from "@/locales/server"
 
@@ -142,6 +143,7 @@ export default function RootLayout({
           locale={params.locale}
           attribute="class"
           defaultTheme="system"
+          themes={themes}
           enableSystem
           disableTransitionOnChange
         >

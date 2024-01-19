@@ -3,6 +3,7 @@
 import React from "react"
 import { useTheme } from "next-themes"
 
+import { themes } from "@/lib/data/themes"
 import { capitalizeFirstLetter } from "@/lib/utils"
 
 import { Label } from "@/components/ui/label"
@@ -39,9 +40,11 @@ export default function AccountTheme() {
         <SelectContent>
           <SelectGroup>
             <SelectLabel>Theme</SelectLabel>
-            <SelectItem value="System">System</SelectItem>
-            <SelectItem value="Light">Light</SelectItem>
-            <SelectItem value="Dark">Dark</SelectItem>
+            {themes.map(theme => (
+              <SelectItem key={theme} value={theme}>
+                {capitalizeFirstLetter(theme)}
+              </SelectItem>
+            ))}
           </SelectGroup>
         </SelectContent>
       </Select>
