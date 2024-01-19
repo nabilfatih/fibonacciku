@@ -29,7 +29,11 @@ export default function ChatMetadataAttachment({ metadata }: Props) {
   const { userDetails } = useCurrentUser()
   const { data } = useSWR(
     userDetails && metadata.length > 0 ? [userDetails, metadata] : null,
-    fetchChatAttachment
+    fetchChatAttachment,
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false
+    }
   )
 
   const [loaded, setLoaded] = useState(false)
