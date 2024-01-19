@@ -17,7 +17,17 @@ const config = {
         "2xl": "1400px"
       }
     },
+
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            "ul > li::marker": {
+              color: "hsl(var(--muted-foreground))"
+            }
+          }
+        }
+      },
       fontFamily: {
         sans: ["var(--font-geist-sans)"],
         mono: ["var(--font-geist-mono)"]
