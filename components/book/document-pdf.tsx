@@ -113,6 +113,7 @@ function BookDocumentPdf({
               items={Array.from({ length: numPages }, (_, i) => ({
                 page: i + 1
               }))}
+              overscan={5}
               initialIndex={page ? page - 1 : 0}
               onViewportIndexesChange={viewportIndexes => {
                 dispatch({
