@@ -34,8 +34,8 @@ export default function EmptyScreenAssistant() {
             >
               <CardHeader
                 className={cn(
-                  "flex-row items-center space-x-2 space-y-0 bg-muted/70 transition-colors hover:bg-muted/50",
-                  feature.title === "assistant" && "bg-muted/60"
+                  "flex-row items-center space-x-2 space-y-0 bg-muted/50 transition-colors hover:bg-muted/30",
+                  feature.title === "assistant" && "bg-muted/40"
                 )}
               >
                 <feature.icon className="h-5 w-5" />
