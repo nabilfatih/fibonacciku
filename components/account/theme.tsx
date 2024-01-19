@@ -27,7 +27,7 @@ export default function AccountTheme() {
     <div className="flex flex-wrap items-center justify-between gap-2 border-b pb-4">
       <Label className="text-sm text-muted-foreground">Theme preference</Label>
       <Select
-        value={capitalizeFirstLetter(theme)}
+        value={theme}
         onValueChange={value => {
           startTransition(() => {
             setTheme(value.toLowerCase())

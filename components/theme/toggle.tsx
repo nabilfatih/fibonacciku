@@ -1,10 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { IconBrush, IconMoon, IconSun } from "@tabler/icons-react"
+import { IconBrush } from "@tabler/icons-react"
 import { useTheme } from "next-themes"
 
 import { themes } from "@/lib/data/themes"
+import { capitalizeFirstLetter } from "@/lib/utils"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -40,7 +41,7 @@ export function ThemeToggle() {
               })
             }}
           >
-            {theme}
+            {capitalizeFirstLetter(theme)}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
