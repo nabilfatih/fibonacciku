@@ -7,7 +7,6 @@ import "@/styles/themes.css"
 import { Suspense } from "react"
 import type { Metadata, Viewport } from "next"
 import { notFound } from "next/navigation"
-import NextTopLoader from "nextjs-toploader"
 
 import { themes } from "@/lib/data/themes"
 import { cn } from "@/lib/utils"
@@ -137,7 +136,6 @@ export default function RootLayout({
           GeistMono.variable
         )}
       >
-        <NextTopLoader color="#ee3554" shadow={false} showSpinner={false} />
         <Toaster />
         <Providers
           locale={params.locale}
