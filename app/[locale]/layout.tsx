@@ -142,7 +142,7 @@ export default function RootLayout({
         <Providers
           locale={params.locale}
           attribute="class"
-          enableSystem={false}
+          enableSystem
           themes={themes.slice(1)} // remove system theme
           disableTransitionOnChange
         >
