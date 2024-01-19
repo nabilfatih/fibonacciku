@@ -80,7 +80,7 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
             </DialogDescription>
           </DialogHeader>
 
-          <div className="grid gap-4">
+          <div className="grid gap-2">
             <div className="grid gap-2">
               <Label htmlFor="language">{t("language")}</Label>
               <Select
@@ -168,7 +168,7 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
           </DrawerDescription>
         </DrawerHeader>
 
-        <div className="grid gap-4 px-4">
+        <div className="grid gap-2 px-4">
           <div className="grid gap-2">
             <Label htmlFor="language">{t("language")}</Label>
             <Select
