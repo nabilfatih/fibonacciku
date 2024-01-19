@@ -142,10 +142,8 @@ export default function RootLayout({
         <Providers
           locale={params.locale}
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          enableSystem={false}
           themes={themes.slice(1)} // remove system theme
-          enableColorScheme
           disableTransitionOnChange
         >
           <div className="flex min-h-[100dvh] flex-col">
