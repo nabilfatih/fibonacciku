@@ -162,13 +162,15 @@ export default function LibraryForm({ className, ...props }: LibraryFormProps) {
 
         <div className="pointer-events-none flex w-full flex-col items-center gap-2 text-center transition ease-in-out">
           {isUploadPending ? (
-            <IconSpinner className="h-8 w-8 animate-spin" />
+            <IconSpinner className="h-8 w-8 text-muted-foreground animate-spin" />
           ) : (
             <div className={cn(isDragging && "animate-bounce")}>
-              <IconFileUpload className="h-8 w-8" />
+              <IconFileUpload className="h-8 w-8 text-muted-foreground" />
             </div>
           )}
-          <span>{t("drag-drop-document")}</span>
+          <span className="text-muted-foreground">
+            {t("drag-drop-document")}
+          </span>
         </div>
       </button>
     </form>
