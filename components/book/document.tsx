@@ -197,7 +197,7 @@ export default function BookDocument({
         pageRef={pageRef}
         state={state}
         dispatch={dispatch}
-        className="mx-auto h-[calc(100%-4rem)] max-w-2xl pb-16 sm:px-4"
+        className="mx-auto h-[calc(100%-4rem)] max-w-2xl pb-16 lg:pb-[69px] sm:px-4"
       />
     </>
   )

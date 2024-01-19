@@ -27,8 +27,8 @@ export default function EmptyScreenAssistant() {
             <Card className="overflow-hidden">
               <CardHeader
                 className={cn(
-                  "flex-row items-center space-x-2 space-y-0 bg-muted/70 transition-colors hover:bg-muted/10",
-                  feature.title === "assistant" && "bg-muted/40"
+                  "flex-row items-center space-x-2 space-y-0 bg-muted/50 transition-colors hover:bg-muted/80",
+                  feature.title === "assistant" && "bg-muted/90"
                 )}
               >
                 <feature.icon className="h-5 w-5" />
