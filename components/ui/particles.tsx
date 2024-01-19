@@ -141,7 +141,7 @@ const Particles: FC<ParticlesProps> = ({
       context.current.beginPath()
       context.current.arc(x, y, size, 0, 2 * Math.PI)
       context.current.fillStyle =
-        theme === "dark"
+        theme === "dark" || theme === "black"
           ? `rgba(255, 255, 255, ${alpha})`
           : `rgba(0, 0, 0, ${alpha})`
       context.current.fill()
