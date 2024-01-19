@@ -5,6 +5,7 @@ import { AnimatePresence, LayoutGroup } from "framer-motion"
 import { ViewportList } from "react-viewport-list"
 
 import type { Libraries } from "@/types/types"
+import { cn } from "@/lib/utils"
 
 import LibraryCard from "@/components/library/card"
 
@@ -25,8 +26,17 @@ export default function LibraryList({ parentRef, libraries }: Props) {
               viewportRef={parentRef}
               items={libraries}
             >
-              {item => {
-                return <LibraryCard key={item.id} library={item} />
+              {(item, index) => {
+                return (
+                  <LibraryCard
+                    key={item.id}
+                    library={item}
+                    className={
+                      // last index no margin bottom
+                      cn(index !== libraries.length - 1 && "mb-4")
+                    }
+                  />
+                )
               }}
             </ViewportList>
           </div>
