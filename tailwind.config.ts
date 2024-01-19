@@ -67,10 +67,10 @@ const config = {
         }
       },
       borderRadius: {
-        "5xl": "calc(var(--radius) + 8px)",
-        "4xl": "calc(var(--radius) + 6px)",
-        "3xl": "calc(var(--radius) + 4px)",
-        "2xl": "calc(var(--radius) + 2px)",
+        "5xl": "calc(var(--radius) + 16px)",
+        "4xl": "calc(var(--radius) + 12px)",
+        "3xl": "calc(var(--radius) + 8px)",
+        "2xl": "calc(var(--radius) + 4px)",
         xl: "var(--radius)",
         lg: "calc(var(--radius) - 2px)",
         md: "calc(var(--radius) - 4px)",
