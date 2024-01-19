@@ -1,6 +1,5 @@
 import axios from "axios"
 import { clsx, type ClassValue } from "clsx"
-import { nanoid } from "nanoid"
 import { twMerge } from "tailwind-merge"
 import { v4 as uuidv4 } from "uuid"
 
@@ -88,7 +87,7 @@ export const generateUUID = () => {
 }
 
 export const generateNanoID = (number = 21) => {
-  return uuidv4().slice(0, number)
+  return uuidv4().split("-").join("").substring(0, number)
 }
 
 export const replaceDelimiters = (markdown: string): string => {
