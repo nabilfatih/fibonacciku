@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 export function ThemeToggle() {
-  const { setTheme, theme } = useTheme()
+  const { setTheme } = useTheme()
   const [_, startTransition] = React.useTransition()
 
   return (
@@ -37,7 +37,7 @@ export function ThemeToggle() {
             key={theme}
             onClick={() => {
               startTransition(() => {
-                setTheme(theme.toLowerCase())
+                setTheme(theme)
               })
             }}
           >

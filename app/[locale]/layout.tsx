@@ -145,6 +145,7 @@ export default function RootLayout({
           defaultTheme="system"
           themes={themes}
           enableSystem
+          enableColorScheme
           disableTransitionOnChange
         >
           <div className="flex min-h-[100dvh] flex-col">

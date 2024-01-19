@@ -30,7 +30,7 @@ export default function AccountTheme() {
         value={theme}
         onValueChange={value => {
           startTransition(() => {
-            setTheme(value.toLowerCase())
+            setTheme(value)
           })
         }}
       >
