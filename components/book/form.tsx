@@ -73,7 +73,7 @@ export default function BookForm({ className }: FormProps) {
           placeholder={t("placeholder-search")}
           spellCheck={false}
           className={cn(
-            "min-h-[60px] w-full resize-none bg-transparent px-4 py-[1.3rem] scrollbar-hide focus-within:outline-none sm:text-sm"
+            "min-h-[60px] w-full resize-none bg-transparent px-4 py-[1.3rem] scrollbar-hide focus-within:outline-none sm:text-sm placeholder:text-muted-foreground"
           )}
           data-enable-grammarly="false"
         />
