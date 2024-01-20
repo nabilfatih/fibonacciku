@@ -43,10 +43,10 @@ const config = {
             h6: {
               color: "hsl(var(--foreground) / 0.9)"
             },
-            "ul > li::marker": {
+            "li::marker": {
               color: "hsl(var(--muted-foreground))"
             },
-            "ul > li": {
+            li: {
               color: "hsl(var(--foreground) / 0.8)"
             }
           }
