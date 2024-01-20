@@ -5,6 +5,7 @@ export const themes = [
   "black",
   "cotton",
   "cyberpunk",
+  "emerald",
   "espresso",
   "matilda"
 ]
