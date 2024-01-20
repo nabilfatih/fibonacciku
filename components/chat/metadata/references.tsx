@@ -1,4 +1,5 @@
-import { IconFile } from "@tabler/icons-react"
+import { useParams } from "next/navigation"
+import { IconBook2, IconFile } from "@tabler/icons-react"
 
 import type { SourceDocument } from "@/types/types"
 import { useMessage } from "@/lib/context/use-message"
@@ -15,10 +16,17 @@ export default function ChatMetadataReferences({ metadata }: Props) {
 
   const { pageRef, dispatch } = useMessage()
 
+  const params = useParams()
+  const feature = params.feature as string
+
   return (
     <div className="flex flex-col justify-start gap-2">
       <div className="flex flex-row items-center gap-1">
-        <IconFile className="h-5 w-5" />
+        {feature === "book" ? (
+          <IconBook2 className="w-5 h-5" />
+        ) : (
+          <IconFile className="h-5 w-5" />
+        )}
         <span className="font-medium">{t("references")}:</span>
       </div>
 
