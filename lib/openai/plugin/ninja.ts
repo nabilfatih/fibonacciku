@@ -1,3 +1,5 @@
+import { unstable_cache as cache } from "next/cache"
+
 export const ninjaBaseUrl = "https://api.api-ninjas.com/v1/"
 
 export const fetchNinja = async (endpoint: string, query: string) => {
@@ -13,14 +15,23 @@ export const fetchNinja = async (endpoint: string, query: string) => {
   return await response.json()
 }
 
-export const scrapeWebsite = async (url: string) => {
-  try {
-    // use ninja api
-    const response = await fetchNinja("webscraper", `url=${url}&text_only=true`)
-    return response
-  } catch (error) {
-    return {
-      message: "Sorry but I can't get the information from that website."
+export const scrapeWebsite = cache(
+  async (url: string) => {
+    try {
+      // use ninja api
+      const response = await fetchNinja(
+        "webscraper",
+        `url=${url}&text_only=true`
+      )
+      return response
+    } catch (error) {
+      return {
+        message: "Sorry but I can't get the information from that website."
+      }
     }
+  },
+  ["scrapeWebsite"],
+  {
+    revalidate: 86400
   }
-}
+)
