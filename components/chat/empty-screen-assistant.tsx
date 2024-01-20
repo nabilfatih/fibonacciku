@@ -11,6 +11,8 @@ export default function EmptyScreenAssistant() {
         Ask me anything, whatever you want to know.
       </p>
 
+      <ChatFeature />
+
       <div className="grid">
         <h2 className="mb-2 font-medium tracking-tight">
           Explore what you can do with me:
@@ -23,8 +25,6 @@ export default function EmptyScreenAssistant() {
           </Link>
         </Button>
       </div>
-
-      <ChatFeature />
     </div>
   )
 }
