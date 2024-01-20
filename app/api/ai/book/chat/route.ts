@@ -151,7 +151,8 @@ export async function POST(req: NextRequest) {
     formatDocumentsAsString(book.sources) || "No context found in the book"
 
   // inject book in the last message with prefix 'book:(newline)', without
-  finalMessage[finalMessage.length - 1].content += `\nbook:\n${bookContent}`
+  finalMessage[finalMessage.length - 1].content +=
+    `\nbook context:\n${bookContent}`
 
   try {
     const response = await openai.chat.completions.create({

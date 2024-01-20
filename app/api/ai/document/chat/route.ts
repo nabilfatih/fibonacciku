@@ -139,7 +139,7 @@ export async function POST(req: NextRequest) {
 
   // inject document in the last message with prefix 'document:(newline)', without
   finalMessage[finalMessage.length - 1].content +=
-    `\ndocument:\n${documentContent}`
+    `\ndocument context:\n${documentContent}`
 
   try {
     const response = await openai.chat.completions.create({
