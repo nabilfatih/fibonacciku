@@ -134,7 +134,8 @@ export async function POST(req: NextRequest) {
     .split("------------------------------")[0]
     .trim()
   const document = await documentRetrieval(userId, dataRequest.fileId, query)
-  const documentContent = formatDocumentsAsString(document.sources)
+  const documentContent =
+    formatDocumentsAsString(document.sources) || "No context found in the book"
 
   // inject document in the last message with prefix 'document:(newline)', without
   finalMessage[finalMessage.length - 1].content +=

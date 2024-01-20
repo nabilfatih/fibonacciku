@@ -147,7 +147,8 @@ export async function POST(req: NextRequest) {
 
   // get the book content
   const book = await bookRetrieval(bookId, fileId, bookTitle || query)
-  const bookContent = formatDocumentsAsString(book.sources)
+  const bookContent =
+    formatDocumentsAsString(book.sources) || "No context found in the book"
 
   // inject book in the last message with prefix 'book:(newline)', without
   finalMessage[finalMessage.length - 1].content += `\nbook:\n${bookContent}`
