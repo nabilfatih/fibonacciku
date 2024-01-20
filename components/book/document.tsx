@@ -12,9 +12,13 @@ import {
 import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu"
 import { IconSeparator } from "@/components/ui/icons"
 import { Input } from "@/components/ui/input"
-import { Slider } from "@/components/ui/slider"
 import type { BookCollectionProps } from "@/components/book/collection"
 
 const BookDocumentPdf = dynamic(() => import("@/components/book/document-pdf"))
@@ -70,49 +74,35 @@ export default function BookDocument({
   return (
     <>
       <header className="flex h-16 items-center border-b">
-        <div className="mx-auto grid w-full max-w-2xl grid-cols-5 items-center px-4">
-          <div className="col-span-2 flex items-center gap-1">
+        <div className="flex justify-between items-center w-full mx-auto max-w-2xl px-4">
+          <div className="flex items-center gap-1">
             <Button
               name="zoom-out"
               title={t("zoom-out")}
-              variant="ghost"
+              variant="outline"
               size="icon"
               disabled={state.zoom <= 0.1}
               onClick={() => {
                 if (state.zoom > 0.1)
                   dispatch({ type: "SET_ZOOM", payload: state.zoom - 0.1 })
               }}
-              className="rounded-full"
             >
               <IconMinus className="h-4 w-4" />
               <span className="sr-only">{t("zoom-out")}</span>
             </Button>
-            <Slider
-              id="zoom"
-              name="zoom"
-              aria-label={t("zoom")}
-              min={0.1}
-              max={2}
-              step={0.01}
-              value={[state.zoom]}
-              onValueChange={value => {
-                dispatch({
-                  type: "SET_ZOOM",
-                  payload: value[0]
-                })
-              }}
-            />
+            <p className="text-sm text-muted-foreground mx-1">
+              {Math.round(state.zoom * 100)}%
+            </p>
             <Button
               name="zoom-in"
               title={t("zoom-in")}
-              variant="ghost"
+              variant="outline"
               size="icon"
               disabled={state.zoom >= 2}
               onClick={() => {
                 if (state.zoom < 2)
                   dispatch({ type: "SET_ZOOM", payload: state.zoom + 0.1 })
               }}
-              className="rounded-full"
             >
               <IconPlus className="h-4 w-4" />
               <span className="sr-only">{t("zoom-in")}</span>
@@ -120,7 +110,7 @@ export default function BookDocument({
             <Button
               name="reset-zoom"
               title={t("reset")}
-              variant="ghost"
+              variant="outline"
               size="icon"
               onClick={() => {
                 dispatch({
@@ -128,14 +118,13 @@ export default function BookDocument({
                   payload: state.defaultZoom
                 })
               }}
-              className="rounded-full"
             >
               <IconRefresh className="h-4 w-4" />
               <span className="sr-only">{t("reset")}</span>
             </Button>
           </div>
 
-          <div className="col-span-1 flex items-start justify-center">
+          <div className="flex items-center gap-4">
             <div className="flex items-center">
               <Input
                 type="text"
@@ -155,7 +144,7 @@ export default function BookDocument({
                   }
                 }}
                 // remove the default browser styling
-                className="hidden h-10 w-10 bg-transparent p-0 text-center text-sm text-muted-foreground sm:block"
+                className="hidden w-9 h-9 bg-transparent p-0 text-center text-sm text-muted-foreground sm:block"
               />
               <span className="text-sm text-muted-foreground sm:hidden">
                 {state.currentPage[0]}
@@ -165,28 +154,41 @@ export default function BookDocument({
                 {state.currentPage[1]}
               </span>
             </div>
-          </div>
 
-          <div className="col-span-2 w-full">
-            <form className="relative">
-              <IconSearch className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
-              <Input
-                tabIndex={-1} // Prevents the input from being focused when the user presses tab
-                type="text"
-                placeholder={t("search-text")}
-                className="h-10 bg-background pl-10"
-                value={state.searchText}
-                autoFocus={false}
-                autoComplete="off"
-                autoCorrect="off"
-                onChange={e => {
-                  dispatch({
-                    type: "SET_SEARCH_TEXT",
-                    payload: e.target.value
-                  })
-                }}
-              />
-            </form>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  name="search"
+                  title={t("search-text")}
+                  variant="outline"
+                  size="icon"
+                >
+                  <IconSearch className="h-5 w-5" />
+                  <span className="sr-only">{t("search-text")}</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="mt-1">
+                <form className="relative">
+                  <IconSearch className="absolute left-1.5 top-2.5 h-5 w-5 text-muted-foreground" />
+                  <Input
+                    tabIndex={-1} // Prevents the input from being focused when the user presses tab
+                    type="text"
+                    placeholder={t("search-text")}
+                    className="h-10 bg-background border-0 outline-none !ring-0 pl-8"
+                    value={state.searchText}
+                    autoFocus={false}
+                    autoComplete="off"
+                    autoCorrect="off"
+                    onChange={e => {
+                      dispatch({
+                        type: "SET_SEARCH_TEXT",
+                        payload: e.target.value
+                      })
+                    }}
+                  />
+                </form>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </header>
