@@ -18,7 +18,7 @@ export default function EmptyScreenDocument() {
         Upload your document and chat with it.
       </p>
 
-      <LibraryForm className="rounded-3xl border shadow-sm" />
+      <LibraryForm className="rounded-3xl border shadow" />
 
       {userDetails && <ChatLibrary userId={userDetails.id} />}
     </div>

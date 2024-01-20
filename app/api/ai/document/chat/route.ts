@@ -135,7 +135,8 @@ export async function POST(req: NextRequest) {
     .trim()
   const document = await documentRetrieval(userId, dataRequest.fileId, query)
   const documentContent =
-    formatDocumentsAsString(document.sources) || "No context found in the book"
+    formatDocumentsAsString(document.sources) ||
+    "No context found in the document (Do not come with hallucination answer, say you do not find it in the document)"
 
   // inject document in the last message with prefix 'document:(newline)', without
   finalMessage[finalMessage.length - 1].content +=

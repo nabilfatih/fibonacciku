@@ -135,20 +135,18 @@ export async function POST(req: NextRequest) {
     .trim()
   // keyId contain bookId and fileId
   const [bookId, fileId] = dataRequest.fileId.split("--") // this is keyId
+  // get the book title
   let bookTitle = ""
-  // if final message on has 2 message or new message use book title as query
-  if (finalMessage.length === 2 || dataRequest.isNewMessage) {
-    const book = await getBooksAdmin(bookId)
-    // title as query for the first time to get better book content
-    if (book) {
-      bookTitle = book.title
-    }
+  const bookData = await getBooksAdmin(bookId) // this is cache
+  if (bookData) {
+    bookTitle = bookData.title
   }
 
   // get the book content
-  const book = await bookRetrieval(bookId, fileId, bookTitle || query)
+  const book = await bookRetrieval(bookId, fileId, `${bookTitle} - ${query}`)
   const bookContent =
-    formatDocumentsAsString(book.sources) || "No context found in the book"
+    formatDocumentsAsString(book.sources) ||
+    "No context found in the book (Do not come with hallucination answer, say you do not find it in the book)"
 
   // inject book in the last message with prefix 'book:(newline)', without
   finalMessage[finalMessage.length - 1].content +=
