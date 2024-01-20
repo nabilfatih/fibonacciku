@@ -117,4 +117,57 @@
   --destructive: 342 73.53% 13.33%;
   --border: 263.57 28% 19.61%;
   --input: 263.57 28% 19.61%;
+  --ring: 359.48 100% 22.75%;
+  --radius: 0.7rem;
+}
+
+.slytherin {
+  --background: 120 100% 92.55%;
+  --card: 120 100% 92.55%;
+  --popover: 120 100% 92.55%;
+  --primary: 140.36 40% 27.45%;
+  --secondary: 0 0% 66.67%;
+  --accent: 137.65 82.93% 83.92%;
+  --muted: 95.26 44.88% 50.2%;
+  --muted-foreground: 0 0% 36.47%;
+  --destructive: 1 52.17% 54.9%;
+  --border: 140.36 40% 27.45%;
+  --input: 140.36 40% 27.45%;
+  --ring: 0 0% 36.47%;
+  --radius: 0.6rem;
+}
+
+.ravenclaw {
+  --background: 226.32 45.6% 24.51%;
+  --foreground: 240 4.76% 95.88%;
+  --card: 226.32 45.6% 24.51%;
+  --card-foreground: 240 4.76% 95.88%;
+  --popover: 226.32 45.6% 24.51%;
+  --popover-foreground: 240 4.76% 95.88%;
+  --primary: 36.12 53.37% 37.84%;
+  --secondary: 0 0% 74.51%;
+  --accent: 39.15 47.97% 48.24%;
+  --accent-foreground: 240 4.76% 95.88%;
+  --muted: 225.6 64.1% 15.29%;
+  --muted-foreground: 0 0% 74.51%;
+  --border: 36.12 53.37% 37.84%;
+  --input: 36.12 53.37% 37.84%;
+  --ring: 39.15 47.97% 48.24%;
+  --radius: 0.8rem;
+}
+
+.hufflepuff {
+  --background: 45 100% 92.55%;
+  --card: 45 100% 92.55%;
+  --popover: 45 100% 92.55%;
+  --primary: 21.43 14.58% 18.82%;
+  --secondary: 43.15 82.95% 65.49%;
+  --accent: 44.48 70.16% 48.63%;
+  --muted: 42.91 82.49% 57.45%;
+  --muted-foreground: 21.43 14.58% 18.82%;
+  --destructive: 358.31 89.9% 38.82%;
+  --border: 26.9 14.57% 39.02%;
+  --input: 26.9 14.57% 39.02%;
+  --ring: 21.43 14.58% 18.82%;
+  --radius: 0.9rem;
 }

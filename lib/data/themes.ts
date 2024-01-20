@@ -8,6 +8,8 @@ export const themes = [
   "emerald",
   "espresso",
   "griffindor",
+  "hufflepuff",
   "matilda",
+  "ravenclaw",
   "slytherin"
 ]
