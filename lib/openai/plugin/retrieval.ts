@@ -1,6 +1,7 @@
 import { unstable_cache as cache } from "next/cache"
 import { SupabaseHybridSearch } from "@langchain/community/retrievers/supabase"
 import { OpenAIEmbeddings } from "@langchain/openai"
+import type { Document } from "langchain/document"
 
 import supabaseAdmin from "@/lib/supabase/admin"
 
@@ -31,27 +32,7 @@ export const documentRetrieval = cache(
         metadata
       })
 
-      const cleanData = results
-        .map(doc => {
-          return {
-            pageContent: doc.pageContent,
-            metadata: doc.metadata,
-            page_number: doc.metadata.page_number
-          }
-        })
-        // remove duplicate page number
-        .filter(
-          (v, i, a) =>
-            a.findIndex(
-              t => t.metadata.page_number === v.metadata.page_number
-            ) === i && v.metadata.file_id === fileId // Idk why the supabase return other documents, so I filter it here
-          // this is only temporary solution
-          // TODO: Maybe there is a better way to do this
-        )
-        // only get the first 10 documents
-        .slice(0, 10)
-        // oder by page number
-        .sort((a, b) => a.page_number - b.page_number)
+      const cleanData = formatCleanData(results, 10, fileId)
 
       return {
         message:
@@ -100,26 +81,7 @@ export const bookRetrieval = cache(
         metadata
       })
 
-      const cleanData = results
-        .map(doc => {
-          return {
-            pageContent: doc.pageContent,
-            metadata: doc.metadata,
-            page_number: doc.metadata.page_number
-          }
-        })
-        // remove duplicate page number
-        .filter(
-          (v, i, a) =>
-            a.findIndex(
-              t => t.metadata.page_number === v.metadata.page_number
-            ) === i && v.metadata.file_id === fileId // Idk why the supabase return other documents, so I filter it here
-          // this is only temporary solution
-        )
-        // only get the first 10 documents
-        .slice(0, 10)
-        // oder by page number
-        .sort((a, b) => a.page_number - b.page_number)
+      const cleanData = formatCleanData(results, 10, fileId)
 
       return {
         message:
@@ -140,3 +102,30 @@ export const bookRetrieval = cache(
     revalidate: 3600
   }
 )
+
+// helper function
+function formatCleanData(sources: Document[], amount: number, fileId: string) {
+  return (
+    sources
+      .map(source => {
+        return {
+          pageContent: source.pageContent,
+          metadata: source.metadata,
+          page_number: source.metadata.page_number
+        }
+      })
+      // remove duplicate page number
+      .filter(
+        (v, i, a) =>
+          a.findIndex(
+            t => t.metadata.page_number === v.metadata.page_number
+          ) === i && v.metadata.file_id === fileId // Idk why the supabase return other documents, so I filter it here
+        // this is only temporary solution
+      )
+      // only get the first (amount) documents
+      .slice(0, amount)
+      // oder by page number
+      .sort((a, b) => a.page_number - b.page_number)
+    // format the data
+  )
+}
