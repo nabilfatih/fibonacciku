@@ -134,12 +134,19 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
                     scale={state.zoom}
                     customTextRenderer={textRenderer}
                     loading={
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <IconSpinner className="animate-spin" />
+                      <div
+                        className="relative"
+                        style={{
+                          height: parentRef.current?.clientHeight
+                        }}
+                      >
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <IconSpinner className="animate-spin" />
+                        </div>
                       </div>
                     }
                     className={cn(
-                      "relative mb-4 flex min-h-full items-center justify-center border-y bg-background shadow-sm",
+                      "relative mb-4 flex items-center min-h-full h-fit justify-center border-y bg-background shadow-sm",
                       index === 0 && "mt-0 border-t-0",
                       // last index
                       index === numPages - 1 && "mb-0 border-b-0"
@@ -151,9 +158,16 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
           </div>
         ) : (
           <div ref={listRef} className="scroll-gutter h-full overflow-auto">
-            <div className="relative mb-4 flex min-h-full items-center justify-center bg-background shadow-sm">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <IconSpinner className="animate-spin" />
+            <div className="relative mb-4 flex items-center min-h-full justify-center bg-background shadow-sm">
+              <div
+                className="relative"
+                style={{
+                  height: parentRef.current?.clientHeight
+                }}
+              >
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <IconSpinner className="animate-spin" />
+                </div>
               </div>
             </div>
           </div>

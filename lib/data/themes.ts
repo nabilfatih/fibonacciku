@@ -7,5 +7,7 @@ export const themes = [
   "cyberpunk",
   "emerald",
   "espresso",
-  "matilda"
+  "griffindor",
+  "matilda",
+  "slytherin"
 ]
