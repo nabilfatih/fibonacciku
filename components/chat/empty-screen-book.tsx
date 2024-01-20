@@ -57,7 +57,7 @@ export default function EmptyScreenBook() {
             <div className="flex flex-wrap">
               <div
                 role="button"
-                className="relative h-52 w-36 sm:h-48 cursor-pointer"
+                className="relative h-52 w-36 cursor-pointer sm:h-48"
                 onClick={async () => {
                   if (loadingId === bookData.id) return
                   if (!userDetails) return

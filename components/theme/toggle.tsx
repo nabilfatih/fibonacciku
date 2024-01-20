@@ -30,7 +30,7 @@ export function ThemeToggle({ side = "right", align = "end" }: Props) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon">
-          <IconBrush className="w-5 h-5 transition-all" />
+          <IconBrush className="h-5 w-5 transition-all" />
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>

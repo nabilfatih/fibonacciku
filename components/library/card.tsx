@@ -29,7 +29,7 @@ export default function LibraryCard({ library, className }: Props) {
         ease: "easeInOut"
       }}
       className={cn(
-        "rounded-xl border px-4 py-3 bg-card text-card-foreground shadow",
+        "rounded-xl border bg-card px-4 py-3 text-card-foreground shadow",
         className
       )}
     >

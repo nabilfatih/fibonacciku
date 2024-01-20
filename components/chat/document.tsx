@@ -79,7 +79,7 @@ export default function ChatDocument() {
       <section className="h-full">
         <div className="flex h-full flex-col">
           <div className="rounded-t-xl border bg-background p-3">
-            <div className="flex justify-between items-center w-full">
+            <div className="flex w-full items-center justify-between">
               <div className="flex items-center gap-1">
                 <Button
                   name="zoom-out"
@@ -95,7 +95,7 @@ export default function ChatDocument() {
                   <IconMinus className="h-4 w-4" />
                   <span className="sr-only">{t("zoom-out")}</span>
                 </Button>
-                <p className="text-sm text-muted-foreground mx-1">
+                <p className="mx-1 text-sm text-muted-foreground">
                   {Math.round(state.zoom * 100)}%
                 </p>
                 <Button
@@ -149,7 +149,7 @@ export default function ChatDocument() {
                       }
                     }}
                     // remove the default browser styling
-                    className="w-9 h-9 bg-transparent p-0 text-center text-sm text-muted-foreground"
+                    className="h-9 w-9 bg-transparent p-0 text-center text-sm text-muted-foreground"
                   />
                   <IconSeparator className="h-5 w-5 text-muted-foreground" />
                   <span className="text-sm text-muted-foreground">
@@ -176,7 +176,7 @@ export default function ChatDocument() {
                         tabIndex={-1} // Prevents the input from being focused when the user presses tab
                         type="text"
                         placeholder={t("search-text")}
-                        className="h-10 bg-background border-0 outline-none !ring-0 pl-8"
+                        className="h-10 border-0 bg-background pl-8 outline-none !ring-0"
                         value={state.searchText}
                         autoFocus={false}
                         autoComplete="off"

@@ -93,7 +93,7 @@ function BookDocumentPdf({
         onLoadSuccess={onDocumentLoadSuccess}
         options={options}
         externalLinkTarget="_blank"
-        className="relative h-full sm:border-x bg-background"
+        className="relative h-full bg-background sm:border-x"
         error={
           <div className="absolute inset-0 flex items-center justify-center">
             <IconMoodSad />
@@ -144,7 +144,7 @@ function BookDocumentPdf({
                       </div>
                     }
                     className={cn(
-                      "relative mb-4 flex items-center min-h-full h-fit justify-center border-y bg-background shadow-sm",
+                      "relative mb-4 flex h-fit min-h-full items-center justify-center border-y bg-background shadow-sm",
                       index === 0 && "mt-0 border-t-0",
                       // last index
                       index === numPages - 1 && "mb-0 border-b-0"
@@ -156,7 +156,7 @@ function BookDocumentPdf({
           </div>
         ) : (
           <div ref={listRef} className="scroll-gutter h-full overflow-auto">
-            <div className="relative mb-4 flex items-center min-h-full justify-center bg-background shadow-sm">
+            <div className="relative mb-4 flex min-h-full items-center justify-center bg-background shadow-sm">
               <div
                 className="relative"
                 style={{

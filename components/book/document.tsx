@@ -74,7 +74,7 @@ export default function BookDocument({
   return (
     <>
       <header className="flex h-16 items-center border-b">
-        <div className="flex justify-between items-center w-full mx-auto max-w-2xl px-4">
+        <div className="mx-auto flex w-full max-w-2xl items-center justify-between px-4">
           <div className="flex items-center gap-1">
             <Button
               name="zoom-out"
@@ -90,7 +90,7 @@ export default function BookDocument({
               <IconMinus className="h-4 w-4" />
               <span className="sr-only">{t("zoom-out")}</span>
             </Button>
-            <p className="text-sm text-muted-foreground mx-1">
+            <p className="mx-1 text-sm text-muted-foreground">
               {Math.round(state.zoom * 100)}%
             </p>
             <Button
@@ -144,7 +144,7 @@ export default function BookDocument({
                   }
                 }}
                 // remove the default browser styling
-                className="w-9 h-9 bg-transparent p-0 text-center text-sm text-muted-foreground"
+                className="h-9 w-9 bg-transparent p-0 text-center text-sm text-muted-foreground"
               />
               <IconSeparator className="h-5 w-5 text-muted-foreground" />
               <span className="text-sm text-muted-foreground">
@@ -171,7 +171,7 @@ export default function BookDocument({
                     tabIndex={-1} // Prevents the input from being focused when the user presses tab
                     type="text"
                     placeholder={t("search-text")}
-                    className="h-10 bg-background border-0 outline-none !ring-0 pl-8"
+                    className="h-10 border-0 bg-background pl-8 outline-none !ring-0"
                     value={state.searchText}
                     autoFocus={false}
                     autoComplete="off"
@@ -196,7 +196,7 @@ export default function BookDocument({
         pageRef={pageRef}
         state={state}
         dispatch={dispatch}
-        className="mx-auto h-[calc(100%-4rem)] max-w-2xl pb-16 lg:pb-[69px] sm:px-4"
+        className="mx-auto h-[calc(100%-4rem)] max-w-2xl pb-16 sm:px-4 lg:pb-[69px]"
       />
     </>
   )

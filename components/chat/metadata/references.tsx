@@ -23,7 +23,7 @@ export default function ChatMetadataReferences({ metadata }: Props) {
     <div className="flex flex-col justify-start gap-2">
       <div className="flex flex-row items-center gap-1">
         {feature === "book" ? (
-          <IconBook2 className="w-5 h-5" />
+          <IconBook2 className="h-5 w-5" />
         ) : (
           <IconFile className="h-5 w-5" />
         )}

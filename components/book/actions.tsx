@@ -20,7 +20,7 @@ type Props = {
 
 export default function BookActions({ book }: Props) {
   return (
-    <div className="fixed inset-x-0 bottom-0 flex h-16 lg:h-[69px] w-full items-center border-t duration-300 ease-in-out animate-in peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
+    <div className="fixed inset-x-0 bottom-0 flex h-16 w-full items-center border-t duration-300 ease-in-out animate-in lg:h-[69px] peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
       <div className="mx-auto flex w-full max-w-2xl items-center justify-between px-4">
         <div className="flex items-center">
           <Tooltip>
