@@ -25,12 +25,7 @@ export default function EmptyScreenAssistant() {
         {featuresList.map((feature, index) => (
           <Link key={index} passHref href={feature.link}>
             <Card className="overflow-hidden">
-              <CardHeader
-                className={cn(
-                  "flex-row items-center space-x-2 space-y-0 bg-muted/50 transition-colors hover:bg-muted/80",
-                  feature.title === "assistant" && "bg-muted/90"
-                )}
-              >
+              <CardHeader className="flex-row items-center space-x-2 space-y-0 bg-muted transition-colors hover:bg-muted/80">
                 <feature.icon className="h-5 w-5" />
                 <CardTitle className="leading-none">
                   Fibo {t(feature.title as never)}
