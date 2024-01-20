@@ -6,7 +6,6 @@ import {
   IconRocket
 } from "@tabler/icons-react"
 
-import { cn } from "@/lib/utils"
 import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
@@ -52,7 +51,7 @@ export default function EmptyScreenAssistant() {
   )
 }
 
-const featuresList = [
+export const featuresList = [
   {
     title: "assistant",
     desc: "assistant-desc",
