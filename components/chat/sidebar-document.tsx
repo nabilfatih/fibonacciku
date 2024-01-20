@@ -1,3 +1,4 @@
+import { useParams } from "next/navigation"
 import type { DialogProps } from "@radix-ui/react-dialog"
 
 import { useMessage } from "@/lib/context/use-message"
@@ -24,6 +25,10 @@ export default function SidebarDocument({
 }: SidebarMobileProps) {
   const t = useScopedI18n("FormChat")
   const { state, dispatch } = useMessage()
+
+  const params = useParams()
+  const feature = params.feature as string
+
   return (
     <Sheet
       {...props}
@@ -34,7 +39,7 @@ export default function SidebarDocument({
     >
       <SheetContent side="right" className="w-full bg-muted sm:max-w-2xl">
         <SheetHeader>
-          <SheetTitle>{t("document")}</SheetTitle>
+          <SheetTitle>{t(feature as never)}</SheetTitle>
         </SheetHeader>
         <Sidebar className="grid h-[calc(100%-4rem)]">{children}</Sidebar>
         <SheetFooter>
