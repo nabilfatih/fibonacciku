@@ -1,30 +1,44 @@
+import { unstable_cache as cache } from "next/cache"
+
 import type { Books } from "@/types/types"
 import { getCurrentDate } from "@/lib/utils"
 
 import supabaseAdmin from "."
 
-export const getBooksAllAdmin = async () => {
-  const { data, error } = await supabaseAdmin
-    .from("books_collection")
-    .select("*")
-    .order("created_at", { ascending: false })
-  if (error) {
-    throw error
+export const getBooksAllAdmin = cache(
+  async () => {
+    const { data, error } = await supabaseAdmin
+      .from("books_collection")
+      .select("*")
+      .order("created_at", { ascending: false })
+    if (error) {
+      throw error
+    }
+    return data
+  },
+  ["getBooksAllAdmin"],
+  {
+    revalidate: 86400
   }
-  return data
-}
+)
 
-export const getBooksAdmin = async (bookId: string) => {
-  const { data, error } = await supabaseAdmin
-    .from("books_collection")
-    .select("*")
-    .eq("id", bookId)
-    .maybeSingle()
-  if (error) {
-    throw error
+export const getBooksAdmin = cache(
+  async (bookId: string) => {
+    const { data, error } = await supabaseAdmin
+      .from("books_collection")
+      .select("*")
+      .eq("id", bookId)
+      .maybeSingle()
+    if (error) {
+      throw error
+    }
+    return data as Books | null
+  },
+  ["getBooksAdmin"],
+  {
+    revalidate: 86400
   }
-  return data as Books | null
-}
+)
 
 export const getBooksProcessingAdmin = async () => {
   const { data, error } = await supabaseAdmin

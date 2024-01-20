@@ -136,7 +136,8 @@ export async function POST(req: NextRequest) {
   // keyId contain bookId and fileId
   const [bookId, fileId] = dataRequest.fileId.split("--") // this is keyId
   let bookTitle = ""
-  if (dataRequest.isNewMessage) {
+  // if final message on has 2 message or new message use book title as query
+  if (finalMessage.length === 2 || dataRequest.isNewMessage) {
     const book = await getBooksAdmin(bookId)
     // title as query for the first time to get better book content
     if (book) {
