@@ -125,7 +125,7 @@ export default function BookDocument({
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="flex items-center">
+            <div className="flex items-center gap-0.5">
               <Input
                 type="text"
                 min={1}
@@ -144,11 +144,8 @@ export default function BookDocument({
                   }
                 }}
                 // remove the default browser styling
-                className="hidden w-9 h-9 bg-transparent p-0 text-center text-sm text-muted-foreground sm:block"
+                className="w-9 h-9 bg-transparent p-0 text-center text-sm text-muted-foreground"
               />
-              <span className="text-sm text-muted-foreground sm:hidden">
-                {state.currentPage[0]}
-              </span>
               <IconSeparator className="h-5 w-5 text-muted-foreground" />
               <span className="text-sm text-muted-foreground">
                 {state.currentPage[1]}
