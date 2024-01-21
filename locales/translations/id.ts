@@ -607,7 +607,10 @@ export default {
     close: "Tutup",
     premium: "Premium",
     "try-premium": "Coba premium",
-    nakafa: "Beranda Nakafa"
+    nakafa: "Beranda Nakafa",
+    "full-name": "Nama lengkap",
+    "full-name-placeholder": "Masukkan nama lengkap Anda",
+    "full-name-update": "Nama lengkap Anda telah diperbarui"
   },
   ModalClearChat: {
     clear: "Hapus",

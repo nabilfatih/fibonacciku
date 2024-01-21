@@ -610,7 +610,10 @@ export default {
     close: "Schließen",
     premium: "Premium",
     "try-premium": "Premium ausprobieren",
-    nakafa: "Nakafa Startseite"
+    nakafa: "Nakafa Startseite",
+    "full-name": "Vollständiger Name",
+    "full-name-placeholder": "Geben Sie Ihren vollständigen Namen ein",
+    "full-name-update": "Vollständiger Name aktualisiert"
   },
   ModalClearChat: {
     clear: "Leeren",

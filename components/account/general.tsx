@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import AccountLanguage from "@/components/account/language"
+import AccountName from "@/components/account/name"
 import AccountResetPassword from "@/components/account/reset-password"
 import AccountRole from "@/components/account/role"
 import AccountTheme from "@/components/account/theme"
@@ -54,6 +55,8 @@ export default async function AccountGeneral({ userId }: Props) {
               </Label>
               <p className="text-sm leading-none">{data.email}</p>
             </div>
+
+            <AccountName userId={userId} fullName={data.full_name || ""} />
 
             <AccountRole userId={userId} role={data.role} />
 
