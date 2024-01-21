@@ -5,7 +5,7 @@ import { notFound, redirect } from "next/navigation"
 import { getBooksAdmin } from "@/lib/supabase/admin/book"
 import { createClientServer } from "@/lib/supabase/server"
 
-import BookCollection from "@/components/book/collection"
+import BookRead from "@/components/book/read"
 
 type Props = {
   params: { id: string }
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function BookCollectionSpecificPage({
+export default async function BookReadSpecificPage({
   params,
   searchParams
 }: Props) {
@@ -70,5 +70,5 @@ export default async function BookCollectionSpecificPage({
 
   const signedUrl = data.signedUrl
 
-  return <BookCollection book={book} file={signedUrl} page={page} />
+  return <BookRead book={book} file={signedUrl} page={page} />
 }

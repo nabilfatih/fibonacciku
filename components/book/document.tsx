@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { IconSeparator } from "@/components/ui/icons"
 import { Input } from "@/components/ui/input"
-import type { BookCollectionProps } from "@/components/book/collection"
+import type { BookReadProps } from "@/components/book/read"
 
 const BookDocumentPdf = dynamic(() => import("@/components/book/document-pdf"))
 
@@ -59,11 +59,7 @@ const initialState: StateDocument = {
   currentPage: [1, 1]
 }
 
-export default function BookDocument({
-  book,
-  file,
-  page
-}: BookCollectionProps) {
+export default function BookDocument({ book, file, page }: BookReadProps) {
   const pageRef = useRef<any>({})
   const t = useScopedI18n("Chat")
 

@@ -5,6 +5,8 @@ import { notFound } from "next/navigation"
 import { createClientServer } from "@/lib/supabase/server"
 import { getScopedI18n } from "@/locales/server"
 
+import BookCollections from "@/components/book/collections"
+
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getScopedI18n("Book")
 
@@ -35,5 +37,5 @@ export default async function BookCollectionPage() {
     notFound()
   }
 
-  return <main></main>
+  return <BookCollections books={books} />
 }

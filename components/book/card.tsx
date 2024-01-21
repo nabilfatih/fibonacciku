@@ -1,9 +1,9 @@
-import Image from "next/image"
 import Link from "next/link"
 
 import { getBooksCoverPublicUrl } from "@/lib/supabase/client/book"
 
 import BookCardDescription from "@/components/book/card-description"
+import BookCardImage from "@/components/book/card-image"
 import BookCardText from "@/components/book/card-text"
 import type { BookDocumentWithBooks } from "@/components/book/search"
 
@@ -18,16 +18,11 @@ export default function BookCard({ book }: Props) {
 
   return (
     <div className="flex items-start sm:px-1">
-      <div className="relative mr-2 h-24 w-16 flex-none sm:mr-4 sm:h-48 sm:w-36">
-        <Image
-          src={coverUrl}
-          alt={dataBook.title}
-          sizes="144px"
-          fill
-          priority
-          className="rounded-xl border bg-muted/90 object-cover shadow-sm"
-        />
-      </div>
+      <BookCardImage
+        src={coverUrl}
+        title={dataBook.title}
+        className="mr-2 sm:mr-4 flex-none"
+      />
       <div className="flex-1">
         <div className="flex flex-col">
           <Link
