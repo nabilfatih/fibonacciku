@@ -160,9 +160,9 @@ export default function BookDocument({ book, file, page }: BookReadProps) {
                   <span className="sr-only">{t("search-text")}</span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="mt-1">
+              <DropdownMenuContent align="end" className="mt-1 p-0">
                 <form className="relative">
-                  <IconSearch className="absolute left-1.5 top-2.5 h-5 w-5 text-muted-foreground" />
+                  <IconSearch className="absolute left-2 top-2.5 h-5 w-5 text-muted-foreground" />
                   <Input
                     tabIndex={-1} // Prevents the input from being focused when the user presses tab
                     type="text"
