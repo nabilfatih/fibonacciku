@@ -21,7 +21,7 @@ export default function BookCard({ book }: Props) {
       <BookCardImage
         src={coverUrl}
         title={dataBook.title}
-        className="mr-2 sm:mr-4 flex-none"
+        className="mr-2 flex-none sm:mr-4"
       />
       <div className="flex-1">
         <div className="flex flex-col">

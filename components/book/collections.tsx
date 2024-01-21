@@ -26,8 +26,8 @@ export default function BookCollections({
           className
         )}
       >
-        <div className="relative mx-auto max-w-sm sm:max-w-2xl px-4">
-          <section className="grid sm:grid-cols-4 grid-cols-3 gap-6 sm:gap-10 sm:px-1">
+        <div className="relative mx-auto max-w-sm px-4 sm:max-w-2xl">
+          <section className="grid grid-cols-3 gap-6 sm:grid-cols-4 sm:gap-10 sm:px-1">
             {books.map((book, index) => {
               const publishedDate = moment(book.published_date)
                 .locale(locale)
@@ -40,7 +40,7 @@ export default function BookCollections({
                   <Link
                     href={`/book/collection/${book.id}`}
                     passHref
-                    className="grid relative w-auto sm:w-auto"
+                    className="relative grid w-auto sm:w-auto"
                   >
                     <BookCardImage
                       src={coverUrl}
@@ -50,7 +50,7 @@ export default function BookCollections({
                     <div className="grid">
                       <h2
                         title={book.title}
-                        className="truncate text-sm tracking-tight font-medium"
+                        className="truncate text-sm font-medium tracking-tight"
                       >
                         {book.title}
                       </h2>
