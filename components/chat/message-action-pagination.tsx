@@ -49,7 +49,7 @@ export default function ChatMessageActionPagination({
   return (
     <div className="flex items-center space-x-2">
       <Button
-        variant="outline"
+        variant="ghost"
         size="icon"
         disabled={currentIndex.currentMessage === 1}
         onClick={handlePrevClick}
@@ -61,7 +61,7 @@ export default function ChatMessageActionPagination({
         {currentIndex.currentMessage} / {contentLength}
       </p>
       <Button
-        variant="outline"
+        variant="ghost"
         size="icon"
         disabled={currentIndex.currentMessage === contentLength}
         onClick={handleNextClick}
