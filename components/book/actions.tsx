@@ -1,11 +1,17 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
 import {
   IconBook2,
   IconDownload,
+  IconFlag,
+  IconList,
   IconMessageCirclePlus
 } from "@tabler/icons-react"
 
 import type { Books } from "@/types/types"
+import { getBooksFileSignedUrl } from "@/lib/supabase/client/book"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -19,10 +25,13 @@ type Props = {
 }
 
 export default function BookActions({ book }: Props) {
+  const [openReportDialog, setOpenReportDialog] = useState(false)
+  const [openDetailsSidebar, setOpenDetailsSidebar] = useState(false)
+
   return (
     <div className="fixed inset-x-0 bottom-0 flex h-16 w-full items-center border-t duration-300 ease-in-out animate-in lg:h-[69px] peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
       <div className="mx-auto flex w-full max-w-2xl items-center justify-between px-4">
-        <div className="flex items-center">
+        <div className="flex items-center gap-2">
           <Tooltip>
             <TooltipTrigger asChild>
               <Button asChild variant="outline" size="icon">
@@ -36,12 +45,51 @@ export default function BookActions({ book }: Props) {
               <p>Search again</p>
             </TooltipContent>
           </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setOpenReportDialog(true)}
+              >
+                <IconFlag className="h-5 w-5" />
+                <span className="sr-only">Report book</span>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Report book</p>
+            </TooltipContent>
+          </Tooltip>
         </div>
 
         <div className="flex items-center gap-2">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="outline" size="icon">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setOpenDetailsSidebar(true)}
+              >
+                <IconList className="h-5 w-5" />
+                <span className="sr-only">Details book</span>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Details book</p>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={async () => {
+                  // get signed url
+                  const url = await getBooksFileSignedUrl(book.id, book.file_id)
+                  // open new tab
+                  window.open(url, "_blank")
+                }}
+              >
                 <IconDownload className="h-5 w-5" />
                 <span className="sr-only">Download book</span>
               </Button>
