@@ -115,7 +115,6 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
               items={Array.from({ length: numPages }, (_, i) => ({
                 page: i + 1
               }))}
-              overscan={5}
               initialIndex={stateMessage.initialPage - 1}
               onViewportIndexesChange={viewportIndexes => {
                 dispatch({
