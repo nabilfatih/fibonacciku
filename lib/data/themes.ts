@@ -2,6 +2,7 @@ export const themes = [
   "system",
   "light",
   "dark",
+  "barbie",
   "black",
   "cotton",
   "cyberpunk",
