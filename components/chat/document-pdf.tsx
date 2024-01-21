@@ -133,7 +133,12 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
                     scale={state.zoom}
                     customTextRenderer={textRenderer}
                     loading={
-                      <div className="relative h-full">
+                      <div
+                        className="relative"
+                        style={{
+                          height: listRef.current?.clientHeight
+                        }}
+                      >
                         <div className="absolute inset-0 flex items-center justify-center">
                           <IconSpinner className="animate-spin" />
                         </div>
@@ -153,7 +158,12 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
         ) : (
           <div ref={listRef} className="scroll-gutter h-full overflow-auto">
             <div className="relative mb-4 flex min-h-full items-center justify-center bg-background shadow-sm">
-              <div className="relative h-full">
+              <div
+                className="relative"
+                style={{
+                  height: listRef.current?.clientHeight
+                }}
+              >
                 <div className="absolute inset-0 flex items-center justify-center">
                   <IconSpinner className="animate-spin" />
                 </div>
