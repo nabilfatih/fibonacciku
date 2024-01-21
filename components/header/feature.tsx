@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuLabel,
+  DropdownMenuItem,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
 
@@ -63,7 +63,7 @@ export default function HeaderChatFeature() {
       </DropdownMenuTrigger>
       <DropdownMenuContent sideOffset={8} align="end" className="w-full p-2">
         {featuresData.map(feature => (
-          <DropdownMenuLabel
+          <DropdownMenuItem
             key={feature.type}
             asChild
             className="cursor-pointer items-center rounded-sm py-2 transition-colors hover:bg-accent"
@@ -75,7 +75,7 @@ export default function HeaderChatFeature() {
               <feature.icon className="mr-2 h-4 w-4" />
               <p className="font-medium">{t(feature.type as never)}</p>
             </Link>
-          </DropdownMenuLabel>
+          </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
