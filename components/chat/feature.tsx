@@ -8,7 +8,7 @@ import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 export default function ChatFeature() {
   const t = useScopedI18n("Feature")
   return (
-    <section className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+    <section className="grid grid-cols-1 gap-2 sm:gap-4 sm:grid-cols-3">
       {featuresList.map((feature, index) => (
         <Link key={index} passHref href={feature.link}>
           <Card className="overflow-hidden">
