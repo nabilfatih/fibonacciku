@@ -40,7 +40,7 @@ export default function BookCollections({
                   <Link
                     href={`/book/collection/${book.id}`}
                     passHref
-                    className="relative grid w-auto sm:w-auto"
+                    className="relative grid w-auto gap-1 sm:w-auto"
                   >
                     <BookCardImage
                       src={coverUrl}
