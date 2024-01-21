@@ -9,6 +9,7 @@ import { createClientServer } from "@/lib/supabase/server"
 import ChatMessage from "@/components/chat"
 
 export const runtime = "edge"
+export const dynamic = "force-dynamic"
 
 type Props = {
   params: { feature: string; id: string }
