@@ -61,7 +61,7 @@ export default function HeaderChatFeature() {
           </div>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent sideOffset={8} align="end" className="w-full p-2">
+      <DropdownMenuContent sideOffset={8} align="end" className="w-full">
         {featuresData.map(feature => (
           <DropdownMenuItem
             key={feature.type}

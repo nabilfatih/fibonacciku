@@ -70,7 +70,7 @@ export default function UserMenu() {
         <DropdownMenuContent
           sideOffset={8}
           align="end"
-          className="w-full max-w-xs p-2"
+          className="w-full max-w-xs"
         >
           <DropdownMenuLabel className="flex-col items-start py-2">
             <div className="truncate font-medium">
