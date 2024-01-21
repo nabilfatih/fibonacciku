@@ -69,7 +69,7 @@ function BookDocumentPdf({
       if (parentRef.current) {
         const pageScale =
           parentRef.current.clientWidth / page.originalWidth -
-          (isMobileOnly ? 0.02 : 0.3) // make sure the page is not x overflow
+          (isMobileOnly ? 0 : 0.24) // make sure the page is not x overflow
         if (firstInit) {
           dispatch({
             type: "SET_ZOOM",
@@ -123,48 +123,49 @@ function BookDocumentPdf({
             >
               {(item, index) => {
                 return (
-                  <Page
+                  <div
                     key={`page_${item.page}`}
-                    pageNumber={item.page}
-                    pageIndex={index}
-                    onLoadSuccess={onPageLoad}
-                    scale={state.zoom}
-                    customTextRenderer={textRenderer}
-                    loading={
-                      <div
-                        className="relative"
-                        style={{
-                          height: listRef.current?.clientHeight
-                        }}
-                      >
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <IconSpinner className="animate-spin" />
-                        </div>
-                      </div>
-                    }
                     className={cn(
-                      "relative mb-4 flex h-fit min-h-full items-center justify-center border-y bg-background shadow-sm",
+                      "relative mb-4 flex items-center justify-center border-y bg-background",
                       index === 0 && "mt-0 border-t-0",
                       // last index
                       index === numPages - 1 && "mb-0 border-b-0"
                     )}
-                  />
+                    style={{
+                      minHeight: listRef.current?.clientHeight
+                    }}
+                  >
+                    <Page
+                      key={`page_${item.page}`}
+                      pageNumber={item.page}
+                      pageIndex={index}
+                      onLoadSuccess={onPageLoad}
+                      scale={state.zoom}
+                      customTextRenderer={textRenderer}
+                      loading={
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <IconSpinner className="animate-spin" />
+                        </div>
+                      }
+                      className={cn(
+                        "relative flex h-full items-center justify-center bg-background shadow"
+                      )}
+                    />
+                  </div>
                 )
               }}
             </ViewportList>
           </div>
         ) : (
           <div ref={listRef} className="scroll-gutter h-full overflow-auto">
-            <div className="relative mb-4 flex min-h-full items-center justify-center bg-background shadow-sm">
-              <div
-                className="relative"
-                style={{
-                  height: listRef.current?.clientHeight
-                }}
-              >
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <IconSpinner className="animate-spin" />
-                </div>
+            <div
+              className="relative mb-4 flex items-center justify-center bg-background"
+              style={{
+                minHeight: listRef.current?.clientHeight
+              }}
+            >
+              <div className="relative flex h-full items-center justify-center bg-background shadow">
+                <IconSpinner className="animate-spin" />
               </div>
             </div>
           </div>

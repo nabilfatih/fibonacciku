@@ -53,7 +53,7 @@ const documentReducer = (state: StateDocument, action: ActionDocument) => {
 }
 
 const initialState: StateDocument = {
-  zoom: 0.8,
+  zoom: 1,
   defaultZoom: 1,
   searchText: "",
   currentPage: [1, 1]
