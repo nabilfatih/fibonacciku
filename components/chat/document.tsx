@@ -5,7 +5,7 @@ import dynamic from "next/dynamic"
 import {
   IconMinus,
   IconPlus,
-  IconRefresh,
+  IconRestore,
   IconSearch
 } from "@tabler/icons-react"
 
@@ -124,7 +124,7 @@ export default function ChatDocument() {
                     })
                   }}
                 >
-                  <IconRefresh className="h-4 w-4" />
+                  <IconRestore className="h-4 w-4" />
                   <span className="sr-only">{t("reset")}</span>
                 </Button>
               </div>
