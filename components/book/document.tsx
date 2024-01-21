@@ -120,7 +120,7 @@ export default function BookDocument({ book, file, page }: BookReadProps) {
             </Button>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <div className="flex items-center gap-0.5">
               <Input
                 type="text"
