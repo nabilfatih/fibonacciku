@@ -1,10 +1,11 @@
 "use client"
 
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useMemo, useRef } from "react"
 import type { FC } from "react"
 import dynamic from "next/dynamic"
 import { useTheme } from "next-themes"
 
+import { darkThemes } from "@/lib/data/themes"
 import useMousePosition from "@/lib/hooks/use-mouse"
 import { cn } from "@/lib/utils"
 
@@ -23,7 +24,11 @@ const Particles: FC<ParticlesProps> = ({
   ease = 50,
   refresh = false
 }) => {
-  const { theme } = useTheme()
+  const { resolvedTheme } = useTheme()
+  const isThemeDark = useMemo(
+    () => darkThemes.includes(resolvedTheme as string),
+    [resolvedTheme]
+  )
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const canvasContainerRef = useRef<HTMLDivElement>(null)
@@ -38,7 +43,7 @@ const Particles: FC<ParticlesProps> = ({
     initCanvas()
     animate()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [theme])
+  }, [isThemeDark])
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -114,7 +119,7 @@ const Particles: FC<ParticlesProps> = ({
     const y = Math.floor(Math.random() * canvasSize.current.h)
     const translateX = 0
     const translateY = 0
-    const size = Math.floor(Math.random() * 2) + 0.1
+    const size = Math.floor(Math.random() * 2) + 1
     const alpha = 0
     const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1))
     const dx = (Math.random() - 0.5) * 0.2
@@ -140,10 +145,9 @@ const Particles: FC<ParticlesProps> = ({
       context.current.translate(translateX, translateY)
       context.current.beginPath()
       context.current.arc(x, y, size, 0, 2 * Math.PI)
-      context.current.fillStyle =
-        theme === "dark" || theme === "black"
-          ? `rgba(255, 255, 255, ${alpha})`
-          : `rgba(0, 0, 0, ${alpha})`
+      context.current.fillStyle = isThemeDark
+        ? `rgba(255, 255, 255, ${alpha})`
+        : `rgba(0, 0, 0, ${alpha})`
       context.current.fill()
       context.current.setTransform(dpr, 0, 0, dpr, 0, 0)
 

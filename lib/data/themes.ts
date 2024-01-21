@@ -14,3 +14,5 @@ export const themes = [
   "ravenclaw",
   "slytherin"
 ]
+
+export const darkThemes = ["dark", "black", "ravenclaw", "slytherin"]
