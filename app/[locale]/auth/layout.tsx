@@ -20,7 +20,7 @@ export default function AuthenticationLayout({
       <div className="relative hidden h-full flex-col bg-muted p-10 dark:border-r lg:flex">
         <Particles
           className="pointer-events-none absolute inset-0"
-          quantity={50}
+          quantity={40}
         />
         <div className="relative z-20 flex items-center gap-2 text-lg font-medium">
           <div className="relative h-6 w-6">
