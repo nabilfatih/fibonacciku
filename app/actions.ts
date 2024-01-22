@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache"
 import { cookies } from "next/headers"
 
+import type { Features } from "@/types/types"
 import { createClientServer } from "@/lib/supabase/server"
 import { generateUUID, getCurrentDate } from "@/lib/utils"
 
@@ -134,6 +135,74 @@ export async function shareChat(id: string, type: string) {
   }
 
   return payload
+}
+
+export async function getChatFile(fileId: string, type: Features) {
+  const validFeatures = new Set(["document", "book"])
+  if (!validFeatures.has(type)) {
+    return {
+      data: null
+    }
+  }
+
+  const cookieStore = cookies()
+  const supabase = createClientServer(cookieStore)
+  const {
+    data: { session }
+  } = await supabase.auth.getSession()
+
+  if (!session?.user?.id) {
+    return {
+      error: "Unauthorized"
+    }
+  }
+
+  let file: string | null = null
+
+  if (type === "document") {
+    const { data, error } = await supabase.storage
+      .from("documents")
+      .createSignedUrl(`${session.user.id}/${fileId}`, 60 * 60 * 24) 
+
+    if (error) {
+      return {
+        error: "Something went wrong"
+      }
+    }
+
+    if (!data) {
+      return {
+        error: "Unauthorized"
+      }
+    }
+
+    file = data.signedUrl
+  }
+
+  if (type === "book") {
+    const [bookId, bookFileId] = fileId.split("--") // bookId--bookFileId -> this is keyId
+    const { data, error } = await supabase.storage
+      .from("books")
+      .createSignedUrl(`${bookId}/${bookFileId}`, 60 * 60 * 24)
+
+    if (error) {
+      return {
+        error: "Something went wrong"
+      }
+    }
+
+    if (!data) {
+      return {
+        error: "Unauthorized"
+      }
+    }
+
+    file = data.signedUrl
+  }
+
+  return {
+    data: file
+  }
 }
 
 // TODO: Refactor this library actions

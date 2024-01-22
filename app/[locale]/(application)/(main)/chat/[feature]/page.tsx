@@ -51,7 +51,5 @@ export default async function ChatFeaturePage({ params, searchParams }: Props) {
     redirect("/book")
   }
 
-  return (
-    <ChatMessage userId={session.user.id} type={params.feature as Features} />
-  )
+  return <ChatMessage type={params.feature as Features} />
 }

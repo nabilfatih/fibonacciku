@@ -1,15 +1,15 @@
 "use client"
 
-import { useCallback, useEffect, useRef } from "react"
+import { useEffect, useRef } from "react"
 import dynamic from "next/dynamic"
+import useSWR from "swr"
 
 import type { Chat, ChatMessage, Features } from "@/types/types"
 import { useMessage } from "@/lib/context/use-message"
-import { getBooksFileSignedUrl } from "@/lib/supabase/client/book"
-import { getChatDocumentSignedUrl } from "@/lib/supabase/client/chat"
 import { cn } from "@/lib/utils"
 
 import ChatScrollAnchor from "@/components/chat/scroll-anchor"
+import { getChatFile } from "@/app/actions"
 
 const ChatPanel = dynamic(() => import("@/components/chat/panel"))
 const ChatList = dynamic(() => import("@/components/chat/list"))
@@ -20,7 +20,6 @@ export interface ChatProps extends React.ComponentProps<"div"> {
   chat?: Chat
   initialMessages?: ChatMessage[]
   id?: string
-  userId?: string
   title?: string
   fileId?: string | null
   createdAt?: string
@@ -29,7 +28,6 @@ export interface ChatProps extends React.ComponentProps<"div"> {
 export default function ChatMessage({
   id,
   chat,
-  userId,
   initialMessages,
   className,
   type,
@@ -49,20 +47,25 @@ export default function ChatMessage({
 
   const chatMessageRef = useRef<HTMLDivElement | null>(null)
 
-  const fetchChatFile = useCallback(
-    async (userId: string, fileId: string, type: Features) => {
-      let dataFile: string | null = null
-      if (type === "document") {
-        dataFile = await getChatDocumentSignedUrl(userId, fileId)
-      }
-      if (type === "book") {
-        const [bookId, bookFileId] = fileId.split("--") // bookId--bookFileId -> this is keyId
-        dataFile = await getBooksFileSignedUrl(bookId, bookFileId)
-      }
-      dispatch({ type: "SET_CURRENT_DOCUMENT", payload: dataFile })
-    },
-    [dispatch]
+  const { data: file } = useSWR(
+    fileId ? [fileId, type] : null,
+    ([fileId, type]) => getChatFile(fileId, type),
+    {
+      revalidateOnFocus: false,
+      revalidateIfStale: false,
+      revalidateOnReconnect: false,
+      refreshInterval: 1000 * 60 * 60 * 24 // 1 day
+    }
   )
+
+  useEffect(() => {
+    if (file?.data) {
+      dispatch({ type: "SET_CURRENT_DOCUMENT", payload: file.data })
+    } else {
+      dispatch({ type: "SET_CURRENT_DOCUMENT", payload: null })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [file])
 
   useEffect(() => {
     if (initialMessages) {
@@ -70,23 +73,17 @@ export default function ChatMessage({
       setIndexMessage([])
       setShowMessage(initialMessages)
       dispatch({ type: "SET_CURRENT_CHAT", payload: chat || null })
-      dispatch({ type: "SET_CURRENT_DOCUMENT", payload: null })
-      if (fileId && userId) {
-        fetchChatFile(userId, fileId, type)
-      }
     } else {
       stop()
       setShowMessage([])
       setIndexMessage([])
       dispatch({ type: "SET_CURRENT_CHAT", payload: null })
-      dispatch({ type: "SET_CURRENT_DOCUMENT", payload: null })
     }
     return () => {
       stop()
       setShowMessage([])
       setIndexMessage([])
       dispatch({ type: "SET_CURRENT_CHAT", payload: null })
-      dispatch({ type: "SET_CURRENT_DOCUMENT", payload: null })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialMessages])
