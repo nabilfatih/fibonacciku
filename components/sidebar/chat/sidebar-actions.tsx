@@ -67,7 +67,7 @@ export default function SidebarActions({
             <span className="sr-only">Actions</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start" className="w-full p-2">
+        <DropdownMenuContent align="start" className="w-full">
           {chat.messages ? (
             <DropdownMenuItem
               role="button"

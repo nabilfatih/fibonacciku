@@ -54,7 +54,7 @@ export default function LibraryCardActions({ className, library }: Props) {
             <span className="sr-only">Actions</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start" className="w-full p-2">
+        <DropdownMenuContent align="start" className="w-full">
           <DropdownMenuItem
             role="button"
             className="cursor-pointer space-x-2"
