@@ -426,7 +426,7 @@ export const handleMetadataMessage = (
   )
   if (imageResults.length) {
     const imageResult = imageResults[0].data.images as ImageResult[]
-    if (imageResult) {
+    if (imageResult.length) {
       messageMetadata.image_result = imageResult
     }
   }
