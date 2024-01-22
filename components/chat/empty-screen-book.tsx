@@ -93,6 +93,7 @@ export default function EmptyScreenBook() {
                 variant="outline"
                 size="icon"
                 className="ml-2 rounded-full"
+                disabled={loadingId === bookData.id}
               >
                 <Link href={`/book/collection/${bookData.id}`}>
                   {loadingId === bookData.id ? (
