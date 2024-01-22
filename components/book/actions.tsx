@@ -20,8 +20,7 @@ import {
   TooltipContent,
   TooltipTrigger
 } from "@/components/ui/tooltip"
-
-import BookDetails from "./details"
+import BookDetails from "@/components/book/details"
 
 const BookDetailsSidebar = dynamic(
   () => import("@/components/book/details-sidebar")

@@ -17,7 +17,7 @@ export default function BookRead({
 }: BookReadProps) {
   return (
     <>
-      <BookDocument book={book} file={file} page={page} className={className} />
+      <BookDocument file={file} page={page} className={className} />
 
       <BookActions book={book} />
     </>

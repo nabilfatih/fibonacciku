@@ -59,7 +59,10 @@ const initialState: StateDocument = {
   currentPage: [1, 1]
 }
 
-export default function BookDocument({ book, file, page }: BookReadProps) {
+export default function BookDocument({
+  file,
+  page
+}: Omit<BookReadProps, "book">) {
   const pageRef = useRef<any>({})
   const t = useScopedI18n("Chat")
 
