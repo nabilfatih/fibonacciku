@@ -95,14 +95,16 @@ export default function EmptyScreenBook() {
                 className="ml-2 rounded-full"
                 disabled={loadingId === bookData.id}
               >
-                <Link href={`/book/collection/${bookData.id}`}>
-                  {loadingId === bookData.id ? (
+                {loadingId === bookData.id ? (
+                  <div>
                     <IconSpinner />
-                  ) : (
+                  </div>
+                ) : (
+                  <Link href={`/book/collection/${bookData.id}`}>
                     <IconX className="h-5 w-5 " />
-                  )}
-                  <span className="sr-only">Close</span>
-                </Link>
+                    <span className="sr-only">Close</span>
+                  </Link>
+                )}
               </Button>
             </div>
           )}
