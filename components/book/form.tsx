@@ -16,6 +16,8 @@ import {
   TooltipTrigger
 } from "@/components/ui/tooltip"
 
+import { IconSpinner } from "../ui/icons"
+
 export interface FormProps extends React.ComponentProps<"div"> {}
 
 export default function BookForm({ className }: FormProps) {
@@ -40,6 +42,7 @@ export default function BookForm({ className }: FormProps) {
 
   React.useEffect(() => {
     setInput(q)
+    setIsLoading(false)
   }, [q])
 
   return (
@@ -85,7 +88,11 @@ export default function BookForm({ className }: FormProps) {
                 size="icon"
                 disabled={input === "" || isLoading}
               >
-                <IconSearch />
+                {isLoading ? (
+                  <IconSpinner className="animate-spin" />
+                ) : (
+                  <IconSearch />
+                )}
                 <span className="sr-only">Search</span>
               </Button>
             </TooltipTrigger>

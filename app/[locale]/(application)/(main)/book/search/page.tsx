@@ -7,6 +7,7 @@ import { createClientServer } from "@/lib/supabase/server"
 import { getScopedI18n } from "@/locales/server"
 
 import BookLoading from "@/components/book/loading"
+import BookPanel from "@/components/book/panel"
 import BookSearch from "@/components/book/search"
 
 type Props = {
@@ -50,8 +51,11 @@ export default async function BookSearchPage({ searchParams }: Props) {
   const query = String(q)
 
   return (
-    <Suspense fallback={<BookLoading />}>
-      <BookSearch query={query} />
-    </Suspense>
+    <>
+      <Suspense fallback={<BookLoading />}>
+        <BookSearch query={query} />
+      </Suspense>
+      <BookPanel />
+    </>
   )
 }

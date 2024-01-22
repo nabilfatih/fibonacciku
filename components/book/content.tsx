@@ -6,7 +6,6 @@ import dynamic from "next/dynamic"
 import { cn } from "@/lib/utils"
 
 import BookAssistant from "@/components/book/assistant"
-import BookPanel from "@/components/book/panel"
 import type { BookDocumentWithBooks } from "@/components/book/search"
 
 const BookList = dynamic(() => import("@/components/book/list"))
@@ -27,19 +26,15 @@ export default function BookContent({
   const bookRef = useRef<HTMLDivElement | null>(null)
 
   return (
-    <>
-      <main
-        ref={bookRef}
-        className={cn(
-          "h-full space-y-4 overflow-y-auto overflow-x-hidden pb-48 sm:pb-52",
-          className
-        )}
-      >
-        <BookAssistant query={query} document={document} />
-        <BookList bookRef={bookRef} books={books} />
-      </main>
-
-      <BookPanel />
-    </>
+    <main
+      ref={bookRef}
+      className={cn(
+        "h-full space-y-4 overflow-y-auto overflow-x-hidden pb-48 sm:pb-52",
+        className
+      )}
+    >
+      <BookAssistant query={query} document={document} />
+      <BookList bookRef={bookRef} books={books} />
+    </main>
   )
 }

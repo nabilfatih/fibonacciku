@@ -867,7 +867,8 @@ export default {
     request: "Anfragen",
     "request-sent": "Anfrage gesendet",
     error:
-      "Etwas ist schief gelaufen, bitte versuchen Sie es später noch einmal!"
+      "Etwas ist schief gelaufen, bitte versuchen Sie es später noch einmal!",
+    close: "Schließen"
   },
   MockupHome: {
     "new-chat": "Neuer Chat",

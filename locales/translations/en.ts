@@ -837,7 +837,8 @@ export default {
     "message-placeholder": "Enter your message",
     request: "Request",
     "request-sent": "Request sent",
-    error: "Something went wrong, please try again later!"
+    error: "Something went wrong, please try again later!",
+    close: "Close"
   },
   MockupHome: {
     "new-chat": "New chat",

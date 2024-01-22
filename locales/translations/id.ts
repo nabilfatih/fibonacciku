@@ -854,7 +854,8 @@ export default {
     "message-placeholder": "Tulis pertanyaan Anda di sini...",
     request: "Minta",
     "request-sent": "Permintaan terkirim",
-    error: "Ada yang salah, silakan coba lagi nanti!"
+    error: "Ada yang salah, silakan coba lagi nanti!",
+    close: "Tutup"
   },
   MockupHome: {
     "new-chat": "Chat Baru",
