@@ -126,7 +126,7 @@ export const insertChat = async (
 ) => {
   const { data, error } = await supabaseClient
     .from("chat")
-    .insert({ id: chatId, user_id: userId, title: title, messages: [] }) // initial messages
+    .upsert({ id: chatId, user_id: userId, title: title, messages: [] }) // initial messages
     .select()
     .single()
 

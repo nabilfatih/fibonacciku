@@ -74,12 +74,16 @@ export default function ChatMessage({
         fetchChatFile(userId, fileId, type)
       }
     } else {
-      setIndexMessage([])
+      stop()
       setShowMessage([])
-      dispatch({ type: "SET_CURRENT_DOCUMENT", payload: null })
+      setIndexMessage([])
+      dispatch({ type: "SET_CURRENT_CHAT", payload: null })
     }
     return () => {
       stop()
+      setShowMessage([])
+      setIndexMessage([])
+      dispatch({ type: "SET_CURRENT_DOCUMENT", payload: null })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialMessages])

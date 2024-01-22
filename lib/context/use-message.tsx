@@ -314,7 +314,15 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
 
         const data = response.body
 
-        if (!data) throw new Error("No data")
+        if (!data)
+          throw new Error(
+            JSON.stringify({
+              error: {
+                statusCode: 500,
+                message: "Something went wrong. Contact support."
+              }
+            })
+          )
 
         dispatch({ type: "SET_IS_GENERATING", payload: true })
 
@@ -362,12 +370,19 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
         // reset the chat state to the previous state.
         setShowMessage(previousMessages)
 
-        const errorData = JSON.parse(error.message).error as {
-          statusCode: number
-          message: string
-        }
-        if (errorData) {
-          toast.error(errorData.message)
+        // check if error.message can be parsed, before parsing it
+        if (error.message) {
+          try {
+            const errorData = JSON.parse(error.message).error as {
+              statusCode: number
+              message: string
+            }
+            if (errorData) {
+              toast.error(errorData.message)
+            }
+          } catch (error) {
+            toast.error("Something went wrong. Contact support.")
+          }
         } else {
           toast.error("High traffic, refresh the page.")
           track(`Error - ${feature}`, {

@@ -90,7 +90,7 @@ export const insertChatAdmin = async (
   type: Features,
   fileId = ""
 ) => {
-  const { error } = await supabaseAdmin.from("chat").insert({
+  const { error } = await supabaseAdmin.from("chat").upsert({
     id: chatId,
     user_id: userId,
     title: title,
