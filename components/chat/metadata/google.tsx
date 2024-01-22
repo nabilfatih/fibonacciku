@@ -48,7 +48,7 @@ export default function ChatMetadataGoogle({ metadata }: Props) {
                 duration: 0.5
               }}
               viewport={{ amount: 0 }}
-              className="group min-h-[82px] rounded-xl border px-3 py-2 shadow-sm transition-colors hover:bg-muted/50"
+              className="group min-h-[82px] rounded-xl border p-2 shadow-sm transition-colors hover:bg-muted/50"
             >
               <Link
                 title={he.decode(item.title)}
