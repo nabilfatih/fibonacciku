@@ -1,4 +1,4 @@
-import type { ChatMessage, RoleAgent, SaveDataMessage } from "@/types/types"
+import type { RoleAgent, SaveDataMessage } from "@/types/types"
 import { generateNanoID, generateUUID, getCurrentDate } from "@/lib/utils"
 
 import supabaseClient from "."
@@ -244,7 +244,7 @@ export const getChatDocumentSignedUrl = async (
 ) => {
   const { data, error } = await supabaseClient.storage
     .from("documents")
-    .createSignedUrl(`${userId}/${fileId}`, 60 * 60 * 24)
+    .createSignedUrl(`${userId}/${fileId}`, 86400) // 1 day
   if (error) {
     throw error
   }

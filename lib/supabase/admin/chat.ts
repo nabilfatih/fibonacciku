@@ -216,7 +216,7 @@ export const getChatAttachmentSignedUrlAdmin = async (
 ) => {
   const { data, error } = await supabaseAdmin.storage
     .from("attachments")
-    .createSignedUrl(`${userId}/${chatId}/${fileId}`, 60)
+    .createSignedUrl(`${userId}/${chatId}/${fileId}`, 60 * 60 * 24)
   if (error) {
     throw error
   }

@@ -53,18 +53,21 @@ export const getBooksProcessingAdmin = async () => {
   return data
 }
 
-export const getBooksSignedUrlAdmin = async (
-  bookId: string,
-  fileId: string
-) => {
-  const { data, error } = await supabaseAdmin.storage
-    .from("books")
-    .createSignedUrl(`${bookId}/${fileId}`, 3600 * 24) // 1 day
-  if (error) {
-    throw error
+export const getBooksSignedUrlAdmin = cache(
+  async (bookId: string, fileId: string) => {
+    const { data, error } = await supabaseAdmin.storage
+      .from("books")
+      .createSignedUrl(`${bookId}/${fileId}`, 60 * 60 * 24) // 1 day
+    if (error) {
+      throw error
+    }
+    return data.signedUrl
+  },
+  ["getBooksSignedUrlAdmin"],
+  {
+    revalidate: 86400
   }
-  return data.signedUrl
-}
+)
 
 export const insertBooksAdmin = async (
   bookId: string,

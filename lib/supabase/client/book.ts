@@ -80,7 +80,7 @@ export const getBooksFileSignedUrl = async (
 ): Promise<string> => {
   const { data, error } = await supabaseClient.storage
     .from("books")
-    .createSignedUrl(`${bookId}/${fileId}`, 60 * 60 * 24)
+    .createSignedUrl(`${bookId}/${fileId}`, 86400) // 1 day
   if (error) {
     throw error
   }
