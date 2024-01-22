@@ -8,8 +8,8 @@ import useSWR from "swr"
 import { useCurrentUser } from "@/lib/context/use-current-user"
 import { useMessage } from "@/lib/context/use-message"
 import {
-  downloadBooksFile,
-  getBooksCoverPublicUrl
+  getBooksCoverPublicUrl,
+  getBooksFileSignedUrl
 } from "@/lib/supabase/client/book"
 
 import { Button } from "@/components/ui/button"
@@ -62,7 +62,7 @@ export default function EmptyScreenBook() {
                   if (loadingId === bookData.id) return
                   if (!userDetails) return
                   setLoadingId(bookData.id)
-                  const currentDocument = await downloadBooksFile(
+                  const currentDocument = await getBooksFileSignedUrl(
                     bookData.id,
                     bookData.file_id
                   )

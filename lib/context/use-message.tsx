@@ -84,7 +84,7 @@ export type ChatRequest = {
 
 // Define the types for our state and actions
 export type StateMessage = {
-  currentDocument: Blob | null
+  currentDocument: string | null
   currentChat: Chat | null
   isGenerating: boolean
   isLoading: boolean
@@ -101,7 +101,7 @@ export type StateMessage = {
 }
 
 export type ActionMessage =
-  | { type: "SET_CURRENT_DOCUMENT"; payload: Blob | null }
+  | { type: "SET_CURRENT_DOCUMENT"; payload: string | null }
   | { type: "SET_CURRENT_CHAT"; payload: Chat | null }
   | { type: "SET_IS_GENERATING"; payload: boolean }
   | { type: "SET_IS_LOADING"; payload: boolean }
@@ -574,9 +574,9 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
   // stop the generator if the component is unmounted
   useEffect(() => {
     return () => {
-      stop()
+      handleClearState()
     }
-  }, [stop])
+  }, [handleClearState])
 
   useEffect(() => {
     // current chat can not be null

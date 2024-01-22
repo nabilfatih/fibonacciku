@@ -21,6 +21,8 @@ import {
   TooltipTrigger
 } from "@/components/ui/tooltip"
 
+import BookDetails from "./details"
+
 const BookDetailsSidebar = dynamic(
   () => import("@/components/book/details-sidebar")
 )
@@ -81,7 +83,7 @@ export default function BookActions({ book }: Props) {
           open={openDetailsSidebar}
           onOpenChange={setOpenDetailsSidebar}
         >
-          <div></div>
+          <BookDetails book={book} />
         </BookDetailsSidebar>
 
         <div className="flex items-center gap-2">

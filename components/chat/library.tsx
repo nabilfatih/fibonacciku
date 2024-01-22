@@ -11,7 +11,7 @@ import { motion } from "framer-motion"
 import { isMobileOnly } from "react-device-detect"
 
 import { useMessage } from "@/lib/context/use-message"
-import { downloadChatDocument } from "@/lib/supabase/client/chat"
+import { getChatDocumentSignedUrl } from "@/lib/supabase/client/chat"
 import useUserLibrary from "@/lib/swr/use-user-library"
 import { cn } from "@/lib/utils"
 
@@ -118,7 +118,7 @@ export default function ChatLibrary({ userId }: Props) {
                 onClick={async () => {
                   if (loadingId === library.id) return
                   setLoadingId(library.id)
-                  const currentDocument = await downloadChatDocument(
+                  const currentDocument = await getChatDocumentSignedUrl(
                     userId,
                     library.file_id
                   )

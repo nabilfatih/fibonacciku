@@ -5,8 +5,8 @@ import dynamic from "next/dynamic"
 
 import type { Chat, ChatMessage, Features } from "@/types/types"
 import { useMessage } from "@/lib/context/use-message"
-import { downloadBooksFile } from "@/lib/supabase/client/book"
-import { downloadChatDocument } from "@/lib/supabase/client/chat"
+import { getBooksFileSignedUrl } from "@/lib/supabase/client/book"
+import { getChatDocumentSignedUrl } from "@/lib/supabase/client/chat"
 import { cn } from "@/lib/utils"
 
 import ChatScrollAnchor from "@/components/chat/scroll-anchor"
@@ -51,13 +51,13 @@ export default function ChatMessage({
 
   const fetchChatFile = useCallback(
     async (userId: string, fileId: string, type: Features) => {
-      let dataFile = null
+      let dataFile: string | null = null
       if (type === "document") {
-        dataFile = await downloadChatDocument(userId, fileId)
+        dataFile = await getChatDocumentSignedUrl(userId, fileId)
       }
       if (type === "book") {
         const [bookId, bookFileId] = fileId.split("--") // bookId--bookFileId -> this is keyId
-        dataFile = await downloadBooksFile(bookId, bookFileId)
+        dataFile = await getBooksFileSignedUrl(bookId, bookFileId)
       }
       dispatch({ type: "SET_CURRENT_DOCUMENT", payload: dataFile })
     },
@@ -70,6 +70,7 @@ export default function ChatMessage({
       setIndexMessage([])
       setShowMessage(initialMessages)
       dispatch({ type: "SET_CURRENT_CHAT", payload: chat || null })
+      dispatch({ type: "SET_CURRENT_DOCUMENT", payload: null })
       if (fileId && userId) {
         fetchChatFile(userId, fileId, type)
       }
@@ -78,11 +79,13 @@ export default function ChatMessage({
       setShowMessage([])
       setIndexMessage([])
       dispatch({ type: "SET_CURRENT_CHAT", payload: null })
+      dispatch({ type: "SET_CURRENT_DOCUMENT", payload: null })
     }
     return () => {
       stop()
       setShowMessage([])
       setIndexMessage([])
+      dispatch({ type: "SET_CURRENT_CHAT", payload: null })
       dispatch({ type: "SET_CURRENT_DOCUMENT", payload: null })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
