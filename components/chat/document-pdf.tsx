@@ -94,6 +94,14 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
         file={stateMessage.currentDocument}
         onLoadSuccess={onDocumentLoadSuccess}
         options={options}
+        onItemClick={({ pageIndex }) => {
+          const page = pageRef.current
+          if (page && typeof page.scrollToIndex === "function") {
+            page.scrollToIndex({
+              index: pageIndex
+            })
+          }
+        }}
         externalLinkTarget="_blank"
         className="relative h-full border border-t-0 bg-background"
         error={
