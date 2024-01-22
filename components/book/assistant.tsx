@@ -18,8 +18,10 @@ export default function BookAssistant({ query, document }: Props) {
     <header className="border-b py-4">
       <div className="relative mx-auto max-w-2xl px-4">
         <div className="flex items-center gap-2">
-          <IconBulb className="h-5 w-5" />
-          <h2 className="font-semibold leading-none">{t("fibo-assistant")}</h2>
+          <IconBulb className="h-5 w-5 sm:w-6 sm:h-6" />
+          <h2 className="font-semibold sm:text-lg leading-none">
+            {t("fibo-assistant")}
+          </h2>
         </div>
       </div>
     </header>
