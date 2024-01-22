@@ -1,13 +1,15 @@
 "use client"
 
 import { useRef } from "react"
+import dynamic from "next/dynamic"
 
 import { cn } from "@/lib/utils"
 
 import BookAssistant from "@/components/book/assistant"
-import BookList from "@/components/book/list"
 import BookPanel from "@/components/book/panel"
 import type { BookDocumentWithBooks } from "@/components/book/search"
+
+const BookList = dynamic(() => import("@/components/book/list"))
 
 type Props = {
   books: BookDocumentWithBooks[]

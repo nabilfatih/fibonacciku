@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import dynamic from "next/dynamic"
 import Link from "next/link"
 import {
   IconBook2,
@@ -19,6 +20,13 @@ import {
   TooltipContent,
   TooltipTrigger
 } from "@/components/ui/tooltip"
+
+const BookDetailsSidebar = dynamic(
+  () => import("@/components/book/details-sidebar")
+)
+const BookReportDialog = dynamic(
+  () => import("@/components/book/report-dialog")
+)
 
 type Props = {
   book: Books
@@ -62,6 +70,20 @@ export default function BookActions({ book }: Props) {
           </Tooltip>
         </div>
 
+        <BookReportDialog
+          book={book}
+          open={openReportDialog}
+          onOpenChange={setOpenReportDialog}
+          onReport={() => setOpenReportDialog(false)}
+        />
+
+        <BookDetailsSidebar
+          open={openDetailsSidebar}
+          onOpenChange={setOpenDetailsSidebar}
+        >
+          <div></div>
+        </BookDetailsSidebar>
+
         <div className="flex items-center gap-2">
           <Tooltip>
             <TooltipTrigger asChild>
@@ -71,11 +93,11 @@ export default function BookActions({ book }: Props) {
                 onClick={() => setOpenDetailsSidebar(true)}
               >
                 <IconList className="h-5 w-5" />
-                <span className="sr-only">Details book</span>
+                <span className="sr-only">Book details</span>
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Details book</p>
+              <p>Book details</p>
             </TooltipContent>
           </Tooltip>
           <Tooltip>

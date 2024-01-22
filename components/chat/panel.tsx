@@ -10,10 +10,10 @@ import { useScopedI18n } from "@/locales/client"
 import { Button } from "@/components/ui/button"
 import { IconStop } from "@/components/ui/icons"
 import ButtonScrollToBottom from "@/components/chat/button-scroll-to-bottom"
+import SidebarDocument from "@/components/chat/document-sidebar"
 import FooterText from "@/components/chat/footer"
 import PromptForm from "@/components/chat/form"
 import ChatShareDialog from "@/components/chat/share-dialog"
-import SidebarDocument from "@/components/chat/sidebar-document"
 import { shareChat } from "@/app/actions"
 
 const ChatDocument = dynamic(() => import("@/components/chat/document"))

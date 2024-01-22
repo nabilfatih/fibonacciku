@@ -94,7 +94,7 @@ export default function Contact({ variant, className }: Props) {
 
   if (isDesktop) {
     return (
-      <Dialog>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <button
             className={cn(

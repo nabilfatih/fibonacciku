@@ -1,24 +1,24 @@
 "use client"
 
 import { useState } from "react"
+import { type DialogProps } from "@radix-ui/react-dialog"
 import { IconSend } from "@tabler/icons-react"
 import axios from "axios"
 import { toast } from "sonner"
 
+import type { Books } from "@/types/types"
 import { useCurrentUser } from "@/lib/context/use-current-user"
 import { useMediaQuery } from "@/lib/hooks/use-media-query"
-import { cn } from "@/lib/utils"
 import { useScopedI18n } from "@/locales/client"
 
-import { Button, buttonVariants } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
-  DialogTrigger
+  DialogTitle
 } from "@/components/ui/dialog"
 import {
   Drawer,
@@ -27,33 +27,28 @@ import {
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger
+  DrawerTitle
 } from "@/components/ui/drawer"
 import { IconSpinner } from "@/components/ui/icons"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 
-type Props = {
-  variant?:
-    | "default"
-    | "link"
-    | "destructive"
-    | "outline"
-    | "secondary"
-    | "ghost"
-    | null
-  className?: string
+interface BookReportDialogProps extends DialogProps {
+  book: Books
+  onReport: () => void
 }
 
-export default function Feedback({ variant, className }: Props) {
+export default function BookReportDialog({
+  book,
+  onReport,
+  ...props
+}: BookReportDialogProps) {
   const t = useScopedI18n("ModalFeedback")
-
+  const tBook = useScopedI18n("BookChat")
   const { userDetails } = useCurrentUser()
 
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
-  const [open, setOpen] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [message, setMessage] = useState<string>("")
 
@@ -68,7 +63,13 @@ export default function Feedback({ variant, className }: Props) {
         {
           email: userDetails.email,
           subject: "Feedback Form",
-          message
+          message: `Book Information: 
+            \n\nBook ID: ${book.id}
+            \n\nBook Title: ${book.title}
+            \n\nBook Public ID: ${book.public_id}
+            \n\nBook Status: ${book.status}
+  
+            \n\nMessage from user: ${message}`
         },
         {
           headers: {
@@ -79,6 +80,7 @@ export default function Feedback({ variant, className }: Props) {
       if (res.status === 200) {
         setMessage("")
         toast.success(t("message-send"))
+        onReport()
       }
       if (res.status === 400) {
         toast.error(res.data.message)
@@ -91,22 +93,11 @@ export default function Feedback({ variant, className }: Props) {
 
   if (isDesktop) {
     return (
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <button
-            className={cn(
-              variant && buttonVariants({ variant }),
-              "flex w-full justify-start",
-              className
-            )}
-          >
-            {t("feedback")}
-          </button>
-        </DialogTrigger>
+      <Dialog {...props}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>{t("feedback")}</DialogTitle>
-            <DialogDescription>{t("desc-feedback")}</DialogDescription>
+            <DialogTitle>{tBook("report")}</DialogTitle>
+            <DialogDescription>{tBook("report-desc")}</DialogDescription>
           </DialogHeader>
 
           <div className="grid gap-2">
@@ -140,22 +131,11 @@ export default function Feedback({ variant, className }: Props) {
   }
 
   return (
-    <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerTrigger asChild>
-        <button
-          className={cn(
-            variant && buttonVariants({ variant }),
-            "flex w-full justify-start",
-            className
-          )}
-        >
-          {t("feedback")}
-        </button>
-      </DrawerTrigger>
+    <Drawer {...props}>
       <DrawerContent>
         <DrawerHeader className="text-left">
-          <DrawerTitle>{t("feedback")}</DrawerTitle>
-          <DrawerDescription>{t("desc-feedback")}</DrawerDescription>
+          <DrawerTitle>{tBook("report")}</DrawerTitle>
+          <DrawerDescription>{tBook("report-desc")}</DrawerDescription>
         </DrawerHeader>
         <div className="grid gap-4 px-4">
           <div className="grid gap-2">

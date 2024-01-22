@@ -1,7 +1,5 @@
-import { useParams } from "next/navigation"
 import type { DialogProps } from "@radix-ui/react-dialog"
 
-import { useMessage } from "@/lib/context/use-message"
 import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
@@ -15,31 +13,20 @@ import {
 } from "@/components/ui/sheet"
 import { Sidebar } from "@/components/sidebar"
 
-interface SidebarMobileProps extends DialogProps {
+interface BookDetailsSidebarProps extends DialogProps {
   children: React.ReactNode
 }
 
-export default function SidebarDocument({
+export default function BookDetailsSidebar({
   children,
   ...props
-}: SidebarMobileProps) {
+}: BookDetailsSidebarProps) {
   const t = useScopedI18n("FormChat")
-  const { state, dispatch } = useMessage()
-
-  const params = useParams()
-  const feature = params.feature as string
-
   return (
-    <Sheet
-      {...props}
-      open={state.openDocument}
-      onOpenChange={open =>
-        dispatch({ type: "SET_OPEN_DOCUMENT", payload: open })
-      }
-    >
-      <SheetContent side="right" className="w-full bg-muted sm:max-w-2xl">
+    <Sheet {...props}>
+      <SheetContent side="right" className="bg-muted">
         <SheetHeader>
-          <SheetTitle>{t(feature as never)}</SheetTitle>
+          <SheetTitle>Book details</SheetTitle>
         </SheetHeader>
         <Sidebar className="grid h-[calc(100%-4rem)]">{children}</Sidebar>
         <SheetFooter>
