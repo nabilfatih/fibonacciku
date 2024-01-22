@@ -23,7 +23,7 @@ const options = {
 }
 
 function highlightPattern(text: string, pattern: string) {
-  const replacement = `<mark class="bg-base-100 text-secondary">$&</mark>`
+  const replacement = `<mark class="bg-background text-foreground">$&</mark>`
   const regex = new RegExp(pattern, "g")
   return text.replace(regex, replacement)
 }
