@@ -47,13 +47,10 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
     [state.searchText]
   )
 
-  const onDocumentLoadSuccess = useCallback(
-    ({ numPages }: { numPages: number }) => {
-      setNumPages(numPages)
-      setFirstInit(true)
-    },
-    []
-  )
+  const onDocumentLoadSuccess = useCallback((pdf: any) => {
+    setNumPages(pdf.numPages as number)
+    setFirstInit(true)
+  }, [])
 
   const onPageLoad = useCallback(
     (page: any) => {

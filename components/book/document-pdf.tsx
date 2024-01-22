@@ -4,7 +4,7 @@ import "react-pdf/dist/esm/Page/TextLayer.css"
 import { memo, useCallback, useRef, useState, type Dispatch } from "react"
 import { IconMoodSad } from "@tabler/icons-react"
 import { isMobileOnly } from "react-device-detect"
-import { Document, Page, pdfjs } from "react-pdf"
+import { Document, Outline, Page, pdfjs } from "react-pdf"
 import { ViewportList } from "react-viewport-list"
 
 import { cn } from "@/lib/utils"
@@ -56,13 +56,10 @@ function BookDocumentPdf({
     [state.searchText]
   )
 
-  const onDocumentLoadSuccess = useCallback(
-    ({ numPages }: { numPages: number }) => {
-      setNumPages(numPages)
-      setFirstInit(true)
-    },
-    []
-  )
+  const onDocumentLoadSuccess = useCallback((pdf: any) => {
+    setNumPages(pdf.numPages as number)
+    setFirstInit(true)
+  }, [])
 
   const onPageLoad = useCallback(
     (page: any) => {
