@@ -1,5 +1,4 @@
 import Link from "next/link"
-import moment from "moment"
 
 import type { Books } from "@/types/types"
 import { getBooksCoverPublicUrl } from "@/lib/supabase/client/book"
@@ -37,9 +36,12 @@ export default async function BookCollections({
         <div className="relative mx-auto max-w-sm px-4 pt-4 sm:max-w-2xl">
           <section className="grid grid-cols-3 gap-6 sm:grid-cols-4 sm:gap-8 sm:px-1">
             {books.map((book, index) => {
-              const publishedDate = moment(book.published_date)
-                .locale(locale)
-                .format("MMMM YYYY")
+              const publishedDate = book.published_date
+                ? new Date(book.published_date).toLocaleDateString(locale, {
+                    month: "long",
+                    year: "numeric"
+                  })
+                : "N/A"
 
               const coverUrl = getBooksCoverPublicUrl(book.id, book.file_id)
 

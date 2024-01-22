@@ -1,7 +1,6 @@
 import { cookies } from "next/headers"
 import Image from "next/image"
 import Link from "next/link"
-import moment from "moment"
 
 import { getBooksCoverPublicUrl } from "@/lib/supabase/client/book"
 import { createClientServer } from "@/lib/supabase/server"
@@ -30,9 +29,12 @@ export default async function FeatureBook() {
 
       <div className="mb-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
         {data.map(book => {
-          const publishedDate = moment(book.published_date)
-            .locale(locale)
-            .format("MMMM YYYY")
+          const publishedDate = book.published_date
+            ? new Date(book.published_date).toLocaleDateString(locale, {
+                month: "long",
+                year: "numeric"
+              })
+            : "N/A"
 
           const coverUrl = getBooksCoverPublicUrl(book.id, book.file_id)
           return (

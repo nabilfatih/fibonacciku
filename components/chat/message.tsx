@@ -1,5 +1,3 @@
-import moment from "moment"
-
 import type { IndexMessage, ShowChatMessage } from "@/types/types"
 import { cn } from "@/lib/utils"
 import { useCurrentLocale } from "@/locales/client"
@@ -29,11 +27,14 @@ export default function ChatMessage({
   const messageIndex = currentIndex.index
   const contentLength = message.content.length
 
-  const createdAt = moment(message.created_at).locale(locale).calendar(null, {
-    sameDay: "HH:mm",
-    lastDay: "DD/MM/YYYY HH:mm",
-    lastWeek: "DD/MM/YYYY HH:mm",
-    sameElse: "DD/MM/YYYY HH:mm"
+  const createdAt = new Date(
+    message.created_at || Date.now()
+  ).toLocaleDateString(locale, {
+    hour: "numeric",
+    minute: "numeric",
+    day: "numeric",
+    month: "short",
+    year: "numeric"
   })
 
   if (message.role === "system") return null

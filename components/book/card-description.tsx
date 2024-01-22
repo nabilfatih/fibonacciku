@@ -1,8 +1,7 @@
 import { IconPointFilled } from "@tabler/icons-react"
-import moment from "moment"
 
 import type { Books } from "@/types/types"
-import { useScopedI18n } from "@/locales/client"
+import { useCurrentLocale, useScopedI18n } from "@/locales/client"
 
 import { Badge } from "@/components/ui/badge"
 
@@ -12,6 +11,7 @@ type Props = {
 
 export default function BookCardDescription({ book }: Props) {
   const t = useScopedI18n("CardBook")
+  const locale = useCurrentLocale()
   // get list of authors by splitting string with comma
   const authors = book.authors?.trim().split(",") || []
   return (
@@ -39,7 +39,12 @@ export default function BookCardDescription({ book }: Props) {
       <IconPointFilled className="h-2 w-2 text-muted-foreground" />
 
       <span className="text-xs text-muted-foreground">
-        {moment(book.published_date).format("MMM YYYY")}
+        {book.published_date
+          ? new Date(book.published_date).toLocaleDateString(locale, {
+              month: "short",
+              year: "numeric"
+            })
+          : "N/A"}
       </span>
     </div>
   )

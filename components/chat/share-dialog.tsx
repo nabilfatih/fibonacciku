@@ -2,13 +2,12 @@
 
 import * as React from "react"
 import { type DialogProps } from "@radix-ui/react-dialog"
-import moment from "moment"
 import { toast } from "sonner"
 
 import type { Chat, ServerActionResult, ShowChatMessage } from "@/types/types"
 import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard"
 import { useMediaQuery } from "@/lib/hooks/use-media-query"
-import { useScopedI18n } from "@/locales/client"
+import { useCurrentLocale, useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -52,6 +51,7 @@ export default function ChatShareDialog({
   onCopy,
   ...props
 }: ChatShareDialogProps) {
+  const locale = useCurrentLocale()
   const t = useScopedI18n("ModalShareChat")
 
   const isDesktop = useMediaQuery("(min-width: 768px)")
@@ -83,7 +83,11 @@ export default function ChatShareDialog({
             <div className="font-medium">{chat.title}</div>
             <div className="text-muted-foreground">
               {chat.message.length} {t("messages")} · {t(chat.type as never)} ·{" "}
-              {moment(chat.created_at).format("MMM DD, YYYY")}
+              {new Date(chat.created_at).toLocaleDateString(locale, {
+                month: "long",
+                day: "numeric",
+                year: "numeric"
+              })}
             </div>
           </div>
           <DialogFooter className="items-center">
@@ -129,7 +133,11 @@ export default function ChatShareDialog({
             <div className="font-medium">{chat.title}</div>
             <div className="text-muted-foreground">
               {chat.message.length} {t("messages")} · {t(chat.type as never)} ·{" "}
-              {moment(chat.created_at).format("MMM DD, YYYY")}
+              {new Date(chat.created_at).toLocaleDateString(locale, {
+                month: "long",
+                day: "numeric",
+                year: "numeric"
+              })}
             </div>
           </div>
 

@@ -1,7 +1,7 @@
 import moment from "moment"
 
 import type { Subscription } from "@/types/types"
-import { getScopedI18n } from "@/locales/server"
+import { getCurrentLocale, getScopedI18n } from "@/locales/server"
 
 import { Badge } from "@/components/ui/badge"
 import {
@@ -23,7 +23,7 @@ export default async function AccountSubscriptionManage({
   subscription
 }: Props) {
   const t = await getScopedI18n("ModalSubscription")
-
+  const locale = getCurrentLocale()
   return (
     <Card>
       <CardHeader>
@@ -43,7 +43,14 @@ export default async function AccountSubscriptionManage({
               {t("start-date")}
             </Label>
             <p className="text-sm leading-none">
-              {moment(subscription.current_period_start).format("MMM D, YYYY")}
+              {new Date(subscription.current_period_start).toLocaleDateString(
+                locale,
+                {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric"
+                }
+              )}
             </p>
           </div>
 
@@ -52,7 +59,14 @@ export default async function AccountSubscriptionManage({
               {t("end-date")}
             </Label>
             <p className="text-sm leading-none">
-              {moment(subscription.current_period_end).format("MMM D, YYYY")}
+              {new Date(subscription.current_period_end).toLocaleDateString(
+                locale,
+                {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric"
+                }
+              )}
             </p>
           </div>
         </div>
