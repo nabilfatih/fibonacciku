@@ -52,10 +52,8 @@ async function askAssistant(
 export default function BookAssistant({ query, document }: Props) {
   const t = useScopedI18n("Chat")
 
-  const { data: assistant, isLoading } = useSWRImmutable(
-    [query, document],
-    ([query, document]) =>
-      askAssistant(query, document, t("ask-fibo-assistant"))
+  const { data: assistant, isLoading } = useSWRImmutable([query], ([query]) =>
+    askAssistant(query, document, t("ask-fibo-assistant"))
   )
 
   const [isMinimized, setIsMinimized] = useState<boolean>(false)
