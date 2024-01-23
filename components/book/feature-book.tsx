@@ -1,5 +1,4 @@
 import { cookies } from "next/headers"
-import Image from "next/image"
 import Link from "next/link"
 
 import { getBooksCoverPublicUrl } from "@/lib/supabase/client/book"
@@ -7,6 +6,7 @@ import { createClientServer } from "@/lib/supabase/server"
 import { getCurrentLocale } from "@/locales/server"
 
 import { Button } from "@/components/ui/button"
+import BookCardImage from "@/components/book/card-image"
 
 export default async function FeatureBook() {
   const locale = getCurrentLocale()
@@ -44,16 +44,11 @@ export default async function FeatureBook() {
               className="flex flex-col justify-between gap-2"
               passHref
             >
-              <div className="relative h-52 w-auto sm:h-48">
-                <Image
-                  src={coverUrl}
-                  alt={book.title}
-                  sizes="148px"
-                  priority
-                  fill
-                  className="rounded-xl border bg-muted/90 object-cover shadow-sm"
-                />
-              </div>
+              <BookCardImage
+                src={coverUrl}
+                title={book.title}
+                className="relative h-52 w-auto sm:h-48"
+              />
 
               <div className="grid">
                 <p className="truncate text-sm">{book.title}</p>
