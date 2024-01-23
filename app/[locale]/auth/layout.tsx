@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic"
 import Image from "next/image"
 
+import AuthLanguage from "@/components/auth/language"
 import { ThemeToggle } from "@/components/theme/toggle"
 
 const Particles = dynamic(() => import("@/components/ui/particles"), {
@@ -14,7 +15,8 @@ export default function AuthenticationLayout({
 }) {
   return (
     <div className="container relative grid h-[100dvh] flex-col items-center justify-center text-foreground lg:max-w-none lg:grid-cols-2 lg:px-0">
-      <div className="absolute right-4 top-4 md:right-8 md:top-8">
+      <div className="absolute right-4 top-4 md:right-8 md:top-8 flex items-center gap-2">
+        <AuthLanguage />
         <ThemeToggle side="bottom" align="end" />
       </div>
       <div className="relative hidden h-full flex-col bg-muted p-10 border-r lg:flex">
@@ -45,7 +47,7 @@ export default function AuthenticationLayout({
           </blockquote>
         </div>
       </div>
-      <div className="lg:p-8">
+      <div className="py-4 lg:p-8">
         <div className="mb-4 flex justify-center lg:hidden">
           <Image
             src="/logo.webp"
