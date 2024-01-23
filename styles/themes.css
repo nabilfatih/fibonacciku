@@ -222,3 +222,24 @@
   --ring: 314.59 95.69% 45.49%;
   --radius: 1.2rem;
 }
+
+.joker {
+  --background: 182.79 37.39% 22.55%;
+  --foreground: 0 0% 98.82%;
+  --card: 182.79 37.39% 22.55%;
+  --card-foreground: 0 0% 98.82%;
+  --popover: 182.79 37.39% 22.55%;
+  --popover-foreground: 0 0% 98.82%;
+  --primary: 32.16 100% 56.47%;
+  --primary-foreground: 240 5.88% 10%;
+  --secondary: 268.85 65% 15.69%;
+  --secondary-foreground: 0 0% 98.82%;
+  --accent: 32.28 100% 66.47%;
+  --accent-foreground: 240 5.88% 10%;
+  --muted: 352.9 78.15% 23.33%;
+  --muted-foreground: 202.5 8.51% 81.57%;
+  --destructive: 3.82 94.83% 22.75%;
+  --border: 32.16 100% 56.47%;
+  --input: 32.16 100% 56.47%;
+  --ring: 31.98 100% 41.57%;
+}

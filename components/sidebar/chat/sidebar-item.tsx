@@ -48,20 +48,6 @@ export default function SidebarItem({
         ease: "easeInOut"
       }}
     >
-      <div
-        className={cn(
-          "absolute left-2.5 top-1.5 flex h-6 w-6 items-center justify-center",
-          isActive && "text-primary-foreground hover:text-primary-foreground"
-        )}
-      >
-        {chat.type === "document" ? (
-          <IconFile className="h-4 w-4" />
-        ) : chat.type === "book" ? (
-          <IconBook2 className="h-4 w-4" />
-        ) : (
-          <IconMessageCircle2 className="h-4 w-4" />
-        )}
-      </div>
       <Link
         href={`/chat/${chat.type}/${chat.id}`}
         className={cn(
@@ -71,6 +57,20 @@ export default function SidebarItem({
             "bg-primary pr-12 text-primary-foreground transition-colors hover:bg-primary/90 hover:text-primary-foreground"
         )}
       >
+        <div
+          className={cn(
+            "absolute left-2.5 top-1.5 flex h-6 w-6 items-center justify-center",
+            isActive && "text-primary-foreground hover:text-primary-foreground"
+          )}
+        >
+          {chat.type === "document" ? (
+            <IconFile className="h-4 w-4" />
+          ) : chat.type === "book" ? (
+            <IconBook2 className="h-4 w-4" />
+          ) : (
+            <IconMessageCircle2 className="h-4 w-4" />
+          )}
+        </div>
         <div
           className="relative max-h-5 flex-1 select-none overflow-hidden text-ellipsis break-all"
           title={chat.title}
