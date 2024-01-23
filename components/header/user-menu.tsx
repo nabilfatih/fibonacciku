@@ -101,12 +101,12 @@ export default function UserMenu() {
 
           <DropdownMenuSeparator className="my-2" />
 
-          <DropdownMenuLabel className="cursor-pointer rounded-sm py-2 font-normal transition-colors hover:bg-accent">
-            <Feedback className="w-full" />
+          <DropdownMenuLabel className="cursor-pointer rounded-sm p-0 font-normal transition-colors hover:bg-accent">
+            <Feedback className="w-full p-2" />
           </DropdownMenuLabel>
 
-          <DropdownMenuLabel className="cursor-pointer rounded-sm py-2 font-normal transition-colors hover:bg-accent">
-            <Contact className="w-full" />
+          <DropdownMenuLabel className="cursor-pointer rounded-sm p-0 font-normal transition-colors hover:bg-accent">
+            <Contact className="w-full p-2" />
           </DropdownMenuLabel>
 
           <DropdownMenuSeparator className="my-2" />
