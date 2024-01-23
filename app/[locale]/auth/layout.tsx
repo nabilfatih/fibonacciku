@@ -17,7 +17,7 @@ export default function AuthenticationLayout({
       <div className="absolute right-4 top-4 md:right-8 md:top-8">
         <ThemeToggle side="bottom" align="end" />
       </div>
-      <div className="relative hidden h-full flex-col bg-muted p-10 dark:border-r lg:flex">
+      <div className="relative hidden h-full flex-col bg-muted p-10 border-r lg:flex">
         <Particles
           className="pointer-events-none absolute inset-0"
           quantity={40}

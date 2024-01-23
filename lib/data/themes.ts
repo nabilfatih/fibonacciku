@@ -16,4 +16,4 @@ export const themes = [
   "slytherin"
 ]
 
-export const darkThemes = ["dark", "black", "ravenclaw", "slytherin"]
+export const darkThemes = ["dark", "black", "joker", "ravenclaw", "slytherin"]
