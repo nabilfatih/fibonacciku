@@ -1,4 +1,3 @@
-import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { IconWorldWww } from "@tabler/icons-react"
@@ -14,15 +13,6 @@ type Props = {
 
 export default function ChatMetadataGoogle({ metadata }: Props) {
   const t = useScopedI18n("MetadataChat")
-
-  const [imgSrc, setImgSrc] = useState<{ [key: string]: string }>({})
-
-  const handleImageError = (link: string) => {
-    setImgSrc(prevState => ({
-      ...prevState,
-      [link]: "/logo-google.png"
-    }))
-  }
 
   return (
     <div className="flex flex-col justify-start gap-2">
@@ -71,14 +61,13 @@ export default function ChatMetadataGoogle({ metadata }: Props) {
                       <Image
                         title={he.decode(item.title)}
                         className="m-0 block rounded-full bg-transparent object-contain"
-                        src={
-                          imgSrc[item.link] ||
-                          `https://www.google.com/s2/favicons?domain=${item.displayLink}&sz=512`
-                        }
+                        src={`https://www.google.com/s2/favicons?domain=${item.displayLink}&sz=512`}
                         width={16}
                         height={16}
                         priority
-                        onError={() => handleImageError(item.link)}
+                        onError={e =>
+                          (e.currentTarget.src = "/logo-google.png")
+                        }
                         alt={he.decode(item.title)}
                         unoptimized // because we want to decrease cost of image optimization
                       />
