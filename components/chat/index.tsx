@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import dynamic from "next/dynamic"
-import useSWR from "swr"
+import useSWRImmutable from "swr/immutable"
 
 import type { Chat, ChatMessage, Features } from "@/types/types"
 import { useMessage } from "@/lib/context/use-message"
@@ -47,13 +47,10 @@ export default function ChatMessage({
 
   const chatMessageRef = useRef<HTMLDivElement | null>(null)
 
-  const { data: file } = useSWR(
+  const { data: file } = useSWRImmutable(
     fileId ? [fileId, type] : null,
     ([fileId, type]) => getChatFile(fileId, type),
     {
-      revalidateOnFocus: false,
-      revalidateIfStale: false,
-      revalidateOnReconnect: false,
       refreshInterval: 1000 * 60 * 60 * 24 // 1 day
     }
   )
