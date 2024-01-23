@@ -3,8 +3,10 @@
 import { useState } from "react"
 import dynamic from "next/dynamic"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import {
   IconBook2,
+  IconChevronLeft,
   IconDownload,
   IconFlag,
   IconList,
@@ -34,6 +36,7 @@ type Props = {
 }
 
 export default function BookActions({ book }: Props) {
+  const router = useRouter()
   const [openReportDialog, setOpenReportDialog] = useState(false)
   const [openDetailsSidebar, setOpenDetailsSidebar] = useState(false)
 
@@ -41,6 +44,21 @@ export default function BookActions({ book }: Props) {
     <div className="fixed inset-x-0 bottom-0 flex h-16 w-full items-center border-t duration-300 ease-in-out animate-in lg:h-[69px] peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
       <div className="mx-auto flex w-full max-w-2xl items-center justify-between px-4">
         <div className="flex items-center gap-2">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => router.back()}
+              >
+                <IconChevronLeft className="h-5 w-5" />
+                <span className="sr-only">Back to results</span>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Back to results</p>
+            </TooltipContent>
+          </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
               <Button asChild variant="outline" size="icon">
@@ -52,21 +70,6 @@ export default function BookActions({ book }: Props) {
             </TooltipTrigger>
             <TooltipContent>
               <p>Search again</p>
-            </TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => setOpenReportDialog(true)}
-              >
-                <IconFlag className="h-5 w-5" />
-                <span className="sr-only">Report book</span>
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Report book</p>
             </TooltipContent>
           </Tooltip>
         </div>
@@ -86,6 +89,21 @@ export default function BookActions({ book }: Props) {
         </BookDetailsSidebar>
 
         <div className="flex items-center gap-2">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setOpenReportDialog(true)}
+              >
+                <IconFlag className="h-5 w-5" />
+                <span className="sr-only">Report book</span>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Report book</p>
+            </TooltipContent>
+          </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
