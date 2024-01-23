@@ -483,7 +483,8 @@ export default {
     "search-text": "Text suchen",
     show: "Zeigen",
     hide: "Verbergen",
-    "click-here": "Klicken Sie hier"
+    "click-here": "Klicken Sie hier",
+    "ask-fibo-assistant": "Fragen Sie Fibo Assistent",
   },
   FormChat: {
     "fibonacciku-make-mistake": "Auch FibonacciKu macht manchmal Fehler",

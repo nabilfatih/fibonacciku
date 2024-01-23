@@ -2,11 +2,15 @@ import { cookies } from "next/headers"
 import { NextRequest, NextResponse } from "next/server"
 import { track } from "@vercel/analytics/server"
 import { OpenAIStream, StreamingTextResponse } from "ai"
-import { codeBlock } from "common-tags"
 import OpenAI from "openai"
 
 import { openai } from "@/lib/openai"
-import { getLanguage, systemPersonality, systemRule } from "@/lib/openai/system"
+import {
+  documentRule,
+  getLanguage,
+  systemPersonality,
+  systemRule
+} from "@/lib/openai/system"
 import { createClientServer } from "@/lib/supabase/server"
 
 export const runtime = "edge"
@@ -33,27 +37,21 @@ export async function POST(req: NextRequest) {
   const messages = [
     {
       role: "system",
-      content: codeBlock`
-      ${systemPersonality} 
+      content: `${systemPersonality} 
 
       ${getLanguage("auto detect")} 
 
       ${systemRule} 
       
-      You're only allowed to use the documents below to answer the question.
+      ${documentRule}
 
-      If the question isn't related to these documents, say (in language that user used):
+      If the question is not related or not available to these context, say (in language that user used):
       "Sorry, I couldn't find any information on that. Please ask in this link: https://fibonacciku.com/chat/assistant"
-
-      If the information isn't available in the below documents, say (in language that user used):
-      "Sorry, I couldn't find any information on that."
-
-      Do not go off topic.
 
       Always answer in language that user used. Keep your answer short and simple. Do not create a follow up question.
       
-      Documents:
-      ${document.replace(/[.o]+/g, "")}`
+      Context:
+      ${document}`
     },
     {
       role: "user",

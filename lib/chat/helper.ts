@@ -12,13 +12,8 @@ import type {
   UserDetails
 } from "@/types/types"
 import { readDataStream } from "@/lib/chat/read-data-stream"
-import {
-  determineGrade,
-  getLanguage,
-  openAISystem,
-  systemRule
-} from "@/lib/chat/system"
 import type { ChatRequest } from "@/lib/context/use-message"
+import { determineGrade, getLanguage, openAISystem } from "@/lib/openai/system"
 import {
   updateChatMessage,
   updateChatMessageContentSpecificIndex,

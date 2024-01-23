@@ -482,7 +482,8 @@ export default {
     "search-text": "Cari teks",
     show: "Tampilkan",
     hide: "Sembunyikan",
-    "click-here": "Klik di sini"
+    "click-here": "Klik di sini",
+    "ask-fibo-assistant": "Tanyakan Fibo Asisten"
   },
   FormChat: {
     "fibonacciku-make-mistake": "FibonacciKu terkadang membuat kesalahan",
