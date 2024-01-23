@@ -60,7 +60,7 @@ export default function BookAssistant({ query, document }: Props) {
 
   return (
     <header className="border-b py-4">
-      <div className="relative mx-auto max-w-2xl px-4 space-y-2">
+      <div className="relative mx-auto max-w-2xl px-4 sm:px-5 space-y-2">
         <div className="flex items-center gap-2 border-b pb-4">
           <h2 className="font-semibold sm:text-lg leading-none">
             {t("fibo-assistant")}
