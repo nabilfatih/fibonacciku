@@ -8,6 +8,7 @@ const pathnames = [
   "/about",
   "/contact",
   "/pricing",
+  "/premium",
   "/partner",
   "/product",
   "/auth/login",
@@ -19,7 +20,8 @@ const pathnames = [
   "/chat/document",
   "/chat/library",
   "/school",
-  "/share"
+  "/share",
+  "/account"
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -83,7 +83,7 @@ export default function WelcomeEmail({
             <Text className="text-sm">
               Take a look at our amazing{" "}
               <Link
-                href={`${baseUrl}/product`}
+                href={`${baseUrl}/premium`}
                 className="text-[#ee3554] underline"
               >
                 features
@@ -107,25 +107,25 @@ export default function WelcomeEmail({
 
             <Text className="text-center text-sm">
               <Link
-                href={`${baseUrl}/product`}
+                href={`${baseUrl}/chat/assistant`}
                 className="mr-2 text-zinc-500 underline"
               >
                 Product
               </Link>
               <Link
-                href={`${baseUrl}/pricing`}
+                href={`${baseUrl}/premium`}
                 className="mr-2 text-zinc-500 underline"
               >
-                Pricing
+                Premium
               </Link>
               <Link
-                href={`${baseUrl}/about`}
+                href={`${baseUrl}/chat/assistant`}
                 className="mr-2 text-zinc-500 underline"
               >
                 About
               </Link>
               <Link
-                href={`${baseUrl}/contact`}
+                href={`${baseUrl}/account`}
                 className="mr-2 text-zinc-500 underline"
               >
                 Contact

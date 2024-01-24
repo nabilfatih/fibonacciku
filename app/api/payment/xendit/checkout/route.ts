@@ -84,7 +84,7 @@ export async function POST(req: Request) {
             price: price.price.idr * quantity,
             referenceId: `${user.id}-FIBO-${price.priceId}`,
             category: "Education Artificial Intelligence",
-            url: `${getURL()}/pricing`
+            url: `${getURL()}/premium`
           }
         ],
         fees: [
@@ -94,7 +94,7 @@ export async function POST(req: Request) {
           }
         ],
         successRedirectUrl: `${getURL()}/chat/assistant?payment=success`,
-        failureRedirectUrl: `${getURL()}/pricing`
+        failureRedirectUrl: `${getURL()}/premium`
       }
 
       const response: Invoice = await xenditInvoiceClient.createInvoice({
