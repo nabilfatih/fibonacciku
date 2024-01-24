@@ -101,11 +101,11 @@ export default function UserMenu() {
 
           <DropdownMenuSeparator className="my-2" />
 
-          <DropdownMenuLabel className="cursor-pointer rounded-sm p-0 font-normal transition-colors hover:bg-accent">
+          <DropdownMenuLabel className="cursor-pointer rounded-sm p-0 font-normal transition-colors hover:bg-accent hover:text-accent-foreground">
             <Feedback className="w-full p-2" />
           </DropdownMenuLabel>
 
-          <DropdownMenuLabel className="cursor-pointer rounded-sm p-0 font-normal transition-colors hover:bg-accent">
+          <DropdownMenuLabel className="cursor-pointer rounded-sm p-0 font-normal transition-colors hover:bg-accent hover:text-accent-foreground">
             <Contact className="w-full p-2" />
           </DropdownMenuLabel>
 
