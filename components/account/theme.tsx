@@ -16,8 +16,13 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select"
+import { updateUser } from "@/app/actions/users"
 
-export default function AccountTheme() {
+type Props = {
+  userId: string
+}
+
+export default function AccountTheme({ userId }: Props) {
   const { setTheme, theme } = useTheme()
   const [_, startTransition] = React.useTransition()
 
@@ -31,6 +36,7 @@ export default function AccountTheme() {
         onValueChange={value => {
           startTransition(() => {
             setTheme(value)
+            updateUser(userId, { theme: value })
           })
         }}
       >

@@ -29,6 +29,7 @@ export type Database = {
           role: Database["public"]["Enums"]["user_role"]
           block: boolean
           referral: string | null
+          theme: string | null
           created_at: string
         }
         Insert: {
@@ -48,6 +49,7 @@ export type Database = {
           role?: Database["public"]["Enums"]["user_role"]
           block?: boolean
           referral?: string | null
+          theme?: string | null
           created_at?: string
         }
         Update: {
@@ -67,6 +69,7 @@ export type Database = {
           role?: Database["public"]["Enums"]["user_role"]
           block?: boolean
           referral?: string | null
+          theme?: string | null
           created_at?: string
         }
         Relationships: [

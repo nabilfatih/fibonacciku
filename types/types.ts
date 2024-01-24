@@ -28,6 +28,7 @@ export type UserDetails = {
   role?: UserRole
   block: boolean
   referral?: string | null
+  theme?: string | null
   created_at: string
 }
 

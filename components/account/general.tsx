@@ -60,7 +60,7 @@ export default async function AccountGeneral({ userId }: Props) {
 
             <AccountRole userId={userId} role={data.role} />
 
-            <AccountTheme />
+            <AccountTheme userId={userId} />
 
             <AccountLanguage userId={userId} />
           </div>
