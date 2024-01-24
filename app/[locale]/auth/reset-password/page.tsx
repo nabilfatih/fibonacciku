@@ -30,9 +30,6 @@ export default async function ResetPasswordPage() {
         <h1 className="text-2xl font-semibold tracking-tight">
           {t("reset-password")}
         </h1>
-        <p className="text-sm text-muted-foreground">
-          Enter your new password below
-        </p>
       </header>
 
       <ResetPasswordForm />
