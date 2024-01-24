@@ -27,6 +27,7 @@ export type UserDetails = {
   ip?: string
   role?: UserRole
   block: boolean
+  referral?: string | null
   created_at: string
 }
 

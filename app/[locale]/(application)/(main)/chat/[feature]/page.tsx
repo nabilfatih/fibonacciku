@@ -51,5 +51,17 @@ export default async function ChatFeaturePage({ params, searchParams }: Props) {
     redirect("/book")
   }
 
+  // Check if user use referral link
+  const referral = searchParams.ref as string | undefined
+  if (referral) {
+    // update user table ref with referral
+    await supabase
+      .from("users")
+      .update({
+        referral
+      })
+      .eq("id", session.user.id)
+  }
+
   return <ChatMessage type={params.feature as Features} />
 }

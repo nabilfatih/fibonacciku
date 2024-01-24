@@ -28,6 +28,7 @@ export type Database = {
           ip: string
           role: Database["public"]["Enums"]["user_role"]
           block: boolean
+          referral: string | null
           created_at: string
         }
         Insert: {
@@ -46,6 +47,7 @@ export type Database = {
           ip?: string
           role?: Database["public"]["Enums"]["user_role"]
           block?: boolean
+          referral?: string | null
           created_at?: string
         }
         Update: {
@@ -64,6 +66,7 @@ export type Database = {
           ip?: string
           role?: Database["public"]["Enums"]["user_role"]
           block?: boolean
+          referral?: string | null
           created_at?: string
         }
         Relationships: [
