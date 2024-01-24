@@ -13,7 +13,7 @@ export default function EmptyScreenAssistant() {
 
       <ChatFeature />
 
-      <div className="grid">
+      {/* <div className="grid">
         <h2 className="mb-2 font-medium tracking-tight">
           Explore what you can do with me:
         </h2>
@@ -24,7 +24,7 @@ export default function EmptyScreenAssistant() {
             Start exploring
           </Link>
         </Button>
-      </div>
+      </div> */}
     </div>
   )
 }
