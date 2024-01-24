@@ -466,7 +466,7 @@ export default {
     show: "Show",
     hide: "Hide",
     "click-here": "Click here",
-    "ask-fibo-assistant": "Ask Fibo Assistant",
+    "ask-fibo-assistant": "Ask Fibo Assistant"
   },
   FormChat: {
     "fibonacciku-make-mistake": "FibonacciKu makes mistakes sometimes",
@@ -594,7 +594,7 @@ export default {
     "full-name": "Full name",
     "full-name-placeholder": "Enter your full name",
     "full-name-updated": "Full name updated",
-    library: "Library",
+    library: "Library"
   },
   ModalClearChat: {
     clear: "Clear",
@@ -631,7 +631,7 @@ export default {
     close: "Close"
   },
   ModalPluginChat: {
-    plugin: "Plugin",
+    plugin: "Plugins",
     "plugin-desc":
       "FibonacciKu supports these plugins, you can just ask to use it specifically",
     okay: "Okay",
