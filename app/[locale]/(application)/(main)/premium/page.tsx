@@ -81,7 +81,6 @@ export default async function PremiumPage() {
             variant="outline"
             className="w-full sm:w-auto"
             text="See our plugins"
-            openTooltip={false}
           />
         </div>
       </section>

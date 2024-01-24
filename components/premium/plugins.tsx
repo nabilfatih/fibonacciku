@@ -16,17 +16,14 @@ import { getScopedI18n } from "@/locales/server"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger
 } from "@/components/ui/sheet"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger
-} from "@/components/ui/tooltip"
 import { Sidebar } from "@/components/sidebar"
 
 type Props = {
@@ -41,31 +38,22 @@ type Props = {
     | null
     | undefined
   className?: string
-  openTooltip?: boolean
 }
 
 export default async function PremiumPlugins({
   text,
   variant,
-  className,
-  openTooltip
+  className
 }: Props) {
   const t = await getScopedI18n("ModalPluginChat")
 
   return (
     <Sheet>
-      <Tooltip open={openTooltip}>
-        <TooltipTrigger asChild>
-          <SheetTrigger asChild>
-            <Button variant={variant ?? "outline"} className={cn(className)}>
-              {text ?? <IconPuzzle />}
-            </Button>
-          </SheetTrigger>
-        </TooltipTrigger>
-        <TooltipContent align="end">
-          <p>{t("plugin")}</p>
-        </TooltipContent>
-      </Tooltip>
+      <SheetTrigger asChild>
+        <Button variant={variant ?? "outline"} className={cn(className)}>
+          {text ?? <IconPuzzle />}
+        </Button>
+      </SheetTrigger>
 
       <SheetContent side="right" className="bg-muted">
         <SheetHeader>
@@ -115,6 +103,12 @@ export default async function PremiumPlugins({
             </section>
           </div>
         </Sidebar>
+
+        <SheetFooter>
+          <SheetClose asChild>
+            <Button variant="outline">{t("close")}</Button>
+          </SheetClose>
+        </SheetFooter>
       </SheetContent>
     </Sheet>
   )

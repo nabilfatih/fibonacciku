@@ -658,6 +658,7 @@ export default {
       "FibonacciKu unterstützt diese Plugins, Sie können einfach darum bitten, sie speziell zu verwenden",
     okay: "Okay",
     premium: "Premium",
+    close: "Schließen",
     "image-generation": "Bildgenerierung",
     "image-generation-helper": "Erstelle mir ein Bild von etwas...",
     "internet-access": "Internetzugang",

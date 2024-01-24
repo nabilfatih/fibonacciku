@@ -612,7 +612,7 @@ export default {
     "full-name": "Nama lengkap",
     "full-name-placeholder": "Masukkan nama lengkap Anda",
     "full-name-update": "Nama lengkap Anda telah diperbarui",
-    library: "Perpustakaan",
+    library: "Perpustakaan"
   },
   ModalClearChat: {
     clear: "Hapus",
@@ -654,6 +654,7 @@ export default {
       "FibonacciKu mendukung plugin-plugin ini, kamu hanya perlu memintanya untuk menggunakannya secara spesifik",
     okay: "Oke",
     premium: "Premium",
+    close: "Tutup",
     "image-generation": "Pembuatan gambar",
     "image-generation-helper": "Buat gambar tentang sesuatu...",
     "internet-access": "Akses Internet",
