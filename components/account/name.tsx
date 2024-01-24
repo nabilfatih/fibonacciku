@@ -8,7 +8,7 @@ import { useScopedI18n } from "@/locales/client"
 
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { updateUser } from "@/app/actions"
+import { updateUser } from "@/app/actions/users"
 
 type Props = {
   userId: string

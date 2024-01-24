@@ -37,7 +37,7 @@ import ChatShareDialog, {
   type ShareChatProps
 } from "@/components/chat/share-dialog"
 import { ChatRenameDialog } from "@/components/sidebar/chat/rename-dialog"
-import { renameChat } from "@/app/actions"
+import { renameChat } from "@/app/actions/chat"
 
 interface SidebarActionsProps {
   chat: Chat

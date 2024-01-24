@@ -8,7 +8,7 @@ import type { Chat } from "@/types/types"
 
 import SidebarActions from "@/components/sidebar/chat/sidebar-actions"
 import SidebarItem from "@/components/sidebar/chat/sidebar-item"
-import { removeChat, shareChat } from "@/app/actions"
+import { removeChat, shareChat } from "@/app/actions/chat"
 
 type SidebarItemsProps = {
   chats: Chat[]

@@ -15,7 +15,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { IconSpinner } from "@/components/ui/icons"
 import { Skeleton } from "@/components/ui/skeleton"
-import { getBookCollection } from "@/app/actions"
+import { getBookCollection } from "@/app/actions/book"
 
 export default function EmptyScreenBook() {
   const searchParams = useSearchParams()

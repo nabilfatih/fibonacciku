@@ -9,7 +9,7 @@ import { useMessage } from "@/lib/context/use-message"
 import { cn } from "@/lib/utils"
 
 import ChatScrollAnchor from "@/components/chat/scroll-anchor"
-import { getChatFile } from "@/app/actions"
+import { getChatFile } from "@/app/actions/chat"
 
 const ChatPanel = dynamic(() => import("@/components/chat/panel"))
 const ChatList = dynamic(() => import("@/components/chat/list"))

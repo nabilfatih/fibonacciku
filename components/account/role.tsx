@@ -16,7 +16,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select"
-import { updateUser } from "@/app/actions"
+import { updateUser } from "@/app/actions/users"
 
 type Props = {
   userId: string

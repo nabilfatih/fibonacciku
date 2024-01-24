@@ -14,7 +14,7 @@ import SidebarDocument from "@/components/chat/document-sidebar"
 import FooterText from "@/components/chat/footer"
 import PromptForm from "@/components/chat/form"
 import ChatShareDialog from "@/components/chat/share-dialog"
-import { shareChat } from "@/app/actions"
+import { shareChat } from "@/app/actions/chat"
 
 const ChatDocument = dynamic(() => import("@/components/chat/document"))
 

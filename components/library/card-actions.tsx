@@ -26,7 +26,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { IconSpinner } from "@/components/ui/icons"
 import { LibraryRenameDialog } from "@/components/library/rename-dialog"
-import { removeLibrary, renameLibrary } from "@/app/actions"
+import { removeLibrary, renameLibrary } from "@/app/actions/library"
 
 type Props = {
   className: string
