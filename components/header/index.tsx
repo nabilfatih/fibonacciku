@@ -66,9 +66,7 @@ export function HeaderChat() {
       </div>
       <div className="flex items-center justify-end space-x-2 sm:space-x-3">
         <HeaderChatFeature />
-        <PremiumPlugins variant="ghost" className="-ml-2 flex h-9 w-9 p-0">
-          <div></div>
-        </PremiumPlugins>
+        <PremiumPlugins variant="ghost" className="-ml-2 flex h-9 w-9 p-0" />
         <UserMenu />
       </div>
     </header>

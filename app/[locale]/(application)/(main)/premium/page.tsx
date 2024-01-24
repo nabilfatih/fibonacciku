@@ -75,7 +75,15 @@ export default async function PremiumPage() {
 
       <PremiumFeatures />
 
-      <PremiumPlugins />
+      <section className="mx-auto max-w-4xl px-4">
+        <div className="flex justify-center">
+          <PremiumPlugins
+            variant="outline"
+            className="w-full sm:w-auto"
+            text="See our plugins"
+          />
+        </div>
+      </section>
     </main>
   )
 }

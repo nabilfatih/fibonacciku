@@ -7,7 +7,6 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Sidebar } from "@/components/sidebar"
 
 type Props = {
-  children: React.ReactNode
   text?: string
   variant?:
     | "link"
@@ -21,12 +20,7 @@ type Props = {
   className?: string
 }
 
-export default function PremiumPlugins({
-  children,
-  text,
-  variant,
-  className
-}: Props) {
+export default function PremiumPlugins({ text, variant, className }: Props) {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -35,7 +29,9 @@ export default function PremiumPlugins({
         </Button>
       </SheetTrigger>
       <SheetContent side="right" className="bg-muted">
-        <Sidebar className="flex">{children}</Sidebar>
+        <Sidebar className="flex">
+          <div></div>
+        </Sidebar>
       </SheetContent>
     </Sheet>
   )
