@@ -34,10 +34,7 @@ export default function PremiumPlugins({
           {text ?? <IconPuzzle />}
         </Button>
       </SheetTrigger>
-      <SheetContent
-        side="right"
-        className="inset-y-0 flex h-auto w-[300px] flex-col bg-muted p-0"
-      >
+      <SheetContent side="right" className="bg-muted">
         <Sidebar className="flex">{children}</Sidebar>
       </SheetContent>
     </Sheet>
