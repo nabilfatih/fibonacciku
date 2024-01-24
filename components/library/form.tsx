@@ -145,6 +145,7 @@ export default function LibraryForm({ className, ...props }: LibraryFormProps) {
         onDragEnter={handleDragEnter}
         onDragLeave={handleDragLeave}
         onClick={() => inputRef.current?.click()}
+        disabled={isUploadPending}
         className={cn(
           "relative flex max-h-60 w-full grow cursor-pointer flex-col overflow-hidden bg-background px-8 py-4 sm:rounded-3xl sm:border sm:px-12 sm:py-8",
           className
