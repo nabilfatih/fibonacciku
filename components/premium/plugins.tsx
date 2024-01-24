@@ -58,13 +58,10 @@ export default async function PremiumPlugins({
       <SheetContent side="right" className="bg-muted">
         <SheetHeader>
           <SheetTitle>{t("plugin")}</SheetTitle>
-          <SheetDescription className="text-xs sm:text-sm">
-            {t("plugin-desc")}
-          </SheetDescription>
         </SheetHeader>
-        <Sidebar className="flex">
-          <div className="relative py-4">
-            <section className="grid gap-4">
+        <Sidebar className="grid h-[calc(100%-4rem)]">
+          <div className="relative py-2">
+            <section className="grid gap-4 py-2">
               {pluginsList.map((plugin, index) => {
                 return (
                   <div
