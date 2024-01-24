@@ -10,12 +10,14 @@ export const getChatAdmin = async (chatId: string) => {
     .from("chat")
     .select()
     .eq("id", chatId)
+    .limit(1)
+    .maybeSingle()
 
   if (error) {
     throw error
   }
 
-  return data[0] || null
+  return data || null
 }
 
 export const getChatAllWithFileAdmin = async () => {
