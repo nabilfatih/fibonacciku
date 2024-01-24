@@ -61,6 +61,9 @@ export default async function ChatFeaturePage({ params, searchParams }: Props) {
         referral
       })
       .eq("id", session.user.id)
+
+    // then remove referral from url
+    redirect(`/chat/${params.feature}`)
   }
 
   return <ChatMessage type={params.feature as Features} />
