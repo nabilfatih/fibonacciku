@@ -127,7 +127,7 @@ export default function UserMenu() {
 
           <DropdownMenuSeparator className="my-2" />
 
-          <DropdownMenuItem asChild className="py-2">
+          {/* <DropdownMenuItem asChild className="py-2">
             <Link
               href="https://blog.fibonacciku.com"
               target="_blank"
@@ -136,7 +136,7 @@ export default function UserMenu() {
               {t("homepage")}
               <IconExternalLink className="ml-auto h-4 w-4" />
             </Link>
-          </DropdownMenuItem>
+          </DropdownMenuItem> */}
           <DropdownMenuItem
             onClick={async () => {
               await supabaseClient.auth.signOut()
