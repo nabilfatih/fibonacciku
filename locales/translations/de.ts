@@ -484,7 +484,7 @@ export default {
     show: "Zeigen",
     hide: "Verbergen",
     "click-here": "Klicken Sie hier",
-    "ask-fibo-assistant": "Fragen Sie Fibo Assistent",
+    "ask-fibo-assistant": "Fragen Sie Fibo Assistent"
   },
   FormChat: {
     "fibonacciku-make-mistake": "Auch FibonacciKu macht manchmal Fehler",
@@ -614,7 +614,8 @@ export default {
     nakafa: "Nakafa Startseite",
     "full-name": "Vollständiger Name",
     "full-name-placeholder": "Geben Sie Ihren vollständigen Namen ein",
-    "full-name-update": "Vollständiger Name aktualisiert"
+    "full-name-update": "Vollständiger Name aktualisiert",
+    library: "Bibliothek"
   },
   ModalClearChat: {
     clear: "Leeren",

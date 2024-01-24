@@ -8,8 +8,8 @@ import { createClientServer } from "@/lib/supabase/server"
 import { IconSeparator } from "@/components/ui/icons"
 import HeaderBadge from "@/components/header/badge"
 import HeaderChatFeature from "@/components/header/feature"
-import HeaderChatLibrary from "@/components/header/library"
 import UserMenu from "@/components/header/user-menu"
+import PremiumPlugins from "@/components/premium/plugins"
 import { ChatHistory } from "@/components/sidebar/chat/chat-history"
 import { SidebarMobile } from "@/components/sidebar/chat/sidebar-mobile"
 import { SidebarToggle } from "@/components/sidebar/sidebar-toggle"
@@ -64,9 +64,11 @@ export function HeaderChat() {
           <UserHistory />
         </Suspense>
       </div>
-      <div className="flex items-center justify-end space-x-2">
+      <div className="flex items-center justify-end space-x-2 sm:space-x-3">
         <HeaderChatFeature />
-        <HeaderChatLibrary />
+        <PremiumPlugins variant="ghost" className="-ml-2 flex h-9 w-9 p-0">
+          <div></div>
+        </PremiumPlugins>
         <UserMenu />
       </div>
     </header>

@@ -611,7 +611,8 @@ export default {
     nakafa: "Beranda Nakafa",
     "full-name": "Nama lengkap",
     "full-name-placeholder": "Masukkan nama lengkap Anda",
-    "full-name-update": "Nama lengkap Anda telah diperbarui"
+    "full-name-update": "Nama lengkap Anda telah diperbarui",
+    library: "Perpustakaan",
   },
   ModalClearChat: {
     clear: "Hapus",

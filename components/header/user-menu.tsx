@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import {
+  IconBook,
   IconDiscountCheck,
   IconExternalLink,
   IconUser
@@ -70,7 +71,7 @@ export default function UserMenu() {
         <DropdownMenuContent
           sideOffset={8}
           align="end"
-          className="w-full max-w-xs"
+          className="w-full max-w-[225px]"
         >
           <DropdownMenuLabel className="flex-col items-start py-2">
             <div className="truncate font-medium">
@@ -98,14 +99,29 @@ export default function UserMenu() {
               <IconDiscountCheck className="ml-auto h-4 w-4" />
             </Link>
           </DropdownMenuItem>
+          <DropdownMenuItem asChild className="py-2">
+            <Link
+              href="/chat/library"
+              className="inline-flex w-full cursor-pointer items-center justify-between"
+            >
+              {t("library")}
+              <IconBook className="ml-auto h-4 w-4" />
+            </Link>
+          </DropdownMenuItem>
 
           <DropdownMenuSeparator className="my-2" />
 
-          <DropdownMenuLabel className="cursor-pointer rounded-sm p-0 font-normal transition-colors hover:bg-accent hover:text-accent-foreground">
+          <DropdownMenuLabel
+            asChild
+            className="cursor-pointer rounded-sm p-0 font-normal transition-colors hover:bg-accent hover:text-accent-foreground"
+          >
             <Feedback className="w-full p-2" />
           </DropdownMenuLabel>
 
-          <DropdownMenuLabel className="cursor-pointer rounded-sm p-0 font-normal transition-colors hover:bg-accent hover:text-accent-foreground">
+          <DropdownMenuLabel
+            asChild
+            className="cursor-pointer rounded-sm p-0 font-normal transition-colors hover:bg-accent hover:text-accent-foreground"
+          >
             <Contact className="w-full p-2" />
           </DropdownMenuLabel>
 
