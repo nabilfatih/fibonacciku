@@ -21,6 +21,7 @@ type CurrentUserContextValue = {
   setUserDetails: React.Dispatch<React.SetStateAction<UserDetails | null>>
   subscription: Subscription | null
   setSubscription: React.Dispatch<React.SetStateAction<Subscription | null>>
+  isLoading: boolean
   handleClearCurrentUserData: () => void
 }
 
@@ -42,9 +43,11 @@ export const CurrentUserContextProvider: React.FC<
   const [userDetails, setUserDetails] = useState<UserDetails | null>(null)
   const [subscription, setSubscription] = useState<Subscription | null>(null)
 
-  const { userDetails: userData, subscription: subscriptionData } = useUser(
-    session?.user?.id ?? ""
-  )
+  const {
+    userDetails: userData,
+    subscription: subscriptionData,
+    isLoading
+  } = useUser(session?.user?.id ?? "")
 
   useEffect(() => {
     if (userData) setUserDetails(userData)
@@ -121,9 +124,10 @@ export const CurrentUserContextProvider: React.FC<
       setUserDetails,
       subscription,
       setSubscription,
+      isLoading,
       handleClearCurrentUserData
     }),
-    [handleClearCurrentUserData, session, subscription, userDetails]
+    [handleClearCurrentUserData, isLoading, session, subscription, userDetails]
   )
 
   return (
