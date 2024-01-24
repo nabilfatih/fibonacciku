@@ -1,11 +1,20 @@
+import { cache } from "react"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { kv } from "@vercel/kv"
 
 import type { Features } from "@/types/types"
 import supabaseAdmin from "@/lib/supabase/admin"
+import { getChatAdmin } from "@/lib/supabase/admin/chat"
 
 import ChatMessage from "@/components/chat"
+
+export const runtime = "edge"
+
+const getChat = cache(async (chatId: string) => {
+  const chat = await getChatAdmin(chatId)
+  // if there is chat return the title, if not return FibonacciKu
+  return chat?.title ?? "FibonacciKu"
+})
 
 type Props = {
   params: { feature: string; id: string }
@@ -13,20 +22,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const chatId = params.id
-
-  const title = await kv.get<string>(chatId).then(title => {
-    if (title) {
-      return title.toString().slice(0, 50)
-    }
-  })
-
-  if (!title)
-    return {
-      title: {
-        absolute: "FibonacciKu"
-      }
-    }
-
+  const title = await getChat(chatId)
   return {
     title: title
   }
