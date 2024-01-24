@@ -10,13 +10,12 @@ import { cn } from "@/lib/utils"
 import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
+import { IconSpinner } from "@/components/ui/icons"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger
 } from "@/components/ui/tooltip"
-
-import { IconSpinner } from "../ui/icons"
 
 export interface FormProps extends React.ComponentProps<"div"> {}
 
