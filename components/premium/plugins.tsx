@@ -35,7 +35,7 @@ export default function PremiumPlugins({
         </Button>
       </SheetTrigger>
       <SheetContent
-        side="left"
+        side="right"
         className="inset-y-0 flex h-auto w-[300px] flex-col bg-muted p-0"
       >
         <Sidebar className="flex">{children}</Sidebar>
