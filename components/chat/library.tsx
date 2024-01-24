@@ -112,7 +112,7 @@ export default function ChatLibrary({ userId }: Props) {
                   library.status !== "finished" || typeof loadingId === "string"
                 }
                 className={cn(
-                  "inline-flex w-full cursor-pointer items-center justify-between gap-2 rounded-xl border px-4 py-3 shadow transition-colors hover:bg-muted/50",
+                  "inline-flex w-full items-center justify-between gap-2 rounded-xl border px-4 py-3 shadow transition-colors hover:bg-muted/50",
                   libraryId === library.id && "animate-bounce"
                 )}
                 onClick={async () => {
