@@ -60,7 +60,7 @@ export default function LibraryForm({ className, ...props }: LibraryFormProps) {
 
   const handleUploadChange = useCallback(
     async (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (!userDetails) return
+      if (!userDetails || isUploadPending) return
       const { files } = e.target
 
       if (!files || files.length === 0) return
