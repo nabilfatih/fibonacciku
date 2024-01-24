@@ -81,7 +81,7 @@ export default async function PremiumPlugins({
                         </h3>
                         {plugin.premium && (
                           <div title={`Fibo ${t("premium")}`}>
-                            <IconDiscountCheckFilled className="inline-block h-5 w-5 min-w-[1.25rem] text-primary" />
+                            <IconDiscountCheckFilled className="inline-block h-4 w-4 min-w-[1rem] text-primary" />
                           </div>
                         )}
                       </div>
