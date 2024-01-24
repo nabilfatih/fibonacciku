@@ -1,9 +1,21 @@
 import { IconPuzzle } from "@tabler/icons-react"
 
 import { cn } from "@/lib/utils"
+import { getScopedI18n } from "@/locales/server"
 
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger
+} from "@/components/ui/sheet"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger
+} from "@/components/ui/tooltip"
 import { Sidebar } from "@/components/sidebar"
 
 type Props = {
@@ -18,19 +30,40 @@ type Props = {
     | null
     | undefined
   className?: string
+  openTooltip?: boolean
 }
 
-export default function PremiumPlugins({ text, variant, className }: Props) {
+export default async function PremiumPlugins({
+  text,
+  variant,
+  className,
+  openTooltip
+}: Props) {
+  const t = await getScopedI18n("ModalPluginChat")
+
   return (
     <Sheet>
-      <SheetTrigger asChild>
-        <Button variant={variant ?? "outline"} className={cn(className)}>
-          {text ?? <IconPuzzle />}
-        </Button>
-      </SheetTrigger>
+      <Tooltip open={openTooltip}>
+        <TooltipTrigger asChild>
+          <SheetTrigger asChild>
+            <Button variant={variant ?? "outline"} className={cn(className)}>
+              {text ?? <IconPuzzle />}
+            </Button>
+          </SheetTrigger>
+        </TooltipTrigger>
+        <TooltipContent align="end">
+          <p>{t("plugin")}</p>
+        </TooltipContent>
+      </Tooltip>
+
       <SheetContent side="right" className="bg-muted">
+        <SheetHeader>
+          <SheetTitle>{t("plugin")}</SheetTitle>
+        </SheetHeader>
         <Sidebar className="flex">
-          <div></div>
+          <div className="relative py-2">
+            <section className="grid gap-4"></section>
+          </div>
         </Sidebar>
       </SheetContent>
     </Sheet>
