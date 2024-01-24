@@ -67,7 +67,7 @@ export default async function PremiumPlugins({
                     key={index}
                     className="flex w-full items-start gap-2 group"
                   >
-                    <div className="rounded-xl bg-secondary bg-opacity-90 p-1">
+                    <div className="rounded-md bg-secondary bg-opacity-90 p-1">
                       <plugin.icon className="h-5 w-5 min-w-[1.25rem] text-secondary-foreground" />
                     </div>
 
