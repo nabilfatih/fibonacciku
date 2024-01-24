@@ -54,16 +54,37 @@ export default async function ChatFeaturePage({ params, searchParams }: Props) {
   // Check if user use referral link
   const referral = searchParams.ref as string | undefined
   if (referral) {
-    // update user table ref with referral
-    await supabase
+    // first check if user use referral link is in range of 3 minutes of registration
+    // to prevent abuse of referral link
+    const { data: user } = await supabase
       .from("users")
-      .update({
-        referral
-      })
+      .select("created_at")
       .eq("id", session.user.id)
+      .limit(1)
+      .maybeSingle()
 
-    // then remove referral from url
-    redirect(`/chat/${params.feature}`)
+    if (user) {
+      // check if user is in range of 3 minutes
+      const now = new Date()
+      const createdAt = new Date(user.created_at)
+      const diff = now.getTime() - createdAt.getTime()
+      const diffMinutes = diff / (1000 * 60)
+
+      if (diffMinutes > 3) {
+        redirect(`/chat/${params.feature}`)
+      }
+
+      // if user is in range of 3 minutes, then add referral to user table
+      await supabase
+        .from("users")
+        .update({
+          referral
+        })
+        .eq("id", session.user.id)
+
+      // then remove referral from url
+      redirect(`/chat/${params.feature}`)
+    }
   }
 
   return <ChatMessage type={params.feature as Features} />
