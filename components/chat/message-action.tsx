@@ -38,10 +38,7 @@ export default function ChatMessageActions({
 
   return (
     <div
-      className={cn(
-        "flex flex-wrap items-center justify-between gap-2",
-        className
-      )}
+      className={cn("flex flex-wrap items-center justify-between", className)}
       {...props}
     >
       <span className="text-xs text-muted-foreground">{createdAt}</span>
