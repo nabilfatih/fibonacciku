@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import {
@@ -15,6 +14,11 @@ import { useCurrentUser } from "@/lib/context/use-current-user"
 import supabaseClient from "@/lib/supabase/client"
 import { useScopedI18n } from "@/locales/client"
 
+import {
+  AvatarFallback,
+  AvatarImage,
+  Avatar as UiAvatar
+} from "@/components/ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -53,13 +57,17 @@ export default function UserMenu() {
         <DropdownMenuTrigger asChild>
           <div role="button" className="cursor-pointer">
             {userDetails.avatar_url ? (
-              <Image
-                className="h-8 w-8 min-w-8 select-none rounded-full shadow-sm transition-opacity duration-300 hover:opacity-80"
-                src={userDetails.avatar_url}
-                alt={userDetails.full_name ?? userDetails.email ?? "Avatar"}
-                height={48}
-                width={48}
-              />
+              <UiAvatar className="w-9 h-9 border border-border/30">
+                <AvatarImage
+                  src={userDetails.avatar_url}
+                  alt={userDetails.full_name ?? userDetails.email ?? "Avatar"}
+                />
+                <AvatarFallback>
+                  {userDetails.full_name?.slice(0, 2).toUpperCase() ??
+                    userDetails.email?.slice(0, 2).toUpperCase() ??
+                    "AN"}
+                </AvatarFallback>
+              </UiAvatar>
             ) : (
               <Avatar
                 className="h-8 w-8 rounded-full object-cover shadow-sm transition-opacity duration-300 hover:opacity-80"
