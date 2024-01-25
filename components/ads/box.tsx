@@ -26,10 +26,10 @@ export default function AdsBox() {
 
   const ads = data.data
 
-  const handleClick = () => {
-    clickAdsAdzedek(ads.id, generateUUID())
+  const handleClick = async () => {
     // add new tab
     window.open(ads.link, "_blank")
+    clickAdsAdzedek(ads.id, generateUUID())
   }
 
   return (
