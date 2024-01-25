@@ -44,7 +44,7 @@ export default function UserMenu() {
     return (
       <div className="flex items-center justify-between">
         <Avatar
-          className="h-8 w-8 rounded-full object-cover shadow-sm transition-opacity duration-300 hover:opacity-80"
+          className="w-9 h-9 border border-border/30 rounded-full object-cover shadow-sm transition-opacity duration-300 hover:opacity-80"
           {...config}
         />
       </div>
@@ -62,7 +62,7 @@ export default function UserMenu() {
                   src={userDetails.avatar_url}
                   alt={userDetails.full_name ?? userDetails.email ?? "Avatar"}
                 />
-                <AvatarFallback>
+                <AvatarFallback className="bg-muted text-muted-foreground">
                   {userDetails.full_name?.slice(0, 2).toUpperCase() ??
                     userDetails.email?.slice(0, 2).toUpperCase() ??
                     "AN"}
@@ -70,7 +70,7 @@ export default function UserMenu() {
               </UiAvatar>
             ) : (
               <Avatar
-                className="h-8 w-8 rounded-full object-cover shadow-sm transition-opacity duration-300 hover:opacity-80"
+                className="w-9 h-9 border border-border/30 rounded-full object-cover shadow-sm transition-opacity duration-300 hover:opacity-80"
                 {...config}
               />
             )}
