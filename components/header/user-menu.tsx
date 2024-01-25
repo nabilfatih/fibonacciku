@@ -117,7 +117,7 @@ export default function UserMenu() {
             </Link>
           </DropdownMenuItem>
 
-          <DropdownMenuSeparator className="my-2" />
+          <DropdownMenuSeparator />
 
           <DropdownMenuLabel
             asChild
@@ -133,7 +133,7 @@ export default function UserMenu() {
             <Contact className="w-full p-2" />
           </DropdownMenuLabel>
 
-          <DropdownMenuSeparator className="my-2" />
+          <DropdownMenuSeparator />
 
           {/* <DropdownMenuItem asChild className="py-2">
             <Link
