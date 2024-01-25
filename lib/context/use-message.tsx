@@ -555,6 +555,9 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
     dispatch({ type: "SET_IS_GENERATING", payload: false })
     dispatch({ type: "SET_IS_LOADING", payload: false })
     dispatch({ type: "SET_CURRENT_DOCUMENT", payload: null })
+    dispatch({ type: "SET_INITIAL_PAGE", payload: 1 })
+    dispatch({ type: "SET_EDIT_MESSAGE_CONTENT", payload: "" })
+    dispatch({ type: "SET_EDIT_MESSAGE_INDEX", payload: 0 })
     dispatch({ type: "SET_ATTACHMENT", payload: null })
     dispatch({ type: "SET_PROMPT", payload: "" })
 

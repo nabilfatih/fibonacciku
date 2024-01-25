@@ -58,6 +58,7 @@ export default function ChatMessage({
   useEffect(() => {
     if (file?.data) {
       dispatch({ type: "SET_CURRENT_DOCUMENT", payload: file.data })
+      dispatch({ type: "SET_INITIAL_PAGE", payload: 1 }) // reset page
     } else {
       dispatch({ type: "SET_CURRENT_DOCUMENT", payload: null })
     }

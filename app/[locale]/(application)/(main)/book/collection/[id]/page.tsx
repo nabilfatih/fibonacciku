@@ -1,3 +1,4 @@
+import { cache } from "react"
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import { notFound, redirect } from "next/navigation"
@@ -7,6 +8,12 @@ import { createClientServer } from "@/lib/supabase/server"
 
 import BookRead from "@/components/book/read"
 
+const getBook = cache(async (bookId: string) => {
+  const book = await getBooksAdmin(bookId)
+  // if there is book return the title, if not return FibonacciKu
+  return book?.title ?? "FibonacciKu"
+})
+
 type Props = {
   params: { id: string }
   searchParams: { [key: string]: string | string[] | undefined }
@@ -14,10 +21,10 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const bookId = params.id
-  const book = await getBooksAdmin(bookId)
+  const title = await getBook(bookId)
 
   return {
-    title: `${book?.title}`,
+    title: title,
     alternates: {
       canonical: `/book/collection/${bookId}`,
       languages: {

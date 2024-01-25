@@ -184,7 +184,6 @@ function BookDocumentPdf({
 export default memo(BookDocumentPdf, (prevProps, nextProps) => {
   return (
     prevProps.pdfFile === nextProps.pdfFile &&
-    prevProps.state === nextProps.state &&
-    prevProps.page === nextProps.page
+    prevProps.state === nextProps.state
   )
 })

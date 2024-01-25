@@ -192,7 +192,6 @@ function ChatDocumentPdf({
 export default memo(ChatDocumentPdf, (prevProps, nextProps) => {
   return (
     prevProps.pdfFile === nextProps.pdfFile &&
-    prevProps.state === nextProps.state &&
-    prevProps.initialPage === nextProps.initialPage
+    prevProps.state === nextProps.state
   )
 })
