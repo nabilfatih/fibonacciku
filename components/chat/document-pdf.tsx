@@ -188,7 +188,10 @@ function ChatDocumentPdf({
   )
 }
 
-// custom memo only compare the pdfFile
+// custom memo only compare the pdfFile and state
 export default memo(ChatDocumentPdf, (prevProps, nextProps) => {
-  return prevProps.pdfFile === nextProps.pdfFile
+  return (
+    prevProps.pdfFile === nextProps.pdfFile &&
+    prevProps.state === nextProps.state
+  )
 })

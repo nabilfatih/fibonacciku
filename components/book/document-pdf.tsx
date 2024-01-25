@@ -180,7 +180,10 @@ function BookDocumentPdf({
   )
 }
 
-// custom memo only compare the pdfFile
+// custom memo only compare the pdfFile and state
 export default memo(BookDocumentPdf, (prevProps, nextProps) => {
-  return prevProps.pdfFile === nextProps.pdfFile
+  return (
+    prevProps.pdfFile === nextProps.pdfFile &&
+    prevProps.state === nextProps.state
+  )
 })
