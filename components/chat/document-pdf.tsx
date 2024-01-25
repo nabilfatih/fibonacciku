@@ -6,7 +6,6 @@ import { IconMoodSad } from "@tabler/icons-react"
 import { Document, Page, pdfjs } from "react-pdf"
 import { ViewportList } from "react-viewport-list"
 
-import { useMessage } from "@/lib/context/use-message"
 import { cn } from "@/lib/utils"
 
 import { IconSpinner } from "@/components/ui/icons"
@@ -29,13 +28,20 @@ function highlightPattern(text: string, pattern: string) {
 }
 
 type Props = {
+  pdfFile: string | null
+  initialPage: number
+  pageRef: React.MutableRefObject<any>
   state: StateDocument
   dispatch: Dispatch<ActionDocument>
 }
 
-function ChatDocumentPdf({ state, dispatch }: Props) {
-  const { state: stateMessage, pageRef } = useMessage()
-
+function ChatDocumentPdf({
+  pdfFile,
+  initialPage,
+  pageRef,
+  state,
+  dispatch
+}: Props) {
   const parentRef = useRef<HTMLDivElement | null>(null)
   const listRef = useRef<HTMLDivElement | null>(null)
 
@@ -73,7 +79,7 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
     [dispatch, firstInit]
   )
 
-  if (!stateMessage.currentDocument) {
+  if (!pdfFile) {
     return (
       <div ref={parentRef} className="h-full overflow-hidden">
         <div className="relative h-full border border-t-0 bg-background">
@@ -88,7 +94,7 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
   return (
     <div ref={parentRef} className="h-full overflow-hidden">
       <Document
-        file={stateMessage.currentDocument}
+        file={pdfFile}
         onLoadSuccess={onDocumentLoadSuccess}
         options={options}
         onItemClick={({ pageIndex }) => {
@@ -120,7 +126,7 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
               items={Array.from({ length: numPages }, (_, i) => ({
                 page: i + 1
               }))}
-              initialIndex={stateMessage.initialPage - 1}
+              initialIndex={initialPage ? initialPage - 1 : 0}
               onViewportIndexesChange={viewportIndexes => {
                 dispatch({
                   type: "SET_CURRENT_PAGE",
@@ -182,4 +188,7 @@ function ChatDocumentPdf({ state, dispatch }: Props) {
   )
 }
 
-export default memo(ChatDocumentPdf)
+// custom memo only compare the pdfFile
+export default memo(ChatDocumentPdf, (prevProps, nextProps) => {
+  return prevProps.pdfFile === nextProps.pdfFile
+})

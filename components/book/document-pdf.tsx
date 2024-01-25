@@ -4,7 +4,7 @@ import "react-pdf/dist/esm/Page/TextLayer.css"
 import { memo, useCallback, useRef, useState, type Dispatch } from "react"
 import { IconMoodSad } from "@tabler/icons-react"
 import { isMobileOnly } from "react-device-detect"
-import { Document, Outline, Page, pdfjs } from "react-pdf"
+import { Document, Page, pdfjs } from "react-pdf"
 import { ViewportList } from "react-viewport-list"
 
 import { cn } from "@/lib/utils"
@@ -180,4 +180,7 @@ function BookDocumentPdf({
   )
 }
 
-export default memo(BookDocumentPdf)
+// custom memo only compare the pdfFile
+export default memo(BookDocumentPdf, (prevProps, nextProps) => {
+  return prevProps.pdfFile === nextProps.pdfFile
+})

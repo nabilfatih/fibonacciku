@@ -68,7 +68,7 @@ const initialState: StateDocument = {
 export default function ChatDocument() {
   const t = useScopedI18n("Chat")
 
-  const { pageRef } = useMessage()
+  const { pageRef, state: stateMessage } = useMessage()
 
   const [state, dispatch] = useReducer(documentReducer, initialState, () => {
     return { ...initialState }
@@ -195,7 +195,13 @@ export default function ChatDocument() {
             </div>
           </div>
 
-          <ChatDocumentPdf state={state} dispatch={dispatch} />
+          <ChatDocumentPdf
+            state={state}
+            dispatch={dispatch}
+            pdfFile={stateMessage.currentDocument}
+            initialPage={stateMessage.initialPage}
+            pageRef={pageRef}
+          />
         </div>
       </section>
     </div>
