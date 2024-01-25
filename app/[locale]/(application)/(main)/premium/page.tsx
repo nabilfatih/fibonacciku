@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { cookies } from "next/headers"
 
 import type { Subscription } from "@/types/types"
@@ -8,6 +9,20 @@ import { Badge } from "@/components/ui/badge"
 import PremiumFeatures from "@/components/premium/features"
 import PremiumPlugins from "@/components/premium/plugins"
 import PremiumPrice from "@/components/premium/price"
+
+export function generateMetadata(): Metadata {
+  return {
+    title: "Premium",
+    alternates: {
+      canonical: "/premium",
+      languages: {
+        en: "/en/premium",
+        id: "/id/premium",
+        de: "/de/premium"
+      }
+    }
+  }
+}
 
 export default async function PremiumPage() {
   const t = await getScopedI18n("MarketingPricing")
