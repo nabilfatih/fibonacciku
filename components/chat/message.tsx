@@ -27,16 +27,22 @@ export default function ChatMessage({
   const messageIndex = currentIndex.index
   const contentLength = message.content.length
 
-  const createdAt = new Date(
-    message.created_at || Date.now()
-  ).toLocaleDateString(locale, {
-    hour: "numeric",
-    minute: "numeric",
-    day: "numeric",
-    month: "short",
-    year: "numeric"
-  })
+  const createdAt = new Date(message.created_at || new Date())
+  let formattedDate = ""
 
+  const today = new Date()
+
+  if (createdAt.toDateString() === today.toDateString()) {
+    formattedDate = createdAt.toTimeString().substring(0, 5)
+  } else {
+    formattedDate = createdAt.toLocaleDateString(locale, {
+      hour: "numeric",
+      minute: "numeric",
+      day: "numeric",
+      month: "numeric",
+      year: "numeric"
+    })
+  }
   if (message.role === "system") return null
 
   return (
@@ -73,7 +79,7 @@ export default function ChatMessage({
         <ChatMessageActions
           isAssistant={isAssistant}
           content={message.content[contentIndex]}
-          createdAt={createdAt}
+          createdAt={formattedDate}
           currentIndex={currentIndex}
           contentLength={contentLength}
           messageIndex={messageIndex}
