@@ -8,7 +8,7 @@ import supabaseAdmin from "@/lib/supabase/admin"
 export const documentRetrieval = cache(
   async (userId: string, fileId: string, query: string) => {
     const embeddings = new OpenAIEmbeddings({
-      modelName: "text-embedding-ada-002",
+      modelName: "text-embedding-3-small",
       openAIApiKey: process.env.OPENAI_API_KEY
     })
 
@@ -57,7 +57,7 @@ export const documentRetrieval = cache(
 export const bookRetrieval = cache(
   async (bookId: string, fileId: string, query: string) => {
     const embeddings = new OpenAIEmbeddings({
-      modelName: "text-embedding-ada-002",
+      modelName: "text-embedding-3-small",
       openAIApiKey: process.env.OPENAI_API_KEY
     })
 

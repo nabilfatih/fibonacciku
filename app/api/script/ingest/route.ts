@@ -25,7 +25,7 @@ export async function POST(req: Request) {
   const libraries = await getLibraryAll()
 
   const embeddings = new OpenAIEmbeddings({
-    modelName: "text-embedding-ada-002",
+    modelName: "text-embedding-3-small",
     openAIApiKey: process.env.OPENAI_API_KEY
   })
 
