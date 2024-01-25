@@ -105,9 +105,9 @@ export default function ChatMessage({
               messages={showMessage}
               indexMessage={indexMessage}
             />
-            <section className="mx-auto max-w-2xl p-5">
+            {/* <section className="mx-auto max-w-2xl p-5">
               <AdsBox />
-            </section>
+            </section> */}
             <ChatScrollAnchor trackVisibility={state.isGenerating} />
           </>
         ) : null}
