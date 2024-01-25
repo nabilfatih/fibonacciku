@@ -14,6 +14,7 @@ import { getChatFile } from "@/app/actions/chat"
 const ChatPanel = dynamic(() => import("@/components/chat/panel"))
 const ChatList = dynamic(() => import("@/components/chat/list"))
 const EmptyScreen = dynamic(() => import("@/components/chat/empty-screen"))
+const AdsBox = dynamic(() => import("@/components/ads/box"))
 
 export interface ChatProps extends React.ComponentProps<"div"> {
   type: Features
@@ -104,6 +105,9 @@ export default function ChatMessage({
               messages={showMessage}
               indexMessage={indexMessage}
             />
+            <section className="mx-auto max-w-2xl p-5">
+              <AdsBox />
+            </section>
             <ChatScrollAnchor trackVisibility={state.isGenerating} />
           </>
         ) : null}

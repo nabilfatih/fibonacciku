@@ -22,7 +22,7 @@ export default async function PremiumFeatures() {
             </h2>
             <p className="text-sm text-muted-foreground">
               Unlimited access to all features no matter how much you use fibo.
-              No limit, no restriction.
+              No limit, no restriction, no ads.
             </p>
           </div>
         </div>

@@ -1,8 +1,11 @@
 "use server"
 
+import { unstable_noStore as noStore } from "next/cache"
+
 export const getAdsAdzedek = async () => {
+  noStore()
   const response = await fetch(
-    `https://api.adzedek.com/get_ad_info_by_id/adzedekTest`,
+    "https://api.adzedek.com/fetch_ad_to_show/Nabil",
     {
       headers: {
         "adzedek-api": process.env.ADZEDEK_API_KEY as string
