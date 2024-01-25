@@ -27,9 +27,9 @@ export default function AdsBox() {
   const ads = data.data
 
   const handleClick = async () => {
+    await clickAdsAdzedek(ads.id, generateUUID())
     // add new tab
     window.open(ads.link, "_blank")
-    clickAdsAdzedek(ads.id, generateUUID())
   }
 
   return (
