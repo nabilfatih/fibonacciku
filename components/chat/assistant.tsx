@@ -69,7 +69,7 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
               <pre
                 className={cn(
                   className,
-                  "no-before no-after rounded-xl bg-muted"
+                  "no-before no-after rounded-xl border bg-muted"
                 )}
                 {...props}
               >
@@ -80,7 +80,7 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
             <pre
               className={cn(
                 className,
-                "no-before no-after rounded-xl bg-muted font-sans"
+                "no-before no-after rounded-xl bg-muted font-sans border"
               )}
               {...props}
             >

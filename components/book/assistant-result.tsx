@@ -65,7 +65,7 @@ export default function BookAssistantResult({ result }: Props) {
                 <pre
                   className={cn(
                     className,
-                    "no-before no-after rounded-xl bg-muted"
+                    "no-before no-after rounded-xl border bg-muted"
                   )}
                   {...props}
                 >
@@ -76,7 +76,7 @@ export default function BookAssistantResult({ result }: Props) {
               <pre
                 className={cn(
                   className,
-                  "no-before no-after rounded-xl bg-muted font-sans"
+                  "no-before no-after rounded-xl bg-muted border font-sans"
                 )}
                 {...props}
               >
