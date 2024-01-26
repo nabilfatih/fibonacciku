@@ -21,7 +21,8 @@ export default function AdsBox() {
     userDetails?.id || "ads",
     getAdsAdzedek,
     {
-      refreshInterval: 1000 * 60 * 60 * 24 // 1 day
+      // refresh 4 times a day
+      refreshInterval: 1000 * 60 * 60 * 6 // 6 hours
     }
   )
 
