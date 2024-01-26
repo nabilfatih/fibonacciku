@@ -7,6 +7,7 @@ import "@/styles/themes.css"
 import { Suspense } from "react"
 import type { Metadata, Viewport } from "next"
 import { notFound } from "next/navigation"
+import { Analytics } from "@vercel/analytics/react"
 
 import { themes } from "@/lib/data/themes"
 import { cn } from "@/lib/utils"
@@ -149,6 +150,7 @@ export default function RootLayout({
             <Suspense>{children}</Suspense>
           </div>
           <TailwindIndicator />
+          <Analytics />
         </Providers>
       </body>
     </html>
