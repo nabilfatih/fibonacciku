@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import useSWR from "swr"
+import useSWRImmutable from "swr/immutable"
 
 import { useCurrentUser } from "@/lib/context/use-current-user"
 import { generateUUID } from "@/lib/utils"
@@ -16,7 +16,10 @@ export default function AdsBox() {
     subscription,
     isLoading: isUserLoading
   } = useCurrentUser()
-  const { data, isLoading } = useSWR(userDetails?.id || "ads", getAdsAdzedek)
+  const { data, isLoading } = useSWRImmutable(
+    userDetails?.id || "ads",
+    getAdsAdzedek
+  )
 
   if (isLoading || isUserLoading || !data || subscription || !userDetails) {
     return null
@@ -44,13 +47,13 @@ export default function AdsBox() {
         <CardHeader className="pb-3 pt-5">
           <CardTitle className="text-foreground/80">SPONSORED</CardTitle>
         </CardHeader>
-        <CardContent className="pb-2">
+        <CardContent className="pb-4">
           <p className="text-muted-foreground text-sm sm:text-base">
-            {ads.text}
+            {ads.text}{" "}
+            <Link href={ads.link} className="text-primary hover:underline">
+              {ads.highlight}
+            </Link>
           </p>
-          <Button variant="link" className="p-0">
-            <Link href={ads.link}>{ads.highlight}</Link>
-          </Button>
         </CardContent>
       </Card>
     </div>
