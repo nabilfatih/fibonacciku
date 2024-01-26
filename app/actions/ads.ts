@@ -15,6 +15,7 @@ export const getAdsAdzedek = async () => {
 
   if (!response.ok) {
     return {
+      statusCode: response.status,
       error: "Something went wrong"
     }
   }
@@ -38,6 +39,7 @@ export const getAdsInfo = async (adId: string) => {
 
   if (!response.ok) {
     return {
+      statusCode: response.status,
       error: "Something went wrong"
     }
   }
@@ -52,22 +54,25 @@ export const getAdsInfo = async (adId: string) => {
 export const clickAdsAdzedek = async (adId: string, userId: string) => {
   const response = await fetch("https://api.adzedek.com/record_user_click", {
     method: "POST",
+    headers: {
+      "adzedek-api": process.env.ADZEDEK_API_KEY as string,
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify({
       ad_id: adId,
       user_id: userId
-    }),
-    headers: {
-      "adzedek-api": process.env.ADZEDEK_API_KEY as string
-    }
+    })
   })
 
   if (!response.ok) {
     return {
+      statusCode: response.status,
       error: "Something went wrong"
     }
   }
 
-  const data = await response.json()
+  // response is not json
+  const data = await response.text()
 
   return {
     data

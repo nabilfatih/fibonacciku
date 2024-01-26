@@ -19,7 +19,10 @@ export default function AdsBox() {
   } = useCurrentUser()
   const { data, isLoading } = useSWRImmutable(
     userDetails?.id || "ads",
-    getAdsAdzedek
+    getAdsAdzedek,
+    {
+      refreshInterval: 1000 * 60 * 60 * 24 // 1 day
+    }
   )
 
   const text = useMemo(() => {
@@ -36,7 +39,7 @@ export default function AdsBox() {
     const regex = new RegExp(escapedHighlight, "gi")
 
     const replacedText = highlightedText.replace(regex, (match: string) => {
-      return `<a href="${ads.link}" class="text-primary underline underline-offset-4">${match}</a>`
+      return `<a href="${ads.link}" target="_blank" class="text-primary underline underline-offset-4">${match}</a>`
     })
 
     return replacedText
@@ -60,11 +63,8 @@ export default function AdsBox() {
       <Button asChild variant="link" className="p-0">
         <Link href="/premium">Upgrade to premium to remove ads</Link>
       </Button>
-      <Link href={data?.data.link}>
-        <Card
-          className="hover:bg-muted/10 transition-colors"
-          onClick={handleClick}
-        >
+      <Link href={data?.data.link} target="_blank" onClick={handleClick}>
+        <Card className="hover:bg-muted/10 transition-colors">
           <CardHeader className="pb-3 pt-5">
             <CardTitle className="text-foreground/80">SPONSORED</CardTitle>
           </CardHeader>
