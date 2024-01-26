@@ -1,5 +1,6 @@
 "use client"
 
+import { useMemo } from "react"
 import Link from "next/link"
 import useSWRImmutable from "swr/immutable"
 
@@ -21,15 +22,34 @@ export default function AdsBox() {
     getAdsAdzedek
   )
 
+  const text = useMemo(() => {
+    const ads = data?.data
+    if (!ads) return ""
+
+    const highlightedText = ads.text
+    if (!highlightedText || !ads.highlight) return highlightedText
+
+    const escapedHighlight = ads.highlight.replace(
+      /[.*+?^${}()|[\]\\]/g,
+      "\\$&"
+    )
+    const regex = new RegExp(escapedHighlight, "gi")
+
+    const replacedText = highlightedText.replace(regex, (match: string) => {
+      return `<a href="${ads.link}" class="text-primary underline underline-offset-4">${match}</a>`
+    })
+
+    return replacedText
+  }, [data?.data])
+
   if (isLoading || isUserLoading || !data || subscription || !userDetails) {
     return null
   }
 
   if ("error" in data) return null
 
-  const ads = data.data
-
   const handleClick = async () => {
+    const ads = data?.data
     await clickAdsAdzedek(ads.id, generateUUID())
     // add new tab
     window.open(ads.link, "_blank")
@@ -40,22 +60,22 @@ export default function AdsBox() {
       <Button asChild variant="link" className="p-0">
         <Link href="/premium">Upgrade to premium to remove ads</Link>
       </Button>
-      <Card
-        className="cursor-pointer hover:bg-muted/10 transition-colors"
-        onClick={handleClick}
-      >
-        <CardHeader className="pb-3 pt-5">
-          <CardTitle className="text-foreground/80">SPONSORED</CardTitle>
-        </CardHeader>
-        <CardContent className="pb-4">
-          <p className="text-muted-foreground text-sm sm:text-base">
-            {ads.text}{" "}
-            <Link href={ads.link} className="text-primary hover:underline">
-              {ads.highlight}
-            </Link>
-          </p>
-        </CardContent>
-      </Card>
+      <Link href={data?.data.link}>
+        <Card
+          className="hover:bg-muted/10 transition-colors"
+          onClick={handleClick}
+        >
+          <CardHeader className="pb-3 pt-5">
+            <CardTitle className="text-foreground/80">SPONSORED</CardTitle>
+          </CardHeader>
+          <CardContent className="pb-4">
+            <p
+              className="text-muted-foreground text-sm sm:text-base"
+              dangerouslySetInnerHTML={{ __html: text }}
+            />
+          </CardContent>
+        </Card>
+      </Link>
     </div>
   )
 }
