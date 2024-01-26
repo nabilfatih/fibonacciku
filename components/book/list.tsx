@@ -19,7 +19,7 @@ export default function BookList({ bookRef, books }: Props) {
         ref={listRef}
         viewportRef={bookRef}
         items={books}
-        overscan={5}
+        overscan={3}
       >
         {(item, index) => {
           return (
