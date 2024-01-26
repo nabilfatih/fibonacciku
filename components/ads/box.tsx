@@ -65,7 +65,7 @@ export default function AdsBox() {
       </Button>
       <Link href={data?.data.link} target="_blank" onClick={handleClick}>
         <Card className="hover:bg-muted/10 transition-colors">
-          <CardHeader className="pb-3 pt-5">
+          <CardHeader className="pb-3 pt-4">
             <CardTitle className="text-foreground/80">SPONSORED</CardTitle>
           </CardHeader>
           <CardContent className="pb-4">
