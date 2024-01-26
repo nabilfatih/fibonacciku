@@ -8,6 +8,7 @@ export const themes = [
   "cyberpunk",
   "emerald",
   "espresso",
+  "fall",
   "griffindor",
   "hufflepuff",
   "joker",
