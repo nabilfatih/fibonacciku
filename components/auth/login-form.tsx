@@ -17,11 +17,13 @@ import { Label } from "@/components/ui/label"
 
 interface LoginAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
   next: string
+  referral?: string
 }
 
 export function LoginAuthForm({
   className,
   next,
+  referral,
   ...props
 }: LoginAuthFormProps) {
   const t = useScopedI18n("Auth")
@@ -54,8 +56,8 @@ export function LoginAuthForm({
       provider,
       options: {
         redirectTo: next
-          ? `https://www.fibonacciku.com/api/auth/callback?next=${next}`
-          : "https://www.fibonacciku.com/api/auth/callback"
+          ? `https://www.fibonacciku.com/api/auth/callback?next=${next}&ref=${referral}`
+          : `https://www.fibonacciku.com/api/auth/callback?ref=${referral}`
       }
     })
     if (error) {

@@ -15,11 +15,13 @@ import { IconSpinner } from "@/components/ui/icons"
 
 interface SignupAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
   next: string
+  referral?: string
 }
 
 export function SignupAuthForm({
   className,
   next,
+  referral,
   ...props
 }: SignupAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
@@ -30,8 +32,8 @@ export function SignupAuthForm({
       provider,
       options: {
         redirectTo: next
-          ? `https://www.fibonacciku.com/api/auth/callback?next=${next}`
-          : "https://www.fibonacciku.com/api/auth/callback"
+          ? `https://www.fibonacciku.com/api/auth/callback?next=${next}&ref=${referral}`
+          : `https://www.fibonacciku.com/api/auth/callback?ref=${referral}`
       }
     })
     if (error) {
