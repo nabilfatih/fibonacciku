@@ -33,6 +33,7 @@ export default async function SignupPage({ searchParams }: Props) {
 
   // get next url, it is always a string
   const next = searchParams.next ? String(searchParams.next) : ""
+  const referral = searchParams.ref ? String(searchParams.ref) : ""
 
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
@@ -54,7 +55,7 @@ export default async function SignupPage({ searchParams }: Props) {
           {t("continue-with-google")}
         </p>
       </div>
-      <SignupAuthForm next={next} />
+      <SignupAuthForm next={next} referral={referral} />
       <p className="px-8 text-center text-sm text-muted-foreground">
         <span>{t("login-desc")}</span>
         {` `}

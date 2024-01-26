@@ -33,6 +33,7 @@ export default async function LoginPage({ searchParams }: Props) {
 
   // get next url, it is always a string
   const next = searchParams.next ? String(searchParams.next) : ""
+  const referral = searchParams.ref ? String(searchParams.ref) : ""
 
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
@@ -52,7 +53,7 @@ export default async function LoginPage({ searchParams }: Props) {
         </h1>
         <p className="text-sm text-muted-foreground">{t("login-header")}</p>
       </header>
-      <LoginAuthForm next={next} />
+      <LoginAuthForm next={next} referral={referral} />
       <p className="px-8 text-center text-sm text-muted-foreground">
         <Link href="/auth/forgot-password" className="hover:text-primary">
           {t("forgot-password")}
