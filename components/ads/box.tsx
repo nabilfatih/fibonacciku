@@ -65,9 +65,6 @@ export default function AdsBox() {
 
   return (
     <div className="relative">
-      <Button asChild variant="link" className="p-0">
-        <Link href="/premium">Upgrade to premium to remove ads</Link>
-      </Button>
       <Link href={data?.data.link} target="_blank" onClick={handleClick}>
         <Card className="hover:bg-muted/10 transition-colors">
           <CardHeader className="pb-3 pt-4">
@@ -81,6 +78,9 @@ export default function AdsBox() {
           </CardContent>
         </Card>
       </Link>
+      <Button asChild variant="link" className="p-0">
+        <Link href="/premium">Upgrade to premium to remove ads</Link>
+      </Button>
     </div>
   )
 }
