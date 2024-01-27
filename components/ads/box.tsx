@@ -21,7 +21,7 @@ export default function AdsBox() {
   const params = useParams()
   const chatId = params?.id
   const { data, isLoading } = useSWRImmutable(
-    chatId || userDetails?.id || "ads",
+    chatId || userDetails?.id || generateUUID(),
     getAdsAdzedek,
     {
       revalidateOnReconnect: true,
