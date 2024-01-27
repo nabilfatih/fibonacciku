@@ -2,6 +2,7 @@
 
 import { useMemo } from "react"
 import Link from "next/link"
+import { useParams } from "next/navigation"
 import useSWRImmutable from "swr/immutable"
 
 import { useCurrentUser } from "@/lib/context/use-current-user"
@@ -17,8 +18,10 @@ export default function AdsBox() {
     subscription,
     isLoading: isUserLoading
   } = useCurrentUser()
+  const params = useParams()
+  const chatId = params?.id
   const { data, isLoading } = useSWRImmutable(
-    userDetails?.id || "ads",
+    chatId || userDetails?.id || "ads",
     getAdsAdzedek,
     {
       revalidateOnReconnect: true,
