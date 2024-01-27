@@ -24,8 +24,9 @@ export default function AdsBox() {
     chatId || userDetails?.id || generateUUID(),
     getAdsAdzedek,
     {
+      revalidateIfStale: true,
       revalidateOnReconnect: true,
-      refreshInterval: 1000 * 60 * 30 // 30 minutes
+      refreshInterval: 1000 * 60 * 15 // 15 minutes
     }
   )
 
