@@ -6,7 +6,7 @@ import useSWRImmutable from "swr/immutable"
 
 import type { Chat, ChatMessage, Features } from "@/types/types"
 import { useMessage } from "@/lib/context/use-message"
-import { cn } from "@/lib/utils"
+import { cn, generateUUID } from "@/lib/utils"
 
 import ChatScrollAnchor from "@/components/chat/scroll-anchor"
 import { getChatFile } from "@/app/actions/chat"
@@ -106,7 +106,7 @@ export default function ChatMessage({
               indexMessage={indexMessage}
             />
             <section className="mx-auto max-w-2xl p-5">
-              <AdsBox />
+              <AdsBox id={id || generateUUID()} />
             </section>
             <ChatScrollAnchor trackVisibility={state.isGenerating} />
           </>

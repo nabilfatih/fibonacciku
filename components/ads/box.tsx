@@ -2,7 +2,6 @@
 
 import { useMemo } from "react"
 import Link from "next/link"
-import { useParams } from "next/navigation"
 import useSWRImmutable from "swr/immutable"
 
 import { useCurrentUser } from "@/lib/context/use-current-user"
@@ -12,23 +11,22 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { clickAdsAdzedek, getAdsAdzedek } from "@/app/actions/ads"
 
-export default function AdsBox() {
+type Props = {
+  id: string
+}
+
+export default function AdsBox({ id }: Props) {
   const {
     userDetails,
     subscription,
     isLoading: isUserLoading
   } = useCurrentUser()
-  const params = useParams()
-  const chatId = params?.id
-  const { data, isLoading } = useSWRImmutable(
-    chatId || userDetails?.id || generateUUID(),
-    getAdsAdzedek,
-    {
-      revalidateOnReconnect: true,
-      revalidateIfStale: true,
-      refreshInterval: 1000 * 60 * 15 // 15 minutes
-    }
-  )
+
+  const { data, isLoading } = useSWRImmutable(id, getAdsAdzedek, {
+    revalidateOnReconnect: true,
+    revalidateIfStale: true,
+    refreshInterval: 1000 * 60 * 15 // 15 minutes
+  })
 
   const text = useMemo(() => {
     const ads = data?.data
