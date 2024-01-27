@@ -136,7 +136,7 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
               name="link"
               href={String(href)}
               target="_blank"
-              className="text-primary transition-colors duration-200 hover:text-primary/90 underline-offset-2"
+              className="text-primary transition-colors duration-200 hover:text-primary/90 underline-offset-4"
             >
               {children}
             </DynamicTag>
