@@ -6,7 +6,7 @@ import useSWRImmutable from "swr/immutable"
 
 import type { Chat, ChatMessage, Features } from "@/types/types"
 import { useMessage } from "@/lib/context/use-message"
-import { cn, generateUUID } from "@/lib/utils"
+import { cn } from "@/lib/utils"
 
 import ChatScrollAnchor from "@/components/chat/scroll-anchor"
 import { getChatFile } from "@/app/actions/chat"
