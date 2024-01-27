@@ -87,7 +87,10 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
                 name="language"
                 value={state.language}
                 onValueChange={value =>
-                  dispatch({ type: "SET_LANGUAGE", payload: value })
+                  dispatch({
+                    type: "SET_LANGUAGE",
+                    payload: value.toLowerCase()
+                  })
                 }
               >
                 <SelectTrigger className="w-full">
@@ -115,7 +118,10 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
                   name="grade"
                   value={state.grade}
                   onValueChange={value =>
-                    dispatch({ type: "SET_GRADE", payload: value })
+                    dispatch({
+                      type: "SET_GRADE",
+                      payload: value.toLowerCase()
+                    })
                   }
                 >
                   <SelectTrigger className="w-full">
