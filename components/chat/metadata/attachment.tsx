@@ -79,7 +79,7 @@ export default function ChatMetadataAttachment({ metadata }: Props) {
                     return false // Prevents link from opening in new tab
                   }}
                   className={cn(
-                    "m-0 cursor-pointer rounded-xl border bg-muted/90 shadow-sm",
+                    "m-0 cursor-pointer rounded-xl border bg-muted/90 shadow-sm object-cover",
                     imageLoaded ? "block" : "hidden"
                   )}
                 />
