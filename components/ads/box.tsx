@@ -3,7 +3,7 @@
 import { useMemo } from "react"
 import Link from "next/link"
 import { useParams } from "next/navigation"
-import useSWRImmutable from "swr/immutable"
+import useSWR from "swr"
 
 import { useCurrentUser } from "@/lib/context/use-current-user"
 import { generateUUID } from "@/lib/utils"
@@ -20,12 +20,11 @@ export default function AdsBox() {
   } = useCurrentUser()
   const params = useParams()
   const chatId = params?.id
-  const { data, isLoading } = useSWRImmutable(
+  const { data, isLoading } = useSWR(
     chatId || userDetails?.id || generateUUID(),
     getAdsAdzedek,
     {
-      revalidateIfStale: true,
-      revalidateOnReconnect: true,
+      revalidateOnFocus: false,
       refreshInterval: 1000 * 60 * 15 // 15 minutes
     }
   )
