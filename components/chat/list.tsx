@@ -1,4 +1,5 @@
 import { useMemo, type MutableRefObject } from "react"
+import dynamic from "next/dynamic"
 import { ViewportList } from "react-viewport-list"
 
 import type { IndexMessage, ShowChatMessage } from "@/types/types"
@@ -6,6 +7,8 @@ import { useMessage } from "@/lib/context/use-message"
 
 import { Separator } from "@/components/ui/separator"
 import ChatMessages from "@/components/chat/message"
+
+const AdsBox = dynamic(() => import("@/components/ads/box"))
 
 type Props = {
   chatMessageRef: MutableRefObject<HTMLDivElement | null>
@@ -62,6 +65,12 @@ export default function ChatList({
               {index < messages.length - 1 && item.role !== "system" && (
                 <Separator className="my-4 md:my-8" />
               )}
+              {
+                // if last message show ads
+                index === messages.length - 1 && item.role !== "system" && (
+                  <AdsBox id={item.id} />
+                )
+              }
             </div>
           )
         }}
