@@ -68,7 +68,9 @@ export default function ChatList({
               {
                 // if last message show ads
                 index === messages.length - 1 && item.role !== "system" && (
-                  <AdsBox id={item.id} />
+                  <div className="sm:px-1">
+                    <AdsBox id={item.id} />
+                  </div>
                 )
               }
             </div>
