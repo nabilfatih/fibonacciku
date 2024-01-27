@@ -40,6 +40,7 @@ export default function FormAttachment() {
             priority
             className="rounded-xl bg-muted/90 object-cover"
             fill
+            unoptimized
             sizes="48px"
             alt={state.attachment.name || "Attachment"}
           />

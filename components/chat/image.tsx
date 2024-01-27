@@ -19,6 +19,7 @@ function ImageMarkdown({ src, alt }: Props) {
           src={src}
           alt={alt || "Thumbnail YouTube"}
           priority
+          unoptimized
           width={337}
           height={192}
           className="relative my-4 h-[8rem] w-full cursor-pointer rounded-xl border bg-muted/90 object-cover sm:h-48 sm:w-[337px]"
@@ -39,6 +40,7 @@ function ImageMarkdown({ src, alt }: Props) {
           maxHeight: "28rem"
         }}
         priority
+        unoptimized
         width={256}
         height={256}
         className="my-4 max-w-[256px] cursor-pointer rounded-xl border bg-muted/90 object-cover"

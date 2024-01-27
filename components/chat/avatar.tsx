@@ -40,6 +40,7 @@ export default function ChatAvatar({ role }: Props) {
           sizes="32px"
           className="rounded-full"
           priority
+          unoptimized
           alt={`${userDetails?.full_name || "User"} Avatar`}
         />
       ) : (
