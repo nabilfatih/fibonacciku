@@ -22,8 +22,7 @@ export default function AdsBox() {
     getAdsAdzedek,
     {
       revalidateOnReconnect: true,
-      // refresh 24 times a day
-      refreshInterval: 1000 * 60 * 60 * 1 // 1 hour
+      refreshInterval: 1000 * 60 * 30 // 30 minutes
     }
   )
 
