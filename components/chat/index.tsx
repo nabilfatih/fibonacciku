@@ -106,7 +106,7 @@ export default function ChatMessage({
               indexMessage={indexMessage}
             />
             <section className="mx-auto max-w-2xl p-5">
-              <AdsBox id={id || generateUUID()} />
+              <AdsBox id={id} />
             </section>
             <ChatScrollAnchor trackVisibility={state.isGenerating} />
           </>

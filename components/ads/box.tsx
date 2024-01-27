@@ -12,7 +12,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { clickAdsAdzedek, getAdsAdzedek } from "@/app/actions/ads"
 
 type Props = {
-  id: string
+  id?: string
 }
 
 export default function AdsBox({ id }: Props) {
@@ -22,11 +22,15 @@ export default function AdsBox({ id }: Props) {
     isLoading: isUserLoading
   } = useCurrentUser()
 
-  const { data, isLoading } = useSWRImmutable(id, getAdsAdzedek, {
-    revalidateOnReconnect: true,
-    revalidateIfStale: true,
-    refreshInterval: 1000 * 60 * 15 // 15 minutes
-  })
+  const { data, isLoading } = useSWRImmutable(
+    id || userDetails?.id || "ads",
+    getAdsAdzedek,
+    {
+      revalidateOnReconnect: true,
+      revalidateIfStale: true,
+      refreshInterval: 1000 * 60 * 15 // 15 minutes
+    }
+  )
 
   const text = useMemo(() => {
     const ads = data?.data
