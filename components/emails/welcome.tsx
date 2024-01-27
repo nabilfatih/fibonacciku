@@ -46,7 +46,7 @@ export default function WelcomeEmail({
       </Head>
       <Preview>{previewText}</Preview>
       <Tailwind>
-        <Body className="bg-neutral mx-auto my-auto font-sans text-zinc-100">
+        <Body className="bg-zinc-100 mx-auto my-auto font-sans text-zinc-900">
           <Container className="mx-auto my-10 w-[465px] p-5">
             <Section className="mt-8">
               <Img
