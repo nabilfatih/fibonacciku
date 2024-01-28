@@ -7,6 +7,7 @@ import "@/styles/themes.css"
 import { Suspense } from "react"
 import type { Metadata, Viewport } from "next"
 import { notFound } from "next/navigation"
+import { localesList } from "@/middleware"
 import { Analytics } from "@vercel/analytics/react"
 
 import { themes } from "@/lib/data/themes"
@@ -67,7 +68,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "FibonacciKu",
       locale: "en",
       type: "website",
-      alternateLocale: ["en", "id", "de", "ru"]
+      alternateLocale: localesList
     },
     robots: {
       index: true,
@@ -124,7 +125,7 @@ export default function RootLayout({
   children: React.ReactNode
   params: { locale: string }
 }) {
-  const locales = new Set(["en", "id", "de", "ru"])
+  const locales = new Set(localesList)
 
   const isValidLocale = locales.has(params.locale)
   if (!isValidLocale) notFound()
