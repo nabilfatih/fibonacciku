@@ -62,7 +62,7 @@ export default function UserMenu() {
                   src={userDetails.avatar_url}
                   alt={userDetails.full_name ?? userDetails.email ?? "Avatar"}
                 />
-                <AvatarFallback className="bg-muted text-muted-foreground">
+                <AvatarFallback className="bg-background text-foreground">
                   {userDetails.full_name?.slice(0, 2).toUpperCase() ??
                     userDetails.email?.slice(0, 2).toUpperCase() ??
                     "AN"}
