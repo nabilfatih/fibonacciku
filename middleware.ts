@@ -4,7 +4,7 @@ import { createI18nMiddleware } from "next-international/middleware"
 import { createClientMiddleware } from "@/lib/supabase/middleware"
 
 const I18nMiddleware = createI18nMiddleware({
-  locales: ["en", "id", "de"],
+  locales: ["en", "id", "de", "ru"],
   defaultLocale: "en",
   urlMappingStrategy: "rewrite"
 })

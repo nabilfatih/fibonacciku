@@ -20,7 +20,8 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         en: "/en/account",
         id: "/id/account",
-        de: "/de/account"
+        de: "/de/account",
+        ru: "/ru/account"
       }
     }
   }

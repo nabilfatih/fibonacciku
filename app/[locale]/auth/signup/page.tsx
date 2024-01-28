@@ -22,7 +22,8 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         en: "/en/auth/signup",
         id: "/id/auth/signup",
-        de: "/de/auth/signup"
+        de: "/de/auth/signup",
+        ru: "/ru/auth/signup"
       }
     }
   }

@@ -21,7 +21,8 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         en: "/en/book/collection",
         id: "/id/book/collection",
-        de: "/de/book/collection"
+        de: "/de/book/collection",
+        ru: "/ru/book/collection"
       }
     }
   }

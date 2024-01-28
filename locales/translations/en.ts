@@ -882,5 +882,11 @@ export default {
     account: "Account",
     subscription: "Subscription",
     contact: "Contact"
+  },
+  EmptyScreen: {
+    hi: "Hi",
+    "assistant-desc": "Ask me anything, whatever you want to know.",
+    "document-desc": "Upload your document and chat with it.",
+    "book-desc": "Easily explore knowledge from the book."
   }
 } as const

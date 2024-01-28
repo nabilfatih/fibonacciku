@@ -9,5 +9,6 @@ export const {
 } = createI18nClient({
   en: () => import("./translations/en"),
   id: () => import("./translations/id"),
-  de: () => import("./translations/de")
+  de: () => import("./translations/de"),
+  ru: () => import("./translations/ru")
 })

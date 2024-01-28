@@ -899,5 +899,11 @@ export default {
     account: "Akun",
     subscription: "Berlangganan",
     contact: "Kontak"
+  },
+  EmptyScreen: {
+    hi: "Hai",
+    "assistant-desc": "Tanyakan saya apa pun, apa pun yang ingin kamu ketahui.",
+    "document-desc": "Unggah dokumen Anda dan chat dengannya.",
+    "book-desc": "Jelajahi pengetahuan dari buku dengan mudah."
   }
 } as const

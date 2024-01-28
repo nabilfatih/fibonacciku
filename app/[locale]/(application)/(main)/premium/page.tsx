@@ -18,7 +18,8 @@ export function generateMetadata(): Metadata {
       languages: {
         en: "/en/premium",
         id: "/id/premium",
-        de: "/de/premium"
+        de: "/de/premium",
+        ru: "/ru/premium"
       }
     }
   }

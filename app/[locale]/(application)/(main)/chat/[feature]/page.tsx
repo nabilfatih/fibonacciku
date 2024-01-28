@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       languages: {
         en: `/en/chat/${feature}`,
         id: `/id/chat/${feature}`,
-        de: `/de/chat/${feature}`
+        de: `/de/chat/${feature}`,
+        ru: `/ru/chat/${feature}`
       }
     }
   }

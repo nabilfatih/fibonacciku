@@ -53,7 +53,8 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         en: "/en",
         id: "/id",
-        de: "/de"
+        de: "/de",
+        ru: "/ru"
       },
       types: {
         "application/rss+xml": "https://www.fibonacciku.com/rss"
@@ -66,7 +67,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "FibonacciKu",
       locale: "en",
       type: "website",
-      alternateLocale: ["en", "id", "de"]
+      alternateLocale: ["en", "id", "de", "ru"]
     },
     robots: {
       index: true,

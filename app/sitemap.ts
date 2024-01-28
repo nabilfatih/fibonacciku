@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next"
 
-const locales = ["", "/en", "/id", "/de"]
+const locales = ["", "/en", "/id", "/de", "/ru"]
 
 const pathnames = [
   "/",

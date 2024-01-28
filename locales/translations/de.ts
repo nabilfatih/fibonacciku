@@ -914,5 +914,11 @@ export default {
     account: "Konto",
     subscription: "Abonnement",
     contact: "Kontakt"
+  },
+  EmptyScreen: {
+    hi: "Hallo",
+    "assistant-desc": "Frag mich alles, was du wissen möchtest.",
+    "document-desc": "Lade dein Dokument hoch und chatte damit.",
+    "book-desc": "Erkunde mühelos Wissen aus dem Buch."
   }
 } as const
