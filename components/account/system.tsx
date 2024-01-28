@@ -1,3 +1,5 @@
+import { getScopedI18n } from "@/locales/server"
+
 import {
   Card,
   CardDescription,
@@ -8,15 +10,14 @@ import {
 import AccountLogout from "@/components/account/logout"
 import Feedback from "@/components/header/feedback"
 
-export default function AccountSystem() {
+export default async function AccountSystem() {
+  const t = await getScopedI18n("ModalAccount")
   return (
     <section className="mx-auto max-w-2xl px-4">
       <Card>
         <CardHeader>
-          <CardTitle>System</CardTitle>
-          <CardDescription>
-            Fibo loves you and we hope you love Fibo too.
-          </CardDescription>
+          <CardTitle>{t("system")}</CardTitle>
+          <CardDescription>{t("system-desc")}</CardDescription>
         </CardHeader>
         <CardFooter className="flex flex-wrap items-center justify-between gap-2">
           <Feedback variant="default" className="w-auto" />

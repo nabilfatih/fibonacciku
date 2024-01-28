@@ -607,7 +607,13 @@ export default {
     "full-name": "Полное имя",
     "full-name-placeholder": "Введите ваше полное имя",
     "full-name-updated": "Полное имя обновлено",
-    library: "Библиотека"
+    library: "Библиотека",
+    theme: "Тема",
+    "theme-preference": "Предпочтение темы",
+    system: "Система",
+    "system-desc": "Фибо любит тебя, и мы надеемся, что ты тоже любишь Фибо.",
+    hi: "Привет",
+    "account-desc": "Вы можете обновить информацию о своем аккаунте здесь."
   },
   ModalClearChat: {
     clear: "Очистить",

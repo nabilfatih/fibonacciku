@@ -612,7 +612,13 @@ export default {
     "full-name": "Nama lengkap",
     "full-name-placeholder": "Masukkan nama lengkap Anda",
     "full-name-update": "Nama lengkap Anda telah diperbarui",
-    library: "Perpustakaan"
+    library: "Perpustakaan",
+    theme: "Tema",
+    "theme-preference": "Preferensi Tema",
+    system: "Sistem",
+    "system-desc": "Fibo mencintaimu dan kami harap kamu juga mencintai Fibo.",
+    hi: "Hai",
+    "account-desc": "Anda dapat memperbarui informasi akun Anda di sini."
   },
   ModalClearChat: {
     clear: "Hapus",

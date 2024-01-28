@@ -42,10 +42,10 @@ export default async function AccountGeneral({ userId }: Props) {
     <section className="mx-auto max-w-2xl px-4">
       <Card>
         <CardHeader>
-          <CardTitle>Hi {data.full_name} 👋</CardTitle>
-          <CardDescription>
-            You can update your account information here.
-          </CardDescription>
+          <CardTitle>
+            {t("hi")} {data.full_name} 👋
+          </CardTitle>
+          <CardDescription>{t("account-desc")}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4">

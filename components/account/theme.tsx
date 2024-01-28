@@ -5,6 +5,7 @@ import { useTheme } from "next-themes"
 
 import { themes } from "@/lib/data/themes"
 import { capitalizeFirstLetter } from "@/lib/utils"
+import { useScopedI18n } from "@/locales/client"
 
 import { Label } from "@/components/ui/label"
 import {
@@ -23,6 +24,7 @@ type Props = {
 }
 
 export default function AccountTheme({ userId }: Props) {
+  const t = useScopedI18n("ModalAccount")
   const { setTheme, theme } = useTheme()
   const [_, startTransition] = React.useTransition()
 
@@ -30,7 +32,9 @@ export default function AccountTheme({ userId }: Props) {
 
   return (
     <div className="flex flex-wrap items-center justify-between gap-2 border-b pb-4">
-      <Label className="text-sm text-muted-foreground">Theme preference</Label>
+      <Label className="text-sm text-muted-foreground">
+        {t("theme-preference")}
+      </Label>
       <Select
         value={theme}
         onValueChange={value => {
@@ -45,7 +49,7 @@ export default function AccountTheme({ userId }: Props) {
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
-            <SelectLabel>Theme</SelectLabel>
+            <SelectLabel>{t("theme")}</SelectLabel>
             {themes.map(theme => (
               <SelectItem key={theme} value={theme}>
                 {capitalizeFirstLetter(theme)}

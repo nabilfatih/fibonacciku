@@ -27,7 +27,7 @@ export default async function AccountSubscriptionManage({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Subscription</CardTitle>
+        <CardTitle>{t("subscription")}</CardTitle>
         <div className="flex flex-row items-center gap-2">
           <CardDescription>{t("plan-summary")}</CardDescription>
           <Badge>{t(subscription.planName as never)}</Badge>

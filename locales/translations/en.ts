@@ -594,7 +594,13 @@ export default {
     "full-name": "Full name",
     "full-name-placeholder": "Enter your full name",
     "full-name-updated": "Full name updated",
-    library: "Library"
+    library: "Library",
+    theme: "Theme",
+    "theme-preference": "Theme preference",
+    system: "System",
+    "system-desc": "Fibo loves you and we hope you love Fibo too.",
+    hi: "Hi",
+    "account-desc": "You can update your account information here."
   },
   ModalClearChat: {
     clear: "Clear",

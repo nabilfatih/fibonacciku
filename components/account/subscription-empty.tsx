@@ -19,7 +19,7 @@ export default async function AccountSubscriptionEmpty() {
     <section className="mx-auto max-w-2xl px-4">
       <Card>
         <CardHeader>
-          <CardTitle>Subscription</CardTitle>
+          <CardTitle>{t("subscription")}</CardTitle>
           <div className="flex flex-row items-center gap-2">
             <CardDescription>{t("plan-summary")}</CardDescription>
             <Badge>{t("free")}</Badge>
