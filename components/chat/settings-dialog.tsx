@@ -62,8 +62,7 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
     if (state.currentChat.grade) {
       dispatch({ type: "SET_GRADE", payload: state.currentChat.grade })
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.currentChat, userDetails])
+  }, [dispatch, state.currentChat, state.grade, userDetails])
 
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
