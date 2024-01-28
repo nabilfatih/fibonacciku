@@ -48,7 +48,6 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
   useEffect(() => {
     if (!userDetails) return
     if (!state.currentChat) {
-      dispatch({ type: "SET_LANGUAGE", payload: "Auto Detect" })
       dispatch({
         type: "SET_GRADE",
         payload:
