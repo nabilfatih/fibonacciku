@@ -170,7 +170,7 @@ export default function SidebarList({ userId }: Props) {
         )}
       </div>
       <div className="flex items-center justify-between border-t px-2 py-4">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <ThemeToggle />
           <AuthLanguage
             align="start"
