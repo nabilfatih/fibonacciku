@@ -52,7 +52,7 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
       dispatch({
         type: "SET_GRADE",
         payload:
-          userDetails.role === "professional" ? "professional" : state.grade
+          userDetails.role === "professional" ? "professional" : "university"
       })
       return
     }
@@ -62,7 +62,7 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
     if (state.currentChat.grade) {
       dispatch({ type: "SET_GRADE", payload: state.currentChat.grade })
     }
-  }, [dispatch, state.currentChat, state.grade, userDetails])
+  }, [dispatch, state.currentChat, userDetails])
 
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
