@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { IconDiscountCheckFilled, IconLockAccess } from "@tabler/icons-react"
 
 import { useCurrentUser } from "@/lib/context/use-current-user"
@@ -13,17 +14,17 @@ export default function HeaderBadge() {
 
   if (!subscription)
     return (
-      <div className="ml-2">
+      <Link href="/premium" className="ml-2">
         <Badge variant="outline" className="hidden sm:inline-flex">
           Limit access
         </Badge>
         <IconLockAccess className="h-4 w-4 text-primary sm:hidden" />
-      </div>
+      </Link>
     )
 
   return (
-    <div className="ml-2">
+    <Link href="/premium" className="ml-2">
       <IconDiscountCheckFilled className="h-4 w-4 text-primary" />
-    </div>
+    </Link>
   )
 }
