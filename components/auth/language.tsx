@@ -1,6 +1,7 @@
 "use client"
 
 import { useMediaQuery } from "@/lib/hooks/use-media-query"
+import { cn } from "@/lib/utils"
 import {
   useChangeLocale,
   useCurrentLocale,
@@ -18,7 +19,17 @@ import {
 } from "@/components/ui/select"
 import { languages } from "@/components/account/language"
 
-export default function AuthLanguage() {
+type Props = {
+  align?: "center" | "end" | "start" | undefined
+  longName?: boolean
+  className?: string
+}
+
+export default function AuthLanguage({
+  align = "end",
+  longName = true,
+  className
+}: Props) {
   const lang = useCurrentLocale()
 
   const isDesktop = useMediaQuery("(min-width: 768px)")
@@ -31,15 +42,15 @@ export default function AuthLanguage() {
       value={lang}
       onValueChange={value => changeLocale(value.toLowerCase() as never)}
     >
-      <SelectTrigger className="w-fit">
+      <SelectTrigger className={cn("w-fit", className)}>
         <SelectValue placeholder={t("language")} />
       </SelectTrigger>
-      <SelectContent align="end">
+      <SelectContent align={align}>
         <SelectGroup>
           <SelectLabel>{t("language")}</SelectLabel>
           {languages.map((item, index) => (
             <SelectItem key={index} value={item.value}>
-              {isDesktop ? item.name : item.value.toUpperCase()}
+              {isDesktop && longName ? item.name : item.value.toUpperCase()}
             </SelectItem>
           ))}
         </SelectGroup>

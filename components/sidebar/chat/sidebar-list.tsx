@@ -10,6 +10,7 @@ import useChatHistory from "@/lib/swr/use-chat-history"
 import { useScopedI18n } from "@/locales/client"
 
 import { Input } from "@/components/ui/input"
+import AuthLanguage from "@/components/auth/language"
 import ClearHistory from "@/components/sidebar/chat/clear-history"
 import LoadingChatHistory from "@/components/sidebar/chat/loading-chat-history"
 import SidebarItems from "@/components/sidebar/chat/sidebar-items"
@@ -169,7 +170,14 @@ export default function SidebarList({ userId }: Props) {
         )}
       </div>
       <div className="flex items-center justify-between border-t px-2 py-4">
-        <ThemeToggle />
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <AuthLanguage
+            align="start"
+            longName={false}
+            className="bg-background"
+          />
+        </div>
         <ClearHistory isEnabled={!!userChatData.length} />
       </div>
     </div>
