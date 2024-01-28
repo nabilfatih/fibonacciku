@@ -27,7 +27,8 @@ export default function AdsBox({ id }: Props) {
     getAdsAdzedek,
     {
       revalidateOnReconnect: true,
-      revalidateIfStale: true
+      revalidateIfStale: true,
+      refreshInterval: 1000 * 60 * 60 * 1 // 1 hour
     }
   )
 
