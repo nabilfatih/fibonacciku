@@ -3,6 +3,12 @@ import Avatar, { genConfig } from "react-nice-avatar"
 
 import { useCurrentUser } from "@/lib/context/use-current-user"
 
+import {
+  AvatarFallback,
+  AvatarImage,
+  Avatar as UiAvatar
+} from "@/components/ui/avatar"
+
 type Props = {
   role: string
 }
@@ -31,21 +37,22 @@ export default function ChatAvatar({ role }: Props) {
   }
 
   return (
-    <div className="relative h-8 w-8 rounded-full">
+    <>
       {userDetails?.avatar_url ? (
-        <Image
-          title={userDetails?.full_name || "Avatar"}
-          src={userDetails?.avatar_url}
-          fill
-          sizes="32px"
-          className="rounded-full"
-          priority
-          unoptimized
-          alt={`${userDetails?.full_name || "User"} Avatar`}
-        />
+        <UiAvatar className="h-8 w-8 border border-border/30">
+          <AvatarImage
+            src={userDetails.avatar_url}
+            alt={userDetails.full_name ?? userDetails.email ?? "Avatar"}
+          />
+          <AvatarFallback className="bg-background text-foreground">
+            {userDetails.full_name?.slice(0, 2).toUpperCase() ??
+              userDetails.email?.slice(0, 2).toUpperCase() ??
+              "AN"}
+          </AvatarFallback>
+        </UiAvatar>
       ) : (
         <Avatar className="h-8 w-8 rounded-full object-cover" {...config} />
       )}
-    </div>
+    </>
   )
 }

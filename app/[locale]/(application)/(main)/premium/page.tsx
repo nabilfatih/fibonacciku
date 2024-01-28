@@ -81,7 +81,7 @@ export default async function PremiumPage() {
             <h2 className="text-2xl font-semibold tracking-tighter">
               FibonacciKu
             </h2>
-            <Badge className="ml-2">Premium</Badge>
+            <Badge className="ml-2">{t("premium")}</Badge>
           </div>
           <p className="mt-2 text-muted-foreground">{t("desc-2")}</p>
         </div>
