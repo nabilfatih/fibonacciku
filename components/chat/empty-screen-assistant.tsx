@@ -1,14 +1,17 @@
 import Link from "next/link"
 import { IconRocket } from "@tabler/icons-react"
 
+import { useScopedI18n } from "@/locales/client"
+
 import { Button } from "@/components/ui/button"
 import ChatFeature from "@/components/chat/feature"
 
 export default function EmptyScreenAssistant() {
+  const t = useScopedI18n("EmptyScreen")
   return (
     <div className="space-y-6">
       <p className="leading-normal text-muted-foreground">
-        Ask me anything, whatever you want to know.
+        {t("assistant-desc")}
       </p>
 
       <ChatFeature />

@@ -124,7 +124,7 @@ export default function RootLayout({
   children: React.ReactNode
   params: { locale: string }
 }) {
-  const locales = new Set(["en", "id", "de"])
+  const locales = new Set(["en", "id", "de", "ru"])
 
   const isValidLocale = locales.has(params.locale)
   if (!isValidLocale) notFound()

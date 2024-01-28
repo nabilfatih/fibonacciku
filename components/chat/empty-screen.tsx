@@ -1,5 +1,6 @@
 import type { Features } from "@/types/types"
 import { useCurrentUser } from "@/lib/context/use-current-user"
+import { useScopedI18n } from "@/locales/client"
 
 import EmptyScreenAssistant from "@/components/chat/empty-screen-assistant"
 import EmptyScreenBook from "@/components/chat/empty-screen-book"
@@ -23,11 +24,13 @@ function EmptyScreenFeatures({ type }: Props) {
 }
 
 export default function EmptyScreen({ type }: Props) {
+  const t = useScopedI18n("EmptyScreen")
   const { userDetails } = useCurrentUser()
   return (
     <div className="mx-auto max-w-2xl px-4">
       <h1 className="mb-2 text-xl font-semibold sm:text-3xl">
-        Hi{` ${userDetails?.full_name ?? ""}`} 👋
+        {t("hi")}
+        {` ${userDetails?.full_name ?? ""}`} 👋
       </h1>
       <EmptyScreenFeatures type={type} />
     </div>

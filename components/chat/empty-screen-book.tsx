@@ -11,6 +11,7 @@ import {
   getBooksCoverPublicUrl,
   getBooksFileSignedUrl
 } from "@/lib/supabase/client/book"
+import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
 import { IconSpinner } from "@/components/ui/icons"
@@ -18,6 +19,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { getBookCollection } from "@/app/actions/book"
 
 export default function EmptyScreenBook() {
+  const t = useScopedI18n("EmptyScreen")
   const searchParams = useSearchParams()
   const collection = searchParams.get("collection")
 
@@ -43,9 +45,7 @@ export default function EmptyScreenBook() {
 
   return (
     <div className="space-y-6">
-      <p className="leading-normal text-muted-foreground">
-        Easily explore knowledge from the book.
-      </p>
+      <p className="leading-normal text-muted-foreground">{t("book-desc")}</p>
 
       {isLoading ? (
         <div className="flex">
