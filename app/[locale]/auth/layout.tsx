@@ -15,11 +15,11 @@ export default function AuthenticationLayout({
 }) {
   return (
     <div className="container relative grid h-[100dvh] flex-col items-center justify-center text-foreground lg:max-w-none lg:grid-cols-2 lg:px-0">
-      <div className="absolute right-4 top-4 md:right-8 md:top-8 flex items-center gap-2">
+      <div className="absolute right-4 top-4 flex items-center gap-2 md:right-8 md:top-8">
         <AuthLanguage />
         <ThemeToggle side="bottom" align="end" />
       </div>
-      <div className="relative hidden h-full flex-col bg-muted p-10 border-r lg:flex">
+      <div className="relative hidden h-full flex-col border-r bg-muted p-10 lg:flex">
         <Particles
           className="pointer-events-none absolute inset-0"
           quantity={40}

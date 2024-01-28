@@ -61,11 +61,11 @@ export default function BookAssistant({ query, document }: Props) {
   return (
     <header className="border-b py-4">
       <div className="relative mx-auto max-w-2xl px-4 sm:px-5">
-        <div className="flex items-center gap-2 border-b pb-4 mb-4">
-          <h2 className="font-semibold sm:text-lg leading-none">
+        <div className="mb-4 flex items-center gap-2 border-b pb-4">
+          <h2 className="font-semibold leading-none sm:text-lg">
             {t("fibo-assistant")}
           </h2>
-          <IconBulb className="h-5 w-5 sm:w-6 sm:h-6" />
+          <IconBulb className="h-5 w-5 sm:h-6 sm:w-6" />
         </div>
 
         {!isMinimized &&

@@ -67,13 +67,13 @@ export default function AdsBox({ id }: Props) {
   return (
     <div className="relative">
       <Link href={data?.data.link} target="_blank" onClick={handleClick}>
-        <Card className="hover:bg-muted/10 transition-colors">
+        <Card className="transition-colors hover:bg-muted/10">
           <CardHeader className="pb-3 pt-4">
             <CardTitle className="text-foreground/80">SPONSORED</CardTitle>
           </CardHeader>
           <CardContent className="pb-4">
             <p
-              className="text-muted-foreground text-sm sm:text-base"
+              className="text-sm text-muted-foreground sm:text-base"
               dangerouslySetInnerHTML={{ __html: text }}
             />
           </CardContent>

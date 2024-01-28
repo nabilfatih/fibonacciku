@@ -65,13 +65,13 @@ export default async function PremiumPlugins({
                 return (
                   <div
                     key={index}
-                    className="flex w-full items-start gap-2 group"
+                    className="group flex w-full items-start gap-2"
                   >
                     <div className="rounded-md bg-secondary bg-opacity-90 p-1">
                       <plugin.icon className="h-5 w-5 min-w-[1.25rem] text-secondary-foreground" />
                     </div>
 
-                    <div className="flex flex-col leading-none gap-1">
+                    <div className="flex flex-col gap-1 leading-none">
                       <div className="flex flex-row items-center gap-2">
                         <h3
                           title={t(plugin.title as never)}

@@ -76,7 +76,7 @@ export default function BookAssistantResult({ result }: Props) {
               <pre
                 className={cn(
                   className,
-                  "no-before no-after rounded-xl bg-muted border font-sans"
+                  "no-before no-after rounded-xl border bg-muted font-sans"
                 )}
                 {...props}
               >
@@ -134,7 +134,7 @@ export default function BookAssistantResult({ result }: Props) {
                 name="link"
                 href={String(href)}
                 target="_blank"
-                className="text-primary transition-colors duration-200 hover:text-primary/90 underline-offset-4"
+                className="text-primary underline-offset-4 transition-colors duration-200 hover:text-primary/90"
               >
                 {children}
               </DynamicTag>
