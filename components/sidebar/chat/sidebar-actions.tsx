@@ -51,6 +51,7 @@ export default function SidebarActions({
   shareChat
 }: SidebarActionsProps) {
   const t = useScopedI18n("Chat")
+  const tDelete = useScopedI18n("DeleteDialog")
 
   const router = useRouter()
   const [deleteDialogOpen, setDeleteDialogOpen] = React.useState(false)
@@ -138,15 +139,14 @@ export default function SidebarActions({
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogTitle>{tDelete("title")}</AlertDialogTitle>
             <AlertDialogDescription>
-              This will permanently delete your chat message and remove your
-              data from our servers.
+              {tDelete("delete-chat-desc")}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel disabled={isRemovePending}>
-              Cancel
+              {tDelete("cancel")}
             </AlertDialogCancel>
             <AlertDialogAction
               disabled={isRemovePending}
@@ -163,13 +163,13 @@ export default function SidebarActions({
 
                   setDeleteDialogOpen(false)
                   router.replace(`/chat/${chat.type}`)
-                  toast.success("Chat deleted")
+                  toast.success(tDelete("chat-deleted"))
                 })
               }}
               className={cn(buttonVariants({ variant: "destructive" }))}
             >
               {isRemovePending && <IconSpinner className="mr-2 animate-spin" />}
-              Delete
+              {tDelete("delete")}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

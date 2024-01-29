@@ -980,5 +980,13 @@ export default {
     "document-name": "Dokumentenname",
     "document-name-placeholder": "Wie lautet der Name des Dokuments?",
     "document-renamed": "Dokument umbenannt"
+  },
+  DeleteDialog: {
+    title: "Sind Sie wirklich sicher?",
+    "delete-chat-desc":
+      "Dies löscht Ihre Chat-Nachrichten dauerhaft und entfernt Ihre Daten von unseren Servern.",
+    cancel: "Abbrechen",
+    delete: "Löschen",
+    "chat-deleted": "Chat gelöscht"
   }
 } as const

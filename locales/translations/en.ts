@@ -947,5 +947,13 @@ export default {
     "document-name": "Document name",
     "document-name-placeholder": "What is the document name?",
     "document-renamed": "Document renamed"
+  },
+  DeleteDialog: {
+    title: "Are you absolutely sure?",
+    "delete-chat-desc":
+      "This will permanently delete your chat message and remove your data from our servers.",
+    cancel: "Cancel",
+    delete: "Delete",
+    "chat-deleted": "Chat deleted"
   }
 } as const

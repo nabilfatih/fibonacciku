@@ -964,5 +964,13 @@ export default {
     "document-name": "Nama dokumen",
     "document-name-placeholder": "Apa nama dokumen ini?",
     "document-renamed": "Dokumen diubah nama"
+  },
+  DeleteDialog: {
+    title: "Apakah Anda benar-benar yakin?",
+    "delete-chat-desc":
+      "Ini akan menghapus pesan obrolan Anda secara permanen dan menghapus data Anda dari server kami.",
+    cancel: "Batal",
+    delete: "Hapus",
+    "chat-deleted": "Obrolan dihapus"
   }
 } as const

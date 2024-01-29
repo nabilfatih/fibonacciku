@@ -965,5 +965,13 @@ export default {
     "document-name": "Название документа",
     "document-name-placeholder": "Какое название документа?",
     "document-renamed": "Документ переименован"
+  },
+  DeleteDialog: {
+    title: "Вы абсолютно уверены?",
+    "delete-chat-desc":
+      "Это навсегда удалит ваше сообщение из чата и удалит ваши данные с наших серверов.",
+    cancel: "Отмена",
+    delete: "Удалить",
+    "chat-deleted": "Чат удален"
   }
 } as const
