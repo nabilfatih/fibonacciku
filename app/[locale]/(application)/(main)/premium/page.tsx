@@ -98,7 +98,7 @@ export default async function PremiumPage() {
           <PremiumPlugins
             variant="outline"
             className="w-full sm:w-auto"
-            text="See our plugins"
+            text={t("see-our-plugins")}
           />
         </div>
       </section>
