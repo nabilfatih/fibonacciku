@@ -39,7 +39,10 @@ export async function generateMetadata(): Promise<Metadata> {
       "Data Science",
       "Technology Education",
       "AI Chatbot",
-      "Educational Platform"
+      "Educational Platform",
+      "Study Platform",
+      "Study Buddy",
+      "AI for Education"
     ],
     authors: [{ name: "Nabil Akbarazzima Fatih" }],
     publisher: "Nabil Akbarazzima Fatih",
