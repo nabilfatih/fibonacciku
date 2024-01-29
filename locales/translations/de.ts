@@ -818,7 +818,8 @@ export default {
     "request-book": "Buch anfordern",
     "book-collection": "Buchsammlung",
     hi: "Hallo",
-    "ask-anything": "Frag irgendetwas"
+    "ask-anything": "Frag irgendetwas",
+    footer: "FibonacciKu wird relevante Ressourcen bereitstellen"
   },
   BookRequest: {
     "request-book": "Buch anfordern",

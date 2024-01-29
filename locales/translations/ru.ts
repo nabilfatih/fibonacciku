@@ -803,7 +803,8 @@ export default {
     "request-book": "Запросить книгу",
     "book-collection": "Коллекция книг",
     hi: "Привет",
-    "ask-anything": "Спросите что угодно"
+    "ask-anything": "Спросите что угодно",
+    footer: "FibonacciKu предоставит актуальные ресурсы"
   },
   BookRequest: {
     "request-book": "Запросить книгу",

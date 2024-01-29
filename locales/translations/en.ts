@@ -791,7 +791,8 @@ export default {
     "request-book": "Request book",
     "book-collection": "Book collection",
     hi: "Hi",
-    "ask-anything": "Ask anything"
+    "ask-anything": "Ask anything",
+    footer: "FibonacciKu will give relevant resources"
   },
   BookRequest: {
     "request-book": "Request book",

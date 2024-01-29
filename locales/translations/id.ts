@@ -808,7 +808,8 @@ export default {
     "request-book": "Permintaan buku",
     "book-collection": "Koleksi buku",
     hi: "Hai",
-    "ask-anything": "Tanya apa saja"
+    "ask-anything": "Tanya apa saja",
+    footer: "FibonacciKu akan memberikan sumber daya yang relevan"
   },
   BookRequest: {
     "request-book": "Permintaan buku",
