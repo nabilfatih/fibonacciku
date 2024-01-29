@@ -796,7 +796,8 @@ export default {
       "Stellen Sie Fragen und erhalten Sie Bücher, Zeitschriftenartikel und mehr.",
     "request-book": "Buch anfordern",
     "book-collection": "Buchsammlung",
-    hi: "Hallo"
+    hi: "Hallo",
+    "ask-anything": "Frag irgendetwas"
   },
   BookRequest: {
     "request-book": "Buch anfordern",

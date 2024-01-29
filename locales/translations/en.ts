@@ -769,7 +769,8 @@ export default {
       "Ask questions and get book, journal, and article, and more.",
     "request-book": "Request book",
     "book-collection": "Book collection",
-    hi: "Hi"
+    hi: "Hi",
+    "ask-anything": "Ask anything"
   },
   BookRequest: {
     "request-book": "Request book",

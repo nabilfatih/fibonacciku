@@ -72,7 +72,7 @@ export default function BookForm({ className }: FormProps) {
           rows={1}
           value={input}
           onChange={e => setInput(e.target.value)}
-          placeholder={t("placeholder-search")}
+          placeholder={`${t("ask-anything")}...`}
           spellCheck={false}
           className={cn(
             "min-h-[60px] w-full resize-none bg-transparent px-4 py-[1.3rem] scrollbar-hide placeholder:text-muted-foreground focus-within:outline-none sm:text-sm"
@@ -95,9 +95,7 @@ export default function BookForm({ className }: FormProps) {
                 <span className="sr-only">Search</span>
               </Button>
             </TooltipTrigger>
-            <TooltipContent className="text-muted-background bg-muted-foreground">
-              Search
-            </TooltipContent>
+            <TooltipContent>Search</TooltipContent>
           </Tooltip>
         </div>
       </div>

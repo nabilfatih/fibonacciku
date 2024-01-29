@@ -786,7 +786,8 @@ export default {
       "Tanyakan pertanyaan dan dapatkan buku, jurnal, artikel, dan lainnya.",
     "request-book": "Permintaan buku",
     "book-collection": "Koleksi buku",
-    hi: "Hai"
+    hi: "Hai",
+    "ask-anything": "Tanya apa saja"
   },
   BookRequest: {
     "request-book": "Permintaan buku",
