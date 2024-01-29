@@ -809,7 +809,7 @@ export default {
     "book-collection": "Koleksi buku",
     hi: "Hai",
     "ask-anything": "Tanya apa saja",
-    footer: "FibonacciKu akan memberikan sumber daya yang relevan"
+    footer: "FibonacciKu akan memberikan sumber yang relevan"
   },
   BookRequest: {
     "request-book": "Permintaan buku",
