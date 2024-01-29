@@ -599,7 +599,8 @@ export default {
     "invalid-document": "Ungültiges Dokument",
     "only-one-document": "Nur ein Dokument kann ausgewählt werden",
     "drag-drop-document": "Ziehen Sie Ihr Dokument hierher oder",
-    "document-not-found": "Dokument nicht gefunden"
+    "document-not-found": "Dokument nicht gefunden",
+    footer: "Dokument wird verschlüsselt, sicher und geschützt sein"
   },
   MetadataChat: {
     "academic-research": "Akademische Forschung",

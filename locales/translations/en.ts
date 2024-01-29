@@ -577,7 +577,8 @@ export default {
     "invalid-document": "Invalid document",
     "only-one-document": "Only one document can be selected",
     "drag-drop-document": "Drag and drop your document here",
-    "document-not-found": "Document not found"
+    "document-not-found": "Document not found",
+    footer: "Document will be encrypted, safe and secure"
   },
   MetadataChat: {
     "academic-research": "Academic research",

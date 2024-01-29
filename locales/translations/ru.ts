@@ -590,7 +590,8 @@ export default {
     "invalid-document": "Недопустимый документ",
     "only-one-document": "Можно выбрать только один документ",
     "drag-drop-document": "Перетащите ваш документ сюда",
-    "document-not-found": "Документ не найден"
+    "document-not-found": "Документ не найден",
+    footer: "Документ будет зашифрован, безопасен и надежно защищен"
   },
   MetadataChat: {
     "academic-research": "Академические исследования",

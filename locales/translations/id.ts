@@ -595,7 +595,8 @@ export default {
     "invalid-document": "Dokumen tidak valid",
     "only-one-document": "Hanya satu dokumen yang dapat diproses",
     "drag-drop-document": "Seret dan lepaskan dokumen Anda di sini",
-    "document-not-found": "Dokumen tidak ditemukan"
+    "document-not-found": "Dokumen tidak ditemukan",
+    footer: "Dokumen akan dienkripsi, aman, dan terjamin keamanannya"
   },
   MetadataChat: {
     "academic-research": "Penelitian akademik",
