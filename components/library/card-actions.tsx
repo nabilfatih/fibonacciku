@@ -70,7 +70,7 @@ export default function LibraryCardActions({ className, library }: Props) {
 
           <DropdownMenuItem
             role="button"
-            className="cursor-pointer space-x-2 !text-destructive"
+            className="cursor-pointer space-x-2"
             onClick={() => {
               setDeleteDialogOpen(true)
             }}
