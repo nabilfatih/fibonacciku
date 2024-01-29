@@ -320,13 +320,32 @@ export default {
     "website-scraping": "Website scraping",
     "solve-math": "Solve math",
     "you-can-do-anything": "You can do anything",
+    "you-can-do-anything-desc":
+      "Unlimited access to all features no matter how much you use fibo. No limit, no restriction, no ads.",
     "unlimited-document-upload": "Unlimited document upload",
+    "unlimited-document-upload-desc":
+      "Effortless upload documents to fibo. Just drag and drop. Again, no limit.",
+    "rich-plugins": "Rich plugins",
+    "rich-plugins-desc":
+      "Support rich plugins to make your life easier without additional cost or configuration.",
+    "books-access": "Books access",
+    "books-access-desc":
+      "Explore our books collection. Read it online, download, or chat with it.",
+    "image-analysis-desc":
+      "Upload your image and ask anything about it. Full integration with fibo.",
+    "limitless-image-generation": "Limitless image generation",
+    "limitless-image-generation-desc":
+      "Let us know your imagination and fibo will generate it for you. Powered by DALL-E AI model.",
+    "see-our-plugins": "See our plugins",
     "priority-access": "Priority access",
     "dedicated-support": "Dedicated support",
     "chat-with-founder": "Chat with founder",
     "download-book": "Download book",
     "get-started": "Get started",
-    "7-free-trial": "7 days free trial"
+    "7-free-trial": "7 days free trial",
+    "40%-discount": "40% off for new comers",
+    monthly: "Monthly",
+    yearly: "Yearly"
   },
   PricingFAQ: {
     faq: "FAQs",

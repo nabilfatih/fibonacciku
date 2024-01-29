@@ -21,8 +21,7 @@ export default async function PremiumFeatures() {
               {t("you-can-do-anything")}
             </h2>
             <p className="text-sm text-muted-foreground">
-              Unlimited access to all features no matter how much you use fibo.
-              No limit, no restriction, no ads.
+              {t("you-can-do-anything-desc")}
             </p>
           </div>
         </div>
@@ -31,11 +30,10 @@ export default async function PremiumFeatures() {
           <IconFiles className="h-6 w-6 min-w-6" />
           <div className="flex flex-col gap-1">
             <h2 className="text-lg font-semibold leading-none tracking-tight">
-              Easy upload documents
+              {t("unlimited-document-upload")}
             </h2>
             <p className="text-sm text-muted-foreground">
-              Effortless upload documents to fibo. Just drag and drop. Again, no
-              limit.
+              {t("unlimited-document-upload-desc")}
             </p>
           </div>
         </div>
@@ -44,11 +42,10 @@ export default async function PremiumFeatures() {
           <IconPuzzle className="h-6 w-6 min-w-6" />
           <div className="flex flex-col gap-1">
             <h2 className="text-lg font-semibold leading-none tracking-tight">
-              Rich plugins
+              {t("rich-plugins")}
             </h2>
             <p className="text-sm text-muted-foreground">
-              Support rich plugins to make your life easier without additional
-              cost or configuration.
+              {t("rich-plugins-desc")}
             </p>
           </div>
         </div>
@@ -57,11 +54,10 @@ export default async function PremiumFeatures() {
           <IconBook2 className="h-6 w-6 min-w-6" />
           <div className="flex flex-col gap-1">
             <h2 className="text-lg font-semibold leading-none tracking-tight">
-              Books access
+              {t("books-access")}
             </h2>
             <p className="text-sm text-muted-foreground">
-              Explore our books collection. Read it online, download, or chat
-              with it.
+              {t("books-access-desc")}
             </p>
           </div>
         </div>
@@ -70,11 +66,10 @@ export default async function PremiumFeatures() {
           <IconPhotoScan className="h-6 w-6 min-w-6" />
           <div className="flex flex-col gap-1">
             <h2 className="text-lg font-semibold leading-none tracking-tight">
-              Image analysis
+              {t("image-analysis")}
             </h2>
             <p className="text-sm text-muted-foreground">
-              Upload your image and ask anything about it. Full integration with
-              fibo.
+              {t("image-analysis-desc")}
             </p>
           </div>
         </div>
@@ -83,11 +78,10 @@ export default async function PremiumFeatures() {
           <IconPhotoHeart className="h-6 w-6 min-w-6" />
           <div className="flex flex-col gap-1">
             <h2 className="text-lg font-semibold leading-none tracking-tight">
-              Limitless image generation
+              {t("limitless-image-generation")}
             </h2>
             <p className="text-sm text-muted-foreground">
-              Let us know your imagination and fibo will generate it for you.
-              Powered by DALL-E AI model.
+              {t("limitless-image-generation-desc")}
             </p>
           </div>
         </div>

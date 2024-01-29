@@ -10,9 +10,11 @@ import PremiumFeatures from "@/components/premium/features"
 import PremiumPlugins from "@/components/premium/plugins"
 import PremiumPrice from "@/components/premium/price"
 
-export function generateMetadata(): Metadata {
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getScopedI18n("MarketingPricing")
   return {
-    title: "Premium",
+    title: t("premium"),
+    description: t("premium-desc"),
     alternates: {
       canonical: "/premium",
       languages: {
@@ -91,7 +93,7 @@ export default async function PremiumPage() {
 
       <PremiumFeatures />
 
-      <section className="mx-auto max-w-4xl px-4">
+      <section className="mx-auto max-w-4xl px-4 sm:hidden">
         <div className="flex justify-center">
           <PremiumPlugins
             variant="outline"

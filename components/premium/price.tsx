@@ -124,7 +124,7 @@ export default function PremiumPrice({ user, subscription }: Props) {
           <div className="flex items-center justify-center gap-2 rounded-xl border py-2 shadow-sm">
             <IconDiscount2 className="h-5 w-5 min-w-5 text-primary" />
             <div className="flex items-center">
-              <p className="text-sm leading-none">40% off for new comers</p>
+              <p className="text-sm leading-none">{t("40%-discount")}</p>
               <Button
                 variant="ghost"
                 size="icon"
@@ -153,7 +153,7 @@ export default function PremiumPrice({ user, subscription }: Props) {
             <Card key={index}>
               <CardHeader>
                 <CardTitle className="uppercase text-primary">
-                  {price.type}
+                  {t(price.type as never)}
                 </CardTitle>
               </CardHeader>
               <CardContent>

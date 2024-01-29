@@ -330,13 +330,32 @@ export default {
     "website-scraping": "Webseiten-Scraping",
     "solve-math": "Löse Mathe",
     "you-can-do-anything": "Sie können alles tun",
+    "you-can-do-anything-desc":
+      "Unbegrenzter Zugang zu allen Funktionen, unabhängig davon, wie oft Sie fibo verwenden. Keine Begrenzung, keine Einschränkung, keine Werbung.",
     "unlimited-document-upload": "Unbegrenzter Dokumenten-Upload",
-    "priority-access": "Priorisierter Zugang",
+    "unlimited-document-upload-desc":
+      "Einfaches Hochladen von Dokumenten auf fibo. Einfach ziehen und ablegen. Wiederum keine Begrenzung.",
+    "rich-plugins": "Reiche Plugins",
+    "rich-plugins-desc":
+      "Unterstützen Sie reiche Plugins, um Ihr Leben zu erleichtern, ohne zusätzliche Kosten oder Konfiguration.",
+    "books-access": "Buchzugang",
+    "books-access-desc":
+      "Erkunden Sie unsere Büchersammlung. Lesen Sie online, laden Sie herunter oder chatten Sie damit.",
+    "image-analysis-desc":
+      "Laden Sie Ihr Bild hoch und fragen Sie alles darüber. Volle Integration mit fibo.",
+    "limitless-image-generation": "Unbegrenzte Bildgenerierung",
+    "limitless-image-generation-desc":
+      "Teilen Sie uns Ihre Vorstellung mit, und fibo wird es für Sie generieren. Unterstützt durch das DALL-E KI-Modell.",
+    "see-our-plugins": "Sehen Sie unsere Plugins",
+    "priority-access": "Prioritätszugang",
     "dedicated-support": "Dedizierter Support",
-    "chat-with-founder": "Chatten Sie mit dem Gründer",
+    "chat-with-founder": "Chat mit dem Gründer",
     "download-book": "Buch herunterladen",
     "get-started": "Loslegen",
-    "7-free-trial": "7 Tage kostenlos testen"
+    "7-free-trial": "7 Tage kostenloser Test",
+    "40%-discount": "40% Rabatt für Neulinge",
+    monthly: "Monatlich",
+    yearly: "Jährlich"
   },
   PricingFAQ: {
     faq: "Häufig gestellte Fragen",

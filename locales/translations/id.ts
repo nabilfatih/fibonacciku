@@ -328,13 +328,32 @@ export default {
     "website-scraping": "Website Scraping",
     "solve-math": "Pecahkan matematika",
     "you-can-do-anything": "Anda dapat melakukan apapun",
+    "you-can-do-anything-desc":
+      "Akses tanpa batas ke semua fitur, tidak peduli seberapa sering Anda menggunakan fibo. Tanpa batasan, tanpa pembatasan, tanpa iklan.",
     "unlimited-document-upload": "Unggah dokumen tanpa batas",
+    "unlimited-document-upload-desc":
+      "Unggah dokumen ke fibo dengan mudah. Cukup seret dan lepas. Sekali lagi, tanpa batasan.",
+    "rich-plugins": "Plugin kaya",
+    "rich-plugins-desc":
+      "Dukung plugin kaya untuk mempermudah hidup Anda tanpa biaya atau konfigurasi tambahan.",
+    "books-access": "Akses buku",
+    "books-access-desc":
+      "Jelajahi koleksi buku kami. Baca online, unduh, atau berkomunikasi dengannya.",
+    "image-analysis-desc":
+      "Unggah gambar Anda dan tanyakan apa pun tentang itu. Integrasi penuh dengan fibo.",
+    "limitless-image-generation": "Generasi gambar tanpa batas",
+    "limitless-image-generation-desc":
+      "Beritahu kami imajinasi Anda dan fibo akan menghasilkannya untuk Anda. Didukung oleh model kecerdasan buatan DALL-E.",
+    "see-our-plugins": "Lihat plugin kami",
     "priority-access": "Akses prioritas",
     "dedicated-support": "Dukungan khusus",
-    "chat-with-founder": "Chat dengan pendiri",
+    "chat-with-founder": "Obrolan dengan pendiri",
     "download-book": "Unduh buku",
-    "get-started": "Mulai sekarang",
-    "7-free-trial": "7 hari gratis"
+    "get-started": "Mulai",
+    "7-free-trial": "7 hari uji coba gratis",
+    "40%-discount": "Diskon 40% untuk pendatang baru",
+    monthly: "Bulanan",
+    yearly: "Tahunan"
   },
 
   PricingFAQ: {
