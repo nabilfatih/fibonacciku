@@ -768,7 +768,8 @@ export default {
     "desc-search":
       "Ask questions and get book, journal, and article, and more.",
     "request-book": "Request book",
-    "book-collection": "Book collection"
+    "book-collection": "Book collection",
+    hi: "Hi"
   },
   BookRequest: {
     "request-book": "Request book",
@@ -897,7 +898,9 @@ export default {
     "document-desc": "Upload your document and chat with it.",
     "book-desc": "Easily explore knowledge from the book.",
     "then-choose-from-your-library": "Then choose from your library",
-    "see-your-library": "See your library"
+    "see-your-library": "See your library",
+    "our-latest-book": "Our latest book",
+    "see-our-collection": "See our collection"
   },
   Ads: {
     sponsored: "Sponsored",

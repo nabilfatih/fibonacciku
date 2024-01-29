@@ -13,7 +13,8 @@ export default function BookEmptyScreen({ children }: Props) {
   return (
     <div className="mx-auto max-w-2xl px-4">
       <h1 className="mb-2 text-xl font-semibold sm:text-3xl">
-        Hi{` ${userDetails?.full_name ?? ""}`} 👋
+        {t("hi")}
+        {` ${userDetails?.full_name ?? ""}`} 👋
       </h1>
 
       <div className="space-y-6">

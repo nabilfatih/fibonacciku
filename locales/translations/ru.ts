@@ -780,7 +780,8 @@ export default {
     "desc-search":
       "Задавайте вопросы и получайте книги, журналы, статьи и многое другое.",
     "request-book": "Запросить книгу",
-    "book-collection": "Коллекция книг"
+    "book-collection": "Коллекция книг",
+    hi: "Привет"
   },
   BookRequest: {
     "request-book": "Запросить книгу",
@@ -914,7 +915,9 @@ export default {
     "document-desc": "Загрузите свой документ и общайтесь с ним.",
     "book-desc": "Легко исследуйте знания из книги.",
     "then-choose-from-your-library": "Выберите из вашей библиотеки",
-    "see-your-library": "Посмотреть вашу библиотеку"
+    "see-your-library": "Посмотреть вашу библиотеку",
+    "our-latest-book": "Наша последняя книга",
+    "see-our-collection": "Посмотреть нашу коллекцию"
   },
   Ads: {
     sponsored: "Реклама",

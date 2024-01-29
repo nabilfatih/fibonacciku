@@ -785,7 +785,8 @@ export default {
     "desc-search":
       "Tanyakan pertanyaan dan dapatkan buku, jurnal, artikel, dan lainnya.",
     "request-book": "Permintaan buku",
-    "book-collection": "Koleksi buku"
+    "book-collection": "Koleksi buku",
+    hi: "Hai"
   },
   BookRequest: {
     "request-book": "Permintaan buku",
@@ -914,7 +915,9 @@ export default {
     "document-desc": "Unggah dokumen Anda dan chat dengannya.",
     "book-desc": "Jelajahi pengetahuan dari buku dengan mudah.",
     "then-choose-from-your-library": "Lalu pilih dari perpustakaan Anda",
-    "see-your-library": "Lihat perpustakaan Anda"
+    "see-your-library": "Lihat perpustakaan Anda",
+    "our-latest-book": "Buku terbaru",
+    "see-our-collection": "Lihat koleksi kami"
   },
   Ads: {
     sponsored: "Sponsor",

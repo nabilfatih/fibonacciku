@@ -3,12 +3,13 @@ import Link from "next/link"
 
 import { getBooksCoverPublicUrl } from "@/lib/supabase/client/book"
 import { createClientServer } from "@/lib/supabase/server"
-import { getCurrentLocale } from "@/locales/server"
+import { getCurrentLocale, getScopedI18n } from "@/locales/server"
 
 import { Button } from "@/components/ui/button"
 import BookCardImage from "@/components/book/card-image"
 
 export default async function FeatureBook() {
+  const t = await getScopedI18n("EmptyScreen")
   const locale = getCurrentLocale()
 
   const cookieStore = cookies()
@@ -25,7 +26,9 @@ export default async function FeatureBook() {
 
   return (
     <section className="grid">
-      <h2 className="mb-2 font-medium tracking-tight">Our latest books:</h2>
+      <h2 className="mb-2 font-medium tracking-tight">
+        {t("our-latest-book")}
+      </h2>
 
       <div className="mb-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
         {data.map(book => {
@@ -66,7 +69,7 @@ export default async function FeatureBook() {
         variant="outline"
         className="mx-auto flex justify-center sm:w-fit"
       >
-        <Link href="/book/collection">See our collection</Link>
+        <Link href="/book/collection">{t("see-our-collection")}</Link>
       </Button>
     </section>
   )

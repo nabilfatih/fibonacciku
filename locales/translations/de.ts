@@ -795,7 +795,8 @@ export default {
     "desc-search":
       "Stellen Sie Fragen und erhalten Sie Bücher, Zeitschriftenartikel und mehr.",
     "request-book": "Buch anfordern",
-    "book-collection": "Buchsammlung"
+    "book-collection": "Buchsammlung",
+    hi: "Hallo"
   },
   BookRequest: {
     "request-book": "Buch anfordern",
@@ -930,7 +931,9 @@ export default {
     "document-desc": "Lade dein Dokument hoch und chatte damit.",
     "book-desc": "Erkunde mühelos Wissen aus dem Buch.",
     "then-choose-from-your-library": "Wählen Sie dann aus Ihrer Bibliothek",
-    "see-your-library": "Sehen Sie Ihre Bibliothek"
+    "see-your-library": "Sehen Sie Ihre Bibliothek",
+    "our-latest-book": "Unser neuestes Buch",
+    "see-our-collection": "Sehen Sie unsere Sammlung"
   },
   Ads: {
     sponsored: "Anzeige",
