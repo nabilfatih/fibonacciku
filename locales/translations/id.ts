@@ -594,7 +594,8 @@ export default {
     "chat-with-document": "Chat dengan dokumen",
     "invalid-document": "Dokumen tidak valid",
     "only-one-document": "Hanya satu dokumen yang dapat diproses",
-    "drag-drop-document": "Seret dan lepaskan dokumen Anda di sini"
+    "drag-drop-document": "Seret dan lepaskan dokumen Anda di sini",
+    "document-not-found": "Dokumen tidak ditemukan"
   },
   MetadataChat: {
     "academic-research": "Penelitian akademik",

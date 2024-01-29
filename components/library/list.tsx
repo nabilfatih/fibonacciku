@@ -8,6 +8,7 @@ import type { Libraries } from "@/types/types"
 import { cn } from "@/lib/utils"
 
 import LibraryCard from "@/components/library/card"
+import LibraryNotFound from "@/components/library/not-found"
 
 type Props = {
   parentRef: React.MutableRefObject<HTMLDivElement | null>
@@ -40,7 +41,9 @@ export default function LibraryList({ parentRef, libraries }: Props) {
               }}
             </ViewportList>
           </div>
-        ) : null}
+        ) : (
+          <LibraryNotFound />
+        )}
       </AnimatePresence>
     </LayoutGroup>
   )

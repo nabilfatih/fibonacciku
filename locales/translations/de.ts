@@ -598,7 +598,8 @@ export default {
     "chat-with-document": "Mit Dokument chatten",
     "invalid-document": "Ungültiges Dokument",
     "only-one-document": "Nur ein Dokument kann ausgewählt werden",
-    "drag-drop-document": "Ziehen Sie Ihr Dokument hierher oder"
+    "drag-drop-document": "Ziehen Sie Ihr Dokument hierher oder",
+    "document-not-found": "Dokument nicht gefunden"
   },
   MetadataChat: {
     "academic-research": "Akademische Forschung",

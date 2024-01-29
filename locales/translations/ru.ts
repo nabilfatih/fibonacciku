@@ -589,7 +589,8 @@ export default {
     "chat-with-document": "Чат с документом",
     "invalid-document": "Недопустимый документ",
     "only-one-document": "Можно выбрать только один документ",
-    "drag-drop-document": "Перетащите ваш документ сюда"
+    "drag-drop-document": "Перетащите ваш документ сюда",
+    "document-not-found": "Документ не найден"
   },
   MetadataChat: {
     "academic-research": "Академические исследования",
