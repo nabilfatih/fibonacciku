@@ -31,7 +31,7 @@ export default function AdsBox({ id }: Props) {
     {
       revalidateOnReconnect: true,
       revalidateIfStale: true,
-      refreshInterval: 1000 * 60 * 60 * 1 // 1 hour
+      refreshInterval: 1000 * 60 * 30 // 30 minutes
     }
   )
 
