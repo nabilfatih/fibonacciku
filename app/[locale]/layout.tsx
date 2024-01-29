@@ -106,7 +106,15 @@ export async function generateMetadata(): Promise<Metadata> {
       description: t("desc"),
       creator: "@fibonacciku"
     },
-    category: "Education, Artificial Intelligence"
+    category: "Education, Artificial Intelligence",
+    verification: {
+      google: "google",
+      yandex: "yandex",
+      yahoo: "yahoo",
+      other: {
+        me: ["nabilfatih@fibonacciku.com", "https://www.fibonacciku.com"]
+      }
+    }
   }
 }
 
