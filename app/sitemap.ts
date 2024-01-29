@@ -19,6 +19,9 @@ const pathnames = [
   "/chat/assistant",
   "/chat/document",
   "/chat/library",
+  "/chat/book",
+  "/book",
+  "/book/collection",
   "/school",
   "/share",
   "/account"
