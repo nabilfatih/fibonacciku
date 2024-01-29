@@ -208,7 +208,8 @@ export default {
     "header-desc-1":
       "Start using AI for your personal tutor instead of cheating tool",
     "see-pricing": "See pricing",
-    "fibo-document": "Fibo Document"
+    "fibo-document": "Fibo Document",
+    book: "Book"
   },
   ProductFiboAssistant: {
     "fibo-assistant": "Fibo Assistant",
@@ -228,7 +229,8 @@ export default {
       "Ask questions, instead search, and get relevant books to read and chat",
     "get-started": "Get started",
     "see-pricing": "See pricing",
-    "try-it-now": "Try it now"
+    "try-it-now": "Try it now",
+    book: "Book"
   },
   ProductFiboSchool: {
     "fibo-school": "Fibo School",

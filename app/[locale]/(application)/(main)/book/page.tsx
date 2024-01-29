@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: {
-      absolute: t("fibo-book")
+      absolute: `Fibo ${t("book")}`
     },
     description: `${t("header")}. ${t("fibo-book-description")}`,
     alternates: {

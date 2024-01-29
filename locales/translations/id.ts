@@ -211,7 +211,8 @@ export default {
     "header-desc-1":
       "Mulai gunakan AI sebagai tutor pribadi Anda bukan alat mencontek",
     "see-pricing": "Lihat harga",
-    "fibo-document": "Fibo Dokumen"
+    "fibo-document": "Fibo Dokumen",
+    book: "Buku"
   },
   ProductFiboAssistant: {
     "fibo-assistant": "Fibo Asisten",
@@ -231,7 +232,8 @@ export default {
       "Ajukan pertanyaan, daripada mencari, dan dapatkan buku yang relevan untuk dibaca dan berdiskusi",
     "get-started": "Mulai",
     "see-pricing": "Lihat harga",
-    "try-it-now": "Coba sekarang"
+    "try-it-now": "Coba sekarang",
+    book: "Buku"
   },
   ProductFiboSchool: {
     "fibo-school": "Fibo School",

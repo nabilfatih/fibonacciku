@@ -19,12 +19,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: {
-      absolute: t(`fibo-${feature}` as never)
+      absolute: `Fibo ${t(feature as never)}`
     },
-    description:
-      feature === "assistant"
-        ? t("fibo-assistant-assistant")
-        : t("fibo-assistant-document"),
+    description: t(`fibo-${feature}-description` as never),
     alternates: {
       canonical: `/chat/${feature}`,
       languages: {

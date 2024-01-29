@@ -212,7 +212,8 @@ export default {
     "header-desc-1":
       "Начните использовать ИИ в качестве вашего личного репетитора вместо средства обмана",
     "see-pricing": "Смотреть цены",
-    "fibo-document": "Fibo Document"
+    "fibo-document": "Fibo Document",
+    book: "Книга"
   },
   ProductFiboAssistant: {
     "fibo-assistant": "Fibo Assistant",
@@ -232,7 +233,8 @@ export default {
       "Задавайте вопросы вместо поиска и получайте актуальные книги для чтения и общения",
     "get-started": "Начать",
     "see-pricing": "Смотреть цены",
-    "try-it-now": "Попробуйте сейчас"
+    "try-it-now": "Попробуйте сейчас",
+    book: "Книга"
   },
   ProductFiboSchool: {
     "fibo-school": "Fibo School",

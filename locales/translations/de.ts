@@ -214,7 +214,8 @@ export default {
     "header-desc-1":
       "Beginnen Sie, KI für Ihren persönlichen Tutor zu verwenden, anstatt für ein Schummelwerkzeug",
     "see-pricing": "Preise ansehen",
-    "fibo-document": "Fibo Dokument"
+    "fibo-document": "Fibo Dokument",
+    book: "Buch"
   },
   ProductFiboAssistant: {
     "fibo-assistant": "Fibo Assistent",
@@ -234,7 +235,8 @@ export default {
       "Stellen Sie Fragen, statt zu suchen, und erhalten Sie relevante Bücher zum Lesen und zum Austausch im Chat",
     "get-started": "Loslegen",
     "see-pricing": "Preise ansehen",
-    "try-it-now": "Jetzt ausprobieren"
+    "try-it-now": "Jetzt ausprobieren",
+    book: "Buch"
   },
   ProductFiboSchool: {
     "fibo-school": "Fibo Schule",
