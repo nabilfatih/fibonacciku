@@ -22,7 +22,7 @@ export default function BookCardImage({ src, title, className }: Props) {
         onError={e => {
           e.currentTarget.src = "/fibo-book.webp"
         }}
-        className="rounded-xl border bg-muted/90 object-cover shadow-sm"
+        className="rounded-xl border bg-muted/90 object-cover shadow"
       />
     </div>
   )

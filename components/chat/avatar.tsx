@@ -22,7 +22,7 @@ export default function ChatAvatar({ role }: Props) {
 
   if (role === "assistant") {
     return (
-      <div className="relative h-8 w-8 rounded-full">
+      <div className="relative h-8 w-8 rounded-full object-cover shadow">
         <Image
           title="FibonacciKu"
           src="/logo.webp"
@@ -39,7 +39,7 @@ export default function ChatAvatar({ role }: Props) {
   return (
     <>
       {userDetails?.avatar_url ? (
-        <UiAvatar className="h-8 w-8 border border-border/30">
+        <UiAvatar className="h-8 w-8 border border-border shadow">
           <AvatarImage
             src={userDetails.avatar_url}
             alt={userDetails.full_name ?? userDetails.email ?? "Avatar"}
@@ -51,7 +51,10 @@ export default function ChatAvatar({ role }: Props) {
           </AvatarFallback>
         </UiAvatar>
       ) : (
-        <Avatar className="h-8 w-8 rounded-full object-cover" {...config} />
+        <Avatar
+          className="h-8 w-8 rounded-full object-cover shadow"
+          {...config}
+        />
       )}
     </>
   )
