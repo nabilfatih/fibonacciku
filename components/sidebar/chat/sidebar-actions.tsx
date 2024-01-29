@@ -96,7 +96,7 @@ export default function SidebarActions({
 
           <DropdownMenuItem
             role="button"
-            className="cursor-pointer space-x-2 !text-destructive"
+            className="cursor-pointer space-x-2"
             onClick={() => {
               setDeleteDialogOpen(true)
             }}
