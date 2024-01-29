@@ -960,5 +960,16 @@ export default {
   Ads: {
     sponsored: "Anzeige",
     "upgrade-to-premium": "Upgrade auf Premium für werbefreie Erfahrung"
+  },
+  RenameDialog: {
+    rename: "Umbenennen",
+    "rename-chat": "Chat umbenennen",
+    "rename-this-chat": "Diesen Chat umbenennen",
+    "rename-desc": "Ändere den Namen dieses Chats in etwas Aussagekräftigeres.",
+    "chat-name": "Chat-Name",
+    "chat-name-placeholder": "Wie lautet der Chat-Name?",
+    cancel: "Abbrechen",
+    renaming: "Umbenennen",
+    "chat-renamed": "Chat umbenennen"
   }
 } as const

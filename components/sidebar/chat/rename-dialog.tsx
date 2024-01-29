@@ -6,6 +6,7 @@ import { toast } from "sonner"
 
 import type { Chat, ServerActionResult } from "@/types/types"
 import { useMediaQuery } from "@/lib/hooks/use-media-query"
+import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -42,6 +43,7 @@ export function ChatRenameDialog({
   onRename,
   ...props
 }: ChatRenameDialogProps) {
+  const t = useScopedI18n("RenameDialog")
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
   const [title, setTitle] = React.useState<string>(chat.title)
@@ -53,21 +55,19 @@ export function ChatRenameDialog({
       <Dialog {...props}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Rename this chat</DialogTitle>
-            <DialogDescription>
-              Change the name of this chat to something more meaningful.
-            </DialogDescription>
+            <DialogTitle>{t("rename-this-chat")}</DialogTitle>
+            <DialogDescription>{t("rename-desc")}</DialogDescription>
           </DialogHeader>
 
           <div className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="title">Chat name</Label>
+              <Label htmlFor="title">{t("chat-name")}</Label>
               <Input
                 id="title"
                 type="text"
                 value={title}
                 onChange={e => setTitle(e.target.value)}
-                placeholder="Write a name for this chat"
+                placeholder={t("chat-name-placeholder")}
                 className="w-full"
               />
             </div>
@@ -75,7 +75,7 @@ export function ChatRenameDialog({
 
           <DialogFooter className="items-center">
             <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
+              <Button variant="outline">{t("cancel")}</Button>
             </DialogClose>
 
             <Button
@@ -90,17 +90,17 @@ export function ChatRenameDialog({
                   }
 
                   onRename()
-                  toast.success("Chat renamed")
+                  toast.success(t("chat-renamed"))
                 })
               }}
             >
               {isRenamePending ? (
                 <>
                   <IconSpinner className="mr-2 animate-spin" />
-                  Renaming...
+                  {t("renaming")}...
                 </>
               ) : (
-                <>Rename</>
+                t("rename")
               )}
             </Button>
           </DialogFooter>
@@ -113,20 +113,18 @@ export function ChatRenameDialog({
     <Drawer {...props}>
       <DrawerContent>
         <DrawerHeader className="text-left">
-          <DrawerTitle>Rename this chat</DrawerTitle>
-          <DrawerDescription>
-            Change the name of this chat to something more meaningful.
-          </DrawerDescription>
+          <DrawerTitle>{t("rename-this-chat")}</DrawerTitle>
+          <DrawerDescription>{t("rename-desc")}</DrawerDescription>
         </DrawerHeader>
         <div className="grid gap-4 px-4">
           <div className="grid gap-2">
-            <Label htmlFor="title">Chat name</Label>
+            <Label htmlFor="title">{t("chat-name")}</Label>
             <Input
               id="title"
               type="text"
               value={title}
               onChange={e => setTitle(e.target.value)}
-              placeholder="Write a name for this chat"
+              placeholder={t("chat-name-placeholder")}
               className="w-full"
             />
           </div>
@@ -143,24 +141,24 @@ export function ChatRenameDialog({
                 }
 
                 onRename()
-                toast.success("Chat renamed")
+                toast.success(t("chat-renamed"))
               })
             }}
           >
             {isRenamePending ? (
               <>
                 <IconSpinner className="mr-2 animate-spin" />
-                Renaming...
+                {t("renaming")}...
               </>
             ) : (
-              <>Rename</>
+              t("rename")
             )}
           </Button>
         </div>
 
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
-            <Button variant="outline">Cancel</Button>
+            <Button variant="outline">{t("cancel")}</Button>
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>

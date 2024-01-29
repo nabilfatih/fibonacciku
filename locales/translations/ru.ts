@@ -944,5 +944,17 @@ export default {
   Ads: {
     sponsored: "Реклама",
     "upgrade-to-premium": "Обновите до премиума, чтобы удалить рекламу"
+  },
+  RenameDialog: {
+    rename: "Переименовать",
+    "rename-chat": "Переименовать чат",
+    "rename-this-chat": "Переименовать этот чат",
+    "rename-desc":
+      "Измените название этого чата на что-то более содержательное.",
+    "chat-name": "Название чата",
+    "chat-name-placeholder": "Какое название чата?",
+    cancel: "Отмена",
+    renaming: "Переименование",
+    "chat-renamed": "Чат переименован"
   }
 } as const

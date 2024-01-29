@@ -944,5 +944,16 @@ export default {
   Ads: {
     sponsored: "Sponsor",
     "upgrade-to-premium": "Upgrade ke premium untuk menghapus iklan"
+  },
+  RenameDialog: {
+    rename: "Ubah Nama",
+    "rename-chat": "Ubah Nama Obrolan",
+    "rename-this-chat": "Ubah Nama Obrolan Ini",
+    "rename-desc": "Ubah nama obrolan ini menjadi sesuatu yang lebih bermakna.",
+    "chat-name": "Nama Obrolan",
+    "chat-name-placeholder": "Apa nama obrolannya?",
+    cancel: "Batal",
+    renaming: "Mengubah Nama",
+    "chat-renamed": "Nama Obrolan Berubah"
   }
 } as const
