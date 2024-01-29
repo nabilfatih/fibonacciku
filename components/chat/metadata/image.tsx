@@ -37,7 +37,7 @@ export default function ChatMetadataImage({ metadata }: Props) {
               }}
               viewport={{ amount: 0 }}
             >
-              <Link href={item.image.split("?")[0]} passHref target="_blank">
+              <Link href={item.image.split("?")[0]} target="_blank">
                 <Image
                   src={item.image}
                   alt={item.prompt || "Image"}
