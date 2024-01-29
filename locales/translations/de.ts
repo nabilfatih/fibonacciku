@@ -524,7 +524,9 @@ export default {
     share: "Teilen",
     document: "Dokument",
     book: "Buch",
-    close: "Schließen"
+    close: "Schließen",
+    "settings-desc":
+      "Konfigurieren Sie, wie Fibo auf Ihre Nachrichten reagiert."
   },
   FormDocument: {
     "form-document-desc": "Laden Sie Ihr Dokument hoch, um zu starten",
@@ -744,7 +746,8 @@ export default {
     "days-left": "Tage verbleiben bis Ihr Abonnement endet",
     "do-not-have-plan":
       "Sie haben noch keinen Plan, sehen Sie sich die Preise an, um zu beginnen",
-    "see-premium": "Premium ansehen"
+    "see-premium": "Premium ansehen",
+    "limit-access": "Limitierter Zugang"
   },
   DrawerTools: {
     calculator: "Rechner",
@@ -925,6 +928,12 @@ export default {
     hi: "Hallo",
     "assistant-desc": "Frag mich alles, was du wissen möchtest.",
     "document-desc": "Lade dein Dokument hoch und chatte damit.",
-    "book-desc": "Erkunde mühelos Wissen aus dem Buch."
+    "book-desc": "Erkunde mühelos Wissen aus dem Buch.",
+    "then-choose-from-your-library": "Wählen Sie dann aus Ihrer Bibliothek",
+    "see-your-library": "Sehen Sie Ihre Bibliothek"
+  },
+  Ads: {
+    sponsored: "Anzeige",
+    "upgrade-to-premium": "Upgrade auf Premium für werbefreie Erfahrung"
   }
 } as const

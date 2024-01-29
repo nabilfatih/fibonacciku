@@ -14,6 +14,7 @@ import { useMessage } from "@/lib/context/use-message"
 import { getChatDocumentSignedUrl } from "@/lib/supabase/client/chat"
 import useUserLibrary from "@/lib/swr/use-user-library"
 import { cn } from "@/lib/utils"
+import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
 import { IconSpinner } from "@/components/ui/icons"
@@ -36,6 +37,7 @@ type Props = {
 }
 
 export default function ChatLibrary({ userId }: Props) {
+  const t = useScopedI18n("EmptyScreen")
   const { libraries } = useUserLibrary(userId)
   const { append, dispatch } = useMessage()
 
@@ -79,7 +81,7 @@ export default function ChatLibrary({ userId }: Props) {
     return (
       <div className="grid">
         <Button asChild variant="link" className="mx-auto w-fit">
-          <Link href="/chat/library">See your library</Link>
+          <Link href="/chat/library">{t("see-your-library")}</Link>
         </Button>
       </div>
     )
@@ -87,7 +89,7 @@ export default function ChatLibrary({ userId }: Props) {
   return (
     <div className="grid">
       <p className="text-center text-muted-foreground">
-        Then choose from your library:
+        {t("then-choose-from-your-library")}
       </p>
       <div className="mt-4">
         <div className="flex flex-col items-center justify-center">
@@ -197,7 +199,7 @@ export default function ChatLibrary({ userId }: Props) {
         </div>
       </div>
       <Button asChild variant="link" className="mx-auto w-fit">
-        <Link href="/chat/library">See your library</Link>
+        <Link href="/chat/library">{t("see-your-library")}</Link>
       </Button>
     </div>
   )

@@ -504,7 +504,8 @@ export default {
     share: "Share",
     document: "Document",
     book: "Book",
-    close: "Close"
+    close: "Close",
+    "settings-desc": "Configure how Fibo responds to your messages."
   },
   FormDocument: {
     "form-document-desc": "Upload your document to get started",
@@ -719,7 +720,8 @@ export default {
     "days-left": "days left until your subscription ends",
     "do-not-have-plan":
       "You do not have any plan yet, see pricing to get started",
-    "see-premium": "See premium"
+    "see-premium": "See premium",
+    "limit-access": "Limit access"
   },
   DrawerTools: {
     calculator: "Calculator",
@@ -893,6 +895,12 @@ export default {
     hi: "Hi",
     "assistant-desc": "Ask me anything, whatever you want to know.",
     "document-desc": "Upload your document and chat with it.",
-    "book-desc": "Easily explore knowledge from the book."
+    "book-desc": "Easily explore knowledge from the book.",
+    "then-choose-from-your-library": "Then choose from your library",
+    "see-your-library": "See your library"
+  },
+  Ads: {
+    sponsored: "Sponsored",
+    "upgrade-to-premium": "Upgrade to premium to remove ads"
   }
 } as const

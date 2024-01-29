@@ -521,7 +521,8 @@ export default {
     share: "Bagikan",
     document: "Dokumen",
     book: "Buku",
-    close: "Tutup"
+    close: "Tutup",
+    "settings-desc": "Konfigurasikan bagaimana Fibo merespons pesan Anda."
   },
   FormDocument: {
     "form-document-desc": "Unggah dokumen Anda untuk memulai",
@@ -737,7 +738,8 @@ export default {
     "manage-plan": "Kelola paket",
     "days-left": "hari lagi sampai langganan Anda berakhir",
     "do-not-have-plan": "Anda belum memiliki paket, lihat harga untuk memulai",
-    "see-premium": "Lihat premium"
+    "see-premium": "Lihat premium",
+    "limit-access": "Akses terbatas"
   },
   DrawerTools: {
     calculator: "Kalkulator",
@@ -910,6 +912,12 @@ export default {
     hi: "Hai",
     "assistant-desc": "Tanyakan saya apa pun, apa pun yang ingin kamu ketahui.",
     "document-desc": "Unggah dokumen Anda dan chat dengannya.",
-    "book-desc": "Jelajahi pengetahuan dari buku dengan mudah."
+    "book-desc": "Jelajahi pengetahuan dari buku dengan mudah.",
+    "then-choose-from-your-library": "Lalu pilih dari perpustakaan Anda",
+    "see-your-library": "Lihat perpustakaan Anda"
+  },
+  Ads: {
+    sponsored: "Sponsor",
+    "upgrade-to-premium": "Upgrade ke premium untuk menghapus iklan"
   }
 } as const

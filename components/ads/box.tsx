@@ -6,6 +6,7 @@ import useSWRImmutable from "swr/immutable"
 
 import { useCurrentUser } from "@/lib/context/use-current-user"
 import { generateUUID } from "@/lib/utils"
+import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -16,6 +17,8 @@ type Props = {
 }
 
 export default function AdsBox({ id }: Props) {
+  const t = useScopedI18n("Ads")
+
   const {
     userDetails,
     subscription,
@@ -70,7 +73,9 @@ export default function AdsBox({ id }: Props) {
       <Link href={data?.data.link} target="_blank" onClick={handleClick}>
         <Card className="transition-colors hover:bg-muted/10">
           <CardHeader className="pb-3 pt-4">
-            <CardTitle className="text-foreground/80">SPONSORED</CardTitle>
+            <CardTitle className="text-foreground/80 uppercase">
+              {t("sponsored")}
+            </CardTitle>
           </CardHeader>
           <CardContent className="pb-4">
             <p
@@ -81,7 +86,7 @@ export default function AdsBox({ id }: Props) {
         </Card>
       </Link>
       <Button asChild variant="link" className="p-0">
-        <Link href="/premium">Upgrade to premium to remove ads</Link>
+        <Link href="/premium">{t("upgrade-to-premium")}</Link>
       </Button>
     </div>
   )

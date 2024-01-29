@@ -73,9 +73,7 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>{t("settings")}</DialogTitle>
-            <DialogDescription>
-              Configure how Fibo responds to your messages.
-            </DialogDescription>
+            <DialogDescription>{t("settings-desc")}</DialogDescription>
           </DialogHeader>
 
           <div className="grid gap-2">
@@ -167,9 +165,7 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
       <DrawerContent>
         <DrawerHeader className="text-left">
           <DrawerTitle>{t("settings")}</DrawerTitle>
-          <DrawerDescription>
-            Configure how Fibo responds to your messages.
-          </DrawerDescription>
+          <DrawerDescription>{t("settings-desc")}</DrawerDescription>
         </DrawerHeader>
 
         <div className="grid gap-2 px-4">

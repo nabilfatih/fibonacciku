@@ -6,6 +6,7 @@ import { useTheme } from "next-themes"
 
 import { themes } from "@/lib/data/themes"
 import { capitalizeFirstLetter } from "@/lib/utils"
+import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -23,6 +24,7 @@ type Props = {
 }
 
 export function ThemeToggle({ side = "right", align = "end" }: Props) {
+  const t = useScopedI18n("ModalAccount")
   const { setTheme } = useTheme()
   const [_, startTransition] = React.useTransition()
 
@@ -35,7 +37,7 @@ export function ThemeToggle({ side = "right", align = "end" }: Props) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent side={side} align={align}>
-        <DropdownMenuLabel>Theme</DropdownMenuLabel>
+        <DropdownMenuLabel>{t("theme")}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {themes.map(theme => (
           <DropdownMenuItem

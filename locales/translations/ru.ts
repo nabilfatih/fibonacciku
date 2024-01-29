@@ -516,7 +516,8 @@ export default {
     share: "Поделиться",
     document: "Документ",
     book: "Книга",
-    close: "Закрыть"
+    close: "Закрыть",
+    "settings-desc": "Настройте, как Fibo отвечает на ваши сообщения."
   },
   FormDocument: {
     "form-document-desc": "Загрузите свой документ, чтобы начать",
@@ -732,7 +733,8 @@ export default {
     "manage-plan": "Управление планом",
     "days-left": "дней осталось до окончания вашей подписки",
     "do-not-have-plan": "У вас еще нет плана, посмотрите цены, чтобы начать",
-    "see-premium": "Посмотреть Премиум"
+    "see-premium": "Посмотреть Премиум",
+    "limit-access": "Ограниченный доступ"
   },
   DrawerTools: {
     calculator: "Калькулятор",
@@ -910,6 +912,12 @@ export default {
     hi: "Привет",
     "assistant-desc": "Спросите меня что угодно, все, что вы хотите знать.",
     "document-desc": "Загрузите свой документ и общайтесь с ним.",
-    "book-desc": "Легко исследуйте знания из книги."
+    "book-desc": "Легко исследуйте знания из книги.",
+    "then-choose-from-your-library": "Выберите из вашей библиотеки",
+    "see-your-library": "Посмотреть вашу библиотеку"
+  },
+  Ads: {
+    sponsored: "Реклама",
+    "upgrade-to-premium": "Обновите до премиума, чтобы удалить рекламу"
   }
 } as const
