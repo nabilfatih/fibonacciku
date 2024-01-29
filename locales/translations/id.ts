@@ -955,6 +955,12 @@ export default {
     "chat-name-placeholder": "Apa nama obrolannya?",
     cancel: "Batal",
     renaming: "Mengubah Nama",
-    "chat-renamed": "Nama Obrolan Berubah"
+    "chat-renamed": "Nama Obrolan Berubah",
+    "rename-this-document": "Ubah nama dokumen ini",
+    "rename-desc-document":
+      "Ubah nama dokumen ini menjadi sesuatu yang lebih bermakna.",
+    "document-name": "Nama dokumen",
+    "document-name-placeholder": "Apa nama dokumen ini?",
+    "document-renamed": "Dokumen diubah nama"
   }
 } as const

@@ -971,6 +971,12 @@ export default {
     "chat-name-placeholder": "Wie lautet der Chat-Name?",
     cancel: "Abbrechen",
     renaming: "Umbenennen",
-    "chat-renamed": "Chat umbenennen"
+    "chat-renamed": "Chat umbenennen",
+    "rename-this-document": "Dieses Dokument umbenennen",
+    "rename-desc-document":
+      "Ändere den Namen dieses Dokuments in etwas Aussagekräftigeres.",
+    "document-name": "Dokumentenname",
+    "document-name-placeholder": "Wie lautet der Name des Dokuments?",
+    "document-renamed": "Dokument umbenannt"
   }
 } as const

@@ -938,6 +938,12 @@ export default {
     "chat-name-placeholder": "What is the chat name?",
     cancel: "Cancel",
     renaming: "Renaming",
-    "chat-renamed": "Chat renamed"
+    "chat-renamed": "Chat renamed",
+    "rename-this-document": "Rename this document",
+    "rename-desc-document":
+      "Change the name of this document to something more meaningful.",
+    "document-name": "Document name",
+    "document-name-placeholder": "What is the document name?",
+    "document-renamed": "Document renamed"
   }
 } as const

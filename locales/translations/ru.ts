@@ -956,6 +956,12 @@ export default {
     "chat-name-placeholder": "Какое название чата?",
     cancel: "Отмена",
     renaming: "Переименование",
-    "chat-renamed": "Чат переименован"
+    "chat-renamed": "Чат переименован",
+    "rename-this-document": "Переименовать это документ",
+    "rename-desc-document":
+      "Измените название этого документа на что-то более содержательное.",
+    "document-name": "Название документа",
+    "document-name-placeholder": "Какое название документа?",
+    "document-renamed": "Документ переименован"
   }
 } as const
