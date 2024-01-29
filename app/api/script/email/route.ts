@@ -10,11 +10,11 @@ export async function POST(request: Request) {
     )
   }
 
-  // get users that their usage is 0, and order by most usage
+  // get users that their usage is more than 0
   const { data, error } = await supabaseAdmin
     .from("users")
     .select("full_name, email")
-    .eq("usage", 0)
+    // .gt("usage", 0)
     .order("usage", { ascending: false })
 
   if (error || !data) {
@@ -31,20 +31,22 @@ export async function POST(request: Request) {
 
   try {
     for (const email of emails) {
-      const dataMessage = `Hi ${email.full_name},
+      const dataMessage = `Hi ${email.full_name || "there"}! 🙋‍♂️
+      
+Exciting news🎉! Fibonacciku now has a new interface with theme options to match your mood. 
 
-I hope this email finds you well. As the founder of FibonacciKu, I want to personally reach out to you and ask: what challenges are you facing while you study? I'm here to listen your problem and solve it.
-    
-Please feel free to reply to this email with any problems or concerns you may have.
-You can answer in English or Bahasa Indonesia.
+You can change the theme by clicking the brush button at the bottom left or by going to your account in the upper right and selecting "Account" -> "Change Theme Preferences".
 
-Looking forward to hearing from you!
+Now Fibonacciku is also available in 4 languages: English, Indonesian, German, and Russian. 
 
-www.fibonacciku.com
+To change the language, go to your account in the upper right, click on "Account" -> "Change Languages" and select your preferred language.
+      
+We hope these updates bring a smile to your face. 😊
 
-Best regards,
-Nabil Fatih
-Founder, FibonacciKu`
+Try it now at https://fibonacciku.com !! Fibo loves you! ❤️
+      
+Warm regards,
+Nabil, Founder of FibonacciKu`
 
       const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
@@ -55,7 +57,7 @@ Founder, FibonacciKu`
         body: JSON.stringify({
           from: "Nabil Fatih <nabilfatih@fibonacciku.com>",
           to: [email.email],
-          subject: "Greetings from Founder of FibonacciKu!",
+          subject: "Exciting news from Fibonacciku🎉",
           text: dataMessage
         })
       })
