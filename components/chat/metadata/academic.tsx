@@ -25,7 +25,7 @@ export default function ChatMetadataAcademic({ metadata }: Props) {
         {metadata.map((item, index) => {
           return (
             <motion.div
-              key={index}
+              key={item.id || index}
               variants={{
                 hidden: { opacity: 0 },
                 visible: { opacity: 1 }

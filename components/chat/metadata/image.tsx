@@ -23,7 +23,7 @@ export default function ChatMetadataImage({ metadata }: Props) {
         {metadata.map((item, index) => {
           return (
             <motion.div
-              key={index}
+              key={item.image || index}
               variants={{
                 hidden: { opacity: 0 },
                 visible: { opacity: 1 }

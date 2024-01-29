@@ -35,7 +35,7 @@ export default async function BookCollections({
 
         <div className="relative mx-auto max-w-sm px-4 pt-4 sm:max-w-2xl">
           <section className="grid grid-cols-3 gap-6 sm:grid-cols-4 sm:gap-8 sm:px-1">
-            {books.map((book, index) => {
+            {books.map(book => {
               const publishedDate = book.published_date
                 ? new Date(book.published_date).toLocaleDateString(locale, {
                     month: "long",
@@ -46,7 +46,7 @@ export default async function BookCollections({
               const coverUrl = getBooksCoverPublicUrl(book.id, book.file_id)
 
               return (
-                <div key={index} className="grid justify-center">
+                <div key={book.id} className="grid justify-center">
                   <Link
                     href={`/book/collection/${book.id}`}
                     passHref

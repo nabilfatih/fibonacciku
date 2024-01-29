@@ -56,7 +56,7 @@ export default function ChatMetadataAttachment({ metadata }: Props) {
         <div className="flex flex-wrap gap-4">
           {imageUrls.map((url, index) => {
             return (
-              <div key={index} className="relative rounded-xl">
+              <div key={url} className="relative rounded-xl">
                 {!imageLoaded && (
                   <div className="m-0 block h-64 w-64 animate-pulse rounded-xl border bg-muted/90 object-cover" />
                 )}

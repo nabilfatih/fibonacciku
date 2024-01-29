@@ -25,7 +25,7 @@ export default function ChatMetadataYoutube({ metadata }: Props) {
         {metadata.map((item, index) => {
           return (
             <motion.div
-              key={index}
+              key={item.id.videoId || index}
               variants={{
                 hidden: { opacity: 0 },
                 visible: { opacity: 1 }
@@ -46,7 +46,6 @@ export default function ChatMetadataYoutube({ metadata }: Props) {
               }}
             >
               <Link
-                key={index}
                 title={he.decode(item.snippet.title)}
                 className="no-underline hover:no-underline"
                 href={`https://www.youtube.com/watch?v=${item.id.videoId}`}
