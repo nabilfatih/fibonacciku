@@ -12,10 +12,7 @@ import { cn } from "@/lib/utils"
 import { IconSpinner } from "@/components/ui/icons"
 import type { ActionDocument, StateDocument } from "@/components/book/document"
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  "pdfjs-dist/build/pdf.worker.min.js",
-  import.meta.url
-).toString()
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`
 
 const options = {
   cMapUrl: "/cmaps/",

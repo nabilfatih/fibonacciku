@@ -10,7 +10,7 @@ import {
   useRef,
   useState
 } from "react"
-import { useParams, usePathname, useRouter } from "next/navigation"
+import { useParams, usePathname } from "next/navigation"
 import { track } from "@vercel/analytics"
 import debounce from "lodash/debounce"
 import { toast } from "sonner"
@@ -32,6 +32,7 @@ import {
 } from "@/lib/chat/helper"
 import { useCurrentUser } from "@/lib/context/use-current-user"
 import supabaseClient from "@/lib/supabase/client"
+import { getChat } from "@/lib/supabase/client/chat"
 import { generateUUID } from "@/lib/utils"
 
 export type MessageContextValue = {
@@ -186,7 +187,6 @@ type MessageContextProviderProps = {
 export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
   props: Props
 ) => {
-  const router = useRouter()
   const params = useParams()
   const pathname = usePathname()
 
@@ -203,8 +203,9 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
     if (params?.id) {
       return String(params.id)
     }
-    return generateUUID()
-  }, [params.id])
+    // chatId can be get from pathname (/chat/${feature}/${chatId})
+    return pathname.split("/")[3] || generateUUID()
+  }, [params.id, pathname])
 
   const api = useMemo(() => {
     if (!feature) return ""
@@ -355,10 +356,12 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
 
         // on finished
         if (!pathname.includes(`/${chatId}`)) {
-          router.push(`/chat/${feature}/${chatId}`, {
-            scroll: false
-          })
-          router.refresh()
+          // update url without reloading the page
+          window.history.pushState(null, "", `/chat/${feature}/${chatId}`)
+          const chat = await getChat(chatId)
+          if (chat) {
+            dispatch({ type: "SET_CURRENT_CHAT", payload: chat })
+          }
         }
       } catch (error: any) {
         // Ignore abort errors as they are expected.
@@ -394,7 +397,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
         dispatch({ type: "SET_IS_GENERATING", payload: false })
       }
     },
-    [api, chatId, feature, pathname, router, state.currentChat, userDetails]
+    [api, chatId, feature, pathname, state.currentChat, userDetails]
   )
 
   const append = useCallback(
@@ -559,7 +562,6 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
     dispatch({ type: "SET_EDIT_MESSAGE_CONTENT", payload: "" })
     dispatch({ type: "SET_EDIT_MESSAGE_INDEX", payload: 0 })
     dispatch({ type: "SET_ATTACHMENT", payload: null })
-    dispatch({ type: "SET_PROMPT", payload: "" })
 
     // Clear abort controller
     stop()
@@ -576,10 +578,12 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
 
   // stop the generator if the component is unmounted
   useEffect(() => {
-    return () => {
+    // if pathname do not include id, clear state (it means new chat)
+    // when pathname only /chat/${feature}
+    if (!pathname.includes(`/${chatId}`)) {
       handleClearState()
     }
-  }, [handleClearState])
+  }, [chatId, handleClearState, pathname])
 
   useEffect(() => {
     // current chat can not be null

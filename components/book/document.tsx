@@ -21,7 +21,12 @@ import { IconSeparator } from "@/components/ui/icons"
 import { Input } from "@/components/ui/input"
 import type { BookReadProps } from "@/components/book/read"
 
-const BookDocumentPdf = dynamic(() => import("@/components/book/document-pdf"))
+const BookDocumentPdf = dynamic(
+  () => import("@/components/book/document-pdf"),
+  {
+    ssr: false
+  }
+)
 
 export type StateDocument = {
   zoom: number

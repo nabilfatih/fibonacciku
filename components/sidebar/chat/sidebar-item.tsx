@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { useParams } from "next/navigation"
+import { useParams, usePathname } from "next/navigation"
 import { IconBook2, IconFile, IconMessageCircle2 } from "@tabler/icons-react"
 import { motion } from "framer-motion"
 
@@ -24,7 +24,9 @@ export default function SidebarItem({
   children
 }: SidebarItemProps) {
   const params = useParams()
-  const chatId = params?.id
+  const pathname = usePathname()
+  // chatId can be get from params.id or pathname (/chat/${feature}/${chatId})
+  const chatId = params?.id || pathname.split("/")[3] || null
 
   const isActive = React.useMemo(() => chatId === chat.id, [chatId, chat.id])
 

@@ -43,7 +43,7 @@ export default function ChatPanel({
 }: ChatPanelProps) {
   const t = useScopedI18n("FormChat")
 
-  const { dispatch, stop, reload, handleSubmit } = useMessage()
+  const { dispatch, stop, reload, handleSubmit, state } = useMessage()
 
   const [shareDialogOpen, setShareDialogOpen] = React.useState(false)
 
@@ -56,7 +56,9 @@ export default function ChatPanel({
         variant="outline"
         className={cn(
           "absolute -top-9 right-4 z-10 bg-background transition-opacity duration-300 sm:-top-10 sm:right-8",
-          fileId && id ? "opacity-100" : "pointer-events-none opacity-0"
+          (fileId && id) || state.currentDocument
+            ? "opacity-100"
+            : "pointer-events-none opacity-0"
         )}
         onClick={() => dispatch({ type: "SET_OPEN_DOCUMENT", payload: true })}
       >
