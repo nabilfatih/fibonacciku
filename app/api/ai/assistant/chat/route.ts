@@ -237,7 +237,7 @@ export async function POST(req: Request) {
           tool_choice: "auto"
         })
       },
-      async onStart() {
+      async onCompletion(completion) {
         if (dataRequest.isNewMessage) {
           const prompt = lastMessage.content
             .split("------------------------------")[0]
@@ -251,10 +251,8 @@ export async function POST(req: Request) {
             "assistant"
           )
         }
-      },
-      onCompletion(completion) {
         // no need await, because it is not blocking
-        updateUserUsageAdmin(userId, 1) // add usage by 1
+        await updateUserUsageAdmin(userId, 1) // add usage by 1
       },
       onFinal(completion) {
         // IMPORTANT! you must close StreamData manually or the response will never finish.
