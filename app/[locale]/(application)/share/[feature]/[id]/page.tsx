@@ -37,6 +37,10 @@ export default async function ChatMessagePage({ params }: Props) {
     .limit(1)
     .maybeSingle()
 
+  if (!data) {
+    notFound()
+  }
+
   // this is because of typescript
   const chat = Array.isArray(data?.chat) ? data?.chat[0] : data?.chat
 
