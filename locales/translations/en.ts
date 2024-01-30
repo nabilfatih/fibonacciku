@@ -946,14 +946,19 @@ export default {
       "Change the name of this document to something more meaningful.",
     "document-name": "Document name",
     "document-name-placeholder": "What is the document name?",
-    "document-renamed": "Document renamed"
+    "document-renamed": "Document renamed",
+    delete: "Delete"
   },
   DeleteDialog: {
     title: "Are you absolutely sure?",
     "delete-chat-desc":
       "This will permanently delete your chat message and remove your data from our servers.",
+    "delete-document-desc":
+      "This will permanently delete your document and remove your data from our servers.",
+    remove: "Remove",
     cancel: "Cancel",
     delete: "Delete",
-    "chat-deleted": "Chat deleted"
+    "chat-deleted": "Chat deleted",
+    "document-deleted": "Document deleted"
   }
 } as const

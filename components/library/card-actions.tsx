@@ -5,6 +5,7 @@ import { toast } from "sonner"
 
 import type { Libraries } from "@/types/types"
 import { cn } from "@/lib/utils"
+import { useScopedI18n } from "@/locales/client"
 
 import {
   AlertDialog,
@@ -34,6 +35,8 @@ type Props = {
 }
 
 export default function LibraryCardActions({ className, library }: Props) {
+  const t = useScopedI18n("RenameDialog")
+  const tDelete = useScopedI18n("DeleteDialog")
   const router = useRouter()
 
   const [deleteDialogOpen, setDeleteDialogOpen] = React.useState(false)
@@ -63,7 +66,7 @@ export default function LibraryCardActions({ className, library }: Props) {
             }}
           >
             <IconPencil className="h-4 w-4" />
-            <span>Rename</span>
+            <span>{t("rename")}</span>
           </DropdownMenuItem>
 
           <DropdownMenuSeparator />
@@ -76,7 +79,7 @@ export default function LibraryCardActions({ className, library }: Props) {
             }}
           >
             <IconTrash className="h-4 w-4" />
-            <span>Delete</span>
+            <span>{t("delete")}</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -95,15 +98,15 @@ export default function LibraryCardActions({ className, library }: Props) {
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogTitle>{tDelete("title")}</AlertDialogTitle>
             <AlertDialogDescription>
-              Remove {library.name}. This will permanently delete your document
-              and remove your data from our servers.
+              {tDelete("remove")} {library.name}.{" "}
+              {tDelete("delete-document-desc")}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel disabled={isRemovePending}>
-              Cancel
+              {t("cancel")}
             </AlertDialogCancel>
             <AlertDialogAction
               disabled={isRemovePending || library.status === "processing"}
@@ -124,13 +127,13 @@ export default function LibraryCardActions({ className, library }: Props) {
                   setDeleteDialogOpen(false)
                   router.refresh()
                   router.push("/chat/library")
-                  toast.success("Document deleted")
+                  toast.success(tDelete("document-deleted"))
                 })
               }}
               className={cn(buttonVariants({ variant: "destructive" }))}
             >
               {isRemovePending && <IconSpinner className="mr-2 animate-spin" />}
-              Delete
+              {t("delete")}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
