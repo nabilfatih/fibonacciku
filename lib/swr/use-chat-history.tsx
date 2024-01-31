@@ -11,7 +11,7 @@ const fetcher = (url: string): Promise<ResponseData> =>
   axios.get(url).then(res => res.data)
 
 export default function useChatHistory(userId: string) {
-  const { data, error, isLoading } = useSWR<ResponseData>(
+  const { data, error, isLoading, mutate } = useSWR<ResponseData>(
     userId ? `/api/app/get-user-chat/${userId}` : null,
     fetcher
   )
@@ -19,6 +19,7 @@ export default function useChatHistory(userId: string) {
   return {
     userChatHistory: data?.userChatHistory,
     isLoading,
-    isError: error
+    isError: error,
+    mutate
   }
 }

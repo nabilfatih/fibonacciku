@@ -35,6 +35,8 @@ import supabaseClient from "@/lib/supabase/client"
 import { getChat } from "@/lib/supabase/client/chat"
 import { generateUUID } from "@/lib/utils"
 
+import useChatHistory from "../swr/use-chat-history"
+
 export type MessageContextValue = {
   chatId: string
   pageRef: React.MutableRefObject<any>
@@ -191,6 +193,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
   const pathname = usePathname()
 
   const { userDetails } = useCurrentUser()
+  const { mutate } = useChatHistory(userDetails?.id || "")
 
   const feature = useMemo(() => {
     if (params?.feature) {
@@ -362,6 +365,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
           if (chat) {
             dispatch({ type: "SET_CURRENT_CHAT", payload: chat })
           }
+          mutate()
         }
       } catch (error: any) {
         // Ignore abort errors as they are expected.
@@ -397,7 +401,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
         dispatch({ type: "SET_IS_GENERATING", payload: false })
       }
     },
-    [api, chatId, feature, pathname, state.currentChat, userDetails]
+    [api, chatId, feature, mutate, pathname, state.currentChat, userDetails]
   )
 
   const append = useCallback(
