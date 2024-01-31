@@ -97,7 +97,6 @@ export const replaceDelimiters = (markdown: string): string => {
     markdown
       .replace(/\\\[([\s\S]*?)\\\]/g, "$$$1$$")
       .replace(/\\\(([\s\S]*?)\\\)/g, "$$$1$$")
-      .replace(/\\\{([\s\S]*?)\\\}/g, "$$$1$$")
       // if there is newline before =, then remove the newline
       .replace(/\n=/g, "=")
   )
