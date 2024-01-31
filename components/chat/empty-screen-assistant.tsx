@@ -14,7 +14,7 @@ export default function EmptyScreenAssistant() {
         {t("assistant-desc")}
       </p>
 
-      <ChatFeature />
+      {/* <ChatFeature /> */}
 
       {/* <div className="grid">
         <h2 className="mb-2 font-medium tracking-tight">

@@ -92,12 +92,12 @@ const featuresData = [
     type: "document",
     link: "/chat/document",
     icon: IconFile
-  },
-  {
-    type: "book",
-    link: "/book",
-    icon: IconBook2
   }
+  // {
+  //   type: "book",
+  //   link: "/book",
+  //   icon: IconBook2
+  // }
   // {
   //   type: "detector",
   //   link: "/detector/ai",
