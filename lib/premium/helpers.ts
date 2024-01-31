@@ -29,24 +29,47 @@ export const priceList: PriceListType = [
     plan: "premium",
     type: "monthly",
     redirect: false,
-    priceId: "price_1O4h0CApEKbNyVi6Tf1DTZGV",
+    priceId: "price_1Oeht4ApEKbNyVi6KcUCVj1b",
     price: {
-      usd: 18,
-      eur: 18,
-      idr: 200000
+      usd: 12,
+      eur: 12,
+      idr: 100000
     }
   },
   {
     plan: "premium",
     type: "yearly",
     redirect: false,
-    priceId: "price_1OX6qLApEKbNyVi6E1uDd5Cp",
+    priceId: "price_1Oeht4ApEKbNyVi6KcUCVj1b",
     price: {
-      usd: 180,
-      eur: 180,
-      idr: 2000000
+      usd: 120,
+      eur: 120,
+      idr: 1000000
     }
   }
+  // TODO: experiment with this price
+  // {
+  //   plan: "premium",
+  //   type: "monthly",
+  //   redirect: false,
+  //   priceId: "price_1O4h0CApEKbNyVi6Tf1DTZGV",
+  //   price: {
+  //     usd: 18,
+  //     eur: 18,
+  //     idr: 200000
+  //   }
+  // },
+  // {
+  //   plan: "premium",
+  //   type: "yearly",
+  //   redirect: false,
+  //   priceId: "price_1OX6qLApEKbNyVi6E1uDd5Cp",
+  //   price: {
+  //     usd: 180,
+  //     eur: 180,
+  //     idr: 2000000
+  //   }
+  // }
 ]
 
 // Helper function to get price based on plan and currency
