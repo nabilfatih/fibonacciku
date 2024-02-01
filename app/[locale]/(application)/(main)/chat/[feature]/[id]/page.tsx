@@ -48,11 +48,7 @@ export default async function ChatMessagePage({ params }: Props) {
     .limit(1)
     .maybeSingle()
 
-  if (!chat) {
-    notFound()
-  }
-
-  if (chat.user_id !== session.user.id) {
+  if (!chat || chat.user_id !== session.user.id) {
     notFound()
   }
 
