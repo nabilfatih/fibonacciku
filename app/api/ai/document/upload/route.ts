@@ -86,7 +86,7 @@ export async function POST(req: NextRequest) {
   } catch (error: any) {
     console.error(error)
     await track("Error - Upload Document", {
-      data: `${userId} - ${error.message || "High Traffic"}`
+      data: `${userId} - ${error.message || "High Traffic"} - ${fileId}`
     })
     return NextResponse.json(
       { error: { statusCode: 500, message: "High Traffic" } },
