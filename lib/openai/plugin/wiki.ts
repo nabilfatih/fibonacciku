@@ -90,7 +90,7 @@ export const wikiSearchContent = cache(
       console.log("Wiki Search Content Error: ", error)
       return {
         type: "wiki",
-        message: "Quota exceeded for searching Wiki",
+        message: "Quota exceeded for searching Wiki" + error,
         results: {}
       }
     }
