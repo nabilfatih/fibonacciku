@@ -3,7 +3,7 @@ import { academicPlugin, googlePlugin, youtubePlugin } from "./plugin/internet"
 import { scrapeWebsite } from "./plugin/ninja"
 import { documentRetrieval } from "./plugin/retrieval"
 import { weatherPlugin } from "./plugin/weather"
-import { wikiFeedFeature } from "./plugin/wiki"
+import { wikiFeedFeature, wikiSearchContent } from "./plugin/wiki"
 import { wolframalphaPlugin } from "./plugin/wolframalpha"
 
 export type PluginResponse = {
@@ -114,4 +114,9 @@ export const callingGetNewsInformation = async () => {
     }
   }
   return finalData
+}
+
+export const callingGetSearchContent = async (query: string) => {
+  const data = await wikiSearchContent("en", query)
+  return data
 }

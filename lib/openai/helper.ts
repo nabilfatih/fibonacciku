@@ -8,6 +8,7 @@ import {
   callingDocument,
   callingGenerateImage,
   callingGetNewsInformation,
+  callingGetSearchContent,
   callingGoogleYoutubeAcademic,
   callingSolveMathProblem,
   callingWeather,
@@ -155,6 +156,9 @@ export const callTools = async (
   }
   if (name === "get_news_information") {
     toolResponse.result = await callingGetNewsInformation()
+  }
+  if (name === "search_wikipedia") {
+    toolResponse.result = await callingGetSearchContent(String(args.query))
   }
   return toolResponse
 }

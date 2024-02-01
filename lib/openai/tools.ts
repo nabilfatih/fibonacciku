@@ -109,6 +109,25 @@ export const defaultToolsChat: Tool[] = [
         "Get today feature article, most read articles, daily feature image, today news, and on this day from wikipedia. It is using wikipedia API under the hood.",
       parameters: {}
     }
+  },
+  {
+    type: "function",
+    function: {
+      name: "search_wikipedia",
+      description:
+        "Search the wikipedia content based on the query. It is using wikipedia API under the hood. Must be used for the explanation, description, definition, or summary.",
+      parameters: {
+        type: "object",
+        properties: {
+          query: {
+            type: "string",
+            description:
+              "the query to get the explanation, description, or definition. Must be clear and specific what to get. Must only 1-4 words."
+          }
+        },
+        required: ["query"]
+      }
+    }
   }
 ]
 

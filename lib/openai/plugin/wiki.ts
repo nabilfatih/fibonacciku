@@ -54,3 +54,49 @@ export const wikiFeedFeature = cache(
     revalidate: 3600 // 1 hour
   }
 )
+
+export const wikiSearchContent = cache(
+  async (lang = "en", query: string) => {
+    try {
+      const response = await fetch(
+        `https://api.wikimedia.org/core/v1/wikipedia/${lang}/search/page?q=${query}&limit=10`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.WIKIPEDIA_ACCESS_TOKEN}`,
+            "Api-User-Agent": "fibonacciku nabilakbarazzima@gmail.com"
+          }
+        }
+      )
+
+      if (!response.ok) {
+        throw new Error(`Error searching Wiki: ${response.statusText}`)
+      }
+
+      const data = await response.json()
+
+      const finalData = {
+        searchResults: data?.pages || {}
+      }
+
+      return {
+        type: "wiki",
+        message:
+          "Always show all the urls of results, but not full url, instead just the title",
+        results: finalData
+      }
+    } catch (error) {
+      console.log("Wiki Search Content Error: ", error)
+      return {
+        type: "wiki",
+        message: "Quota exceeded for searching Wiki",
+        results: {}
+      }
+    }
+  },
+  ["wikiSearchContent"],
+  {
+    revalidate: 3600 // 1 hour
+  }
+)
