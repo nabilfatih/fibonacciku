@@ -1,7 +1,7 @@
 import { cache } from "react"
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
-import { redirect } from "next/navigation"
+import { notFound, redirect } from "next/navigation"
 
 import type { Features } from "@/types/types"
 import { getChatAdmin } from "@/lib/supabase/admin/chat"
@@ -49,11 +49,11 @@ export default async function ChatMessagePage({ params }: Props) {
     .maybeSingle()
 
   if (!chat) {
-    redirect(`/chat/${params.feature}`)
+    notFound()
   }
 
   if (chat.user_id !== session.user.id) {
-    redirect(`/chat/${params.feature}`)
+    notFound()
   }
 
   return (
