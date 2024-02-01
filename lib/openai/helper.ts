@@ -160,5 +160,6 @@ export const callTools = async (
   if (name === "search_wikipedia") {
     toolResponse.result = await callingGetSearchContent(String(args.query))
   }
+  console.log("toolResponse", toolResponse)
   return toolResponse
 }
