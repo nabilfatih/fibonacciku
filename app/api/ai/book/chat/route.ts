@@ -258,7 +258,7 @@ export async function POST(req: NextRequest) {
           tool_choice: "auto"
         })
       },
-      async onStart() {
+      async onCompletion(completion) {
         if (dataRequest.isNewMessage) {
           const book = await getBooksAdmin(bookId)
           const title = createSafeTitle(book?.title || "Untitled")
@@ -271,10 +271,8 @@ export async function POST(req: NextRequest) {
             dataRequest.fileId
           )
         }
-      },
-      onCompletion(completion) {
         // no need await, because it is not blocking
-        updateUserUsageAdmin(userId, 1) // add usage by 1
+        await updateUserUsageAdmin(userId, 1) // add usage by 1
       },
       onFinal(completion) {
         // IMPORTANT! you must close StreamData manually or the response will never finish.
