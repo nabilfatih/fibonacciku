@@ -3,6 +3,7 @@ import { academicPlugin, googlePlugin, youtubePlugin } from "./plugin/internet"
 import { scrapeWebsite } from "./plugin/ninja"
 import { documentRetrieval } from "./plugin/retrieval"
 import { weatherPlugin } from "./plugin/weather"
+import { wikiFeedFeature } from "./plugin/wiki"
 import { wolframalphaPlugin } from "./plugin/wolframalpha"
 
 export type PluginResponse = {
@@ -85,4 +86,32 @@ export const callingDocument = async (
 ) => {
   const data = await documentRetrieval(userId, fileId, query)
   return data
+}
+
+export const callingGetNewsInformation = async () => {
+  const data = await wikiFeedFeature()
+
+  let finalData = {
+    ...data
+  }
+
+  // if the data.results is not an empty object
+  if (Object.keys(data.results).length !== 0) {
+    // only get first 2 items from todayNews and onThisDay
+    finalData = {
+      ...data,
+      results: {
+        todayFeatureArticle:
+          (data.results as { todayFeatureArticle: any })?.todayFeatureArticle ||
+          {},
+        todayNews: (
+          (data.results as { todayNews: any })?.todayNews || []
+        ).slice(0, 2),
+        onThisDay: (
+          (data.results as { onThisDay: any })?.onThisDay || []
+        ).slice(0, 2)
+      }
+    }
+  }
+  return finalData
 }

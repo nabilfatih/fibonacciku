@@ -7,6 +7,7 @@ import type { Subscription } from "@/types/types"
 import {
   callingDocument,
   callingGenerateImage,
+  callingGetNewsInformation,
   callingGoogleYoutubeAcademic,
   callingSolveMathProblem,
   callingWeather,
@@ -151,6 +152,9 @@ export const callTools = async (
       fileId,
       String(args.query)
     )
+  }
+  if (name === "get_news_information") {
+    toolResponse.result = await callingGetNewsInformation()
   }
   return toolResponse
 }

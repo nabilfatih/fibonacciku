@@ -100,6 +100,15 @@ export const defaultToolsChat: Tool[] = [
         required: ["location"]
       }
     }
+  },
+  {
+    type: "function",
+    function: {
+      name: "get_news_information",
+      description:
+        "Get today feature article, most read articles, daily feature image, today news, and on this day from wikipedia. It is using wikipedia API under the hood.",
+      parameters: {}
+    }
   }
 ]
 
