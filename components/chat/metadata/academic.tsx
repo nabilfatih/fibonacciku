@@ -1,5 +1,4 @@
 import Image from "next/image"
-import Link from "next/link"
 import { IconBooks } from "@tabler/icons-react"
 import { motion } from "framer-motion"
 import he from "he"
@@ -31,17 +30,18 @@ export default function ChatMetadataAcademic({ metadata }: Props) {
               href={item.url}
               target="_blank"
               variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1 }
+                hidden: { opacity: 0, y: -10 },
+                visible: { opacity: 1, y: 0 }
               }}
-              initial="hidden"
-              animate="visible"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{
                 delay: index * 0.1,
                 ease: "easeInOut",
                 duration: 0.5
               }}
               viewport={{ amount: 0 }}
+              exit={{ opacity: 0, y: 10 }}
               className="group min-h-[82px] rounded-xl border p-2 shadow-sm transition-colors hover:bg-muted/50"
             >
               <div className="flex h-full w-full flex-col items-start justify-between gap-2">

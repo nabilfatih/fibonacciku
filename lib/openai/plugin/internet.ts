@@ -76,7 +76,6 @@ export const youtubePlugin = cache(
       })
       return {
         type: "youtube",
-        message: "",
         results: smallData
       }
     } catch (error) {
