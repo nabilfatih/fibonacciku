@@ -104,7 +104,7 @@ export const defaultToolsChat: Tool[] = [
   {
     type: "function",
     function: {
-      name: "get_news_information",
+      name: "get_on_this_day",
       description:
         "Get today feature article, most read articles, daily feature image, today news, and on this day from wikipedia. It is using wikipedia API under the hood.",
       parameters: {}

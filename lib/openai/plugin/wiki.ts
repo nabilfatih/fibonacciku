@@ -1,8 +1,79 @@
 import { unstable_cache as cache } from "next/cache"
 import moment from "moment"
 
+export type WikiLink = {
+  titles: {
+    normalized?: string
+  }
+  thumbnail: {
+    source?: string
+  }
+  description?: string
+  content_urls?: {
+    desktop?: {
+      page?: string
+    }
+  }
+  extract?: string
+}
+
+export type WikiFeedData = {
+  tfa?: WikiLink
+  mostread?: {
+    articles: WikiLink[]
+  }
+  image?: {
+    title?: string
+    thumbnail?: {
+      source?: string
+    }
+    description?: {
+      text?: string
+    }
+  }
+  news?: {
+    links: WikiLink[]
+  }[]
+  onthisday?: {
+    text?: string
+    pages?: WikiLink[]
+  }[]
+}
+
+export type WikiFeedResult = {
+  todayFeatureArticle: WikiArticle
+  mostReadArticles: WikiArticle[]
+  dailyFeatureImage: WikiImage
+  todayNews: WikiArticle[]
+  onThisDay: {
+    text: string
+    pages: WikiArticle[]
+  }[]
+}
+
+export type WikiArticle = {
+  title: string
+  image: string
+  description: string
+  url: string
+  extract: string
+}
+
+export type WikiImage = {
+  title: string
+  image: string
+  text: string
+}
+
 export const wikiFeedFeature = cache(
-  async (lang = "en", date?: string) => {
+  async (
+    lang: string = "en",
+    date?: string
+  ): Promise<{
+    type: "wiki"
+    message: string
+    results: WikiFeedResult
+  }> => {
     const dateFormat = date
       ? moment(date).format("YYYY/MM/DD")
       : moment().format("YYYY/MM/DD")
@@ -24,14 +95,43 @@ export const wikiFeedFeature = cache(
         throw new Error(`Error searching Wiki: ${response.statusText}`)
       }
 
-      const data = await response.json()
+      const data: WikiFeedData = await response.json()
 
-      const finalData = {
-        todayFeatureArticle: data?.tfa || {},
-        mostReadArticles: data?.mostread || {},
-        dailyFeatureImage: data?.image || {},
-        todayNews: data?.news || [],
-        onThisDay: data?.onthisday || []
+      const todayFeatureArticle: WikiArticle = {
+        title: data?.tfa?.titles?.normalized || "",
+        image: data?.tfa?.thumbnail?.source || "",
+        description: data?.tfa?.description || "",
+        url: data?.tfa?.content_urls?.desktop?.page || "",
+        extract: data?.tfa?.extract || ""
+      }
+
+      const mostReadArticles: WikiArticle[] =
+        data?.mostread?.articles.map(mapWikiLinkToArticle) || []
+
+      const dailyFeatureImage: WikiImage = {
+        title: data?.image?.title || "",
+        image: data?.image?.thumbnail?.source || "",
+        text: data?.image?.description?.text || ""
+      }
+
+      const todayNews: WikiArticle[] =
+        data?.news?.flatMap(news => news.links.map(mapWikiLinkToArticle)) || []
+
+      const onThisDay: {
+        text: string
+        pages: WikiArticle[]
+      }[] =
+        data?.onthisday?.flatMap(onthisday => ({
+          text: onthisday.text || "",
+          pages: onthisday?.pages?.map(mapWikiLinkToArticle) || []
+        })) || []
+
+      const finalData: WikiFeedResult = {
+        todayFeatureArticle,
+        mostReadArticles,
+        dailyFeatureImage,
+        todayNews,
+        onThisDay
       }
 
       return {
@@ -45,7 +145,13 @@ export const wikiFeedFeature = cache(
       return {
         type: "wiki",
         message: "Quota exceeded for searching Wiki",
-        results: {}
+        results: {
+          todayFeatureArticle: {} as WikiArticle,
+          mostReadArticles: [],
+          dailyFeatureImage: {} as WikiImage,
+          todayNews: [],
+          onThisDay: []
+        }
       }
     }
   },
@@ -59,7 +165,7 @@ export const wikiSearchContent = cache(
   async (lang = "en", query: string) => {
     try {
       const response = await fetch(
-        `https://api.wikimedia.org/core/v1/wikipedia/${lang}/search/page?q=${query}&limit=10`,
+        `https://api.wikimedia.org/core/v1/wikipedia/${lang}/search/page?q=${query}&limit=20`,
         {
           method: "GET",
           headers: {
@@ -100,3 +206,13 @@ export const wikiSearchContent = cache(
     revalidate: 3600 // 1 hour
   }
 )
+
+function mapWikiLinkToArticle(link: WikiLink): WikiArticle {
+  return {
+    title: link?.titles?.normalized || "",
+    image: link?.thumbnail?.source || "",
+    description: link?.description || "",
+    url: link?.content_urls?.desktop?.page || "",
+    extract: link?.extract || ""
+  }
+}

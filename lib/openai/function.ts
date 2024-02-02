@@ -88,7 +88,7 @@ export const callingDocument = async (
   return data
 }
 
-export const callingGetNewsInformation = async () => {
+export const callingGetOnThisDay = async () => {
   const data = await wikiFeedFeature()
 
   let finalData = {
@@ -97,19 +97,18 @@ export const callingGetNewsInformation = async () => {
 
   // if the data.results is not an empty object
   if (Object.keys(data.results).length !== 0) {
-    // only get first 2 items from todayNews and onThisDay
     finalData = {
       ...data,
       results: {
-        todayFeatureArticle:
-          (data.results as { todayFeatureArticle: any })?.todayFeatureArticle ||
-          {},
-        todayNews: (
-          (data.results as { todayNews: any })?.todayNews || []
-        ).slice(0, 2),
-        onThisDay: (
-          (data.results as { onThisDay: any })?.onThisDay || []
-        ).slice(0, 2)
+        ...data.results,
+        mostReadArticles: data.results.mostReadArticles.slice(0, 10),
+        todayNews: data.results.todayNews.slice(0, 5),
+        onThisDay: data.results.onThisDay.slice(0, 5).map(onThisDay => {
+          return {
+            text: onThisDay.text,
+            pages: onThisDay.pages.slice(0, 5)
+          }
+        })
       }
     }
   }

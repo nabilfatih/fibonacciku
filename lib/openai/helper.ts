@@ -7,7 +7,7 @@ import type { Subscription } from "@/types/types"
 import {
   callingDocument,
   callingGenerateImage,
-  callingGetNewsInformation,
+  callingGetOnThisDay,
   callingGetSearchContent,
   callingGoogleYoutubeAcademic,
   callingSolveMathProblem,
@@ -154,8 +154,8 @@ export const callTools = async (
       String(args.query)
     )
   }
-  if (name === "get_news_information") {
-    toolResponse.result = await callingGetNewsInformation()
+  if (name === "get_on_this_day") {
+    toolResponse.result = await callingGetOnThisDay()
   }
   if (name === "search_wikipedia") {
     toolResponse.result = await callingGetSearchContent(String(args.query))
