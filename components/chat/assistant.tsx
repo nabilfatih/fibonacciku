@@ -75,7 +75,7 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
             transition={{ duration: 0.3 }}
             exit={{ opacity: 1, y: 10 }}
             className={cn(
-              "flex items-center border px-3 py-2 rounded-lg shadow w-fit text-sm text-foreground/80"
+              "flex items-center border px-3 py-2 rounded-md shadow-sm w-fit text-sm text-foreground/80"
             )}
           >
             {t("thinking")}
