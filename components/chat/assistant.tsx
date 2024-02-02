@@ -56,7 +56,7 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
       } else {
         setIsLoading(false) // Clear the loading state when message is not empty
       }
-    }, 5000)
+    }, 6000)
 
     return () => {
       clearTimeout(loadingTimer) // Cleanup the timer on component unmount
