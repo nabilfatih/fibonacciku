@@ -43,10 +43,31 @@ export default function UserMenu() {
   if (!userDetails) {
     return (
       <div className="flex items-center justify-between">
-        <Avatar
-          className="h-9 w-9 rounded-full border border-border/30 object-cover shadow-sm transition-opacity duration-300 hover:opacity-80"
-          {...config}
-        />
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <div role="button" className="cursor-pointer">
+              <Avatar
+                className="h-9 w-9 rounded-full border border-border/30 object-cover shadow-sm transition-opacity duration-300 hover:opacity-80"
+                {...config}
+              />
+            </div>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            sideOffset={8}
+            align="end"
+            className="w-full max-w-[225px]"
+          >
+            <DropdownMenuItem
+              onClick={async () => {
+                await supabaseClient.auth.signOut()
+                router.replace("/auth/login")
+              }}
+              className="cursor-pointer py-2"
+            >
+              {t("logout")}
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     )
   }
