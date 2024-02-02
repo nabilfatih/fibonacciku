@@ -69,9 +69,11 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
         <div className="animate-pulse pb-0.5">▌</div>
         {loading && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            // animate from up to down, with opacity 0 to 1
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            exit={{ opacity: 1, y: 10 }}
             className={cn(
               "flex items-center border px-3 py-2 rounded-lg shadow w-fit text-sm"
             )}
