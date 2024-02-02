@@ -624,7 +624,9 @@ export default {
     system: "System",
     "system-desc": "Fibo loves you and we hope you love Fibo too.",
     hi: "Hi",
-    "account-desc": "You can update your account information here."
+    "account-desc": "You can update your account information here.",
+    "delete-account": "Delete account",
+    delete: "Delete"
   },
   ModalClearChat: {
     clear: "Clear",
@@ -955,6 +957,8 @@ export default {
       "This will permanently delete your chat message and remove your data from our servers.",
     "delete-document-desc":
       "This will permanently delete your document and remove your data from our servers.",
+    "delete-account-desc":
+      "This will permanently delete your account and remove your data from our servers.",
     remove: "Remove",
     cancel: "Cancel",
     delete: "Delete",

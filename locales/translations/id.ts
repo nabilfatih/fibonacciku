@@ -642,7 +642,9 @@ export default {
     system: "Sistem",
     "system-desc": "Fibo mencintaimu dan kami harap kamu juga mencintai Fibo.",
     hi: "Hai",
-    "account-desc": "Anda dapat memperbarui informasi akun Anda di sini."
+    "account-desc": "Anda dapat memperbarui informasi akun Anda di sini.",
+    "delete-account": "Hapus akun",
+    delete: "Hapus"
   },
   ModalClearChat: {
     clear: "Hapus",
@@ -972,6 +974,8 @@ export default {
       "Ini akan menghapus pesan obrolan Anda secara permanen dan menghapus data Anda dari server kami.",
     "delete-document-desc":
       "Ini akan menghapus dokumen Anda secara permanen dan menghapus data Anda dari server kami.",
+    "delete-account-desc":
+      "Ini akan menghapus akun Anda secara permanen dan menghapus data Anda dari server kami.",
     remove: "Hapus",
     cancel: "Batal",
     delete: "Hapus",

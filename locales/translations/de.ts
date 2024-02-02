@@ -646,7 +646,9 @@ export default {
     system: "System",
     "system-desc": "Fibo liebt dich und wir hoffen, du liebst Fibo auch.",
     hi: "Hallo",
-    "account-desc": "Sie können hier Ihre Kontoinformationen aktualisieren."
+    "account-desc": "Sie können hier Ihre Kontoinformationen aktualisieren.",
+    "delete-account": "Konto löschen",
+    delete: "Löschen"
   },
   ModalClearChat: {
     clear: "Leeren",
@@ -988,6 +990,8 @@ export default {
       "Dies löscht Ihre Chat-Nachrichten dauerhaft und entfernt Ihre Daten von unseren Servern.",
     "delete-document-desc":
       "Dies löscht Ihr Dokument dauerhaft und entfernt Ihre Daten von unseren Servern.",
+    "delete-account-desc":
+      "Dies löscht Ihr Konto dauerhaft und entfernt Ihre Daten von unseren Servern.",
     remove: "Entfernen",
     cancel: "Abbrechen",
     delete: "Löschen",
