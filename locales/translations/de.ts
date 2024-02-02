@@ -505,7 +505,8 @@ export default {
     show: "Zeigen",
     hide: "Verbergen",
     "click-here": "Klicken Sie hier",
-    "ask-fibo-assistant": "Fragen Sie Fibo Assistent"
+    "ask-fibo-assistant": "Fragen Sie Fibo Assistent",
+    "using-plugins": "Verwenden von Plugins"
   },
   FormChat: {
     "fibonacciku-make-mistake": "Auch FibonacciKu macht manchmal Fehler",

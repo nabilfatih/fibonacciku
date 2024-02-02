@@ -504,7 +504,8 @@ export default {
     show: "Tampilkan",
     hide: "Sembunyikan",
     "click-here": "Klik di sini",
-    "ask-fibo-assistant": "Tanyakan Fibo Asisten"
+    "ask-fibo-assistant": "Tanyakan Fibo Asisten",
+    "using-plugins": "Menggunakan plugin"
   },
   FormChat: {
     "fibonacciku-make-mistake": "FibonacciKu terkadang membuat kesalahan",

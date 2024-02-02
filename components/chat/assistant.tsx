@@ -1,6 +1,8 @@
 import "katex/dist/katex.min.css"
 
+import React from "react"
 import Link from "next/link"
+import { motion } from "framer-motion"
 import type { Element } from "hast"
 import rehypeKatex from "rehype-katex"
 import rehypeRaw from "rehype-raw"
@@ -14,8 +16,10 @@ import remarkParse from "remark-parse"
 import type { IndexMessage } from "@/types/types"
 import { useMessage } from "@/lib/context/use-message"
 import { cn, replaceDelimiters } from "@/lib/utils"
+import { useScopedI18n } from "@/locales/client"
 
 import CodeBlock from "@/components/ui/codeblock"
+import { IconSpinner } from "@/components/ui/icons"
 import ImageMarkdown from "@/components/chat/image"
 import MemoizedReactMarkdown from "@/components/markdown"
 
@@ -26,6 +30,7 @@ type Props = {
 }
 
 export default function ChatAssistant({ index, content, currentIndex }: Props) {
+  const t = useScopedI18n("Chat")
   const { state, indexMessage } = useMessage()
   const contentIndex = currentIndex.currentMessage - 1
 
@@ -36,13 +41,46 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
     checkIndex &&
     currentIndex.currentMessage === content.length
 
+  const [isLoading, setIsLoading] = React.useState(false)
+
   // replace delimiters if latex not use dollar sign delimiter
   const message = `${replaceDelimiters(content[contentIndex] || "")}${
     isCursorDisplayed ? ". . . ▌" : ""
   }`
 
+  React.useEffect(() => {
+    const loadingTimer = setTimeout(() => {
+      // If message is still empty after 3 seconds, set isLoading to true
+      if (message === "" || message === "undefined" || message === "null") {
+        setIsLoading(true)
+      } else {
+        setIsLoading(false) // Clear the loading state when message is not empty
+      }
+    }, 3000)
+
+    return () => {
+      clearTimeout(loadingTimer) // Cleanup the timer on component unmount
+    }
+  }, [message])
+
   if (message === "" || message === "undefined" || message === "null") {
-    return <div className="animate-pulse pb-0.5">▌</div>
+    return (
+      <div className="flex flex-col gap-2">
+        <div className="animate-pulse pb-0.5">▌</div>
+        {isLoading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className={cn(
+              "flex items-center border px-3 py-2 rounded-lg shadow w-fit text-sm"
+            )}
+          >
+            {t("using-plugins")} <IconSpinner className="animate-spin ml-1" />
+          </motion.div>
+        )}
+      </div>
+    )
   }
 
   return (

@@ -498,7 +498,8 @@ export default {
     show: "Показать",
     hide: "Скрыть",
     "click-here": "Нажмите здесь",
-    "ask-fibo-assistant": "Спросите Fibo Assistant"
+    "ask-fibo-assistant": "Спросите Fibo Assistant",
+    "using-plugins": "Использование плагинов"
   },
   FormChat: {
     "fibonacciku-make-mistake": "Иногда FibonacciKu ошибается",
