@@ -73,7 +73,7 @@ export default async function SignupPage({ searchParams }: Props) {
       </p>
       <p className="px-8 text-center text-sm text-muted-foreground">
         <Link
-          href="/terms"
+          href="/terms-of-use"
           target="_blank"
           className="underline underline-offset-4 hover:text-primary"
         >
@@ -81,7 +81,7 @@ export default async function SignupPage({ searchParams }: Props) {
         </Link>{" "}
         &{" "}
         <Link
-          href="/privacy"
+          href="/privacy-policy"
           target="_blank"
           className="underline underline-offset-4 hover:text-primary"
         >
