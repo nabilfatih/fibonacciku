@@ -54,7 +54,7 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
     if (message === "" || message === "undefined" || message === "null") {
       const timer = setTimeout(() => {
         setLoading(true)
-      }, 3000)
+      }, 5000)
 
       const closeTimer = setTimeout(() => {
         setLoading(false)
