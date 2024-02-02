@@ -506,7 +506,8 @@ export default {
     hide: "Verbergen",
     "click-here": "Klicken Sie hier",
     "ask-fibo-assistant": "Fragen Sie Fibo Assistent",
-    "using-plugins": "Verwenden von Plugins"
+    "using-plugins": "Verwenden von Plugins",
+    thinking: "Denken"
   },
   FormChat: {
     "fibonacciku-make-mistake": "Auch FibonacciKu macht manchmal Fehler",

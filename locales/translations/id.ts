@@ -505,7 +505,8 @@ export default {
     hide: "Sembunyikan",
     "click-here": "Klik di sini",
     "ask-fibo-assistant": "Tanyakan Fibo Asisten",
-    "using-plugins": "Menggunakan plugin"
+    "using-plugins": "Menggunakan plugin",
+    thinking: "Sedang berpikir"
   },
   FormChat: {
     "fibonacciku-make-mistake": "FibonacciKu terkadang membuat kesalahan",

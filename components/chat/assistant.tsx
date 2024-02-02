@@ -41,7 +41,7 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
     checkIndex &&
     currentIndex.currentMessage === content.length
 
-  const [isLoading, setIsLoading] = React.useState(false)
+  const [loadingMessage, setLoadingMessage] = React.useState("")
 
   // replace delimiters if latex not use dollar sign delimiter
   const message = `${replaceDelimiters(content[contentIndex] || "")}${
@@ -50,16 +50,19 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
 
   React.useEffect(() => {
     const loadingTimer = setTimeout(() => {
-      // If message is still empty after 3 seconds, set isLoading to true
+      // If message is still empty after 3 seconds, set loadingMessage to 'Thinking'
       if (message === "" || message === "undefined" || message === "null") {
-        setIsLoading(true)
-      } else {
-        setIsLoading(false) // Clear the loading state when message is not empty
+        setLoadingMessage("thinking")
       }
-    }, 6000)
+    }, 3000)
+
+    const updateLoadingMessageTimer = setTimeout(() => {
+      setLoadingMessage("using-plugins")
+    }, 5000)
 
     return () => {
       clearTimeout(loadingTimer) // Cleanup the timer on component unmount
+      clearTimeout(updateLoadingMessageTimer) // Cleanup the timer on component unmount
     }
   }, [message])
 
@@ -67,7 +70,7 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
     return (
       <div className="flex flex-col gap-2">
         <div className="animate-pulse pb-0.5">▌</div>
-        {isLoading && (
+        {loadingMessage && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -76,7 +79,8 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
               "flex items-center border px-3 py-2 rounded-lg shadow w-fit text-sm"
             )}
           >
-            {t("using-plugins")} <IconSpinner className="animate-spin ml-1" />
+            {t(loadingMessage as never)}
+            <IconSpinner className="animate-spin ml-1" />
           </motion.div>
         )}
       </div>

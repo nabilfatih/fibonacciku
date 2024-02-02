@@ -488,7 +488,8 @@ export default {
     hide: "Hide",
     "click-here": "Click here",
     "ask-fibo-assistant": "Ask Fibo Assistant",
-    "using-plugins": "Using plugins"
+    "using-plugins": "Using plugins",
+    thinking: "Thinking"
   },
   FormChat: {
     "fibonacciku-make-mistake": "FibonacciKu makes mistakes sometimes",
