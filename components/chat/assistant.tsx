@@ -49,13 +49,24 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
   }`
 
   React.useEffect(() => {
-    // if the message still empty, after 3 seconds, show the loading
-    const timeout = setTimeout(() => {
-      if (message === "" || message === "undefined" || message === "null") {
+    // if the message still empty, after 3 seconds, show the loading. But close after 10 seconds
+    // But if message is not empty, reset the loading state
+    if (message === "" || message === "undefined" || message === "null") {
+      const timer = setTimeout(() => {
         setLoading(true)
+      }, 3000)
+
+      const closeTimer = setTimeout(() => {
+        setLoading(false)
+      }, 10000)
+
+      return () => {
+        clearTimeout(timer)
+        clearTimeout(closeTimer)
       }
-    }, 3000)
-    return () => clearTimeout(timeout)
+    } else {
+      setLoading(false)
+    }
   }, [message])
 
   if (message === "" || message === "undefined" || message === "null") {
