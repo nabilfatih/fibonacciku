@@ -41,7 +41,7 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
     checkIndex &&
     currentIndex.currentMessage === content.length
 
-  const [loadingMessage, setLoadingMessage] = React.useState("")
+  const [loading, setLoading] = React.useState(false)
 
   // replace delimiters if latex not use dollar sign delimiter
   const message = `${replaceDelimiters(content[contentIndex] || "")}${
@@ -49,28 +49,20 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
   }`
 
   React.useEffect(() => {
-    const loadingTimer = setTimeout(() => {
-      // If message is still empty after 3 seconds, set loadingMessage to 'Thinking'
+    // if the message still empty, after 3 seconds, show the loading
+    const timeout = setTimeout(() => {
       if (message === "" || message === "undefined" || message === "null") {
-        setLoadingMessage("thinking")
+        setLoading(true)
       }
     }, 3000)
-
-    const updateLoadingMessageTimer = setTimeout(() => {
-      setLoadingMessage("using-plugins")
-    }, 5000)
-
-    return () => {
-      clearTimeout(loadingTimer) // Cleanup the timer on component unmount
-      clearTimeout(updateLoadingMessageTimer) // Cleanup the timer on component unmount
-    }
+    return () => clearTimeout(timeout)
   }, [message])
 
   if (message === "" || message === "undefined" || message === "null") {
     return (
       <div className="flex flex-col gap-2">
         <div className="animate-pulse pb-0.5">▌</div>
-        {loadingMessage && (
+        {loading && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -79,7 +71,7 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
               "flex items-center border px-3 py-2 rounded-lg shadow w-fit text-sm"
             )}
           >
-            {t(loadingMessage as never)}
+            {t("thinking")}
             <IconSpinner className="animate-spin ml-1" />
           </motion.div>
         )}
