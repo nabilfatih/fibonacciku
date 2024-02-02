@@ -66,7 +66,8 @@ export const determineModelBasedOnSubscription = cache(
     return {
       model: defaultModel,
       subscription,
-      additionalTools: [],
+      // additionalTools: [],
+      additionalTools: listToolsChat, // for now, for experimentation free users can use some tools
       isCostLimit
     }
   },

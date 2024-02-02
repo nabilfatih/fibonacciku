@@ -115,7 +115,8 @@ export const pluginsList = [
     icon: IconPhotoHeart,
     title: "image-generation",
     helper: "image-generation-helper",
-    premium: true
+    // premium: true
+    premium: false // for experimental purposes, free for now
   },
   {
     icon: IconMath,
