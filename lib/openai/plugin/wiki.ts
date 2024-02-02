@@ -137,7 +137,7 @@ export const wikiFeedFeature = cache(
       return {
         type: "wiki",
         message:
-          "Always show all the urls of results, but not full url, instead just the title of the article",
+          "Always show all the urls of results. Never answer without the urls",
         results: finalData
       }
     } catch (error) {
@@ -189,7 +189,7 @@ export const wikiSearchContent = cache(
       return {
         type: "wiki",
         message:
-          "Always show all the urls of results, but not full url, instead just the title",
+          "Always show all the urls of results. Never answer without the urls",
         results: finalData
       }
     } catch (error) {
