@@ -13,7 +13,12 @@ const fetcher = (url: string): Promise<ResponseData> =>
 export default function useChatHistory(userId: string) {
   const { data, error, isLoading, mutate } = useSWR<ResponseData>(
     userId ? `/api/app/get-user-chat/${userId}` : null,
-    fetcher
+    fetcher,
+    {
+      refreshWhenHidden: true,
+      revalidateOnMount: true,
+      refreshWhenOffline: true
+    }
   )
 
   return {

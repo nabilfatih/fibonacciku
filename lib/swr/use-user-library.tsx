@@ -14,7 +14,12 @@ export default function useUserLibrary(userId: string) {
   // if userId is empty string, return not fetch
   const { data, error, isLoading, isValidating, mutate } = useSWR<ResponseData>(
     userId ? `/api/app/get-library/${userId}` : null,
-    fetcher
+    fetcher,
+    {
+      refreshWhenHidden: true,
+      revalidateOnMount: true,
+      refreshWhenOffline: true
+    }
   )
 
   return {
