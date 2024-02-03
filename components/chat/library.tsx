@@ -38,7 +38,7 @@ type Props = {
 
 export default function ChatLibrary({ userId }: Props) {
   const t = useScopedI18n("EmptyScreen")
-  const { libraries } = useUserLibrary(userId)
+  const { libraries, mutate } = useUserLibrary(userId)
   const { append, dispatch } = useMessage()
 
   const searchParams = useSearchParams()
@@ -111,13 +111,18 @@ export default function ChatLibrary({ userId }: Props) {
                 }}
                 viewport={{ amount: 0 }}
                 disabled={
-                  library.status !== "finished" || typeof loadingId === "string"
+                  library.status === "invalid" || typeof loadingId === "string"
                 }
                 className={cn(
                   "inline-flex w-full items-center justify-between gap-2 rounded-xl border px-4 py-3 shadow transition-colors hover:bg-muted/50 disabled:pointer-events-none disabled:opacity-50",
                   libraryId === library.id && "animate-bounce"
                 )}
                 onClick={async () => {
+                  // if status not finished, mutate the library
+                  if (library.status !== "finished") {
+                    mutate()
+                    return
+                  }
                   if (loadingId === library.id) return
                   setLoadingId(library.id)
                   const currentDocument = await getChatDocumentSignedUrl(
