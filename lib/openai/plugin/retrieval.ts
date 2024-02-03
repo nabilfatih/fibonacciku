@@ -32,7 +32,7 @@ export const documentRetrieval = cache(
         metadata
       })
 
-      const cleanData = formatCleanData(results, 10, fileId)
+      const cleanData = formatCleanData(results, 5, fileId)
 
       return {
         message:
@@ -81,7 +81,7 @@ export const bookRetrieval = cache(
         metadata
       })
 
-      const cleanData = formatCleanData(results, 10, fileId)
+      const cleanData = formatCleanData(results, 5, fileId)
 
       return {
         message:
