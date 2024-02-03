@@ -118,7 +118,7 @@ export default function ChatMessage({
         type={type}
         title={title}
         createdAt={createdAt}
-        fileId={fileId}
+        fileId={fileId || state.currentChat?.file_id}
       />
     </>
   )

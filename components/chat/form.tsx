@@ -39,7 +39,7 @@ export default function PromptForm({
 }: PromptProps) {
   const t = useScopedI18n("FormChat")
 
-  const { dispatch } = useMessage()
+  const { dispatch, state } = useMessage()
 
   const { formRef, onKeyDown } = useEnterSubmit()
   const fileRef = React.useRef<HTMLInputElement>(null)
@@ -87,11 +87,11 @@ export default function PromptForm({
         if (!input?.trim()) {
           return
         }
-        if (type == "document" && !id) {
+        if (type == "document" && !fileId) {
           toast.error("Choose document first!")
           return
         }
-        if (type === "book" && !id) {
+        if (type === "book" && !fileId) {
           toast.error("Choose book first!")
           return
         }
