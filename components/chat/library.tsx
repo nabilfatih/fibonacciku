@@ -97,19 +97,19 @@ export default function ChatLibrary({ userId }: Props) {
             {finishedLibraries.map((library, index) => (
               <motion.button
                 key={library.id}
-                type="button"
+                title={library.name}
                 variants={{
-                  hidden: { opacity: 0 },
-                  visible: { opacity: 1 }
+                  hidden: { opacity: 0, y: -10 },
+                  visible: { opacity: 1, y: 0 }
                 }}
-                initial="hidden"
-                animate="visible"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{
-                  delay: index * 0.05,
                   ease: "easeInOut",
                   duration: 0.5
                 }}
                 viewport={{ amount: 0 }}
+                exit={{ opacity: 0, y: 10 }}
                 disabled={
                   library.status === "invalid" || typeof loadingId === "string"
                 }
