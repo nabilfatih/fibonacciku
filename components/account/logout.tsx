@@ -13,7 +13,7 @@ export default function AccountLogout() {
   const router = useRouter()
   return (
     <Button
-      variant="destructive"
+      variant="outline"
       onClick={async () => {
         await supabaseClient.auth.signOut()
         router.replace("/auth/login")
