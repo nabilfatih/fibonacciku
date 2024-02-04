@@ -1,5 +1,5 @@
 import {
-  IconBook2,
+  IconCrown,
   IconFiles,
   IconPhotoHeart,
   IconPhotoScan,
@@ -51,13 +51,13 @@ export default async function PremiumFeatures() {
         </div>
 
         <div className="flex items-start gap-2">
-          <IconBook2 className="h-6 w-6 min-w-6" />
+          <IconCrown className="h-6 w-6 min-w-6" />
           <div className="flex flex-col gap-1">
             <h2 className="text-lg font-semibold leading-none tracking-tight">
-              {t("books-access")}
+              {t("priority-access")}
             </h2>
             <p className="text-sm text-muted-foreground">
-              {t("books-access-desc")}
+              {t("priority-access-desc")}
             </p>
           </div>
         </div>

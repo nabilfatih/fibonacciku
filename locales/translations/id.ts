@@ -346,6 +346,8 @@ export default {
       "Beritahu kami imajinasi Anda dan fibo akan menghasilkannya untuk Anda. Didukung oleh model kecerdasan buatan DALL-E.",
     "see-our-plugins": "Lihat plugin kami",
     "priority-access": "Akses prioritas",
+    "priority-access-desc":
+      "Ketika server kami dalam kapasitas tinggi, Anda masih dapat mengakses fibo tanpa masalah apa pun.",
     "dedicated-support": "Dukungan khusus",
     "chat-with-founder": "Obrolan dengan pendiri",
     "download-book": "Unduh buku",

@@ -338,6 +338,8 @@ export default {
       "Let us know your imagination and fibo will generate it for you. Powered by DALL-E AI model.",
     "see-our-plugins": "See our plugins",
     "priority-access": "Priority access",
+    "priority-access-desc":
+      "When our server is in high capacity, you can still access fibo without any problem.",
     "dedicated-support": "Dedicated support",
     "chat-with-founder": "Chat with founder",
     "download-book": "Download book",

@@ -348,6 +348,8 @@ export default {
       "Teilen Sie uns Ihre Vorstellung mit, und fibo wird es für Sie generieren. Unterstützt durch das DALL-E KI-Modell.",
     "see-our-plugins": "Sehen Sie unsere Plugins",
     "priority-access": "Prioritätszugang",
+    "priority-access-desc":
+      "Wenn unser Server eine hohe Auslastung hat, können Sie fibo weiterhin problemlos nutzen.",
     "dedicated-support": "Dedizierter Support",
     "chat-with-founder": "Chat mit dem Gründer",
     "download-book": "Buch herunterladen",
