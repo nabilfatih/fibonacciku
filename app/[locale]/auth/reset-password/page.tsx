@@ -27,7 +27,7 @@ export default async function ResetPasswordPage() {
 
   return (
     <>
-      <header className="flex flex-col space-y-2 text-center">
+      <header className="flex flex-col space-y-2 text-center pb-4">
         <h1 className="text-2xl font-semibold tracking-tight">
           {t("reset-password")}
         </h1>

@@ -8,7 +8,7 @@ export default async function ForgotPasswordPage() {
   const t = await getScopedI18n("Auth")
   return (
     <>
-      <header className="flex flex-col space-y-2 text-center">
+      <header className="flex flex-col space-y-2 text-center pb-4">
         <h1 className="text-2xl font-semibold tracking-tight">
           {t("forgot-password")}
         </h1>
