@@ -94,7 +94,8 @@ export async function POST(req: Request) {
       {
         error: {
           statusCode: 402,
-          message: "Limit access, please consider to buy premium"
+          message:
+            "Fibo is in high capacity, please consider to buy premium to get unlimited access"
         }
       },
       {
