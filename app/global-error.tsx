@@ -31,7 +31,7 @@ export default function GlobalError({
       >
         <div className="flex min-h-[100dvh] flex-col">
           <main className="flex flex-1 flex-col overflow-hidden">
-            <div className="relative flex h-[calc(100dvh-4rem)] overflow-hidden">
+            <div className="relative flex h-[100dvh] overflow-hidden">
               <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center space-y-4 px-4 text-center">
                 <h2 className="text-4xl font-bold">{t("something-wrong")}</h2>
                 <Button onClick={reset}>{t("try-again")}</Button>
