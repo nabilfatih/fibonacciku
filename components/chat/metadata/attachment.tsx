@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import Image from "next/image"
-import useSWR from "swr"
+import useSWRImmutable from "swr/immutable"
 
 import type { Attachment, UserDetails } from "@/types/types"
 import { useCurrentUser } from "@/lib/context/use-current-user"
@@ -27,13 +27,11 @@ type Props = {
 
 export default function ChatMetadataAttachment({ metadata }: Props) {
   const { userDetails } = useCurrentUser()
-  const { data } = useSWR(
+  const { data } = useSWRImmutable(
     userDetails && metadata.length > 0 ? [userDetails, metadata] : null,
     fetchChatAttachment,
     {
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
-      revalidateIfStale: false
+      refreshInterval: 1000 * 60 * 60 * 24 // 24 hours
     }
   )
 
