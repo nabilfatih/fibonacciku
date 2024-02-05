@@ -2,6 +2,8 @@ import { Suspense } from "react"
 
 import { MessageContextProvider } from "@/lib/context/use-message"
 
+import Confetti from "@/components/ui/confetti"
+
 export default function ChatLayout({
   children
 }: {
@@ -9,6 +11,7 @@ export default function ChatLayout({
 }) {
   return (
     <MessageContextProvider>
+      <Confetti />
       <Suspense>{children}</Suspense>
     </MessageContextProvider>
   )

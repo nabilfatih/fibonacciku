@@ -25,7 +25,7 @@ export async function POST(req: Request) {
       if (!customer) throw Error("Could not get customer")
       const { url } = await stripe.billingPortal.sessions.create({
         customer: customer.customer_id,
-        return_url: `${getURL()}/chat/assistant`
+        return_url: `${getURL()}/account`
       })
       return NextResponse.json(
         {

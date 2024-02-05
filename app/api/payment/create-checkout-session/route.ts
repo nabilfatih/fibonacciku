@@ -64,7 +64,7 @@ export async function POST(req: Request) {
           metadata
         },
         success_url: `${getURL()}/chat/assistant?payment=success`,
-        cancel_url: `${getURL()}/account`
+        cancel_url: `${getURL()}/premium`
       })
 
       if (session) {
