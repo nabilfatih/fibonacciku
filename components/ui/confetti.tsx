@@ -18,7 +18,7 @@ function Confetti() {
       width={window.innerWidth}
       height={window.innerHeight}
       numberOfPieces={1000}
-      gravity={0.1}
+      gravity={0.05}
       recycle={false}
       onConfettiComplete={() => {
         // get the pathname without the query string
