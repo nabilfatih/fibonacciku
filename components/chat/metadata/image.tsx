@@ -52,6 +52,7 @@ export default function ChatMetadataImage({ metadata }: Props) {
                 priority
                 width={256}
                 height={256}
+                unoptimized // decrease cost of image optimization
                 className="m-0 cursor-pointer rounded-xl border bg-muted/90 object-cover shadow-sm"
               />
             </motion.a>

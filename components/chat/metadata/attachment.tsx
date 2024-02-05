@@ -78,6 +78,7 @@ export default function ChatMetadataAttachment({ metadata }: Props) {
                     window.open(imageUrl, "_blank")
                     return false // Prevents link from opening in new tab
                   }}
+                  unoptimized // decrease cost of image optimization
                   className={cn(
                     "m-0 cursor-pointer rounded-xl border bg-muted/90 object-cover shadow-sm",
                     imageLoaded ? "block" : "hidden"
