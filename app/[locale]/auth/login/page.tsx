@@ -48,7 +48,7 @@ export default async function LoginPage({ searchParams }: Props) {
 
   return (
     <>
-      <header className="flex flex-col space-y-2 text-center pb-4">
+      <header className="flex flex-col space-y-2 pb-4 text-center">
         <h1 className="text-2xl font-semibold tracking-tight">
           {t("welcome")}
         </h1>

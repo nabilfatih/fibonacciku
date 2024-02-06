@@ -47,7 +47,7 @@ export default function BookAssistantResult({ result }: Props) {
         rehypePlugins={[rehypeKatex, rehypeRaw, rehypeStringify]}
         components={{
           p({ children }) {
-            return <p className="mb-2 last:mb-0">{children}</p>
+            return <p className="mb-2 w-fit last:mb-0">{children}</p>
           },
           hr() {
             return <hr className="my-6 border-foreground/30" />
