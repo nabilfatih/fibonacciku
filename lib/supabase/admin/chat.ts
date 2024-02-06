@@ -244,7 +244,7 @@ export const uploadChatImageAdmin = async (
   return { fileId, data }
 }
 
-export const getChatImagePublicUrlAdmin = async (
+export const getChatImagePublicUrlAdmin = (
   userId: string,
   chatId: string,
   fileId: string

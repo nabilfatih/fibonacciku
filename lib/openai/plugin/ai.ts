@@ -3,6 +3,7 @@ import {
   getChatImagePublicUrlAdmin,
   uploadChatImageAdmin
 } from "@/lib/supabase/admin/chat"
+import { updateUserUsageAdmin } from "@/lib/supabase/admin/users"
 
 import { openai } from ".."
 
@@ -118,12 +119,15 @@ export const generateImage = async (
       })
 
       const image = imageResponse.data[0]
-      const { fileId } = await uploadChatImageAdmin(
-        userId,
-        chatId,
-        String(image.b64_json)
-      )
-      const url = await getChatImagePublicUrlAdmin(userId, chatId, fileId)
+
+      // in parallel, upload and update user usage
+      const [dataFile] = await Promise.all([
+        uploadChatImageAdmin(userId, chatId, String(image.b64_json)),
+        updateUserUsageAdmin(userId, 5)
+      ])
+
+      const url = getChatImagePublicUrlAdmin(userId, chatId, dataFile.fileId)
+
       return {
         prompt: image.revised_prompt || prompt,
         image: url
