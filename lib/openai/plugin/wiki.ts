@@ -155,7 +155,7 @@ export const wikiFeedFeature = cache(
       return {
         type: "wiki",
         message:
-          "Always show all the urls of results. Never answer without the urls",
+          "Always show all the urls and the images of results. Never answer without the urls",
         results: finalData
       }
     } catch (error) {
