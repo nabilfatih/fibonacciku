@@ -686,7 +686,9 @@ export default {
     "website-scraping": "Website scraping",
     "website-scraping-helper": "Get information from https://...",
     "solve-math": "Solve math",
-    "solve-math-helper": "Help solve math problem..."
+    "solve-math-helper": "Help solve math problem...",
+    "wikipedia-article": "Wikipedia",
+    "wikipedia-article-helper": "Search on wikipedia about something..."
   },
   ModalContact: {
     contact: "Contact",

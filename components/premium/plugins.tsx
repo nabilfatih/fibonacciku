@@ -1,5 +1,6 @@
 import {
   IconBooks,
+  IconBrandWikipedia,
   IconBrandYoutube,
   IconDiscountCheckFilled,
   IconMath,
@@ -152,6 +153,12 @@ export const pluginsList = [
     icon: IconSitemap,
     title: "website-scraping",
     helper: "website-scraping-helper",
+    premium: false
+  },
+  {
+    icon: IconBrandWikipedia,
+    title: "wikipedia-article",
+    helper: "wikipedia-article-helper",
     premium: false
   }
 ] as const

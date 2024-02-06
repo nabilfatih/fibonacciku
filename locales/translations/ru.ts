@@ -699,7 +699,9 @@ export default {
     "website-scraping": "Сбор информации с веб-сайта",
     "website-scraping-helper": "Получить информацию с https://...",
     "solve-math": "Решить математику",
-    "solve-math-helper": "Помогите решить математическую задачу..."
+    "solve-math-helper": "Помогите решить математическую задачу...",
+    "wikipedia-article": "Википедия",
+    "wikipedia-article-helper": "Ищите на Википедии о чем-то..."
   },
   ModalContact: {
     contact: "Контакт",

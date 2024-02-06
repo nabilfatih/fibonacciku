@@ -709,7 +709,9 @@ export default {
     "website-scraping": "Webseiten-Scraping",
     "website-scraping-helper": "Hole Informationen von https://...",
     "solve-math": "Löse Mathe",
-    "solve-math-helper": "Hilf mir, Mathe zu lösen..."
+    "solve-math-helper": "Hilf mir, Mathe zu lösen...",
+    "wikipedia-article": "Wikipedia",
+    "wikipedia-article-helper": "Suche auf Wikipedia nach etwas..."
   },
   ModalContact: {
     contact: "Kontakt",

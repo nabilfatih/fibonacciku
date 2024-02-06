@@ -705,7 +705,9 @@ export default {
     "website-scraping": "Website Scraping",
     "website-scraping-helper": "Dapatkan informasi dari https://...",
     "solve-math": "Pecahkan matematika",
-    "solve-math-helper": "Bantu pecahkan masalah matematika..."
+    "solve-math-helper": "Bantu pecahkan masalah matematika...",
+    "wikipedia-article": "Wikipedia",
+    "wikipedia-article-helper": "Cari di Wikipedia tentang sesuatu..."
   },
   ModalContact: {
     contact: "Kontak",
