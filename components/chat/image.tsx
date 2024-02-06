@@ -14,7 +14,7 @@ function ImageMarkdown({ src, alt }: Props) {
 
   if (dataSrc.includes("i.ytimg.com")) {
     return (
-      <Link href={dataSrc} passHref target="_blank">
+      <Link href={dataSrc} target="_blank">
         <Image
           src={src}
           alt={alt || "Thumbnail YouTube"}
@@ -29,7 +29,7 @@ function ImageMarkdown({ src, alt }: Props) {
   }
 
   return (
-    <Link href={dataSrc} passHref target="_blank">
+    <Link href={dataSrc} target="_blank">
       <Image
         src={dataSrc}
         alt={alt || "Image"}

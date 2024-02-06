@@ -65,6 +65,24 @@ export type WikiImage = {
   text: string
 }
 
+export type WikiSearchContent = {
+  pages: {
+    id: number
+    key: string
+    title?: string
+    excerpt?: string
+    match_title?: string | null
+    description?: string
+    thumbnail?: {
+      mimetype: string
+      width?: number
+      height?: number
+      duration: number | null
+      url: string
+    } | null
+  }[]
+}
+
 export const wikiFeedFeature = cache(
   async (
     lang: string = "en",
@@ -180,16 +198,26 @@ export const wikiSearchContent = cache(
         throw new Error(`Error searching Wiki: ${response.statusText}`)
       }
 
-      const data = await response.json()
+      const data: WikiSearchContent = await response.json()
+
+      const searchResults =
+        data?.pages?.map(page => ({
+          title: page.title || "",
+          excerpt: page.excerpt || "",
+          description: page.description || "",
+          thumbnail: {
+            url: cleanWikiThumbnailUrl(page.thumbnail?.url || "")
+          }
+        })) || []
 
       const finalData = {
-        searchResults: data?.pages || {}
+        searchResults: searchResults
       }
 
       return {
         type: "wiki",
         message:
-          "Always show all the urls of results. Never answer without the urls",
+          "Always show all the urls and the images of results. Never answer without the urls",
         results: finalData
       }
     } catch (error) {
@@ -215,4 +243,9 @@ function mapWikiLinkToArticle(link: WikiLink): WikiArticle {
     url: link?.content_urls?.desktop?.page || "",
     extract: link?.extract || ""
   }
+}
+
+function cleanWikiThumbnailUrl(url: string) {
+  const sanitizedUrl = url.startsWith("https:") ? url : "https:" + url
+  return sanitizedUrl.split("/").slice(0, -1).join("/").replace("/thumb", "")
 }
