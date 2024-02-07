@@ -122,7 +122,7 @@ export const defaultToolsChat: Tool[] = [
           query: {
             type: "string",
             description:
-              "the query to get the explanation, description, or definition. Must be clear and specific what to get. Must only 1-4 words."
+              "the query to get the explanation, description, or definition. Must be clear and specific what to get. Must only 1-4 words. Always in english language."
           }
         },
         required: ["query"]
