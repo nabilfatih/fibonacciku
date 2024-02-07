@@ -38,7 +38,7 @@ export default function UserMenu() {
   const t = useScopedI18n("ModalAccount")
   const router = useRouter()
 
-  const { userDetails } = useCurrentUser()
+  const { userDetails, isLoading } = useCurrentUser()
 
   const config = genConfig(
     userDetails?.full_name ?? userDetails?.email ?? "Anonymous"
@@ -47,6 +47,17 @@ export default function UserMenu() {
   const handleLogout = async () => {
     await supabaseClient.auth.signOut()
     router.replace("/auth/login")
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-between">
+        <Avatar
+          className="h-9 w-9 rounded-full border border-border object-cover shadow transition-opacity duration-300 hover:opacity-80"
+          {...config}
+        />
+      </div>
+    )
   }
 
   if (!userDetails) {
