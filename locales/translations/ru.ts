@@ -609,6 +609,7 @@ export default {
     "link-not-available": "Ссылка недоступна"
   },
   ModalAccount: {
+    admin: "Администратор",
     login: "Вход",
     account: "Аккаунт",
     "your-email": "Ваша электронная почта",

@@ -6,12 +6,14 @@ import {
   IconBook,
   IconDiscountCheck,
   IconExternalLink,
+  IconHomeShield,
   IconLogin,
   IconUser
 } from "@tabler/icons-react"
 import Avatar, { genConfig } from "react-nice-avatar"
 
 import { useCurrentUser } from "@/lib/context/use-current-user"
+import { admin } from "@/lib/data/admin"
 import supabaseClient from "@/lib/supabase/client"
 import { useScopedI18n } from "@/locales/client"
 
@@ -117,6 +119,17 @@ export default function UserMenu() {
               <IconUser className="ml-auto h-4 w-4" />
             </Link>
           </DropdownMenuItem>
+          {admin.has(userDetails.email || "") && (
+            <DropdownMenuItem asChild className="py-2">
+              <Link
+                href="/admin"
+                className="inline-flex w-full cursor-pointer items-center justify-between"
+              >
+                {t("admin")}
+                <IconHomeShield className="ml-auto h-4 w-4" />
+              </Link>
+            </DropdownMenuItem>
+          )}
           <DropdownMenuItem asChild className="py-2">
             <Link
               href="/premium"
