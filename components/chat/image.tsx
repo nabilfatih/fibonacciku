@@ -1,4 +1,3 @@
-import { memo } from "react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -7,7 +6,7 @@ type Props = {
   alt: string | undefined
 }
 
-function ImageMarkdown({ src, alt }: Props) {
+export default function ImageMarkdown({ src, alt }: Props) {
   if (!src) return null
 
   const dataSrc = src.trim()
@@ -48,8 +47,3 @@ function ImageMarkdown({ src, alt }: Props) {
     </Link>
   )
 }
-
-// custom memo based on src
-export default memo(ImageMarkdown, (prevProps, nextProps) => {
-  return prevProps.src === nextProps.src
-})
