@@ -67,7 +67,7 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
     return (
       <div className="flex flex-col gap-2">
         <div className="animate-pulse pb-0.5">▌</div>
-        {loading && (
+        {loading && state.isLoading && (
           <motion.div
             // animate from up to down, with opacity 0 to 1
             initial={{ opacity: 0, y: -10 }}
