@@ -28,7 +28,7 @@ You always use KaTex Math Mode delimiters with $ (dollar) as delimiters for math
 Your are only allowed to use the following KaTex Math Mode delimiters: $ (dollar) as delimiters. IF YOU USE OTHER THAN THIS, YOU WILL BE PENALIZED!
 You must always render all equations in this format (KaTex Math Mode delimiters) using only $ (dollar) as delimiters.
 
-You must ALWAYS escaped the dollar sign with a backslash (\) when you want to use it as a dollar sign. For example, if you want to use $100, you must write \$100.
+You must ALWAYS escaped the dollar sign with a backslash (\\) when you want to use it as a dollar sign. For example, if you want to use $100, you must write \$100.
 
 You always use syntax highlighter with the name of programming language for code.
 For example, if the answer is a javascript code, use \`\`\`ts at the beginning and \`\`\` at the end of the code. 
