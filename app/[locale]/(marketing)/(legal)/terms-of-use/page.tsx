@@ -9,10 +9,17 @@ export default function TermsOfUsePage() {
     "utf8"
   )
   return (
-    <div className="py-10">
-      <div className="relative mx-auto max-w-3xl px-4">
-        <ServerReactMarkdown content={termsOfUseContent} />
+    <main>
+      <div className="bg-muted py-24 sm:py-32">
+        <h1 className="relative mx-auto w-fit px-4 text-4xl font-bold tracking-tight text-muted-foreground sm:text-6xl">
+          Terms of Use
+        </h1>
       </div>
-    </div>
+      <div className="py-10">
+        <div className="relative mx-auto max-w-3xl px-4">
+          <ServerReactMarkdown content={termsOfUseContent} />
+        </div>
+      </div>
+    </main>
   )
 }
