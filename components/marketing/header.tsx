@@ -4,6 +4,7 @@ import Link from "next/link"
 import { IconSeparator } from "@/components/ui/icons"
 import HeaderBadge from "@/components/header/badge"
 import UserMenu from "@/components/header/user-menu"
+import { ThemeToggle } from "@/components/theme/toggle"
 
 export function MarketingHeader() {
   return (
@@ -33,6 +34,7 @@ export function MarketingHeader() {
         </h1>
       </div>
       <div className="flex items-center justify-end space-x-2 sm:space-x-3">
+        <ThemeToggle side="bottom" align="end" />
         <UserMenu />
       </div>
     </header>
