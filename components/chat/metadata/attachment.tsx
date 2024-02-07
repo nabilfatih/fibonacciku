@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { memo, useEffect, useState } from "react"
 import Image from "next/image"
 import useSWRImmutable from "swr/immutable"
 
@@ -25,9 +25,9 @@ type Props = {
   metadata: Attachment[]
 }
 
-export default function ChatMetadataAttachment({ metadata }: Props) {
+function ChatMetadataAttachment({ metadata }: Props) {
   const { userDetails } = useCurrentUser()
-  const { data } = useSWRImmutable(
+  const { data: imageUrls } = useSWRImmutable(
     userDetails && metadata.length > 0 ? [userDetails, metadata] : null,
     fetchChatAttachment,
     {
@@ -37,14 +37,12 @@ export default function ChatMetadataAttachment({ metadata }: Props) {
 
   const [loaded, setLoaded] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
-  const [imageUrls, setImageUrls] = useState<string[]>([])
 
   useEffect(() => {
-    if (data) {
-      setImageUrls(data)
+    if (imageUrls) {
       setLoaded(true)
     }
-  }, [data])
+  }, [imageUrls])
 
   return (
     <>
@@ -52,7 +50,7 @@ export default function ChatMetadataAttachment({ metadata }: Props) {
         <Loading />
       ) : (
         <div className="flex flex-wrap gap-4">
-          {imageUrls.map((url, index) => {
+          {imageUrls?.map((url, index) => {
             return (
               <div key={url} className="relative rounded-xl">
                 {!imageLoaded && (
@@ -98,3 +96,5 @@ function Loading() {
     </div>
   )
 }
+
+export default memo(ChatMetadataAttachment)
