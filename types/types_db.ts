@@ -261,6 +261,45 @@ export type Database = {
         }
         Relationships: []
       }
+      blogs: {
+        Row: {
+          id: string
+          title: string
+          description: string
+          content: string
+          cover: string | null
+          authors: string
+          seen: number
+          tags: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id: string
+          title: string
+          description: string
+          content: string
+          cover: string | null
+          authors: string
+          seen: number
+          tags: string | null
+          created_at: string
+          updated_at: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          description?: string
+          content?: string
+          cover?: string | null
+          authors?: string
+          seen?: number
+          tags?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        relationships: []
+      }
       documents: {
         Row: {
           content: string | null

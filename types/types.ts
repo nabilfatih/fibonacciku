@@ -125,6 +125,19 @@ export type Books = {
   updated_at: string
 }
 
+export type Blogs = {
+  id: string
+  title: string
+  description: string
+  content: string
+  cover: string | null
+  authors: string
+  seen: number
+  tags: string | null
+  created_at: string
+  updated_at: string
+}
+
 export type ShareChat = {
   id: string
   user_id: string
