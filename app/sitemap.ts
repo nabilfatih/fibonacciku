@@ -24,7 +24,9 @@ const pathnames = [
   "/book/collection",
   "/school",
   "/share",
-  "/account"
+  "/account",
+  "/terms-of-use",
+  "/privacy-policy"
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

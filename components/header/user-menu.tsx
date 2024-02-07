@@ -6,6 +6,7 @@ import {
   IconBook,
   IconDiscountCheck,
   IconExternalLink,
+  IconLogin,
   IconUser
 } from "@tabler/icons-react"
 import Avatar, { genConfig } from "react-nice-avatar"
@@ -19,6 +20,7 @@ import {
   AvatarImage,
   Avatar as UiAvatar
 } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -40,34 +42,30 @@ export default function UserMenu() {
     userDetails?.full_name ?? userDetails?.email ?? "Anonymous"
   )
 
+  const handleLogout = async () => {
+    await supabaseClient.auth.signOut()
+    router.replace("/auth/login")
+  }
+
   if (!userDetails) {
     return (
       <div className="flex items-center justify-between">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <div role="button" className="cursor-pointer">
-              <Avatar
-                className="h-9 w-9 rounded-full border border-border/30 object-cover shadow-sm transition-opacity duration-300 hover:opacity-80"
-                {...config}
-              />
-            </div>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            sideOffset={8}
-            align="end"
-            className="w-full max-w-[225px]"
-          >
-            <DropdownMenuItem
-              onClick={async () => {
-                await supabaseClient.auth.signOut()
-                router.replace("/auth/login")
-              }}
-              className="cursor-pointer py-2"
-            >
-              {t("logout")}
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={handleLogout}
+          className="sm:hidden"
+        >
+          <IconLogin className="h-5 w-5" />
+        </Button>
+
+        <Button
+          variant="outline"
+          onClick={handleLogout}
+          className="hidden sm:inline-flex"
+        >
+          {t("login")}
+        </Button>
       </div>
     )
   }
@@ -167,10 +165,7 @@ export default function UserMenu() {
             </Link>
           </DropdownMenuItem> */}
           <DropdownMenuItem
-            onClick={async () => {
-              await supabaseClient.auth.signOut()
-              router.replace("/auth/login")
-            }}
+            onClick={handleLogout}
             className="cursor-pointer py-2"
           >
             {t("logout")}

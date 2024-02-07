@@ -596,6 +596,7 @@ export default {
     "link-not-available": "Link not available"
   },
   ModalAccount: {
+    login: "Login",
     account: "Account",
     "your-email": "Your email",
     "reset-password": "Reset password",

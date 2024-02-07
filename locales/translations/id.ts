@@ -614,6 +614,7 @@ export default {
     "link-not-available": "Tautan tidak tersedia"
   },
   ModalAccount: {
+    login: "Masuk",
     account: "Akun",
     "your-email": "Email Anda",
     "reset-password": "Atur ulang kata sandi",

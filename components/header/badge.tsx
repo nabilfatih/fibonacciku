@@ -10,9 +10,9 @@ import { Badge } from "@/components/ui/badge"
 
 export default function HeaderBadge() {
   const t = useScopedI18n("ModalSubscription")
-  const { subscription, isLoading } = useCurrentUser()
+  const { subscription, userDetails, isLoading } = useCurrentUser()
 
-  if (isLoading) return null
+  if (isLoading || !userDetails) return null
 
   if (!subscription)
     return (
