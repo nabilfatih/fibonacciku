@@ -159,7 +159,10 @@ export const callTools = async (
     toolResponse.result = await callingGetOnThisDay()
   }
   if (name === "search_wikipedia") {
-    toolResponse.result = await callingGetSearchContent(String(args.query))
+    toolResponse.result = await callingGetSearchContent(
+      String(args.lang),
+      String(args.query)
+    )
   }
   return toolResponse
 }

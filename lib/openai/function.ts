@@ -115,7 +115,7 @@ export const callingGetOnThisDay = async () => {
   return finalData
 }
 
-export const callingGetSearchContent = async (query: string) => {
-  const data = await wikiSearchContent("en", query)
+export const callingGetSearchContent = async (lang: string, query: string) => {
+  const data = await wikiSearchContent(lang, query)
   return data
 }

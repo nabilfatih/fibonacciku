@@ -119,13 +119,18 @@ export const defaultToolsChat: Tool[] = [
       parameters: {
         type: "object",
         properties: {
+          lang: {
+            type: "string",
+            description:
+              "the language to get the wikipedia content. Must be one of the language code. e.g. 'en', 'id', 'de', 'ru', etc."
+          },
           query: {
             type: "string",
             description:
               "the query to get the explanation, description, or definition. Must be clear and specific what to get. Must only 1-4 words. Always in english language."
           }
         },
-        required: ["query"]
+        required: ["lang", "query"]
       }
     }
   }
