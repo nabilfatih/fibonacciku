@@ -25,11 +25,10 @@ import {
   FormLabel,
   FormMessage
 } from "@/components/ui/form"
+import { IconSpinner } from "@/components/ui/icons"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-
-import { IconSpinner } from "../ui/icons"
 
 const FormSchema = z.object({
   title: z
