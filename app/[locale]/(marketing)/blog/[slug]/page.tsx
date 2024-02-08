@@ -106,20 +106,12 @@ export default async function BlogSlugPage({ params }: Props) {
 
           <div className="flex flex-col">
             <p className="font-bold tracking-tight">{t("authors")}</p>
-            <p className="tracking-tight">
-              {blog.authors.split(",").map((author, index) => {
-                return <span key={index}>{author}</span>
-              })}
-            </p>
+            <p className="tracking-tight">{blog.authors}</p>
           </div>
 
           <div className="flex flex-col">
             <p className="font-bold tracking-tight">{t("tags")}</p>
-            <p className="tracking-tight">
-              {blog.tags.split(",").map((tag, index) => {
-                return <span key={index}>{tag}</span>
-              })}
-            </p>
+            <p className="tracking-tight">{blog.tags}</p>
           </div>
         </div>
       </section>
