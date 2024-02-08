@@ -134,6 +134,7 @@ export type Blogs = {
   authors: string
   seen: number
   tags: string | null
+  slug: string
   created_at: string
   updated_at: string
 }
