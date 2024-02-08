@@ -45,9 +45,9 @@ export const determineModelBasedOnSubscription = cache(
     // TODO: This is only when the cost reaches a certain threshold, this can be adjusted
     let isCostLimit = false
     // Now no limit, cause we have ads and we want to encourage people to use the app
-    if (!subscription && userDetails.usage > 50) {
-      isCostLimit = true
-    }
+    // if (!subscription && userDetails.usage > 50) {
+    //   isCostLimit = true
+    // }
 
     // Determine the model based on the subscription plan
     if (
@@ -66,7 +66,6 @@ export const determineModelBasedOnSubscription = cache(
     return {
       model: defaultModel,
       subscription,
-      // additionalTools: [],
       additionalTools: listToolsChat, // for now, for experimentation free users can use some tools
       isCostLimit
     }

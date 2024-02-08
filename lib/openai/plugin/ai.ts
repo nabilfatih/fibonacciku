@@ -3,7 +3,10 @@ import {
   getChatImagePublicUrlAdmin,
   uploadChatImageAdmin
 } from "@/lib/supabase/admin/chat"
-import { updateUserUsageAdmin } from "@/lib/supabase/admin/users"
+import {
+  getUserDetailsAdmin,
+  updateUserUsageAdmin
+} from "@/lib/supabase/admin/users"
 
 import { openai } from ".."
 
@@ -107,6 +110,16 @@ export const generateImage = async (
   }
 
   try {
+    const userDetails = await getUserDetailsAdmin(userId)
+    // if the user has reached the traffic limit, return a message
+    if (userDetails.usage > 50) {
+      return {
+        message:
+          "You have reached the traffic limit, please consider to buy a premium plan.",
+        images: []
+      }
+    }
+
     // generate 4 image in parallel,
     const imagePromises = new Array(4).fill(null).map(async () => {
       const imageResponse = await openai.images.generate({
