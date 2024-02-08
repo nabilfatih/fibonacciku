@@ -23,24 +23,18 @@ export const getBlogsBySlugAdmin = cache(
   }
 )
 
-export const getBlogsAdmin = cache(
-  async () => {
-    const { data, error } = await supabaseAdmin
-      .from("blogs")
-      .select("*")
-      .order("created_at", { ascending: false })
+export const getBlogsAdmin = async () => {
+  const { data, error } = await supabaseAdmin
+    .from("blogs")
+    .select("*")
+    .order("created_at", { ascending: false })
 
-    if (error) {
-      throw error
-    }
-
-    return data
-  },
-  ["getBlogsAdmin"],
-  {
-    revalidate: 3600
+  if (error) {
+    throw error
   }
-)
+
+  return data
+}
 
 export const getBlogsCoverPublicUrlAdmin = (blogId: string, fileId: string) => {
   const { data } = supabaseAdmin.storage
