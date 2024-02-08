@@ -101,7 +101,7 @@ export default async function BlogSlugPage({ params }: Props) {
       </header>
 
       <section className="mx-auto max-w-6xl border-t px-4 pt-4">
-        <div className="flex flex-wrap justify-between">
+        <div className="flex flex-wrap justify-between gap-4">
           <p className="tracking-tight">
             {new Date(blog.created_at).toLocaleDateString(locale, {
               day: "numeric",
