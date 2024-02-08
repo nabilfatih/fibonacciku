@@ -74,8 +74,8 @@ export default async function BlogSlugPage({ params }: Props) {
           <Link href="/blog" className="text-muted-foreground hover:underline">
             {t("blog")}
           </Link>
-          <div className="mt-4 grid grid-cols-1 justify-between gap-8 sm:grid-cols-2">
-            <div className="flex flex-col gap-2">
+          <div className="mt-6 grid grid-cols-1 justify-between gap-8 sm:grid-cols-2">
+            <div className="flex flex-col gap-4">
               <h1 className="break-words text-6xl font-semibold tracking-tight">
                 {blog.title}
               </h1>
