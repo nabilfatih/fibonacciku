@@ -119,7 +119,7 @@ export const generateImage = async (
     if (!subscription && userDetails.usage > 50) {
       return {
         message:
-          "The user has reached the traffic limit, please consider to buy a premium plan.",
+          "The user has reached the traffic limit, please tell the user to consider upgrade to premium.",
         images: []
       }
     }
