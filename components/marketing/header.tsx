@@ -13,7 +13,7 @@ import { ThemeToggle } from "@/components/theme/toggle"
 export default async function MarketingHeader() {
   const t = await getScopedI18n("Marketing")
   return (
-    <header className="sticky top-0 z-50 flex h-16 bg-muted backdrop-blur-xl">
+    <header className="sticky top-0 z-50 flex h-16 border-b bg-muted backdrop-blur-xl">
       <div className="mx-auto flex w-full max-w-7xl shrink-0 items-center justify-between px-4">
         <div className="flex items-center">
           <Link href="/">
