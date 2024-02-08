@@ -178,16 +178,15 @@ export default function UserMenu() {
 
           <DropdownMenuSeparator />
 
-          {/* <DropdownMenuItem asChild className="py-2">
+          <DropdownMenuItem asChild className="py-2">
             <Link
-              href="https://blog.fibonacciku.com"
-              target="_blank"
+              href="/blog"
               className="inline-flex w-full cursor-pointer items-center justify-between"
             >
               {t("homepage")}
               <IconExternalLink className="ml-auto h-4 w-4" />
             </Link>
-          </DropdownMenuItem> */}
+          </DropdownMenuItem>
           <DropdownMenuItem
             onClick={handleLogout}
             className="cursor-pointer py-2"
