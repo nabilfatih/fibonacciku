@@ -989,5 +989,9 @@ export default {
     delete: "Hapus",
     "chat-deleted": "Obrolan dihapus",
     "document-deleted": "Dokumen dihapus"
+  },
+  Marketing: {
+    blog: "Blog",
+    "latest-updates": "Informasi terbaru"
   }
 } as const

@@ -10,7 +10,7 @@ export default function TermsOfUsePage() {
   )
   return (
     <main>
-      <div className="bg-muted py-24 sm:py-32">
+      <div className="bg-muted py-16 sm:py-24">
         <h1 className="relative mx-auto w-fit px-4 text-4xl font-bold tracking-tight text-muted-foreground sm:text-6xl">
           Terms of Use
         </h1>

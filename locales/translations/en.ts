@@ -972,5 +972,9 @@ export default {
     delete: "Delete",
     "chat-deleted": "Chat deleted",
     "document-deleted": "Document deleted"
+  },
+  Marketing: {
+    blog: "Blog",
+    "latest-updates": "Latest updates"
   }
 } as const

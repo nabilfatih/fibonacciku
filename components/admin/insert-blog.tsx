@@ -33,7 +33,9 @@ import { Textarea } from "@/components/ui/textarea"
 const FormSchema = z.object({
   title: z
     .string()
-    .regex(/^[a-zA-Z0-9-]+$/, { message: "Only use a-z, A-Z, 0-9, and dash" })
+    .regex(/^[a-zA-Z0-9\s-]+$/, {
+      message: "Only use a-z, A-Z, 0-9, space, and dash"
+    })
     .min(3, { message: "Title is too short" })
     .max(100, { message: "Title is too long" }),
   description: z

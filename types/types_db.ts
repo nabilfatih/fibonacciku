@@ -267,7 +267,7 @@ export type Database = {
           title: string
           description: string
           content: string
-          cover: string | null
+          cover: string
           authors: string
           seen: number
           tags: string | null
@@ -280,7 +280,7 @@ export type Database = {
           title: string
           description: string
           content: string
-          cover: string | null
+          cover: string
           authors: string
           seen: number
           tags: string | null
@@ -293,7 +293,7 @@ export type Database = {
           title?: string
           description?: string
           content?: string
-          cover?: string | null
+          cover?: string
           authors?: string
           seen?: number
           tags?: string | null

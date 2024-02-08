@@ -6,7 +6,7 @@ import { CurrentUserContextProvider } from "@/lib/context/use-current-user"
 import { admin } from "@/lib/data/admin"
 import { createClientServer } from "@/lib/supabase/server"
 
-import { MarketingHeader } from "@/components/marketing/header"
+import MarketingHeader from "@/components/marketing/header"
 
 export default async function InternalLayout({
   children

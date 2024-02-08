@@ -19,7 +19,7 @@ export const getBlogsBySlugAdmin = cache(
   },
   ["getBlogsBySlugAdmin"],
   {
-    revalidate: 86400
+    revalidate: 3600
   }
 )
 
@@ -38,6 +38,14 @@ export const getBlogsAdmin = cache(
   },
   ["getBlogsAdmin"],
   {
-    revalidate: 86400
+    revalidate: 3600
   }
 )
+
+export const getBlogsCoverPublicUrlAdmin = (blogId: string, fileId: string) => {
+  const { data } = supabaseAdmin.storage
+    .from("blogs")
+    .getPublicUrl(`${blogId}/${fileId}`)
+
+  return data.publicUrl
+}

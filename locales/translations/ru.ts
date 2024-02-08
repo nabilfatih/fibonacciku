@@ -990,5 +990,9 @@ export default {
     delete: "Удалить",
     "chat-deleted": "Чат удален",
     "document-deleted": "Документ удален"
+  },
+  Marketing: {
+    blog: "Блог",
+    "latest-updates": "Последние обновления"
   }
 } as const

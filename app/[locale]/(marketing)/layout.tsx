@@ -4,7 +4,7 @@ import { cookies } from "next/headers"
 import { CurrentUserContextProvider } from "@/lib/context/use-current-user"
 import { createClientServer } from "@/lib/supabase/server"
 
-import { MarketingHeader } from "@/components/marketing/header"
+import MarketingHeader from "@/components/marketing/header"
 
 export default async function MarketingLayout({
   children
