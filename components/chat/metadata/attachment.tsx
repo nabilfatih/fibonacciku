@@ -68,8 +68,8 @@ function ChatMetadataAttachment({ metadata }: Props) {
               }}
               unoptimized // decrease cost of image optimization
               className={cn(
-                "m-0 cursor-pointer rounded-xl border bg-muted/90 object-cover shadow-sm transition-opacity duration-300",
-                !imageLoaded ? "hidden" : "block"
+                "m-0 cursor-pointer rounded-xl border bg-muted/90 object-cover shadow-sm transition-opacity",
+                !imageLoaded ? "hidden opacity-0" : "block opacity-100"
               )}
             />
           </div>
