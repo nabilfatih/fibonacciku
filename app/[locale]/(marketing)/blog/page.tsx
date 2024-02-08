@@ -29,9 +29,11 @@ export default async function BlogPage() {
       </header>
       <section className="py-10">
         <div className="relative mx-auto max-w-6xl px-4">
-          <h2 className="text-2xl font-medium tracking-tight">
-            {t("latest-updates")}
-          </h2>
+          <div className="border-b pb-6">
+            <h2 className="text-2xl font-medium tracking-tighter">
+              {t("latest-updates")}
+            </h2>
+          </div>
 
           <div className="py-10">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -55,11 +57,11 @@ export default async function BlogPage() {
                     <div className="relative mt-2 grid gap-0.5 break-words">
                       <h3
                         title={blog.title}
-                        className="line-clamp-2 font-semibold leading-tight group-hover:underline"
+                        className="line-clamp-2 font-semibold leading-none tracking-tighter group-hover:underline"
                       >
                         {blog.title}
                       </h3>
-                      <p className="line-clamp-1 text-sm text-muted-foreground">
+                      <p className="line-clamp-1 text-sm leading-none tracking-tighter text-muted-foreground">
                         {new Date(blog.created_at).toLocaleDateString(locale, {
                           month: "short",
                           day: "numeric",
