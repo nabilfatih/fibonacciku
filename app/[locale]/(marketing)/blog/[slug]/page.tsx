@@ -76,10 +76,12 @@ export default async function BlogSlugPage({ params }: Props) {
           </Link>
           <div className="mt-6 grid grid-cols-1 justify-between gap-8 sm:grid-cols-2">
             <div className="flex flex-col gap-4">
-              <h1 className="break-words text-6xl font-semibold tracking-tight">
+              <h1 className="break-words text-4xl font-semibold tracking-tight lg:text-6xl">
                 {blog.title}
               </h1>
-              <p className="break-words text-xl">{blog.description}</p>
+              <p className="break-words text-lg lg:text-2xl">
+                {blog.description}
+              </p>
             </div>
 
             <Image
