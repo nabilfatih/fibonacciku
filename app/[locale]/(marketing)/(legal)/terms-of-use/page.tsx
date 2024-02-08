@@ -1,25 +1,36 @@
 import fs from "fs"
 import path from "path"
+import type { Metadata } from "next"
+
+import { getScopedI18n } from "@/locales/server"
 
 import ServerReactMarkdown from "@/components/markdown/server"
 
-export default function TermsOfUsePage() {
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getScopedI18n("Marketing")
+  return {
+    title: t("terms-of-use")
+  }
+}
+
+export default async function TermsOfUsePage() {
+  const t = await getScopedI18n("Marketing")
   const termsOfUseContent = fs.readFileSync(
     path.join(process.cwd(), "content/terms-of-use.mdx"),
     "utf8"
   )
   return (
     <main>
-      <div className="bg-muted py-16 sm:py-24">
+      <header className="bg-muted py-16 sm:py-24">
         <h1 className="relative mx-auto w-fit px-4 text-4xl font-bold tracking-tight text-muted-foreground sm:text-6xl">
-          Terms of Use
+          {t("terms-of-use")}
         </h1>
-      </div>
-      <div className="py-10">
-        <div className="relative mx-auto max-w-3xl px-4">
+      </header>
+      <section className="py-10">
+        <article className="relative mx-auto max-w-3xl px-4">
           <ServerReactMarkdown content={termsOfUseContent} />
-        </div>
-      </div>
+        </article>
+      </section>
     </main>
   )
 }

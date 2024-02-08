@@ -993,6 +993,11 @@ export default {
   },
   Marketing: {
     blog: "Блог",
-    "latest-updates": "Последние обновления"
+    "latest-updates": "Последние обновления",
+    authors: "Авторы",
+    tags: "Теги",
+    "privacy-policy": "Политика конфиденциальности",
+    "terms-of-service": "Условия обслуживания",
+    "terms-of-use": "Условия использования"
   }
 } as const

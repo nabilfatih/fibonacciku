@@ -1,9 +1,20 @@
 import fs from "fs"
 import path from "path"
+import type { Metadata } from "next"
+
+import { getScopedI18n } from "@/locales/server"
 
 import ServerReactMarkdown from "@/components/markdown/server"
 
-export default function PrivacyPolicyPage() {
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getScopedI18n("Marketing")
+  return {
+    title: t("privacy-policy")
+  }
+}
+
+export default async function PrivacyPolicyPage() {
+  const t = await getScopedI18n("Marketing")
   const privacyPolicyContent = fs.readFileSync(
     path.join(process.cwd(), "content/privacy-policy.mdx"),
     "utf8"
@@ -11,16 +22,16 @@ export default function PrivacyPolicyPage() {
 
   return (
     <main>
-      <div className="bg-muted py-16 sm:py-24">
+      <header className="bg-muted py-16 sm:py-24">
         <h1 className="relative mx-auto w-fit px-4 text-4xl font-bold tracking-tight text-muted-foreground sm:text-6xl">
-          Privacy Policy
+          {t("privacy-policy")}
         </h1>
-      </div>
-      <div className="py-10">
-        <div className="relative mx-auto max-w-3xl px-4">
+      </header>
+      <section className="py-10">
+        <article className="relative mx-auto max-w-3xl px-4">
           <ServerReactMarkdown content={privacyPolicyContent} />
-        </div>
-      </div>
+        </article>
+      </section>
     </main>
   )
 }

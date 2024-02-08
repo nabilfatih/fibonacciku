@@ -975,6 +975,11 @@ export default {
   },
   Marketing: {
     blog: "Blog",
-    "latest-updates": "Latest updates"
+    "latest-updates": "Latest updates",
+    authors: "Authors",
+    tags: "Tags",
+    "privacy-policy": "Privacy policy",
+    "terms-of-service": "Terms of service",
+    "terms-of-use": "Terms of use"
   }
 } as const

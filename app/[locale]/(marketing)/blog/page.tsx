@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -7,6 +8,13 @@ import {
 } from "@/lib/supabase/admin/blogs"
 import { getCurrentLocale, getScopedI18n } from "@/locales/server"
 
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getScopedI18n("Marketing")
+  return {
+    title: t("blog")
+  }
+}
+
 export default async function BlogPage() {
   const t = await getScopedI18n("Marketing")
   const locale = getCurrentLocale()
@@ -14,14 +22,14 @@ export default async function BlogPage() {
 
   return (
     <main>
-      <div className="bg-muted py-16 sm:py-24">
+      <header className="bg-muted py-16 sm:py-24">
         <h1 className="relative mx-auto w-fit px-4 text-4xl font-bold tracking-tight text-muted-foreground sm:text-6xl">
           {t("blog")}
         </h1>
-      </div>
-      <div className="py-10">
+      </header>
+      <section className="py-10">
         <div className="relative mx-auto max-w-6xl px-4">
-          <h2 className="text-2xl font-bold tracking-tight">
+          <h2 className="text-2xl font-medium tracking-tight">
             {t("latest-updates")}
           </h2>
 
@@ -42,7 +50,7 @@ export default async function BlogPage() {
                       width={512}
                       height={512}
                       sizes="100%"
-                      className="m-0 cursor-pointer rounded-sm border bg-muted/90 object-cover shadow-sm"
+                      className="m-0 rounded-sm border bg-muted/90 object-cover shadow-sm"
                     />
                     <div className="relative mt-2 grid gap-0.5 break-words">
                       <h3
@@ -65,7 +73,7 @@ export default async function BlogPage() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </main>
   )
 }

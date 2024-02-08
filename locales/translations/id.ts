@@ -992,6 +992,11 @@ export default {
   },
   Marketing: {
     blog: "Blog",
-    "latest-updates": "Informasi terbaru"
+    "latest-updates": "Informasi terbaru",
+    authors: "Penulis",
+    tags: "Tag",
+    "privacy-policy": "Kebijakan Privasi",
+    "terms-of-service": "Syarat dan Ketentuan",
+    "terms-of-use": "Syarat Penggunaan"
   }
 } as const

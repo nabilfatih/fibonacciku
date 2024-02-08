@@ -1008,6 +1008,11 @@ export default {
   },
   Marketing: {
     blog: "Blog",
-    "latest-updates": "Neueste Updates"
+    "latest-updates": "Neueste Updates",
+    authors: "Autoren",
+    tags: "Tags",
+    "privacy-policy": "Datenschutzrichtlinie",
+    "terms-of-service": "Nutzungsbedingungen",
+    "terms-of-use": "Nutzungsbedingungen"
   }
 } as const

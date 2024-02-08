@@ -133,7 +133,7 @@ export type Blogs = {
   cover: string
   authors: string
   seen: number
-  tags: string | null
+  tags: string
   slug: string
   created_at: string
   updated_at: string

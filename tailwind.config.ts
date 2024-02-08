@@ -48,6 +48,10 @@ const config = {
             },
             li: {
               color: "hsl(var(--foreground) / 0.8)"
+            },
+            blockquote: {
+              color: "hsl(var(--muted-foreground))",
+              borderLeftColor: "hsl(var(--border))"
             }
           }
         }
