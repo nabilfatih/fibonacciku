@@ -69,17 +69,20 @@ export default async function BlogSlugPage({ params }: Props) {
 
   return (
     <main>
-      <header className="py-28 sm:py-36">
+      <header className="py-28 sm:py-32">
         <div className="mx-auto max-w-6xl px-4">
-          <Link href="/blog" className="text-muted-foreground hover:underline">
+          <Link
+            href="/blog"
+            className="text-lg leading-none tracking-tight hover:underline"
+          >
             {t("blog")}
           </Link>
-          <div className="mt-6 grid grid-cols-1 justify-between gap-8 sm:grid-cols-2">
+          <div className="mt-6 grid grid-cols-1 justify-between gap-8 md:grid-cols-2">
             <div className="flex flex-col gap-4">
-              <h1 className="break-words text-4xl font-semibold tracking-tight lg:text-6xl">
+              <h1 className="break-words text-5xl font-medium leading-none tracking-tighter lg:text-7xl">
                 {blog.title}
               </h1>
-              <p className="break-words text-lg lg:text-2xl">
+              <p className="break-words text-xl leading-tight tracking-tighter lg:text-3xl">
                 {blog.description}
               </p>
             </div>
@@ -90,6 +93,7 @@ export default async function BlogSlugPage({ params }: Props) {
               width={600}
               height={600}
               sizes="600px"
+              priority
               className="m-0 rounded-sm border bg-muted/90 object-cover shadow-sm"
             />
           </div>
