@@ -27,7 +27,8 @@ export const googlePlugin = cache(
       })
       return {
         type: "google",
-        message: "",
+        message:
+          "You must summarize the google search results, not just display them",
         results: smallData
       }
     } catch (error) {
@@ -76,6 +77,8 @@ export const youtubePlugin = cache(
       })
       return {
         type: "youtube",
+        message:
+          "You must summarize the youtube search results, not just display them",
         results: smallData
       }
     } catch (error) {
@@ -125,7 +128,8 @@ export const academicPlugin = cache(
       })
       return {
         type: "academic",
-        message: "",
+        message:
+          "You must summarize the academic search results, not just display them",
         results: smallData
       }
     } catch (error) {
