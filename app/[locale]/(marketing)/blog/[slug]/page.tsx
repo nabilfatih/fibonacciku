@@ -69,7 +69,7 @@ export default async function BlogSlugPage({ params }: Props) {
 
   return (
     <main>
-      <header className="py-28">
+      <header className="py-32">
         <div className="mx-auto max-w-6xl px-4">
           <Link href="/blog" className="text-muted-foreground hover:underline">
             {t("blog")}
