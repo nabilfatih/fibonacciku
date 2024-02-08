@@ -87,6 +87,9 @@ export default function PromptForm({
         if (!input?.trim()) {
           return
         }
+        if (state.isLoading) {
+          return
+        }
         if (type == "document" && !fileId) {
           toast.error("Choose document first!")
           return
