@@ -5,6 +5,7 @@ import {
 } from "@/lib/supabase/admin/chat"
 import {
   getUserDetailsAdmin,
+  getUserSubscriptionAdmin,
   updateUserUsageAdmin
 } from "@/lib/supabase/admin/users"
 
@@ -110,9 +111,12 @@ export const generateImage = async (
   }
 
   try {
-    const userDetails = await getUserDetailsAdmin(userId)
+    const [userDetails, subscription] = await Promise.all([
+      getUserDetailsAdmin(userId),
+      getUserSubscriptionAdmin(userId)
+    ])
     // if the user has reached the traffic limit, return a message
-    if (userDetails.usage > 50) {
+    if (!subscription && userDetails.usage > 50) {
       return {
         message:
           "You have reached the traffic limit, please consider to buy a premium plan.",
