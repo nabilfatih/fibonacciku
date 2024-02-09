@@ -24,7 +24,7 @@ export default async function MarketingHeader() {
               height={24}
               priority
               sizes="24px"
-              className="mr-2 rounded-full object-cover shadow-sm"
+              className="mr-2 rounded-full object-cover shadow"
             />
           </Link>
           <h1 className="flex items-center">
