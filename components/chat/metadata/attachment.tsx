@@ -39,15 +39,10 @@ function ChatMetadataAttachment({ metadata }: Props) {
   if (isLoading || !imageUrls) return <Loading />
 
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="grid grid-cols-2 gap-4">
       {imageUrls.map((url, index) => {
         return (
-          <Link
-            key={url}
-            href={url}
-            target="_blank"
-            className="relative rounded-xl"
-          >
+          <Link key={url} href={url} target="_blank">
             <Image
               src={url}
               alt={`Attachment ${index + 1}`}
@@ -72,8 +67,8 @@ function ChatMetadataAttachment({ metadata }: Props) {
 
 function Loading() {
   return (
-    <div className="flex flex-wrap gap-4">
-      <div className="m-0 block h-64 w-64 animate-pulse rounded-xl border bg-muted/90 object-cover" />
+    <div className="grid grid-cols-2 gap-4">
+      <div className="m-0 block h-64 w-64 rounded-xl border bg-muted/90 object-cover" />
     </div>
   )
 }
