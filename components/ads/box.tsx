@@ -2,7 +2,7 @@
 
 import { useMemo } from "react"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import useSWRImmutable from "swr/immutable"
 
 import { useCurrentUser } from "@/lib/context/use-current-user"
@@ -70,41 +70,43 @@ export default function AdsBox({ id }: Props) {
   }
 
   return (
-    <motion.div
-      key={data?.data.id || "ads"}
-      variants={{
-        hidden: { opacity: 0, y: -10 },
-        visible: { opacity: 1, y: 0 }
-      }}
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        delay: 0.1,
-        ease: "easeInOut",
-        duration: 0.5
-      }}
-      viewport={{ amount: 0 }}
-      exit={{ opacity: 0, y: 10 }}
-      className="relative"
-    >
-      <Link href={data?.data.link} target="_blank" onClick={handleClick}>
-        <Card className="transition-colors hover:bg-muted/10">
-          <CardHeader className="pb-3 pt-4">
-            <CardTitle className="uppercase text-foreground/80">
-              {t("sponsored")}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="pb-4">
-            <p
-              className="text-sm text-muted-foreground sm:text-base"
-              dangerouslySetInnerHTML={{ __html: text }}
-            />
-          </CardContent>
-        </Card>
-      </Link>
-      <Button asChild variant="link" className="p-0">
-        <Link href="/premium">{t("upgrade-to-premium")}</Link>
-      </Button>
-    </motion.div>
+    <AnimatePresence>
+      <motion.div
+        key={data?.data.id || "ads"}
+        variants={{
+          hidden: { opacity: 0, y: -10 },
+          visible: { opacity: 1, y: 0 }
+        }}
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 0.1,
+          ease: "easeInOut",
+          duration: 0.5
+        }}
+        viewport={{ amount: 0 }}
+        exit={{ opacity: 0, y: 10 }}
+        className="relative"
+      >
+        <Link href={data?.data.link} target="_blank" onClick={handleClick}>
+          <Card className="transition-colors hover:bg-muted/10">
+            <CardHeader className="pb-3 pt-4">
+              <CardTitle className="uppercase text-foreground/80">
+                {t("sponsored")}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pb-4">
+              <p
+                className="text-sm text-muted-foreground sm:text-base"
+                dangerouslySetInnerHTML={{ __html: text }}
+              />
+            </CardContent>
+          </Card>
+        </Link>
+        <Button asChild variant="link" className="p-0">
+          <Link href="/premium">{t("upgrade-to-premium")}</Link>
+        </Button>
+      </motion.div>
+    </AnimatePresence>
   )
 }

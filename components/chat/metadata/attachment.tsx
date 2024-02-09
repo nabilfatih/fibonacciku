@@ -36,11 +36,11 @@ function ChatMetadataAttachment({ metadata }: Props) {
     }
   )
 
-  if (isLoading) return <Loading />
+  if (isLoading || !imageUrls) return <Loading />
 
   return (
     <div className="flex flex-wrap gap-4">
-      {imageUrls?.map((url, index) => {
+      {imageUrls.map((url, index) => {
         return (
           <Link
             key={url}
