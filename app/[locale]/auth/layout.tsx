@@ -52,7 +52,7 @@ export default async function AuthenticationLayout({
         </div>
       </div>
       <div className="py-4 lg:p-8">
-        <div className="mb-4 flex justify-center lg:hidden">
+        <Link href="/blog" className="mb-4 flex justify-center lg:hidden">
           <Image
             src="/logo.webp"
             width={32}
@@ -60,7 +60,7 @@ export default async function AuthenticationLayout({
             priority
             alt="FibonacciKu"
           />
-        </div>
+        </Link>
         <main className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           {children}
         </main>
