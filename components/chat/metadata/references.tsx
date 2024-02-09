@@ -1,3 +1,4 @@
+import { memo } from "react"
 import { useParams } from "next/navigation"
 import { IconBook2, IconFile } from "@tabler/icons-react"
 
@@ -11,7 +12,7 @@ type Props = {
   metadata: SourceDocument[]
 }
 
-export default function ChatMetadataReferences({ metadata }: Props) {
+function ChatMetadataReferences({ metadata }: Props) {
   const t = useScopedI18n("MetadataChat")
 
   const { pageRef, dispatch } = useMessage()
@@ -67,3 +68,5 @@ export default function ChatMetadataReferences({ metadata }: Props) {
     </div>
   )
 }
+
+export default memo(ChatMetadataReferences)

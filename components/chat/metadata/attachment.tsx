@@ -1,11 +1,11 @@
-import React, { memo, useState } from "react"
+import React, { memo } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import useSWRImmutable from "swr/immutable"
 
 import type { Attachment, UserDetails } from "@/types/types"
 import { useCurrentUser } from "@/lib/context/use-current-user"
 import { getChatAttachmentSignedUrl } from "@/lib/supabase/client/chat"
-import { cn } from "@/lib/utils"
 
 async function fetchChatAttachment([userDetails, metadata]: [
   UserDetails,
@@ -36,22 +36,22 @@ function ChatMetadataAttachment({ metadata }: Props) {
     }
   )
 
-  const [imageLoaded, setImageLoaded] = useState(false)
-
   if (isLoading) return <Loading />
 
   return (
     <div className="flex flex-wrap gap-4">
       {imageUrls?.map((url, index) => {
         return (
-          <div key={url} className="relative rounded-xl">
-            {!imageLoaded && (
-              <div className="m-0 block h-64 w-64 animate-pulse rounded-xl border bg-muted/90 object-cover" />
-            )}
+          <Link
+            key={url}
+            href={url}
+            target="_blank"
+            className="relative rounded-xl"
+          >
             <Image
               src={url}
               alt={`Attachment ${index + 1}`}
-              sizes="100vw"
+              sizes="100%"
               style={{
                 width: "100%",
                 height: "auto",
@@ -60,19 +60,10 @@ function ChatMetadataAttachment({ metadata }: Props) {
               priority
               width={256}
               height={256}
-              onLoad={() => setImageLoaded(true)}
-              onClick={async () => {
-                const imageUrl = url
-                window.open(imageUrl, "_blank")
-                return false // Prevents link from opening in new tab
-              }}
               unoptimized // decrease cost of image optimization
-              className={cn(
-                "m-0 cursor-pointer rounded-xl border bg-muted/90 object-cover shadow-sm transition-opacity",
-                !imageLoaded ? "hidden opacity-0" : "block opacity-100"
-              )}
+              className="m-0 cursor-pointer rounded-xl border bg-muted/90 object-cover shadow-sm"
             />
-          </div>
+          </Link>
         )
       })}
     </div>

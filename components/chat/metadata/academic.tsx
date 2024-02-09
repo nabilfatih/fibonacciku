@@ -1,3 +1,4 @@
+import { memo } from "react"
 import Image from "next/image"
 import { IconBooks } from "@tabler/icons-react"
 import { motion } from "framer-motion"
@@ -10,7 +11,7 @@ type Props = {
   metadata: AcademicSearchResult[]
 }
 
-export default function ChatMetadataAcademic({ metadata }: Props) {
+function ChatMetadataAcademic({ metadata }: Props) {
   const t = useScopedI18n("MetadataChat")
 
   return (
@@ -87,3 +88,5 @@ export default function ChatMetadataAcademic({ metadata }: Props) {
     </div>
   )
 }
+
+export default memo(ChatMetadataAcademic)

@@ -1,3 +1,4 @@
+import { memo } from "react"
 import Image from "next/image"
 import { IconBrandYoutube } from "@tabler/icons-react"
 import { motion } from "framer-motion"
@@ -10,7 +11,7 @@ type Props = {
   metadata: YoutubeSearchResult[]
 }
 
-export default function ChatMetadataYoutube({ metadata }: Props) {
+function ChatMetadataYoutube({ metadata }: Props) {
   const t = useScopedI18n("MetadataChat")
 
   return (
@@ -84,3 +85,5 @@ export default function ChatMetadataYoutube({ metadata }: Props) {
     </div>
   )
 }
+
+export default memo(ChatMetadataYoutube)

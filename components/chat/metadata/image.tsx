@@ -1,3 +1,4 @@
+import { memo } from "react"
 import Image from "next/image"
 import { IconPhoto } from "@tabler/icons-react"
 import { motion } from "framer-motion"
@@ -9,7 +10,7 @@ type Props = {
   metadata: ImageResult[]
 }
 
-export default function ChatMetadataImage({ metadata }: Props) {
+function ChatMetadataImage({ metadata }: Props) {
   const t = useScopedI18n("MetadataChat")
   return (
     <div className="flex flex-col justify-start gap-2">
@@ -62,3 +63,5 @@ export default function ChatMetadataImage({ metadata }: Props) {
     </div>
   )
 }
+
+export default memo(ChatMetadataImage)

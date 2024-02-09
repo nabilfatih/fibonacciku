@@ -1,3 +1,4 @@
+import { memo } from "react"
 import Image from "next/image"
 import { IconWorldWww } from "@tabler/icons-react"
 import { motion } from "framer-motion"
@@ -10,7 +11,7 @@ type Props = {
   metadata: SearchResult[]
 }
 
-export default function ChatMetadataGoogle({ metadata }: Props) {
+function ChatMetadataGoogle({ metadata }: Props) {
   const t = useScopedI18n("MetadataChat")
 
   return (
@@ -83,3 +84,5 @@ export default function ChatMetadataGoogle({ metadata }: Props) {
     </div>
   )
 }
+
+export default memo(ChatMetadataGoogle)
