@@ -223,24 +223,18 @@ export const wikiSearchContent = cache(
           }
         })) || []
 
-      const finalData = {
-        searchResults: searchResults
-      }
-
       return {
         type: "wiki",
         message:
           "Always show all the urls and the images of results. Never answer without the urls",
-        results: finalData
+        results: searchResults
       }
     } catch (error) {
       console.log("Wiki Search Content Error: ", error)
       return {
         type: "wiki",
         message: "Quota exceeded for searching Wiki",
-        results: {
-          searchResults: []
-        }
+        results: []
       }
     }
   },
