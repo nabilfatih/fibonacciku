@@ -1,5 +1,6 @@
 import { unstable_cache as cache } from "next/cache"
 import moment from "moment"
+import sanitizeHtml from "sanitize-html"
 
 export type WikiLink = {
   titles: {
@@ -203,7 +204,10 @@ export const wikiSearchContent = cache(
       const searchResults =
         data?.pages?.map(page => ({
           title: page.title || "",
-          excerpt: page.excerpt || "",
+          excerpt: sanitizeHtml(page.excerpt || "", {
+            allowedTags: [],
+            allowedAttributes: {}
+          }),
           description: page.description || "",
           thumbnail: {
             url: cleanWikiThumbnailUrl(page.thumbnail?.url || "")

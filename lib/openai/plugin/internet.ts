@@ -17,6 +17,7 @@ export const googlePlugin = cache(
       }
       const data = await response.json()
       const result = data.items
+
       const smallData: SearchResult[] = result.map((item: any) => {
         return {
           title: item.title,
@@ -25,6 +26,7 @@ export const googlePlugin = cache(
           snippet: item.snippet || ""
         }
       })
+
       return {
         type: "google",
         message:
@@ -57,12 +59,12 @@ export const youtubePlugin = cache(
       }
       const data = await response.json()
       const result = data.items
+
       const smallData: YoutubeSearchResult[] = result.map((item: any) => {
         return {
           id: {
             videoId: item.id.videoId,
-            channelId: item.id.channelId,
-            playlistId: item.id.playlistId
+            channelId: item.snippet.channelId
           },
           snippet: {
             thumbnails: {
@@ -71,10 +73,12 @@ export const youtubePlugin = cache(
               }
             },
             title: item.snippet.title,
+            description: item.snippet.description,
             channelTitle: item.snippet.channelTitle
           }
         }
       })
+
       return {
         type: "youtube",
         message:
@@ -116,16 +120,18 @@ export const academicPlugin = cache(
       }
       const data = await response.json()
       const result = data.data
+
       const smallData: AcademicSearchResult[] = result.map((item: any) => {
         return {
           id: item.paperId,
           title: item.title,
-          authors: item.authors,
+          authors: item.authorList?.map((author: any) => author.name) || [],
           year: item.year,
-          abstract: item?.abstract?.slice(0, 100) || "", // limit to 100 characters
+          abstract: item?.abstract?.slice(0, 200) || "",
           url: item.url
         }
       })
+
       return {
         type: "academic",
         message:

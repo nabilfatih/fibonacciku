@@ -232,7 +232,6 @@ export type YoutubeSearchResult = {
   id: {
     videoId: string
     channelId: string
-    playlistId: string
   }
   snippet: {
     thumbnails: {
@@ -242,6 +241,7 @@ export type YoutubeSearchResult = {
     }
     title: string
     channelTitle: string
+    description: string
   }
 }
 
@@ -249,7 +249,6 @@ export type AcademicSearchResult = {
   id: string
   title: string
   authors: {
-    authorId: string
     name: string
   }[]
   year: number
