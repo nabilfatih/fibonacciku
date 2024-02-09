@@ -27,7 +27,7 @@ export default async function BlogPage() {
           <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
             {t("blog")}
           </h1>
-          <p className="mt-6 max-w-3xl tracking-tight text-muted-foreground">
+          <p className="mt-6 max-w-3xl text-muted-foreground">
             {t("blog-desc")}
           </p>
         </div>
@@ -62,11 +62,11 @@ export default async function BlogPage() {
                     <div className="relative mt-2 grid gap-1.5 break-words">
                       <h3
                         title={blog.title}
-                        className="line-clamp-2 font-semibold leading-tight tracking-tighter group-hover:underline"
+                        className="line-clamp-2 font-semibold leading-tight tracking-tight group-hover:underline"
                       >
                         {blog.title}
                       </h3>
-                      <p className="line-clamp-1 text-sm leading-none tracking-tighter">
+                      <p className="line-clamp-1 text-sm leading-none tracking-tight">
                         {new Date(blog.created_at).toLocaleDateString(locale, {
                           month: "short",
                           day: "numeric",

@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getScopedI18n("Metadata")
   return {
     title: {
-      template: "%s · FibonacciKu",
+      template: "%s - FibonacciKu",
       default: t("title")
     },
     description: t("desc"),
