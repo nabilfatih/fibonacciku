@@ -28,8 +28,7 @@ type Props = {
 function ChatMetadataAttachment({ metadata }: Props) {
   const { userDetails } = useCurrentUser()
   const { data: imageUrls, isLoading } = useSWRImmutable(
-    // fileId as a unique identifier
-    metadata[0].file_id ? [userDetails, metadata] : null,
+    [userDetails, metadata],
     fetchChatAttachment,
     {
       refreshInterval: 1000 * 60 * 60 * 24 // 24 hours

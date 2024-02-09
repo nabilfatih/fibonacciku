@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic"
 import Image from "next/image"
+import Link from "next/link"
 
 import AuthLanguage from "@/components/auth/language"
 import { ThemeToggle } from "@/components/theme/toggle"
@@ -8,7 +9,7 @@ const Particles = dynamic(() => import("@/components/ui/particles"), {
   ssr: false
 })
 
-export default function AuthenticationLayout({
+export default async function AuthenticationLayout({
   children
 }: {
   children: React.ReactNode
@@ -24,7 +25,10 @@ export default function AuthenticationLayout({
           className="pointer-events-none absolute inset-0"
           quantity={40}
         />
-        <div className="relative z-20 flex items-center gap-2 text-lg font-medium">
+        <Link
+          href="/blog"
+          className="relative z-20 flex w-fit items-center gap-2 text-lg font-medium"
+        >
           <div className="relative h-6 w-6">
             <Image
               src="/logo.webp"
@@ -35,7 +39,7 @@ export default function AuthenticationLayout({
             />
           </div>
           <span className="font-semibold">FibonacciKu</span>
-        </div>
+        </Link>
         <div className="relative z-20 mt-auto">
           <blockquote className="space-y-2">
             <p className="text-lg">
