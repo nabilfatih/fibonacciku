@@ -1008,6 +1008,8 @@ export default {
   },
   Marketing: {
     blog: "Blog",
+    "blog-desc":
+      "Entdecken Sie Expertenartikel, Produktaktualisierungen und wertvolle Tipps, um Ihre FibonacciKu-Erfahrung zu verbessern. Bleiben Sie auf dem Laufenden und holen Sie das Beste aus FibonacciKu heraus!",
     "latest-updates": "Neueste Updates",
     authors: "Autoren",
     tags: "Tags",

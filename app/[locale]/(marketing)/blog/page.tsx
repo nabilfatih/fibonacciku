@@ -22,10 +22,15 @@ export default async function BlogPage() {
 
   return (
     <main>
-      <header className="bg-muted py-16 sm:py-24">
-        <h1 className="relative mx-auto w-fit px-4 text-4xl font-bold tracking-tight text-muted-foreground sm:text-6xl">
-          {t("blog")}
-        </h1>
+      <header className="bg-muted py-16">
+        <div className="relative mx-auto max-w-6xl px-4">
+          <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
+            {t("blog")}
+          </h1>
+          <p className="mt-6 max-w-3xl tracking-tight text-muted-foreground">
+            {t("blog-desc")}
+          </p>
+        </div>
       </header>
       <section className="py-10">
         <div className="relative mx-auto max-w-6xl px-4">
@@ -36,7 +41,7 @@ export default async function BlogPage() {
           </div>
 
           <div className="py-10">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {blogs.map(blog => {
                 const cover = getBlogsCoverPublicUrlAdmin(blog.id, blog.cover)
 

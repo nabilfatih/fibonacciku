@@ -975,6 +975,8 @@ export default {
   },
   Marketing: {
     blog: "Blog",
+    "blog-desc":
+      "Discover expert articles, product updates, and valuable tips to enhance your FibonacciKu experience. Stay in the loop and get the most out of FibonacciKu!",
     "latest-updates": "Latest updates",
     authors: "Authors",
     tags: "Tags",

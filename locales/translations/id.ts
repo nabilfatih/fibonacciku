@@ -992,6 +992,8 @@ export default {
   },
   Marketing: {
     blog: "Blog",
+    "blog-desc":
+      "Temukan artikel ahli, pembaruan produk, dan tips berharga untuk meningkatkan pengalaman FibonacciKu Anda. Tetap terinformasi dan dapatkan yang terbaik dari FibonacciKu!",
     "latest-updates": "Informasi terbaru",
     authors: "Penulis",
     tags: "Tag",
