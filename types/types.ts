@@ -1,5 +1,10 @@
 import Stripe from "stripe"
 
+import type {
+  WikiFeedResult,
+  WikiSearchContentResult
+} from "@/lib/openai/plugin/wiki"
+
 import type { Database, Json } from "./types_db"
 
 export type UserRole = "student" | "teacher" | "professional"
@@ -201,6 +206,8 @@ export type ChatMessageMetadata = {
   academic_search?: AcademicSearchResult[]
   attachments?: Attachment[]
   image_result?: ImageResult[]
+  wiki_feed_featured?: WikiFeedResult
+  wiki_search_content?: WikiSearchContentResult[]
 }
 
 export type Attachment = {

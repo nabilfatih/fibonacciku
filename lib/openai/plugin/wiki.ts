@@ -238,7 +238,9 @@ export const wikiSearchContent = cache(
       return {
         type: "wiki",
         message: "Quota exceeded for searching Wiki",
-        results: {}
+        results: {
+          searchResults: []
+        }
       }
     }
   },
