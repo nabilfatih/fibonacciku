@@ -66,7 +66,7 @@ export type WikiImage = {
   text: string
 }
 
-export type WikiSearchContent = {
+export type WikiSearchContentData = {
   pages: {
     id: number
     key: string
@@ -82,6 +82,15 @@ export type WikiSearchContent = {
       url: string
     } | null
   }[]
+}
+
+export type WikiSearchContentResult = {
+  title: string
+  excerpt: string
+  description: string
+  thumbnail: {
+    url: string
+  }
 }
 
 export const wikiFeedFeature = cache(
@@ -199,9 +208,9 @@ export const wikiSearchContent = cache(
         throw new Error(`Error searching Wiki: ${response.statusText}`)
       }
 
-      const data: WikiSearchContent = await response.json()
+      const data: WikiSearchContentData = await response.json()
 
-      const searchResults =
+      const searchResults: WikiSearchContentResult[] =
         data?.pages?.map(page => ({
           title: page.title || "",
           excerpt: sanitizeHtml(page.excerpt || "", {
