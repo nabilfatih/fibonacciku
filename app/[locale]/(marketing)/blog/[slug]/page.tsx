@@ -94,7 +94,7 @@ export default async function BlogSlugPage({ params }: Props) {
               height={600}
               sizes="600px"
               priority
-              className="m-0 rounded-sm border bg-muted/90 object-cover shadow-sm"
+              className="m-0 rounded-sm border bg-muted/90 object-cover shadow-sm transition-all duration-300 hover:rounded-5xl"
             />
           </div>
         </div>
