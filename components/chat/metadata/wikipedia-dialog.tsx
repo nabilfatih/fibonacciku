@@ -1,4 +1,4 @@
-import { memo, useState } from "react"
+import { memo } from "react"
 import Image from "next/image"
 import he from "he"
 
@@ -14,8 +14,7 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
-  DialogTrigger
+  DialogTitle
 } from "@/components/ui/dialog"
 import {
   Drawer,
@@ -24,55 +23,29 @@ import {
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger
+  DrawerTitle
 } from "@/components/ui/drawer"
 
 type Props = {
   item: WikiSearchContentResult
+  setItem: (item: WikiSearchContentResult | null) => void
+  open: boolean
+  setOpen: (open: boolean) => void
 }
 
-function ChatMetadataWikipediaDialog({ item }: Props) {
+function ChatMetadataWikipediaDialog({ item, setItem, open, setOpen }: Props) {
   const t = useScopedI18n("ModalPluginChat")
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
-  const [open, setOpen] = useState<boolean>(false)
-
   if (isDesktop) {
     return (
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <div className="group cursor-pointer overflow-hidden rounded-xl border shadow-sm transition-colors hover:bg-muted/50">
-            <div className="flex h-full w-full flex-col items-start justify-between gap-3">
-              <div className="flex flex-col gap-1 p-2">
-                <p
-                  className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-medium"
-                  title={he.decode(item.title)}
-                >
-                  {he.decode(item.title)}
-                </p>
-
-                <p
-                  className="whitespace-pre-wrap break-words text-xs first-letter:uppercase"
-                  title={he.decode(item.description)}
-                >
-                  {he.decode(item.description)}
-                </p>
-              </div>
-
-              <div className="relative h-48 w-full border-t">
-                <Image
-                  src={item.thumbnail.url || "/fibo-assistant.webp"}
-                  alt={item.title}
-                  sizes="100%"
-                  fill
-                  unoptimized // decrease cost of image optimization
-                  className="bg-muted/90 object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </DialogTrigger>
+      <Dialog
+        open={open}
+        onOpenChange={open => {
+          setOpen(open)
+          if (!open) setItem(null)
+        }}
+      >
         <DialogContent>
           <DialogHeader>
             <DialogTitle>{item.title}</DialogTitle>
@@ -111,39 +84,13 @@ function ChatMetadataWikipediaDialog({ item }: Props) {
   }
 
   return (
-    <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerTrigger asChild>
-        <div className="group cursor-pointer overflow-hidden rounded-xl border shadow-sm transition-colors hover:bg-muted/50">
-          <div className="flex h-full w-full flex-col items-start justify-between gap-3">
-            <div className="flex flex-col gap-1 p-2">
-              <p
-                className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-medium"
-                title={he.decode(item.title)}
-              >
-                {he.decode(item.title)}
-              </p>
-
-              <p
-                className="whitespace-pre-wrap break-words text-xs first-letter:uppercase"
-                title={he.decode(item.description)}
-              >
-                {he.decode(item.description)}
-              </p>
-            </div>
-
-            <div className="relative h-36 w-full border-t">
-              <Image
-                src={item.thumbnail.url || "/fibo-assistant.webp"}
-                alt={item.title}
-                sizes="100%"
-                fill
-                unoptimized // decrease cost of image optimization
-                className="bg-muted/90 object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </DrawerTrigger>
+    <Drawer
+      open={open}
+      onOpenChange={open => {
+        setOpen(open)
+        if (!open) setItem(null)
+      }}
+    >
       <DrawerContent>
         <DrawerHeader className="text-left">
           <DrawerTitle>{item.title}</DrawerTitle>
