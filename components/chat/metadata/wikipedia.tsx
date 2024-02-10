@@ -1,6 +1,5 @@
 import { memo } from "react"
 import { IconBrandWikipedia } from "@tabler/icons-react"
-import { AnimatePresence, motion } from "framer-motion"
 
 import type { WikiSearchContentResult } from "@/lib/openai/plugin/wiki"
 import { useScopedI18n } from "@/locales/client"
@@ -21,37 +20,19 @@ function ChatMetadataWikipedia({ metadata }: Props) {
         <span className="font-medium">{t("wikipedia")}:</span>
       </div>
 
-      <AnimatePresence initial={false}>
-        <motion.div
-          key={Math.random()}
-          variants={{
-            hidden: { opacity: 0, y: -10 },
-            visible: { opacity: 1, y: 0 }
-          }}
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.1,
-            ease: "easeInOut",
-            duration: 0.5
-          }}
-          viewport={{ amount: 0 }}
-          exit={{ opacity: 0, y: 10 }}
-          className="grid grid-cols-2 gap-2 sm:grid-cols-3"
-        >
-          {metadata
-            .filter(item => item.thumbnail.url)
-            .slice(0, 6)
-            .map((item, index) => {
-              return (
-                <ChatMetadataWikipediaDialog
-                  key={item.title || index}
-                  item={item}
-                />
-              )
-            })}
-        </motion.div>
-      </AnimatePresence>
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+        {metadata
+          .filter(item => item.thumbnail.url)
+          .slice(0, 6)
+          .map((item, index) => {
+            return (
+              <ChatMetadataWikipediaDialog
+                key={item.title || index}
+                item={item}
+              />
+            )
+          })}
+      </div>
     </div>
   )
 }

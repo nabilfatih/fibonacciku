@@ -212,11 +212,20 @@ export const wikiSearchContent = cache(
       const searchResults: WikiSearchContentResult[] =
         data?.pages?.map(page => ({
           title: page.title || "",
-          excerpt: sanitizeHtml(page.excerpt || "", {
-            allowedTags: [],
-            allowedAttributes: {}
-          }),
-          description: page.description || "",
+          excerpt: ensurePeriodAtEnd(
+            cleanIncompleteSentences(
+              sanitizeHtml(page.excerpt || "", {
+                allowedTags: [],
+                allowedAttributes: {}
+              })
+            )
+          ),
+          description: ensurePeriodAtEnd(
+            sanitizeHtml(page.description || "", {
+              allowedTags: [],
+              allowedAttributes: {}
+            })
+          ),
           thumbnail: {
             url: cleanWikiThumbnailUrl(page.thumbnail?.url || "")
           }
@@ -256,4 +265,31 @@ function mapWikiLinkToArticle(link: WikiLink): WikiArticle {
 function cleanWikiThumbnailUrl(url: string) {
   const sanitizedUrl = url.startsWith("https:") ? url : "https:" + url
   return sanitizedUrl.split("/").slice(0, -1).join("/").replace("/thumb", "")
+}
+
+// Function to clean incomplete sentences
+function cleanIncompleteSentences(excerpt: string): string {
+  const sentences = excerpt.split(/[.!?](?=\s|$)/) // Split excerpt into sentences
+  if (sentences.length > 0) {
+    const lastSentence = sentences[sentences.length - 1]
+    if (!/\.$/.test(lastSentence)) {
+      // Check if last sentence ends with a period
+      sentences.pop() // Remove the last sentence if it's incomplete
+    }
+    return sentences.join(". ") // Join sentences back
+  }
+  return excerpt // Return original excerpt if no sentences found
+}
+
+// Function to ensure excerpt ends with a period
+function ensurePeriodAtEnd(excerpt: string): string {
+  // if excerpt is empty, return it
+  if (!excerpt) {
+    return excerpt
+  }
+  if (!excerpt.trim().endsWith(".")) {
+    // Check if excerpt doesn't end with a period
+    return excerpt.trim() + "." // Add a period at the end
+  }
+  return excerpt.trim() // Return the original excerpt if it already ends with a period
 }

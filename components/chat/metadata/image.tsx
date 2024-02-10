@@ -40,7 +40,6 @@ function ChatMetadataImage({ metadata }: Props) {
                   duration: 0.5
                 }}
                 viewport={{ amount: 0 }}
-                exit={{ opacity: 0, y: 10 }}
               >
                 <Image
                   src={item.image}

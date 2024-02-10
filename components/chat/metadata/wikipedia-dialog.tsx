@@ -53,7 +53,7 @@ function ChatMetadataWikipediaDialog({ item }: Props) {
                 </p>
 
                 <p
-                  className="line-clamp-3 whitespace-pre-wrap break-all text-xs first-letter:uppercase"
+                  className="whitespace-pre-wrap break-all text-xs first-letter:uppercase"
                   title={he.decode(item.description)}
                 >
                   {he.decode(item.description)}
@@ -124,7 +124,7 @@ function ChatMetadataWikipediaDialog({ item }: Props) {
               </p>
 
               <p
-                className="line-clamp-3 whitespace-pre-wrap break-all text-xs first-letter:uppercase"
+                className="whitespace-pre-wrap break-all text-xs first-letter:uppercase"
                 title={he.decode(item.description)}
               >
                 {he.decode(item.description)}

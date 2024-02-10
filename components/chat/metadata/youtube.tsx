@@ -79,7 +79,6 @@ function LinkCard({
         duration: 0.5
       }}
       viewport={{ amount: 0 }}
-      exit={{ opacity: 0, y: 10 }}
       className="group min-h-[82px] rounded-xl border px-3 py-2 shadow-sm transition-colors hover:bg-muted/50"
       style={{
         backgroundImage: `linear-gradient(rgba(10, 20, 39, 0.7), rgba(10, 20, 39, 0.7)), url(${item.snippet.thumbnails.high.url})`,

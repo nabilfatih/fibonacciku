@@ -79,7 +79,6 @@ function LinkCard({
         duration: 0.5
       }}
       viewport={{ amount: 0 }}
-      exit={{ opacity: 0, y: 10 }}
       className="group min-h-[82px] rounded-xl border p-2 shadow-sm transition-colors hover:bg-muted/50"
     >
       <div className="flex h-full w-full flex-col items-start justify-between gap-3">
