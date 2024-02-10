@@ -110,7 +110,7 @@ export default function SidebarItem({
                 </motion.span>
               ))
             ) : (
-              <span>{chat.title}</span>
+              <span className="tracking-tight">{chat.title}</span>
             )}
           </span>
         </div>
