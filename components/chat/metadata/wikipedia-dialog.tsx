@@ -66,6 +66,7 @@ function ChatMetadataWikipediaDialog({ item }: Props) {
                   alt={item.title}
                   sizes="100%"
                   fill
+                  unoptimized // decrease cost of image optimization
                   className="bg-muted/90 object-cover"
                 />
               </div>
@@ -136,6 +137,7 @@ function ChatMetadataWikipediaDialog({ item }: Props) {
                 alt={item.title}
                 sizes="100%"
                 fill
+                unoptimized // decrease cost of image optimization
                 className="bg-muted/90 object-cover"
               />
             </div>
