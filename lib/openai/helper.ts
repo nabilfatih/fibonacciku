@@ -37,10 +37,10 @@ export const determineModelBasedOnSubscription = cache(
     ])
 
     // Default model for non-subscribers or basic plans
-    const defaultModel = "gpt-3.5-turbo-1106"
+    const defaultModel = "gpt-3.5-turbo-0125"
     // Model for premium or enterprise subscribers
-    // const premiumModel = "gpt-4-1106-preview";
-    const premiumModel = "gpt-3.5-turbo-1106" // for now, for cost reasons
+    // const premiumModel = "gpt-4-0125-preview";
+    const premiumModel = "gpt-3.5-turbo-0125" // for now, for cost reasons
 
     // TODO: This is only when the cost reaches a certain threshold, this can be adjusted
     let isCostLimit = false
