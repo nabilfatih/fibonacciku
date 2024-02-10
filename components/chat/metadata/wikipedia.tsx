@@ -1,6 +1,6 @@
 import { memo } from "react"
 import { IconBrandWikipedia } from "@tabler/icons-react"
-import { AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 
 import type { WikiSearchContentResult } from "@/lib/openai/plugin/wiki"
 import { useScopedI18n } from "@/locales/client"
@@ -22,7 +22,22 @@ function ChatMetadataWikipedia({ metadata }: Props) {
       </div>
 
       <AnimatePresence>
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: -10 },
+            visible: { opacity: 1, y: 0 }
+          }}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.1,
+            ease: "easeInOut",
+            duration: 0.5
+          }}
+          viewport={{ amount: 0 }}
+          exit={{ opacity: 0, y: 10 }}
+          className="grid grid-cols-2 gap-2 sm:grid-cols-3"
+        >
           {metadata
             .filter(item => item.thumbnail.url)
             .slice(0, 6)
@@ -34,7 +49,7 @@ function ChatMetadataWikipedia({ metadata }: Props) {
                 />
               )
             })}
-        </div>
+        </motion.div>
       </AnimatePresence>
     </div>
   )
