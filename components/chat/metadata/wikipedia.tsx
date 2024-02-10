@@ -76,7 +76,6 @@ function ChatMetadataWikipedia({ metadata }: Props) {
       {selectedItem && (
         <ChatMetadataWikipediaDialog
           item={selectedItem}
-          setItem={setSelectedItem}
           open={open}
           setOpen={setOpen}
         />

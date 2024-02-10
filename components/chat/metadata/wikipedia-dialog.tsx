@@ -28,28 +28,18 @@ import {
 
 type Props = {
   item: WikiSearchContentResult
-  setItem: (item: WikiSearchContentResult | null) => void
+
   open: boolean
   setOpen: (open: boolean) => void
 }
 
-function ChatMetadataWikipediaDialog({ item, setItem, open, setOpen }: Props) {
+function ChatMetadataWikipediaDialog({ item, open, setOpen }: Props) {
   const t = useScopedI18n("ModalPluginChat")
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
   if (isDesktop) {
     return (
-      <Dialog
-        open={open}
-        onOpenChange={async open => {
-          setOpen(open)
-          if (!open) {
-            // wait for 1s to close the dialog, because of the animation
-            await new Promise(resolve => setTimeout(resolve, 1000))
-            setItem(null)
-          }
-        }}
-      >
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>{item.title}</DialogTitle>
@@ -88,17 +78,7 @@ function ChatMetadataWikipediaDialog({ item, setItem, open, setOpen }: Props) {
   }
 
   return (
-    <Drawer
-      open={open}
-      onOpenChange={async open => {
-        setOpen(open)
-        if (!open) {
-          // wait for 1s to close the dialog, because of the animation
-          await new Promise(resolve => setTimeout(resolve, 1000))
-          setItem(null)
-        }
-      }}
-    >
+    <Drawer open={open} onOpenChange={setOpen}>
       <DrawerContent>
         <DrawerHeader className="text-left">
           <DrawerTitle>{item.title}</DrawerTitle>
