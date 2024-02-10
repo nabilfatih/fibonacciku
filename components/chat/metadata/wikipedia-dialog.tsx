@@ -46,14 +46,14 @@ function ChatMetadataWikipediaDialog({ item }: Props) {
             <div className="flex h-full w-full flex-col items-start justify-between gap-3">
               <div className="flex flex-col gap-1 p-2">
                 <p
-                  className="line-clamp-2 whitespace-pre-wrap break-all text-sm font-medium"
+                  className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-medium"
                   title={he.decode(item.title)}
                 >
                   {he.decode(item.title)}
                 </p>
 
                 <p
-                  className="whitespace-pre-wrap break-all text-xs first-letter:uppercase"
+                  className="whitespace-pre-wrap break-words text-xs first-letter:uppercase"
                   title={he.decode(item.description)}
                 >
                   {he.decode(item.description)}
@@ -117,14 +117,14 @@ function ChatMetadataWikipediaDialog({ item }: Props) {
           <div className="flex h-full w-full flex-col items-start justify-between gap-3">
             <div className="flex flex-col gap-1 p-2">
               <p
-                className="line-clamp-2 whitespace-pre-wrap break-all text-sm font-medium"
+                className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-medium"
                 title={he.decode(item.title)}
               >
                 {he.decode(item.title)}
               </p>
 
               <p
-                className="whitespace-pre-wrap break-all text-xs first-letter:uppercase"
+                className="whitespace-pre-wrap break-words text-xs first-letter:uppercase"
                 title={he.decode(item.description)}
               >
                 {he.decode(item.description)}

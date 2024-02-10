@@ -84,14 +84,14 @@ function LinkCard({
       <div className="flex h-full w-full flex-col items-start justify-between gap-3">
         <div className="flex flex-col gap-1">
           <p
-            className="line-clamp-2 whitespace-pre-wrap break-all text-sm font-semibold"
+            className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-semibold"
             title={he.decode(item.title)}
           >
             {he.decode(item.title)}
           </p>
           {showAbstract && (
             <p
-              className="hidden whitespace-pre-wrap break-all text-xs sm:line-clamp-3"
+              className="hidden whitespace-pre-wrap break-words text-xs sm:line-clamp-3"
               title={he.decode(item.abstract || "")}
             >
               {he.decode(item.abstract || "")}
