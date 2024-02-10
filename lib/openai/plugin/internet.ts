@@ -10,7 +10,7 @@ export const googlePlugin = cache(
   async (query: string) => {
     try {
       const response = await fetch(
-        `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_CX}&q=${query}&num=9&safe=active`
+        `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_CX}&q=${query}&num=8&safe=active`
       )
       if (!response.ok) {
         throw new Error(`Error searching Google: ${response.statusText}`)
@@ -52,7 +52,7 @@ export const youtubePlugin = cache(
   async (query: string) => {
     try {
       const response = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?key=${process.env.YOUTUBE_API_KEY}&part=snippet&maxResults=9&q=${query}&type=video&order=relevance`
+        `https://www.googleapis.com/youtube/v3/search?key=${process.env.YOUTUBE_API_KEY}&part=snippet&maxResults=8&q=${query}&type=video&order=relevance`
       )
       if (!response.ok) {
         throw new Error(`Error searching Youtube: ${response.statusText}`)
@@ -107,7 +107,7 @@ export const academicPlugin = cache(
       const apiKey = process.env.SEMANTIC_API_KEY
       if (!apiKey) throw new Error("No API key found")
       const response = await fetch(
-        `https://api.semanticscholar.org/graph/v1/paper/search?query=${query}&limit=9&fields=corpusId,url,title,year,authors,abstract,openAccessPdf,publicationDate,journal,citationStyles,tldr`,
+        `https://api.semanticscholar.org/graph/v1/paper/search?query=${query}&limit=8&fields=corpusId,url,title,year,authors,abstract,openAccessPdf,publicationDate,journal,citationStyles,tldr`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -125,9 +125,15 @@ export const academicPlugin = cache(
         return {
           id: item.paperId,
           title: item.title,
-          authors: item.authorList?.map((author: any) => author.name) || [],
+          authors:
+            item.authors?.map((author: any) => {
+              return {
+                name: author.name
+              }
+            }) || [],
           year: item.year,
-          abstract: item?.abstract?.slice(0, 200) || "",
+          abstract: item?.abstract || "",
+          tldr: item?.tldr?.text || "",
           url: item.url
         }
       })

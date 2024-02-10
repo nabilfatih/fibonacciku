@@ -260,6 +260,7 @@ export type AcademicSearchResult = {
   }[]
   year: number
   abstract: string
+  tldr: string
   url: string
 }
 
