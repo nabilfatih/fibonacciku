@@ -34,7 +34,7 @@ export default function AdsBox({ id }: Props) {
       revalidateIfStale: true,
       refreshWhenHidden: true,
       refreshWhenOffline: true,
-      refreshInterval: 1000 * 60 * 10 // 10 minutes
+      refreshInterval: 1000 // 1 second
     }
   )
 
@@ -85,7 +85,6 @@ export default function AdsBox({ id }: Props) {
           duration: 0.5
         }}
         viewport={{ amount: 0 }}
-        exit={{ opacity: 0, y: 10 }}
         className="relative"
       >
         <Link href={data?.data.link} target="_blank" onClick={handleClick}>

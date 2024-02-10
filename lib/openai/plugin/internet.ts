@@ -1,4 +1,5 @@
 import { unstable_cache as cache } from "next/cache"
+import sanitizeHtml from "sanitize-html"
 
 import type {
   AcademicSearchResult,
@@ -132,8 +133,14 @@ export const academicPlugin = cache(
               }
             }) || [],
           year: item.year,
-          abstract: item?.abstract || "",
-          tldr: item?.tldr?.text || "",
+          abstract: sanitizeHtml(item?.abstract || "", {
+            allowedTags: [],
+            allowedAttributes: {}
+          }),
+          tldr: sanitizeHtml(item?.tldr?.text || "", {
+            allowedTags: [],
+            allowedAttributes: {}
+          }),
           url: item.url
         }
       })
