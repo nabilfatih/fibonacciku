@@ -41,9 +41,13 @@ function ChatMetadataWikipediaDialog({ item, setItem, open, setOpen }: Props) {
     return (
       <Dialog
         open={open}
-        onOpenChange={open => {
+        onOpenChange={async open => {
           setOpen(open)
-          if (!open) setItem(null)
+          if (!open) {
+            // wait for 1s to close the dialog, because of the animation
+            await new Promise(resolve => setTimeout(resolve, 1000))
+            setItem(null)
+          }
         }}
       >
         <DialogContent>
@@ -86,9 +90,13 @@ function ChatMetadataWikipediaDialog({ item, setItem, open, setOpen }: Props) {
   return (
     <Drawer
       open={open}
-      onOpenChange={open => {
+      onOpenChange={async open => {
         setOpen(open)
-        if (!open) setItem(null)
+        if (!open) {
+          // wait for 1s to close the dialog, because of the animation
+          await new Promise(resolve => setTimeout(resolve, 1000))
+          setItem(null)
+        }
       }}
     >
       <DrawerContent>
