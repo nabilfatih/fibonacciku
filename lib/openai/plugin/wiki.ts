@@ -213,7 +213,7 @@ export const wikiSearchContent = cache(
         data?.pages?.map(page => ({
           title: page.title || "",
           excerpt: ensurePeriodAtEnd(
-            cleanIncompleteSentences(
+            markIncompleteSentences(
               sanitizeHtml(page.excerpt || "", {
                 allowedTags: [],
                 allowedAttributes: {}
@@ -267,14 +267,14 @@ function cleanWikiThumbnailUrl(url: string) {
   return sanitizedUrl.split("/").slice(0, -1).join("/").replace("/thumb", "")
 }
 
-// Function to clean incomplete sentences
-function cleanIncompleteSentences(excerpt: string): string {
+// Function to mark incomplete sentences with "..."
+function markIncompleteSentences(excerpt: string): string {
   const sentences = excerpt.split(/[.!?](?=\s|$)/) // Split excerpt into sentences
   if (sentences.length > 0) {
     const lastSentence = sentences[sentences.length - 1]
     if (!/\.$/.test(lastSentence)) {
       // Check if last sentence ends with a period
-      sentences.pop() // Remove the last sentence if it's incomplete
+      sentences[sentences.length - 1] += "..." // Mark incomplete sentence with "..."
     }
     return sentences.join(". ") // Join sentences back
   }
