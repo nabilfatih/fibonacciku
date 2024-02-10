@@ -21,7 +21,7 @@ function ChatMetadataYoutube({ metadata }: Props) {
         <span className="font-medium">{t("youtube-videos")}:</span>
       </div>
 
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         <div className="grid grid-cols-2 gap-2">
           {metadata.slice(0, 2).map((item, index) => {
             return (

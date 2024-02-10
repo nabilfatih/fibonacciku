@@ -21,8 +21,9 @@ function ChatMetadataWikipedia({ metadata }: Props) {
         <span className="font-medium">{t("wikipedia")}:</span>
       </div>
 
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         <motion.div
+          key={Math.random()}
           variants={{
             hidden: { opacity: 0, y: -10 },
             visible: { opacity: 1, y: 0 }

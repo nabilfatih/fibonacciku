@@ -70,7 +70,7 @@ export default function AdsBox({ id }: Props) {
   }
 
   return (
-    <AnimatePresence>
+    <AnimatePresence initial={false}>
       <motion.div
         key={data?.data.id || "ads"}
         variants={{

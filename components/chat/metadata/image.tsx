@@ -19,7 +19,7 @@ function ChatMetadataImage({ metadata }: Props) {
         <span className="font-medium">{t("generated-image")}:</span>
       </div>
 
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         <div className="grid grid-cols-2 gap-4">
           {metadata.map((item, index) => {
             return (
