@@ -590,7 +590,8 @@ export default {
     references: "References",
     "youtube-videos": "Youtube videos",
     page: "Page",
-    "generated-image": "Generated image"
+    "generated-image": "Generated image",
+    wikipedia: "Wikipedia"
   },
   Markdown: {
     "link-not-available": "Link not available"

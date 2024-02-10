@@ -11,9 +11,12 @@ export default function AdminPage() {
         </h1>
       </div>
       <div className="py-10">
-        <div className="relative mx-auto max-w-3xl px-4">
+        <div className="relative mx-auto max-w-3xl space-x-6 space-y-6 px-4">
           <Button>
             <Link href="/admin/blog">Insert Blog</Link>
+          </Button>
+          <Button>
+            <Link href="/admin/image">Upload Image</Link>
           </Button>
         </div>
       </div>

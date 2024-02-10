@@ -5,6 +5,7 @@ import ChatMetadataAttachment from "@/components/chat/metadata/attachment"
 import ChatMetadataGoogle from "@/components/chat/metadata/google"
 import ChatMetadataImage from "@/components/chat/metadata/image"
 import ChatMetadataReferences from "@/components/chat/metadata/references"
+import ChatMetadataWikipedia from "@/components/chat/metadata/wikipedia"
 import ChatMetadataYoutube from "@/components/chat/metadata/youtube"
 
 type Props = {
@@ -33,7 +34,9 @@ export default function ChatMetadata({ metadata, contentIndex }: Props) {
     youtube_search: youtube,
     attachments: attachments,
     image_result: imageResults,
-    source_documents: sourceDocuments
+    source_documents: sourceDocuments,
+    wiki_search_content: wikiSearchContent,
+    wiki_feed_featured: wikiFeedFeatured
   } = currentMetadata
 
   if (attachments) {
@@ -58,6 +61,9 @@ export default function ChatMetadata({ metadata, contentIndex }: Props) {
       {academic && <ChatMetadataAcademic metadata={academic} />}
       {youtube && <ChatMetadataYoutube metadata={youtube} />}
       {sourceDocuments && <ChatMetadataReferences metadata={sourceDocuments} />}
+      {wikiSearchContent && (
+        <ChatMetadataWikipedia metadata={wikiSearchContent} />
+      )}
     </div>
   )
 }

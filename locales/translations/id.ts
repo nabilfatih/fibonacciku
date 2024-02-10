@@ -608,7 +608,8 @@ export default {
     references: "Referensi",
     "youtube-videos": "Video YouTube",
     page: "Halaman",
-    "generated-image": "Generasi gambar"
+    "generated-image": "Generasi gambar",
+    wikipedia: "Wikipedia"
   },
   Markdown: {
     "link-not-available": "Tautan tidak tersedia"

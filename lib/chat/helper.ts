@@ -21,6 +21,8 @@ import {
 } from "@/lib/supabase/client/chat"
 import { generateUUID, getCurrentDate } from "@/lib/utils"
 
+import type { WikiSearchContentResult } from "../openai/plugin/wiki"
+
 export type PrefixMap = {
   data: JSONValue[]
 }
@@ -359,6 +361,7 @@ export const handleResponseData = async (
         toolName: string
         data: any
       }[]
+      console.log("functionData", functionData)
       const messageMetadata = handleMetadataMessage(functionData)
       // push metadata to the last metadata of the last message in the updatedShowMessage
       updatedShowMessage[updatedShowMessage.length - 1].metadata?.push(
@@ -418,23 +421,34 @@ export const handleMetadataMessage = (
     }
   }
 
-  const imageResults = functionData.filter(
+  const imageResults = functionData.find(
     item => item.toolName === "create_image"
   )
-  if (imageResults.length) {
-    const imageResult = imageResults[0].data.images as ImageResult[]
+  if (imageResults) {
+    const imageResult = imageResults.data.images as ImageResult[]
     if (imageResult.length) {
       messageMetadata.image_result = imageResult
     }
   }
 
-  const documentResults = functionData.filter(
+  const documentResults = functionData.find(
     item => item.toolName === "get_document"
   )
-  if (documentResults.length) {
-    const documentResult = documentResults[0].data.sources as SourceDocument[]
+  if (documentResults) {
+    const documentResult = documentResults.data.sources as SourceDocument[]
     if (documentResult.length) {
       messageMetadata.source_documents = documentResult
+    }
+  }
+
+  const wikiSearchContent = functionData.find(
+    item => item.toolName === "search_wikipedia"
+  )
+  if (wikiSearchContent) {
+    const wikiSearchContentResult = wikiSearchContent.data
+      .results as WikiSearchContentResult[]
+    if (wikiSearchContentResult.length) {
+      messageMetadata.wiki_search_content = wikiSearchContentResult
     }
   }
 

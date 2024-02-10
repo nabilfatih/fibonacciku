@@ -603,7 +603,8 @@ export default {
     references: "Ссылки",
     "youtube-videos": "Видео на YouTube",
     page: "Страница",
-    "generated-image": "Сгенерированное изображение"
+    "generated-image": "Сгенерированное изображение",
+    wikipedia: "Википедия"
   },
   Markdown: {
     "link-not-available": "Ссылка недоступна"

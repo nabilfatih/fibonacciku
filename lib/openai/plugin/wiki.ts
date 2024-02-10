@@ -93,6 +93,13 @@ export type WikiSearchContentResult = {
   }
 }
 
+const headers = {
+  "Content-Type": "application/json",
+  Authorization: `Bearer ${process.env.WIKIPEDIA_ACCESS_TOKEN}`,
+  "User-Agent": "FibonacciKu (https://www.fibonacciku.com)",
+  "Api-User-Agent": "fibonacciku nabilfatih@fibonacciku.com"
+}
+
 export const wikiFeedFeature = cache(
   async (
     lang: string = "en",
@@ -111,11 +118,7 @@ export const wikiFeedFeature = cache(
         `https://api.wikimedia.org/feed/v1/wikipedia/${lang}/featured/${dateFormat}`,
         {
           method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.WIKIPEDIA_ACCESS_TOKEN}`,
-            "Api-User-Agent": "fibonacciku nabilakbarazzima@gmail.com"
-          }
+          headers
         }
       )
 
@@ -196,11 +199,7 @@ export const wikiSearchContent = cache(
         `https://api.wikimedia.org/core/v1/wikipedia/${lang}/search/page?q=${query}&limit=20`,
         {
           method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.WIKIPEDIA_ACCESS_TOKEN}`,
-            "Api-User-Agent": "fibonacciku nabilakbarazzima@gmail.com"
-          }
+          headers
         }
       )
 
@@ -226,7 +225,7 @@ export const wikiSearchContent = cache(
       return {
         type: "wiki",
         message:
-          "Always show all the urls and the images of results. Never answer without the urls",
+          "You must summarize the wiki search results, not just display them",
         results: searchResults
       }
     } catch (error) {
