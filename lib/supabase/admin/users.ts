@@ -322,7 +322,6 @@ export const getUserChatHistoryAdmin = async (userId: string) => {
     .select()
     .eq("user_id", userId)
     .order("updated_at", { ascending: false })
-    .limit(50)
 
   if (error) {
     throw error

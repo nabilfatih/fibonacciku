@@ -6,7 +6,6 @@ export const getUserLibrary = async (userId: string) => {
     .select("*")
     .eq("user_id", userId)
     .order("created_at", { ascending: false })
-    .limit(1000)
 
   if (error) {
     throw error
