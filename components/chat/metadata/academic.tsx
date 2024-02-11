@@ -26,7 +26,7 @@ function ChatMetadataAcademic({ metadata }: Props) {
           {metadata.slice(0, 2).map((item, index) => {
             return (
               <LinkCard
-                key={item.id || index}
+                key={item.id || item.title}
                 item={item}
                 index={index}
                 showAbstract
@@ -38,7 +38,7 @@ function ChatMetadataAcademic({ metadata }: Props) {
           {metadata.slice(2).map((item, index) => {
             return (
               <LinkCard
-                key={item.id || index}
+                key={item.id || item.title}
                 item={item}
                 index={index}
                 showAbstract={false}

@@ -25,7 +25,7 @@ function ChatMetadataGoogle({ metadata }: Props) {
         <div className="grid grid-cols-2 gap-2">
           {metadata.slice(0, 2).map((item, index) => {
             return (
-              <LinkCard key={index} item={item} index={index} showSnippet />
+              <LinkCard key={item.link} item={item} index={index} showSnippet />
             )
           })}
         </div>
@@ -33,7 +33,7 @@ function ChatMetadataGoogle({ metadata }: Props) {
           {metadata.slice(2).map((item, index) => {
             return (
               <LinkCard
-                key={index}
+                key={item.link}
                 item={item}
                 index={index}
                 showSnippet={false}
