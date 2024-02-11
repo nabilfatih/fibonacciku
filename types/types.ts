@@ -307,3 +307,13 @@ export type InvoiceCallbackPayload = {
   on_demand_link?: string
   recurring_payment_id?: string
 }
+
+export type NasaAstronomyPictureOfTheDay = {
+  date: string
+  explanation: string
+  hdurl: string
+  media_type: string
+  service_version: string
+  title: string
+  url: string
+}

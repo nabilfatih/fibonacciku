@@ -101,3 +101,22 @@ export const replaceDelimiters = (markdown: string): string => {
       .replace(/\n=/g, "=")
   )
 }
+
+export const truncateParagraph = (
+  paragraph: string,
+  maxSentences: number
+): string => {
+  // Split the paragraph into an array of sentences
+  const sentences = paragraph.split(/[.!?]/)
+
+  // Trim any empty strings from the array
+  const trimmedSentences = sentences.filter(sentence => sentence.trim() !== "")
+
+  // Return the original paragraph if it contains fewer sentences than the maximum
+  if (trimmedSentences.length <= maxSentences) {
+    return paragraph
+  }
+
+  // Otherwise, join the first maxSentences sentences and return
+  return trimmedSentences.slice(0, maxSentences).join(". ") + "."
+}

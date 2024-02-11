@@ -953,7 +953,8 @@ export default {
     "then-choose-from-your-library": "Выберите из вашей библиотеки",
     "see-your-library": "Посмотреть вашу библиотеку",
     "our-latest-book": "Наша последняя книга",
-    "see-our-collection": "Посмотреть нашу коллекцию"
+    "see-our-collection": "Посмотреть нашу коллекцию",
+    "astronomy-of-the-day": "Астрономия дня"
   },
   Ads: {
     sponsored: "Реклама",

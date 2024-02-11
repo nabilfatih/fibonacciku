@@ -953,7 +953,8 @@ export default {
     "then-choose-from-your-library": "Lalu pilih dari perpustakaan Anda",
     "see-your-library": "Lihat perpustakaan Anda",
     "our-latest-book": "Buku terbaru",
-    "see-our-collection": "Lihat koleksi kami"
+    "see-our-collection": "Lihat koleksi kami",
+    "astronomy-of-the-day": "Astronomi hari ini"
   },
   Ads: {
     sponsored: "Sponsor",

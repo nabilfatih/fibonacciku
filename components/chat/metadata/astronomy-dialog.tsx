@@ -2,9 +2,10 @@ import { memo } from "react"
 import Image from "next/image"
 import he from "he"
 
+import type { NasaAstronomyPictureOfTheDay } from "@/types/types"
 import { useMediaQuery } from "@/lib/hooks/use-media-query"
-import type { WikiSearchContentResult } from "@/lib/openai/plugin/wiki"
-import { useScopedI18n } from "@/locales/client"
+import { truncateParagraph } from "@/lib/utils"
+import { useCurrentLocale, useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -27,14 +28,15 @@ import {
 } from "@/components/ui/drawer"
 
 type Props = {
-  item: WikiSearchContentResult
+  item: NasaAstronomyPictureOfTheDay
   open: boolean
   setOpen: (open: boolean) => void
 }
 
-function ChatMetadataWikipediaDialog({ item, open, setOpen }: Props) {
+function ChatMetadataAstronomyDialog({ item, open, setOpen }: Props) {
   const t = useScopedI18n("ModalPluginChat")
   const isDesktop = useMediaQuery("(min-width: 768px)")
+  const locale = useCurrentLocale()
 
   if (isDesktop) {
     return (
@@ -43,14 +45,20 @@ function ChatMetadataWikipediaDialog({ item, open, setOpen }: Props) {
           <DialogHeader>
             <DialogTitle>{item.title}</DialogTitle>
             <DialogDescription className="first-letter:uppercase">
-              {item.description}
+              {new Date(item.date).toLocaleDateString(locale, {
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+              })}
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 text-sm">
-            <p className="first-letter:uppercase">{he.decode(item.excerpt)}</p>
-            {item.thumbnail.url && (
+            <p className="first-letter:uppercase">
+              {he.decode(truncateParagraph(item.explanation, 3))}
+            </p>
+            {item.hdurl && (
               <Image
-                src={item.thumbnail.url}
+                src={item.hdurl}
                 alt={item.title}
                 sizes="100%"
                 style={{
@@ -61,6 +69,7 @@ function ChatMetadataWikipediaDialog({ item, open, setOpen }: Props) {
                 priority
                 width={256}
                 height={256}
+                onError={e => (e.currentTarget.src = item.url)}
                 unoptimized // decrease cost of image optimization
                 className="m-0 rounded-xl border bg-muted/90 object-cover shadow-sm"
               />
@@ -82,16 +91,20 @@ function ChatMetadataWikipediaDialog({ item, open, setOpen }: Props) {
         <DrawerHeader className="text-left">
           <DrawerTitle>{item.title}</DrawerTitle>
           <DrawerDescription className="first-letter:uppercase">
-            {item.description}
+            {new Date(item.date).toLocaleDateString(locale, {
+              year: "numeric",
+              month: "long",
+              day: "numeric"
+            })}
           </DrawerDescription>
         </DrawerHeader>
         <div className="grid gap-4 px-4">
           <p className="text-sm first-letter:uppercase">
-            {he.decode(item.excerpt)}
+            {he.decode(truncateParagraph(item.explanation, 3))}
           </p>
-          {item.thumbnail.url && (
+          {item.hdurl && (
             <Image
-              src={item.thumbnail.url}
+              src={item.hdurl}
               alt={item.title}
               sizes="100%"
               style={{
@@ -102,6 +115,7 @@ function ChatMetadataWikipediaDialog({ item, open, setOpen }: Props) {
               priority
               width={320}
               height={320}
+              onError={e => (e.currentTarget.src = item.url)}
               unoptimized // decrease cost of image optimization
               className="m-0 rounded-xl border bg-muted/90 object-cover shadow-sm"
             />
@@ -117,4 +131,4 @@ function ChatMetadataWikipediaDialog({ item, open, setOpen }: Props) {
   )
 }
 
-export default memo(ChatMetadataWikipediaDialog)
+export default memo(ChatMetadataAstronomyDialog)

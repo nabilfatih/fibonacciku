@@ -936,7 +936,8 @@ export default {
     "then-choose-from-your-library": "Then choose from your library",
     "see-your-library": "See your library",
     "our-latest-book": "Our latest book",
-    "see-our-collection": "See our collection"
+    "see-our-collection": "See our collection",
+    "astronomy-of-the-day": "Astronomy of the day"
   },
   Ads: {
     sponsored: "Sponsored",

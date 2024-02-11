@@ -11,7 +11,8 @@ import { getCurrentLocale, getScopedI18n } from "@/locales/server"
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getScopedI18n("Marketing")
   return {
-    title: t("blog")
+    title: t("blog"),
+    description: t("blog-desc")
   }
 }
 
