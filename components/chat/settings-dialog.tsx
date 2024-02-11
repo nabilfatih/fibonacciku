@@ -140,7 +140,7 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
                       </SelectLabel>
                       {Class.map((item, index) => (
                         <SelectItem key={index} value={item.query}>
-                          {t(item.name as never)}
+                          {t(item.query as never)}
                         </SelectItem>
                       ))}
                     </SelectGroup>
@@ -226,7 +226,7 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
                     </SelectLabel>
                     {Class.map((item, index) => (
                       <SelectItem key={index} value={item.query}>
-                        {t(item.name as never)}
+                        {t(item.query as never)}
                       </SelectItem>
                     ))}
                   </SelectGroup>
