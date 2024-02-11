@@ -1,3 +1,4 @@
+import { cache } from "react"
 import axios from "axios"
 import useSWR from "swr"
 
@@ -7,8 +8,9 @@ type ResponseData = {
   libraries: Libraries[]
 }
 
-const fetcher = (url: string): Promise<ResponseData> =>
-  axios.get(url).then(res => res.data)
+const fetcher = cache(
+  (url: string): Promise<ResponseData> => axios.get(url).then(res => res.data)
+)
 
 export default function useUserLibrary(userId: string) {
   // if userId is empty string, return not fetch

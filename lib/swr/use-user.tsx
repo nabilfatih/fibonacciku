@@ -1,3 +1,4 @@
+import { cache } from "react"
 import axios from "axios"
 import useSWR from "swr"
 
@@ -8,8 +9,9 @@ type ResponseData = {
   subscription: Subscription
 }
 
-const fetcher = (url: string): Promise<ResponseData> =>
-  axios.get(url).then(res => res.data)
+const fetcher = cache(
+  (url: string): Promise<ResponseData> => axios.get(url).then(res => res.data)
+)
 
 export default function useUser(userId: string) {
   const { data, error, isLoading, isValidating } = useSWR<ResponseData>(
