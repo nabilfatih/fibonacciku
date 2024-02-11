@@ -107,7 +107,7 @@ export const truncateParagraph = (
   maxSentences: number
 ): string => {
   // Split the paragraph into an array of sentences
-  const sentences = paragraph.split(/[.!?]/)
+  const sentences = paragraph.split(".")
 
   // Trim any empty strings from the array
   const trimmedSentences = sentences.filter(sentence => sentence.trim() !== "")

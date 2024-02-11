@@ -1,19 +1,21 @@
 import { useState } from "react"
 import Image from "next/image"
-import { IconTelescope } from "@tabler/icons-react"
+import { IconRefresh, IconTelescope } from "@tabler/icons-react"
 import he from "he"
+import sanitizeHtml from "sanitize-html"
 import useSWRImmutable from "swr/immutable"
 
 import type { NasaAstronomyPictureOfTheDay } from "@/types/types"
 import { useScopedI18n } from "@/locales/client"
 
+import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
 import ChatMetadataAstronomyDialog from "@/components/chat/metadata/astronomy-dialog"
 import { getAstronomyPictureOfTheDay } from "@/app/actions/external"
 
 export default function EmptyScreenAssistant() {
   const t = useScopedI18n("EmptyScreen")
-  const { data, isLoading } = useSWRImmutable(
+  const { data, isLoading, mutate } = useSWRImmutable(
     "astronomy-picture-of-the-day",
     () => getAstronomyPictureOfTheDay(3)
   )
@@ -70,20 +72,26 @@ export default function EmptyScreenAssistant() {
 
                     <p
                       className="line-clamp-3 whitespace-pre-wrap break-words text-xs text-muted-foreground"
-                      title={he.decode(item.explanation)}
+                      title={sanitizeHtml(he.decode(item.explanation), {
+                        allowedTags: [],
+                        allowedAttributes: {}
+                      })}
                     >
-                      {he.decode(item.explanation)}
+                      {sanitizeHtml(he.decode(item.explanation), {
+                        allowedTags: [],
+                        allowedAttributes: {}
+                      })}
                     </p>
                   </div>
 
                   <div className="relative h-36 w-full border-t sm:h-48">
                     <Image
-                      src={item.hdurl || item.url}
+                      src={item.url}
                       alt={item.title}
                       sizes="100%"
                       fill
                       priority
-                      onError={e => (e.currentTarget.src = item.url)}
+                      onError={e => (e.currentTarget.src = item.hdurl)}
                       unoptimized // decrease cost of image optimization
                       className="bg-muted/90 object-cover"
                     />
@@ -92,6 +100,10 @@ export default function EmptyScreenAssistant() {
               </div>
             ))}
           </div>
+          <Button variant="outline" size="icon" onClick={() => mutate()}>
+            <IconRefresh className="h-5 w-5" />
+            <span className="sr-only">Refresh</span>
+          </Button>
         </div>
       )}
 

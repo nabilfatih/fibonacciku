@@ -1,6 +1,7 @@
 import { memo } from "react"
 import Image from "next/image"
 import he from "he"
+import sanitizeHtml from "sanitize-html"
 
 import type { NasaAstronomyPictureOfTheDay } from "@/types/types"
 import { useMediaQuery } from "@/lib/hooks/use-media-query"
@@ -54,11 +55,14 @@ function ChatMetadataAstronomyDialog({ item, open, setOpen }: Props) {
           </DialogHeader>
           <div className="grid gap-4 text-sm">
             <p className="first-letter:uppercase">
-              {he.decode(truncateParagraph(item.explanation, 3))}
+              {sanitizeHtml(he.decode(truncateParagraph(item.explanation, 3)), {
+                allowedTags: [],
+                allowedAttributes: {}
+              })}
             </p>
             {item.hdurl && (
               <Image
-                src={item.hdurl}
+                src={item.url}
                 alt={item.title}
                 sizes="100%"
                 style={{
@@ -69,7 +73,7 @@ function ChatMetadataAstronomyDialog({ item, open, setOpen }: Props) {
                 priority
                 width={256}
                 height={256}
-                onError={e => (e.currentTarget.src = item.url)}
+                onError={e => (e.currentTarget.src = item.hdurl)}
                 unoptimized // decrease cost of image optimization
                 className="m-0 rounded-xl border bg-muted/90 object-cover shadow-sm"
               />
@@ -100,11 +104,14 @@ function ChatMetadataAstronomyDialog({ item, open, setOpen }: Props) {
         </DrawerHeader>
         <div className="grid gap-4 px-4">
           <p className="text-sm first-letter:uppercase">
-            {he.decode(truncateParagraph(item.explanation, 3))}
+            {sanitizeHtml(he.decode(truncateParagraph(item.explanation, 3)), {
+              allowedTags: [],
+              allowedAttributes: {}
+            })}
           </p>
           {item.hdurl && (
             <Image
-              src={item.hdurl}
+              src={item.url}
               alt={item.title}
               sizes="100%"
               style={{
@@ -115,7 +122,7 @@ function ChatMetadataAstronomyDialog({ item, open, setOpen }: Props) {
               priority
               width={320}
               height={320}
-              onError={e => (e.currentTarget.src = item.url)}
+              onError={e => (e.currentTarget.src = item.hdurl)}
               unoptimized // decrease cost of image optimization
               className="m-0 rounded-xl border bg-muted/90 object-cover shadow-sm"
             />
