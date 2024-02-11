@@ -73,7 +73,6 @@ function ChatMetadataAstronomyDialog({ item, open, setOpen }: Props) {
                 priority
                 width={256}
                 height={256}
-                onError={e => (e.currentTarget.src = item.hdurl)}
                 unoptimized // decrease cost of image optimization
                 className="m-0 rounded-xl border bg-muted/90 object-cover shadow-sm"
               />
@@ -122,7 +121,6 @@ function ChatMetadataAstronomyDialog({ item, open, setOpen }: Props) {
               priority
               width={320}
               height={320}
-              onError={e => (e.currentTarget.src = item.hdurl)}
               unoptimized // decrease cost of image optimization
               className="m-0 rounded-xl border bg-muted/90 object-cover shadow-sm"
             />

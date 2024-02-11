@@ -91,7 +91,6 @@ export default function EmptyScreenAssistant() {
                       sizes="100%"
                       fill
                       priority
-                      onError={e => (e.currentTarget.src = item.hdurl)}
                       unoptimized // decrease cost of image optimization
                       className="bg-muted/90 object-cover"
                     />
