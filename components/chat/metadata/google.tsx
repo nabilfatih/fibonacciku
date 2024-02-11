@@ -1,7 +1,7 @@
 import { memo } from "react"
 import Image from "next/image"
 import { IconWorldWww } from "@tabler/icons-react"
-import { AnimatePresence, motion } from "framer-motion"
+import { motion } from "framer-motion"
 import he from "he"
 
 import type { SearchResult } from "@/types/types"
@@ -21,27 +21,25 @@ function ChatMetadataGoogle({ metadata }: Props) {
         <span className="font-medium">{t("related-links")}:</span>
       </div>
 
-      <AnimatePresence initial={false}>
-        <div className="grid grid-cols-2 gap-2">
-          {metadata.slice(0, 2).map((item, index) => {
-            return (
-              <LinkCard key={item.link} item={item} index={index} showSnippet />
-            )
-          })}
-        </div>
-        <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
-          {metadata.slice(2).map((item, index) => {
-            return (
-              <LinkCard
-                key={item.link}
-                item={item}
-                index={index}
-                showSnippet={false}
-              />
-            )
-          })}
-        </div>
-      </AnimatePresence>
+      <div className="grid grid-cols-2 gap-2">
+        {metadata.slice(0, 2).map((item, index) => {
+          return (
+            <LinkCard key={item.link} item={item} index={index} showSnippet />
+          )
+        })}
+      </div>
+      <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
+        {metadata.slice(2).map((item, index) => {
+          return (
+            <LinkCard
+              key={item.link}
+              item={item}
+              index={index}
+              showSnippet={false}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }
@@ -57,7 +55,7 @@ function LinkCard({
 }) {
   return (
     <motion.a
-      key={index}
+      key={item.link}
       target="_blank"
       href={item.link}
       rel="noopener noreferrer"
@@ -103,6 +101,7 @@ function LinkCard({
               title={he.decode(item.title)}
               className="m-0 block rounded-full bg-transparent object-contain"
               src={`https://www.google.com/s2/favicons?domain=${item.displayLink}&sz=512`}
+              sizes="16px"
               width={16}
               height={16}
               priority

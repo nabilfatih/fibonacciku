@@ -1,7 +1,7 @@
 import { memo } from "react"
 import Image from "next/image"
 import { IconBrandYoutube } from "@tabler/icons-react"
-import { AnimatePresence, motion } from "framer-motion"
+import { motion } from "framer-motion"
 import he from "he"
 
 import type { YoutubeSearchResult } from "@/types/types"
@@ -21,32 +21,30 @@ function ChatMetadataYoutube({ metadata }: Props) {
         <span className="font-medium">{t("youtube-videos")}:</span>
       </div>
 
-      <AnimatePresence initial={false}>
-        <div className="grid grid-cols-2 gap-2">
-          {metadata.slice(0, 2).map((item, index) => {
-            return (
-              <LinkCard
-                key={item.id.videoId || index}
-                item={item}
-                index={index}
-                showDescription
-              />
-            )
-          })}
-        </div>
-        <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
-          {metadata.slice(2).map((item, index) => {
-            return (
-              <LinkCard
-                key={item.id.videoId || index}
-                item={item}
-                index={index}
-                showDescription={false}
-              />
-            )
-          })}
-        </div>
-      </AnimatePresence>
+      <div className="grid grid-cols-2 gap-2">
+        {metadata.slice(0, 2).map((item, index) => {
+          return (
+            <LinkCard
+              key={item.id.videoId || index}
+              item={item}
+              index={index}
+              showDescription
+            />
+          )
+        })}
+      </div>
+      <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
+        {metadata.slice(2).map((item, index) => {
+          return (
+            <LinkCard
+              key={item.id.videoId || index}
+              item={item}
+              index={index}
+              showDescription={false}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }
