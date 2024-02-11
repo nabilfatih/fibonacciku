@@ -70,7 +70,7 @@ export const getUserLibraryAdmin = async (userId: string) => {
     .select("*")
     .eq("user_id", userId)
     .order("created_at", { ascending: false })
-    .limit(100)
+    .limit(1000)
   if (error) {
     throw error
   }
