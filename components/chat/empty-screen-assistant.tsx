@@ -66,12 +66,12 @@ export default function EmptyScreenAssistant() {
               >
                 <div className="flex h-full w-full flex-col items-start justify-between gap-3">
                   <div className="flex flex-col gap-1 p-2">
-                    <p
+                    <h3
                       className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-medium"
                       title={he.decode(item.title)}
                     >
                       {he.decode(item.title)}
-                    </p>
+                    </h3>
 
                     <p
                       className="line-clamp-3 whitespace-pre-wrap break-words text-xs text-muted-foreground"
