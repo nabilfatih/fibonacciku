@@ -954,7 +954,8 @@ export default {
     "see-your-library": "Lihat perpustakaan Anda",
     "our-latest-book": "Buku terbaru",
     "see-our-collection": "Lihat koleksi kami",
-    "astronomy-of-the-day": "Astronomi hari ini"
+    "astronomy-of-the-day": "Astronomi hari ini",
+    "powered-by-nasa": "Didukung oleh NASA"
   },
   Ads: {
     sponsored: "Sponsor",

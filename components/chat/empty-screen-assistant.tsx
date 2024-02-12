@@ -105,10 +105,15 @@ export default function EmptyScreenAssistant() {
               </div>
             ))}
           </div>
-          <Button variant="outline" size="icon" onClick={() => mutate()}>
-            <IconRefresh className="h-5 w-5" />
-            <span className="sr-only">Refresh</span>
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button variant="outline" size="icon" onClick={() => mutate()}>
+              <IconRefresh className="h-5 w-5" />
+              <span className="sr-only">Refresh</span>
+            </Button>
+            <p className="text-xs leading-none text-muted-foreground">
+              {t("powered-by-nasa")}
+            </p>
+          </div>
         </div>
       )}
 

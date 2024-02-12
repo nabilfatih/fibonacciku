@@ -954,7 +954,8 @@ export default {
     "see-your-library": "Посмотреть вашу библиотеку",
     "our-latest-book": "Наша последняя книга",
     "see-our-collection": "Посмотреть нашу коллекцию",
-    "astronomy-of-the-day": "Астрономия дня"
+    "astronomy-of-the-day": "Астрономия дня",
+    "powered-by-nasa": "Поддерживается NASA"
   },
   Ads: {
     sponsored: "Реклама",

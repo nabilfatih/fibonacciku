@@ -937,7 +937,8 @@ export default {
     "see-your-library": "See your library",
     "our-latest-book": "Our latest book",
     "see-our-collection": "See our collection",
-    "astronomy-of-the-day": "Astronomy of the day"
+    "astronomy-of-the-day": "Astronomy of the day",
+    "powered-by-nasa": "Powered by NASA"
   },
   Ads: {
     sponsored: "Sponsored",

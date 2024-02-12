@@ -970,7 +970,8 @@ export default {
     "see-your-library": "Sehen Sie Ihre Bibliothek",
     "our-latest-book": "Unser neuestes Buch",
     "see-our-collection": "Sehen Sie unsere Sammlung",
-    "astronomy-of-the-day": "Astronomie des Tages"
+    "astronomy-of-the-day": "Astronomie des Tages",
+    "powered-by-nasa": "Unterstützt von der NASA"
   },
   Ads: {
     sponsored: "Anzeige",
