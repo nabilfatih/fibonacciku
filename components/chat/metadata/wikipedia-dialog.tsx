@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/drawer"
 
 type Props = {
-  item: WikiSearchContentResult
+  item: WikiSearchContentResult | null
   open: boolean
   setOpen: (open: boolean) => void
 }
@@ -35,6 +35,8 @@ type Props = {
 function ChatMetadataWikipediaDialog({ item, open, setOpen }: Props) {
   const t = useScopedI18n("ModalPluginChat")
   const isDesktop = useMediaQuery("(min-width: 768px)")
+
+  if (!item) return null
 
   if (isDesktop) {
     return (

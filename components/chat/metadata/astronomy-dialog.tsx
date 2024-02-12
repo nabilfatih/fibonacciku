@@ -29,7 +29,7 @@ import {
 } from "@/components/ui/drawer"
 
 type Props = {
-  item: NasaAstronomyPictureOfTheDay
+  item: NasaAstronomyPictureOfTheDay | null
   open: boolean
   setOpen: (open: boolean) => void
 }
@@ -38,6 +38,8 @@ function ChatMetadataAstronomyDialog({ item, open, setOpen }: Props) {
   const t = useScopedI18n("ModalPluginChat")
   const isDesktop = useMediaQuery("(min-width: 768px)")
   const locale = useCurrentLocale()
+
+  if (!item) return null
 
   if (isDesktop) {
     return (
