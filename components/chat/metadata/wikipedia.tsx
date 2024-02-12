@@ -19,6 +19,10 @@ function ChatMetadataWikipedia({ metadata }: Props) {
   const [selectedItem, setSelectedItem] =
     useState<WikiSearchContentResult | null>(null)
 
+  const filteredMetadata = metadata
+    .filter(item => item.thumbnail.url)
+    .slice(0, 6)
+
   return (
     <div className="flex flex-col justify-start gap-2">
       <div className="flex flex-row items-center gap-1">
@@ -27,61 +31,56 @@ function ChatMetadataWikipedia({ metadata }: Props) {
       </div>
 
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-        {metadata
-          .filter(item => item.thumbnail.url)
-          .slice(0, 6)
-          .map((item, index) => {
-            return (
-              <div
-                role="button"
-                key={item.title || index}
-                className="group cursor-pointer overflow-hidden rounded-xl border shadow-sm transition-colors hover:bg-muted/50"
-                onClick={() => {
-                  setSelectedItem(item)
-                  setOpen(true)
-                }}
-              >
-                <div className="flex h-full w-full flex-col items-start justify-between gap-3">
-                  <div className="flex flex-col gap-1 p-2">
-                    <p
-                      className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-medium"
-                      title={he.decode(item.title)}
-                    >
-                      {he.decode(item.title)}
-                    </p>
+        {filteredMetadata.map((item, index) => {
+          return (
+            <div
+              role="button"
+              key={item.title || index}
+              className="group cursor-pointer overflow-hidden rounded-xl border shadow-sm transition-colors hover:bg-muted/50"
+              onClick={() => {
+                setSelectedItem(item)
+                setOpen(true)
+              }}
+            >
+              <div className="flex h-full w-full flex-col items-start justify-between gap-3">
+                <div className="flex flex-col gap-1 p-2">
+                  <p
+                    className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-medium"
+                    title={he.decode(item.title)}
+                  >
+                    {he.decode(item.title)}
+                  </p>
 
-                    <p
-                      className="whitespace-pre-wrap break-words text-xs first-letter:uppercase"
-                      title={he.decode(item.description)}
-                    >
-                      {he.decode(item.description)}
-                    </p>
-                  </div>
+                  <p
+                    className="whitespace-pre-wrap break-words text-xs first-letter:uppercase"
+                    title={he.decode(item.description)}
+                  >
+                    {he.decode(item.description)}
+                  </p>
+                </div>
 
-                  <div className="relative h-36 w-full border-t sm:h-48">
-                    <Image
-                      src={item.thumbnail.url || "/fibo-assistant.webp"}
-                      alt={item.title}
-                      sizes="100%"
-                      fill
-                      priority
-                      unoptimized // decrease cost of image optimization
-                      className="bg-muted/90 object-cover"
-                    />
-                  </div>
+                <div className="relative h-36 w-full border-t sm:h-48">
+                  <Image
+                    src={item.thumbnail.url || "/fibo-assistant.webp"}
+                    alt={item.title}
+                    sizes="100%"
+                    fill
+                    priority
+                    unoptimized // decrease cost of image optimization
+                    className="bg-muted/90 object-cover"
+                  />
                 </div>
               </div>
-            )
-          })}
+            </div>
+          )
+        })}
       </div>
 
-      {selectedItem && (
-        <ChatMetadataWikipediaDialog
-          item={selectedItem}
-          open={open}
-          setOpen={setOpen}
-        />
-      )}
+      <ChatMetadataWikipediaDialog
+        item={selectedItem || filteredMetadata[0]}
+        open={open}
+        setOpen={setOpen}
+      />
     </div>
   )
 }
