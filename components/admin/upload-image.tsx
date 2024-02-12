@@ -28,7 +28,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 const FormSchema = z.object({
-  blogId: z.string(),
+  blogId: z.string().uuid({ message: "Blog ID is not valid" }),
   coverFile: z.instanceof(File).nullable()
 })
 
