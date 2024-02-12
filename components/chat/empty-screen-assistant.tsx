@@ -95,6 +95,9 @@ export default function EmptyScreenAssistant() {
                       fill
                       priority
                       unoptimized // decrease cost of image optimization
+                      onError={e =>
+                        (e.currentTarget.src = "/fibo-astronomy.webp")
+                      }
                       className="bg-muted/90 object-cover"
                     />
                   </div>
