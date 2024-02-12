@@ -72,7 +72,7 @@ export const determineModelBasedOnSubscription = cache(
   },
   ["determineModelBasedOnSubscription"], // cache key
   {
-    revalidate: 3600
+    revalidate: 900 // 15 minutes
   }
 )
 
