@@ -28,7 +28,11 @@ export default async function MarketingFooter() {
                 size="icon"
                 asChild
               >
-                <Link href={social.link}>
+                <Link
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <social.icon className="h-5 w-5" />
                   <span className="sr-only">{social.name}</span>
                 </Link>
