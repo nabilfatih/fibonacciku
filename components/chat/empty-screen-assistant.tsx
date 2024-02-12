@@ -9,13 +9,14 @@ import type { NasaAstronomyPictureOfTheDay } from "@/types/types"
 import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
+import { IconSpinner } from "@/components/ui/icons"
 import { Skeleton } from "@/components/ui/skeleton"
 import ChatMetadataAstronomyDialog from "@/components/chat/metadata/astronomy-dialog"
 import { getAstronomyPictureOfTheDay } from "@/app/actions/external"
 
 export default function EmptyScreenAssistant() {
   const t = useScopedI18n("EmptyScreen")
-  const { data, isLoading, mutate } = useSWRImmutable(
+  const { data, isLoading, mutate, isValidating } = useSWRImmutable(
     "astronomy-picture-of-the-day",
     () => getAstronomyPictureOfTheDay(3)
   )
@@ -106,8 +107,17 @@ export default function EmptyScreenAssistant() {
             ))}
           </div>
           <div className="flex items-center gap-2">
-            <Button variant="outline" size="icon" onClick={() => mutate()}>
-              <IconRefresh className="h-5 w-5" />
+            <Button
+              variant="outline"
+              size="icon"
+              disabled={isValidating}
+              onClick={() => mutate()}
+            >
+              {isValidating ? (
+                <IconSpinner className="h-5 w-5 animate-spin" />
+              ) : (
+                <IconRefresh className="h-5 w-5" />
+              )}
               <span className="sr-only">Refresh</span>
             </Button>
             <p className="text-xs leading-none text-muted-foreground">
