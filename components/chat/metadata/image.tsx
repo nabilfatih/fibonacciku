@@ -1,7 +1,7 @@
 import { memo } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { IconPhoto } from "@tabler/icons-react"
-import { motion } from "framer-motion"
 
 import type { ImageResult } from "@/types/types"
 import { useScopedI18n } from "@/locales/client"
@@ -22,23 +22,11 @@ function ChatMetadataImage({ metadata }: Props) {
       <div className="grid grid-cols-2 gap-2 sm:gap-4">
         {metadata.map((item, index) => {
           return (
-            <motion.a
+            <Link
               key={item.image || index}
               title={item.prompt || "Image"}
               href={item.image.split("?")[0]}
               target="_blank"
-              variants={{
-                hidden: { opacity: 0, y: -10 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: index * 0.1,
-                ease: "easeInOut",
-                duration: 0.5
-              }}
-              viewport={{ amount: 0 }}
             >
               <Image
                 src={item.image}
@@ -55,7 +43,7 @@ function ChatMetadataImage({ metadata }: Props) {
                 unoptimized // decrease cost of image optimization
                 className="m-0 cursor-pointer rounded-xl border bg-muted/90 object-cover shadow-sm"
               />
-            </motion.a>
+            </Link>
           )
         })}
       </div>

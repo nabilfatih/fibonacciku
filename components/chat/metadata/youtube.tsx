@@ -1,7 +1,7 @@
 import { memo } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { IconBrandYoutube } from "@tabler/icons-react"
-import { motion } from "framer-motion"
 import he from "he"
 
 import type { YoutubeSearchResult } from "@/types/types"
@@ -59,24 +59,12 @@ function LinkCard({
   showDescription: boolean
 }) {
   return (
-    <motion.a
+    <Link
       key={item.id.videoId || index}
       title={he.decode(item.snippet.title)}
       rel="noopener noreferrer"
       href={`https://www.youtube.com/watch?v=${item.id.videoId}`}
       target="_blank"
-      variants={{
-        hidden: { opacity: 0, y: -10 },
-        visible: { opacity: 1, y: 0 }
-      }}
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        delay: index * 0.1,
-        ease: "easeInOut",
-        duration: 0.5
-      }}
-      viewport={{ amount: 0 }}
       className="group min-h-[82px] rounded-xl border px-3 py-2 shadow-sm transition-colors hover:bg-muted/50"
       style={{
         backgroundImage: `linear-gradient(rgba(10, 20, 39, 0.7), rgba(10, 20, 39, 0.7)), url(${item.snippet.thumbnails.high.url})`,
@@ -123,7 +111,7 @@ function LinkCard({
           </span>
         </div>
       </div>
-    </motion.a>
+    </Link>
   )
 }
 

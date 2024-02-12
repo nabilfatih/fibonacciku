@@ -33,6 +33,7 @@ function ChatMetadataWikipedia({ metadata }: Props) {
           .map((item, index) => {
             return (
               <div
+                role="button"
                 key={item.title || index}
                 className="group cursor-pointer overflow-hidden rounded-xl border shadow-sm transition-colors hover:bg-muted/50"
                 onClick={() => {
