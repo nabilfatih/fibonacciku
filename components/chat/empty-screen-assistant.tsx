@@ -39,7 +39,10 @@ export default function EmptyScreenAssistant() {
           </div>
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
             {Array.from({ length: 3 }, (_, i) => (
-              <Skeleton key={i} className="h-28 w-full" />
+              <Skeleton
+                key={i}
+                className="h-28 w-full last:hidden sm:last:block"
+              />
             ))}
           </div>
         </div>
