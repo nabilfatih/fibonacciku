@@ -4,6 +4,7 @@ import { cookies } from "next/headers"
 import { CurrentUserContextProvider } from "@/lib/context/use-current-user"
 import { createClientServer } from "@/lib/supabase/server"
 
+import MarketingFooter from "@/components/marketing/footer"
 import MarketingHeader from "@/components/marketing/header"
 
 export default async function MarketingLayout({
@@ -23,6 +24,7 @@ export default async function MarketingLayout({
       <main className="flex flex-1 flex-col overflow-hidden">
         <Suspense>{children}</Suspense>
       </main>
+      <MarketingFooter />
     </CurrentUserContextProvider>
   )
 }
