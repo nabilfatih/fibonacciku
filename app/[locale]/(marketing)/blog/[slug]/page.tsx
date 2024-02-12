@@ -42,10 +42,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: blog.title,
     description: blog.description,
+    alternates: {
+      canonical: `/blog/${blog.slug}`,
+      languages: {
+        en: `/en/blog/${blog.slug}`,
+        id: `/id/blog/${blog.slug}`,
+        de: `/de/blog/${blog.slug}`,
+        ru: `/ru/blog/${blog.slug}`
+      }
+    },
     openGraph: {
       title: blog.title,
       description: blog.description,
       type: "article",
+      publishedTime: new Date(blog.created_at).toISOString(),
+      url: `https://fibonacciku.com/blog/${blog.slug}`,
       images: [ogImage]
     },
     twitter: {
