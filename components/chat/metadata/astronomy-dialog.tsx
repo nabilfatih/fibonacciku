@@ -103,7 +103,7 @@ function ChatMetadataAstronomyDialog({ item, open, setOpen }: Props) {
         </DrawerHeader>
         <div className="grid gap-4 px-4">
           <p className="text-sm first-letter:uppercase">
-            {sanitizeHtml(he.decode(truncateParagraph(item.explanation, 3)), {
+            {sanitizeHtml(he.decode(truncateParagraph(item.explanation, 2)), {
               allowedTags: [],
               allowedAttributes: {}
             })}
