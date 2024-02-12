@@ -109,7 +109,13 @@ export default function EmptyScreenAssistant() {
         </div>
       )}
 
-      <ChatMetadataAstronomyDialog item={item} open={open} setOpen={setOpen} />
+      {item && (
+        <ChatMetadataAstronomyDialog
+          item={item}
+          open={open}
+          setOpen={setOpen}
+        />
+      )}
     </div>
   )
 }
