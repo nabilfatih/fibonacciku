@@ -49,7 +49,7 @@ export default function ChatList({
         initialIndex={messages.length}
         initialOffset={208}
         initialAlignToTop={false}
-        overscan={3}
+        overscan={5}
         onViewportIndexesChange={indexes => {
           dispatch({ type: "SET_SCROLL_POSITION", payload: indexes[0] })
         }}
