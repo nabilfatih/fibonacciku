@@ -21,7 +21,7 @@ function ChatMetadataWikipedia({ metadata }: Props) {
 
   const filteredMetadata = metadata
     .filter(item => item.thumbnail.url)
-    .slice(0, 6)
+    .slice(0, 12)
 
   return (
     <div className="flex flex-col justify-start gap-2">

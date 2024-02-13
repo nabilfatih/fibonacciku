@@ -9,7 +9,8 @@ import type {
   SaveDataMessage,
   ShowChatMessage,
   SourceDocument,
-  UserDetails
+  UserDetails,
+  Weather
 } from "@/types/types"
 import { readDataStream } from "@/lib/chat/read-data-stream"
 import type { ChatRequest } from "@/lib/context/use-message"
@@ -361,7 +362,6 @@ export const handleResponseData = async (
         toolName: string
         data: any
       }[]
-      console.log("functionData", functionData)
       const messageMetadata = handleMetadataMessage(functionData)
       // push metadata to the last metadata of the last message in the updatedShowMessage
       updatedShowMessage[updatedShowMessage.length - 1].metadata?.push(
@@ -441,14 +441,34 @@ export const handleMetadataMessage = (
     }
   }
 
-  const wikiSearchContent = functionData.find(
+  const wikiSearchContent = functionData.filter(
     item => item.toolName === "search_wikipedia"
   )
-  if (wikiSearchContent) {
-    const wikiSearchContentResult = wikiSearchContent.data
-      .results as WikiSearchContentResult[]
+  if (wikiSearchContent.length) {
+    const wikiSearchContentResult = wikiSearchContent
+      .flatMap(
+        // results is array, we need to take all the elements of the array
+        item => item.data.results.map((item: WikiSearchContentResult) => item)
+      )
+      .filter(
+        (item, index, self) =>
+          index === self.findIndex(t => t.title === item.title)
+      )
     if (wikiSearchContentResult.length) {
-      messageMetadata.wiki_search_content = wikiSearchContentResult
+      if (!messageMetadata.wiki_search_content) {
+        messageMetadata.wiki_search_content = []
+      }
+      messageMetadata.wiki_search_content.push(...wikiSearchContentResult)
+    }
+  }
+
+  const weatherData = functionData.find(
+    item => item.toolName === "get_weather_information"
+  )
+  if (weatherData) {
+    const weatherResult = weatherData.data as Weather
+    if (weatherResult) {
+      messageMetadata.weather_information = [weatherResult]
     }
   }
 

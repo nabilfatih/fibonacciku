@@ -196,7 +196,7 @@ export const wikiSearchContent = cache(
   async (lang = "en", query: string) => {
     try {
       const response = await fetch(
-        `https://api.wikimedia.org/core/v1/wikipedia/${lang}/search/page?q=${query}&limit=20`,
+        `https://api.wikimedia.org/core/v1/wikipedia/${lang}/search/page?q=${query}&limit=10`,
         {
           method: "GET",
           headers
