@@ -57,7 +57,6 @@ export default function EmptyScreenAssistant() {
             </h2>
           </div>
           <motion.div
-            key={Math.random()}
             variants={{
               hidden: { opacity: 0, y: -10 },
               visible: { opacity: 1, y: 0 }
