@@ -81,7 +81,7 @@ export default async function BlogSlugPage({ params }: Props) {
   return (
     <main>
       <header className="py-28 sm:py-36">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <Link
             href="/blog"
             className="text-lg leading-none tracking-tight hover:underline"
@@ -111,7 +111,7 @@ export default async function BlogSlugPage({ params }: Props) {
         </div>
       </header>
 
-      <section className="mx-auto max-w-6xl border-t px-4 pt-4">
+      <section className="mx-auto max-w-7xl border-t px-4 pt-4">
         <div className="flex flex-wrap justify-between gap-4">
           <p className="tracking-tight">
             {new Date(blog.created_at).toLocaleDateString(locale, {

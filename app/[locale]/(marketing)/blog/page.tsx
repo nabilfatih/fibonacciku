@@ -24,7 +24,7 @@ export default async function BlogPage() {
   return (
     <main>
       <header className="bg-muted py-16">
-        <div className="relative mx-auto max-w-6xl px-4">
+        <div className="relative mx-auto max-w-7xl px-4">
           <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
             {t("blog")}
           </h1>
@@ -34,7 +34,7 @@ export default async function BlogPage() {
         </div>
       </header>
       <section className="py-10">
-        <div className="relative mx-auto max-w-6xl px-4">
+        <div className="relative mx-auto max-w-7xl px-4">
           <div className="border-b pb-6">
             <h2 className="text-2xl font-medium tracking-tighter">
               {t("latest-updates")}
