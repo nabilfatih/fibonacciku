@@ -44,9 +44,9 @@ export default async function MarketingFooter() {
         <div className="text-center text-sm text-muted-foreground">
           <aside>
             <p>
-              {t("copyright")} © 2023 - {t("all-rights-reserved")}. PT. Nakafa
-              Tekno Kreatif. {t("made-with")}{" "}
-              <span className="text-accent">❤️</span>
+              {t("copyright")} © {new Date().getFullYear()} -{" "}
+              {t("all-rights-reserved")}. PT. Nakafa Tekno Kreatif.{" "}
+              {t("made-with")} <span className="text-accent">❤️</span>
             </p>
           </aside>
         </div>
