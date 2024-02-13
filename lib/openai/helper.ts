@@ -35,7 +35,13 @@ export const determineModelBasedOnSubscription = async (
     getUserSubscriptionAdmin(userId)
   ])
 
-  const model = ["gpt-3.5-turbo-0125", "gpt-4-0125-preview"]
+  // make gpt-3.5 have a higher chance of being selected
+  const model = [
+    "gpt-3.5-turbo-0125",
+    "gpt-3.5-turbo-0125",
+    "gpt-3.5-turbo-0125",
+    "gpt-4-0125-preview"
+  ]
 
   // Default model for non-subscribers or basic plans
   const defaultModel = randomSelect(model)
