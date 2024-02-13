@@ -108,7 +108,7 @@ export const academicPlugin = cache(
       const apiKey = process.env.SEMANTIC_API_KEY
       if (!apiKey) throw new Error("No API key found")
       const response = await fetch(
-        `https://api.semanticscholar.org/graph/v1/paper/search?query=${query}&limit=11&fields=corpusId,url,title,year,authors,abstract,openAccessPdf,publicationDate,journal,citationStyles,tldr`,
+        `https://api.semanticscholar.org/graph/v1/paper/search?query=${query}&limit=14&fields=corpusId,url,title,year,authors,abstract,openAccessPdf,publicationDate,journal,citationStyles,tldr`,
         {
           headers: {
             "Content-Type": "application/json",
