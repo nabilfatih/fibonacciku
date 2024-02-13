@@ -553,6 +553,7 @@ export type Database = {
           id: string
           content: string
           metadata: Json
+          embedding: Json
           similarity: number
         }[]
       }
@@ -566,6 +567,7 @@ export type Database = {
           id: string
           content: string
           metadata: Json
+          embedding: Json
           similarity: number
         }[]
       }
