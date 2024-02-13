@@ -23,7 +23,7 @@ function ChatMetadataImage({ metadata }: Props) {
         {metadata.map((item, index) => {
           return (
             <Link
-              key={item.image || index}
+              key={`${item.image}-${index * Math.random()}`}
               title={item.prompt || "Image"}
               href={item.image.split("?")[0]}
               target="_blank"

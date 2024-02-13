@@ -367,6 +367,7 @@ export const handleResponseData = async (
       updatedShowMessage[updatedShowMessage.length - 1].metadata?.push(
         messageMetadata
       )
+      console.log("messageMetadata", messageMetadata)
       setShowMessage([...updatedShowMessage])
     }
   }
@@ -421,13 +422,22 @@ export const handleMetadataMessage = (
     }
   }
 
-  const imageResults = functionData.find(
+  const imageResults = functionData.filter(
     item => item.toolName === "create_image"
   )
-  if (imageResults) {
-    const imageResult = imageResults.data.images as ImageResult[]
+  if (imageResults.length) {
+    const imageResult = imageResults
+      .flatMap(item => item.data.images.map((item: ImageResult) => item))
+      .filter(
+        (item, index, self) =>
+          index === self.findIndex(t => t.prompt === item.prompt)
+      )
+
     if (imageResult.length) {
-      messageMetadata.image_result = imageResult
+      if (!messageMetadata.image_result) {
+        messageMetadata.image_result = []
+      }
+      messageMetadata.image_result.push(...imageResult)
     }
   }
 
@@ -459,16 +469,6 @@ export const handleMetadataMessage = (
         messageMetadata.wiki_search_content = []
       }
       messageMetadata.wiki_search_content.push(...wikiSearchContentResult)
-    }
-  }
-
-  const weatherData = functionData.find(
-    item => item.toolName === "get_weather_information"
-  )
-  if (weatherData) {
-    const weatherResult = weatherData.data as Weather
-    if (weatherResult) {
-      messageMetadata.weather_information = [weatherResult]
     }
   }
 
