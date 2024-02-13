@@ -40,7 +40,13 @@ export const determineModelBasedOnSubscription = async (
     "gpt-3.5-turbo-0125",
     "gpt-3.5-turbo-0125",
     "gpt-3.5-turbo-0125",
-    "gpt-4-0125-preview"
+    "gpt-3.5-turbo-0125",
+    "gpt-4-0125-preview",
+    "gpt-3.5-turbo-0125",
+    "gpt-3.5-turbo-0125",
+    "gpt-3.5-turbo-0125",
+    "gpt-3.5-turbo-0125",
+    "gpt-3.5-turbo-0125"
   ]
 
   // Default model for non-subscribers or basic plans
