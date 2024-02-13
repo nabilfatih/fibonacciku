@@ -31,22 +31,21 @@ export async function POST(request: Request) {
 
   try {
     for (const email of emails) {
-      const dataMessage = `Hi ${email.full_name || "there"}! 🙋‍♂️
-      
-Exciting news🎉! Fibonacciku now has a new interface with theme options to match your mood. 
+      const dataMessage = `Hey ${email.full_name || "there"}! 🎈
 
-You can change the theme by clicking the brush button at the bottom left or by going to your account in the upper right and selecting "Account" -> "Change Theme Preferences".
+Nabil here, from FibonacciKu. I've got some thrilling news that I can't wait to share with you! 🌟
 
-Now Fibonacciku is also available in 4 languages: English, Indonesian, German, and Russian. 
+Mark your calendars for 16 February 2024, because that's the day FibonacciKu will officially launch on Product Hunt! 🚀
 
-To change the language, go to your account in the upper right, click on "Account" -> "Change Languages" and select your preferred language.
-      
-We hope these updates bring a smile to your face. 😊
+This is more than just a launch; it's a celebration of what we've built together, and your support means everything to us. By joining us on this special day and voting for FibonacciKu, you help us reach more curious minds and keep our service free and accessible. 🎉
 
-Try it now at https://fibonacciku.com !! Fibo loves you! ❤️
-      
-Warm regards,
-Nabil, Founder of FibonacciKu`
+Here's where you can show your support: https://www.producthunt.com/products/genius-study-buddy-by-fibonacciku
+
+Stay tuned for the link to our Product Hunt page, and thank you for being such an integral part of our community. Together, we're making learning fun and accessible for everyone! 📚
+
+Can't wait to celebrate with you,
+Nabil Akbarazzima Fatih
+Founder of FibonacciKu❤️`
 
       const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
@@ -63,7 +62,9 @@ Nabil, Founder of FibonacciKu`
       })
 
       if (res.ok) {
-        console.log(`SUCCESS: Email sent to ${email.email}`)
+        console.log(
+          `SUCCESS: Email sent to ${email.email} - ${email.full_name}`
+        )
       } else {
         console.error(`ERROR: Email not sent to ${email.email}`)
       }
