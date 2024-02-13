@@ -367,7 +367,6 @@ export const handleResponseData = async (
       updatedShowMessage[updatedShowMessage.length - 1].metadata?.push(
         messageMetadata
       )
-      console.log("messageMetadata", messageMetadata)
       setShowMessage([...updatedShowMessage])
     }
   }
