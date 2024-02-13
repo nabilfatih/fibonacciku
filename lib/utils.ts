@@ -122,25 +122,5 @@ export const truncateParagraph = (
 }
 
 export const randomSelect = <T>(arr: T[]): T => {
-  const sortedArray = [...arr].sort() // Sort the array in ascending order
-
-  const randomIndex = Math.floor(Math.random() * sortedArray.length) // Generate a random index
-
-  // Perform Binary Search to find the element at the random index
-  let left = 0
-  let right = sortedArray.length - 1
-
-  while (left <= right) {
-    const mid = Math.floor((left + right) / 2)
-
-    if (mid === randomIndex) {
-      return sortedArray[mid] // Return the randomly selected element
-    } else if (mid < randomIndex) {
-      left = mid + 1
-    } else {
-      right = mid - 1
-    }
-  }
-
-  return sortedArray[left] // Return the element found by Binary Search
+  return arr[Math.floor(Math.random() * arr.length)]
 }
