@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import { IconRefresh, IconTelescope } from "@tabler/icons-react"
+import { motion } from "framer-motion"
 import he from "he"
 import sanitizeHtml from "sanitize-html"
 import useSWRImmutable from "swr/immutable"
@@ -57,8 +58,20 @@ export default function EmptyScreenAssistant() {
           </div>
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
             {data?.data?.map((item, index) => (
-              <div
+              <motion.div
                 key={item.title || index}
+                variants={{
+                  hidden: { opacity: 0, y: -10 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: index * 0.1,
+                  ease: "easeInOut",
+                  duration: 0.5
+                }}
+                viewport={{ amount: 0 }}
                 className="group cursor-pointer overflow-hidden rounded-xl border shadow-sm transition-colors last:hidden hover:bg-muted/50 sm:last:block"
                 onClick={() => {
                   setItem(item)
@@ -103,7 +116,7 @@ export default function EmptyScreenAssistant() {
                     />
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
           <div className="flex items-center gap-2">
