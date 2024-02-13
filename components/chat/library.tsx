@@ -93,28 +93,30 @@ export default function ChatLibrary({ userId }: Props) {
       </p>
       <div className="mt-4">
         <div className="flex flex-col items-center justify-center">
-          <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2">
+          <motion.div
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1 }
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              ease: "easeInOut",
+              duration: 0.5
+            }}
+            viewport={{ amount: 0 }}
+            className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2"
+          >
             {finishedLibraries.map((library, index) => (
-              <motion.button
+              <Button
                 key={library.id}
                 title={library.name}
-                variants={{
-                  hidden: { opacity: 0, y: -10 },
-                  visible: { opacity: 1, y: 0 }
-                }}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  ease: "easeInOut",
-                  duration: 0.5
-                }}
-                viewport={{ amount: 0 }}
-                exit={{ opacity: 0, y: 10 }}
+                variant="outline"
                 disabled={
                   library.status === "invalid" || typeof loadingId === "string"
                 }
                 className={cn(
-                  "inline-flex w-full items-center justify-between gap-2 rounded-xl border px-4 py-3 shadow transition-colors hover:bg-muted/50 disabled:pointer-events-none disabled:opacity-50",
+                  "inline-flex h-10 w-full items-center justify-between gap-2",
                   libraryId === library.id && "animate-bounce"
                 )}
                 onClick={async () => {
@@ -141,7 +143,7 @@ export default function ChatLibrary({ userId }: Props) {
                   setLoadingId(null)
                 }}
               >
-                <div className="flex max-w-[10rem] items-start gap-2 sm:max-w-[12rem]">
+                <div className="flex max-w-[10rem] items-center gap-2 sm:max-w-[12rem]">
                   {loadingId === library.id ? (
                     <IconSpinner className="h-5 w-5 min-w-[1.25rem] animate-spin" />
                   ) : (
@@ -156,9 +158,9 @@ export default function ChatLibrary({ userId }: Props) {
                     statusToColor(library.status)
                   )}
                 />
-              </motion.button>
+              </Button>
             ))}
-          </div>
+          </motion.div>
           {isShowPagination && (
             <div className="mt-2 flex items-center">
               <Button
