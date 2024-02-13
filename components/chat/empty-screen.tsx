@@ -46,7 +46,7 @@ export default function EmptyScreen({ type }: Props) {
             opacity: 1,
             transition: {
               delay: 0.1, // Delay before typing starts
-              staggerChildren: 0.05 // The delay between each letter
+              staggerChildren: 0.01 // The delay between each letter
             }
           }
         }} // Apply the animation settings
