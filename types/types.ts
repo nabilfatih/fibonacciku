@@ -223,9 +223,13 @@ export type ImageResult = {
 }
 
 export type SourceDocument = {
-  file_id: string
-  filename: string
-  num_pages: number
+  pageContent: string
+  metadata: {
+    file_id: string
+    user_id: string
+    num_pages: number
+    page_number: number
+  }
   page_number: number
 }
 

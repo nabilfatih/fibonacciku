@@ -440,13 +440,21 @@ export const handleMetadataMessage = (
     }
   }
 
-  const documentResults = functionData.find(
+  const documentResults = functionData.filter(
     item => item.toolName === "get_document"
   )
-  if (documentResults) {
-    const documentResult = documentResults.data.sources as SourceDocument[]
+  if (documentResults.length) {
+    const documentResult = documentResults
+      .flatMap(item => item.data.sources.map((item: SourceDocument) => item))
+      .filter(
+        (item, index, self) =>
+          index === self.findIndex(t => t.page_number === item.page_number)
+      ) as SourceDocument[]
     if (documentResult.length) {
-      messageMetadata.source_documents = documentResult
+      if (!messageMetadata.source_documents) {
+        messageMetadata.source_documents = []
+      }
+      messageMetadata.source_documents.push(...documentResult)
     }
   }
 
@@ -468,6 +476,28 @@ export const handleMetadataMessage = (
         messageMetadata.wiki_search_content = []
       }
       messageMetadata.wiki_search_content.push(...wikiSearchContentResult)
+    }
+  }
+
+  const weatherResults = functionData.filter(
+    item => item.toolName === "get_weather_information"
+  )
+  if (weatherResults.length) {
+    const weatherResult = weatherResults
+      .flatMap(item => item.data as Weather)
+      .filter(
+        (item, index, self) =>
+          index ===
+          self.findIndex(
+            t =>
+              t.coord.lat === item.coord.lat && t.coord.lon === item.coord.lon
+          )
+      ) as Weather[]
+    if (weatherResult.length) {
+      if (!messageMetadata.weather_information) {
+        messageMetadata.weather_information = []
+      }
+      messageMetadata.weather_information.push(...weatherResult)
     }
   }
 
