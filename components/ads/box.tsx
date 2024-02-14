@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo } from "react"
+import { memo, useMemo } from "react"
 import Link from "next/link"
 import { AnimatePresence, motion } from "framer-motion"
 import useSWRImmutable from "swr/immutable"
@@ -17,7 +17,7 @@ type Props = {
   id?: string
 }
 
-export default function AdsBox({ id }: Props) {
+function AdsBox({ id }: Props) {
   const t = useScopedI18n("Ads")
 
   const {
@@ -109,3 +109,5 @@ export default function AdsBox({ id }: Props) {
     </AnimatePresence>
   )
 }
+
+export default memo(AdsBox)
