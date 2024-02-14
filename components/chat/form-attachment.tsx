@@ -37,7 +37,6 @@ export default function FormAttachment() {
         <div className="relative h-12 w-12 rounded-xl border shadow-sm">
           <Image
             src={url}
-            priority
             className="rounded-xl bg-muted/90 object-cover"
             fill
             unoptimized

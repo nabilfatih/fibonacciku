@@ -51,7 +51,6 @@ function ChatMetadataAttachment({ metadata }: Props) {
                 height: "auto",
                 maxHeight: "16rem"
               }}
-              priority
               width={256}
               height={256}
               unoptimized // decrease cost of image optimization
