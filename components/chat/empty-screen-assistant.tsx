@@ -16,7 +16,7 @@ import { getAstronomyPictureOfTheDay } from "@/app/actions/external"
 
 export default function EmptyScreenAssistant() {
   const t = useScopedI18n("EmptyScreen")
-  const { data, isLoading, mutate, isValidating, error } = useSWRImmutable(
+  const { data, mutate, isValidating } = useSWRImmutable(
     "astronomy-picture-of-the-day",
     () => getAstronomyPictureOfTheDay(3)
   )
