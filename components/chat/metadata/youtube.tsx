@@ -98,10 +98,9 @@ function LinkCard({
             <Image
               title={item.snippet.channelTitle}
               className="m-0 block rounded-full bg-transparent object-contain"
-              src={`/logo-youtube.png`}
+              src="/logo-youtube.png"
               width={16}
               height={16}
-              priority
               alt={item.snippet.channelTitle}
             />
           </div>

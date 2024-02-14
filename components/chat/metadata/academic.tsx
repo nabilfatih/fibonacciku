@@ -100,7 +100,6 @@ function LinkCard({
                 width: "16px",
                 height: "auto"
               }}
-              priority
               alt={he.decode(item.title)}
             />
           </div>

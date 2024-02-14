@@ -17,7 +17,6 @@ export default function ImageMarkdown({ src, alt }: Props) {
         <Image
           src={src}
           alt={alt || "Thumbnail YouTube"}
-          priority
           unoptimized
           width={337}
           height={192}
@@ -38,7 +37,6 @@ export default function ImageMarkdown({ src, alt }: Props) {
           height: "auto",
           maxHeight: "28rem"
         }}
-        priority
         unoptimized
         width={256}
         height={256}

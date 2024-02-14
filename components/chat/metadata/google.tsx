@@ -92,7 +92,6 @@ function LinkCard({
               sizes="16px"
               width={16}
               height={16}
-              priority
               onError={e => (e.currentTarget.src = "/logo-google.png")}
               alt={he.decode(item.title)}
               unoptimized // because we want to decrease cost of image optimization

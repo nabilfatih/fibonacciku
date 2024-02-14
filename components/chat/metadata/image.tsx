@@ -37,7 +37,6 @@ function ChatMetadataImage({ metadata }: Props) {
                   height: "auto",
                   maxHeight: "28rem"
                 }}
-                priority
                 width={256}
                 height={256}
                 unoptimized // decrease cost of image optimization
