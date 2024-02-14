@@ -88,7 +88,7 @@ export default async function BlogSlugPage({ params }: Props) {
           >
             {t("blog")}
           </Link>
-          <div className="mt-6 grid grid-cols-1 justify-between gap-8 md:grid-cols-2">
+          <div className="mt-4 grid grid-cols-1 justify-between gap-8 md:grid-cols-2">
             <div className="flex flex-col gap-4">
               <h1 className="break-words text-5xl font-medium leading-none tracking-tighter lg:text-7xl">
                 {blog.title}
