@@ -65,7 +65,6 @@ function ChatMetadataWikipedia({ metadata }: Props) {
                     alt={item.title}
                     sizes="100%"
                     fill
-                    priority
                     unoptimized // decrease cost of image optimization
                     className="bg-muted/90 object-cover"
                   />

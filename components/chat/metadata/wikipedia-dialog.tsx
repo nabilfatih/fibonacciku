@@ -58,7 +58,6 @@ function ChatMetadataWikipediaDialog({ item, open, setOpen }: Props) {
                   height: "auto",
                   maxHeight: "28rem"
                 }}
-                priority
                 width={256}
                 height={256}
                 unoptimized // decrease cost of image optimization
@@ -99,7 +98,6 @@ function ChatMetadataWikipediaDialog({ item, open, setOpen }: Props) {
                 height: "auto",
                 maxHeight: "20rem"
               }}
-              priority
               width={320}
               height={320}
               unoptimized // decrease cost of image optimization
