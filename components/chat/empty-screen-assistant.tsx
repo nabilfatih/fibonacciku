@@ -17,7 +17,7 @@ import { getAstronomyPictureOfTheDay } from "@/app/actions/external"
 
 export default function EmptyScreenAssistant() {
   const t = useScopedI18n("EmptyScreen")
-  const { data, isLoading, mutate, isValidating } = useSWRImmutable(
+  const { data, isLoading, mutate, isValidating, error } = useSWRImmutable(
     "astronomy-picture-of-the-day",
     () => getAstronomyPictureOfTheDay(3)
   )
@@ -25,30 +25,25 @@ export default function EmptyScreenAssistant() {
   const [open, setOpen] = useState<boolean>(false)
   const [item, setItem] = useState<NasaAstronomyPictureOfTheDay | null>(null)
 
+  if (!data) {
+    return (
+      <div className="space-y-6">
+        <p className="leading-normal text-muted-foreground">
+          {t("assistant-desc")}
+        </p>
+      </div>
+    )
+  }
+
+  const isError = "error" in data
+
   return (
     <div className="space-y-6">
       <p className="leading-normal text-muted-foreground">
         {t("assistant-desc")}
       </p>
 
-      {isLoading ? (
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-1">
-            <IconTelescope className="h-5 w-5" />
-            <h2 className="font-medium tracking-tight">
-              {t("astronomy-of-the-day")}
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-            {Array.from({ length: 3 }, (_, i) => (
-              <Skeleton
-                key={i}
-                className="h-28 w-full last:hidden sm:last:block"
-              />
-            ))}
-          </div>
-        </div>
-      ) : (
+      {!isError && (
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-1">
             <IconTelescope className="h-5 w-5" />
