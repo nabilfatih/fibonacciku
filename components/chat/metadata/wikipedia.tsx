@@ -36,7 +36,7 @@ function ChatMetadataWikipedia({ metadata }: Props) {
             <div
               role="button"
               key={item.title || index}
-              className="group cursor-pointer overflow-hidden rounded-xl border shadow-sm transition-colors hover:bg-muted/50"
+              className="group cursor-pointer overflow-hidden rounded-xl border shadow transition-colors hover:bg-muted/50"
               onClick={() => {
                 setSelectedItem(item)
                 setOpen(true)

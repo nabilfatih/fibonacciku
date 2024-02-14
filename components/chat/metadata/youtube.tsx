@@ -65,7 +65,7 @@ function LinkCard({
       rel="noopener noreferrer"
       href={`https://www.youtube.com/watch?v=${item.id.videoId}`}
       target="_blank"
-      className="group min-h-[82px] rounded-xl border px-3 py-2 shadow-sm transition-colors hover:bg-muted/50"
+      className="group min-h-[82px] rounded-xl border p-2 shadow transition-colors hover:bg-muted/50"
       style={{
         backgroundImage: `linear-gradient(rgba(10, 20, 39, 0.7), rgba(10, 20, 39, 0.7)), url(${item.snippet.thumbnails.high.url})`,
         backgroundSize: "cover",

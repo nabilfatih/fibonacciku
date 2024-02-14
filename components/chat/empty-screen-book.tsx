@@ -85,7 +85,7 @@ export default function EmptyScreenBook() {
                   sizes="148px"
                   priority
                   fill
-                  className="rounded-xl border bg-muted/90 object-cover shadow-sm"
+                  className="rounded-xl border bg-muted/90 object-cover shadow"
                 />
               </div>
               <Button

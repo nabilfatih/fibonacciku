@@ -5,6 +5,7 @@ import ChatMetadataAttachment from "@/components/chat/metadata/attachment"
 import ChatMetadataGoogle from "@/components/chat/metadata/google"
 import ChatMetadataImage from "@/components/chat/metadata/image"
 import ChatMetadataReferences from "@/components/chat/metadata/references"
+import ChatMetadataWeather from "@/components/chat/metadata/weather"
 import ChatMetadataWikipedia from "@/components/chat/metadata/wikipedia"
 import ChatMetadataYoutube from "@/components/chat/metadata/youtube"
 
@@ -36,13 +37,17 @@ export default function ChatMetadata({ metadata, contentIndex }: Props) {
     image_result: imageResults,
     source_documents: sourceDocuments,
     wiki_search_content: wikiSearchContent,
-    wiki_feed_featured: wikiFeedFeatured
+    wiki_feed_featured: wikiFeedFeatured,
+    weather_information: weatherInformation
   } = currentMetadata
 
   return (
     <div className="flex flex-col gap-4 pb-5">
       {attachments && <ChatMetadataAttachment metadata={attachments} />}
       {imageResults && <ChatMetadataImage metadata={imageResults} />}
+      {weatherInformation && (
+        <ChatMetadataWeather metadata={weatherInformation} />
+      )}
       {google && <ChatMetadataGoogle metadata={google} />}
       {academic && <ChatMetadataAcademic metadata={academic} />}
       {youtube && <ChatMetadataYoutube metadata={youtube} />}

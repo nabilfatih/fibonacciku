@@ -121,7 +121,7 @@ export default function PremiumPrice({ user, subscription }: Props) {
     <section className="mx-auto max-w-4xl px-4">
       {!subscription && currency !== "idr" && (
         <div className="mx-auto mb-4 sm:max-w-xs">
-          <div className="flex items-center justify-center gap-2 rounded-xl border py-2 shadow-sm">
+          <div className="flex items-center justify-center gap-2 rounded-xl border py-2 shadow">
             <IconDiscount2 className="h-5 w-5 min-w-5 text-primary" />
             <div className="flex items-center">
               <p className="text-sm leading-none">{t("40%-discount")}</p>

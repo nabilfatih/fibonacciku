@@ -73,7 +73,7 @@ function ChatMetadataAstronomyDialog({ item, open, setOpen }: Props) {
                 width={256}
                 height={256}
                 unoptimized // decrease cost of image optimization
-                className="m-0 rounded-xl border bg-muted/90 object-cover shadow-sm"
+                className="m-0 rounded-xl border bg-muted/90 object-cover shadow"
               />
             )}
           </div>
@@ -120,7 +120,7 @@ function ChatMetadataAstronomyDialog({ item, open, setOpen }: Props) {
               width={320}
               height={320}
               unoptimized // decrease cost of image optimization
-              className="m-0 rounded-xl border bg-muted/90 object-cover shadow-sm"
+              className="m-0 rounded-xl border bg-muted/90 object-cover shadow"
             />
           )}
         </div>

@@ -67,7 +67,7 @@ export default function EmptyScreenAssistant() {
             {data.data.map((item, index) => (
               <div
                 key={item.title || index}
-                className="group cursor-pointer overflow-hidden rounded-xl border shadow-sm transition-colors last:hidden hover:bg-muted/50 sm:last:block"
+                className="group cursor-pointer overflow-hidden rounded-xl border shadow transition-colors last:hidden hover:bg-muted/50 sm:last:block"
                 onClick={() => {
                   setItem(item)
                   setOpen(true)

@@ -34,7 +34,7 @@ export default function FormAttachment() {
             <span className="sr-only">Remove attachment</span>
           </Button>
         </span>
-        <div className="relative h-12 w-12 rounded-xl border shadow-sm">
+        <div className="relative h-12 w-12 rounded-xl border shadow">
           <Image
             src={url}
             className="rounded-xl bg-muted/90 object-cover"

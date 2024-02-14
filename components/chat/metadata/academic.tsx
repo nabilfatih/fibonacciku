@@ -65,7 +65,7 @@ function LinkCard({
       rel="noopener noreferrer"
       href={item.url}
       target="_blank"
-      className="group min-h-[82px] rounded-xl border p-2 shadow-sm transition-colors hover:bg-muted/50"
+      className="group min-h-[82px] rounded-xl border p-2 shadow transition-colors hover:bg-muted/50"
     >
       <div className="flex h-full w-full flex-col items-start justify-between gap-3">
         <div className="flex flex-col gap-1">

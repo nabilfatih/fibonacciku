@@ -18,7 +18,7 @@ export default function EmptyScreenDocument() {
         {t("document-desc")}
       </p>
 
-      <LibraryForm className="rounded-3xl border shadow" />
+      <LibraryForm className="rounded-3xl border shadow-sm" />
 
       {userDetails && <ChatLibrary userId={userDetails.id} />}
     </div>
