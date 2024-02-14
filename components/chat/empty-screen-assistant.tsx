@@ -11,7 +11,6 @@ import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
 import { IconSpinner } from "@/components/ui/icons"
-import { Skeleton } from "@/components/ui/skeleton"
 import ChatMetadataAstronomyDialog from "@/components/chat/metadata/astronomy-dialog"
 import { getAstronomyPictureOfTheDay } from "@/app/actions/external"
 
@@ -44,28 +43,28 @@ export default function EmptyScreenAssistant() {
       </p>
 
       {!isError && (
-        <div className="flex flex-col gap-2">
+        <motion.div
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1 }
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            ease: "easeInOut",
+            duration: 0.5
+          }}
+          viewport={{ amount: 0 }}
+          className="flex flex-col gap-2"
+        >
           <div className="flex items-center gap-1">
             <IconTelescope className="h-5 w-5" />
             <h2 className="font-medium tracking-tight">
               {t("astronomy-of-the-day")}
             </h2>
           </div>
-          <motion.div
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1 }
-            }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              ease: "easeInOut",
-              duration: 0.5
-            }}
-            viewport={{ amount: 0 }}
-            className="grid grid-cols-2 gap-2 sm:grid-cols-3"
-          >
-            {data?.data?.map((item, index) => (
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+            {data.data.map((item, index) => (
               <div
                 key={item.title || index}
                 className="group cursor-pointer overflow-hidden rounded-xl border shadow-sm transition-colors last:hidden hover:bg-muted/50 sm:last:block"
@@ -114,7 +113,7 @@ export default function EmptyScreenAssistant() {
                 </div>
               </div>
             ))}
-          </motion.div>
+          </div>
           <div className="flex items-center gap-2">
             <Button
               variant="outline"
@@ -133,7 +132,7 @@ export default function EmptyScreenAssistant() {
               {t("powered-by-nasa")}
             </p>
           </div>
-        </div>
+        </motion.div>
       )}
 
       {item && (
