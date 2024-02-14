@@ -39,24 +39,10 @@ export default function ChatMetadata({ metadata, contentIndex }: Props) {
     wiki_feed_featured: wikiFeedFeatured
   } = currentMetadata
 
-  if (attachments) {
-    return (
-      <div className="flex flex-col gap-4 pb-5">
-        <ChatMetadataAttachment metadata={attachments} />
-      </div>
-    )
-  }
-
-  if (imageResults) {
-    return (
-      <div className="flex flex-col gap-4 pb-5">
-        <ChatMetadataImage metadata={imageResults} />
-      </div>
-    )
-  }
-
   return (
     <div className="flex flex-col gap-4 pb-5">
+      {attachments && <ChatMetadataAttachment metadata={attachments} />}
+      {imageResults && <ChatMetadataImage metadata={imageResults} />}
       {google && <ChatMetadataGoogle metadata={google} />}
       {academic && <ChatMetadataAcademic metadata={academic} />}
       {youtube && <ChatMetadataYoutube metadata={youtube} />}
