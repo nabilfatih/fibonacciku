@@ -24,7 +24,6 @@ import { getStripe } from "@/lib/stripe/client"
 import { postData } from "@/lib/utils"
 import { useScopedI18n } from "@/locales/client"
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -85,9 +84,10 @@ export default function PremiumPrice({ user, subscription }: Props) {
       setPriceIdLoading(price.priceId)
 
       let url = "/api/payment/create-checkout-session"
-      if (currency === "idr") {
-        url = "/api/payment/xendit/checkout"
-      }
+      // TODO: uncomment this when Xendit account not dormant anymore
+      // if (currency === "idr") {
+      //   url = "/api/payment/xendit/checkout"
+      // }
 
       try {
         const response = await postData({
@@ -109,7 +109,7 @@ export default function PremiumPrice({ user, subscription }: Props) {
           throw new Error("Unknown payment provider")
         }
       } catch (error) {
-        return alert((error as Error)?.message)
+        toast.error((error as Error).message)
       } finally {
         setPriceIdLoading(undefined)
       }
