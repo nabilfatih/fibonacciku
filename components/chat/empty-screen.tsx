@@ -31,10 +31,10 @@ export default function EmptyScreen({ type }: Props) {
 
   if (!userDetails) return null
 
+  const name = userDetails.full_name || ""
+
   // Split the text into individual characters
-  const textArray = `${t("hi")} ${userDetails.full_name}`
-    .split("")
-    .concat(" 👋")
+  const textArray = `${t("hi")} ${name}`.split("").concat(" 👋")
 
   return (
     <div className="mx-auto max-w-2xl px-4">
