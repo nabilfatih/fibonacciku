@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input"
 import ClearHistory from "@/components/sidebar/chat/clear-history"
 import LoadingChatHistory from "@/components/sidebar/chat/loading-chat-history"
 import SidebarItems from "@/components/sidebar/chat/sidebar-items"
-import { ThemeToggle } from "@/components/theme/toggle"
+import ThemeToggle from "@/components/theme/toggle"
 
 type Props = {
   userId: string

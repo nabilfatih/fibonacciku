@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import AuthLanguage from "@/components/auth/language"
-import { ThemeToggle } from "@/components/theme/toggle"
+import ThemeToggle from "@/components/theme/toggle"
 
 const Particles = dynamic(() => import("@/components/ui/particles"), {
   ssr: false

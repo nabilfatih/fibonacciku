@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { IconSeparator } from "@/components/ui/icons"
 import HeaderBadge from "@/components/header/badge"
 import UserMenu from "@/components/header/user-menu"
-import { ThemeToggle } from "@/components/theme/toggle"
+import ThemeToggle from "@/components/theme/toggle"
 
 export default async function MarketingHeader() {
   const t = await getScopedI18n("Marketing")

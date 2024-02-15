@@ -24,7 +24,7 @@ type Props = {
   align?: "start" | "center" | "end"
 }
 
-export function ThemeToggle({ side = "right", align = "end" }: Props) {
+export default function ThemeToggle({ side = "right", align = "end" }: Props) {
   const t = useScopedI18n("ModalAccount")
   const { setTheme } = useTheme()
   const [_, startTransition] = React.useTransition()
