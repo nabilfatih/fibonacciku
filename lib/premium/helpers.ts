@@ -40,7 +40,7 @@ export const priceList: PriceListType = [
     plan: "premium",
     type: "yearly",
     redirect: false,
-    priceId: "price_1Oeht4ApEKbNyVi6KcUCVj1b",
+    priceId: "price_1Oehu5ApEKbNyVi6P4GNmST5",
     price: {
       usd: 120,
       eur: 120,
