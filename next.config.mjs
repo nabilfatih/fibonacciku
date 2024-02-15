@@ -49,6 +49,9 @@ const ContentSecurityPolicy = `
     connect-src *;
     font-src 'self' data:;
     frame-src 'self' *.codesandbox.io;
+    form-action 'self';
+    base-uri 'self';
+    object-src 'none';
 `
 
 const securityHeaders = [
