@@ -17,6 +17,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 type Props = {
   side?: "right" | "top" | "bottom" | "left"
@@ -36,21 +37,27 @@ export function ThemeToggle({ side = "right", align = "end" }: Props) {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent side={side} align={align}>
-        <DropdownMenuLabel>{t("theme")}</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        {themes.map(theme => (
-          <DropdownMenuItem
-            key={theme}
-            onClick={() => {
-              startTransition(() => {
-                setTheme(theme)
-              })
-            }}
-          >
-            {capitalizeFirstLetter(theme)}
-          </DropdownMenuItem>
-        ))}
+      <DropdownMenuContent className="p-0" side={side} align={align}>
+        <ScrollArea className="h-[500px]">
+          <DropdownMenuLabel className="mx-1 mt-1">
+            {t("theme")}
+          </DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <div className="px-1 pb-1">
+            {themes.map(theme => (
+              <DropdownMenuItem
+                key={theme}
+                onClick={() => {
+                  startTransition(() => {
+                    setTheme(theme)
+                  })
+                }}
+              >
+                {capitalizeFirstLetter(theme)}
+              </DropdownMenuItem>
+            ))}
+          </div>
+        </ScrollArea>
       </DropdownMenuContent>
     </DropdownMenu>
   )

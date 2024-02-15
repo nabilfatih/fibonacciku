@@ -1,0 +1,22 @@
+.katex-display {
+  overflow-x: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  @apply max-w-[18rem] rounded-xl border bg-muted !px-2 py-4 text-sm sm:max-w-none;
+}
+
+::-webkit-scrollbar {
+  @apply h-2.5 w-2.5;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-transparent;
+}
+
+:hover::-webkit-scrollbar-thumb {
+  @apply bg-border;
+}

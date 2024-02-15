@@ -2,6 +2,7 @@ import { GeistMono } from "geist/font/mono"
 import { GeistSans } from "geist/font/sans"
 
 import "@/styles/globals.css"
+import "@/styles/config.css"
 import "@/styles/themes.css"
 
 import { Suspense } from "react"
