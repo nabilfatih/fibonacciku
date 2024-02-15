@@ -38,7 +38,7 @@ type Props = {
 
 export default function ChatLibrary({ userId }: Props) {
   const t = useScopedI18n("EmptyScreen")
-  const { libraries, mutate } = useUserLibrary(userId)
+  const { libraries, mutate, isLoading } = useUserLibrary(userId)
   const { append, dispatch } = useMessage()
 
   const searchParams = useSearchParams()
@@ -77,36 +77,51 @@ export default function ChatLibrary({ userId }: Props) {
     }))
   }, [])
 
+  if (isLoading) return null
+
   if (!libraries || libraries.length === 0)
     return (
-      <div className="grid">
+      <motion.div
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1 }
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          ease: "easeInOut",
+          duration: 0.5
+        }}
+        viewport={{ amount: 0 }}
+        className="grid"
+      >
         <Button asChild variant="link" className="mx-auto w-fit">
           <Link href="/chat/library">{t("see-your-library")}</Link>
         </Button>
-      </div>
+      </motion.div>
     )
 
   return (
-    <div className="grid">
+    <motion.div
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 }
+      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{
+        ease: "easeInOut",
+        duration: 0.5
+      }}
+      viewport={{ amount: 0 }}
+      className="grid"
+    >
       <p className="text-center text-muted-foreground">
         {t("then-choose-from-your-library")}
       </p>
       <div className="mt-4">
         <div className="flex flex-col items-center justify-center">
-          <motion.div
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1 }
-            }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              ease: "easeInOut",
-              duration: 0.5
-            }}
-            viewport={{ amount: 0 }}
-            className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2"
-          >
+          <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2">
             {finishedLibraries.map((library, index) => (
               <Button
                 key={library.id}
@@ -160,7 +175,7 @@ export default function ChatLibrary({ userId }: Props) {
                 />
               </Button>
             ))}
-          </motion.div>
+          </div>
           {isShowPagination && (
             <div className="mt-2 flex items-center">
               <Button
@@ -208,6 +223,6 @@ export default function ChatLibrary({ userId }: Props) {
       <Button asChild variant="link" className="mx-auto w-fit">
         <Link href="/chat/library">{t("see-your-library")}</Link>
       </Button>
-    </div>
+    </motion.div>
   )
 }
