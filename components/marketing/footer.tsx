@@ -11,13 +11,14 @@ import {
 import { getScopedI18n } from "@/locales/server"
 
 import { Button } from "@/components/ui/button"
+import MarketingFooterArt from "@/components/marketing/footer-art"
 
 export default async function MarketingFooter() {
   const t = await getScopedI18n("MarketingFooter")
 
   return (
     <footer className="border-t bg-muted backdrop-blur-xl">
-      <div className="mx-auto w-full max-w-7xl shrink-0 space-y-2 p-4">
+      <div className="mx-auto mt-10 w-full max-w-7xl shrink-0 space-y-2 p-4">
         <div className="flex flex-wrap items-center justify-center">
           {socialMedia.map(social => {
             return (
@@ -51,6 +52,8 @@ export default async function MarketingFooter() {
           </aside>
         </div>
       </div>
+
+      <MarketingFooterArt />
     </footer>
   )
 }
