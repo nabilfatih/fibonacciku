@@ -70,12 +70,20 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     openGraph: {
       title: t("title"),
-      description: t("description"),
+      description: t("desc"),
       url: "https://www.fibonacciku.com",
       siteName: "FibonacciKu",
-      locale: "en",
       type: "website",
-      alternateLocale: localesList
+      locale: "en",
+      alternateLocale: localesList,
+      images: [
+        {
+          url: "https://www.fibonacciku.com/og-facebook.png",
+          width: 1200,
+          height: 630,
+          alt: t("title")
+        }
+      ]
     },
     robots: {
       index: true,
