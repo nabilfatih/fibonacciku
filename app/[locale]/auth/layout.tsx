@@ -36,7 +36,7 @@ export default async function AuthenticationLayout({
               fill
               priority
               alt="FibonacciKu"
-              className="rounded-full object-cover shadow"
+              className="rounded-full border object-cover shadow"
             />
           </div>
           <span className="font-semibold">FibonacciKu</span>
@@ -60,7 +60,7 @@ export default async function AuthenticationLayout({
             height={32}
             priority
             alt="FibonacciKu"
-            className="rounded-full object-cover shadow"
+            className="rounded-full border object-cover shadow"
           />
         </Link>
         <main className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">

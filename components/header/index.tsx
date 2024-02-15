@@ -39,7 +39,7 @@ async function UserHistory() {
             height={24}
             priority
             sizes="24px"
-            className="mr-2 rounded-full object-cover shadow"
+            className="mr-2 rounded-full border object-cover shadow"
           />
         </Link>
       )}
