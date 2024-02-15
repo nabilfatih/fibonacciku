@@ -1042,6 +1042,8 @@ export default {
     tags: "Tags",
     "privacy-policy": "Datenschutzrichtlinie",
     "terms-of-service": "Nutzungsbedingungen",
-    "terms-of-use": "Nutzungsbedingungen"
+    "terms-of-use": "Nutzungsbedingungen",
+    "see-all-blogs": "Alle Blogs anzeigen",
+    "text-footer": "Authentischer Inhalt vom FibonacciKu-Team."
   }
 } as const

@@ -1009,6 +1009,8 @@ export default {
     tags: "Tags",
     "privacy-policy": "Privacy policy",
     "terms-of-service": "Terms of service",
-    "terms-of-use": "Terms of use"
+    "terms-of-use": "Terms of use",
+    "see-all-blogs": "See all blogs",
+    "text-footer": "Authentic content from the FibonacciKu team."
   }
 } as const

@@ -1026,6 +1026,8 @@ export default {
     tags: "Tag",
     "privacy-policy": "Kebijakan Privasi",
     "terms-of-service": "Syarat dan Ketentuan",
-    "terms-of-use": "Syarat Penggunaan"
+    "terms-of-use": "Syarat Penggunaan",
+    "see-all-blogs": "Lihat semua blog",
+    "text-footer": "Konten otentik dari tim FibonacciKu."
   }
 } as const

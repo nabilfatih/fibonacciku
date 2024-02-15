@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { IconChevronLeft } from "@tabler/icons-react"
 
 import {
   getBlogsBySlugAdmin,
@@ -10,6 +11,7 @@ import {
 } from "@/lib/supabase/admin/blogs"
 import { getCurrentLocale, getScopedI18n } from "@/locales/server"
 
+import { Button } from "@/components/ui/button"
 import ServerReactMarkdown from "@/components/markdown/server"
 
 const getBlog = cache(async (slug: string) => {
@@ -138,6 +140,15 @@ export default async function BlogSlugPage({ params }: Props) {
         <article className="relative mx-auto max-w-3xl px-4">
           <ServerReactMarkdown content={blog.content} />
         </article>
+      </section>
+
+      <section className="mx-auto max-w-7xl border-t px-4 py-10">
+        <div className="flex flex-col items-center justify-center">
+          <p className="text-sm italic">{t("text-footer")}</p>
+          <Button asChild variant="link">
+            <Link href="/blog">{t("see-all-blogs")}</Link>
+          </Button>
+        </div>
       </section>
     </main>
   )
