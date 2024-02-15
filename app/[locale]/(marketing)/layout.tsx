@@ -22,7 +22,13 @@ export default async function MarketingLayout({
     <CurrentUserContextProvider session={session}>
       <MarketingHeader />
       <main className="flex flex-1 flex-col overflow-hidden">
-        <Suspense>{children}</Suspense>
+        <Suspense
+          fallback={
+            <div className="relative flex h-[calc(100dvh-4rem)] overflow-hidden"></div>
+          }
+        >
+          {children}
+        </Suspense>
       </main>
       <MarketingFooter />
     </CurrentUserContextProvider>

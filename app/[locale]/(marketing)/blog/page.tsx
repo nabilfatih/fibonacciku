@@ -35,7 +35,7 @@ export default async function BlogPage() {
       </header>
       <section className="py-10">
         <div className="relative mx-auto max-w-7xl px-4">
-          <div className="border-b pb-6">
+          <div className="border-b pb-4">
             <h2 className="text-2xl font-medium tracking-tighter">
               {t("latest-updates")}
             </h2>
