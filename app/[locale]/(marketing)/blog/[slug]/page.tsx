@@ -56,6 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: blog.description,
       type: "article",
       publishedTime: new Date(blog.created_at).toISOString(),
+      authors: blog.authors.split(","),
       url: `https://fibonacciku.com/blog/${blog.slug}`,
       images: [ogImage]
     },
