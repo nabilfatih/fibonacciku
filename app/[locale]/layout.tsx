@@ -30,19 +30,10 @@ export async function generateMetadata(): Promise<Metadata> {
     applicationName: "FibonacciKu",
     creator: "Nabil Akbarazzima Fatih",
     keywords: [
-      "FibonacciKu",
-      "Fibonacci",
-      "Artificial Intelligence",
-      "AI Learning",
-      "AI Tutor",
-      "Machine Learning",
-      "Data Science",
-      "Technology Education",
-      "AI Chatbot",
-      "Educational Platform",
-      "Study Platform",
-      "Study Buddy",
-      "AI for Education"
+      ...t("title").split(" "),
+      ...t("desc").split(" "),
+      ...t("slogan").split(" "),
+      ...t("description").split(" ")
     ],
     authors: [{ name: "Nabil Akbarazzima Fatih" }],
     publisher: "Nabil Akbarazzima Fatih",
@@ -156,7 +147,7 @@ export default function RootLayout({
           locale={params.locale}
           attribute="class"
           enableSystem
-          themes={themes.slice(1)} // remove system theme
+          themes={themes}
           disableTransitionOnChange
         >
           <div className="flex min-h-[100dvh] flex-col">
