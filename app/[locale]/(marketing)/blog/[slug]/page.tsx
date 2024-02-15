@@ -141,7 +141,7 @@ export default async function BlogSlugPage({ params }: Props) {
         </article>
       </section>
 
-      <section className="mx-auto max-w-7xl border-t px-4 py-10">
+      <section className="mx-auto max-w-7xl border-t px-4 pb-10 pt-12">
         <div className="flex flex-col items-center justify-center">
           <p className="text-sm italic">{t("text-footer")}</p>
           <Button asChild variant="link">
