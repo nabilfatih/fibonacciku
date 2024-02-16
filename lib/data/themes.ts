@@ -12,6 +12,7 @@ export const themes = [
   "griffindor",
   "hufflepuff",
   "joker",
+  "luminique",
   "matilda",
   "peach",
   "ravenclaw",
