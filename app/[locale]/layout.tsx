@@ -83,6 +83,36 @@ export async function generateMetadata(): Promise<Metadata> {
           width: 1200,
           height: 630,
           alt: t("title")
+        },
+        {
+          url: "https://www.fibonacciku.com/og-linkedin.png",
+          width: 1200,
+          height: 627,
+          alt: t("title")
+        },
+        {
+          url: "https://www.fibonacciku.com/og-twitter-sm.png",
+          width: 1200,
+          height: 675,
+          alt: t("title")
+        },
+        {
+          url: "https://www.fibonacciku.com/og-twitter-lg.png",
+          width: 4096,
+          height: 4096,
+          alt: t("title")
+        },
+        {
+          url: "https://www.fibonacciku.com/og-reddit.png",
+          width: 1200,
+          height: 1200,
+          alt: t("title")
+        },
+        {
+          url: "https://www.fibonacciku.com/og-pinterest.png",
+          width: 1000,
+          height: 1500,
+          alt: t("title")
         }
       ]
     },
@@ -120,7 +150,22 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: t("title"),
       description: t("desc"),
-      creator: "@fibonacciku"
+      creator: "@fibonacciku",
+      site: "@fibonacciku",
+      images: [
+        {
+          url: "https://www.fibonacciku.com/og-twitter-sm.png",
+          width: 1200,
+          height: 675,
+          alt: t("title")
+        },
+        {
+          url: "https://www.fibonacciku.com/og-twitter-lg.png",
+          width: 4096,
+          height: 4096,
+          alt: t("title")
+        }
+      ]
     },
     category: "Education, Artificial Intelligence",
     verification: {
