@@ -11,7 +11,7 @@ export default async function HomePage() {
       <div className="relative min-h-[calc(100dvh-4rem)]">
         <Particles
           className="pointer-events-none absolute inset-0"
-          quantity={40}
+          quantity={30}
         />
       </div>
     </MarketingTransition>
