@@ -43,7 +43,7 @@ export default async function MarketingSidebarMobile() {
 
               <Link
                 href="/chat/assistant"
-                className="inline-flex justify-between border-t pt-4 text-sm underline-offset-4 hover:underline"
+                className="inline-flex justify-between border-y py-4 text-sm underline-offset-4 hover:underline"
               >
                 {t("try-fibo")}
                 <IconExternalLink className="h-4 w-4" />
