@@ -15,5 +15,5 @@ export default async function Home() {
     redirect("/chat/assistant")
   }
 
-  redirect("/home")
+  redirect("/auth/login")
 }
