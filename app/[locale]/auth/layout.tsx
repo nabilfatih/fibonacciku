@@ -22,7 +22,7 @@ export default async function AuthenticationLayout({
       </div>
       <div className="relative hidden h-full flex-col border-r bg-muted p-10 lg:flex">
         <Particles
-          className="pointer-events-none absolute inset-0"
+          className="animate-fade-in pointer-events-none absolute inset-0"
           quantity={40}
         />
         <Link
