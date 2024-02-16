@@ -69,8 +69,8 @@ export default async function BlogPage() {
                       </h3>
                       <p className="line-clamp-1 text-sm leading-none tracking-tight">
                         {new Date(blog.created_at).toLocaleDateString(locale, {
-                          month: "short",
                           day: "numeric",
+                          month: "long",
                           year: "numeric"
                         })}
                       </p>
