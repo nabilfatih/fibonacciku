@@ -1011,6 +1011,9 @@ export default {
     "terms-of-service": "Terms of service",
     "terms-of-use": "Terms of use",
     "see-all-blogs": "See all blogs",
-    "text-footer": "Authentic content from the FibonacciKu team."
+    "text-footer": "Authentic content from the FibonacciKu team.",
+    close: "Close",
+    "fibo-assistant": "Fibo Assistant",
+    "try-fibo": "Try Fibo"
   }
 } as const

@@ -1044,6 +1044,9 @@ export default {
     "terms-of-service": "Nutzungsbedingungen",
     "terms-of-use": "Nutzungsbedingungen",
     "see-all-blogs": "Alle Blogs anzeigen",
-    "text-footer": "Authentischer Inhalt vom FibonacciKu-Team."
+    "text-footer": "Authentischer Inhalt vom FibonacciKu-Team.",
+    close: "Schließen",
+    "fibo-assistant": "Fibo Assistent",
+    "try-fibo": "Fibo ausprobieren"
   }
 } as const

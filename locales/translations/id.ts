@@ -1028,6 +1028,9 @@ export default {
     "terms-of-service": "Syarat dan Ketentuan",
     "terms-of-use": "Syarat Penggunaan",
     "see-all-blogs": "Lihat semua blog",
-    "text-footer": "Konten otentik dari tim FibonacciKu."
+    "text-footer": "Konten otentik dari tim FibonacciKu.",
+    close: "Tutup",
+    "fibo-assistant": "Fibo Asisten",
+    "try-fibo": "Coba Fibo"
   }
 } as const

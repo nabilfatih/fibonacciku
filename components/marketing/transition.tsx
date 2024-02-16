@@ -4,9 +4,10 @@ import { motion } from "framer-motion"
 
 type Props = {
   children: React.ReactNode
+  className?: string
 }
 
-export default function MarketingTransition({ children }: Props) {
+export default function MarketingTransition({ children, className }: Props) {
   return (
     <motion.div
       // transition effect for page transitions
@@ -14,6 +15,7 @@ export default function MarketingTransition({ children }: Props) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
+      className={className}
     >
       {children}
     </motion.div>

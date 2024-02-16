@@ -1029,6 +1029,9 @@ export default {
     "terms-of-service": "Условия обслуживания",
     "terms-of-use": "Условия использования",
     "see-all-blogs": "Просмотреть все блоги",
-    "text-footer": "Аутентичный контент от команды FibonacciKu."
+    "text-footer": "Аутентичный контент от команды FibonacciKu.",
+    close: "Закрыть",
+    "fibo-assistant": "Aссистент Fibo",
+    "try-fibo": "Попробуйте Fibo"
   }
 } as const
