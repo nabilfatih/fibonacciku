@@ -12,6 +12,7 @@ import { getCurrentLocale, getScopedI18n } from "@/locales/server"
 
 import { Button } from "@/components/ui/button"
 import ServerReactMarkdown from "@/components/markdown/server"
+import MarketingTransition from "@/components/marketing/transition"
 
 const getBlog = cache(async (slug: string) => {
   const blog = await getBlogsBySlugAdmin(slug)
@@ -81,7 +82,7 @@ export default async function BlogSlugPage({ params }: Props) {
   const cover = getBlogsCoverPublicUrlAdmin(blog.id, blog.cover)
 
   return (
-    <main>
+    <MarketingTransition>
       <header className="py-28 sm:py-36">
         <div className="mx-auto max-w-7xl px-4">
           <Link
@@ -149,6 +150,6 @@ export default async function BlogSlugPage({ params }: Props) {
           </Button>
         </div>
       </section>
-    </main>
+    </MarketingTransition>
   )
 }

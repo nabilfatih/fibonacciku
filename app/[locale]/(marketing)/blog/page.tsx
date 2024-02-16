@@ -8,6 +8,8 @@ import {
 } from "@/lib/supabase/admin/blogs"
 import { getCurrentLocale, getScopedI18n } from "@/locales/server"
 
+import MarketingTransition from "@/components/marketing/transition"
+
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getScopedI18n("Marketing")
   return {
@@ -22,7 +24,7 @@ export default async function BlogPage() {
   const blogs = await getBlogsAdmin()
 
   return (
-    <main>
+    <MarketingTransition>
       <header className="bg-muted py-16">
         <div className="relative mx-auto max-w-7xl px-4">
           <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
@@ -82,6 +84,6 @@ export default async function BlogPage() {
           </div>
         </div>
       </section>
-    </main>
+    </MarketingTransition>
   )
 }

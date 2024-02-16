@@ -171,7 +171,6 @@ export default function RootLayout({
           enableSystem
           themes={themes}
           disableTransitionOnChange
-          nonce="fibonacciku.com"
         >
           <div className="flex min-h-[100dvh] flex-col">
             <Suspense>{children}</Suspense>

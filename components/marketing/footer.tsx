@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import {
   IconBrandDiscord,
@@ -18,31 +19,56 @@ export default async function MarketingFooter() {
 
   return (
     <footer className="border-t bg-muted backdrop-blur-xl">
-      <div className="mx-auto mt-10 w-full max-w-7xl shrink-0 space-y-2 p-4">
-        <div className="flex flex-wrap items-center justify-center">
-          {socialMedia.map(social => {
-            return (
-              <Button
-                title={`FibonacciKu ${social.name}`}
-                key={social.link}
-                variant="ghost"
-                size="icon"
-                asChild
-              >
-                <Link
-                  href={social.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
+      <div className="mx-auto w-full max-w-7xl shrink-0 space-y-2 p-4 pt-14">
+        <div className="flex flex-col items-center justify-center">
+          <Image
+            src="/logo-outline.webp"
+            alt="FibonacciKu"
+            sizes="48px"
+            width={48}
+            height={48}
+          />
+          <div className="my-2 flex flex-wrap items-center justify-center">
+            {socialMedia.map(social => {
+              return (
+                <Button
+                  title={`FibonacciKu ${social.name}`}
+                  key={social.link}
+                  variant="ghost"
+                  size="icon"
+                  asChild
                 >
-                  <social.icon className="h-5 w-5" />
-                  <span className="sr-only">{social.name}</span>
-                </Link>
-              </Button>
-            )
-          })}
+                  <Link
+                    href={social.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <social.icon className="h-5 w-5" />
+                    <span className="sr-only">{social.name}</span>
+                  </Link>
+                </Button>
+              )
+            })}
+          </div>
+          <p className="flex gap-4 text-sm text-muted-foreground">
+            <Link
+              href="/terms-of-use"
+              target="_blank"
+              className="underline underline-offset-4 hover:text-primary"
+            >
+              {t("terms-of-service")}
+            </Link>
+            <Link
+              href="/privacy-policy"
+              target="_blank"
+              className="underline underline-offset-4 hover:text-primary"
+            >
+              {t("privacy-policy")}
+            </Link>
+          </p>
         </div>
 
-        <div className="text-center text-sm text-muted-foreground">
+        <div className="pt-2 text-center text-sm text-muted-foreground">
           <aside>
             <p>
               {t("copyright")} © {new Date().getFullYear()} -{" "}
