@@ -180,7 +180,7 @@ export default function UserMenu() {
 
           <DropdownMenuItem asChild className="py-2">
             <Link
-              href="/blog"
+              href="/home"
               className="inline-flex w-full cursor-pointer items-center justify-between"
             >
               {t("homepage")}
