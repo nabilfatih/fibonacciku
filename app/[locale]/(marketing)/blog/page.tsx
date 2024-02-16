@@ -41,7 +41,7 @@ export default async function BlogPage() {
             </h2>
           </div>
 
-          <div className="py-10">
+          <div className="pb-10">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {blogs.map(blog => {
                 const cover = getBlogsCoverPublicUrlAdmin(blog.id, blog.cover)
@@ -50,7 +50,7 @@ export default async function BlogPage() {
                   <Link
                     key={blog.id}
                     href={`/blog/${blog.slug}`}
-                    className="group relative"
+                    className="group relative mt-12"
                   >
                     <Image
                       src={cover}
