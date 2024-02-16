@@ -22,13 +22,13 @@ export default async function HomePage() {
 
   return (
     <MarketingTransition>
-      <div className="relative min-h-[calc(100dvh-4rem)]">
+      <main className="relative min-h-[calc(100dvh-4rem)]">
         <Particles
           className="animate-fade-in pointer-events-none absolute inset-0"
           quantity={30}
         />
 
-        <section className="py-12 sm:py-24">
+        <section className="mx-auto max-w-7xl px-4 py-28">
           <header className="text-center">
             <h1 className="mx-auto mb-4 max-w-4xl text-balance bg-gradient-to-r from-foreground to-primary bg-clip-text pb-4 text-6xl font-bold tracking-tighter text-transparent sm:text-9xl">
               {t("slogan")}
@@ -51,35 +51,35 @@ export default async function HomePage() {
             <p className="mx-auto max-w-xs text-balance text-sm">
               {t("slogan-1")}
             </p>
-            <div className="mt-4 flex items-center justify-center gap-2">
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-2 px-16">
               <div className="rounded-xl bg-muted p-2">
-                <IconPhoto className="h-6 w-6" />
+                <IconPhoto className="h-5 w-5" />
               </div>
               <div className="rounded-xl bg-muted p-2">
-                <IconMath className="h-6 w-6" />
+                <IconMath className="h-5 w-5" />
               </div>
               <div className="rounded-xl bg-muted p-2">
-                <IconWorldWww className="h-6 w-6" />
+                <IconWorldWww className="h-5 w-5" />
               </div>
               <div className="rounded-xl bg-muted p-2">
-                <IconBrandYoutube className="h-6 w-6" />
+                <IconBrandYoutube className="h-5 w-5" />
               </div>
               <div className="rounded-xl bg-muted p-2">
-                <IconBooks className="h-6 w-6" />
+                <IconBooks className="h-5 w-5" />
               </div>
               <div className="rounded-xl bg-muted p-2">
-                <IconWind className="h-6 w-6" />
+                <IconWind className="h-5 w-5" />
               </div>
               <div className="rounded-xl bg-muted p-2">
-                <IconSitemap className="h-6 w-6" />
+                <IconSitemap className="h-5 w-5" />
               </div>
               <div className="rounded-xl bg-muted p-2">
-                <IconBrandWikipedia className="h-6 w-6" />
+                <IconBrandWikipedia className="h-5 w-5" />
               </div>
             </div>
           </div>
         </section>
-      </div>
+      </main>
     </MarketingTransition>
   )
 }
