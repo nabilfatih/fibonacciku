@@ -1,6 +1,6 @@
 export default function MarketingFooterArt() {
   return (
-    <div className="mt-10 bg-muted-foreground pb-20">
+    <div className="mt-10 bg-muted-foreground pb-24">
       {Array.from({ length: 23 }).map((_, i) => (
         <div
           key={i}
