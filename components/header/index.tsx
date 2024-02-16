@@ -33,13 +33,13 @@ async function UserHistory() {
       ) : (
         <Link href="/">
           <Image
-            src="/logo.webp"
+            src="/logo-outline.webp"
             alt="FibonacciKu"
             width={24}
             height={24}
             priority
             sizes="24px"
-            className="mr-2 rounded-full border object-cover shadow"
+            className="mr-2 rounded-full object-cover shadow"
           />
         </Link>
       )}

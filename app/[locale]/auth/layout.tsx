@@ -31,12 +31,12 @@ export default async function AuthenticationLayout({
         >
           <div className="relative h-6 w-6">
             <Image
-              src="/logo.webp"
+              src="/logo-outline.webp"
               sizes="24px"
               fill
               priority
               alt="FibonacciKu"
-              className="rounded-full border object-cover shadow"
+              className="rounded-full object-cover shadow"
             />
           </div>
           <span className="font-semibold">FibonacciKu</span>
@@ -55,12 +55,12 @@ export default async function AuthenticationLayout({
       <div className="py-4 lg:p-8">
         <Link href="/blog" className="mb-4 flex justify-center lg:hidden">
           <Image
-            src="/logo.webp"
+            src="/logo-outline.webp"
             width={32}
             height={32}
             priority
             alt="FibonacciKu"
-            className="rounded-full border object-cover shadow"
+            className="rounded-full object-cover shadow"
           />
         </Link>
         <main className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">

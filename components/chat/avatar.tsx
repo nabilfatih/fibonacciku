@@ -25,10 +25,10 @@ export default function ChatAvatar({ role }: Props) {
       <div className="relative h-8 w-8">
         <Image
           title="FibonacciKu"
-          src="/logo.webp"
+          src="/logo-outline.webp"
           fill
           sizes="32px"
-          className="rounded-full border object-cover shadow"
+          className="rounded-full object-cover shadow"
           priority
           alt="FibonacciKu Avatar"
         />

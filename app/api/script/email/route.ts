@@ -31,21 +31,21 @@ export async function POST(request: Request) {
 
   try {
     for (const email of emails) {
-      const dataMessage = `Hey ${email.full_name || "there"}! 🎈
+      const name = email.full_name || "there"
 
-Nabil here, from FibonacciKu. I've got some thrilling news that I can't wait to share with you! 🌟
+      const dataMessage = `Hi ${name}! 🌟
 
-Mark your calendars for 16 February 2024, because that's the day FibonacciKu will officially launch on Product Hunt! 🚀
+Big news! FibonacciKu is now live on Product Hunt! 🎉
 
-This is more than just a launch; it's a celebration of what we've built together, and your support means everything to us. By joining us on this special day and voting for FibonacciKu, you help us reach more curious minds and keep our service free and accessible. 🎉
+We're super excited and we need your help. Could you take a moment to support us with an upvote? Every vote brings us closer to helping more people enjoy learning with FibonacciKu. 🙏
 
-Here's where you can show your support: https://www.producthunt.com/products/genius-study-buddy-by-fibonacciku
+Just click here to vote: https://www.producthunt.com/posts/genius-study-buddy-by-fibonacciku
 
-Stay tuned for the link to our Product Hunt page, and thank you for being such an integral part of our community. Together, we're making learning fun and accessible for everyone! 📚
+Thank you for being awesome and helping us grow. Your support means the world to us! 🌍
 
-Can't wait to celebrate with you,
+Cheers,
 Nabil Akbarazzima Fatih
-Founder of FibonacciKu❤️`
+Founder of FibonacciKu`
 
       const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
@@ -56,7 +56,7 @@ Founder of FibonacciKu❤️`
         body: JSON.stringify({
           from: "Nabil Fatih <nabilfatih@fibonacciku.com>",
           to: [email.email],
-          subject: "Exciting news from Fibonacciku🎉",
+          subject: "Fibo needs your Support!🎉",
           text: dataMessage
         })
       })
