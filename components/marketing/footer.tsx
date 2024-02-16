@@ -28,7 +28,7 @@ export default async function MarketingFooter() {
             width={48}
             height={48}
           />
-          <div className="my-2 flex flex-wrap items-center justify-center">
+          <div className="mb-2 mt-3 flex flex-wrap items-center justify-center">
             {socialMedia.map(social => {
               return (
                 <Button
