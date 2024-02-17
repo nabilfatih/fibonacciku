@@ -24,7 +24,7 @@ export default async function HomePage() {
     <MarketingTransition>
       <main className="relative min-h-[calc(100dvh-4rem)]">
         <Particles
-          className="animate-fade-in pointer-events-none absolute inset-0"
+          className="animate-fade-in pointer-events-none absolute inset-0 hidden md:block"
           quantity={30}
         />
 
