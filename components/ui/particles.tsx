@@ -4,6 +4,7 @@ import React, { useEffect, useMemo, useRef } from "react"
 import type { FC } from "react"
 import dynamic from "next/dynamic"
 import { useTheme } from "next-themes"
+import { isMobile } from "react-device-detect"
 
 import { darkThemes } from "@/lib/data/themes"
 import useMousePosition from "@/lib/hooks/use-mouse"
@@ -248,6 +249,8 @@ const Particles: FC<ParticlesProps> = ({
     })
     window.requestAnimationFrame(animate)
   }
+
+  if (isMobile) return null
 
   return (
     <div className={cn(className)} ref={canvasContainerRef} aria-hidden="true">
