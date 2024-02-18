@@ -9,7 +9,7 @@ type Props = {
 
 export default function MarketingTransition({ children, className }: Props) {
   return (
-    <motion.div
+    <motion.main
       // transition effect for page transitions
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -18,6 +18,6 @@ export default function MarketingTransition({ children, className }: Props) {
       className={className}
     >
       {children}
-    </motion.div>
+    </motion.main>
   )
 }
