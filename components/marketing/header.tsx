@@ -3,7 +3,6 @@ import Link from "next/link"
 
 import { getScopedI18n } from "@/locales/server"
 
-import { Button } from "@/components/ui/button"
 import { IconSeparator } from "@/components/ui/icons"
 import HeaderBadge from "@/components/header/badge"
 import UserMenu from "@/components/header/user-menu"

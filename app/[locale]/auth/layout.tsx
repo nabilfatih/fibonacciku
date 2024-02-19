@@ -1,13 +1,9 @@
-import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
 
+import Particles from "@/components/ui/particles"
 import AuthLanguage from "@/components/auth/language"
 import ThemeToggle from "@/components/theme/toggle"
-
-const Particles = dynamic(() => import("@/components/ui/particles"), {
-  ssr: false
-})
 
 export default async function AuthenticationLayout({
   children
@@ -22,11 +18,11 @@ export default async function AuthenticationLayout({
       </div>
       <div className="relative hidden h-full flex-col border-r bg-muted p-10 lg:flex">
         <Particles
-          className="animate-fade-in pointer-events-none absolute inset-0"
+          className="pointer-events-none absolute inset-0 animate-fade-in"
           quantity={40}
         />
         <Link
-          href="/blog"
+          href="/home"
           className="relative z-20 flex w-fit items-center gap-2 text-lg font-medium"
         >
           <div className="relative h-6 w-6">
@@ -53,7 +49,7 @@ export default async function AuthenticationLayout({
         </div>
       </div>
       <div className="py-4 lg:p-8">
-        <Link href="/blog" className="mb-4 flex justify-center lg:hidden">
+        <Link href="/home" className="mb-4 flex justify-center lg:hidden">
           <Image
             src="/logo-outline.webp"
             width={32}
