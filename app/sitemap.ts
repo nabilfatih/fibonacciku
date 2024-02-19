@@ -37,11 +37,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blogSlugs = await getBlogsSlugAdmin()
 
-  const blogsPaths: MetadataRoute.Sitemap = blogSlugs.map(blog => {
-    return {
-      url: `${baseUrl}/blog/${blog.slug}`,
-      lastModified: new Date(blog.updated_at).toISOString().split("T")[0]
-    }
+  const blogsPaths: MetadataRoute.Sitemap = locales.flatMap(locale => {
+    return blogSlugs.map(blog => {
+      return {
+        url: `${baseUrl}${locale}/blog/${blog.slug}`,
+        lastModified: new Date(blog.updated_at).toISOString().split("T")[0],
+        priority: 1
+      }
+    })
   })
 
   const paths: MetadataRoute.Sitemap = locales.flatMap(locale => {
