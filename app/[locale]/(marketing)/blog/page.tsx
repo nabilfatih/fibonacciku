@@ -8,6 +8,7 @@ import {
 } from "@/lib/supabase/admin/blogs"
 import { getCurrentLocale, getScopedI18n } from "@/locales/server"
 
+import { Badge } from "@/components/ui/badge"
 import MarketingTransition from "@/components/marketing/transition"
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -68,6 +69,10 @@ export default async function BlogPage({ searchParams }: Props) {
               {blogs.map(blog => {
                 const cover = getBlogsCoverPublicUrlAdmin(blog.id, blog.cover)
 
+                const tags = blog.tags
+                  .split(",")
+                  .map(tag => tag.trim().toLowerCase())
+
                 return (
                   <Link
                     key={blog.id}
@@ -96,6 +101,14 @@ export default async function BlogPage({ searchParams }: Props) {
                           year: "numeric"
                         })}
                       </p>
+
+                      <div className="mt-2 flex flex-wrap gap-1">
+                        {tags.map(tag => (
+                          <Badge key={tag} variant="outline">
+                            {t(tag as never)}
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
                   </Link>
                 )
