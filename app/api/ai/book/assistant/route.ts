@@ -65,7 +65,8 @@ export async function POST(req: NextRequest) {
       model: "gpt-3.5-turbo-1106",
       stream: true,
       temperature: 0.4,
-      messages
+      messages,
+      user: user.id
     })
 
     // Convert the response into a friendly text-stream

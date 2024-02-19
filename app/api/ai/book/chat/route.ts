@@ -256,7 +256,8 @@ export async function POST(req: NextRequest) {
           model,
           stream: true,
           tools,
-          tool_choice: "auto"
+          tool_choice: "auto",
+          user: userId
         })
       },
       async onCompletion(completion) {
