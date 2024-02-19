@@ -1,6 +1,6 @@
 export default {
   Metadata: {
-    title: "FibonacciKu · Your genius study buddy",
+    title: "FibonacciKu - Your genius study buddy",
     slogan: "Your genius study buddy",
     desc: "Start using AI for your personal tutor instead of cheating tool. Specifically designed for teachers and students",
     description:

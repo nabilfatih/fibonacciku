@@ -1,6 +1,6 @@
 export default {
   Metadata: {
-    title: "FibonacciKu · Dein genialer Lernkumpel",
+    title: "FibonacciKu - Dein genialer Lernkumpel",
     slogan: "Dein genialer Lernkumpel",
     desc: "Beginnen Sie, KI für Ihren persönlichen Tutor zu verwenden, anstatt für ein Schummelwerkzeug. Speziell für Lehrer und Schüler entwickelt",
     description:

@@ -1,6 +1,6 @@
 export default {
   Metadata: {
-    title: "FibonacciKu · Teman belajar jenius Anda",
+    title: "FibonacciKu - Teman belajar jenius Anda",
     slogan: "Teman belajar jenius Anda",
     desc: "Mulai gunakan AI sebagai tutor pribadi Anda bukan alat mencontek. Dirancang khusus untuk guru dan siswa",
     description:
