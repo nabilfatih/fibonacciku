@@ -48,7 +48,6 @@ export default async function ResetPasswordPage() {
       <p className="px-8 text-center text-sm text-muted-foreground">
         <Link
           href="/terms-of-use"
-          target="_blank"
           className="underline underline-offset-4 hover:text-primary"
         >
           {t("terms-of-service")}
@@ -56,7 +55,6 @@ export default async function ResetPasswordPage() {
         &{" "}
         <Link
           href="/privacy-policy"
-          target="_blank"
           className="underline underline-offset-4 hover:text-primary"
         >
           {t("privacy-policy")}
