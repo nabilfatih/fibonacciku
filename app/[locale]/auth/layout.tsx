@@ -5,7 +5,7 @@ import Particles from "@/components/ui/particles"
 import AuthLanguage from "@/components/auth/language"
 import ThemeToggle from "@/components/theme/toggle"
 
-export default async function AuthenticationLayout({
+export default function AuthenticationLayout({
   children
 }: {
   children: React.ReactNode
