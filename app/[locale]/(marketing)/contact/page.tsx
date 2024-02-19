@@ -37,7 +37,7 @@ export default async function ContactPage() {
 
       <section className="py-24">
         <div className="relative mx-auto max-w-7xl px-4">
-          <div className="flex flex-col gap-4 md:flex-row md:gap-24">
+          <div className="flex flex-col gap-12 md:flex-row md:gap-24">
             <div className="flex w-full flex-col gap-4 md:max-w-sm">
               <MarketingFormContact />
             </div>
