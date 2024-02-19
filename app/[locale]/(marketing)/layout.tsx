@@ -1,4 +1,3 @@
-import { Suspense } from "react"
 import { cookies } from "next/headers"
 
 import { CurrentUserContextProvider } from "@/lib/context/use-current-user"
@@ -21,15 +20,7 @@ export default async function MarketingLayout({
   return (
     <CurrentUserContextProvider session={session}>
       <MarketingHeader />
-      <main className="flex flex-1 flex-col overflow-hidden">
-        <Suspense
-          fallback={
-            <div className="relative flex h-[calc(100dvh-4rem)] overflow-hidden"></div>
-          }
-        >
-          {children}
-        </Suspense>
-      </main>
+      <main className="flex flex-1 flex-col overflow-hidden">{children}</main>
       <MarketingFooter />
     </CurrentUserContextProvider>
   )

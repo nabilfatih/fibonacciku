@@ -28,6 +28,19 @@ export const getBlogsAdmin = async () => {
   return data
 }
 
+export const getBlogsSlugAdmin = async () => {
+  const { data, error } = await supabaseAdmin
+    .from("blogs")
+    .select("slug, updated_at")
+    .order("created_at", { ascending: false })
+
+  if (error) {
+    throw error
+  }
+
+  return data
+}
+
 export const getBlogsCoverPublicUrlAdmin = (blogId: string, fileId: string) => {
   const { data } = supabaseAdmin.storage
     .from("blogs")

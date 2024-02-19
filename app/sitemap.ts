@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next"
 
+import { getBlogsSlugAdmin } from "@/lib/supabase/admin/blogs"
+
 const locales = ["", "/en", "/id", "/de", "/ru"]
 
 const pathnames = [
@@ -30,17 +32,26 @@ const pathnames = [
   "/blog"
 ]
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://www.fibonacciku.com"
 
-  const paths = locales.flatMap(locale => {
+  const blogSlugs = await getBlogsSlugAdmin()
+
+  const blogsPaths: MetadataRoute.Sitemap = blogSlugs.map(blog => {
+    return {
+      url: `${baseUrl}/blog/${blog.slug}`,
+      lastModified: new Date(blog.updated_at).toISOString().split("T")[0]
+    }
+  })
+
+  const paths: MetadataRoute.Sitemap = locales.flatMap(locale => {
     return pathnames.map(pathname => {
       return {
         url: `${baseUrl}${locale}${pathname}`,
         lastModified: new Date().toISOString().split("T")[0],
         changeFrequency: "weekly",
-        priority: 0.8
-      } satisfies MetadataRoute.Sitemap[0]
+        priority: 1
+      }
     })
   })
 
@@ -51,6 +62,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 1
     },
-    ...paths
+    ...paths,
+    ...blogsPaths
   ]
 }
