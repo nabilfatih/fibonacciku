@@ -1,21 +1,12 @@
 import Link from "next/link"
-import {
-  IconBooks,
-  IconBrandWikipedia,
-  IconBrandYoutube,
-  IconMath,
-  IconPhoto,
-  IconSitemap,
-  IconSparkles,
-  IconWind,
-  IconWorldWww
-} from "@tabler/icons-react"
+import { IconSparkles } from "@tabler/icons-react"
 
 import { getScopedI18n } from "@/locales/server"
 
 import { Button } from "@/components/ui/button"
 import Particles from "@/components/ui/particles"
 import MarketingTransition from "@/components/marketing/transition"
+import { pluginsList } from "@/components/premium/plugins"
 
 export default async function HomePage() {
   const t = await getScopedI18n("Home")
@@ -23,7 +14,7 @@ export default async function HomePage() {
   return (
     <MarketingTransition className="relative">
       <Particles
-        className="animate-fade-in pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 animate-fade-in"
         quantity={30}
       />
 
@@ -51,30 +42,13 @@ export default async function HomePage() {
             {t("slogan-1")}
           </p>
           <div className="mt-4 flex flex-wrap items-center justify-center gap-2 px-16">
-            <div className="rounded-xl bg-muted p-2">
-              <IconPhoto className="h-5 w-5" />
-            </div>
-            <div className="rounded-xl bg-muted p-2">
-              <IconMath className="h-5 w-5" />
-            </div>
-            <div className="rounded-xl bg-muted p-2">
-              <IconWorldWww className="h-5 w-5" />
-            </div>
-            <div className="rounded-xl bg-muted p-2">
-              <IconBrandYoutube className="h-5 w-5" />
-            </div>
-            <div className="rounded-xl bg-muted p-2">
-              <IconBooks className="h-5 w-5" />
-            </div>
-            <div className="rounded-xl bg-muted p-2">
-              <IconWind className="h-5 w-5" />
-            </div>
-            <div className="rounded-xl bg-muted p-2">
-              <IconSitemap className="h-5 w-5" />
-            </div>
-            <div className="rounded-xl bg-muted p-2">
-              <IconBrandWikipedia className="h-5 w-5" />
-            </div>
+            {pluginsList.map((plugin, index) => {
+              return (
+                <div key={index} className="rounded-xl bg-muted p-2">
+                  <plugin.icon className="h-5 w-5" />
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
