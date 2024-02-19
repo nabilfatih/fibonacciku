@@ -30,7 +30,7 @@ export default async function HomePage() {
     <MarketingTransition className="relative">
       <Particles
         className="pointer-events-none absolute inset-0 animate-fade-in"
-        quantity={30}
+        quantity={100}
       />
 
       <section className="mx-auto max-w-7xl px-4 py-28">
