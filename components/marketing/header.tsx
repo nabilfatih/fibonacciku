@@ -42,20 +42,20 @@ export default async function MarketingHeader() {
           </h1>
         </div>
         <div className="flex items-center justify-end space-x-2 sm:space-x-3">
-          <Button
-            variant="link"
-            asChild
-            className="hidden p-0 px-1.5 sm:inline-flex"
+          <Link
+            href="/blog"
+            className="hidden pr-2 text-sm underline-offset-4 hover:underline sm:inline-flex"
           >
-            <Link href="/blog">{t("blog")}</Link>
-          </Button>
-          <Button
-            variant="link"
-            asChild
-            className="hidden p-0 px-1.5 sm:inline-flex"
+            {t("blog")}
+          </Link>
+
+          <Link
+            href="/contact"
+            className="hidden pr-2 text-sm underline-offset-4 hover:underline sm:inline-flex"
           >
-            <Link href="/contact">{t("contact")}</Link>
-          </Button>
+            {t("contact")}
+          </Link>
+
           <ThemeToggle side="bottom" align="end" />
           <UserMenu />
         </div>
