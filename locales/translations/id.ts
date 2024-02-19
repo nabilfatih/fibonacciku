@@ -1032,6 +1032,13 @@ export default {
     close: "Tutup",
     "fibo-assistant": "Fibo Asisten",
     "try-fibo": "Coba Fibo",
-    contact: "Kontak"
+    contact: "Kontak",
+    announcement: "Pengumuman",
+    news: "Berita",
+    product: "Produk",
+    article: "Artikel",
+    scientific: "Ilmiah",
+    journal: "Jurnal",
+    safety: "Keamanan"
   }
 } as const

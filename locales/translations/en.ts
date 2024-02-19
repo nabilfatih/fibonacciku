@@ -1015,6 +1015,13 @@ export default {
     close: "Close",
     "fibo-assistant": "Fibo Assistant",
     "try-fibo": "Try Fibo",
-    contact: "Contact"
+    contact: "Contact",
+    announcement: "Announcement",
+    news: "News",
+    product: "Product",
+    article: "Article",
+    scientific: "Scientific",
+    journal: "Journal",
+    safety: "Safety"
   }
 } as const

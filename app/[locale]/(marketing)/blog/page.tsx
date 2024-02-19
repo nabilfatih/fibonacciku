@@ -27,10 +27,24 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function BlogPage() {
+type Props = {
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+export default async function BlogPage({ searchParams }: Props) {
+  const tag = searchParams.tag as string | undefined
+
   const t = await getScopedI18n("Marketing")
   const locale = getCurrentLocale()
   const blogs = await getBlogsAdmin()
+
+  // if there is tag, filter the blogs
+  const blogsFiltered = blogs.filter(blog => {
+    if (tag) {
+      return blog.tags.toLowerCase().includes(tag)
+    }
+    return blog
+  })
 
   return (
     <MarketingTransition>
@@ -54,7 +68,7 @@ export default async function BlogPage() {
 
           <div className="pb-12">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-              {blogs.map(blog => {
+              {blogsFiltered.map(blog => {
                 const cover = getBlogsCoverPublicUrlAdmin(blog.id, blog.cover)
 
                 return (

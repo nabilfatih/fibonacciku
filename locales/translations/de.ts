@@ -1048,6 +1048,13 @@ export default {
     close: "Schließen",
     "fibo-assistant": "Fibo Assistent",
     "try-fibo": "Fibo ausprobieren",
-    contact: "Kontakt"
+    contact: "Kontakt",
+    announcement: "Ankündigung",
+    news: "Nachrichten",
+    product: "Produkt",
+    article: "Artikel",
+    scientific: "Wissenschaftlich",
+    journal: "Journal",
+    safety: "Sicherheit"
   }
 } as const

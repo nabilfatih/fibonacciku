@@ -1033,6 +1033,13 @@ export default {
     close: "Закрыть",
     "fibo-assistant": "Aссистент Fibo",
     "try-fibo": "Попробуйте Fibo",
-    contact: "Контакт"
+    contact: "Контакт",
+    announcement: "Объявление",
+    news: "Новости",
+    product: "Продукт",
+    article: "Статья",
+    scientific: "Научный",
+    journal: "Журнал",
+    safety: "Безопасность"
   }
 } as const
