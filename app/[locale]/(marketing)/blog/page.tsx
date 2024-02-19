@@ -36,10 +36,7 @@ export default async function BlogPage({ searchParams }: Props) {
 
   const t = await getScopedI18n("Marketing")
   const locale = getCurrentLocale()
-  const blogs = await getBlogsAdmin()
-
-  // if there is tag, filter the blogs
-  const blogsFiltered = blogs.filter(blog => {
+  const blogs = (await getBlogsAdmin()).filter(blog => {
     if (tag) {
       return blog.tags.toLowerCase().includes(tag)
     }
@@ -68,7 +65,7 @@ export default async function BlogPage({ searchParams }: Props) {
 
           <div className="pb-12">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-              {blogsFiltered.map(blog => {
+              {blogs.map(blog => {
                 const cover = getBlogsCoverPublicUrlAdmin(blog.id, blog.cover)
 
                 return (
