@@ -45,9 +45,9 @@ export default async function ContactPage() {
             <div className="flex flex-col gap-4">
               {contactList.map(contact => (
                 <div key={contact.query} className="flex flex-col">
-                  <span className="text-sm font-medium tracking-tight text-muted-foreground">
+                  <h2 className="text-sm font-medium tracking-tight text-muted-foreground">
                     {t(contact.query as never)}
-                  </span>
+                  </h2>
                   <p className="tracking-tight">{contact.email}</p>
                 </div>
               ))}
