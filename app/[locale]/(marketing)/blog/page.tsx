@@ -44,7 +44,7 @@ export default async function BlogPage() {
           </p>
         </div>
       </header>
-      <section className="py-10">
+      <section className="py-24">
         <div className="relative mx-auto max-w-7xl px-4">
           <div className="border-b pb-4">
             <h2 className="text-2xl font-medium tracking-tighter">
