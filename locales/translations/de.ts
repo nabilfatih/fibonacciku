@@ -1047,6 +1047,7 @@ export default {
     "text-footer": "Authentischer Inhalt vom FibonacciKu-Team.",
     close: "Schließen",
     "fibo-assistant": "Fibo Assistent",
-    "try-fibo": "Fibo ausprobieren"
+    "try-fibo": "Fibo ausprobieren",
+    contact: "Kontakt"
   }
 } as const

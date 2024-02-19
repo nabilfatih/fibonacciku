@@ -1032,6 +1032,7 @@ export default {
     "text-footer": "Аутентичный контент от команды FibonacciKu.",
     close: "Закрыть",
     "fibo-assistant": "Aссистент Fibo",
-    "try-fibo": "Попробуйте Fibo"
+    "try-fibo": "Попробуйте Fibo",
+    contact: "Контакт"
   }
 } as const

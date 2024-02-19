@@ -14,7 +14,16 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getScopedI18n("Marketing")
   return {
     title: t("blog"),
-    description: t("blog-desc")
+    description: t("blog-desc"),
+    alternates: {
+      canonical: "/blog",
+      languages: {
+        en: "/en/blog",
+        id: "/id/blog",
+        de: "/de/blog",
+        ru: "/ru/blog"
+      }
+    }
   }
 }
 
@@ -43,7 +52,7 @@ export default async function BlogPage() {
             </h2>
           </div>
 
-          <div className="pb-10">
+          <div className="pb-12">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {blogs.map(blog => {
                 const cover = getBlogsCoverPublicUrlAdmin(blog.id, blog.cover)

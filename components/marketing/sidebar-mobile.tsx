@@ -42,6 +42,13 @@ export default async function MarketingSidebarMobile() {
               </Link>
 
               <Link
+                href="/contact"
+                className="inline-flex justify-between border-t pt-4 text-sm underline-offset-4 hover:underline"
+              >
+                {t("contact")}
+              </Link>
+
+              <Link
                 href="/chat/assistant"
                 className="inline-flex justify-between border-y py-4 text-sm underline-offset-4 hover:underline"
               >

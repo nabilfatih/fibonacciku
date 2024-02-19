@@ -1,5 +1,6 @@
+import type { Metadata } from "next"
 import Link from "next/link"
-import { IconSparkles } from "@tabler/icons-react"
+import { IconMail, IconSparkles } from "@tabler/icons-react"
 
 import { getScopedI18n } from "@/locales/server"
 
@@ -7,6 +8,20 @@ import { Button } from "@/components/ui/button"
 import Particles from "@/components/ui/particles"
 import MarketingTransition from "@/components/marketing/transition"
 import { pluginsList } from "@/components/premium/plugins"
+
+export function generateMetadata(): Metadata {
+  return {
+    alternates: {
+      canonical: "/home",
+      languages: {
+        en: "/en/home",
+        id: "/id/home",
+        de: "/de/home",
+        ru: "/ru/home"
+      }
+    }
+  }
+}
 
 export default async function HomePage() {
   const t = await getScopedI18n("Home")
@@ -31,8 +46,14 @@ export default async function HomePage() {
         <div className="mt-4 flex flex-row justify-center gap-2">
           <Button asChild>
             <Link href="/chat/assistant">
-              <IconSparkles className="mr-1 h-5 w-5" />
+              <IconSparkles className="mr-1 h-4 w-4" />
               {t("get-started")}
+            </Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="/contact">
+              <IconMail className="mr-1 h-4 w-4" />
+              {t("contact-us")}
             </Link>
           </Button>
         </div>

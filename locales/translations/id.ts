@@ -1031,6 +1031,7 @@ export default {
     "text-footer": "Konten otentik dari tim FibonacciKu.",
     close: "Tutup",
     "fibo-assistant": "Fibo Asisten",
-    "try-fibo": "Coba Fibo"
+    "try-fibo": "Coba Fibo",
+    contact: "Kontak"
   }
 } as const

@@ -1014,6 +1014,7 @@ export default {
     "text-footer": "Authentic content from the FibonacciKu team.",
     close: "Close",
     "fibo-assistant": "Fibo Assistant",
-    "try-fibo": "Try Fibo"
+    "try-fibo": "Try Fibo",
+    contact: "Contact"
   }
 } as const
