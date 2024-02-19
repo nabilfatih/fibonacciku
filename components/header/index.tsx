@@ -65,7 +65,7 @@ export function HeaderChat() {
           <UserHistory />
         </Suspense>
       </div>
-      <div className="flex items-center justify-end space-x-2 sm:space-x-3">
+      <div className="flex items-center justify-end space-x-2">
         <HeaderChatFeature />
         <PremiumPlugins variant="ghost" className="-ml-2 flex h-9 w-9 p-0" />
         <UserMenu />

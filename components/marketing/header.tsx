@@ -40,7 +40,7 @@ export default async function MarketingHeader() {
             <HeaderBadge />
           </h1>
         </div>
-        <div className="flex items-center justify-end space-x-2 sm:space-x-3">
+        <div className="flex items-center justify-end space-x-2 sm:space-x-4">
           <Link
             href="/blog"
             className="hidden pr-2 text-sm underline-offset-4 hover:underline sm:inline-flex"
