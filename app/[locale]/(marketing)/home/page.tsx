@@ -45,7 +45,7 @@ export default async function HomePage() {
     <MarketingTransition className="relative">
       <Particles
         className="pointer-events-none absolute inset-0 -z-10 animate-fade-in"
-        quantity={100}
+        quantity={200}
       />
 
       <section className="px-4 py-36">
