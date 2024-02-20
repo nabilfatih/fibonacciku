@@ -181,7 +181,7 @@ const featuresList = [
           <div className="flex h-full w-full flex-col items-start justify-between gap-3 overflow-hidden">
             <div className="flex flex-col gap-1">
               <p
-                className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-medium"
+                className="line-clamp-1 whitespace-pre-wrap break-words text-sm font-medium"
                 title="FibonacciKu"
               >
                 Genius Study Buddy
@@ -223,7 +223,7 @@ const featuresList = [
           <div className="flex h-full w-full flex-col items-start justify-between gap-3 overflow-hidden">
             <div className="flex flex-col gap-1">
               <p
-                className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-medium"
+                className="line-clamp-1 whitespace-pre-wrap break-words text-sm font-medium"
                 title="FibonacciKu"
               >
                 E-Learning Indonesia
@@ -287,7 +287,7 @@ const featuresList = [
             </p>
 
             <p
-              className="line-clamp-3 whitespace-pre-wrap break-words text-xs text-zinc-100/80"
+              className="line-clamp-2 whitespace-pre-wrap break-words text-xs text-zinc-100/80"
               title="Planet Earth is this solid thing you are standing on right now. In your everyday life you don&#39;t really waste a thought about how ..."
             >
               Planet Earth is this solid thing you are standing on right now. In
@@ -344,7 +344,7 @@ const featuresList = [
               </p>
 
               <p
-                className="line-clamp-3 whitespace-pre-wrap break-words text-xs"
+                className="line-clamp-2 whitespace-pre-wrap break-words text-xs"
                 title="Fashion-MNIST is intended to serve as a direct drop-in replacement for the original MNIST dataset for benchmarking machine learning algorithms, as it shares the same image size, data format and the structure of training and testing splits."
               >
                 Fashion-MNIST is intended to serve as a direct drop-in
@@ -396,7 +396,7 @@ const featuresList = [
               </p>
 
               <p
-                className="line-clamp-3 whitespace-pre-wrap break-words text-xs"
+                className="line-clamp-2 whitespace-pre-wrap break-words text-xs"
                 title="The TensorFlow dataflow model is described and the compelling performance that TensorFlow achieves for several real-world applications is demonstrated."
               >
                 The TensorFlow dataflow model is described and the compelling
@@ -439,7 +439,7 @@ const featuresList = [
   },
   {
     header: (
-      <div className="flex h-full max-h-[244px] items-center justify-center rounded-md border bg-card px-2 py-4 md:p-0">
+      <div className="flex h-full max-h-[212px] items-center justify-center rounded-md border bg-card px-2 py-4 md:p-0">
         <ServerReactMarkdown
           className="text-xs sm:text-sm md:text-base"
           content="$$F(n) = \begin{cases} 0 & \text{if } n = 0 \\ 1 & \text{if } n = 1 \\ F(n-1) + F(n-2) & \text{if } n > 1 \end{cases}$$"
