@@ -105,7 +105,7 @@ export default async function MarketingFooter() {
         </div>
 
         <div className="mx-auto w-full max-w-7xl pt-6">
-          <p className="text-sm">
+          <p className="text-balance text-sm">
             {t("all-rights-reserved")}. PT. Nakafa Tekno Kreatif.{" "}
             {t("made-with")} <span className="text-accent">❤️</span>
           </p>
