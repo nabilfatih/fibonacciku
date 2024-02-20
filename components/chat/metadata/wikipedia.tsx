@@ -66,6 +66,9 @@ function ChatMetadataWikipedia({ metadata }: Props) {
                     sizes="100%"
                     fill
                     unoptimized // decrease cost of image optimization
+                    onError={e => {
+                      e.currentTarget.src = "/fibo-assistant.webp"
+                    }}
                     className="bg-muted/90 object-cover"
                   />
                 </div>
