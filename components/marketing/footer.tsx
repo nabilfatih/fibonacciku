@@ -19,7 +19,7 @@ export default async function MarketingFooter() {
 
   return (
     <footer className="border-t bg-card backdrop-blur-xl">
-      <div className="mx-auto w-full max-w-7xl shrink-0 space-y-2 p-4 pt-14">
+      <div className="mx-auto w-full max-w-7xl shrink-0 space-y-2 px-4 pt-24">
         <div className="flex flex-col items-center justify-center">
           <Image
             src="/logo-outline.webp"

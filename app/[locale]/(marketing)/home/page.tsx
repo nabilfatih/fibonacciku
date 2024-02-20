@@ -153,18 +153,12 @@ export default async function HomePage() {
 const featuresList = [
   {
     header: (
-      <div className="h-full w-full overflow-hidden">
+      <div className="relative h-full w-full overflow-hidden">
         <Image
           src="/background-service.webp"
           alt="Image generation"
           sizes="100%"
-          style={{
-            width: "100%",
-            height: "auto",
-            maxHeight: "28rem"
-          }}
-          width={256}
-          height={256}
+          fill
           className="rounded-md border object-cover"
         />
       </div>
@@ -274,7 +268,7 @@ const featuresList = [
         rel="noopener noreferrer"
         href="https://www.youtube.com/watch?v=JGXi_9A__Vc"
         target="_blank"
-        className="group h-full min-h-[82px] rounded-md border p-2 transition-colors hover:bg-muted/50"
+        className="group h-full min-h-[82px] rounded-md border p-2 transition-colors hover:bg-card/50"
         style={{
           backgroundImage: `linear-gradient(rgba(10, 20, 39, 0.7), rgba(10, 20, 39, 0.7)), url(https://i.ytimg.com/vi/JGXi_9A__Vc/hqdefault.jpg)`,
           backgroundSize: "cover",
@@ -328,6 +322,114 @@ const featuresList = [
     className: "md:col-span-1"
   },
   {
+    header: (
+      <div className="grid h-full grid-cols-1 space-y-2 md:grid-cols-2 md:space-x-2 md:space-y-0">
+        <Link
+          title="Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms"
+          rel="noopener noreferrer"
+          href="https://www.semanticscholar.org/paper/f9c602cc436a9ea2f9e7db48c77d924e09ce3c32"
+          target="_blank"
+          className="group min-h-[82px] rounded-md border bg-card p-2 transition-colors hover:bg-card/50"
+        >
+          <div className="flex h-full w-full flex-col items-start justify-between gap-3">
+            <div className="flex flex-col gap-1">
+              <p
+                className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-semibold"
+                title="Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms"
+              >
+                Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine
+                Learning Algorithms
+              </p>
+
+              <p
+                className="line-clamp-3 whitespace-pre-wrap break-words text-xs"
+                title="Fashion-MNIST is intended to serve as a direct drop-in replacement for the original MNIST dataset for benchmarking machine learning algorithms, as it shares the same image size, data format and the structure of training and testing splits."
+              >
+                Fashion-MNIST is intended to serve as a direct drop-in
+                replacement for the original MNIST dataset for benchmarking
+                machine learning algorithms, as it shares the same image size,
+                data format and the structure of training and testing splits.
+              </p>
+            </div>
+
+            <div className="flex flex-row items-center gap-1">
+              <div
+                className="relative overflow-hidden"
+                style={{ minWidth: "16px" }}
+              >
+                <Image
+                  title="Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms"
+                  className="m-0 block rounded-full bg-transparent object-contain"
+                  src="/semantic_logo.webp"
+                  width={16}
+                  height={16}
+                  style={{
+                    width: "16px",
+                    height: "auto"
+                  }}
+                  alt="Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms"
+                />
+              </div>
+
+              <span className="line-clamp-1 text-xs text-muted-foreground">
+                Han Xiao, Kashif Rasul, Roland Vollgraf
+              </span>
+            </div>
+          </div>
+        </Link>
+        <Link
+          title="TensorFlow: A system for large-scale machine learning"
+          rel="noopener noreferrer"
+          href="https://www.semanticscholar.org/paper/4954fa180728932959997a4768411ff9136aac81"
+          target="_blank"
+          className="group min-h-[82px] rounded-md border bg-card p-2 transition-colors hover:bg-card/50"
+        >
+          <div className="flex h-full w-full flex-col items-start justify-between gap-3">
+            <div className="flex flex-col gap-1">
+              <p
+                className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-semibold"
+                title="TensorFlow: A system for large-scale machine learning"
+              >
+                TensorFlow: A system for large-scale machine learning
+              </p>
+
+              <p
+                className="line-clamp-3 whitespace-pre-wrap break-words text-xs"
+                title="The TensorFlow dataflow model is described and the compelling performance that TensorFlow achieves for several real-world applications is demonstrated."
+              >
+                The TensorFlow dataflow model is described and the compelling
+                performance that TensorFlow achieves for several real-world
+                applications is demonstrated.
+              </p>
+            </div>
+
+            <div className="flex flex-row items-center gap-1">
+              <div
+                className="relative overflow-hidden"
+                style={{ minWidth: "16px" }}
+              >
+                <Image
+                  title="Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms"
+                  className="m-0 block rounded-full bg-transparent object-contain"
+                  src="/semantic_logo.webp"
+                  width={16}
+                  height={16}
+                  style={{
+                    width: "16px",
+                    height: "auto"
+                  }}
+                  alt="Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms"
+                />
+              </div>
+
+              <span className="line-clamp-1 text-xs text-muted-foreground">
+                Martín Abadi, P. Barham, Jianmin Chen, Z. Chen, et al.
+              </span>
+            </div>
+          </div>
+        </Link>
+      </div>
+    ),
     title: "academic-research",
     description: "academic-research-desc",
     icon: <IconBooks className="h-6 w-6" />,

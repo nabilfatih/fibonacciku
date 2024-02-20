@@ -35,7 +35,7 @@ export default function ImageMarkdown({ src, alt }: Props) {
         style={{
           width: "100%",
           height: "auto",
-          maxHeight: "16rem"
+          maxHeight: "28rem"
         }}
         unoptimized
         width={256}
