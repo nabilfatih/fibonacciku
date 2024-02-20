@@ -153,12 +153,13 @@ export default async function HomePage() {
 const featuresList = [
   {
     header: (
-      <div className="relative h-full w-full overflow-hidden">
+      <div className="relative h-44 w-full overflow-hidden md:h-full">
         <Image
           src="/background-service.webp"
           alt="Image generation"
           sizes="100%"
           fill
+          priority
           className="rounded-md border object-cover"
         />
       </div>
