@@ -156,7 +156,7 @@ export default async function HomePage() {
 const featuresList = [
   {
     header: (
-      <div className="relative h-44 w-full overflow-hidden md:h-full">
+      <div className="relative h-44 w-full overflow-hidden md:min-h-[250px]">
         <Image
           src="/background-service.webp"
           alt="Image generation"
@@ -174,7 +174,7 @@ const featuresList = [
   },
   {
     header: (
-      <div className="grid h-full space-y-2">
+      <div className="grid min-h-[250px] space-y-2">
         <Link
           href="/"
           title="FibonacciKu"
@@ -272,7 +272,7 @@ const featuresList = [
         rel="noopener noreferrer"
         href="https://www.youtube.com/watch?v=JGXi_9A__Vc"
         target="_blank"
-        className="group h-full min-h-[82px] rounded-md border p-2 transition-colors hover:bg-card/50"
+        className="group min-h-[250px] rounded-md border p-2 transition-colors hover:bg-card/50"
         style={{
           backgroundImage: `linear-gradient(rgba(10, 20, 39, 0.7), rgba(10, 20, 39, 0.7)), url(https://i.ytimg.com/vi/JGXi_9A__Vc/hqdefault.jpg)`,
           backgroundSize: "cover",
@@ -327,7 +327,7 @@ const featuresList = [
   },
   {
     header: (
-      <div className="grid h-full space-y-2">
+      <div className="grid min-h-[250px] space-y-2">
         <Link
           title="Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms"
           rel="noopener noreferrer"
@@ -346,7 +346,7 @@ const featuresList = [
               </p>
 
               <p
-                className="line-clamp-2 whitespace-pre-wrap break-words text-xs"
+                className="line-clamp-3 whitespace-pre-wrap break-words text-xs"
                 title="Fashion-MNIST is intended to serve as a direct drop-in replacement for the original MNIST dataset for benchmarking machine learning algorithms, as it shares the same image size, data format and the structure of training and testing splits."
               >
                 Fashion-MNIST is intended to serve as a direct drop-in
@@ -398,7 +398,7 @@ const featuresList = [
               </p>
 
               <p
-                className="line-clamp-2 whitespace-pre-wrap break-words text-xs"
+                className="line-clamp-3 whitespace-pre-wrap break-words text-xs"
                 title="The TensorFlow dataflow model is described and the compelling performance that TensorFlow achieves for several real-world applications is demonstrated."
               >
                 The TensorFlow dataflow model is described and the compelling
@@ -441,10 +441,10 @@ const featuresList = [
   },
   {
     header: (
-      <div className="relative flex h-full max-h-[212px] w-full items-center justify-center rounded-md border bg-card px-2 py-4 md:p-0">
+      <div className="relative flex h-full max-h-[250px] w-full items-center justify-center rounded-md border bg-card px-2 py-4 md:p-0">
         <Particles
           className="pointer-events-none absolute inset-0 animate-fade-in"
-          quantity={30}
+          quantity={25}
         />
         <ServerReactMarkdown
           className="text-xs sm:text-sm md:text-base"
@@ -459,7 +459,7 @@ const featuresList = [
   },
   {
     header: (
-      <div className="grid h-full space-y-2">
+      <div className="grid h-full min-h-[250px] space-y-2">
         <div className="group rounded-md border bg-card p-2">
           <div className="flex h-full w-full flex-col items-start justify-between gap-3">
             <div className="flex w-full flex-wrap items-start justify-between gap-2">
@@ -530,6 +530,19 @@ const featuresList = [
     className: "md:col-span-1"
   },
   {
+    header: (
+      <div className="group grid h-full min-h-[250px] gap-2">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div
+            key={"skeleton-" + i}
+            style={{
+              maxWidth: Math.random() * (100 - 40) + 40 + "%"
+            }}
+            className="flex h-full w-full flex-row items-center rounded-md border bg-card p-2"
+          ></div>
+        ))}
+      </div>
+    ),
     title: "website-scraping",
     description: "website-scraping-desc",
     icon: <IconSitemap className="h-6 w-6" />,
@@ -537,21 +550,24 @@ const featuresList = [
   },
   {
     header: (
-      <div className="group h-full overflow-hidden rounded-md border bg-card">
+      <div className="group h-full min-h-[250px] overflow-hidden rounded-md border bg-card">
         <div className="flex h-full w-full flex-col items-start justify-between gap-3">
           <div className="flex flex-col gap-1 p-2">
             <p
-              className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-medium"
+              className="line-clamp-1 whitespace-pre-wrap break-words text-sm font-medium"
               title="Milky Way"
             >
               Milky Way
             </p>
 
             <p
-              className="whitespace-pre-wrap break-words text-xs first-letter:uppercase"
-              title="Galaxy containing the Solar System."
+              className="line-clamp-3 whitespace-pre-wrap break-words text-xs"
+              title="The Milky Way is the galaxy that includes the Solar System, with the name describing the galaxy's appearance from Earth: a hazy band of light seen in the night sky formed from stars that cannot be individually distinguished by the naked eye."
             >
-              Galaxy containing the Solar System.
+              The Milky Way is the galaxy that includes the Solar System, with
+              the name describing the galaxy&#39;s appearance from Earth: a hazy
+              band of light seen in the night sky formed from stars that cannot
+              be individually distinguished by the naked eye.
             </p>
           </div>
 
