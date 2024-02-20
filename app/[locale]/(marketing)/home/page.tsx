@@ -47,7 +47,7 @@ export default async function HomePage() {
         quantity={100}
       />
 
-      <section className="px-4 py-28">
+      <section className="px-4 py-36">
         <div className="mx-auto max-w-7xl">
           <header className="text-center">
             <h1 className="mx-auto mb-4 w-fit max-w-4xl text-balance bg-gradient-to-r from-foreground to-primary bg-clip-text pb-4 text-6xl font-bold tracking-tighter text-transparent sm:text-9xl">
@@ -90,7 +90,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="px-4 py-28">
+      <section className="px-4 py-36">
         <div className="mx-auto max-w-7xl space-y-12">
           <header className="relative space-y-2">
             <h1 className="text-4xl font-semibold tracking-tighter">
