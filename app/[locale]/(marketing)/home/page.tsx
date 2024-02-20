@@ -439,7 +439,11 @@ const featuresList = [
   },
   {
     header: (
-      <div className="flex h-full max-h-[212px] items-center justify-center rounded-md border bg-card px-2 py-4 md:p-0">
+      <div className="relative flex h-full max-h-[212px] w-full items-center justify-center rounded-md border bg-card px-2 py-4 md:p-0">
+        <Particles
+          className="pointer-events-none absolute inset-0 animate-fade-in"
+          quantity={30}
+        />
         <ServerReactMarkdown
           className="text-xs sm:text-sm md:text-base"
           content="$$F(n) = \begin{cases} 0 & \text{if } n = 0 \\ 1 & \text{if } n = 1 \\ F(n-1) + F(n-2) & \text{if } n > 1 \end{cases}$$"
