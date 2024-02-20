@@ -19,63 +19,97 @@ export default async function MarketingFooter() {
 
   return (
     <footer className="border-t bg-card backdrop-blur-xl">
-      <div className="mx-auto w-full max-w-7xl shrink-0 space-y-2 px-4 pt-24">
-        <div className="flex flex-col items-center justify-center">
-          <Image
-            src="/logo-outline.webp"
-            alt="FibonacciKu"
-            sizes="48px"
-            width={48}
-            height={48}
-          />
-          <div className="mb-2 mt-3 flex flex-wrap items-center justify-center">
-            {socialMedia.map(social => {
-              return (
-                <Button
-                  title={`FibonacciKu ${social.name}`}
-                  key={social.link}
-                  variant="ghost"
-                  size="icon"
-                  asChild
+      <div className="px-4 pt-24">
+        <div className="mx-auto w-full max-w-7xl shrink-0 space-y-2 pb-12">
+          <div className="relative space-y-6">
+            <Link href="/home" className="flex w-fit items-center">
+              <Image
+                src="/logo-outline.webp"
+                alt="FibonacciKu"
+                width={28}
+                height={28}
+                priority
+                sizes="28px"
+                className="rounded-full object-cover shadow"
+              />
+
+              <h1 className="ml-1.5 flex items-center text-2xl font-semibold tracking-tighter">
+                FibonacciKu
+              </h1>
+            </Link>
+            <div className="grid grid-cols-2 sm:grid-cols-4">
+              <div className="flex flex-col">
+                <h1 className="mb-1 font-medium tracking-tight">
+                  {t("company")}
+                </h1>
+                <Link
+                  href="/blog"
+                  className="text-sm underline-offset-4 hover:underline"
                 >
-                  <Link
-                    href={social.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <social.icon className="h-5 w-5" />
-                    <span className="sr-only">{social.name}</span>
-                  </Link>
-                </Button>
-              )
-            })}
+                  {t("blog")}
+                </Link>
+                <Link
+                  href="/contact"
+                  className="text-sm underline-offset-4 hover:underline"
+                >
+                  {t("contact")}
+                </Link>
+              </div>
+            </div>
           </div>
-          <p className="flex gap-4 text-sm text-muted-foreground">
-            <Link
-              href="/terms-of-use"
-              target="_blank"
-              className="underline underline-offset-4 hover:text-primary"
-            >
-              {t("terms-of-service")}
-            </Link>
-            <Link
-              href="/privacy-policy"
-              target="_blank"
-              className="underline underline-offset-4 hover:text-primary"
-            >
-              {t("privacy-policy")}
-            </Link>
-          </p>
+        </div>
+        <div className="mx-auto w-full max-w-7xl shrink-0 space-y-2 border-t pt-2">
+          <div className="grid grid-cols-3">
+            <div className="col-span-2 grid h-fit pt-2 sm:col-span-1">
+              <p className="mb-1 font-medium tracking-tight">
+                FibonacciKu © {new Date().getFullYear()}
+              </p>
+              <Link
+                href="/terms-of-use"
+                className="w-fit text-sm underline-offset-4 hover:underline"
+              >
+                {t("terms-of-service")}
+              </Link>
+              <Link
+                href="/privacy-policy"
+                className="w-fit text-sm underline-offset-4 hover:underline"
+              >
+                {t("privacy-policy")}
+              </Link>
+            </div>
+            <div className="sm:col-span-2">
+              <div className="flex flex-wrap items-center">
+                {socialMedia.map(social => {
+                  return (
+                    <Button
+                      title={`FibonacciKu ${social.name}`}
+                      key={social.link}
+                      variant="ghost"
+                      size="icon"
+                      asChild
+                    >
+                      <Link
+                        href={social.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <social.icon className="h-5 w-5" />
+                        <span className="sr-only">{social.name}</span>
+                      </Link>
+                    </Button>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="pt-2 text-center text-sm text-muted-foreground">
-          <aside>
-            <p>
-              {t("copyright")} © {new Date().getFullYear()} -{" "}
-              {t("all-rights-reserved")}. PT. Nakafa Tekno Kreatif.{" "}
-              {t("made-with")} <span className="text-accent">❤️</span>
-            </p>
-          </aside>
+        <div className="mx-auto w-full max-w-7xl pt-6">
+          <p className="text-sm">
+            {t("copyright")} © {new Date().getFullYear()} -{" "}
+            {t("all-rights-reserved")}. PT. Nakafa Tekno Kreatif.{" "}
+            {t("made-with")} <span className="text-accent">❤️</span>
+          </p>
         </div>
       </div>
 

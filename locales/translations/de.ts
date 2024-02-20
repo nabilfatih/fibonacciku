@@ -129,6 +129,7 @@ export default {
     "fibo-school": "Fibo Schule"
   },
   MarketingFooter: {
+    blog: "Blog",
     product: "Produkt",
     legal: "Rechtliches",
     company: "Unternehmen",
