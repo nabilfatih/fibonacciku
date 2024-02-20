@@ -20,6 +20,7 @@ import { getScopedI18n } from "@/locales/server"
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid"
 import { Button } from "@/components/ui/button"
 import Particles from "@/components/ui/particles"
+import ServerReactMarkdown from "@/components/markdown/server"
 import MarketingTransition from "@/components/marketing/transition"
 import { pluginsList } from "@/components/premium/plugins"
 
@@ -279,7 +280,7 @@ const featuresList = [
         <div className="flex h-full w-full flex-col items-start justify-between gap-3">
           <div className="flex flex-col gap-1">
             <p
-              className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-medium text-zinc-100"
+              className="line-clamp-1 whitespace-pre-wrap break-words text-sm font-medium text-zinc-100"
               title="Everything You Need to Know About Planet Earth"
             >
               Everything You Need to Know About Planet Earth
@@ -324,7 +325,7 @@ const featuresList = [
   },
   {
     header: (
-      <div className="grid h-full grid-cols-1 space-y-2 md:grid-cols-2 md:space-x-2 md:space-y-0">
+      <div className="grid h-full space-y-2">
         <Link
           title="Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms"
           rel="noopener noreferrer"
@@ -335,7 +336,7 @@ const featuresList = [
           <div className="flex h-full w-full flex-col items-start justify-between gap-3">
             <div className="flex flex-col gap-1">
               <p
-                className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-semibold"
+                className="line-clamp-1 whitespace-pre-wrap break-words text-sm font-semibold"
                 title="Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms"
               >
                 Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine
@@ -388,7 +389,7 @@ const featuresList = [
           <div className="flex h-full w-full flex-col items-start justify-between gap-3">
             <div className="flex flex-col gap-1">
               <p
-                className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-semibold"
+                className="line-clamp-1 whitespace-pre-wrap break-words text-sm font-semibold"
                 title="TensorFlow: A system for large-scale machine learning"
               >
                 TensorFlow: A system for large-scale machine learning
@@ -434,13 +435,21 @@ const featuresList = [
     title: "academic-research",
     description: "academic-research-desc",
     icon: <IconBooks className="h-6 w-6" />,
-    className: "md:col-span-2"
+    className: "md:col-span-1"
   },
   {
+    header: (
+      <div className="flex h-full max-h-[244px] items-center justify-center rounded-md border bg-card px-2 py-4 md:p-0">
+        <ServerReactMarkdown
+          className="text-xs sm:text-sm md:text-base"
+          content="$$F(n) = \begin{cases} 0 & \text{if } n = 0 \\ 1 & \text{if } n = 1 \\ F(n-1) + F(n-2) & \text{if } n > 1 \end{cases}$$"
+        />
+      </div>
+    ),
     title: "solve-math",
     description: "solve-math-desc",
     icon: <IconMath className="h-6 w-6" />,
-    className: "md:col-span-1"
+    className: "md:col-span-2"
   },
   {
     title: "weather",

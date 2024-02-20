@@ -20,12 +20,16 @@ import ImageMarkdown from "@/components/chat/image"
 
 export type Props = {
   content: string
+  className?: string
 }
 
-export default function ServerReactMarkdown({ content }: Props) {
+export default function ServerReactMarkdown({ content, className }: Props) {
   return (
     <ReactMarkdown
-      className="prose max-w-none break-words prose-p:leading-relaxed prose-pre:p-0"
+      className={cn(
+        "prose max-w-none break-words prose-p:leading-relaxed prose-pre:p-0",
+        className
+      )}
       remarkPlugins={[remarkBreaks, remarkMath, remarkGfm, emoji, remarkParse]}
       rehypePlugins={[rehypeKatex, rehypeRaw, rehypeStringify]}
       components={{
