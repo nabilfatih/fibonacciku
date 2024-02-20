@@ -105,7 +105,9 @@ export default {
     "website-scraping": "Website scraping",
     "website-scraping-desc": "Tell me the website and what you want to scrape.",
     wikipedia: "Wikipedia",
-    "wikipedia-desc": "Give references from Wikipedia."
+    "wikipedia-desc": "Give references from Wikipedia.",
+    "overcast-clouds": "Overcast clouds",
+    clouds: "Clouds"
   },
   MarketingNav: {
     product: "Product",

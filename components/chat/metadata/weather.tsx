@@ -30,7 +30,7 @@ function ChatMetadataWeather({ metadata }: Props) {
         <span className="font-medium">{t("weather")}:</span>
       </div>
 
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
         {metadata.map((weather, index) => {
           const dataWeather = weather.weather[0]
           return (
@@ -54,7 +54,7 @@ function ChatMetadataWeather({ metadata }: Props) {
                   </p>
                 </div>
 
-                <div className="flex w-full flex-col justify-between gap-2 sm:flex-row">
+                <div className="flex w-full flex-row justify-between gap-2">
                   <WeatherIcon icon={dataWeather.icon} />
                   <div className="flex flex-col items-start gap-1 sm:items-end">
                     <p className="whitespace-pre-wrap break-words text-sm">

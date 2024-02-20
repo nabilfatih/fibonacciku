@@ -109,7 +109,9 @@ export default {
     "website-scraping-desc":
       "Скажите мне веб-сайт и что вы хотите сканировать.",
     wikipedia: "Википедия",
-    "wikipedia-desc": "Давайте ссылки из Википедии."
+    "wikipedia-desc": "Давайте ссылки из Википедии.",
+    "overcast-clouds": "Облачно",
+    clouds: "Облака"
   },
   MarketingNav: {
     product: "Продукт",

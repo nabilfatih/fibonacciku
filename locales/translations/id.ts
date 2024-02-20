@@ -109,7 +109,9 @@ export default {
     "website-scraping-desc":
       "Beritahu saya situs web dan apa yang ingin Anda scrap.",
     wikipedia: "Wikipedia",
-    "wikipedia-desc": "Beri referensi dari Wikipedia."
+    "wikipedia-desc": "Beri referensi dari Wikipedia.",
+    "overcast-clouds": "Awan mendung",
+    clouds: "Awan"
   },
   MarketingNav: {
     product: "Produk",

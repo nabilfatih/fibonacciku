@@ -5,11 +5,13 @@ import {
   IconBooks,
   IconBrandWikipedia,
   IconBrandYoutube,
+  IconCloudFog,
   IconMail,
   IconMath,
   IconPhoto,
   IconSitemap,
   IconSparkles,
+  IconSun,
   IconWind,
   IconWorldWww
 } from "@tabler/icons-react"
@@ -456,6 +458,72 @@ const featuresList = [
     className: "md:col-span-2"
   },
   {
+    header: (
+      <div className="grid h-full space-y-2">
+        <div className="group rounded-md border bg-card p-2">
+          <div className="flex h-full w-full flex-col items-start justify-between gap-3">
+            <div className="flex w-full flex-wrap items-start justify-between gap-2">
+              <div className="flex flex-col gap-1">
+                <p
+                  className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-medium"
+                  title="Jakarta"
+                >
+                  Jakarta
+                </p>
+
+                <p className="whitespace-pre-wrap break-words text-xs text-muted-foreground first-letter:uppercase">
+                  -6.2146, 106.8451
+                </p>
+              </div>
+              <p className="text-xs sm:text-sm">28.34°C / 32.97°C</p>
+            </div>
+
+            <div className="flex w-full flex-row justify-between gap-2">
+              <IconCloudFog className="h-8 w-8" />
+              <div className="flex flex-col items-start gap-1 sm:items-end">
+                <p className="whitespace-pre-wrap break-words text-sm">
+                  Overcast clouds
+                </p>
+                <p className="whitespace-pre-wrap break-words text-xs text-muted-foreground">
+                  Clouds
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="group rounded-md border bg-card p-2">
+          <div className="flex h-full w-full flex-col items-start justify-between gap-3">
+            <div className="flex w-full flex-wrap items-start justify-between gap-2">
+              <div className="flex flex-col gap-1">
+                <p
+                  className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-medium"
+                  title="New York"
+                >
+                  New York
+                </p>
+
+                <p className="whitespace-pre-wrap break-words text-xs text-muted-foreground first-letter:uppercase">
+                  40.7143, -74.006
+                </p>
+              </div>
+              <p className="text-xs sm:text-sm">2.86°C / -0.14°C</p>
+            </div>
+
+            <div className="flex w-full flex-row justify-between gap-2">
+              <IconSun className="h-8 w-8" />
+              <div className="flex flex-col items-start gap-1 sm:items-end">
+                <p className="whitespace-pre-wrap break-words text-sm">
+                  Clear sky
+                </p>
+                <p className="whitespace-pre-wrap break-words text-xs text-muted-foreground">
+                  Clear
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
     title: "weather",
     description: "weather-desc",
     icon: <IconWind className="h-6 w-6" />,
@@ -468,6 +536,38 @@ const featuresList = [
     className: "md:col-span-1"
   },
   {
+    header: (
+      <div className="group overflow-hidden rounded-md border bg-card">
+        <div className="flex h-full w-full flex-col items-start justify-between gap-3">
+          <div className="flex flex-col gap-1 p-2">
+            <p
+              className="line-clamp-2 whitespace-pre-wrap break-words text-sm font-medium"
+              title="Milky Way"
+            >
+              Milky Way
+            </p>
+
+            <p
+              className="whitespace-pre-wrap break-words text-xs first-letter:uppercase"
+              title="Galaxy containing the Solar System."
+            >
+              Galaxy containing the Solar System.
+            </p>
+          </div>
+
+          <div className="relative h-32 w-full border-t sm:h-40">
+            <Image
+              src="https://upload.wikimedia.org/wikipedia/commons/4/43/ESO-VLT-Laser-phot-33a-07.jpg"
+              alt="Milky Way"
+              sizes="100%"
+              fill
+              priority
+              className="bg-muted/90 object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    ),
     title: "wikipedia",
     description: "wikipedia-desc",
     icon: <IconBrandWikipedia className="h-6 w-6" />,

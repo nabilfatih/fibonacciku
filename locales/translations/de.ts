@@ -110,7 +110,9 @@ export default {
     "website-scraping-desc":
       "Sagen Sie mir die Website und was Sie scannen möchten.",
     wikipedia: "Wikipedia",
-    "wikipedia-desc": "Geben Sie Referenzen aus Wikipedia."
+    "wikipedia-desc": "Geben Sie Referenzen aus Wikipedia.",
+    "overcast-clouds": "Bewölkter Himmel",
+    clouds: "Wolken"
   },
   MarketingNav: {
     product: "Produkt",
