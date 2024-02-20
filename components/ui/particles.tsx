@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useMemo, useRef } from "react"
+import React, { memo, useEffect, useMemo, useRef } from "react"
 import type { FC } from "react"
 import dynamic from "next/dynamic"
 import { useTheme } from "next-themes"
@@ -260,6 +260,6 @@ const Particles: FC<ParticlesProps> = ({
 }
 
 // dynamic import
-export default dynamic(() => Promise.resolve(Particles), {
+export default dynamic(() => Promise.resolve(memo(Particles)), {
   ssr: false
 })
