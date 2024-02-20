@@ -84,7 +84,32 @@ export default {
     "try-it-now": "Coba sekarang",
     "what-is-this": "Apa ini?",
     "talk-to-founder": "Bicara dengan pendiri",
-    "trusted-by": "Dipercaya oleh sekolah dan organisasi"
+    "trusted-by": "Dipercaya oleh sekolah dan organisasi",
+    "and-more": "Dan banyak lagi",
+    "just-ask-anything": "Tanyakan apapun",
+    "just-ask-anything-desc":
+      "Anda dapat melakukan apa pun yang Anda inginkan di FibonacciKu. Tidak perlu klik dan konfigurasi tambahan lagi.",
+    "image-generation": "Generasi gambar",
+    "image-generation-desc":
+      "Beritahu saya apa yang ingin Anda hasilkan, dan saya akan melakukannya untuk Anda.",
+    "internet-access": "Akses internet",
+    "internet-access-desc":
+      "Akses internet dan dapatkan informasi yang Anda butuhkan.",
+    "youtube-videos": "Video YouTube",
+    "youtube-videos-desc":
+      "Saya akan memberikan video terkait berdasarkan pertanyaan Anda.",
+    "academic-research": "Penelitian akademis",
+    "academic-research-desc":
+      "Selalu jawab pertanyaan Anda berdasarkan penelitian akademis.",
+    "solve-math": "Selesaikan matematika",
+    "solve-math-desc": "Gunakan saya sebagai kalkulator pintar Anda.",
+    weather: "Cuaca",
+    "weather-desc": "Tanyakan kepada saya tentang cuaca di daerah Anda.",
+    "website-scraping": "Scraping situs web",
+    "website-scraping-desc":
+      "Beritahu saya situs web dan apa yang ingin Anda scrap.",
+    wikipedia: "Wikipedia",
+    "wikipedia-desc": "Beri referensi dari Wikipedia."
   },
   MarketingNav: {
     product: "Produk",
@@ -132,7 +157,8 @@ export default {
     "message-placeholder": "Masukkan pesan Anda",
     submit: "Kirim",
     success: "Pesan Anda telah terkirim",
-    error: "Pesan Anda gagal terkirim, silakan coba lagi"
+    error: "Pesan Anda gagal terkirim, silakan coba lagi",
+    "just-ask-anything": "Tanyakan apapun"
   },
   MarketingPartner: {
     partner: "Mitra",

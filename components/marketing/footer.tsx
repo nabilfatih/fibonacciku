@@ -18,7 +18,7 @@ export default async function MarketingFooter() {
   const t = await getScopedI18n("MarketingFooter")
 
   return (
-    <footer className="border-t bg-muted backdrop-blur-xl">
+    <footer className="border-t bg-card backdrop-blur-xl">
       <div className="mx-auto w-full max-w-7xl shrink-0 space-y-2 p-4 pt-14">
         <div className="flex flex-col items-center justify-center">
           <Image

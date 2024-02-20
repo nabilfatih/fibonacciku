@@ -81,7 +81,31 @@ export default {
     "try-it-now": "Try it now",
     "what-is-this": "What is this?",
     "talk-to-founder": "Talk to founder",
-    "trusted-by": "Trusted by Schools and Organizations"
+    "trusted-by": "Trusted by Schools and Organizations",
+    "and-more": "And more",
+    "just-ask-anything": "Just ask anything",
+    "just-ask-anything-desc":
+      "You can do anything you want in FibonacciKu. No more additional clicks and configurations.",
+    "image-generation": "Image generation",
+    "image-generation-desc":
+      "Tell me what you want to generate, and I will do it for you.",
+    "internet-access": "Internet access",
+    "internet-access-desc":
+      "Access the internet and get the information you need.",
+    "youtube-videos": "Youtube videos",
+    "youtube-videos-desc":
+      "I will give related videos based on your questions.",
+    "academic-research": "Academic research",
+    "academic-research-desc":
+      "Always answer your questions based on academic research.",
+    "solve-math": "Solve math",
+    "solve-math-desc": "Use me as your smart calculator.",
+    weather: "Weather",
+    "weather-desc": "Ask me about the weather in your area.",
+    "website-scraping": "Website scraping",
+    "website-scraping-desc": "Tell me the website and what you want to scrape.",
+    wikipedia: "Wikipedia",
+    "wikipedia-desc": "Give references from Wikipedia."
   },
   MarketingNav: {
     product: "Product",
@@ -129,7 +153,8 @@ export default {
     "message-placeholder": "Enter your message",
     submit: "Submit",
     success: "Message sent successfully",
-    error: "Something went wrong, please try again later"
+    error: "Something went wrong, please try again later",
+    "just-ask-anything": "Just ask anything"
   },
   MarketingPartner: {
     partner: "Partner",

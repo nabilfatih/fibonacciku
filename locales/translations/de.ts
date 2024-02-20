@@ -84,7 +84,33 @@ export default {
     "try-it-now": "Probieren Sie es jetzt aus",
     "what-is-this": "Was ist das?",
     "talk-to-founder": "Mit dem Gründer sprechen",
-    "trusted-by": "Vertraut von den Schulen und Organisationen"
+    "trusted-by": "Vertraut von den Schulen und Organisationen",
+    "and-more": "Und mehr",
+    "just-ask-anything": "Fragen Sie einfach irgendetwas",
+    "just-ask-anything-desc":
+      "Sie können alles tun, was Sie möchten, in FibonacciKu. Keine zusätzlichen Klicks und Konfigurationen mehr.",
+    "image-generation": "Bildgenerierung",
+    "image-generation-desc":
+      "Sag mir, was du generieren möchtest, und ich werde es für dich tun.",
+    "internet-access": "Internetzugang",
+    "internet-access-desc":
+      "Zugriff auf das Internet und erhalten Sie die Informationen, die Sie benötigen.",
+    "youtube-videos": "YouTube-Videos",
+    "youtube-videos-desc":
+      "Ich werde relevante Videos basierend auf Ihren Fragen geben.",
+    "academic-research": "Akademische Forschung",
+    "academic-research-desc":
+      "Beantworten Sie immer Ihre Fragen auf der Grundlage akademischer Forschung.",
+    "solve-math": "Mathematik lösen",
+    "solve-math-desc":
+      "Verwenden Sie mich als Ihren intelligenten Taschenrechner.",
+    weather: "Wetter",
+    "weather-desc": "Fragen Sie mich nach dem Wetter in Ihrer Gegend.",
+    "website-scraping": "Website-Scraping",
+    "website-scraping-desc":
+      "Sagen Sie mir die Website und was Sie scannen möchten.",
+    wikipedia: "Wikipedia",
+    "wikipedia-desc": "Geben Sie Referenzen aus Wikipedia."
   },
   MarketingNav: {
     product: "Produkt",
@@ -133,7 +159,8 @@ export default {
     submit: "Absenden",
     success: "Nachricht erfolgreich gesendet",
     error:
-      "Etwas ist schief gelaufen, bitte versuchen Sie es später noch einmal"
+      "Etwas ist schief gelaufen, bitte versuchen Sie es später noch einmal",
+    "just-ask-anything": "Fragen Sie einfach irgendetwas"
   },
   MarketingPartner: {
     partner: "Partner",
