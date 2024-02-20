@@ -537,7 +537,7 @@ const featuresList = [
   },
   {
     header: (
-      <div className="group overflow-hidden rounded-md border bg-card">
+      <div className="group h-full overflow-hidden rounded-md border bg-card">
         <div className="flex h-full w-full flex-col items-start justify-between gap-3">
           <div className="flex flex-col gap-1 p-2">
             <p
