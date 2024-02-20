@@ -44,13 +44,13 @@ export default async function MarketingFooter() {
                 </h1>
                 <Link
                   href="/blog"
-                  className="text-sm underline-offset-4 hover:underline"
+                  className="w-fit text-sm underline-offset-4 hover:underline"
                 >
                   {t("blog")}
                 </Link>
                 <Link
                   href="/contact"
-                  className="text-sm underline-offset-4 hover:underline"
+                  className="w-fit text-sm underline-offset-4 hover:underline"
                 >
                   {t("contact")}
                 </Link>
