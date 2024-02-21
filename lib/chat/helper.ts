@@ -436,8 +436,7 @@ export const handleMetadataMessage = (
         item.data.results.map((item: AcademicSearchResult) => item)
       )
       .filter(
-        (item, index, self) =>
-          index === self.findIndex(t => t.link === item.link)
+        (item, index, self) => index === self.findIndex(t => t.id === item.id)
       )
     if (academicResearchResult.length) {
       if (!messageMetadata.academic_search) {
