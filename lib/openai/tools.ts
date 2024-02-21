@@ -42,24 +42,57 @@ export const defaultToolsChat: Tool[] = [
   {
     type: "function",
     function: {
-      name: "get_links_or_videos_or_academic_research",
+      name: "google_search",
       description:
-        "Get real time data or current information from internet, google search, youtube videos, or academic research. This function must be used when user want links, videos, or academic research. User can ask multiple questions.",
+        "Get real time data or current information from internet or google search. This function must be used when user want to get the real time data or current information from internet or google search.",
       parameters: {
         type: "object",
         properties: {
-          type: {
-            type: "string",
-            description:
-              "This can be multiple value. Multiple if user ask more than one. for example: 'google, youtube, academic' or 'google, youtube' or 'google, academic' or 'youtube, academic' or 'google' or 'youtube' or 'academic'"
-          },
           query: {
             type: "string",
             description:
-              "the query to search, this query will be used to search the related links from internet or google search. This can also be used to get the youtube videos that use YouTube API or academic research that use Semantic Scholar API"
+              "the query to search, this query will be used to search the related links from internet or google search."
           }
         },
-        required: ["type", "query"]
+        required: ["query"]
+      }
+    }
+  },
+  {
+    type: "function",
+    function: {
+      name: "youtube_videos",
+      description:
+        "Get videos from youtube based on the query. This function must be used when user want to get the videos from youtube or even just the link of the videos.",
+      parameters: {
+        type: "object",
+        properties: {
+          query: {
+            type: "string",
+            description:
+              "the query to search, this query will be used to get the youtube videos that use YouTube API."
+          }
+        },
+        required: ["query"]
+      }
+    }
+  },
+  {
+    type: "function",
+    function: {
+      name: "get_academic_research",
+      description:
+        "Get academic research based on the query. This function must be used when user want to get the academic research or just to make sure the information is valid and reliable.",
+      parameters: {
+        type: "object",
+        properties: {
+          query: {
+            type: "string",
+            description:
+              "the query to search, this query will be used to get the academic research that use Semantic Scholar API."
+          }
+        },
+        required: ["query"]
       }
     }
   },

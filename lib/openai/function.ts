@@ -17,41 +17,19 @@ export const callingSolveMathProblem = async (query: string) => {
   return data
 }
 
-export const callingGoogleYoutubeAcademic = async (
-  type: string,
-  query: string
-): Promise<{ results: PluginResponse[] | string }> => {
-  // Remove space in type and split by comma
-  const typeArray = type.replace(/\s/g, "").split(",")
+export const callingGoogle = async (query: string) => {
+  const data = await googlePlugin(query)
+  return data
+}
 
-  // Create an array of promises based on the types provided
-  const promises = typeArray.map(async pluginType => {
-    switch (pluginType) {
-      case "google":
-        return await googlePlugin(query).then(data => data)
-      case "youtube":
-        return await youtubePlugin(query).then(data => data)
-      case "academic":
-        return await academicPlugin(query).then(data => data)
-      default:
-        return Promise.resolve(undefined)
-    }
-  })
+export const callingYoutube = async (query: string) => {
+  const data = await youtubePlugin(query)
+  return data
+}
 
-  // Filter out any undefined results from promises that did not match a case
-  const validPromises = promises.filter(promise => promise !== undefined)
-
-  // Execute all promises in parallel using Promise.all
-  const results = await Promise.all(validPromises)
-
-  // Filter out any undefined results after promises have resolved
-  const finalResults = results.filter(
-    result => result !== undefined
-  ) as PluginResponse[]
-
-  return {
-    results: finalResults.length > 0 ? finalResults : "No results found."
-  }
+export const callingAcademic = async (query: string) => {
+  const data = await academicPlugin(query)
+  return data
 }
 
 export const callingWeather = async (location: string) => {

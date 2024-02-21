@@ -1,16 +1,19 @@
 import { type JSONValue } from "ai"
 
 import type {
+  AcademicSearchResult,
   Chat,
   ChatMessageMetadata,
   DataMessage,
   ImageResult,
   IndexMessage,
   SaveDataMessage,
+  SearchResult,
   ShowChatMessage,
   SourceDocument,
   UserDetails,
-  Weather
+  Weather,
+  YoutubeSearchResult
 } from "@/types/types"
 import { readDataStream } from "@/lib/chat/read-data-stream"
 import type { ChatRequest } from "@/lib/context/use-message"
@@ -385,39 +388,62 @@ export const handleMetadataMessage = (
   }[]
 ): ChatMessageMetadata => {
   const messageMetadata = {} as ChatMessageMetadata
-  // filter out the function that  not get_links_or_videos_or_academic_research
-  const listLinksOrVideosOrAcademicResearch = functionData.filter(
-    item => item.toolName === "get_links_or_videos_or_academic_research"
-  )
-  // update the last metadata of the last message in the updatedShowMessage
-  if (listLinksOrVideosOrAcademicResearch.length) {
-    // get youtubeObject from the list
-    const youtubeObject = listLinksOrVideosOrAcademicResearch.find(item =>
-      item.data.results.find((item: any) => item.type === "youtube")
-    )
-    // get googleObject from the list
-    const googleObject = listLinksOrVideosOrAcademicResearch.find(item =>
-      item.data.results.find((item: any) => item.type === "google")
-    )
-    // get academicObject from the list
-    const academicObject = listLinksOrVideosOrAcademicResearch.find(item =>
-      item.data.results.find((item: any) => item.type === "academic")
-    )
 
-    if (youtubeObject) {
-      messageMetadata.youtube_search = youtubeObject.data.results.find(
-        (item: any) => item.type === "youtube"
-      ).results
+  const googleSearchResults = functionData.filter(
+    item => item.toolName === "google_search"
+  )
+  if (googleSearchResults.length) {
+    const googleSearchResult = googleSearchResults
+      .flatMap(item => item.data.results.map((item: SearchResult) => item))
+      .filter(
+        (item, index, self) =>
+          index === self.findIndex(t => t.link === item.link)
+      )
+    if (googleSearchResult.length) {
+      if (!messageMetadata.google_search) {
+        messageMetadata.google_search = []
+      }
+      messageMetadata.google_search.push(...googleSearchResult)
     }
-    if (googleObject) {
-      messageMetadata.google_search = googleObject.data.results.find(
-        (item: any) => item.type === "google"
-      ).results
+  }
+
+  const youtubeVideosResults = functionData.filter(
+    item => item.toolName === "youtube_videos"
+  )
+  if (youtubeVideosResults.length) {
+    const youtubeVideosResult = youtubeVideosResults
+      .flatMap(item =>
+        item.data.results.map((item: YoutubeSearchResult) => item)
+      )
+      .filter(
+        (item, index, self) =>
+          index === self.findIndex(t => t.id.videoId === item.id.videoId)
+      )
+    if (youtubeVideosResult.length) {
+      if (!messageMetadata.youtube_search) {
+        messageMetadata.youtube_search = []
+      }
+      messageMetadata.youtube_search.push(...youtubeVideosResult)
     }
-    if (academicObject) {
-      messageMetadata.academic_search = academicObject.data.results.find(
-        (item: any) => item.type === "academic"
-      ).results
+  }
+
+  const academicResearchResults = functionData.filter(
+    item => item.toolName === "get_academic_research"
+  )
+  if (academicResearchResults.length) {
+    const academicResearchResult = academicResearchResults
+      .flatMap(item =>
+        item.data.results.map((item: AcademicSearchResult) => item)
+      )
+      .filter(
+        (item, index, self) =>
+          index === self.findIndex(t => t.link === item.link)
+      )
+    if (academicResearchResult.length) {
+      if (!messageMetadata.academic_search) {
+        messageMetadata.academic_search = []
+      }
+      messageMetadata.academic_search.push(...academicResearchResult)
     }
   }
 

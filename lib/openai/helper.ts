@@ -4,14 +4,16 @@ import type { RecursiveCharacterTextSplitter } from "langchain/text_splitter"
 
 import type { Subscription } from "@/types/types"
 import {
+  callingAcademic,
   callingDocument,
   callingGenerateImage,
   callingGetOnThisDay,
   callingGetSearchContent,
-  callingGoogleYoutubeAcademic,
+  callingGoogle,
   callingSolveMathProblem,
   callingWeather,
-  callingWebsite
+  callingWebsite,
+  callingYoutube
 } from "@/lib/openai/function"
 import { listToolsChat } from "@/lib/openai/tools"
 import {
@@ -136,11 +138,14 @@ export const callTools = async (
   if (name === "ask_mathematics_question") {
     toolResponse.result = await callingSolveMathProblem(String(args.query))
   }
-  if (name === "get_links_or_videos_or_academic_research") {
-    toolResponse.result = await callingGoogleYoutubeAcademic(
-      String(args.type),
-      String(args.query)
-    )
+  if (name === "google_search") {
+    toolResponse.result = await callingGoogle(String(args.query))
+  }
+  if (name === "youtube_videos") {
+    toolResponse.result = await callingYoutube(String(args.query))
+  }
+  if (name === "get_academic_research") {
+    toolResponse.result = await callingAcademic(String(args.query))
   }
   if (name === "get_website_information") {
     toolResponse.result = await callingWebsite(String(args.url))
