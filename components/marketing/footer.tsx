@@ -6,7 +6,8 @@ import {
   IconBrandLinkedin,
   IconBrandTiktok,
   IconBrandTwitter,
-  IconBrandYoutube
+  IconBrandYoutube,
+  IconExternalLink
 } from "@tabler/icons-react"
 
 import { getScopedI18n } from "@/locales/server"
@@ -44,15 +45,23 @@ export default async function MarketingFooter() {
                 </h1>
                 <Link
                   href="/blog"
-                  className="w-fit text-sm underline-offset-4 hover:underline"
+                  className="w-fit tracking-tight underline-offset-4 hover:underline"
                 >
                   {t("blog")}
                 </Link>
                 <Link
                   href="/contact"
-                  className="w-fit text-sm underline-offset-4 hover:underline"
+                  className="w-fit tracking-tight underline-offset-4 hover:underline"
                 >
                   {t("contact")}
+                </Link>
+                <Link
+                  href="https://climate.stripe.com/kctMgY"
+                  target="_blank"
+                  className="inline-flex w-fit items-center tracking-tight underline-offset-4 hover:underline"
+                >
+                  {t("climate-action")}
+                  <IconExternalLink className="ml-1 h-4 w-4" />
                 </Link>
               </div>
             </div>
@@ -66,13 +75,13 @@ export default async function MarketingFooter() {
               </p>
               <Link
                 href="/terms-of-use"
-                className="w-fit text-sm underline-offset-4 hover:underline"
+                className="w-fit tracking-tight underline-offset-4 hover:underline"
               >
                 {t("terms-of-service")}
               </Link>
               <Link
                 href="/privacy-policy"
-                className="w-fit text-sm underline-offset-4 hover:underline"
+                className="w-fit tracking-tight underline-offset-4 hover:underline"
               >
                 {t("privacy-policy")}
               </Link>
@@ -105,7 +114,7 @@ export default async function MarketingFooter() {
         </div>
 
         <div className="mx-auto w-full max-w-7xl pt-6">
-          <p className="text-balance text-sm">
+          <p className="text-balance tracking-tight">
             {t("all-rights-reserved")}. PT. Nakafa Tekno Kreatif.{" "}
             {t("made-with")} <span className="text-accent">❤️</span>
           </p>
