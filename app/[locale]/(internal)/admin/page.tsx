@@ -16,7 +16,7 @@ export default function AdminPage() {
             <Link href="/admin/blog">Insert Blog</Link>
           </Button>
           <Button>
-            <Link href="/admin/image">Upload Image</Link>
+            <Link href="/admin/image">Change Blog Cover</Link>
           </Button>
         </div>
       </div>
