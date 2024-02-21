@@ -7,17 +7,40 @@ import type {
   YoutubeSearchResult
 } from "@/types/types"
 
+export const fetchGoogleSearch = async (query: string, num: number) => {
+  // it can handle multiple fetch at time in parallel
+  // google can only return 10 results at a time, so we need to fetch multiple times
+  // if num = 15, then we need to fetch 2 times, first time 10 results and second time 5 results
+  // if num = 5, then we need to fetch 1 time, 5 results
+  try {
+    const responses = await Promise.all(
+      Array.from({ length: Math.ceil(num / 10) }, (_, i) => {
+        const start = i * 10 + 1 // why? because google start from 1, and then 11, 21, 31, etc
+        return fetch(
+          `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_CX}&q=${query}&num=10&start=${start}&safe=active`
+        )
+      })
+    )
+    const results = await Promise.all(
+      responses.map(async response => {
+        if (!response.ok) {
+          throw new Error(`Error searching Google: ${response.statusText}`)
+        }
+        const data = await response.json()
+        return data.items
+      })
+    )
+    const result = results.flat().slice(0, num)
+    return result
+  } catch (error) {
+    throw new Error(`Error searching Google: ${error}`)
+  }
+}
+
 export const googlePlugin = cache(
   async (query: string) => {
     try {
-      const response = await fetch(
-        `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_CX}&q=${query}&num=8&safe=active`
-      )
-      if (!response.ok) {
-        throw new Error(`Error searching Google: ${response.statusText}`)
-      }
-      const data = await response.json()
-      const result = data.items
+      const result = await fetchGoogleSearch(query, 20)
 
       const smallData: SearchResult[] = result.map((item: any) => {
         return {
@@ -53,7 +76,7 @@ export const youtubePlugin = cache(
   async (query: string) => {
     try {
       const response = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?key=${process.env.YOUTUBE_API_KEY}&part=snippet&maxResults=8&q=${query}&type=video&order=relevance`
+        `https://www.googleapis.com/youtube/v3/search?key=${process.env.YOUTUBE_API_KEY}&part=snippet&maxResults=14&q=${query}&type=video&order=relevance`
       )
       if (!response.ok) {
         throw new Error(`Error searching Youtube: ${response.statusText}`)
