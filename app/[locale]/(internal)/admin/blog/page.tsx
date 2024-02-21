@@ -1,6 +1,4 @@
-import dynamic from "next/dynamic"
-
-const AdminInsertBlog = dynamic(() => import("@/components/admin/insert-blog"))
+import AdminInsertBlog from "@/components/admin/insert-blog"
 
 export default function AdminBlogPage() {
   return (

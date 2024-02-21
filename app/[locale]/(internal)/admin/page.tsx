@@ -18,6 +18,9 @@ export default function AdminPage() {
           <Button>
             <Link href="/admin/image">Change Blog Cover</Link>
           </Button>
+          <Button>
+            <Link href="/admin/image/upload">Upload Image</Link>
+          </Button>
         </div>
       </div>
     </main>

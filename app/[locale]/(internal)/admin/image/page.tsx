@@ -1,8 +1,4 @@
-import dynamic from "next/dynamic"
-
-const AdminUploadImage = dynamic(
-  () => import("@/components/admin/upload-image")
-)
+import AdminUploadImage from "@/components/admin/upload-image"
 
 export default function AdminImagePage() {
   return (
