@@ -20,8 +20,8 @@ export default async function MarketingFooter() {
 
   return (
     <footer className="border-t bg-card backdrop-blur-xl">
-      <div className="px-4 pt-24">
-        <div className="mx-auto w-full max-w-7xl shrink-0 space-y-2 pb-12">
+      <div className="pt-24">
+        <div className="mx-auto w-full max-w-7xl shrink-0 space-y-2 px-4 pb-12">
           <div className="relative space-y-6">
             <Link href="/home" className="flex w-fit items-center">
               <Image
@@ -67,7 +67,7 @@ export default async function MarketingFooter() {
             </div>
           </div>
         </div>
-        <div className="mx-auto w-full max-w-7xl shrink-0 space-y-2 border-t pt-2">
+        <div className="mx-auto w-full max-w-7xl shrink-0 space-y-2 border-t px-4 pt-2">
           <div className="grid grid-cols-3">
             <div className="col-span-2 grid h-fit pt-2 sm:col-span-1">
               <p className="mb-1 font-medium tracking-tight">
@@ -113,7 +113,7 @@ export default async function MarketingFooter() {
           </div>
         </div>
 
-        <div className="mx-auto w-full max-w-7xl pt-6">
+        <div className="mx-auto w-full max-w-7xl px-4 pt-6">
           <p className="text-balance tracking-tight">
             {t("all-rights-reserved")}. PT. Nakafa Tekno Kreatif.{" "}
             {t("made-with")} <span className="text-accent">❤️</span>

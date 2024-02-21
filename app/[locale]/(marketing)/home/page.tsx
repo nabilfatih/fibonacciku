@@ -50,8 +50,8 @@ export default async function HomePage() {
         quantity={200}
       />
 
-      <section className="px-4 py-36">
-        <div className="mx-auto max-w-7xl">
+      <section className="py-36">
+        <div className="mx-auto max-w-7xl px-4">
           <header className="text-center">
             <h1 className="mx-auto mb-4 w-fit max-w-4xl text-balance bg-gradient-to-r from-foreground to-primary bg-clip-text pb-4 text-6xl font-bold tracking-tighter text-transparent sm:text-9xl">
               {t("slogan")}
@@ -93,8 +93,8 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="px-4 py-36">
-        <div className="mx-auto max-w-7xl space-y-12">
+      <section className="py-36">
+        <div className="mx-auto max-w-7xl space-y-12 px-4">
           <header className="relative space-y-2">
             <h1 className="text-4xl font-semibold tracking-tighter">
               {t("just-ask-anything")}
@@ -123,8 +123,8 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="border-t px-4 py-36">
-        <div className="mx-auto max-w-7xl">
+      <section className="border-t py-36">
+        <div className="mx-auto max-w-7xl px-4">
           <div className="space-y-2 text-center">
             <h1 className="mx-auto w-fit max-w-4xl text-balance bg-gradient-to-r from-foreground to-primary bg-clip-text text-4xl font-bold tracking-tighter text-transparent sm:text-7xl">
               {t("just-ask-anything")}
