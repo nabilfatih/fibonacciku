@@ -149,7 +149,7 @@ export default async function BlogSlugPage({ params }: Props) {
       </section>
 
       <section className="py-24">
-        <article className="relative mx-auto max-w-3xl px-4 selection:bg-primary selection:text-primary-foreground">
+        <article className="relative mx-auto max-w-3xl px-4">
           <ServerReactMarkdown content={blog.content} />
         </article>
       </section>

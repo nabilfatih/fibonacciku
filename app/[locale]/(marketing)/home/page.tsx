@@ -99,7 +99,7 @@ export default async function HomePage() {
             <h1 className="text-4xl font-semibold tracking-tighter">
               {t("just-ask-anything")}
             </h1>
-            <p className="text-muted-foreground">
+            <p className="max-w-lg text-muted-foreground">
               {t("just-ask-anything-desc")}
             </p>
           </header>
