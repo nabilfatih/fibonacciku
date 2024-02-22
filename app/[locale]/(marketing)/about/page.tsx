@@ -73,7 +73,7 @@ export default async function AboutPage() {
             <span className="mx-auto uppercase tracking-widest text-muted-foreground">
               {t("our-mission")}
             </span>
-            <h1 className="mx-auto mb-6 mt-2 max-w-4xl bg-gradient-to-r from-foreground to-primary bg-clip-text pb-4 text-5xl font-bold tracking-tighter text-transparent sm:text-7xl">
+            <h1 className="mx-auto mb-6 mt-2 w-fit max-w-4xl bg-gradient-to-r from-foreground to-primary bg-clip-text pb-4 text-5xl font-bold tracking-tighter text-transparent sm:text-7xl">
               {t("title")}
             </h1>
             <p className="mx-auto max-w-xl text-balance text-lg sm:text-xl md:max-w-2xl">
