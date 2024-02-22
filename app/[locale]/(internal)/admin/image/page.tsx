@@ -1,4 +1,4 @@
-import AdminUploadImage from "@/components/admin/upload-image"
+import AdminUploadImage from "@/components/admin/change-cover"
 
 export default function AdminImagePage() {
   return (

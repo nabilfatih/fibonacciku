@@ -7,11 +7,10 @@ import { toast } from "sonner"
 import { z } from "zod"
 
 import {
-  deleteBlogsCoverFile,
-  updateBlogsCover,
-  uploadBlogsCoverFile
-} from "@/lib/supabase/client/blogs"
-import { generateNanoID } from "@/lib/utils"
+  deleteAssetsFile,
+  getAssetsPublicUrl,
+  uploadAssetsFile
+} from "@/lib/supabase/client/assets"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -28,19 +27,21 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 const FormSchema = z.object({
-  blogId: z.string().uuid({ message: "Blog ID is not valid" }),
-  coverFile: z.instanceof(File).nullable()
+  coverFile: z.instanceof(File).nullable(),
+  imageName: z.string().min(1, { message: "Image name is required" })
 })
 
 export default function AdminUploadImage() {
   const [isLoading, setIsLoading] = React.useState(false)
   const fileRef = React.useRef<HTMLInputElement>(null)
 
+  const [url, setUrl] = React.useState<string | null>(null)
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      blogId: "",
-      coverFile: null
+      coverFile: null,
+      imageName: ""
     }
   })
 
@@ -57,17 +58,17 @@ export default function AdminUploadImage() {
       return
     }
 
-    const fileId = `cover__${generateNanoID()}`
-
     try {
       setIsLoading(true)
 
-      await Promise.all([
-        uploadBlogsCoverFile(data.coverFile, data.blogId, fileId),
-        updateBlogsCover(data.blogId, fileId)
-      ])
+      const name = data.imageName.replace(/\s/g, "-").toLowerCase() // replace space with dash and convert to lowercase
 
-      toast.success("Blog inserted successfully")
+      await uploadAssetsFile(data.coverFile, name)
+
+      const publicUrl = getAssetsPublicUrl(name)
+      setUrl(publicUrl)
+
+      toast.success("Image uploaded successfully")
       // Clear the input value after each operation
       form.reset()
       // reset the coverFile input
@@ -75,63 +76,73 @@ export default function AdminUploadImage() {
         fileRef.current.value = ""
       }
     } catch (error) {
-      toast.error("Failed to insert blog")
-      console.error("Failed to insert blog", error)
+      toast.error("Failed to upload image")
+      console.error("Failed to upload image", error)
       // delete data if failed to insert
-      await deleteBlogsCoverFile(data.blogId, fileId)
+      await deleteAssetsFile(data.imageName)
     } finally {
       setIsLoading(false)
     }
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <FormField
-          control={form.control}
-          name="blogId"
-          rules={{ required: "Blog ID is required" }}
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Blog ID</FormLabel>
-              <FormControl>
-                <Input placeholder="Blog ID" {...field} />
-              </FormControl>
-              <FormDescription>
-                ID of the blog. See this in database, then copy paste.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <div className="grid gap-2">
-          <Label htmlFor="coverFile">Cover Image</Label>
-          <Input
-            ref={fileRef}
-            id="coverFile"
-            type="file"
-            multiple={false}
-            accept="image/*"
-            onChange={e => {
-              // check if file selected
-              if (e.target.files?.length) {
-                const file = e.target.files[0]
-                form.setValue("coverFile", file)
-              }
-            }}
+    <div className="space-y-12">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <FormField
+            control={form.control}
+            name="imageName"
+            rules={{ required: "Image name is required" }}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Image Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Image Name" {...field} />
+                </FormControl>
+                <FormDescription>
+                  Name of the image that will be used in the content. Must in
+                  english.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-          <FormDescription>
-            Image for the cover of the blog. Generate image using Fibo
-          </FormDescription>
-          <FormMessage />
-        </div>
 
-        <Button type="submit" disabled={isLoading}>
-          Submit
-          {isLoading && <IconSpinner className="ml-2 animate-spin" />}
-        </Button>
-      </form>
-    </Form>
+          <div className="grid gap-2">
+            <Label htmlFor="coverFile">Image</Label>
+            <Input
+              ref={fileRef}
+              id="coverFile"
+              type="file"
+              multiple={false}
+              accept="image/*"
+              onChange={e => {
+                // check if file selected
+                if (e.target.files?.length) {
+                  const file = e.target.files[0]
+                  form.setValue("coverFile", file)
+                }
+              }}
+            />
+            <FormDescription>
+              Image that will be used in the content.
+            </FormDescription>
+            <FormMessage />
+          </div>
+
+          <Button type="submit" disabled={isLoading}>
+            Submit
+            {isLoading && <IconSpinner className="ml-2 animate-spin" />}
+          </Button>
+        </form>
+      </Form>
+
+      {url && (
+        <div className="space-y-2">
+          <h2 className="font-medium tracking-tight">Image URL</h2>
+          <p className="tracking-tight">{url}</p>
+        </div>
+      )}
+    </div>
   )
 }
