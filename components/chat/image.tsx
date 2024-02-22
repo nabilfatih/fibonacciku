@@ -26,6 +26,27 @@ export default function ImageMarkdown({ src, alt }: Props) {
     )
   }
 
+  if (dataSrc.includes("auth.fibonacciku.com")) {
+    return (
+      <Link href={dataSrc} target="_blank">
+        <Image
+          src={src}
+          alt={alt || "Image"}
+          sizes="100%"
+          style={{
+            width: "100%",
+            height: "auto",
+            maxHeight: "28rem"
+          }}
+          unoptimized
+          width={256}
+          height={256}
+          className="my-4 cursor-pointer rounded-xl border bg-muted/90 object-cover"
+        />
+      </Link>
+    )
+  }
+
   return (
     <Link href={dataSrc} target="_blank">
       <Image
