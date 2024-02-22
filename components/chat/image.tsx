@@ -41,7 +41,7 @@ export default function ImageMarkdown({ src, alt }: Props) {
           unoptimized
           width={256}
           height={256}
-          className="my-4 cursor-pointer rounded-xl border bg-muted/90 object-cover"
+          className="m-0 mt-4 cursor-pointer rounded-xl border bg-muted/90 object-cover"
         />
       </Link>
     )
