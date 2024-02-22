@@ -50,16 +50,16 @@ export default async function MarketingFooter() {
                   {t("blog")}
                 </Link>
                 <Link
-                  href="/contact"
-                  className="w-fit tracking-tight underline-offset-4 hover:underline"
-                >
-                  {t("contact")}
-                </Link>
-                <Link
                   href="/about"
                   className="w-fit tracking-tight underline-offset-4 hover:underline"
                 >
                   {t("about-us")}
+                </Link>
+                <Link
+                  href="/contact"
+                  className="w-fit tracking-tight underline-offset-4 hover:underline"
+                >
+                  {t("contact")}
                 </Link>
                 <Link
                   href="https://climate.stripe.com/kctMgY"
