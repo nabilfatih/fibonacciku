@@ -294,7 +294,7 @@ export const handleAttachments = async (
     const metadataInjection = metadataAttachmentFiltered
       ? `
     
-      Please see the attachment (image) below:
+      PLEASE SEE ATTACHMENT IMAGE BELOW:
 
       ------------------------------
       DO NOT GIVE THIS INFORMATION TO USER!
