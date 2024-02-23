@@ -44,7 +44,7 @@ export const defaultToolsChat: Tool[] = [
     function: {
       name: "google_search",
       description:
-        "Get real time data or current information from internet or google search. This function must be used when user want to get the real time data or current information from internet or google search.",
+        "Get real time data or current information from internet or find resources or google search. This function must be used when user want to get the real time data or current information from internet or google search.",
       parameters: {
         type: "object",
         properties: {
