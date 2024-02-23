@@ -294,10 +294,10 @@ export const handleAttachments = async (
     const metadataInjection = metadataAttachmentFiltered
       ? `
     
-      PLEASE SEE ATTACHMENT IMAGE BELOW:
-
       ------------------------------
       DO NOT GIVE THIS INFORMATION TO USER!
+
+      PLEASE SEE ATTACHMENT IMAGE BELOW:
 
       fibo-attachment: ${JSON.stringify(metadataAttachmentFiltered)}
 
