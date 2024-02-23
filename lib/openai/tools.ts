@@ -148,7 +148,7 @@ export const defaultToolsChat: Tool[] = [
     function: {
       name: "search_wikipedia",
       description:
-        "Search the wikipedia content based on the query. It is using wikipedia API under the hood. Must be used for the explanation, description, definition, or summary.",
+        "Search the wikipedia content based on the query. This can be used as resources of your answers. It is using wikipedia API under the hood. Must be used for the explanation, description, definition, or summary.",
       parameters: {
         type: "object",
         properties: {
