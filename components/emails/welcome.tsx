@@ -58,15 +58,15 @@ export default function WelcomeEmail({
                 className="mx-auto my-0"
               />
             </Section>
-            <Heading className="mx-0 my-8 p-0 text-center text-2xl font-normal">
+            <Heading className="mx-0 my-8 p-0 text-center text-2xl font-normal text-zinc-900">
               Welcome aboard to <strong>{company}</strong>, {name}! 💕
             </Heading>
-            <Text className="text-sm">
+            <Text className="text-sm text-zinc-900">
               We&#39;re thrilled to have you here as we {textRole(role)}{" "}
               FibonacciKu&#39;s intelligent and user-friendly AI Assistant.
             </Text>
 
-            <Text className="text-sm">
+            <Text className="text-sm text-zinc-900">
               You are now all set to surf our best features for{" "}
               <strong>FREE</strong>! 🎉
             </Text>
@@ -80,24 +80,24 @@ export default function WelcomeEmail({
               </Button>
             </Section>
 
-            <Text className="text-sm">
+            <Text className="text-sm text-zinc-900">
               Take a look at our amazing{" "}
               <Link
                 href={`${baseUrl}/premium`}
-                className="text-primary underline underline-offset-4"
+                className="text-[#ee3554] underline underline-offset-4"
               >
                 features
               </Link>{" "}
               😍
             </Text>
 
-            <Text className="text-sm">
+            <Text className="text-sm text-zinc-900">
               Ready to dive into an exciting world of boundless possibilities
               with FibonacciKu? Get set to chat, brainstorm, and collaborate
               like a pro.
             </Text>
 
-            <Text className="text-sm">
+            <Text className="text-sm text-zinc-900">
               Cheers,
               <br />
               Nabil, Founder of FibonacciKu
