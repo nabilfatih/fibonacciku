@@ -109,7 +109,11 @@ export default function ChatSettingsDialog({ ...props }: ChatShareDialogProps) {
 
             {userDetails.role !== "professional" && (
               <div className="grid gap-2">
-                <Label htmlFor="grade">{t("your-grade")}</Label>
+                <Label htmlFor="grade">
+                  {userDetails.role === "teacher"
+                    ? t("your-student-grade")
+                    : t("grade")}
+                </Label>
                 <Select
                   name="grade"
                   value={state.grade}
