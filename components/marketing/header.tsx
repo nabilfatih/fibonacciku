@@ -42,6 +42,13 @@ export default async function MarketingHeader() {
         </div>
         <div className="flex items-center justify-end space-x-2 sm:space-x-4">
           <Link
+            href="/premium"
+            className="hidden pr-2 text-sm underline-offset-4 hover:underline sm:inline-flex"
+          >
+            {t("premium")}
+          </Link>
+
+          <Link
             href="/blog"
             className="hidden pr-2 text-sm underline-offset-4 hover:underline sm:inline-flex"
           >

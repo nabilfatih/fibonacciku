@@ -1069,6 +1069,8 @@ export default {
     article: "Статья",
     scientific: "Научный",
     journal: "Журнал",
-    safety: "Безопасность"
+    safety: "Безопасность",
+    pricing: "Ценообразование",
+    premium: "Премиум"
   }
 } as const

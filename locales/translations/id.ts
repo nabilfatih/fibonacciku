@@ -1068,6 +1068,8 @@ export default {
     article: "Artikel",
     scientific: "Ilmiah",
     journal: "Jurnal",
-    safety: "Keamanan"
+    safety: "Keamanan",
+    pricing: "Harga",
+    premium: "Premium"
   }
 } as const

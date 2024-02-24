@@ -35,6 +35,13 @@ export default async function MarketingSidebarMobile() {
               </Link>
 
               <Link
+                href="/premium"
+                className="inline-flex justify-between border-t pt-4 text-sm underline-offset-4 hover:underline"
+              >
+                {t("premium")}
+              </Link>
+
+              <Link
                 href="/blog"
                 className="inline-flex justify-between border-t pt-4 text-sm underline-offset-4 hover:underline"
               >
