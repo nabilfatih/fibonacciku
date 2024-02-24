@@ -38,7 +38,8 @@ export default function UserMenu() {
   const t = useScopedI18n("ModalAccount")
   const router = useRouter()
 
-  const { userDetails, isLoading } = useCurrentUser()
+  const { userDetails, isLoading, handleClearCurrentUserData } =
+    useCurrentUser()
 
   const config = genConfig(
     userDetails?.full_name ?? userDetails?.email ?? "Anonymous"
@@ -48,6 +49,7 @@ export default function UserMenu() {
     await supabaseClient.auth.signOut()
     router.replace("/auth/login")
     router.refresh()
+    handleClearCurrentUserData()
   }
 
   if (isLoading) {
