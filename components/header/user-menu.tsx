@@ -47,6 +47,7 @@ export default function UserMenu() {
   const handleLogout = async () => {
     await supabaseClient.auth.signOut()
     router.replace("/auth/login")
+    router.refresh()
   }
 
   if (isLoading) {
