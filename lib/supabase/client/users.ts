@@ -15,6 +15,17 @@ export const getUserByEmail = async (email: string) => {
   return data[0] ? data[0] : null
 }
 
+export const updateUserRef = async (userId: string, ref: string) => {
+  const { error } = await supabaseClient
+    .from("users")
+    .update({ referral: ref })
+    .eq("id", userId)
+
+  if (error) {
+    throw error
+  }
+}
+
 // TODO: Chat
 export const deleteUserChat = async (userId: string) => {
   const { error } = await supabaseClient

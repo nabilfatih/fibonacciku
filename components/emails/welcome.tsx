@@ -16,6 +16,21 @@ import {
 
 const baseUrl = "https://www.fibonacciku.com"
 
+const company = "FibonacciKu"
+
+const previewText = `We are thrilled to have you here 🚀`
+
+const textRole = (role: string) => {
+  switch (role) {
+    case "student":
+      return "embark on a journey to transform learning experiences through"
+    case "teacher":
+      return "collaborate on revolutionizing teaching experiences through"
+    default:
+      return "embark on a journey to enhance your work through"
+  }
+}
+
 type WelcomeEmailProps = {
   name?: string
   role?: string
@@ -25,22 +40,8 @@ export default function WelcomeEmail({
   name = "Nabil",
   role = "student"
 }: WelcomeEmailProps) {
-  const company = "FibonacciKu"
-
-  const previewText = `We are thrilled to have you here 🚀`
-
-  const textRole = (role: string) => {
-    if (role === "student") {
-      return "embark on a journey to transform learning experiences through"
-    } else if (role === "teacher") {
-      return "collaborate on revolutionizing teaching experiences through"
-    } else {
-      return "embark on a journey to enhance your work through"
-    }
-  }
-
   return (
-    <Html>
+    <Html lang="en">
       <Head>
         <title>Welcome to FibonacciKu!</title>
       </Head>
@@ -51,8 +52,8 @@ export default function WelcomeEmail({
             <Section className="mt-8">
               <Img
                 src={`${baseUrl}/logo.png`}
-                width="80"
-                height="80"
+                width="64"
+                height="64"
                 alt="FibonacciKu Logo"
                 className="mx-auto my-0"
               />
@@ -62,8 +63,7 @@ export default function WelcomeEmail({
             </Heading>
             <Text className="text-sm">
               We&#39;re thrilled to have you here as we {textRole(role)}{" "}
-              FibonacciKu&#39;s intelligent and user-friendly AI-powered
-              platform.
+              FibonacciKu&#39;s intelligent and user-friendly AI Assistant.
             </Text>
 
             <Text className="text-sm">
@@ -73,8 +73,8 @@ export default function WelcomeEmail({
 
             <Section className="mb-[32px] mt-[32px] text-center">
               <Button
-                className="w-full rounded-xl bg-[#39c7f4] px-4 py-3 text-center text-sm font-semibold text-zinc-900 no-underline"
-                href={`${baseUrl}`}
+                className="w-full rounded-xl bg-[#15294f] px-4 py-3 text-center text-sm font-semibold text-zinc-100 no-underline"
+                href={baseUrl}
               >
                 Get Started
               </Button>
@@ -84,7 +84,7 @@ export default function WelcomeEmail({
               Take a look at our amazing{" "}
               <Link
                 href={`${baseUrl}/premium`}
-                className="text-[#ee3554] underline"
+                className="text-primary underline underline-offset-4"
               >
                 features
               </Link>{" "}
@@ -119,13 +119,13 @@ export default function WelcomeEmail({
                 Premium
               </Link>
               <Link
-                href={`${baseUrl}/chat/assistant`}
+                href={`${baseUrl}/about`}
                 className="mr-2 text-zinc-500 underline"
               >
                 About
               </Link>
               <Link
-                href={`${baseUrl}/account`}
+                href={`${baseUrl}/contact`}
                 className="mr-2 text-zinc-500 underline"
               >
                 Contact
