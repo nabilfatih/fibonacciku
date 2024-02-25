@@ -37,14 +37,14 @@ export const languages = [
     value: "de"
   },
   {
-    icon: "🇷🇺",
-    name: "Русский",
-    value: "ru"
-  },
-  {
     icon: "🇳🇱",
     name: "Nederlands",
     value: "nl"
+  },
+  {
+    icon: "🇷🇺",
+    name: "Русский",
+    value: "ru"
   }
 ]
 
