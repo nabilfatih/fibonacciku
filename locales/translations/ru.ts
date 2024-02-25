@@ -574,7 +574,8 @@ export default {
     "settings-desc": "Настройте, как Fibo отвечает на ваши сообщения.",
     submit: "Отправить",
     edit: "Редактировать",
-    cancel: "Отмена"
+    cancel: "Отмена",
+    play: "Воспроизвести"
   },
   FormDocument: {
     "form-document-desc": "Загрузите свой документ, чтобы начать",

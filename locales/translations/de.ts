@@ -584,7 +584,8 @@ export default {
       "Konfigurieren Sie, wie Fibo auf Ihre Nachrichten reagiert.",
     submit: "Absenden",
     edit: "Bearbeiten",
-    cancel: "Abbrechen"
+    cancel: "Abbrechen",
+    play: "Abspielen"
   },
   FormDocument: {
     "form-document-desc": "Laden Sie Ihr Dokument hoch, um zu starten",

@@ -6,6 +6,11 @@ import { toast } from "sonner"
 import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger
+} from "@/components/ui/tooltip"
 
 type Props = {
   text: string
@@ -13,7 +18,7 @@ type Props = {
 
 export default function ChatMessageActionSpeech({ text }: Props) {
   const t = useScopedI18n("BackendRouter")
-
+  const tForm = useScopedI18n("FormChat")
   const audioRef = useRef(new Audio())
   const controllerRef = useRef(new AbortController())
   const mediaSourceRef = useRef<MediaSource | null>(null)
@@ -150,15 +155,20 @@ export default function ChatMessageActionSpeech({ text }: Props) {
   }, [isPlaying, text, handleStreamError])
 
   return (
-    <Button variant="ghost" size="icon" onClick={playSpeech}>
-      {isPlaying ? (
-        <IconPlayerStop className="h-4 w-4 animate-pulse" />
-      ) : (
-        <IconPlayerPlay className="h-4 w-4" />
-      )}
-      <span className="sr-only">
-        {isPlaying ? "Stop speech" : "Start speech"}
-      </span>
-    </Button>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button variant="ghost" size="icon" onClick={playSpeech}>
+          {isPlaying ? (
+            <IconPlayerStop className="h-4 w-4 animate-pulse" />
+          ) : (
+            <IconPlayerPlay className="h-4 w-4" />
+          )}
+          <span className="sr-only">
+            {isPlaying ? "Stop speech" : "Start speech"}
+          </span>
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent>{tForm("play")}</TooltipContent>
+    </Tooltip>
   )
 }

@@ -579,7 +579,8 @@ export default {
     "settings-desc": "Konfigurasikan bagaimana Fibo merespons pesan Anda.",
     submit: "Kirim",
     edit: "Edit",
-    cancel: "Batal"
+    cancel: "Batal",
+    play: "Mainkan"
   },
   FormDocument: {
     "form-document-desc": "Unggah dokumen Anda untuk memulai",

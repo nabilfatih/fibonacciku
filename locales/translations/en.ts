@@ -561,7 +561,8 @@ export default {
     "settings-desc": "Configure how Fibo responds to your messages.",
     submit: "Submit",
     edit: "Edit",
-    cancel: "Cancel"
+    cancel: "Cancel",
+    play: "Play"
   },
   FormDocument: {
     "form-document-desc": "Upload your document to get started",
