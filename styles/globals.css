@@ -36,7 +36,7 @@
   }
 
   body {
-    @apply scroll-smooth bg-background text-foreground;
+    @apply scroll-smooth bg-background text-foreground selection:bg-primary selection:text-primary-foreground;
   }
 }
 

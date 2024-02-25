@@ -20,9 +20,7 @@ export default async function MarketingLayout({
   return (
     <CurrentUserContextProvider session={session}>
       <MarketingHeader />
-      <main className="flex flex-1 flex-col overflow-hidden selection:bg-primary selection:text-primary-foreground">
-        {children}
-      </main>
+      <main className="flex flex-1 flex-col overflow-hidden">{children}</main>
       <MarketingFooter />
     </CurrentUserContextProvider>
   )
