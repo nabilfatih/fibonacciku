@@ -238,6 +238,7 @@ export type SearchResult = {
   displayLink: string
   link: string
   snippet: string
+  content?: string
 }
 
 export type YoutubeSearchResult = {

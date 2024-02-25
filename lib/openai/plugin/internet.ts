@@ -7,6 +7,8 @@ import type {
   YoutubeSearchResult
 } from "@/types/types"
 
+import { scrapeWebsite } from "./ninja"
+
 export const fetchGoogleSearch = async (query: string, num: number) => {
   // it can handle multiple fetch at time in parallel
   // google can only return 10 results at a time, so we need to fetch multiple times
@@ -49,6 +51,19 @@ export const googlePlugin = cache(
           link: item.link,
           snippet: item.snippet || ""
         }
+      })
+
+      // scrape the first 2 links, and then put it in as content: "..."
+      const content = await Promise.all(
+        result.slice(0, 2).map(async (item: any) => {
+          const scraped = await scrapeWebsite(item.link)
+          return scraped.data
+        })
+      )
+
+      // put the content into the smallData
+      smallData.forEach((item, index) => {
+        item.content = content[index]
       })
 
       return {

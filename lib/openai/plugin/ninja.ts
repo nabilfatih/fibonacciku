@@ -16,7 +16,12 @@ export const fetchNinja = async (endpoint: string, query: string) => {
 }
 
 export const scrapeWebsite = cache(
-  async (url: string) => {
+  async (
+    url: string
+  ): Promise<{
+    message?: string
+    data: string
+  }> => {
     try {
       // use ninja api
       const response = await fetchNinja(
@@ -26,7 +31,8 @@ export const scrapeWebsite = cache(
       return response
     } catch (error) {
       return {
-        message: "Sorry but I can't get the information from that website."
+        message: "Sorry but I can't get the information from that website.",
+        data: ""
       }
     }
   },
