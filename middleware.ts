@@ -3,7 +3,7 @@ import { createI18nMiddleware } from "next-international/middleware"
 
 import { createClientMiddleware } from "@/lib/supabase/middleware"
 
-export const localesList = ["en", "id", "de", "ru"]
+export const localesList = ["en", "id", "de", "ru", "nl"]
 
 const I18nMiddleware = createI18nMiddleware({
   locales: localesList,
