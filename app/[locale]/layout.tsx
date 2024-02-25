@@ -131,10 +131,10 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     icons: {
       icon: [
-        { url: "/logo.png" },
-        new URL("/logo.png", "https://www.fibonacciku.com")
+        { url: "/logo-background.png" },
+        new URL("/logo-background.png", "https://www.fibonacciku.com")
       ],
-      shortcut: "/logo.png",
+      shortcut: ["/logo-background.png", "/logo.png"],
       apple: [
         { url: "/apple-touch-icon.png" },
         { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
@@ -167,7 +167,7 @@ export async function generateMetadata(): Promise<Metadata> {
         }
       ]
     },
-    category: "Education, Artificial Intelligence",
+    category: "Technology, Education, Artificial Intelligence",
     verification: {
       google: "google",
       yandex: "yandex",
