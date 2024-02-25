@@ -19,18 +19,25 @@ type Props = {
 function ListContent({
   item,
   index,
-  indexMessage
+  indexMessage,
+  isLastMessage
 }: {
   item: ShowChatMessage
   index: number
   indexMessage: IndexMessage[]
+  isLastMessage: boolean
 }) {
   const currentIndex = useMemo(() => {
     return indexMessage.find(item => item.index === index) as IndexMessage
   }, [indexMessage, index])
 
   return (
-    <ChatMessages index={index} message={item} currentIndex={currentIndex} />
+    <ChatMessages
+      index={index}
+      message={item}
+      currentIndex={currentIndex}
+      isLastMessage={isLastMessage}
+    />
   )
 }
 
@@ -61,6 +68,7 @@ export default function ChatList({
                 item={item}
                 index={index}
                 indexMessage={indexMessage}
+                isLastMessage={index === messages.length - 1}
               />
               {index < messages.length - 1 && item.role !== "system" && (
                 <Separator className="my-4 md:my-8" />

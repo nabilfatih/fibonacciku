@@ -558,7 +558,10 @@ export default {
     document: "Document",
     book: "Book",
     close: "Close",
-    "settings-desc": "Configure how Fibo responds to your messages."
+    "settings-desc": "Configure how Fibo responds to your messages.",
+    submit: "Submit",
+    edit: "Edit",
+    cancel: "Cancel"
   },
   FormDocument: {
     "form-document-desc": "Upload your document to get started",

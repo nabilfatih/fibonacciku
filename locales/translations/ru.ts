@@ -571,7 +571,10 @@ export default {
     document: "Документ",
     book: "Книга",
     close: "Закрыть",
-    "settings-desc": "Настройте, как Fibo отвечает на ваши сообщения."
+    "settings-desc": "Настройте, как Fibo отвечает на ваши сообщения.",
+    submit: "Отправить",
+    edit: "Редактировать",
+    cancel: "Отмена"
   },
   FormDocument: {
     "form-document-desc": "Загрузите свой документ, чтобы начать",

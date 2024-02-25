@@ -581,7 +581,10 @@ export default {
     book: "Buch",
     close: "Schließen",
     "settings-desc":
-      "Konfigurieren Sie, wie Fibo auf Ihre Nachrichten reagiert."
+      "Konfigurieren Sie, wie Fibo auf Ihre Nachrichten reagiert.",
+    submit: "Absenden",
+    edit: "Bearbeiten",
+    cancel: "Abbrechen"
   },
   FormDocument: {
     "form-document-desc": "Laden Sie Ihr Dokument hoch, um zu starten",

@@ -576,7 +576,10 @@ export default {
     document: "Dokumen",
     book: "Buku",
     close: "Tutup",
-    "settings-desc": "Konfigurasikan bagaimana Fibo merespons pesan Anda."
+    "settings-desc": "Konfigurasikan bagaimana Fibo merespons pesan Anda.",
+    submit: "Kirim",
+    edit: "Edit",
+    cancel: "Batal"
   },
   FormDocument: {
     "form-document-desc": "Unggah dokumen Anda untuk memulai",

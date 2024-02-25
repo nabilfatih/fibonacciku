@@ -20,9 +20,7 @@ export interface ChatProps extends React.ComponentProps<"div"> {
   chat?: Chat
   initialMessages?: ChatMessage[]
   id?: string
-  title?: string
   fileId?: string | null
-  createdAt?: string
 }
 
 export default function ChatMessage({
@@ -31,9 +29,7 @@ export default function ChatMessage({
   initialMessages,
   className,
   type,
-  title,
-  fileId,
-  createdAt
+  fileId
 }: ChatProps) {
   const {
     showMessage,
@@ -112,12 +108,9 @@ export default function ChatMessage({
       <ChatPanel
         id={id}
         isLoading={state.isLoading}
-        messages={showMessage}
         prompt={state.prompt}
         setPrompt={value => dispatch({ type: "SET_PROMPT", payload: value })}
         type={type}
-        title={title}
-        createdAt={createdAt}
         fileId={fileId || state.currentChat?.file_id}
       />
     </>

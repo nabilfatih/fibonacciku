@@ -9,8 +9,6 @@ import { createClientServer } from "@/lib/supabase/server"
 
 import ChatMessage from "@/components/chat"
 
-export const runtime = "edge"
-
 const getChat = cache(async (chatId: string) => {
   const chat = await getChatAdmin(chatId)
   // if there is chat return the title, if not return FibonacciKu
@@ -59,7 +57,6 @@ export default async function ChatMessagePage({ params }: Props) {
       type={chat.type as Features}
       title={chat.title}
       fileId={chat.file_id}
-      createdAt={chat.created_at}
       chat={chat}
     />
   )

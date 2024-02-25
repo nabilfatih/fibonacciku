@@ -12,12 +12,14 @@ type Props = {
   index: number
   message: ShowChatMessage
   currentIndex: IndexMessage
+  isLastMessage: boolean
 }
 
 export default function ChatMessage({
   index,
   message,
   currentIndex,
+  isLastMessage,
   ...props
 }: Props) {
   const locale = useCurrentLocale()
@@ -57,7 +59,7 @@ export default function ChatMessage({
       >
         <ChatAvatar role={message.role} />
       </div>
-      <div className="ml-4 flex-1 space-y-2 overflow-hidden sm:px-1">
+      <div className="ml-4 flex-1 space-y-4 overflow-hidden sm:px-1">
         {message.metadata && (
           <ChatMetadata
             metadata={message.metadata}
@@ -83,6 +85,7 @@ export default function ChatMessage({
           currentIndex={currentIndex}
           contentLength={contentLength}
           messageIndex={messageIndex}
+          isLastMessage={isLastMessage}
         />
       </div>
     </div>
