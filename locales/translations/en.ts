@@ -1052,6 +1052,10 @@ export default {
     journal: "Journal",
     safety: "Safety",
     pricing: "Pricing",
-    premium: "Premium"
+    premium: "Premium",
+    technology: "Technology",
+    education: "Education",
+    economics: "Economics",
+    politics: "Politics"
   }
 } as const

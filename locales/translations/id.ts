@@ -1070,6 +1070,10 @@ export default {
     journal: "Jurnal",
     safety: "Keamanan",
     pricing: "Harga",
-    premium: "Premium"
+    premium: "Premium",
+    technology: "Teknologi",
+    education: "Pendidikan",
+    economics: "Ekonomi",
+    politics: "Politik"
   }
 } as const

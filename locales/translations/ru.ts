@@ -1071,6 +1071,10 @@ export default {
     journal: "Журнал",
     safety: "Безопасность",
     pricing: "Ценообразование",
-    premium: "Премиум"
+    premium: "Премиум",
+    technology: "Технология",
+    education: "Образование",
+    economics: "Экономика",
+    politics: "Политика"
   }
 } as const
