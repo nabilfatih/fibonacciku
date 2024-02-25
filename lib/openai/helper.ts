@@ -20,7 +20,18 @@ import {
   getUserDetailsAdmin,
   getUserSubscriptionAdmin
 } from "@/lib/supabase/admin/users"
-import { randomSelect } from "@/lib/utils"
+import { randomSelectWeighted } from "@/lib/utils"
+
+// Define the models with their respective weights
+const models = [
+  { name: "gpt-4-0125-preview", weight: 0.1 },
+  { name: "gpt-3.5-turbo-0125", weight: 0.9 }
+]
+
+const modelsForPremium = [
+  { name: "gpt-4-0125-preview", weight: 0.5 },
+  { name: "gpt-3.5-turbo-0125", weight: 0.5 }
+]
 
 // Function to determine which model to use based on the user's subscription
 export const determineModelBasedOnSubscription = async (
@@ -37,27 +48,6 @@ export const determineModelBasedOnSubscription = async (
     getUserSubscriptionAdmin(userId)
   ])
 
-  // make gpt-3.5 have a higher chance of being selected
-  const model = [
-    "gpt-3.5-turbo-0125",
-    "gpt-3.5-turbo-0125",
-    "gpt-3.5-turbo-0125",
-    "gpt-3.5-turbo-0125",
-    "gpt-4-0125-preview",
-    "gpt-3.5-turbo-0125",
-    "gpt-3.5-turbo-0125",
-    "gpt-3.5-turbo-0125",
-    "gpt-3.5-turbo-0125",
-    "gpt-3.5-turbo-0125"
-  ]
-
-  // Default model for non-subscribers or basic plans
-  const defaultModel = randomSelect(model)
-
-  // Model for premium or enterprise subscribers
-  // const premiumModel = "gpt-4-0125-preview";
-  const premiumModel = randomSelect(model)
-
   // TODO: This is only when the cost reaches a certain threshold, this can be adjusted
   let isCostLimit = false
   // Now no limit, cause we have ads and we want to encourage people to use the app
@@ -72,7 +62,7 @@ export const determineModelBasedOnSubscription = async (
       subscription.planName === "enterprise")
   ) {
     return {
-      model: premiumModel,
+      model: randomSelectWeighted(modelsForPremium),
       subscription,
       additionalTools: listToolsChat,
       isCostLimit
@@ -80,7 +70,7 @@ export const determineModelBasedOnSubscription = async (
   }
 
   return {
-    model: defaultModel,
+    model: randomSelectWeighted(models),
     subscription,
     additionalTools: listToolsChat, // for now, for experimentation free users can use some tools
     isCostLimit

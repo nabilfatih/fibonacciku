@@ -126,3 +126,21 @@ export const truncateParagraph = (
 export const randomSelect = <T>(arr: T[]): T => {
   return arr[Math.floor(Math.random() * arr.length)]
 }
+
+// Function to randomly select a model based on weights
+export const randomSelectWeighted = (
+  arr: { name: string; weight: number }[]
+): string => {
+  const totalWeight = arr.reduce((acc, arr) => acc + arr.weight, 0)
+  let randomNum = Math.random() * totalWeight
+
+  for (const model of arr) {
+    randomNum -= model.weight
+    if (randomNum <= 0) {
+      return model.name
+    }
+  }
+
+  // Fallback to the last model if random selection fails
+  return arr[arr.length - 1].name
+}
