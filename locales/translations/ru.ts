@@ -575,7 +575,9 @@ export default {
     submit: "Отправить",
     edit: "Редактировать",
     cancel: "Отмена",
-    play: "Воспроизвести"
+    play: "Воспроизвести",
+    previous: "Предыдущий",
+    next: "Следующий"
   },
   FormDocument: {
     "form-document-desc": "Загрузите свой документ, чтобы начать",

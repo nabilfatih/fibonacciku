@@ -562,7 +562,9 @@ export default {
     submit: "Submit",
     edit: "Edit",
     cancel: "Cancel",
-    play: "Play"
+    play: "Play",
+    previous: "Previous",
+    next: "Next"
   },
   FormDocument: {
     "form-document-desc": "Upload your document to get started",

@@ -585,7 +585,9 @@ export default {
     submit: "Absenden",
     edit: "Bearbeiten",
     cancel: "Abbrechen",
-    play: "Abspielen"
+    play: "Abspielen",
+    previous: "Vorherige",
+    next: "Nächste"
   },
   FormDocument: {
     "form-document-desc": "Laden Sie Ihr Dokument hoch, um zu starten",

@@ -3,8 +3,14 @@ import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react"
 
 import type { IndexMessage } from "@/types/types"
 import { useMessage } from "@/lib/context/use-message"
+import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger
+} from "@/components/ui/tooltip"
 
 type Props = {
   currentIndex: IndexMessage
@@ -28,6 +34,7 @@ export default function ChatMessageActionPagination({
   currentIndex,
   contentLength
 }: Props) {
+  const t = useScopedI18n("FormChat")
   const { setIndexMessage } = useMessage()
 
   // Function to decrease the index of current array
@@ -48,27 +55,39 @@ export default function ChatMessageActionPagination({
 
   return (
     <div className="flex items-center space-x-2">
-      <Button
-        variant="ghost"
-        size="icon"
-        disabled={currentIndex.currentMessage === 1}
-        onClick={handlePrevClick}
-      >
-        <IconChevronLeft className="h-4 w-4" />
-        <span className="sr-only">Previous message</span>
-      </Button>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            variant="ghost"
+            size="icon"
+            disabled={currentIndex.currentMessage === 1}
+            onClick={handlePrevClick}
+          >
+            <IconChevronLeft className="h-4 w-4" />
+            <span className="sr-only">Previous message</span>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>{t("previous")}</TooltipContent>
+      </Tooltip>
+
       <p className="text-sm">
         {currentIndex.currentMessage} / {contentLength}
       </p>
-      <Button
-        variant="ghost"
-        size="icon"
-        disabled={currentIndex.currentMessage === contentLength}
-        onClick={handleNextClick}
-      >
-        <IconChevronRight className="h-4 w-4" />
-        <span className="sr-only">Next message</span>
-      </Button>
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            variant="ghost"
+            size="icon"
+            disabled={currentIndex.currentMessage === contentLength}
+            onClick={handleNextClick}
+          >
+            <IconChevronRight className="h-4 w-4" />
+            <span className="sr-only">Next message</span>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>{t("next")}</TooltipContent>
+      </Tooltip>
     </div>
   )
 }

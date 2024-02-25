@@ -580,7 +580,9 @@ export default {
     submit: "Kirim",
     edit: "Edit",
     cancel: "Batal",
-    play: "Mainkan"
+    play: "Mainkan",
+    previous: "Sebelumnya",
+    next: "Selanjutnya"
   },
   FormDocument: {
     "form-document-desc": "Unggah dokumen Anda untuk memulai",
