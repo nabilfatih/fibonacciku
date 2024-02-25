@@ -11,11 +11,30 @@ export async function POST(request: Request) {
   }
 
   // get users that their usage is more than 0
+  // const { data, error } = await supabaseAdmin
+  //   .from("users")
+  //   .select("full_name, email")
+  //   // .gt("usage", 0)
+  //   .order("usage", { ascending: false })
+
+  // get customers that do not have subscription, join with users table
   const { data, error } = await supabaseAdmin
-    .from("users")
-    .select("full_name, email")
-    // .gt("usage", 0)
-    .order("usage", { ascending: false })
+    .from("customers")
+    .select("*, users(full_name, email)")
+    .order("created_at", { ascending: false })
+
+  const { data: subscriptions, error: subscriptionError } = await supabaseAdmin
+    .from("subscriptions")
+    .select("user_id")
+    .in("status", ["trialing", "active"])
+
+  if (error || !data || subscriptionError || !subscriptions) {
+    console.error(error)
+    return NextResponse.json(
+      { error: { statusCode: 500, message: "Internal Server Error" } },
+      { status: 500 }
+    )
+  }
 
   if (error || !data) {
     console.error(error)
@@ -25,23 +44,44 @@ export async function POST(request: Request) {
     )
   }
 
-  const emails = data as { full_name: string; email: string }[]
+  // only get customers that do not have subscription
+  const customers = data.filter(
+    customer => !subscriptions.some(sub => sub.user_id === customer.id)
+  )
+
+  const emails = customers.map(customer => {
+    return {
+      full_name: customer.users?.full_name,
+      email: customer.users?.email
+    }
+  })
+
+  console.log("Emails", emails)
+
+  // const emails = data as { full_name: string; email: string }[]
 
   console.log("Total emails: ", emails.length)
 
   try {
     for (const email of emails) {
+      if (!email.email) continue
+
       const name = email.full_name || "there"
 
-      const dataMessage = `Hi ${name}! 🌟
+      const dataMessage = `Hi ${name}! 👋
 
-Big news! FibonacciKu is now live on Product Hunt! 🎉
+We noticed you were super close to enjoying our products but didn’t complete your purchase. 🛒
 
-We're super excited and we need your help. Could you take a moment to support us with an upvote? Every vote brings us closer to helping more people enjoy learning with FibonacciKu. 🙏
+Is there something that held you back? We're here to help with any questions or concerns you might have. 🤔
 
-Just click here to vote: https://www.producthunt.com/posts/genius-study-buddy-by-fibonacciku
+Your feedback is invaluable to us, and we're keen to understand how we can make your experience better. 
 
-Thank you for being awesome and helping us grow. Your support means the world to us! 🌍
+Don't hesitate to reach out. We're all ears! 📞
+You can just reply to this email.
+
+Thank you for considering FibonacciKu. We hope to hear from you soon! 🌟
+
+www.fibonacciku.com
 
 Cheers,
 Nabil Akbarazzima Fatih
@@ -56,7 +96,7 @@ Founder of FibonacciKu`
         body: JSON.stringify({
           from: "Nabil Fatih <nabilfatih@fibonacciku.com>",
           to: [email.email],
-          subject: "Fibo needs your Support!🎉",
+          subject: "Fibo missed you! 😢",
           text: dataMessage
         })
       })
