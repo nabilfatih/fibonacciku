@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import moment from "moment"
 
 import {
   getBlogsBySlugAdmin,
@@ -91,17 +92,17 @@ export default async function BlogSlugPage({ params }: Props) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "BlogPosting",
+            "@type": "Article",
             headline: blog.title,
-            datePublished: blog.created_at,
-            dateModified: blog.updated_at,
+            datePublished: moment(blog.created_at).format("YYYY-MM-DD"),
+            dateModified: moment(blog.updated_at).format("YYYY-MM-DD"),
             description: blog.description,
-            image: getBlogsCoverPublicUrlAdmin(blog.id, blog.cover),
+            image: [getBlogsCoverPublicUrlAdmin(blog.id, blog.cover)],
             url: `https://fibonacciku.com/blog/${blog.slug}`,
-            author: {
+            author: blog.authors.split(",").map(author => ({
               "@type": "Person",
-              name: blog.authors
-            }
+              name: author
+            }))
           })
         }}
       />
