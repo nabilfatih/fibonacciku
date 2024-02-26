@@ -3,7 +3,6 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import moment from "moment"
 
 import {
   getBlogsBySlugAdmin,
@@ -94,8 +93,8 @@ export default async function BlogSlugPage({ params }: Props) {
             "@context": "https://schema.org",
             "@type": "Article",
             headline: blog.title,
-            datePublished: moment(blog.created_at).format("YYYY-MM-DD"),
-            dateModified: moment(blog.updated_at).format("YYYY-MM-DD"),
+            datePublished: blog.created_at,
+            dateModified: blog.updated_at,
             description: blog.description,
             image: [getBlogsCoverPublicUrlAdmin(blog.id, blog.cover)],
             url: `https://fibonacciku.com/blog/${blog.slug}`,
