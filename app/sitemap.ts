@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next"
 
 import { getBlogsSlugAdmin } from "@/lib/supabase/admin/blogs"
 
-const locales = ["", "/en", "/id", "/de", "/ru"]
+const locales = ["", "/en", "/id", "/de", "/ru", "nl"]
 
 const pathnames = [
   "/",
