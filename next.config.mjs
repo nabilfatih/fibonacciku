@@ -46,7 +46,7 @@ const ContentSecurityPolicy = `
     script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.vercel-insights.com va.vercel-scripts.com js.stripe.com www.googletagmanager.com www.google-analytics.com unpkg.com;
     style-src 'self' 'unsafe-inline';
     img-src * blob: data:;
-    media-src 'none';
+    media-src 'self' blob:;
     connect-src *;
     font-src 'self' data:;
     frame-src 'self' *.codesandbox.io js.stripe.com www.youtube.com;
