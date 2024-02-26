@@ -40,9 +40,12 @@ const millionConfig = {
 
 export default million.next(nextConfig, millionConfig)
 
+// http://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js
+
 const ContentSecurityPolicy = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.vercel-insights.com va.vercel-scripts.com js.stripe.com www.googletagmanager.com www.google-analytics.com;
+    worker-src 'self' blob:;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.vercel-insights.com va.vercel-scripts.com js.stripe.com www.googletagmanager.com www.google-analytics.com unpkg.com;
     style-src 'self' 'unsafe-inline';
     img-src * blob: data:;
     media-src 'none';
