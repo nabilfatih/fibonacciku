@@ -579,7 +579,8 @@ export default {
     cancel: "Отмена",
     play: "Воспроизвести",
     previous: "Предыдущий",
-    next: "Следующий"
+    next: "Следующий",
+    stop: "Стоп"
   },
   FormDocument: {
     "form-document-desc": "Загрузите свой документ, чтобы начать",

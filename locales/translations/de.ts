@@ -589,7 +589,8 @@ export default {
     cancel: "Abbrechen",
     play: "Abspielen",
     previous: "Vorherige",
-    next: "Nächste"
+    next: "Nächste",
+    stop: "Stop"
   },
   FormDocument: {
     "form-document-desc": "Laden Sie Ihr Dokument hoch, um zu starten",

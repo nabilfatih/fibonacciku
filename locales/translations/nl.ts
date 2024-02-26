@@ -580,7 +580,8 @@ export default {
     cancel: "Annuleren",
     play: "Afspelen",
     previous: "Vorige",
-    next: "Volgende"
+    next: "Volgende",
+    stop: "Stoppen"
   },
   FormDocument: {
     "form-document-desc": "Upload je document om te beginnen",

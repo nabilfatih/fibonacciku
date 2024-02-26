@@ -168,7 +168,9 @@ export default function ChatMessageActionSpeech({ text }: Props) {
           </span>
         </Button>
       </TooltipTrigger>
-      <TooltipContent>{tForm("play")}</TooltipContent>
+      <TooltipContent>
+        {isPlaying ? tForm("stop") : tForm("play")}
+      </TooltipContent>
     </Tooltip>
   )
 }

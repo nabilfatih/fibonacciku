@@ -584,7 +584,8 @@ export default {
     cancel: "Batal",
     play: "Mainkan",
     previous: "Sebelumnya",
-    next: "Selanjutnya"
+    next: "Selanjutnya",
+    stop: "Berhenti"
   },
   FormDocument: {
     "form-document-desc": "Unggah dokumen Anda untuk memulai",
