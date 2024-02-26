@@ -76,6 +76,18 @@ export default async function HomePage() {
                 position: 4,
                 name: t("about"),
                 item: "https://fibonacciku.com/about"
+              },
+              {
+                "@type": "ListItem",
+                position: 5,
+                name: t("blog"),
+                item: "https://fibonacciku.com/blog"
+              },
+              {
+                "@type": "ListItem",
+                position: 6,
+                name: t("contact"),
+                item: "https://fibonacciku.com/contact"
               }
             ]
           })

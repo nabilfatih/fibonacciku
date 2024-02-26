@@ -111,7 +111,8 @@ export default {
     "wikipedia-desc": "Geef referenties uit Wikipedia.",
     "overcast-clouds": "Bewolkte luchten",
     clouds: "Wolken",
-    premium: "Premium"
+    premium: "Premium",
+    blog: "Blog"
   },
   MarketingNav: {
     product: "Product",
