@@ -9,6 +9,7 @@ import {
   useState
 } from "react"
 import type { Session } from "@supabase/supabase-js"
+import type { KeyedMutator } from "swr"
 
 import type { Subscription, UserDetails } from "@/types/types"
 import supabaseClient from "@/lib/supabase/client"
@@ -23,6 +24,10 @@ type CurrentUserContextValue = {
   setSubscription: React.Dispatch<React.SetStateAction<Subscription | null>>
   isLoading: boolean
   handleClearCurrentUserData: () => void
+  mutate: KeyedMutator<{
+    userDetails: UserDetails
+    subscription: Subscription
+  }>
 }
 
 // Create context
@@ -46,7 +51,8 @@ export const CurrentUserContextProvider: React.FC<
   const {
     userDetails: userData,
     subscription: subscriptionData,
-    isLoading
+    isLoading,
+    mutate
   } = useUser(session?.user?.id ?? "")
 
   useEffect(() => {
@@ -125,9 +131,17 @@ export const CurrentUserContextProvider: React.FC<
       subscription,
       setSubscription,
       isLoading,
-      handleClearCurrentUserData
+      handleClearCurrentUserData,
+      mutate
     }),
-    [handleClearCurrentUserData, isLoading, session, subscription, userDetails]
+    [
+      handleClearCurrentUserData,
+      isLoading,
+      mutate,
+      session,
+      subscription,
+      userDetails
+    ]
   )
 
   return (

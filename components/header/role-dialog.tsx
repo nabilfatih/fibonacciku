@@ -35,7 +35,7 @@ export default function RoleDialog() {
 
   const ref = searchParams.get("ref") || ""
 
-  const { userDetails } = useCurrentUser()
+  const { userDetails, mutate } = useCurrentUser()
 
   const [isPending, setIsPending] = React.useState(false)
 
@@ -56,6 +56,7 @@ export default function RoleDialog() {
         router.replace(pathname)
       }
       router.refresh()
+      mutate()
     } catch (error) {
       console.error(error)
       toast.error(tBackend("something-wrong"))

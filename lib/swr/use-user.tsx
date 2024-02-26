@@ -12,7 +12,7 @@ const fetcher = (url: string): Promise<ResponseData> =>
   axios.get(url).then(res => res.data)
 
 export default function useUser(userId: string) {
-  const { data, error, isLoading, isValidating } = useSWR<ResponseData>(
+  const { data, error, isLoading, isValidating, mutate } = useSWR<ResponseData>(
     userId ? `/api/app/get-user/${userId}` : null,
     fetcher,
     {
@@ -27,6 +27,7 @@ export default function useUser(userId: string) {
     subscription: data?.subscription,
     isLoading,
     isError: error,
-    isValidating
+    isValidating,
+    mutate
   }
 }
