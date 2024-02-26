@@ -1,5 +1,10 @@
 import * as React from "react"
-import { IconPhoto, IconSend2, IconSettings } from "@tabler/icons-react"
+import {
+  IconPhoto,
+  IconPlayerStop,
+  IconSend2,
+  IconSettings
+} from "@tabler/icons-react"
 import Textarea from "react-textarea-autosize"
 import { toast } from "sonner"
 
@@ -39,7 +44,7 @@ export default function PromptForm({
 }: PromptProps) {
   const t = useScopedI18n("FormChat")
 
-  const { dispatch, state } = useMessage()
+  const { dispatch, state, stop } = useMessage()
 
   const { formRef, onKeyDown } = useEnterSubmit()
   const fileRef = React.useRef<HTMLInputElement>(null)
@@ -180,19 +185,35 @@ export default function PromptForm({
           data-enable-grammarly="false"
         />
         <div className="absolute bottom-4 right-0 sm:bottom-3 sm:right-4">
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                type="submit"
-                size="icon"
-                disabled={isLoading || input === ""}
-              >
-                <IconSend2 />
-                <span className="sr-only">{t("send")}</span>
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>{t("send")}</TooltipContent>
-          </Tooltip>
+          {isLoading ? (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  size="icon"
+                  variant="destructive"
+                  onClick={() => stop()}
+                >
+                  <IconPlayerStop className="animate-pulse" />
+                  <span className="sr-only">{t("stop-generating")}</span>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>{t("stop-generating")}</TooltipContent>
+            </Tooltip>
+          ) : (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  type="submit"
+                  size="icon"
+                  disabled={isLoading || input === ""}
+                >
+                  <IconSend2 />
+                  <span className="sr-only">{t("send")}</span>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>{t("send")}</TooltipContent>
+            </Tooltip>
+          )}
         </div>
       </div>
     </form>

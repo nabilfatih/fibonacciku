@@ -40,8 +40,6 @@ const millionConfig = {
 
 export default million.next(nextConfig, millionConfig)
 
-// http://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js
-
 const ContentSecurityPolicy = `
     default-src 'self';
     worker-src 'self' blob:;

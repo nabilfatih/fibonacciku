@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils"
 import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
-import { IconStop } from "@/components/ui/icons"
 import ButtonScrollToBottom from "@/components/chat/button-scroll-to-bottom"
 import SidebarDocument from "@/components/chat/document-sidebar"
 import FooterText from "@/components/chat/footer"
@@ -35,7 +34,7 @@ export default function ChatPanel({
 }: ChatPanelProps) {
   const t = useScopedI18n("FormChat")
 
-  const { dispatch, stop, handleSubmit, state } = useMessage()
+  const { dispatch, handleSubmit, state } = useMessage()
 
   return (
     <div className="fixed inset-x-0 bottom-0 w-full bg-gradient-to-b from-transparent via-background/80 to-background duration-300 ease-in-out animate-in peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
@@ -57,18 +56,7 @@ export default function ChatPanel({
       </Button>
       <ButtonScrollToBottom />
       <div className="mx-auto sm:max-w-2xl sm:px-2">
-        <div className="flex h-12 items-center justify-center">
-          {isLoading && (
-            <Button
-              variant="outline"
-              onClick={() => stop()}
-              className="bg-background"
-            >
-              <IconStop className="mr-2 h-5 w-5 animate-pulse" />
-              {t("stop-generating")}
-            </Button>
-          )}
-        </div>
+        {/* <div className="flex h-12 items-center justify-center"></div> */}
         <div className="space-y-2 border-t bg-background p-2 sm:border-none sm:bg-transparent">
           <PromptForm
             id={id}
