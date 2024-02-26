@@ -100,7 +100,8 @@ export default async function BlogSlugPage({ params }: Props) {
             url: `https://fibonacciku.com/blog/${blog.slug}`,
             author: blog.authors.split(",").map(author => ({
               "@type": "Person",
-              name: author
+              name: author,
+              url: `https://fibonacciku.com/team/${author.toLowerCase().replace(" ", "-")}`
             }))
           })
         }}
