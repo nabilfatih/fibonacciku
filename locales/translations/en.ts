@@ -107,7 +107,8 @@ export default {
     wikipedia: "Wikipedia",
     "wikipedia-desc": "Give references from Wikipedia.",
     "overcast-clouds": "Overcast clouds",
-    clouds: "Clouds"
+    clouds: "Clouds",
+    premium: "Premium"
   },
   MarketingNav: {
     product: "Product",

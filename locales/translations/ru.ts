@@ -111,7 +111,8 @@ export default {
     wikipedia: "Википедия",
     "wikipedia-desc": "Давайте ссылки из Википедии.",
     "overcast-clouds": "Облачно",
-    clouds: "Облака"
+    clouds: "Облака",
+    premium: "Премиум"
   },
   MarketingNav: {
     product: "Продукт",

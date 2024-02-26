@@ -111,7 +111,8 @@ export default {
     wikipedia: "Wikipedia",
     "wikipedia-desc": "Beri referensi dari Wikipedia.",
     "overcast-clouds": "Awan mendung",
-    clouds: "Awan"
+    clouds: "Awan",
+    premium: "Premium"
   },
   MarketingNav: {
     product: "Produk",

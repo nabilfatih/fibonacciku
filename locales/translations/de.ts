@@ -112,7 +112,8 @@ export default {
     wikipedia: "Wikipedia",
     "wikipedia-desc": "Geben Sie Referenzen aus Wikipedia.",
     "overcast-clouds": "Bewölkter Himmel",
-    clouds: "Wolken"
+    clouds: "Wolken",
+    premium: "Premium"
   },
   MarketingNav: {
     product: "Produkt",

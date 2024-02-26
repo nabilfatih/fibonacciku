@@ -45,6 +45,43 @@ export default async function HomePage() {
 
   return (
     <MarketingTransition className="relative">
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: t("fibo-assistant"),
+                item: "https://fibonacciku.com/chat/assistant"
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: t("get-started"),
+                item: "https://fibonacciku.com/auth/login"
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: t("premium"),
+                item: "https://fibonacciku.com/premium"
+              },
+              {
+                "@type": "ListItem",
+                position: 4,
+                name: t("about"),
+                item: "https://fibonacciku.com/about"
+              }
+            ]
+          })
+        }}
+      />
+
       <Particles
         className="pointer-events-none absolute inset-0 -z-10 animate-fade-in"
         quantity={200}
