@@ -85,6 +85,26 @@ export default async function BlogSlugPage({ params }: Props) {
 
   return (
     <MarketingTransition>
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: blog.title,
+            datePublished: blog.created_at,
+            dateModified: blog.updated_at,
+            description: blog.description,
+            image: getBlogsCoverPublicUrlAdmin(blog.id, blog.cover),
+            url: `https://fibonacciku.com/blog/${blog.slug}`,
+            author: {
+              "@type": "Person",
+              name: blog.authors
+            }
+          })
+        }}
+      />
       <header className="py-28 sm:py-36">
         <div className="mx-auto max-w-7xl px-4">
           <Link
