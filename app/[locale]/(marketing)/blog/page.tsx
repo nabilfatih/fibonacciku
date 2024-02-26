@@ -46,6 +46,22 @@ export default async function BlogPage({ searchParams }: Props) {
 
   return (
     <MarketingTransition>
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: blogs.map((blog, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              name: blog.title,
+              item: `https://fibonacciku.com/blog/${blog.slug}`
+            }))
+          })
+        }}
+      />
       <header className="bg-muted py-16">
         <div className="relative mx-auto max-w-7xl px-4">
           <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
