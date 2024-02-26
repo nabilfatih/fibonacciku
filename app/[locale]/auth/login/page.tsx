@@ -48,6 +48,30 @@ export default async function LoginPage({ searchParams }: Props) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: t("sign-up"),
+                item: "https://fibonacciku.com/auth/signup"
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: t("forgot-password"),
+                item: "https://fibonacciku.com/auth/forgot-password"
+              }
+            ]
+          })
+        }}
+      />
       <header className="flex flex-col space-y-2 pb-4 text-center">
         <h1 className="text-2xl font-semibold tracking-tight">
           {t("welcome")}

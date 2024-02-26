@@ -48,14 +48,38 @@ export default async function SignupPage({ searchParams }: Props) {
 
   return (
     <>
-      <div className="flex flex-col space-y-2 text-center">
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: t("login"),
+                item: "https://fibonacciku.com/auth/login"
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: t("forgot-password"),
+                item: "https://fibonacciku.com/auth/forgot-password"
+              }
+            ]
+          })
+        }}
+      />
+      <header className="flex flex-col space-y-2 text-center">
         <h1 className="text-2xl font-semibold tracking-tight">
           {t("create-account")}
         </h1>
         <p className="text-sm text-muted-foreground">
           {t("continue-with-google")}
         </p>
-      </div>
+      </header>
       <SignupAuthForm next={next} referral={referral} />
       <p className="px-8 text-center text-sm text-muted-foreground">
         <span>{t("login-desc")}</span>
