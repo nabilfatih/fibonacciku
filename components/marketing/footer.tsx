@@ -33,7 +33,7 @@ export default async function MarketingFooter() {
                 height={28}
                 priority
                 sizes="28px"
-                className="rounded-full object-cover shadow"
+                className="rounded-full border object-cover shadow"
               />
 
               <h1 className="ml-1.5 flex items-center text-2xl font-semibold tracking-tighter">
