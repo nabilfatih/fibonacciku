@@ -1084,6 +1084,7 @@ export default {
     technology: "Технология",
     education: "Образование",
     economics: "Экономика",
-    politics: "Политика"
+    politics: "Политика",
+    views: "Просмотры"
   }
 } as const

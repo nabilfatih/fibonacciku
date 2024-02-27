@@ -1065,6 +1065,7 @@ export default {
     technology: "Technology",
     education: "Education",
     economics: "Economics",
-    politics: "Politics"
+    politics: "Politics",
+    views: "Views"
   }
 } as const

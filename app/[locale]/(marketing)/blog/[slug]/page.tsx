@@ -1,9 +1,10 @@
-import { cache } from "react"
+import { cache, Suspense } from "react"
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
+import type { Blogs } from "@/types/types"
 import {
   getBlogsBySlugAdmin,
   getBlogsCoverPublicUrlAdmin
@@ -13,6 +14,7 @@ import { getCurrentLocale, getScopedI18n } from "@/locales/server"
 import { Button } from "@/components/ui/button"
 import ServerReactMarkdown from "@/components/markdown/server"
 import MarketingTransition from "@/components/marketing/transition"
+import { updateBlogs } from "@/app/actions/blog"
 
 const getBlog = cache(async (slug: string) => {
   const blog = await getBlogsBySlugAdmin(slug)
@@ -170,7 +172,10 @@ export default async function BlogSlugPage({ params }: Props) {
       </section>
 
       <section className="py-24">
-        <article className="relative mx-auto max-w-3xl px-4">
+        <article className="relative mx-auto max-w-3xl space-y-6 px-4">
+          <Suspense fallback={<p className="block h-[14px]"></p>}>
+            <Views blog={blog} />
+          </Suspense>
           <ServerReactMarkdown content={blog.content} />
         </article>
       </section>
@@ -184,5 +189,16 @@ export default async function BlogSlugPage({ params }: Props) {
         </div>
       </section>
     </MarketingTransition>
+  )
+}
+
+async function Views({ blog }: { blog: Blogs }) {
+  const t = await getScopedI18n("Marketing")
+  await updateBlogs(blog.id, { seen: blog.seen + 1 })
+  const number = new Number(blog.seen || 0)
+  return (
+    <p className="text-sm text-muted-foreground">
+      {number.toLocaleString()} {t("views")}
+    </p>
   )
 }

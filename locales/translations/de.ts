@@ -1100,6 +1100,7 @@ export default {
     technology: "Technologie",
     education: "Bildung",
     economics: "Wirtschaft",
-    politics: "Politik"
+    politics: "Politik",
+    views: "Angesehen"
   }
 } as const

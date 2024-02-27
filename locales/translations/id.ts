@@ -1083,6 +1083,7 @@ export default {
     technology: "Teknologi",
     education: "Pendidikan",
     economics: "Ekonomi",
-    politics: "Politik"
+    politics: "Politik",
+    views: "Dilihat"
   }
 } as const

@@ -1081,6 +1081,7 @@ export default {
     technology: "Technologie",
     education: "Educatie",
     economics: "Economie",
-    politics: "Politiek"
+    politics: "Politiek",
+    views: "Bekeken"
   }
 } as const
