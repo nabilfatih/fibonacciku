@@ -173,7 +173,7 @@ export default async function BlogSlugPage({ params }: Props) {
 
       <section className="py-24">
         <article className="relative mx-auto max-w-3xl space-y-6 px-4">
-          <Suspense fallback={<p className="block h-[14px]"></p>}>
+          <Suspense fallback={<p className="block h-5"></p>}>
             <Views blog={blog} />
           </Suspense>
           <ServerReactMarkdown content={blog.content} />
