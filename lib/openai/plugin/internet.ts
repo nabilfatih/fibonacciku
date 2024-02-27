@@ -55,7 +55,7 @@ export const googlePlugin = cache(
 
       // scrape the first 2 links, and then put it in as content: "..."
       const content = await Promise.all(
-        result.slice(0, 2).map(async (item: any) => {
+        result.slice(0, 3).map(async (item: any) => {
           const scraped = await scrapeWebsite(item.link)
           return scraped.data
         })
