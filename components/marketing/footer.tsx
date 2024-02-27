@@ -42,7 +42,7 @@ export default async function MarketingFooter() {
             </Link>
             <div className="grid grid-cols-2 sm:grid-cols-4">
               <div className="flex gap-2">
-                <AuthLanguage />
+                <AuthLanguage align="start" />
                 <ThemeToggle />
               </div>
               <div className="flex flex-col">
