@@ -129,9 +129,9 @@ export default async function BlogSlugPage({ params }: Props) {
             <Image
               src={cover}
               alt={blog.title}
-              width={600}
-              height={600}
-              sizes="600px"
+              width={640}
+              height={640}
+              sizes="640px"
               priority
               className="m-0 rounded-sm border bg-muted/90 object-cover shadow"
             />
