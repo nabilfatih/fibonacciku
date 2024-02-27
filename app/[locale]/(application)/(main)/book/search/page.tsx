@@ -28,7 +28,8 @@ export async function generateMetadata({
         en: "/en/book/search",
         id: "/id/book/search",
         de: "/de/book/search",
-        ru: "/ru/book/search"
+        ru: "/ru/book/search",
+        nl: "/nl/book/search"
       }
     }
   }

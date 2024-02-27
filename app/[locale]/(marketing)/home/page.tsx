@@ -34,7 +34,8 @@ export function generateMetadata(): Metadata {
         en: "/en/home",
         id: "/id/home",
         de: "/de/home",
-        ru: "/ru/home"
+        ru: "/ru/home",
+        nl: "/nl/home"
       }
     }
   }

@@ -52,7 +52,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         en: `/en/blog/${blog.slug}`,
         id: `/id/blog/${blog.slug}`,
         de: `/de/blog/${blog.slug}`,
-        ru: `/ru/blog/${blog.slug}`
+        ru: `/ru/blog/${blog.slug}`,
+        nl: `/nl/blog/${blog.slug}`
       }
     },
     openGraph: {

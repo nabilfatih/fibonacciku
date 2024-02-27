@@ -55,7 +55,8 @@ export async function generateMetadata(): Promise<Metadata> {
         en: "/en/about",
         id: "/id/about",
         de: "/de/about",
-        ru: "/ru/about"
+        ru: "/ru/about",
+        nl: "/nl/about"
       }
     }
   }

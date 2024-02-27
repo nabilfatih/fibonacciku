@@ -21,7 +21,8 @@ export async function generateMetadata(): Promise<Metadata> {
         en: "/en/account",
         id: "/id/account",
         de: "/de/account",
-        ru: "/ru/account"
+        ru: "/ru/account",
+        nl: "/nl/account"
       }
     }
   }

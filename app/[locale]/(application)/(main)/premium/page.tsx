@@ -21,7 +21,8 @@ export async function generateMetadata(): Promise<Metadata> {
         en: "/en/premium",
         id: "/id/premium",
         de: "/de/premium",
-        ru: "/ru/premium"
+        ru: "/ru/premium",
+        nl: "/nl/premium"
       }
     }
   }

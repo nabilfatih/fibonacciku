@@ -16,7 +16,8 @@ export async function generateMetadata(): Promise<Metadata> {
         en: "/en/auth/reset-password",
         id: "/id/auth/reset-password",
         de: "/de/auth/reset-password",
-        ru: "/ru/auth/reset-password"
+        ru: "/ru/auth/reset-password",
+        nl: "/nl/auth/reset-password"
       }
     }
   }

@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         en: `/en/book/collection/${bookId}`,
         id: `/id/book/collection/${bookId}`,
         de: `/de/book/collection/${bookId}`,
-        ru: `/ru/book/collection/${bookId}`
+        ru: `/ru/book/collection/${bookId}`,
+        nl: `/nl/book/collection/${bookId}`
       }
     }
   }

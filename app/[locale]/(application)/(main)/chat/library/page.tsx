@@ -18,7 +18,8 @@ export async function generateMetadata(): Promise<Metadata> {
         en: "/en/chat/library",
         id: "/id/chat/library",
         de: "/de/chat/library",
-        ru: "/ru/chat/library"
+        ru: "/ru/chat/library",
+        nl: "/nl/chat/library"
       }
     }
   }
