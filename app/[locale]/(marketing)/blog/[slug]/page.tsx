@@ -193,9 +193,13 @@ export default async function BlogSlugPage({ params }: Props) {
   )
 }
 
+const incrementViews = cache(async (id: string, seen: number) => {
+  await updateBlogs(id, { seen: seen + 1 })
+})
+
 async function Views({ blog }: { blog: Blogs }) {
   const t = await getScopedI18n("Marketing")
-  await updateBlogs(blog.id, { seen: blog.seen + 1 })
+  await incrementViews(blog.id, blog.seen)
   const number = new Number(blog.seen || 0)
 
   return (
