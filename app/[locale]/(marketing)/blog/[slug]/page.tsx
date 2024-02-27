@@ -196,6 +196,7 @@ async function Views({ blog }: { blog: Blogs }) {
   const t = await getScopedI18n("Marketing")
   await updateBlogs(blog.id, { seen: blog.seen + 1 })
   const number = new Number(blog.seen || 0)
+
   return (
     <p className="text-sm text-muted-foreground">
       {number.toLocaleString()} {t("views")}
