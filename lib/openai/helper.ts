@@ -23,11 +23,6 @@ import {
 import { randomSelectWeighted } from "@/lib/utils"
 
 // Define the models with their respective weights
-const models = [
-  { name: "gpt-4-0125-preview", weight: 0.1 },
-  { name: "gpt-3.5-turbo-0125", weight: 0.9 }
-]
-
 const modelsForPremium = [
   { name: "gpt-4-0125-preview", weight: 0.5 },
   { name: "gpt-3.5-turbo-0125", weight: 0.5 }
@@ -70,7 +65,7 @@ export const determineModelBasedOnSubscription = async (
   }
 
   return {
-    model: randomSelectWeighted(models),
+    model: "gpt-3.5-turbo-0125",
     subscription,
     additionalTools: listToolsChat, // for now, for experimentation free users can use some tools
     isCostLimit
