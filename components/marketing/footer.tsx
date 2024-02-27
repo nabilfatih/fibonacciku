@@ -13,7 +13,9 @@ import {
 import { getScopedI18n } from "@/locales/server"
 
 import { Button } from "@/components/ui/button"
+import AuthLanguage from "@/components/auth/language"
 import MarketingFooterArt from "@/components/marketing/footer-art"
+import ThemeToggle from "@/components/theme/toggle"
 
 export default async function MarketingFooter() {
   const t = await getScopedI18n("MarketingFooter")
@@ -39,6 +41,10 @@ export default async function MarketingFooter() {
               </h1>
             </Link>
             <div className="grid grid-cols-2 sm:grid-cols-4">
+              <div className="flex gap-2">
+                <AuthLanguage />
+                <ThemeToggle />
+              </div>
               <div className="flex flex-col">
                 <h1 className="mb-1 font-medium tracking-tight">
                   {t("company")}
