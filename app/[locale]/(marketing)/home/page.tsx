@@ -148,6 +148,37 @@ export default async function HomePage() {
         <div className="mx-auto max-w-7xl space-y-12 px-4">
           <header className="relative space-y-2">
             <h1 className="text-4xl font-semibold tracking-tighter">
+              {t("header")}
+            </h1>
+            <p className="max-w-lg text-muted-foreground">
+              {t("explore-desc")}
+            </p>
+          </header>
+          <div className="relative">
+            <Image
+              src="/screenshot-fibo.webp"
+              alt="Fibo Assistant"
+              width={3024}
+              height={1886}
+              priority
+              className="rounded-md border object-cover shadow"
+            />
+          </div>
+          <div className="flex flex-row justify-center gap-2">
+            <Button asChild>
+              <Link href="/contact">
+                <IconSparkles className="mr-1 h-4 w-4" />
+                {t("try-it-now")}
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-36">
+        <div className="mx-auto max-w-7xl space-y-12 px-4">
+          <header className="relative space-y-2">
+            <h1 className="text-4xl font-semibold tracking-tighter">
               {t("just-ask-anything")}
             </h1>
             <p className="max-w-lg text-muted-foreground">
