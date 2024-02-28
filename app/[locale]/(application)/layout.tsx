@@ -4,6 +4,7 @@ import { CurrentUserContextProvider } from "@/lib/context/use-current-user"
 import { createClientServer } from "@/lib/supabase/server"
 
 import { HeaderChat } from "@/components/header"
+import MarketingFooter from "@/components/marketing/footer"
 import MarketingHeader from "@/components/marketing/header"
 
 export default async function ApplicationLayout({
@@ -21,6 +22,7 @@ export default async function ApplicationLayout({
     <CurrentUserContextProvider session={session}>
       {session ? <HeaderChat /> : <MarketingHeader />}
       <main className="flex flex-1 flex-col overflow-hidden">{children}</main>
+      {!session && <MarketingFooter />}
     </CurrentUserContextProvider>
   )
 }
