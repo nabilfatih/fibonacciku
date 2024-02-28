@@ -149,7 +149,11 @@ export async function POST(req: Request) {
         call: ToolCallPayload,
         appendToolCallMessage
       ) => {
-        if (call.tools[0].func.name === "image_analysis") {
+        // search if the tool is image_analysis
+        const isImageAnalysis = call.tools.some(
+          tool => tool.func.name === "image_analysis"
+        )
+        if (isImageAnalysis) {
           const initialMessages = finalMessage.slice(0, -1)
           const currentMessage = finalMessage[finalMessage.length - 1]
           const args = JSON.parse(String(call.tools[0].func.arguments))
