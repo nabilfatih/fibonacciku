@@ -5,15 +5,14 @@ import {
   IconClick,
   IconGlobe,
   IconLeaf,
-  IconMail,
   IconMoodWink,
-  IconSparkles,
   type TablerIconsProps
 } from "@tabler/icons-react"
 
 import { getScopedI18n } from "@/locales/server"
 
 import { Button } from "@/components/ui/button"
+import MarketingCta from "@/components/marketing/cta"
 import MarketingTransition from "@/components/marketing/transition"
 
 import sustainBackground from "/public/background-sustain.webp"
@@ -64,7 +63,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function AboutPage() {
   const t = await getScopedI18n("MarketingAbout")
-  const tHome = await getScopedI18n("Home")
 
   return (
     <MarketingTransition className="relative">
@@ -134,32 +132,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="border-t py-36">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="space-y-2 text-center">
-            <h1 className="mx-auto w-fit max-w-4xl text-balance bg-gradient-to-r from-foreground to-primary bg-clip-text text-4xl font-bold tracking-tighter text-transparent sm:text-7xl">
-              {tHome("just-ask-anything")}
-            </h1>
-            <p className="mx-auto max-w-lg text-balance text-sm sm:text-base md:max-w-2xl">
-              {tHome("slogan")}
-            </p>
-          </div>
-          <div className="mt-4 flex flex-row justify-center gap-2">
-            <Button asChild>
-              <Link href="/chat/assistant">
-                <IconSparkles className="mr-1 h-4 w-4" />
-                {tHome("get-started")}
-              </Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/contact">
-                <IconMail className="mr-1 h-4 w-4" />
-                {tHome("contact-us")}
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      <MarketingCta />
     </MarketingTransition>
   )
 }
