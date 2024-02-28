@@ -161,7 +161,7 @@ export default async function HomePage() {
               width={3024}
               height={1886}
               priority
-              className="rounded-md border object-cover shadow"
+              className="rounded-xl border object-cover shadow"
             />
           </div>
           <div className="flex flex-row justify-center gap-2">
