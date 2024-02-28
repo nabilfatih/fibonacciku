@@ -11,5 +11,6 @@ export const {
   id: () => import("./translations/id"),
   de: () => import("./translations/de"),
   ru: () => import("./translations/ru"),
-  nl: () => import("./translations/nl")
+  nl: () => import("./translations/nl"),
+  it: () => import("./translations/it")
 })

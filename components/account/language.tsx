@@ -20,7 +20,7 @@ import {
   SelectValue
 } from "@/components/ui/select"
 
-export const languages = [
+export const languages: { icon: string; name: string; value: string }[] = [
   {
     icon: "🇬🇧",
     name: "English",
@@ -35,6 +35,11 @@ export const languages = [
     icon: "🇩🇪",
     name: "Deutsch",
     value: "de"
+  },
+  {
+    icon: "🇮🇹",
+    name: "Italiano",
+    value: "it"
   },
   {
     icon: "🇳🇱",

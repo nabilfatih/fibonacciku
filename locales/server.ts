@@ -6,5 +6,6 @@ export const { getI18n, getScopedI18n, getCurrentLocale, getStaticParams } =
     id: () => import("./translations/id"),
     de: () => import("./translations/de"),
     ru: () => import("./translations/ru"),
-    nl: () => import("./translations/nl")
+    nl: () => import("./translations/nl"),
+    it: () => import("./translations/it")
   })
