@@ -56,7 +56,7 @@ export default function ChatPanel({
       </Button>
       <ButtonScrollToBottom />
       <div className="mx-auto sm:max-w-2xl sm:px-2">
-        {/* <div className="flex h-12 items-center justify-center"></div> */}
+        <div className="flex h-12 items-center justify-center"></div>
         <div className="space-y-2 border-t bg-background p-2 sm:border-none sm:bg-transparent">
           <PromptForm
             id={id}
