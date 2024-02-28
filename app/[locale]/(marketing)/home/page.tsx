@@ -98,7 +98,7 @@ export default async function HomePage() {
 
       <Particles
         className="pointer-events-none absolute inset-0 -z-10 animate-fade-in"
-        quantity={200}
+        quantity={300}
       />
 
       <section className="py-36">
