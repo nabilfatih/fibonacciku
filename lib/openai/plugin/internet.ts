@@ -57,8 +57,8 @@ export const googlePlugin = cache(
       const content = await Promise.all(
         result.slice(0, 5).map(async (item: any) => {
           const scraped = await scrapeWebsite(item.link)
-          // only get the first 1000 characters
-          return scraped.data.substring(0, 1000)
+          // only get the first 2000 characters
+          return scraped.data.substring(0, 2000)
         })
       )
 
