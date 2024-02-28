@@ -5,6 +5,7 @@ import { getBlogsSlugAdmin } from "@/lib/supabase/admin/blogs"
 const locales = ["", "/en", "/id", "/de", "/ru", "/nl", "/it"]
 
 const pathnames = [
+  "",
   "/",
   "/home",
   "/about",
