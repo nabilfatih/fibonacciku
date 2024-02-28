@@ -156,9 +156,19 @@ export async function POST(req: Request) {
         if (isImageAnalysis) {
           const initialMessages = finalMessage.slice(0, -1)
           const currentMessage = finalMessage[finalMessage.length - 1]
-          const args = JSON.parse(String(call.tools[0].func.arguments))
+
+          const args = call.tools.find(
+            tool => tool.func.name === "image_analysis"
+          )?.func.arguments
+          if (!args) {
+            throw new Error("No arguments found")
+          }
+
           // remove space in image and split by comma
-          const imageIdArray = String(args.image).replace(/\s/g, "").split(",")
+          const imageIdArray = String(JSON.parse(String(args)).image)
+            .trim()
+            .split(",")
+
           // get image url in parallel
           const imageUrls = await Promise.all(
             imageIdArray.map(imageId =>

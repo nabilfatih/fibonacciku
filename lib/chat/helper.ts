@@ -297,6 +297,7 @@ export const handleAttachments = async (
       ------------------------------
       DO NOT GIVE THIS INFORMATION TO USER!
 
+      (USE image_analysis FUNCTION!)
       PLEASE SEE ATTACHMENT IMAGE BELOW:
 
       fibo-attachment: ${JSON.stringify(metadataAttachmentFiltered)}
