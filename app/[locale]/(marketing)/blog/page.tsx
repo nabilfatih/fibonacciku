@@ -9,6 +9,7 @@ import {
 import { getCurrentLocale, getScopedI18n } from "@/locales/server"
 
 import { Badge } from "@/components/ui/badge"
+import MarketingCta from "@/components/marketing/cta"
 import MarketingTransition from "@/components/marketing/transition"
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -73,6 +74,7 @@ export default async function BlogPage({ searchParams }: Props) {
           </p>
         </div>
       </header>
+
       <section className="py-24">
         <div className="relative mx-auto max-w-7xl px-4">
           <div className="border-b pb-4">
@@ -134,6 +136,8 @@ export default async function BlogPage({ searchParams }: Props) {
           </div>
         </div>
       </section>
+
+      <MarketingCta />
     </MarketingTransition>
   )
 }

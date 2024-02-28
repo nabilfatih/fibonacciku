@@ -23,6 +23,7 @@ import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid"
 import { Button } from "@/components/ui/button"
 import Particles from "@/components/ui/particles"
 import ServerReactMarkdown from "@/components/markdown/server"
+import MarketingCta from "@/components/marketing/cta"
 import MarketingTransition from "@/components/marketing/transition"
 import { pluginsList } from "@/components/premium/plugins"
 
@@ -173,32 +174,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="border-t py-36">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="space-y-2 text-center">
-            <h1 className="mx-auto w-fit max-w-4xl text-balance bg-gradient-to-r from-foreground to-primary bg-clip-text text-4xl font-bold tracking-tighter text-transparent sm:text-7xl">
-              {t("just-ask-anything")}
-            </h1>
-            <p className="mx-auto max-w-lg text-balance text-sm sm:text-base md:max-w-2xl">
-              {t("slogan")}
-            </p>
-          </div>
-          <div className="mt-4 flex flex-row justify-center gap-2">
-            <Button asChild>
-              <Link href="/chat/assistant">
-                <IconSparkles className="mr-1 h-4 w-4" />
-                {t("get-started")}
-              </Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/contact">
-                <IconMail className="mr-1 h-4 w-4" />
-                {t("contact-us")}
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      <MarketingCta />
     </MarketingTransition>
   )
 }
