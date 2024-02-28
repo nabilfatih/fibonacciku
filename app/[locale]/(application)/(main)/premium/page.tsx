@@ -7,7 +7,6 @@ import { getScopedI18n } from "@/locales/server"
 
 import { Badge } from "@/components/ui/badge"
 import PremiumFeatures from "@/components/premium/features"
-import PremiumPlugins from "@/components/premium/plugins"
 import PremiumPrice from "@/components/premium/price"
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -93,16 +92,6 @@ export default async function PremiumPage() {
       <PremiumPrice user={session?.user || null} subscription={subscription} />
 
       <PremiumFeatures />
-
-      <section className="mx-auto max-w-4xl px-4 sm:hidden">
-        <div className="flex justify-center">
-          <PremiumPlugins
-            variant="outline"
-            className="w-full sm:w-auto"
-            text={t("see-our-plugins")}
-          />
-        </div>
-      </section>
     </main>
   )
 }
