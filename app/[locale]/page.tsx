@@ -3,6 +3,8 @@ import { redirect } from "next/navigation"
 
 import { createClientServer } from "@/lib/supabase/server"
 
+import MarketingHome from "@/components/marketing/home"
+
 export default async function Home() {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
@@ -15,5 +17,5 @@ export default async function Home() {
     redirect("/chat/assistant")
   }
 
-  redirect("/home")
+  return <MarketingHome />
 }
