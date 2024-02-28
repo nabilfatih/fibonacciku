@@ -1,4 +1,3 @@
-import { Suspense } from "react"
 import { cookies } from "next/headers"
 
 import { CurrentUserContextProvider } from "@/lib/context/use-current-user"
@@ -20,9 +19,7 @@ export default async function ApplicationLayout({
   return (
     <CurrentUserContextProvider session={session}>
       <HeaderChat />
-      <main className="flex flex-1 flex-col overflow-hidden">
-        <Suspense>{children}</Suspense>
-      </main>
+      <main className="flex flex-1 flex-col overflow-hidden">{children}</main>
     </CurrentUserContextProvider>
   )
 }

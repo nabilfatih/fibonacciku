@@ -5,7 +5,6 @@ import "@/styles/globals.css"
 import "@/styles/config.css"
 import "@/styles/themes.css"
 
-import { Suspense } from "react"
 import type { Metadata, Viewport } from "next"
 import { notFound } from "next/navigation"
 import { localesList } from "@/middleware"
@@ -216,9 +215,7 @@ export default function RootLayout({
           themes={themes}
           disableTransitionOnChange
         >
-          <div className="flex min-h-[100dvh] flex-col">
-            <Suspense>{children}</Suspense>
-          </div>
+          <div className="flex min-h-[100dvh] flex-col">{children}</div>
           <TailwindIndicator />
           <Analytics />
         </Providers>
