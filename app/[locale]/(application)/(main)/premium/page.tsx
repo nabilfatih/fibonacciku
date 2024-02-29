@@ -6,6 +6,7 @@ import { createClientServer } from "@/lib/supabase/server"
 import { getScopedI18n } from "@/locales/server"
 
 import { Badge } from "@/components/ui/badge"
+import PremiumCompare from "@/components/premium/compare"
 import PremiumFeatures from "@/components/premium/features"
 import PremiumPrice from "@/components/premium/price"
 
@@ -76,7 +77,7 @@ export default async function PremiumPage() {
   }
 
   return (
-    <main className="h-full space-y-4 overflow-y-auto overflow-x-hidden pb-6">
+    <main className="h-full space-y-6 overflow-y-auto overflow-x-hidden pb-6">
       <header className="border-b py-4">
         <div className="relative mx-auto max-w-4xl px-4">
           <div className="flex items-center">
@@ -92,6 +93,15 @@ export default async function PremiumPage() {
       <PremiumPrice user={session?.user || null} subscription={subscription} />
 
       <PremiumFeatures />
+
+      <div className="relative mx-auto max-w-4xl px-4 py-6">
+        <div className="flex items-center pb-6">
+          <h2 className="text-2xl font-semibold tracking-tighter">
+            Compare features across plans
+          </h2>
+        </div>
+        <PremiumCompare />
+      </div>
     </main>
   )
 }
