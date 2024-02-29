@@ -405,7 +405,8 @@ export default {
     "voice-output": "Spraakuitvoer",
     "image-input": "Afbeelding invoer",
     "customer-service": "Klantenservice",
-    wikipedia: "Wikipedia"
+    wikipedia: "Wikipedia",
+    "compare-features-across-plans": "Vergelijk functies tussen plannen"
   },
   PricingFAQ: {
     faq: "Veelgestelde vragen",

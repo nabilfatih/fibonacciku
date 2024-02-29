@@ -408,7 +408,9 @@ export default {
     "voice-output": "Sprachausgabe",
     "image-input": "Bild-Eingabe",
     "customer-service": "Kundenservice",
-    wikipedia: "Wikipedia"
+    wikipedia: "Wikipedia",
+    "compare-features-across-plans":
+      "Vergleichen Sie Funktionen über Pläne hinweg"
   },
   PricingFAQ: {
     faq: "Häufig gestellte Fragen",

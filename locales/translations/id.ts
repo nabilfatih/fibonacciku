@@ -405,7 +405,8 @@ export default {
     "voice-output": "Output suara",
     "image-input": "Input gambar",
     "customer-service": "Layanan pelanggan",
-    wikipedia: "Wikipedia"
+    wikipedia: "Wikipedia",
+    "compare-features-across-plans": "Bandikan fitur di seluruh paket"
   },
 
   PricingFAQ: {

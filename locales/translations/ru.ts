@@ -404,7 +404,8 @@ export default {
     "voice-output": "Голосовой вывод",
     "image-input": "Ввод изображения",
     "customer-service": "Служба поддержки",
-    wikipedia: "Википедия"
+    wikipedia: "Википедия",
+    "compare-features-across-plans": "Сравнить функции между планами"
   },
   PricingFAQ: {
     faq: "Часто задаваемые вопросы",

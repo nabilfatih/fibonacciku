@@ -97,7 +97,7 @@ export default async function PremiumPage() {
       <div className="relative mx-auto max-w-4xl px-4 py-6">
         <div className="flex items-center pb-6">
           <h2 className="text-2xl font-semibold tracking-tighter">
-            Compare features across plans
+            {t("compare-features-across-plans")}
           </h2>
         </div>
         <PremiumCompare />

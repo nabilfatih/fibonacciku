@@ -403,7 +403,8 @@ export default {
     "voice-output": "Uscita vocale",
     "image-input": "Input immagine",
     "customer-service": "Servizio clienti",
-    wikipedia: "Wikipedia"
+    wikipedia: "Wikipedia",
+    "compare-features-across-plans": "Confronta le caratteristiche tra i piani"
   },
   PricingFAQ: {
     faq: "Domande frequenti",

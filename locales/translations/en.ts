@@ -396,7 +396,8 @@ export default {
     "voice-output": "Voice output",
     "image-input": "Image input",
     "customer-service": "Customer service",
-    wikipedia: "Wikipedia"
+    wikipedia: "Wikipedia",
+    "compare-features-across-plans": "Compare features across plans"
   },
   PricingFAQ: {
     faq: "FAQs",
