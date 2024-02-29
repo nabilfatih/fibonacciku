@@ -20,6 +20,14 @@ import { useScopedI18n } from "@/locales/client"
 
 import CodeBlock from "@/components/ui/codeblock"
 import { IconSpinner } from "@/components/ui/icons"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from "@/components/ui/table"
 import ImageMarkdown from "@/components/chat/image"
 import MemoizedReactMarkdown from "@/components/markdown"
 
@@ -154,21 +162,22 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
           )
         },
         table({ children }) {
-          return (
-            <div className={cn("overflow-x-auto")}>
-              <table className="my-0 border-separate border-spacing-0 border-0">
-                {children}
-              </table>
-            </div>
-          )
+          return <Table>{children}</Table>
+        },
+        thead({ children }) {
+          return <TableHeader>{children}</TableHeader>
         },
         th({ children }) {
-          return (
-            <th className="break-words border-b text-foreground">{children}</th>
-          )
+          return <TableHead>{children}</TableHead>
         },
         td({ children }) {
-          return <td className="break-words border-b">{children}</td>
+          return <TableCell>{children}</TableCell>
+        },
+        tr({ children }) {
+          return <TableRow>{children}</TableRow>
+        },
+        tbody({ children }) {
+          return <TableBody>{children}</TableBody>
         },
         a({ children, href }) {
           const DynamicTag = href ? Link : "button"

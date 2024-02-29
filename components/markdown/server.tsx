@@ -16,6 +16,14 @@ import remarkParse from "remark-parse"
 import { cn, replaceDelimiters } from "@/lib/utils"
 
 import CodeBlock from "@/components/ui/codeblock"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from "@/components/ui/table"
 import ImageMarkdown from "@/components/chat/image"
 
 export type Props = {
@@ -95,21 +103,22 @@ export default function ServerReactMarkdown({ content, className }: Props) {
           )
         },
         table({ children }) {
-          return (
-            <div className={cn("overflow-x-auto")}>
-              <table className="my-0 border-separate border-spacing-0 border-0">
-                {children}
-              </table>
-            </div>
-          )
+          return <Table>{children}</Table>
+        },
+        thead({ children }) {
+          return <TableHeader>{children}</TableHeader>
         },
         th({ children }) {
-          return (
-            <th className="break-words border-b text-foreground">{children}</th>
-          )
+          return <TableHead>{children}</TableHead>
         },
         td({ children }) {
-          return <td className="break-words border-b">{children}</td>
+          return <TableCell>{children}</TableCell>
+        },
+        tr({ children }) {
+          return <TableRow>{children}</TableRow>
+        },
+        tbody({ children }) {
+          return <TableBody>{children}</TableBody>
         },
         a({ children, href }) {
           const DynamicTag = href ? Link : "button"
