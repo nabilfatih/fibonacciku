@@ -3,6 +3,7 @@ import { cookies } from "next/headers"
 
 import type { Subscription } from "@/types/types"
 import { createClientServer } from "@/lib/supabase/server"
+import { cn } from "@/lib/utils"
 import { getScopedI18n } from "@/locales/server"
 
 import { Badge } from "@/components/ui/badge"
@@ -79,7 +80,12 @@ export default async function PremiumPage() {
   return (
     <main className="h-full space-y-6 overflow-y-auto overflow-x-hidden pb-6">
       <header className="border-b py-4">
-        <div className="relative mx-auto max-w-4xl px-4">
+        <div
+          className={cn(
+            "relative mx-auto max-w-4xl px-4",
+            !session && "max-w-7xl"
+          )}
+        >
           <div className="flex items-center">
             <h2 className="text-2xl font-semibold tracking-tighter">
               FibonacciKu
@@ -90,18 +96,40 @@ export default async function PremiumPage() {
         </div>
       </header>
 
-      <PremiumPrice user={session?.user || null} subscription={subscription} />
+      <section
+        className={cn(
+          "relative mx-auto max-w-4xl px-4",
+          !session && "max-w-7xl"
+        )}
+      >
+        <PremiumPrice
+          user={session?.user || null}
+          subscription={subscription}
+        />
+      </section>
 
-      <PremiumFeatures />
+      <section
+        className={cn(
+          "relative mx-auto max-w-4xl px-4",
+          !session && "max-w-7xl"
+        )}
+      >
+        <PremiumFeatures />
+      </section>
 
-      <div className="relative mx-auto max-w-4xl px-4 py-6">
+      <section
+        className={cn(
+          "relative mx-auto max-w-4xl px-4 py-6",
+          !session && "max-w-7xl"
+        )}
+      >
         <div className="flex items-center pb-6">
           <h2 className="text-2xl font-semibold tracking-tighter">
             {t("compare-features-across-plans")}
           </h2>
         </div>
         <PremiumCompare />
-      </div>
+      </section>
     </main>
   )
 }

@@ -118,7 +118,7 @@ export default function PremiumPrice({ user, subscription }: Props) {
   )
 
   return (
-    <section className="mx-auto max-w-4xl px-4">
+    <>
       {!subscription && currency !== "idr" && (
         <div className="mx-auto mb-4 sm:max-w-xs">
           <div className="flex items-center justify-center gap-2 rounded-xl border py-2 shadow">
@@ -203,6 +203,6 @@ export default function PremiumPrice({ user, subscription }: Props) {
           )
         })}
       </div>
-    </section>
+    </>
   )
 }
