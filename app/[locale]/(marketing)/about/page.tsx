@@ -86,21 +86,19 @@ export default async function AboutPage() {
             </p>
           </header>
 
-          <div className="mx-auto mt-16 grid grid-cols-1 items-start justify-center gap-10 sm:grid-cols-2 md:mt-20 md:grid-cols-3 md:flex-row lg:mt-24 lg:gap-2">
+          <div className="mt-16 grid grid-cols-1 gap-16 sm:grid-cols-2 md:mt-20 md:grid-cols-3 lg:mt-24 lg:gap-32">
             {iconsInfo.map((iconInfo, index) => (
-              <div className="px-2" key={index}>
-                <div className="flex flex-row items-start justify-center gap-4">
-                  <div className="rounded-xl bg-muted p-2">
-                    <iconInfo.IconComponent className="h-6 w-6" />
-                  </div>
-                  <div className="max-w-[18rem]">
-                    <h2 className="text-lg font-semibold leading-none sm:text-2xl">
-                      {t(iconInfo.titleKey as never)}
-                    </h2>
-                    <p className="text-sm text-muted-foreground sm:text-base">
-                      {t(iconInfo.descKey as never)}
-                    </p>
-                  </div>
+              <div key={index} className="flex flex-row items-start gap-4">
+                <div className="rounded-xl bg-muted p-2">
+                  <iconInfo.IconComponent className="h-6 w-6" />
+                </div>
+                <div className="">
+                  <h2 className="text-lg font-semibold leading-none sm:text-2xl">
+                    {t(iconInfo.titleKey as never)}
+                  </h2>
+                  <p className="text-sm text-muted-foreground sm:text-base">
+                    {t(iconInfo.descKey as never)}
+                  </p>
                 </div>
               </div>
             ))}
