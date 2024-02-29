@@ -41,10 +41,8 @@ export default function AccountTheme({ userId }: Props) {
           startTransition(() => {
             setTheme(value)
             // change the color scheme of the browser to match the theme
-            const htmlElement = document.querySelector("html")
-            if (!htmlElement) return
             if (darkThemes.includes(theme)) {
-              htmlElement.style.colorScheme = "dark"
+              document.documentElement.style.colorScheme = "dark"
             }
             updateUser(userId, { theme: value })
           })
