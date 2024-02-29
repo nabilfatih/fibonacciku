@@ -12,6 +12,7 @@ import {
 import { getScopedI18n } from "@/locales/server"
 
 import { Button } from "@/components/ui/button"
+import Particles from "@/components/ui/particles"
 import MarketingCta from "@/components/marketing/cta"
 import MarketingTransition from "@/components/marketing/transition"
 
@@ -66,6 +67,11 @@ export default async function AboutPage() {
 
   return (
     <MarketingTransition className="relative">
+      <Particles
+        className="pointer-events-none absolute inset-0 -z-10 animate-fade-in"
+        quantity={200}
+      />
+
       <section className="py-36">
         <div className="mx-auto max-w-7xl px-4">
           <header className="text-center">
@@ -111,11 +117,11 @@ export default async function AboutPage() {
             <p className="max-w-2xl text-muted-foreground">{t("team-desc")}</p>
           </header>
 
-          <div className="grid grid-cols-1 gap-4 pt-12 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <Link
               href="https://nabilfatih.com"
               target="_blank"
-              className="rounded-xl border p-6 shadow transition-colors duration-300 ease-in-out hover:bg-muted/50"
+              className="rounded-xl border bg-card p-6 shadow transition-colors duration-300 ease-in-out hover:bg-muted/50"
             >
               <div className="flex items-start gap-6">
                 <div className="relative h-12 w-12 rounded-full">
@@ -136,7 +142,7 @@ export default async function AboutPage() {
             <Link
               href="https://www.linkedin.com/in/anandalubis/"
               target="_blank"
-              className="rounded-xl border p-6 shadow transition-colors duration-300 ease-in-out hover:bg-muted/50"
+              className="rounded-xl border bg-card p-6 shadow transition-colors duration-300 ease-in-out hover:bg-muted/50"
             >
               <div className="flex items-start gap-6">
                 <div className="relative h-12 w-12 rounded-full">
@@ -159,7 +165,7 @@ export default async function AboutPage() {
             <Link
               href="https://www.linkedin.com/in/sesanti-nandi-pribadi/"
               target="_blank"
-              className="rounded-xl border p-6 shadow transition-colors duration-300 ease-in-out hover:bg-muted/50"
+              className="rounded-xl border bg-card p-6 shadow transition-colors duration-300 ease-in-out hover:bg-muted/50"
             >
               <div className="flex items-start gap-6">
                 <div className="relative h-12 w-12 rounded-full">
