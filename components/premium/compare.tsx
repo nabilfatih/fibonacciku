@@ -26,6 +26,8 @@ export default async function PremiumCompare() {
       <TableBody>
         <TableRow className="hover:bg-transparent">
           <TableCell className="pt-8 font-semibold">Essentials</TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
         </TableRow>
         <TableRow>
           <TableCell className="align-top">Messages and interactions</TableCell>
@@ -53,6 +55,8 @@ export default async function PremiumCompare() {
         </TableRow>
         <TableRow className="hover:bg-transparent">
           <TableCell className="pt-8 font-semibold">Model Quality</TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
         </TableRow>
         <TableRow>
           <TableCell>Advanced AI model (GPT-4)</TableCell>
@@ -85,6 +89,8 @@ export default async function PremiumCompare() {
         </TableRow>
         <TableRow className="hover:bg-transparent">
           <TableCell className="pt-8 font-semibold">Features</TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
         </TableRow>
         <TableRow>
           <TableCell>Share chat</TableCell>
@@ -184,6 +190,8 @@ export default async function PremiumCompare() {
 
         <TableRow className="hover:bg-transparent">
           <TableCell className="pt-8 font-semibold">Customer Service</TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
         </TableRow>
         <TableRow>
           <TableCell>Priority support</TableCell>
