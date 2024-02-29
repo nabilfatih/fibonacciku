@@ -439,7 +439,9 @@ export default {
     ceo: "CEO",
     "public-relation": "Hubungan Masyarakat",
     marketing: "Pemasaran",
-    advisor: "Penasehat"
+    advisor: "Penasehat",
+    copywriter: "Penulis Copy",
+    "content-creator": "Pembuat Konten"
   },
   Auth: {
     welcome: "Selamat datang di FibonacciKu",

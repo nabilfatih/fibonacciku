@@ -145,7 +145,7 @@ export default async function MarketingHome() {
               width={3024}
               height={1886}
               priority
-              className="rounded-xl border object-cover shadow"
+              className="rounded-xl border bg-muted/90 object-cover shadow"
             />
           </div>
           <div className="flex flex-row justify-center gap-2">

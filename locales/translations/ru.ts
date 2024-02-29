@@ -433,7 +433,9 @@ export default {
     ceo: "Генеральный директор",
     "public-relation": "Отдел по связям с общественностью",
     marketing: "Маркетинг",
-    advisor: "Советник"
+    advisor: "Советник",
+    copywriter: "Копирайтер",
+    "content-creator": "Создатель контента"
   },
   Auth: {
     welcome: "Добро пожаловать в FibonacciKu",

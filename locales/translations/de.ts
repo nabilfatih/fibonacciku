@@ -438,7 +438,9 @@ export default {
     ceo: "Geschäftsführer",
     "public-relation": "Öffentlichkeitsarbeit",
     marketing: "Marketing",
-    advisor: "Berater"
+    advisor: "Berater",
+    copywriter: "Texter",
+    "content-creator": "Inhalts-Ersteller"
   },
   Auth: {
     welcome: "Willkommen bei FibonacciKu",

@@ -106,6 +106,85 @@ export default async function AboutPage() {
         <div className="mx-auto max-w-7xl space-y-12 px-4">
           <header className="relative space-y-2">
             <h1 className="text-4xl font-semibold tracking-tighter">
+              {t("team-title")}
+            </h1>
+            <p className="max-w-2xl text-muted-foreground">{t("team-desc")}</p>
+          </header>
+
+          <div className="grid grid-cols-1 gap-4 pt-12 sm:grid-cols-2 lg:grid-cols-3">
+            <Link
+              href="https://nabilfatih.com"
+              target="_blank"
+              className="rounded-xl border p-6 shadow transition-colors duration-300 ease-in-out hover:bg-muted/50"
+            >
+              <div className="flex items-start gap-6">
+                <div className="relative h-12 w-12 rounded-full">
+                  <Image
+                    src="/nabil.webp"
+                    fill
+                    priority
+                    alt="Nabil Fatih"
+                    className="rounded-full bg-muted/90 object-cover object-center"
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <h2 className="text-xl font-medium">Nabil Fatih</h2>
+                  <p className="text-muted-foreground">{t("ceo")}</p>
+                </div>
+              </div>
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/anandalubis/"
+              target="_blank"
+              className="rounded-xl border p-6 shadow transition-colors duration-300 ease-in-out hover:bg-muted/50"
+            >
+              <div className="flex items-start gap-6">
+                <div className="relative h-12 w-12 rounded-full">
+                  <Image
+                    src="/nanda.webp"
+                    fill
+                    priority
+                    alt="Ananda Feby"
+                    className="rounded-full bg-muted/90 object-cover object-center"
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <h2 className="text-xl font-medium">Ananda Feby</h2>
+                  <p className="text-muted-foreground">
+                    {t("public-relation")}
+                  </p>
+                </div>
+              </div>
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/sesanti-nandi-pribadi/"
+              target="_blank"
+              className="rounded-xl border p-6 shadow transition-colors duration-300 ease-in-out hover:bg-muted/50"
+            >
+              <div className="flex items-start gap-6">
+                <div className="relative h-12 w-12 rounded-full">
+                  <Image
+                    src="/nandi.webp"
+                    fill
+                    priority
+                    alt="Sesanti Nandi"
+                    className="rounded-full bg-muted/90 object-cover object-center"
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <h2 className="text-xl font-medium">Sesanti Nandi</h2>
+                  <p className="text-muted-foreground">{t("copywriter")}</p>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-36">
+        <div className="mx-auto max-w-7xl space-y-12 px-4">
+          <header className="relative space-y-2">
+            <h1 className="text-4xl font-semibold tracking-tighter">
               {t("sustain-title")}
             </h1>
             <p className="max-w-2xl text-muted-foreground">
