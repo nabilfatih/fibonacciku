@@ -385,7 +385,26 @@ export default {
     "7-free-trial": "7 дней бесплатного теста",
     "40%-discount": "Скидка 40% для новичков",
     monthly: "Ежемесячно",
-    yearly: "Ежегодно"
+    yearly: "Ежегодно",
+    essentials: "Основные",
+    "message-and-interactions": "Сообщение и взаимодействие",
+    "limited-on-bandwidth-and-availability":
+      "Ограничено по пропускной способности и доступности",
+    unlimited: "Неограниченный",
+    limited: "Ограниченный",
+    "chat-history": "История чата",
+    "document-upload": "Загрузка документов",
+    "access-on-web": "Доступ в Интернете",
+    "model-quality": "Качество модели",
+    "advanced-ai-model-gpt-4": "Продвинутая модель ИИ (GPT-4)",
+    "regular-quality-and-speed-updates-as-models-improve":
+      "Регулярные обновления качества и скорости по мере улучшения моделей",
+    features: "Особенности",
+    "share-chat": "Поделиться чатом",
+    "voice-output": "Голосовой вывод",
+    "image-input": "Ввод изображения",
+    "customer-service": "Служба поддержки",
+    wikipedia: "Википедия"
   },
   PricingFAQ: {
     faq: "Часто задаваемые вопросы",

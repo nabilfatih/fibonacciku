@@ -25,27 +25,31 @@ export default async function PremiumCompare() {
       </TableHeader>
       <TableBody>
         <TableRow className="hover:bg-transparent">
-          <TableCell className="pt-8 font-semibold">Essentials</TableCell>
+          <TableCell className="pt-8 font-semibold">
+            {t("essentials")}
+          </TableCell>
           <TableCell></TableCell>
           <TableCell></TableCell>
         </TableRow>
         <TableRow>
-          <TableCell className="align-top">Messages and interactions</TableCell>
-          <TableCell>Limited on bandwidth & availability</TableCell>
-          <TableCell>Unlimited</TableCell>
+          <TableCell className="align-top">
+            {t("message-and-interactions")}
+          </TableCell>
+          <TableCell>{t("limited-on-bandwidth-and-availability")}</TableCell>
+          <TableCell>{t("unlimited")}</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Chat history</TableCell>
-          <TableCell>Unlimited</TableCell>
-          <TableCell>Unlimited</TableCell>
+          <TableCell>{t("chat-history")}</TableCell>
+          <TableCell>{t("unlimited")}</TableCell>
+          <TableCell>{t("unlimited")}</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Document upload</TableCell>
-          <TableCell>Unlimited</TableCell>
-          <TableCell>Unlimited</TableCell>
+          <TableCell>{t("document-upload")}</TableCell>
+          <TableCell>{t("unlimited")}</TableCell>
+          <TableCell>{t("unlimited")}</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Access on web</TableCell>
+          <TableCell>{t("access-on-web")}</TableCell>
           <TableCell>
             <IconCheck className="h-5 w-5" />
           </TableCell>
@@ -54,12 +58,14 @@ export default async function PremiumCompare() {
           </TableCell>
         </TableRow>
         <TableRow className="hover:bg-transparent">
-          <TableCell className="pt-8 font-semibold">Model Quality</TableCell>
+          <TableCell className="pt-8 font-semibold">
+            {t("model-quality")}
+          </TableCell>
           <TableCell></TableCell>
           <TableCell></TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Advanced AI model (GPT-4)</TableCell>
+          <TableCell>{t("advanced-ai-model-gpt-4")}</TableCell>
           <TableCell>
             <IconX className="h-5 w-5" />
           </TableCell>
@@ -68,7 +74,7 @@ export default async function PremiumCompare() {
           </TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Priority access</TableCell>
+          <TableCell>{t("priority-access")}</TableCell>
           <TableCell>
             <IconX className="h-5 w-5" />
           </TableCell>
@@ -78,7 +84,7 @@ export default async function PremiumCompare() {
         </TableRow>
         <TableRow>
           <TableCell>
-            Regular quality & speed updates as models improve
+            {t("regular-quality-and-speed-updates-as-models-improve")}
           </TableCell>
           <TableCell>
             <IconCheck className="h-5 w-5" />
@@ -88,12 +94,12 @@ export default async function PremiumCompare() {
           </TableCell>
         </TableRow>
         <TableRow className="hover:bg-transparent">
-          <TableCell className="pt-8 font-semibold">Features</TableCell>
+          <TableCell className="pt-8 font-semibold">{t("features")}</TableCell>
           <TableCell></TableCell>
           <TableCell></TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Share chat</TableCell>
+          <TableCell>{t("share-chat")}</TableCell>
           <TableCell>
             <IconCheck className="h-5 w-5" />
           </TableCell>
@@ -102,7 +108,7 @@ export default async function PremiumCompare() {
           </TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Voice output</TableCell>
+          <TableCell>{t("voice-output")}</TableCell>
           <TableCell>
             <IconCheck className="h-5 w-5" />
           </TableCell>
@@ -111,7 +117,7 @@ export default async function PremiumCompare() {
           </TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Image input</TableCell>
+          <TableCell>{t("image-input")}</TableCell>
           <TableCell>
             <IconCheck className="h-5 w-5" />
           </TableCell>
@@ -120,21 +126,12 @@ export default async function PremiumCompare() {
           </TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Image generation</TableCell>
-          <TableCell>Limited</TableCell>
-          <TableCell>Unlimited</TableCell>
+          <TableCell>{t("image-generation")}</TableCell>
+          <TableCell>{t("limited")}</TableCell>
+          <TableCell>{t("unlimited")}</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Internet access</TableCell>
-          <TableCell>
-            <IconCheck className="h-5 w-5" />
-          </TableCell>
-          <TableCell>
-            <IconCheck className="h-5 w-5" />
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell>Youtube videos</TableCell>
+          <TableCell>{t("internet-access")}</TableCell>
           <TableCell>
             <IconCheck className="h-5 w-5" />
           </TableCell>
@@ -143,7 +140,7 @@ export default async function PremiumCompare() {
           </TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Academic research</TableCell>
+          <TableCell>{t("youtube-videos")}</TableCell>
           <TableCell>
             <IconCheck className="h-5 w-5" />
           </TableCell>
@@ -152,7 +149,7 @@ export default async function PremiumCompare() {
           </TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Solve math</TableCell>
+          <TableCell>{t("academic-research")}</TableCell>
           <TableCell>
             <IconCheck className="h-5 w-5" />
           </TableCell>
@@ -161,7 +158,7 @@ export default async function PremiumCompare() {
           </TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Wikipedia</TableCell>
+          <TableCell>{t("solve-math")}</TableCell>
           <TableCell>
             <IconCheck className="h-5 w-5" />
           </TableCell>
@@ -170,7 +167,7 @@ export default async function PremiumCompare() {
           </TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Website scraping</TableCell>
+          <TableCell>{t("wikipedia")}</TableCell>
           <TableCell>
             <IconCheck className="h-5 w-5" />
           </TableCell>
@@ -179,7 +176,16 @@ export default async function PremiumCompare() {
           </TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Weather</TableCell>
+          <TableCell>{t("website-scraping")}</TableCell>
+          <TableCell>
+            <IconCheck className="h-5 w-5" />
+          </TableCell>
+          <TableCell>
+            <IconCheck className="h-5 w-5" />
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>{t("weather")}</TableCell>
           <TableCell>
             <IconCheck className="h-5 w-5" />
           </TableCell>
@@ -189,12 +195,14 @@ export default async function PremiumCompare() {
         </TableRow>
 
         <TableRow className="hover:bg-transparent">
-          <TableCell className="pt-8 font-semibold">Customer Service</TableCell>
+          <TableCell className="pt-8 font-semibold">
+            {t("customer-service")}
+          </TableCell>
           <TableCell></TableCell>
           <TableCell></TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Priority support</TableCell>
+          <TableCell>{t("priority-support")}</TableCell>
           <TableCell>
             <IconX className="h-5 w-5" />
           </TableCell>

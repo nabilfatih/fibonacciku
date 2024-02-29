@@ -384,7 +384,26 @@ export default {
     "7-free-trial": "7 giorni di prova gratuita",
     "40%-discount": "40% di sconto per i nuovi arrivati",
     monthly: "Mensile",
-    yearly: "Annuale"
+    yearly: "Annuale",
+    essentials: "Essenziali",
+    "message-and-interactions": "Messaggi e interazioni",
+    "limited-on-bandwidth-and-availability":
+      "Limitato sulla larghezza di banda e disponibilità",
+    unlimited: "Illimitato",
+    limited: "Limitato",
+    "chat-history": "Cronologia chat",
+    "document-upload": "Carica documento",
+    "access-on-web": "Accesso sul web",
+    "model-quality": "Qualità del modello",
+    "advanced-ai-model-gpt-4": "Modello AI avanzato (GPT-4)",
+    "regular-quality-and-speed-updates-as-models-improve":
+      "Aggiornamenti regolari sulla qualità e sulla velocità man mano che migliorano i modelli",
+    features: "Caratteristiche",
+    "share-chat": "Condividi chat",
+    "voice-output": "Uscita vocale",
+    "image-input": "Input immagine",
+    "customer-service": "Servizio clienti",
+    wikipedia: "Wikipedia"
   },
   PricingFAQ: {
     faq: "Domande frequenti",

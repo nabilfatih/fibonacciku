@@ -386,7 +386,26 @@ export default {
     "7-free-trial": "7 hari uji coba gratis",
     "40%-discount": "Diskon 40% untuk pendatang baru",
     monthly: "Bulanan",
-    yearly: "Tahunan"
+    yearly: "Tahunan",
+    essentials: "Dasar",
+    "message-and-interactions": "Pesan dan interaksi",
+    "limited-on-bandwidth-and-availability":
+      "Terbatas pada bandwidth & ketersediaan",
+    unlimited: "Tidak terbatas",
+    limited: "Terbatas",
+    "chat-history": "Riwayat obrolan",
+    "document-upload": "Unggah dokumen",
+    "access-on-web": "Akses di web",
+    "model-quality": "Kualitas model",
+    "advanced-ai-model-gpt-4": "Model AI Lanjutan (GPT-4)",
+    "regular-quality-and-speed-updates-as-models-improve":
+      "Pembaruan kualitas & kecepatan reguler seiring perbaikan model",
+    features: "Fitur",
+    "share-chat": "Bagikan obrolan",
+    "voice-output": "Output suara",
+    "image-input": "Input gambar",
+    "customer-service": "Layanan pelanggan",
+    wikipedia: "Wikipedia"
   },
 
   PricingFAQ: {

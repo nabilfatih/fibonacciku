@@ -386,7 +386,26 @@ export default {
     "7-free-trial": "7 dagen gratis proefperiode",
     "40%-discount": "40% korting voor nieuwkomers",
     monthly: "Maandelijks",
-    yearly: "Jaarlijks"
+    yearly: "Jaarlijks",
+    essentials: "Essentieel",
+    "message-and-interactions": "Berichten en interacties",
+    "limited-on-bandwidth-and-availability":
+      "Beperkt in bandbreedte en beschikbaarheid",
+    unlimited: "Onbeperkt",
+    limited: "Beperkt",
+    "chat-history": "Chatgeschiedenis",
+    "document-upload": "Document uploaden",
+    "access-on-web": "Toegang op het web",
+    "model-quality": "Modelkwaliteit",
+    "advanced-ai-model-gpt-4": "Geavanceerd AI-model (GPT-4)",
+    "regular-quality-and-speed-updates-as-models-improve":
+      "Regelmatige kwaliteits- en snelheidsupdates naarmate modellen verbeteren",
+    features: "Functies",
+    "share-chat": "Chat delen",
+    "voice-output": "Spraakuitvoer",
+    "image-input": "Afbeelding invoer",
+    "customer-service": "Klantenservice",
+    wikipedia: "Wikipedia"
   },
   PricingFAQ: {
     faq: "Veelgestelde vragen",

@@ -377,7 +377,26 @@ export default {
     "7-free-trial": "7 days free trial",
     "40%-discount": "40% off for new comers",
     monthly: "Monthly",
-    yearly: "Yearly"
+    yearly: "Yearly",
+    essentials: "Essentials",
+    "message-and-interactions": "Message and interactions",
+    "limited-on-bandwidth-and-availability":
+      "Limited on bandwidth & availability",
+    unlimited: "Unlimited",
+    limited: "Limited",
+    "chat-history": "Chat history",
+    "document-upload": "Document upload",
+    "access-on-web": "Access on web",
+    "model-quality": "Model Quality",
+    "advanced-ai-model-gpt-4": "Advanced AI model (GPT-4)",
+    "regular-quality-and-speed-updates-as-models-improve":
+      "Regular quality & speed updates as models improve",
+    features: "Features",
+    "share-chat": "Share chat",
+    "voice-output": "Voice output",
+    "image-input": "Image input",
+    "customer-service": "Customer service",
+    wikipedia: "Wikipedia"
   },
   PricingFAQ: {
     faq: "FAQs",
