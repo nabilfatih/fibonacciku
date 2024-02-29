@@ -92,7 +92,7 @@ export default async function AboutPage() {
                 <div className="rounded-xl bg-muted p-2">
                   <iconInfo.IconComponent className="h-6 w-6" />
                 </div>
-                <div className="">
+                <div className="flex-1">
                   <h2 className="text-lg font-semibold leading-none sm:text-2xl">
                     {t(iconInfo.titleKey as never)}
                   </h2>
