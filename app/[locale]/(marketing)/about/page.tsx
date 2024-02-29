@@ -78,7 +78,7 @@ export default async function AboutPage() {
             <span className="mx-auto uppercase tracking-widest text-muted-foreground">
               {t("our-mission")}
             </span>
-            <h1 className="mx-auto mb-6 mt-2 w-fit max-w-4xl bg-gradient-to-r from-foreground to-primary bg-clip-text pb-4 text-5xl font-bold tracking-tighter text-transparent sm:text-7xl">
+            <h1 className="mx-auto mb-12 mt-6 w-fit max-w-4xl bg-gradient-to-r from-foreground to-primary bg-clip-text pb-4 text-5xl font-bold tracking-tighter text-transparent sm:text-7xl">
               {t("title")}
             </h1>
             <p className="mx-auto max-w-xl text-balance text-lg sm:text-xl md:max-w-2xl">
@@ -86,7 +86,7 @@ export default async function AboutPage() {
             </p>
           </header>
 
-          <div className="mt-16 grid grid-cols-1 gap-16 sm:grid-cols-2 md:mt-20 md:grid-cols-3 lg:mt-24 lg:gap-32">
+          <div className="mt-24 grid grid-cols-1 gap-16 sm:grid-cols-2 md:grid-cols-3 lg:gap-32">
             {iconsInfo.map((iconInfo, index) => (
               <div key={index} className="flex flex-row items-start gap-4">
                 <div className="rounded-xl bg-muted p-2">
