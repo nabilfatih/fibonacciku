@@ -19,8 +19,8 @@ export default async function PremiumCompare() {
       <TableHeader>
         <TableRow className="hover:bg-transparent">
           <TableHead className="w-1/2"></TableHead>
-          <TableHead className="w-1/4">{t("free")}</TableHead>
-          <TableHead className="w-1/4">{t("premium")}</TableHead>
+          <TableHead className="w-1/4 font-semibold">{t("free")}</TableHead>
+          <TableHead className="w-1/4 font-semibold">{t("premium")}</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
