@@ -18,7 +18,7 @@ export default function HeaderBadge() {
     return (
       <Link href="/premium" className="ml-2">
         <Badge variant="outline" className="hidden sm:inline-flex">
-          {t("limit-access")}
+          {t("free")}
         </Badge>
         <IconLockAccess className="h-4 w-4 text-primary sm:hidden" />
       </Link>
