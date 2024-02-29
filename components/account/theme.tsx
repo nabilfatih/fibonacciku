@@ -3,7 +3,7 @@
 import React from "react"
 import { useTheme } from "next-themes"
 
-import { themes } from "@/lib/data/themes"
+import { darkThemes, themes } from "@/lib/data/themes"
 import { capitalizeFirstLetter } from "@/lib/utils"
 import { useScopedI18n } from "@/locales/client"
 
@@ -40,6 +40,12 @@ export default function AccountTheme({ userId }: Props) {
         onValueChange={value => {
           startTransition(() => {
             setTheme(value)
+            // change the color scheme of the browser to match the theme
+            const htmlElement = document.querySelector("html")
+            if (!htmlElement) return
+            if (darkThemes.includes(theme)) {
+              htmlElement.style.colorScheme = "dark"
+            }
             updateUser(userId, { theme: value })
           })
         }}
