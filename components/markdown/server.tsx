@@ -19,7 +19,9 @@ import CodeBlock from "@/components/ui/codeblock"
 import {
   Table,
   TableBody,
+  TableCaption,
   TableCell,
+  TableFooter,
   TableHead,
   TableHeader,
   TableRow
@@ -105,6 +107,9 @@ export default function ServerReactMarkdown({ content, className }: Props) {
         table({ children }) {
           return <Table>{children}</Table>
         },
+        caption({ children }) {
+          return <TableCaption>{children}</TableCaption>
+        },
         thead({ children }) {
           return <TableHeader>{children}</TableHeader>
         },
@@ -119,6 +124,9 @@ export default function ServerReactMarkdown({ content, className }: Props) {
         },
         tbody({ children }) {
           return <TableBody>{children}</TableBody>
+        },
+        tfoot({ children }) {
+          return <TableFooter>{children}</TableFooter>
         },
         a({ children, href }) {
           const DynamicTag = href ? Link : "button"

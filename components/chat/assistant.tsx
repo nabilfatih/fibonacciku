@@ -23,7 +23,9 @@ import { IconSpinner } from "@/components/ui/icons"
 import {
   Table,
   TableBody,
+  TableCaption,
   TableCell,
+  TableFooter,
   TableHead,
   TableHeader,
   TableRow
@@ -164,6 +166,9 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
         table({ children }) {
           return <Table>{children}</Table>
         },
+        caption({ children }) {
+          return <TableCaption>{children}</TableCaption>
+        },
         thead({ children }) {
           return <TableHeader>{children}</TableHeader>
         },
@@ -178,6 +183,9 @@ export default function ChatAssistant({ index, content, currentIndex }: Props) {
         },
         tbody({ children }) {
           return <TableBody>{children}</TableBody>
+        },
+        tfoot({ children }) {
+          return <TableFooter>{children}</TableFooter>
         },
         a({ children, href }) {
           const DynamicTag = href ? Link : "button"
