@@ -3,7 +3,7 @@
 import React from "react"
 import { useTheme } from "next-themes"
 
-import { darkThemes, themes } from "@/lib/data/themes"
+import { themes } from "@/lib/data/themes"
 import { capitalizeFirstLetter } from "@/lib/utils"
 import { useScopedI18n } from "@/locales/client"
 
@@ -42,10 +42,6 @@ export default function AccountTheme({ userId }: Props) {
             setTheme(value)
             updateUser(userId, { theme: value })
           })
-          const d = document.documentElement
-          if (darkThemes.includes(value)) {
-            d.style.colorScheme = "dark"
-          }
         }}
       >
         <SelectTrigger className="w-28">
