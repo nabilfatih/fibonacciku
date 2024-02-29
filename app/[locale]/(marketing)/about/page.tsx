@@ -80,7 +80,7 @@ export default async function AboutPage() {
             </p>
           </header>
 
-          <div className="mx-auto my-16 grid grid-cols-1 items-start justify-center gap-10 sm:grid-cols-2 md:my-20 md:grid-cols-3 md:flex-row lg:my-24 lg:gap-2">
+          <div className="mx-auto mt-16 grid grid-cols-1 items-start justify-center gap-10 sm:grid-cols-2 md:mt-20 md:grid-cols-3 md:flex-row lg:mt-24 lg:gap-2">
             {iconsInfo.map((iconInfo, index) => (
               <div className="px-2" key={index}>
                 <div className="flex flex-row items-start justify-center gap-4">
