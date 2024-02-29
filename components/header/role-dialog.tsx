@@ -11,11 +11,12 @@ import { useCurrentUser } from "@/lib/context/use-current-user"
 import {
   updateUserGeoLocation,
   updateUserIp,
+  updateUserLang,
   updateUserRef,
   updateUserRole
 } from "@/lib/supabase/client/users"
 import { getGeoLocation, getIp } from "@/lib/utils"
-import { useScopedI18n } from "@/locales/client"
+import { useCurrentLocale, useScopedI18n } from "@/locales/client"
 
 import {
   AlertDialog,
@@ -29,6 +30,7 @@ import { Button } from "@/components/ui/button"
 export default function RoleDialog() {
   const t = useScopedI18n("ModalInitiateRole")
   const tBackend = useScopedI18n("BackendRouter")
+  const locale = useCurrentLocale()
   const searchParams = useSearchParams()
   const router = useRouter()
   const pathname = usePathname()
@@ -46,7 +48,8 @@ export default function RoleDialog() {
       await Promise.all([
         updateUserRole(userDetails.id, role as UserRole),
         updateUserGeo(userDetails),
-        updateUserIpAddress(userDetails)
+        updateUserIpAddress(userDetails),
+        updateUserLang(userDetails.id, locale)
       ])
       toast.success(t("welcome"))
       await sendWelcomeEmail(role, userDetails)
