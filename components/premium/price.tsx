@@ -3,12 +3,7 @@
 import { useCallback, useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
 import type { User } from "@supabase/supabase-js"
-import {
-  IconCheck,
-  IconCopy,
-  IconDiscount2,
-  IconGift
-} from "@tabler/icons-react"
+import { IconCheck, IconCopy, IconDiscount2 } from "@tabler/icons-react"
 import { toast } from "sonner"
 import useSWR from "swr"
 
@@ -172,13 +167,6 @@ export default function PremiumPrice({ user, subscription }: Props) {
                       )}
                     </span>
                   </div>
-
-                  {currency !== "idr" && (
-                    <p className="flex items-center gap-1 text-sm leading-none text-primary">
-                      <IconGift className="h-4 w-4" />
-                      {t("7-free-trial")}
-                    </p>
-                  )}
                 </div>
               </CardContent>
               <CardFooter>

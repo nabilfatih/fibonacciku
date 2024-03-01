@@ -60,7 +60,6 @@ export async function POST(req: Request) {
         mode: "subscription",
         allow_promotion_codes: price.type === "monthly" ? true : false,
         subscription_data: {
-          trial_period_days: 7,
           metadata
         },
         success_url: `${getURL()}/chat/assistant?payment=success`,
