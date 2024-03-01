@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils"
 import { getScopedI18n } from "@/locales/server"
 
 import { Badge } from "@/components/ui/badge"
+import MarketingCta from "@/components/marketing/cta"
+import MarketingFooter from "@/components/marketing/footer"
 import PremiumCompare from "@/components/premium/compare"
 import PremiumFeatures from "@/components/premium/features"
 import PremiumPrice from "@/components/premium/price"
@@ -78,7 +80,7 @@ export default async function PremiumPage() {
   }
 
   return (
-    <main className="h-full space-y-6 overflow-y-auto overflow-x-hidden pb-6">
+    <main className="h-full space-y-6 overflow-y-auto overflow-x-hidden">
       <header className="border-b py-4">
         <div
           className={cn(
@@ -119,7 +121,7 @@ export default async function PremiumPage() {
 
       <section
         className={cn(
-          "relative mx-auto max-w-4xl px-4 py-6",
+          "relative mx-auto max-w-4xl px-4 pb-12 pt-6",
           !session && "max-w-7xl"
         )}
       >
@@ -130,6 +132,12 @@ export default async function PremiumPage() {
         </div>
         <PremiumCompare />
       </section>
+      {!session && (
+        <>
+          <MarketingCta />
+          <MarketingFooter />
+        </>
+      )}
     </main>
   )
 }
