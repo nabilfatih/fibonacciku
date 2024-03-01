@@ -175,11 +175,11 @@ export const academicPlugin = cache(
           abstract: sanitizeHtml(item?.abstract || "", {
             allowedTags: [],
             allowedAttributes: {}
-          }),
+          }).substring(0, 100),
           tldr: sanitizeHtml(item?.tldr?.text || "", {
             allowedTags: [],
             allowedAttributes: {}
-          }),
+          }).substring(0, 100),
           url: item.url
         }
       })
