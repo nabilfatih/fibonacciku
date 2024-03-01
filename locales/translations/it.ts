@@ -404,7 +404,8 @@ export default {
     "image-input": "Input immagine",
     "customer-service": "Servizio clienti",
     wikipedia: "Wikipedia",
-    "compare-features-across-plans": "Confronta le caratteristiche tra i piani"
+    "compare-features-across-plans": "Confronta le caratteristiche tra i piani",
+    "2-months-free": "2 mesi gratis"
   },
   PricingFAQ: {
     faq: "Domande frequenti",

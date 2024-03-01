@@ -405,7 +405,8 @@ export default {
     "image-input": "Ввод изображения",
     "customer-service": "Служба поддержки",
     wikipedia: "Википедия",
-    "compare-features-across-plans": "Сравнить функции между планами"
+    "compare-features-across-plans": "Сравнить функции между планами",
+    "2-months-free": "2 месяца бесплатно"
   },
   PricingFAQ: {
     faq: "Часто задаваемые вопросы",

@@ -406,7 +406,8 @@ export default {
     "image-input": "Input gambar",
     "customer-service": "Layanan pelanggan",
     wikipedia: "Wikipedia",
-    "compare-features-across-plans": "Bandikan fitur di seluruh paket"
+    "compare-features-across-plans": "Bandikan fitur di seluruh paket",
+    "2-months-free": "2 bulan gratis"
   },
 
   PricingFAQ: {

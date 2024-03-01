@@ -406,7 +406,8 @@ export default {
     "image-input": "Afbeelding invoer",
     "customer-service": "Klantenservice",
     wikipedia: "Wikipedia",
-    "compare-features-across-plans": "Vergelijk functies tussen plannen"
+    "compare-features-across-plans": "Vergelijk functies tussen plannen",
+    "2-months-free": "2 maanden gratis"
   },
   PricingFAQ: {
     faq: "Veelgestelde vragen",

@@ -397,7 +397,8 @@ export default {
     "image-input": "Image input",
     "customer-service": "Customer service",
     wikipedia: "Wikipedia",
-    "compare-features-across-plans": "Compare features across plans"
+    "compare-features-across-plans": "Compare features across plans",
+    "2-months-free": "2 months free"
   },
   PricingFAQ: {
     faq: "FAQs",

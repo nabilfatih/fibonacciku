@@ -410,7 +410,8 @@ export default {
     "customer-service": "Kundenservice",
     wikipedia: "Wikipedia",
     "compare-features-across-plans":
-      "Vergleichen Sie Funktionen über Pläne hinweg"
+      "Vergleichen Sie Funktionen über Pläne hinweg",
+    "2-months-free": "2 Monate kostenlos"
   },
   PricingFAQ: {
     faq: "Häufig gestellte Fragen",
