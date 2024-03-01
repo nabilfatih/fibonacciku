@@ -1,6 +1,8 @@
 import { cookies } from "next/headers"
 import { NextResponse, type NextRequest } from "next/server"
+import { Ratelimit } from "@upstash/ratelimit"
 import { track } from "@vercel/analytics/server"
+import { kv } from "@vercel/kv"
 
 import {
   EDEN_HEADERS,
@@ -15,6 +17,39 @@ import { generateUUID } from "@/lib/utils"
 export const maxDuration = 300 // This function can run for a maximum of 300 seconds
 
 export async function POST(req: NextRequest) {
+  const ip = req.headers.get("x-forwarded-for")
+  const ratelimit = new Ratelimit({
+    redis: kv,
+    // rate limit to 5 requests per 10 seconds
+    limiter: Ratelimit.slidingWindow(5, "10s")
+  })
+
+  const { success, limit, reset, remaining } = await ratelimit.limit(
+    `ratelimit_${ip}`
+  )
+
+  if (!success) {
+    await track("Error - AI Document Upload", {
+      data: `${ip} - Rate Limit Exceeded`
+    })
+    return NextResponse.json(
+      {
+        error: {
+          statusCode: 429,
+          message: "Too Many Requests"
+        }
+      },
+      {
+        status: 429,
+        headers: {
+          "X-RateLimit-Limit": limit.toString(),
+          "X-RateLimit-Remaining": remaining.toString(),
+          "X-RateLimit-Reset": reset.toString()
+        }
+      }
+    )
+  }
+
   const { fileId, fileName, fileType } = (await req.json()) as {
     fileId: string
     fileName: string
