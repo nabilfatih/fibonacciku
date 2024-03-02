@@ -181,6 +181,29 @@ export default async function AboutPage() {
                 </div>
               </div>
             </Link>
+            <Link
+              href="https://www.linkedin.com/in/nursitautami/"
+              target="_blank"
+              className="rounded-xl border bg-card p-6 shadow transition-colors duration-300 ease-in-out hover:bg-muted/50"
+            >
+              <div className="flex items-start gap-6">
+                <div className="relative h-12 w-12 rounded-full">
+                  <Image
+                    src="/sita.webp"
+                    fill
+                    priority
+                    alt="Nur Sita Utami"
+                    className="rounded-full bg-muted/90 object-cover object-center"
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <h2 className="text-xl font-medium">Nur Sita Utami</h2>
+                  <p className="text-muted-foreground">
+                    {t("content-creator")}
+                  </p>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
