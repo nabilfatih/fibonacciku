@@ -37,7 +37,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   // get the abstract of the blog
-  const abstract = blog.content.split("## Abstract\n\n")[1].split("\n\n")[0]
+  const abstract =
+    blog.content.split("## Abstract\n\n")[1]?.split("\n\n")[0] || ""
 
   const ogImage = {
     url: getBlogsCoverPublicUrlAdmin(blog.id, blog.cover),
