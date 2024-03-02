@@ -36,6 +36,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
+  // get the abstract of the blog
+  const abstract = blog.content.split("## Abstract\n\n")[1].split("\n\n")[0]
+
   const ogImage = {
     url: getBlogsCoverPublicUrlAdmin(blog.id, blog.cover),
     width: 575,
@@ -46,6 +49,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: blog.title,
     description: blog.description,
+    keywords: [
+      ...blog.title.split(" "),
+      ...blog.description.split(" "),
+      ...abstract.split(" "),
+      ...blog.tags.split(",").map(tag => tag.trim().toLowerCase())
+    ],
     alternates: {
       canonical: `/blog/${blog.slug}`,
       languages: {
