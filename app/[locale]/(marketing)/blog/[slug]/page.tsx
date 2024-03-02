@@ -13,6 +13,7 @@ import { getCurrentLocale, getScopedI18n } from "@/locales/server"
 
 import { Button } from "@/components/ui/button"
 import ServerReactMarkdown from "@/components/markdown/server"
+import MarketingCta from "@/components/marketing/cta"
 import MarketingTransition from "@/components/marketing/transition"
 import { updateBlogs } from "@/app/actions/blog"
 
@@ -191,7 +192,7 @@ export default async function BlogSlugPage({ params }: Props) {
         </article>
       </section>
 
-      <section className="mx-auto max-w-7xl border-t px-4 pb-10 pt-12">
+      <section className="mx-auto border-t px-4 pb-10 pt-12">
         <div className="flex flex-col items-center justify-center">
           <p className="text-sm italic">{t("text-footer")}</p>
           <Button asChild variant="link">
@@ -199,6 +200,8 @@ export default async function BlogSlugPage({ params }: Props) {
           </Button>
         </div>
       </section>
+
+      <MarketingCta />
     </MarketingTransition>
   )
 }
