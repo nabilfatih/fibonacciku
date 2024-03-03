@@ -14,6 +14,7 @@ import type {
   SourceDocument,
   UserDetails,
   Weather,
+  WebsiteScraping,
   YoutubeSearchResult
 } from "@/types/types"
 import { readDataStream } from "@/lib/chat/read-data-stream"
@@ -520,6 +521,23 @@ export const handleMetadataMessage = (
         messageMetadata.solve_math = []
       }
       messageMetadata.solve_math.push(...solveMathResult)
+    }
+  }
+
+  const websiteScrapingResults = functionData.filter(
+    item => item.toolName === "get_website_information"
+  )
+  if (websiteScrapingResults.length) {
+    const websiteScrapingResult = websiteScrapingResults
+      .flatMap(item => item.data.results.map((item: WebsiteScraping) => item))
+      .filter(
+        (item, index, self) => index === self.findIndex(t => t.id === item.id)
+      ) as WebsiteScraping[]
+    if (websiteScrapingResult.length) {
+      if (!messageMetadata.website_scraping) {
+        messageMetadata.website_scraping = []
+      }
+      messageMetadata.website_scraping.push(...websiteScrapingResult)
     }
   }
 

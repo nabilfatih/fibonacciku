@@ -697,7 +697,8 @@ export default {
     "partial-derivatives": "Derivate parziali",
     differential: "Differenziale",
     "indefinite-integral": "Integrale indefinito",
-    "alternate-form-of-integral": "Forma alternativa dell'integrale"
+    "alternate-form-of-integral": "Forma alternativa dell'integrale",
+    "website-scraping": "Estrazione di dati dai siti web"
   },
   Markdown: {
     "link-not-available": "Link non disponibile"

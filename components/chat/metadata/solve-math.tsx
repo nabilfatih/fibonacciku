@@ -27,8 +27,8 @@ function ChatMetadataSolveMath({ metadata }: Props) {
             <div key={index} className="group rounded-xl border p-2 shadow">
               <div className="flex h-full w-full flex-col items-start justify-between gap-3">
                 <Badge>
-                  <IconCheck className="mr-1 h-4 w-4" />
                   {t("solved")}
+                  <IconCheck className="ml-1 h-4 w-4" />
                 </Badge>
 
                 {math.derivative && (

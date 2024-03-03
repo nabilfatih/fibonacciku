@@ -32,6 +32,7 @@ export const scrapeWebsite = cache(
       )
       const data = {
         id: generateNanoID(5),
+        url,
         ...response
       }
       return {

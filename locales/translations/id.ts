@@ -701,7 +701,8 @@ export default {
     "partial-derivatives": "Turunan parsial",
     differential: "Diferensial",
     "indefinite-integral": "Integral tak tentu",
-    "alternate-form-of-integral": "Bentuk alternatif integral"
+    "alternate-form-of-integral": "Bentuk alternatif integral",
+    "website-scraping": "Website Scraping"
   },
   Markdown: {
     "link-not-available": "Tautan tidak tersedia"

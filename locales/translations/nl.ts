@@ -696,7 +696,8 @@ export default {
     "partial-derivatives": "Partiële afgeleiden",
     differential: "Differentiaal",
     "indefinite-integral": "Ongespecificeerd integraal",
-    "alternate-form-of-integral": "Alternatieve vorm van integraal"
+    "alternate-form-of-integral": "Alternatieve vorm van integraal",
+    "website-scraping": "Website scraping"
   },
   Markdown: {
     "link-not-available": "Link niet beschikbaar"

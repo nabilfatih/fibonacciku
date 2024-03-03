@@ -209,6 +209,7 @@ export type ChatMessageMetadata = {
   wiki_feed_featured?: WikiFeedResult
   wiki_search_content?: WikiSearchContentResult[]
   weather_information?: Weather[]
+  website_scraping?: WebsiteScraping[]
   solve_math?: SolveMath[]
 }
 
@@ -368,6 +369,12 @@ export type Weather = {
   id: number
   name: string
   cod: number
+}
+
+export type WebsiteScraping = {
+  id: string
+  url: string
+  data: string
 }
 
 export type SolveMath = {

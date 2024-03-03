@@ -696,7 +696,8 @@ export default {
     "partial-derivatives": "Частные производные",
     differential: "Дифференциал",
     "indefinite-integral": "Неопределенный интеграл",
-    "alternate-form-of-integral": "Альтернативная форма интеграла"
+    "alternate-form-of-integral": "Альтернативная форма интеграла",
+    "website-scraping": "Скрапинг веб-сайтов"
   },
   Markdown: {
     "link-not-available": "Ссылка недоступна"

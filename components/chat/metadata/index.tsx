@@ -7,6 +7,7 @@ import ChatMetadataImage from "@/components/chat/metadata/image"
 import ChatMetadataReferences from "@/components/chat/metadata/references"
 import ChatMetadataSolveMath from "@/components/chat/metadata/solve-math"
 import ChatMetadataWeather from "@/components/chat/metadata/weather"
+import ChatMetadataWebsiteScraping from "@/components/chat/metadata/website-scraping"
 import ChatMetadataWikipedia from "@/components/chat/metadata/wikipedia"
 import ChatMetadataYoutube from "@/components/chat/metadata/youtube"
 
@@ -40,6 +41,7 @@ export default function ChatMetadata({ metadata, contentIndex }: Props) {
     wiki_search_content: wikiSearchContent,
     wiki_feed_featured: wikiFeedFeatured,
     weather_information: weatherInformation,
+    website_scraping: websiteScraping,
     solve_math: solveMath
   } = currentMetadata
 
@@ -57,6 +59,9 @@ export default function ChatMetadata({ metadata, contentIndex }: Props) {
         <ChatMetadataWikipedia metadata={wikiSearchContent} />
       )}
       {solveMath && <ChatMetadataSolveMath metadata={solveMath} />}
+      {websiteScraping && (
+        <ChatMetadataWebsiteScraping metadata={websiteScraping} />
+      )}
       {sourceDocuments && <ChatMetadataReferences metadata={sourceDocuments} />}
     </div>
   )

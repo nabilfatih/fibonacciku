@@ -707,7 +707,8 @@ export default {
     "partial-derivatives": "Partielle Ableitungen",
     differential: "Differential",
     "indefinite-integral": "Unbestimmtes Integral",
-    "alternate-form-of-integral": "Alternativform des Integrals"
+    "alternate-form-of-integral": "Alternativform des Integrals",
+    "website-scraping": "Webseiten-Scraping"
   },
   Markdown: {
     "link-not-available": "Link nicht verfügbar"
