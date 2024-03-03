@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { memo, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -9,7 +9,7 @@ type Props = {
   alt: string | undefined
 }
 
-export default function ImageMarkdown({ src, alt }: Props) {
+function ImageMarkdown({ src, alt }: Props) {
   const [isError, setIsError] = useState(false)
 
   if (!src) return null
@@ -74,3 +74,5 @@ export default function ImageMarkdown({ src, alt }: Props) {
     </Link>
   )
 }
+
+export default memo(ImageMarkdown)
