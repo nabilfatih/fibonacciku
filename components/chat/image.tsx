@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -7,7 +10,11 @@ type Props = {
 }
 
 export default function ImageMarkdown({ src, alt }: Props) {
+  const [isError, setIsError] = useState(false)
+
   if (!src) return null
+
+  if (isError) return null
 
   const dataSrc = src.trim()
 
@@ -61,6 +68,7 @@ export default function ImageMarkdown({ src, alt }: Props) {
         unoptimized
         width={256}
         height={256}
+        onError={() => setIsError(true)}
         className="my-4 max-w-[256px] cursor-pointer rounded-xl border bg-muted/90 object-cover"
       />
     </Link>
