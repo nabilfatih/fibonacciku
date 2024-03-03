@@ -689,7 +689,14 @@ export default {
     sand: "Zand",
     ash: "As",
     squall: "Squall",
-    tornado: "Tornado"
+    tornado: "Tornado",
+    "solve-math": "Wiskunde oplossen",
+    solved: "Opgelost",
+    derivative: "Afgeleide",
+    "partial-derivatives": "Partiële afgeleiden",
+    differential: "Differentiaal",
+    "indefinite-integral": "Ongespecificeerd integraal",
+    "alternate-form-of-integral": "Alternatieve vorm van integraal"
   },
   Markdown: {
     "link-not-available": "Link niet beschikbaar"

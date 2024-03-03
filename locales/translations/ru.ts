@@ -689,7 +689,14 @@ export default {
     sand: "Песок",
     ash: "Пепел",
     squall: "Шквал",
-    tornado: "Торнадо"
+    tornado: "Торнадо",
+    "solve-math": "Решить математику",
+    solved: "Решено",
+    derivative: "Производная",
+    "partial-derivatives": "Частные производные",
+    differential: "Дифференциал",
+    "indefinite-integral": "Неопределенный интеграл",
+    "alternate-form-of-integral": "Альтернативная форма интеграла"
   },
   Markdown: {
     "link-not-available": "Ссылка недоступна"

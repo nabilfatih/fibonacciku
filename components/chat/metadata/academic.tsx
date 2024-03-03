@@ -18,7 +18,7 @@ function ChatMetadataAcademic({ metadata }: Props) {
     <div className="flex flex-col justify-start gap-2">
       <div className="flex flex-row items-center gap-1">
         <IconBooks className="h-5 w-5" />
-        <span className="font-medium">{t("academic-research")}:</span>
+        <p className="font-medium">{t("academic-research")}:</p>
       </div>
 
       <div className="grid grid-cols-2 gap-2">

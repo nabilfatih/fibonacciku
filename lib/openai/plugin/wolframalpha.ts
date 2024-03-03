@@ -24,6 +24,10 @@ export const extractDataFromXML = (xml: string): XMLData => {
       /<pod title='Solution'[^>]*>[\s\S]*?<subpod title=''>[\s\S]*?<plaintext>([^<]*)<\/plaintext>/,
     derivative:
       /<pod title='Derivative'[^>]*>[\s\S]*?<subpod title=''>[\s\S]*?<plaintext>([^<]*)<\/plaintext>/,
+    partialDerivatives:
+      /<pod title='Partial derivatives'[^>]*>[\s\S]*?<subpod title=''>[\s\S]*?<plaintext>([^<]*)<\/plaintext>/,
+    differential:
+      /<pod title='Differential'[^>]*>[\s\S]*?<subpod title=''>[\s\S]*?<plaintext>([^<]*)<\/plaintext>/,
     geometricFigure:
       /<pod title='Geometric figure'[^>]*>[\s\S]*?<subpod title=''>[\s\S]*?<plaintext>([^<]*)<\/plaintext>/,
     expandedForm:
@@ -75,8 +79,6 @@ export const wolframalphaPlugin = async (query: string) => {
       throw new Error(`Error searching WolframAlpha: ${response.statusText}`)
     }
     const data = await response.json()
-
-    console.log("WolframAlpha Data: ", data)
 
     const finalData = {
       id: generateNanoID(5),

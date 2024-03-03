@@ -32,7 +32,7 @@ export const defaultToolsChat: Tool[] = [
           query: {
             type: "string",
             description:
-              "the mathematics question to solve, must be clear and specific what to solve and what is the questions. Must have prefix 'solve' at first and query must always in english language."
+              "the query to solve the math problem. Must be clear and specific what to solve. Only use 1 words and the equation must be clear and specific. Must be in english language."
           }
         },
         required: ["query"]

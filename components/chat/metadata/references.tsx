@@ -28,7 +28,7 @@ function ChatMetadataReferences({ metadata }: Props) {
         ) : (
           <IconFile className="h-5 w-5" />
         )}
-        <span className="font-medium">{t("references")}:</span>
+        <p className="font-medium">{t("references")}:</p>
       </div>
 
       <div className="flex flex-wrap items-center gap-2">

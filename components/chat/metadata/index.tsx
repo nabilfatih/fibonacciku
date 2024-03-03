@@ -5,6 +5,7 @@ import ChatMetadataAttachment from "@/components/chat/metadata/attachment"
 import ChatMetadataGoogle from "@/components/chat/metadata/google"
 import ChatMetadataImage from "@/components/chat/metadata/image"
 import ChatMetadataReferences from "@/components/chat/metadata/references"
+import ChatMetadataSolveMath from "@/components/chat/metadata/solve-math"
 import ChatMetadataWeather from "@/components/chat/metadata/weather"
 import ChatMetadataWikipedia from "@/components/chat/metadata/wikipedia"
 import ChatMetadataYoutube from "@/components/chat/metadata/youtube"
@@ -38,7 +39,8 @@ export default function ChatMetadata({ metadata, contentIndex }: Props) {
     source_documents: sourceDocuments,
     wiki_search_content: wikiSearchContent,
     wiki_feed_featured: wikiFeedFeatured,
-    weather_information: weatherInformation
+    weather_information: weatherInformation,
+    solve_math: solveMath
   } = currentMetadata
 
   return (
@@ -51,10 +53,11 @@ export default function ChatMetadata({ metadata, contentIndex }: Props) {
       {google && <ChatMetadataGoogle metadata={google} />}
       {academic && <ChatMetadataAcademic metadata={academic} />}
       {youtube && <ChatMetadataYoutube metadata={youtube} />}
-      {sourceDocuments && <ChatMetadataReferences metadata={sourceDocuments} />}
       {wikiSearchContent && (
         <ChatMetadataWikipedia metadata={wikiSearchContent} />
       )}
+      {solveMath && <ChatMetadataSolveMath metadata={solveMath} />}
+      {sourceDocuments && <ChatMetadataReferences metadata={sourceDocuments} />}
     </div>
   )
 }

@@ -694,7 +694,14 @@ export default {
     sand: "Pasir",
     ash: "Abu vulkanik",
     squall: "Angin kencang",
-    tornado: "Puting beliung"
+    tornado: "Puting beliung",
+    "solve-math": "Pecahkan matematika",
+    solved: "Terselesaikan",
+    derivative: "Turunan",
+    "partial-derivatives": "Turunan parsial",
+    differential: "Diferensial",
+    "indefinite-integral": "Integral tak tentu",
+    "alternate-form-of-integral": "Bentuk alternatif integral"
   },
   Markdown: {
     "link-not-available": "Tautan tidak tersedia"

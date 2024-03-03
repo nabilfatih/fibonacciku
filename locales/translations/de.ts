@@ -700,7 +700,14 @@ export default {
     sand: "Sand",
     ash: "Asche",
     squall: "Sturm",
-    tornado: "Tornado"
+    tornado: "Tornado",
+    "solve-math": "Löse Mathe",
+    solved: "Gelöst",
+    derivative: "Ableitung",
+    "partial-derivatives": "Partielle Ableitungen",
+    differential: "Differential",
+    "indefinite-integral": "Unbestimmtes Integral",
+    "alternate-form-of-integral": "Alternativform des Integrals"
   },
   Markdown: {
     "link-not-available": "Link nicht verfügbar"

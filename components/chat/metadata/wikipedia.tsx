@@ -27,7 +27,7 @@ function ChatMetadataWikipedia({ metadata }: Props) {
     <div className="flex flex-col justify-start gap-2">
       <div className="flex flex-row items-center gap-1">
         <IconBrandWikipedia className="h-5 w-5" />
-        <span className="font-medium">{t("wikipedia")}:</span>
+        <p className="font-medium">{t("wikipedia")}:</p>
       </div>
 
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">

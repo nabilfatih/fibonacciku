@@ -690,7 +690,14 @@ export default {
     sand: "Sabbia",
     ash: "Cenere",
     squall: "Squall",
-    tornado: "Tornado"
+    tornado: "Tornado",
+    "solve-math": "Risolvere problemi di matematica",
+    solved: "Risolto",
+    derivative: "Derivata",
+    "partial-derivatives": "Derivate parziali",
+    differential: "Differenziale",
+    "indefinite-integral": "Integrale indefinito",
+    "alternate-form-of-integral": "Forma alternativa dell'integrale"
   },
   Markdown: {
     "link-not-available": "Link non disponibile"

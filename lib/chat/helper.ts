@@ -10,6 +10,7 @@ import type {
   SaveDataMessage,
   SearchResult,
   ShowChatMessage,
+  SolveMath,
   SourceDocument,
   UserDetails,
   Weather,
@@ -399,7 +400,7 @@ export const handleMetadataMessage = (
       .filter(
         (item, index, self) =>
           index === self.findIndex(t => t.link === item.link)
-      )
+      ) as SearchResult[]
     if (googleSearchResult.length) {
       if (!messageMetadata.google_search) {
         messageMetadata.google_search = []
@@ -419,7 +420,7 @@ export const handleMetadataMessage = (
       .filter(
         (item, index, self) =>
           index === self.findIndex(t => t.id.videoId === item.id.videoId)
-      )
+      ) as YoutubeSearchResult[]
     if (youtubeVideosResult.length) {
       if (!messageMetadata.youtube_search) {
         messageMetadata.youtube_search = []
@@ -438,7 +439,7 @@ export const handleMetadataMessage = (
       )
       .filter(
         (item, index, self) => index === self.findIndex(t => t.id === item.id)
-      )
+      ) as AcademicSearchResult[]
     if (academicResearchResult.length) {
       if (!messageMetadata.academic_search) {
         messageMetadata.academic_search = []
@@ -456,7 +457,7 @@ export const handleMetadataMessage = (
       .filter(
         (item, index, self) =>
           index === self.findIndex(t => t.prompt === item.prompt)
-      )
+      ) as ImageResult[]
 
     if (imageResult.length) {
       if (!messageMetadata.image_result) {
@@ -496,7 +497,7 @@ export const handleMetadataMessage = (
       .filter(
         (item, index, self) =>
           index === self.findIndex(t => t.title === item.title)
-      )
+      ) as WikiSearchContentResult[]
     if (wikiSearchContentResult.length) {
       if (!messageMetadata.wiki_search_content) {
         messageMetadata.wiki_search_content = []
@@ -508,6 +509,19 @@ export const handleMetadataMessage = (
   const solveMathResults = functionData.filter(
     item => item.toolName === "ask_mathematics_question"
   )
+  if (solveMathResults.length) {
+    const solveMathResult = solveMathResults
+      .flatMap(item => item.data.results.map((item: SolveMath) => item))
+      .filter(
+        (item, index, self) => index === self.findIndex(t => t.id === item.id)
+      ) as SolveMath[]
+    if (solveMathResult.length) {
+      if (!messageMetadata.solve_math) {
+        messageMetadata.solve_math = []
+      }
+      messageMetadata.solve_math.push(...solveMathResult)
+    }
+  }
 
   const weatherResults = functionData.filter(
     item => item.toolName === "get_weather_information"

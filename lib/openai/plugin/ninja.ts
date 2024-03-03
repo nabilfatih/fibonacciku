@@ -1,5 +1,7 @@
 import { unstable_cache as cache } from "next/cache"
 
+import { generateNanoID } from "@/lib/utils"
+
 export const ninjaBaseUrl = "https://api.api-ninjas.com/v1/"
 
 export const fetchNinja = async (endpoint: string, query: string) => {
@@ -20,7 +22,7 @@ export const scrapeWebsite = cache(
     url: string
   ): Promise<{
     message?: string
-    data: string
+    results: { id: string; text: string }[]
   }> => {
     try {
       // use ninja api
@@ -28,11 +30,17 @@ export const scrapeWebsite = cache(
         "webscraper",
         `url=${url}&text_only=true`
       )
-      return response
+      const data = {
+        id: generateNanoID(5),
+        ...response
+      }
+      return {
+        results: [data]
+      }
     } catch (error) {
       return {
         message: "Sorry but I can't get the information from that website.",
-        data: ""
+        results: []
       }
     }
   },

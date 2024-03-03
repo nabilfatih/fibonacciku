@@ -209,6 +209,7 @@ export type ChatMessageMetadata = {
   wiki_feed_featured?: WikiFeedResult
   wiki_search_content?: WikiSearchContentResult[]
   weather_information?: Weather[]
+  solve_math?: SolveMath[]
 }
 
 export type Attachment = {
@@ -372,4 +373,25 @@ export type Weather = {
 export type SolveMath = {
   id: string
   results?: string
+  scientificNotation?: string
+  numberName?: string
+  numberLength?: string
+  comparisons?: string
+  realSolution?: string
+  solution?: string
+  derivative?: string
+  partialDerivatives?: string
+  differential?: string
+  geometricFigure?: string
+  expandedForm?: string
+  alternateForm?: string
+  polynomialDiscriminant?: string
+  indefiniteIntegral?: string
+  definiteIntegral?: string
+  expandedFormOfIntegral?: string
+  alternateFormOfIntegral?: string
+  globalMinimum?: string
+  globalMaximum?: string
+  pAdicExpansion?: string
+  expansionOverFiniteField?: string
 }

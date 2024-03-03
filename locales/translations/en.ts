@@ -675,7 +675,14 @@ export default {
     sand: "Sand",
     ash: "Ash",
     squall: "Squall",
-    tornado: "Tornado"
+    tornado: "Tornado",
+    "solve-math": "Solve math",
+    solved: "Solved",
+    derivative: "Derivative",
+    "partial-derivatives": "Partial derivatives",
+    differential: "Differential",
+    "indefinite-integral": "Indefinite integral",
+    "alternate-form-of-integral": "Alternate form of integral"
   },
   Markdown: {
     "link-not-available": "Link not available"
