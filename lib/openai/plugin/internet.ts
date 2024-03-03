@@ -58,7 +58,7 @@ export const googlePlugin = cache(
         result.slice(0, 5).map(async (item: any) => {
           const scraped = await scrapeWebsite(item.link)
           // only get the first 2000 characters
-          return scraped.data.substring(0, 2000)
+          return scraped.results[0].data.substring(0, 2000)
         })
       )
 

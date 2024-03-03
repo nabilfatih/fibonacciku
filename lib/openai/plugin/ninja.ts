@@ -22,7 +22,7 @@ export const scrapeWebsite = cache(
     url: string
   ): Promise<{
     message?: string
-    results: { id: string; text: string }[]
+    results: { id: string; data: string }[]
   }> => {
     try {
       // use ninja api
