@@ -368,3 +368,8 @@ export type Weather = {
   name: string
   cod: number
 }
+
+export type SolveMath = {
+  id: string
+  results?: string
+}

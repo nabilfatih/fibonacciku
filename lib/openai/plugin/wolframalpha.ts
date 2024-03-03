@@ -1,3 +1,5 @@
+import { generateNanoID } from "@/lib/utils"
+
 export const AppId = process.env.WOLFRAMALPHA_APP_ID as string
 
 type XMLData = {
@@ -74,16 +76,23 @@ export const wolframalphaPlugin = async (query: string) => {
     }
     const data = await response.json()
 
+    console.log("WolframAlpha Data: ", data)
+
+    const finalData = {
+      id: generateNanoID(5),
+      ...data
+    }
+
     return {
       message:
         "Must show complete steps for the solution! Do not give direct answer!",
-      results: data
+      results: [finalData]
     }
   } catch (error) {
     console.log("WolframAlpha Error: ", error)
     return {
       message: "Quota exceeded for searching WolframAlpha",
-      results: {}
+      results: []
     }
   }
 }

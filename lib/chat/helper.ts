@@ -505,12 +505,16 @@ export const handleMetadataMessage = (
     }
   }
 
+  const solveMathResults = functionData.filter(
+    item => item.toolName === "ask_mathematics_question"
+  )
+
   const weatherResults = functionData.filter(
     item => item.toolName === "get_weather_information"
   )
   if (weatherResults.length) {
     const weatherResult = weatherResults
-      .flatMap(item => item.data as Weather)
+      .flatMap(item => item.data.results.map((item: Weather) => item))
       .filter(
         (item, index, self) =>
           index ===

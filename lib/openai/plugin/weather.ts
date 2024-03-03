@@ -1,4 +1,6 @@
-const fetchWeather = async (url: string) => {
+import type { Weather } from "@/types/types"
+
+const fetchWeather = async (url: string): Promise<Weather> => {
   const response = await fetch(url)
   if (!response.ok) {
     throw new Error(`Error searching weather: ${response.statusText}`)
@@ -25,10 +27,15 @@ export const weatherPlugin = async (location: string) => {
       url = `https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=${process.env.OPENWEATHER_API_KEY}&units=metric`
     }
 
-    return await fetchWeather(url)
-  } catch (error) {
+    const data = await fetchWeather(url)
     return {
-      message: "Sorry but I can't find the weather for that location."
+      results: [data]
+    }
+  } catch (error) {
+    console.log("Weather Error: ", error)
+    return {
+      message: "Sorry but I can't find the weather for that location.",
+      results: []
     }
   }
 }
