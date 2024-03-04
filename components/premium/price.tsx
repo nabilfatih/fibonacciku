@@ -79,7 +79,10 @@ export default function PremiumPrice({ user, subscription }: Props) {
 
   const handleChoosePlan = useCallback(
     async (price: (typeof priceList)[0]) => {
-      if (price.redirect) return router.push("/contact")
+      if (price.redirect) {
+        router.push("/contact")
+        return
+      }
 
       setPriceIdLoading(price.priceId)
 
@@ -186,9 +189,13 @@ export default function PremiumPrice({ user, subscription }: Props) {
               <CardFooter>
                 <Button
                   onClick={() => {
-                    if (!user) return router.push("/auth/login?next=/premium")
+                    if (!user) {
+                      router.push("/auth/login?next=/premium")
+                      return
+                    }
                     if (subscription) {
-                      return redirectToCustomerPortal(price)
+                      redirectToCustomerPortal(price)
+                      return
                     }
                     handleChoosePlan(price)
                   }}
