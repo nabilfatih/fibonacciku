@@ -26,22 +26,28 @@ const config = {
               color: "hsl(var(--foreground) / 0.9)"
             },
             h1: {
-              color: "hsl(var(--foreground) / 0.9)"
+              color: "hsl(var(--foreground) / 0.9)",
+              letterSpacing: "-0.05em"
             },
             h2: {
-              color: "hsl(var(--foreground) / 0.9)"
+              color: "hsl(var(--foreground) / 0.9)",
+              letterSpacing: "-0.05em"
             },
             h3: {
-              color: "hsl(var(--foreground) / 0.9)"
+              color: "hsl(var(--foreground) / 0.9)",
+              letterSpacing: "-0.05em"
             },
             h4: {
-              color: "hsl(var(--foreground) / 0.9)"
+              color: "hsl(var(--foreground) / 0.9)",
+              letterSpacing: "-0.05em"
             },
             h5: {
-              color: "hsl(var(--foreground) / 0.9)"
+              color: "hsl(var(--foreground) / 0.9)",
+              letterSpacing: "-0.05em"
             },
             h6: {
-              color: "hsl(var(--foreground) / 0.9)"
+              color: "hsl(var(--foreground) / 0.9)",
+              letterSpacing: "-0.05em"
             },
             "li::marker": {
               color: "hsl(var(--muted-foreground))"
