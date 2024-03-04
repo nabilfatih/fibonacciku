@@ -19,7 +19,6 @@ import {
   IconWind,
   IconWorldWww
 } from "@tabler/icons-react"
-import wikiPicture from "https://upload.wikimedia.org/wikipedia/commons/4/43/ESO-VLT-Laser-phot-33a-07.jpg"
 
 import { cn } from "@/lib/utils"
 import { getScopedI18n } from "@/locales/server"
