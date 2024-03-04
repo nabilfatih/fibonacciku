@@ -6,7 +6,7 @@ import { redirect } from "next/navigation"
 import { createClientServer } from "@/lib/supabase/server"
 import { getScopedI18n } from "@/locales/server"
 
-import { SignupAuthForm } from "@/components/auth/signup-form"
+import SignupAuthForm from "@/components/auth/signup-form"
 
 type Props = {
   searchParams: { [key: string]: string | string[] | undefined }

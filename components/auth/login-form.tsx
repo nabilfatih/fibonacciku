@@ -20,7 +20,7 @@ interface LoginAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
   referral?: string
 }
 
-export function LoginAuthForm({
+export default function LoginAuthForm({
   className,
   next,
   referral,

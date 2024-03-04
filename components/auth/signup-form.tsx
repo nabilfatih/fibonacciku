@@ -1,14 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { useRouter } from "next/navigation"
 import type { Provider } from "@supabase/supabase-js"
 import { IconBrandGoogleFilled } from "@tabler/icons-react"
 import { toast } from "sonner"
 
 import supabaseClient from "@/lib/supabase/client"
 import { cn } from "@/lib/utils"
-import { useScopedI18n } from "@/locales/client"
 
 import { Button } from "@/components/ui/button"
 import { IconSpinner } from "@/components/ui/icons"
@@ -18,7 +16,7 @@ interface SignupAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
   referral?: string
 }
 
-export function SignupAuthForm({
+export default function SignupAuthForm({
   className,
   next,
   referral,
