@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import logoOutline from "@/public/logo-outline.webp"
 
 import { getScopedI18n } from "@/locales/server"
 
@@ -18,7 +19,7 @@ export default async function MarketingHeader() {
           <MarketingSidebarMobile />
           <Link href="/" className="hidden sm:block">
             <Image
-              src="/logo-outline.webp"
+              src={logoOutline}
               alt="FibonacciKu"
               width={24}
               height={24}

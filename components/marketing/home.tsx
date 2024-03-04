@@ -1,5 +1,10 @@
 import Image from "next/image"
 import Link from "next/link"
+import backgroundService from "@/public/background-service.webp"
+import logoOutline from "@/public/logo-outline.webp"
+import logoYoutube from "@/public/logo-youtube.png"
+import screenshotFibo from "@/public/screenshot-fibo.webp"
+import logoSemantic from "@/public/semantic_logo.webp"
 import {
   IconBooks,
   IconBrandWikipedia,
@@ -14,6 +19,7 @@ import {
   IconWind,
   IconWorldWww
 } from "@tabler/icons-react"
+import wikiPicture from "https://upload.wikimedia.org/wikipedia/commons/4/43/ESO-VLT-Laser-phot-33a-07.jpg"
 
 import { cn } from "@/lib/utils"
 import { getScopedI18n } from "@/locales/server"
@@ -140,10 +146,11 @@ export default async function MarketingHome() {
           </header>
           <div className="relative">
             <Image
-              src="/screenshot-fibo.webp"
+              src={screenshotFibo}
               alt="Fibo Assistant"
               width={3024}
               height={1886}
+              placeholder="blur"
               priority
               className="rounded border bg-muted/90 object-cover shadow sm:rounded-xl"
             />
@@ -199,11 +206,12 @@ const featuresList = [
     header: (
       <div className="relative h-44 w-full overflow-hidden md:min-h-[250px]">
         <Image
-          src="/background-service.webp"
+          src={backgroundService}
           alt="Image generation"
           sizes="100%"
           fill
           priority
+          placeholder="blur"
           className="rounded-md border object-cover"
         />
       </div>
@@ -243,10 +251,11 @@ const featuresList = [
               >
                 <Image
                   className="m-0 block rounded-full bg-transparent object-contain"
-                  src="/logo-outline.webp"
+                  src={logoOutline}
                   sizes="16px"
                   width={16}
                   height={16}
+                  priority
                   alt="FibonacciKu"
                 />
               </div>
@@ -285,10 +294,11 @@ const featuresList = [
               >
                 <Image
                   className="m-0 block rounded-full bg-transparent object-contain"
-                  src="/logo-youtube.png"
+                  src={logoYoutube}
                   sizes="16px"
                   width={16}
                   height={16}
+                  priority
                   alt="FibonacciKu Indonesia"
                 />
               </div>
@@ -347,9 +357,10 @@ const featuresList = [
               <Image
                 title="Kurzgesagt – In a Nutshell"
                 className="m-0 block rounded-full bg-transparent object-contain"
-                src="/logo-youtube.png"
+                src={logoYoutube}
                 width={16}
                 height={16}
+                priority
                 alt="Kurzgesagt – In a Nutshell"
               />
             </div>
@@ -405,9 +416,10 @@ const featuresList = [
                 <Image
                   title="Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms"
                   className="m-0 block rounded-full bg-transparent object-contain"
-                  src="/semantic_logo.webp"
+                  src={logoSemantic}
                   width={16}
                   height={16}
+                  priority
                   style={{
                     width: "16px",
                     height: "auto"
@@ -456,9 +468,10 @@ const featuresList = [
                 <Image
                   title="Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms"
                   className="m-0 block rounded-full bg-transparent object-contain"
-                  src="/semantic_logo.webp"
+                  src={logoSemantic}
                   width={16}
                   height={16}
+                  priority
                   style={{
                     width: "16px",
                     height: "auto"

@@ -232,6 +232,7 @@ export default async function AboutPage() {
               fill
               alt="FibonacciKu"
               className="rounded-xl border object-cover object-center shadow"
+              priority
               placeholder="blur"
             />
           </div>

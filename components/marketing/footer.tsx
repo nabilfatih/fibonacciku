@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import logoOutline from "@/public/logo-outline.webp"
 import {
   IconBrandDiscord,
   IconBrandInstagram,
@@ -27,7 +28,7 @@ export default async function MarketingFooter() {
           <div className="relative space-y-6">
             <Link href="/home" className="flex w-fit items-center">
               <Image
-                src="/logo-outline.webp"
+                src={logoOutline}
                 alt="FibonacciKu"
                 width={28}
                 height={28}

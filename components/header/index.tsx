@@ -2,6 +2,7 @@ import { Suspense } from "react"
 import { cookies } from "next/headers"
 import Image from "next/image"
 import Link from "next/link"
+import logoOutline from "@/public/logo-outline.webp"
 
 import { createClientServer } from "@/lib/supabase/server"
 
@@ -33,7 +34,7 @@ async function UserHistory() {
       ) : (
         <Link href="/">
           <Image
-            src="/logo-outline.webp"
+            src={logoOutline}
             alt="FibonacciKu"
             width={24}
             height={24}
