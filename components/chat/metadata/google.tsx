@@ -44,7 +44,7 @@ function ChatMetadataGoogle({ metadata }: Props) {
               onClick={() => setOpen(true)}
             >
               <div className="flex h-full w-full flex-col items-start justify-between gap-3 overflow-hidden">
-                <div className="flex flex-wrap gap-1 sm:gap-2">
+                <div className="flex flex-wrap items-center gap-1 sm:gap-2">
                   {
                     // show all the remaining links, only the icon
                     metadata.slice(4).map((item, index) => {
@@ -75,7 +75,7 @@ function ChatMetadataGoogle({ metadata }: Props) {
         <div className="grid h-[calc(100%-4rem)]">
           <div className="relative my-2 overflow-y-auto border-y py-4">
             <div className="mb-4 flex h-full flex-col space-y-2 px-4">
-              {metadata.slice(4).map((item, index) => {
+              {metadata.map((item, index) => {
                 return (
                   <LinkCard
                     key={item.link}
