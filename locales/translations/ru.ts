@@ -1120,6 +1120,8 @@ export default {
     education: "Образование",
     economics: "Экономика",
     politics: "Политика",
-    views: "Просмотры"
+    views: "Просмотры",
+    business: "Бизнес",
+    leadership: "Лидерство"
   }
 } as const

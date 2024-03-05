@@ -1119,6 +1119,8 @@ export default {
     education: "Pendidikan",
     economics: "Ekonomi",
     politics: "Politik",
-    views: "Dilihat"
+    views: "Dilihat",
+    business: "Bisnis",
+    leadership: "Kepemimpinan"
   }
 } as const

@@ -1117,6 +1117,8 @@ export default {
     education: "Educatie",
     economics: "Economie",
     politics: "Politiek",
-    views: "Bekeken"
+    views: "Bekeken",
+    business: "Zaken",
+    leadership: "Leiderschap"
   }
 } as const

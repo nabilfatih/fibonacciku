@@ -1138,6 +1138,8 @@ export default {
     education: "Bildung",
     economics: "Wirtschaft",
     politics: "Politik",
-    views: "Angesehen"
+    views: "Angesehen",
+    business: "Geschäft",
+    leadership: "Führung"
   }
 } as const
