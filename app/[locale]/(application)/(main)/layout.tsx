@@ -1,5 +1,3 @@
-import { Suspense } from "react"
-
 import RoleDialog from "@/components/header/role-dialog"
 import { SidebarDesktop } from "@/components/sidebar/chat/sidebar-desktop"
 
@@ -15,7 +13,7 @@ export default function ApplicationMainLayout({
       <RoleDialog />
 
       <div className="group w-full overflow-hidden pl-0 duration-300 ease-in-out animate-in peer-[[data-state=open]]:lg:pl-[250px] peer-[[data-state=open]]:xl:pl-[300px]">
-        <Suspense>{children}</Suspense>
+        {children}
       </div>
     </div>
   )

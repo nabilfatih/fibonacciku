@@ -1,5 +1,3 @@
-import { Suspense } from "react"
-
 import { MessageContextProvider } from "@/lib/context/use-message"
 
 export default function ChatLayout({
@@ -10,9 +8,7 @@ export default function ChatLayout({
   return (
     <div className="relative flex h-[calc(100dvh-4rem)] overflow-hidden">
       <div className="group w-full overflow-hidden pl-0 duration-300 ease-in-out animate-in">
-        <MessageContextProvider>
-          <Suspense>{children}</Suspense>
-        </MessageContextProvider>
+        <MessageContextProvider>{children}</MessageContextProvider>
       </div>
     </div>
   )

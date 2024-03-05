@@ -1,4 +1,3 @@
-import { Suspense } from "react"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 
@@ -31,9 +30,7 @@ export default async function InternalLayout({
   return (
     <CurrentUserContextProvider user={user}>
       <MarketingHeader />
-      <main className="flex flex-1 flex-col overflow-hidden">
-        <Suspense>{children}</Suspense>
-      </main>
+      <main className="flex flex-1 flex-col overflow-hidden">{children}</main>
     </CurrentUserContextProvider>
   )
 }
