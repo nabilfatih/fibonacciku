@@ -14,6 +14,7 @@ import { cn, generateNanoID } from "@/lib/utils"
 import { useScopedI18n } from "@/locales/client"
 
 import { IconSpinner } from "@/components/ui/icons"
+import { getUserLibraryWithLimit } from "@/app/actions/library"
 
 interface LibraryFormProps extends React.ComponentProps<"button"> {}
 
@@ -22,7 +23,7 @@ export default function LibraryForm({ className, ...props }: LibraryFormProps) {
 
   const router = useRouter()
 
-  const { userDetails } = useCurrentUser()
+  const { userDetails, subscription } = useCurrentUser()
   const { mutate } = useUserLibrary(userDetails?.id || "")
 
   const inputRef = useRef<HTMLInputElement>(null)
@@ -91,6 +92,23 @@ export default function LibraryForm({ className, ...props }: LibraryFormProps) {
       const fileId = generateNanoID()
 
       setIsUploadPending(true)
+
+      // if user not premium or enterprise, check if the user has reached the limit, (5 documents for free user)
+      if (!subscription) {
+        const response = await getUserLibraryWithLimit(6)
+
+        if ("error" in response) {
+          toast.error(t("something-went-wrong"))
+          setIsUploadPending(false)
+          return
+        }
+
+        if (response.data.length >= 5) {
+          toast.error(t("max-document-reached"))
+          setIsUploadPending(false)
+          return
+        }
+      }
 
       try {
         await uploadChatDocument(file, userDetails.id, fileId)

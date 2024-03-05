@@ -124,3 +124,40 @@ export async function removeLibrary(id: string, fileId: string) {
   revalidatePath("/")
   return revalidatePath("/library")
 }
+
+export async function getUserLibraryWithLimit(limit: number) {
+  const cookieStore = cookies()
+  const supabase = createClientServer(cookieStore)
+  const {
+    data: { user }
+  } = await supabase.auth.getUser()
+
+  if (!user) {
+    return {
+      error: "Unauthorized"
+    }
+  }
+
+  const { data, error } = await supabase
+    .from("libraries")
+    .select("*")
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: false })
+    .limit(limit)
+
+  if (error) {
+    return {
+      error: "Something went wrong"
+    }
+  }
+
+  if (!data) {
+    return {
+      error: "Unauthorized"
+    }
+  }
+
+  return {
+    data
+  }
+}

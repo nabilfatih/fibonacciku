@@ -283,21 +283,23 @@ export const getUserSubscriptionAdmin = async (
     .gt("current_period_end", new Date().toISOString())
     .eq("user_id", userId)
     .order("created_at", { ascending: false }) // get the latest subscription
+    .limit(1) // only get the latest subscription
+    .maybeSingle()
 
   if (error) {
     throw error
   }
 
-  if (!data[0]) {
+  if (!data) {
     return null
   }
 
   // check with plan that user use, just the sake of simplicity in the frontend
-  const plan = data[0].prices?.products?.name
+  const plan = data.prices?.products?.name
 
   const today = new Date()
-  const currentPeriodStart = new Date(data[0].current_period_start)
-  const currentPeriodEnd = new Date(data[0].current_period_end)
+  const currentPeriodStart = new Date(data.current_period_start)
+  const currentPeriodEnd = new Date(data.current_period_end)
 
   // Assuming the dates are in UTC, adjust them to the local timezone
   currentPeriodStart.setMinutes(
@@ -310,7 +312,7 @@ export const getUserSubscriptionAdmin = async (
   const isActive = today <= currentPeriodEnd && today >= currentPeriodStart
 
   return {
-    ...data[0],
+    ...data,
     isActive,
     planName: plan?.toLocaleLowerCase() || "free"
   }

@@ -656,7 +656,10 @@ export default {
     "only-one-document": "Slechts één document kan worden geselecteerd",
     "drag-drop-document": "Sleep je document hierheen",
     "document-not-found": "Document niet gevonden",
-    footer: "Document wordt versleuteld, veilig en beveiligd"
+    footer: "Document wordt versleuteld, veilig en beveiligd",
+    "something-went-wrong": "Er is iets misgegaan, probeer het later opnieuw!",
+    "max-document-reached":
+      "Maximaal aantal documenten bereikt, overweeg om het premium plan te gebruiken"
   },
   MetadataChat: {
     "academic-research": "Academisch onderzoek",
@@ -698,7 +701,7 @@ export default {
     "indefinite-integral": "Ongespecificeerd integraal",
     "alternate-form-of-integral": "Alternatieve vorm van integraal",
     "website-scraping": "Website scraping",
-    "show-more": "Meer tonen",
+    "show-more": "Meer tonen"
   },
   Markdown: {
     "link-not-available": "Link niet beschikbaar"

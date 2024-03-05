@@ -657,7 +657,10 @@ export default {
     "only-one-document": "Può essere selezionato solo un documento",
     "drag-drop-document": "Trascina e rilascia il tuo documento qui",
     "document-not-found": "Documento non trovato",
-    footer: "Il documento sarà crittografato, sicuro e protetto"
+    footer: "Il documento sarà crittografato, sicuro e protetto",
+    "something-went-wrong": "Qualcosa è andato storto, riprova più tardi!",
+    "max-document-reached":
+      "Raggiunto il massimo dei documenti, considera di utilizzare il piano premium"
   },
   MetadataChat: {
     "academic-research": "Ricerca accademica",

@@ -642,7 +642,9 @@ export default {
     "only-one-document": "Only one document can be selected",
     "drag-drop-document": "Drag and drop your document here",
     "document-not-found": "Document not found",
-    footer: "Document will be encrypted, safe and secure"
+    footer: "Document will be encrypted, safe and secure",
+    "something-went-wrong": "Something went wrong, please try again later!",
+    "max-document-reached": "Max document reached, consider to use premium plan"
   },
   MetadataChat: {
     "academic-research": "Academic research",

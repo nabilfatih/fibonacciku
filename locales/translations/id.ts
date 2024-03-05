@@ -661,7 +661,10 @@ export default {
     "only-one-document": "Hanya satu dokumen yang dapat diproses",
     "drag-drop-document": "Seret dan lepaskan dokumen Anda di sini",
     "document-not-found": "Dokumen tidak ditemukan",
-    footer: "Dokumen akan dienkripsi, aman, dan terjamin keamanannya"
+    footer: "Dokumen akan dienkripsi, aman, dan terjamin keamanannya",
+    "something-went-wrong": "Ada yang salah, silakan coba lagi nanti!",
+    "max-document-reached":
+      "Batas dokumen tercapai, pertimbangkan untuk menggunakan paket premium"
   },
   MetadataChat: {
     "academic-research": "Penelitian akademik",
