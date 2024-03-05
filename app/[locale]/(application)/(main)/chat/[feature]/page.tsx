@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         id: `/id/chat/${feature}`,
         de: `/de/chat/${feature}`,
         ru: `/ru/chat/${feature}`,
-        nl: `/nl/chat/${feature}`
+        nl: `/nl/chat/${feature}`,
+        it: `/it/chat/${feature}`
       }
     }
   }
