@@ -48,27 +48,7 @@ function ChatMetadataGoogle({ metadata }: Props) {
                   {
                     // show all the remaining links, only the icon
                     metadata.slice(4).map((item, index) => {
-                      return (
-                        <div
-                          key={item.link}
-                          className="relative overflow-hidden"
-                          style={{ minWidth: "16px" }}
-                        >
-                          <Image
-                            title={he.decode(item.title)}
-                            className="m-0 block rounded-full bg-transparent object-contain"
-                            src={`https://www.google.com/s2/favicons?domain=${item.displayLink}&sz=128`}
-                            sizes="16px"
-                            width={16}
-                            height={16}
-                            onError={e =>
-                              (e.currentTarget.src = "/logo-google.png")
-                            }
-                            alt={he.decode(item.title)}
-                            unoptimized // because we want to decrease cost of image optimization
-                          />
-                        </div>
-                      )
+                      return <LinkIcon key={item.link} item={item} />
                     })
                   }
                 </div>
@@ -93,7 +73,7 @@ function ChatMetadataGoogle({ metadata }: Props) {
         }
       >
         <div className="grid h-[calc(100%-4rem)]">
-          <div className="relative my-4 overflow-y-auto border-y py-4">
+          <div className="relative my-2 overflow-y-auto border-y py-4">
             <div className="mb-4 flex h-full flex-col space-y-2 px-4">
               {metadata.slice(4).map((item, index) => {
                 return (
@@ -153,22 +133,7 @@ function LinkCard({
         </div>
 
         <div className="flex flex-row items-center gap-1">
-          <div
-            className="relative overflow-hidden"
-            style={{ minWidth: "16px" }}
-          >
-            <Image
-              title={he.decode(item.title)}
-              className="m-0 block rounded-full bg-transparent object-contain"
-              src={`https://www.google.com/s2/favicons?domain=${item.displayLink}&sz=128`}
-              sizes="16px"
-              width={16}
-              height={16}
-              onError={e => (e.currentTarget.src = "/logo-google.png")}
-              alt={he.decode(item.title)}
-              unoptimized // because we want to decrease cost of image optimization
-            />
-          </div>
+          <LinkIcon item={item} />
 
           <span className="line-clamp-1 text-xs text-muted-foreground">
             {item.displayLink.split(".").length > 2
@@ -178,6 +143,24 @@ function LinkCard({
         </div>
       </div>
     </Link>
+  )
+}
+
+function LinkIcon({ item }: { item: SearchResult }) {
+  return (
+    <div className="relative overflow-hidden" style={{ minWidth: "16px" }}>
+      <Image
+        title={he.decode(item.title)}
+        className="m-0 block rounded-full bg-transparent object-contain"
+        src={`https://www.google.com/s2/favicons?domain=${item.displayLink}&sz=128`}
+        sizes="16px"
+        width={16}
+        height={16}
+        onError={e => (e.currentTarget.src = "/logo-google.png")}
+        alt={he.decode(item.title)}
+        unoptimized // because we want to decrease cost of image optimization
+      />
+    </div>
   )
 }
 

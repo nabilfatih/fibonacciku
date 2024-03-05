@@ -24,7 +24,7 @@ function MetadataSidebar({ title, description, children, ...props }: Props) {
   const t = useScopedI18n("FormChat")
   return (
     <Sheet {...props}>
-      <SheetContent side="right" className="bg-muted px-0">
+      <SheetContent side="right" className="bg-muted px-0 py-4">
         <SheetHeader className="px-4">
           <SheetTitle className="flex items-center">{title}</SheetTitle>
           {description && <SheetDescription>{description}</SheetDescription>}
