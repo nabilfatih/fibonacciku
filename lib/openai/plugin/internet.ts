@@ -83,7 +83,7 @@ export const googlePlugin = cache(
       return {
         type: "google",
         message:
-          "You must summarize the google search results, not just display them",
+          "You must summarize and explain the google search results in very detailed way, not just display them",
         results: smallData
       }
     } catch (error) {
