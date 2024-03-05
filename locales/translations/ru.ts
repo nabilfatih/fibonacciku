@@ -697,7 +697,8 @@ export default {
     differential: "Дифференциал",
     "indefinite-integral": "Неопределенный интеграл",
     "alternate-form-of-integral": "Альтернативная форма интеграла",
-    "website-scraping": "Скрапинг веб-сайтов"
+    "website-scraping": "Скрапинг веб-сайтов",
+    "show-more": "Показать больше"
   },
   Markdown: {
     "link-not-available": "Ссылка недоступна"

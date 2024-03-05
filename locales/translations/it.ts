@@ -698,7 +698,8 @@ export default {
     differential: "Differenziale",
     "indefinite-integral": "Integrale indefinito",
     "alternate-form-of-integral": "Forma alternativa dell'integrale",
-    "website-scraping": "Estrazione di dati dai siti web"
+    "website-scraping": "Estrazione di dati dai siti web",
+    "show-more": "Mostra di più"
   },
   Markdown: {
     "link-not-available": "Link non disponibile"

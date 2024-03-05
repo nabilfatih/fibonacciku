@@ -697,7 +697,8 @@ export default {
     differential: "Differentiaal",
     "indefinite-integral": "Ongespecificeerd integraal",
     "alternate-form-of-integral": "Alternatieve vorm van integraal",
-    "website-scraping": "Website scraping"
+    "website-scraping": "Website scraping",
+    "show-more": "Meer tonen",
   },
   Markdown: {
     "link-not-available": "Link niet beschikbaar"

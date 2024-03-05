@@ -226,7 +226,7 @@ const featuresList = [
         <Link
           href="/"
           title="FibonacciKu"
-          className="group min-h-[82px] rounded-md border bg-card p-2 transition-colors hover:bg-card/50"
+          className="group rounded-md border bg-card p-2 transition-colors hover:bg-card/50"
         >
           <div className="flex h-full w-full flex-col items-start justify-between gap-3 overflow-hidden">
             <div className="flex flex-col gap-1">
@@ -269,7 +269,7 @@ const featuresList = [
           target="_blank"
           href="https://www.youtube.com/@fibonacciku"
           title="FibonacciKu Indonesia"
-          className="group min-h-[82px] rounded-md border bg-card p-2 transition-colors hover:bg-card/50"
+          className="group rounded-md border bg-card p-2 transition-colors hover:bg-card/50"
         >
           <div className="flex h-full w-full flex-col items-start justify-between gap-3 overflow-hidden">
             <div className="flex flex-col gap-1">
@@ -384,7 +384,7 @@ const featuresList = [
           rel="noopener noreferrer"
           href="https://www.semanticscholar.org/paper/f9c602cc436a9ea2f9e7db48c77d924e09ce3c32"
           target="_blank"
-          className="group min-h-[82px] rounded-md border bg-card p-2 transition-colors hover:bg-card/50"
+          className="group rounded-md border bg-card p-2 transition-colors hover:bg-card/50"
         >
           <div className="flex h-full w-full flex-col items-start justify-between gap-3">
             <div className="flex flex-col gap-1">
@@ -438,7 +438,7 @@ const featuresList = [
           rel="noopener noreferrer"
           href="https://www.semanticscholar.org/paper/4954fa180728932959997a4768411ff9136aac81"
           target="_blank"
-          className="group min-h-[82px] rounded-md border bg-card p-2 transition-colors hover:bg-card/50"
+          className="group rounded-md border bg-card p-2 transition-colors hover:bg-card/50"
         >
           <div className="flex h-full w-full flex-col items-start justify-between gap-3">
             <div className="flex flex-col gap-1">

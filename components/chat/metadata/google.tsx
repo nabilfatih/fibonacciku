@@ -1,11 +1,14 @@
-import { memo } from "react"
+import { memo, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { IconWorldWww } from "@tabler/icons-react"
 import he from "he"
 
 import type { SearchResult } from "@/types/types"
+import { cn } from "@/lib/utils"
 import { useScopedI18n } from "@/locales/client"
+
+import MetadataSidebar from "@/components/chat/metadata/sidebar"
 
 type Props = {
   metadata: SearchResult[]
@@ -13,6 +16,8 @@ type Props = {
 
 function ChatMetadataGoogle({ metadata }: Props) {
   const t = useScopedI18n("MetadataChat")
+
+  const [open, setOpen] = useState<boolean>(false)
 
   return (
     <div className="flex flex-col justify-start gap-2">
@@ -27,20 +32,95 @@ function ChatMetadataGoogle({ metadata }: Props) {
         })}
       </div>
       <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
-        {metadata.slice(2).map((item, index) => {
+        {metadata.slice(2, 4).map((item, index) => {
           return <LinkCard key={item.link} item={item} showSnippet={false} />
         })}
+        {
+          // if there is more than 4 links, show the remaining links
+          metadata.length > 4 && (
+            <div
+              role="button"
+              className="group cursor-pointer rounded-xl border p-2 shadow transition-colors hover:bg-muted/50"
+              onClick={() => setOpen(true)}
+            >
+              <div className="flex h-full w-full flex-col items-start justify-between gap-3 overflow-hidden">
+                <div className="flex flex-wrap gap-1 sm:gap-2">
+                  {
+                    // show all the remaining links, only the icon
+                    metadata.slice(4).map((item, index) => {
+                      return (
+                        <div
+                          key={item.link}
+                          className="relative overflow-hidden"
+                          style={{ minWidth: "16px" }}
+                        >
+                          <Image
+                            title={he.decode(item.title)}
+                            className="m-0 block rounded-full bg-transparent object-contain"
+                            src={`https://www.google.com/s2/favicons?domain=${item.displayLink}&sz=128`}
+                            sizes="16px"
+                            width={16}
+                            height={16}
+                            onError={e =>
+                              (e.currentTarget.src = "/logo-google.png")
+                            }
+                            alt={he.decode(item.title)}
+                            unoptimized // because we want to decrease cost of image optimization
+                          />
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+
+                <p className="text-xs text-muted-foreground">
+                  {t("show-more")}
+                </p>
+              </div>
+            </div>
+          )
+        }
       </div>
+
+      <MetadataSidebar
+        open={open}
+        onOpenChange={setOpen}
+        title={
+          <>
+            <IconWorldWww className="mr-1 h-5 w-5" />
+            <p>{t("related-links")}</p>
+          </>
+        }
+      >
+        <div className="grid h-[calc(100%-4rem)]">
+          <div className="relative my-4 overflow-y-auto border-y py-4">
+            <div className="mb-4 flex h-full flex-col space-y-2 px-4">
+              {metadata.slice(4).map((item, index) => {
+                return (
+                  <LinkCard
+                    key={item.link}
+                    item={item}
+                    className="bg-card hover:bg-card/80"
+                    showSnippet
+                  />
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      </MetadataSidebar>
     </div>
   )
 }
 
 function LinkCard({
   item,
-  showSnippet
+  showSnippet,
+  className
 }: {
   item: SearchResult
   showSnippet: boolean
+  className?: string
 }) {
   return (
     <Link
@@ -49,7 +129,10 @@ function LinkCard({
       href={item.link}
       rel="noopener noreferrer"
       title={he.decode(item.title)}
-      className="group min-h-[82px] rounded-xl border p-2 shadow transition-colors hover:bg-muted/50"
+      className={cn(
+        "group rounded-xl border p-2 shadow transition-colors hover:bg-muted/50",
+        className
+      )}
     >
       <div className="flex h-full w-full flex-col items-start justify-between gap-3 overflow-hidden">
         <div className="flex flex-col gap-1">
@@ -61,7 +144,7 @@ function LinkCard({
           </p>
           {showSnippet && (
             <p
-              className="hidden whitespace-pre-wrap break-words text-xs sm:line-clamp-3"
+              className="line-clamp-3 whitespace-pre-wrap break-words text-xs"
               title={he.decode(item.snippet)}
             >
               {he.decode(item.snippet)}
@@ -77,7 +160,7 @@ function LinkCard({
             <Image
               title={he.decode(item.title)}
               className="m-0 block rounded-full bg-transparent object-contain"
-              src={`https://www.google.com/s2/favicons?domain=${item.displayLink}&sz=512`}
+              src={`https://www.google.com/s2/favicons?domain=${item.displayLink}&sz=128`}
               sizes="16px"
               width={16}
               height={16}

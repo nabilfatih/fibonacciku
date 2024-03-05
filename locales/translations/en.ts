@@ -683,7 +683,8 @@ export default {
     differential: "Differential",
     "indefinite-integral": "Indefinite integral",
     "alternate-form-of-integral": "Alternate form of integral",
-    "website-scraping": "Website scraping"
+    "website-scraping": "Website scraping",
+    "show-more": "Show more"
   },
   Markdown: {
     "link-not-available": "Link not available"

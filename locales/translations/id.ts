@@ -702,7 +702,8 @@ export default {
     differential: "Diferensial",
     "indefinite-integral": "Integral tak tentu",
     "alternate-form-of-integral": "Bentuk alternatif integral",
-    "website-scraping": "Website Scraping"
+    "website-scraping": "Website Scraping",
+    "show-more": "Tampilkan lebih banyak"
   },
   Markdown: {
     "link-not-available": "Tautan tidak tersedia"

@@ -708,7 +708,8 @@ export default {
     differential: "Differential",
     "indefinite-integral": "Unbestimmtes Integral",
     "alternate-form-of-integral": "Alternativform des Integrals",
-    "website-scraping": "Webseiten-Scraping"
+    "website-scraping": "Webseiten-Scraping",
+    "show-more": "Mehr anzeigen"
   },
   Markdown: {
     "link-not-available": "Link nicht verfügbar"
