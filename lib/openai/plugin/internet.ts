@@ -83,7 +83,7 @@ export const googlePlugin = cache(
       return {
         type: "google",
         message:
-          "You must summarize and explain the google search results in very detailed way, not just display them",
+          "You must explain the google search results in very detailed way, not just display them",
         results: smallData
       }
     } catch (error) {
@@ -135,7 +135,7 @@ export const youtubePlugin = cache(
       return {
         type: "youtube",
         message:
-          "You must summarize the youtube search results, not just display them",
+          "You must explain the youtube search results in very detailed way, not just display them",
         results: smallData
       }
     } catch (error) {
@@ -200,7 +200,7 @@ export const academicPlugin = cache(
       return {
         type: "academic",
         message:
-          "You must summarize the academic search results, not just display them",
+          "You must explain the academic research results in very detailed way, not just display them",
         results: smallData
       }
     } catch (error) {
