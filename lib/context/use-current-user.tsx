@@ -8,7 +8,7 @@ import {
   useMemo,
   useState
 } from "react"
-import type { Session, User } from "@supabase/supabase-js"
+import type { User } from "@supabase/supabase-js"
 import type { KeyedMutator } from "swr"
 
 import type { Subscription, UserDetails } from "@/types/types"
