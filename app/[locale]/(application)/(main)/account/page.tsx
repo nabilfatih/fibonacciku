@@ -32,10 +32,10 @@ export default async function AccountPage() {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
-  if (!session?.user) {
+  if (!user) {
     redirect("/auth/login?next=/account")
   }
 
@@ -44,9 +44,9 @@ export default async function AccountPage() {
       <AccountHeader text="account" />
 
       <Suspense>
-        <AccountGeneral userId={session.user.id} />
+        <AccountGeneral userId={user.id} />
 
-        <AccountSubscription userId={session.user.id} />
+        <AccountSubscription userId={user.id} />
 
         <AccountSystem />
       </Suspense>

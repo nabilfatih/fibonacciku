@@ -8,7 +8,7 @@ import {
   useMemo,
   useState
 } from "react"
-import type { Session } from "@supabase/supabase-js"
+import type { Session, User } from "@supabase/supabase-js"
 import type { KeyedMutator } from "swr"
 
 import type { Subscription, UserDetails } from "@/types/types"
@@ -17,7 +17,7 @@ import useUser from "@/lib/swr/use-user"
 
 // Define type for context value
 type CurrentUserContextValue = {
-  session: Session | null
+  user: User | null
   userDetails: UserDetails | null
   setUserDetails: React.Dispatch<React.SetStateAction<UserDetails | null>>
   subscription: Subscription | null
@@ -38,13 +38,13 @@ export const CurrentUserContext = createContext<
 // Define props type
 type CurrentUserContextProviderProps = {
   children: React.ReactNode
-  session: Session | null
+  user: User | null
 }
 
 // Define provider component
 export const CurrentUserContextProvider: React.FC<
   CurrentUserContextProviderProps
-> = ({ session, children }) => {
+> = ({ user, children }) => {
   const [userDetails, setUserDetails] = useState<UserDetails | null>(null)
   const [subscription, setSubscription] = useState<Subscription | null>(null)
 
@@ -53,7 +53,7 @@ export const CurrentUserContextProvider: React.FC<
     subscription: subscriptionData,
     isLoading,
     mutate
-  } = useUser(session?.user?.id ?? "")
+  } = useUser(user?.id || "")
 
   useEffect(() => {
     if (userData) setUserDetails(userData)
@@ -125,7 +125,7 @@ export const CurrentUserContextProvider: React.FC<
 
   const value = useMemo(
     () => ({
-      session,
+      user,
       userDetails,
       setUserDetails,
       subscription,
@@ -138,7 +138,7 @@ export const CurrentUserContextProvider: React.FC<
       handleClearCurrentUserData,
       isLoading,
       mutate,
-      session,
+      user,
       subscription,
       userDetails
     ]

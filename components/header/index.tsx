@@ -19,15 +19,15 @@ async function UserHistory() {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
   return (
     <div className="flex items-center">
-      {session?.user?.id ? (
+      {user?.id ? (
         <>
           <SidebarMobile>
-            <ChatHistory userId={session.user.id} />
+            <ChatHistory userId={user.id} />
           </SidebarMobile>
           <SidebarToggle />
         </>

@@ -37,18 +37,18 @@ export default async function PremiumPage() {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
   let subscription: Subscription | null = null
 
-  if (session?.user) {
+  if (user) {
     const { data } = await supabase
       .from("subscriptions")
       .select("*, prices(*, products(*))")
       // .in("status", ["trialing", "active"])
       .gt("current_period_end", new Date().toISOString())
-      .eq("user_id", session.user.id)
+      .eq("user_id", user.id)
       .order("created_at", { ascending: false }) // get the latest subscription
       .limit(1)
       .maybeSingle()
@@ -85,7 +85,7 @@ export default async function PremiumPage() {
         <div
           className={cn(
             "relative mx-auto max-w-4xl px-4",
-            !session && "max-w-7xl"
+            !user && "max-w-7xl"
           )}
         >
           <div className="flex items-center">
@@ -99,22 +99,13 @@ export default async function PremiumPage() {
       </header>
 
       <section
-        className={cn(
-          "relative mx-auto max-w-4xl px-4",
-          !session && "max-w-7xl"
-        )}
+        className={cn("relative mx-auto max-w-4xl px-4", !user && "max-w-7xl")}
       >
-        <PremiumPrice
-          user={session?.user || null}
-          subscription={subscription}
-        />
+        <PremiumPrice user={user || null} subscription={subscription} />
       </section>
 
       <section
-        className={cn(
-          "relative mx-auto max-w-4xl px-4",
-          !session && "max-w-7xl"
-        )}
+        className={cn("relative mx-auto max-w-4xl px-4", !user && "max-w-7xl")}
       >
         <PremiumFeatures />
       </section>
@@ -122,7 +113,7 @@ export default async function PremiumPage() {
       <section
         className={cn(
           "relative mx-auto max-w-4xl px-4 pb-12 pt-6",
-          !session && "max-w-7xl"
+          !user && "max-w-7xl"
         )}
       >
         <div className="flex items-center pb-6">
@@ -132,7 +123,7 @@ export default async function PremiumPage() {
         </div>
         <PremiumCompare />
       </section>
-      {!session && (
+      {!user && (
         <>
           <MarketingCta />
           <MarketingFooter />

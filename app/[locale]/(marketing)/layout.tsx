@@ -14,11 +14,11 @@ export default async function MarketingLayout({
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
   return (
-    <CurrentUserContextProvider session={session}>
+    <CurrentUserContextProvider user={user}>
       <MarketingHeader />
       <main className="flex flex-1 flex-col overflow-hidden">{children}</main>
       <MarketingFooter />

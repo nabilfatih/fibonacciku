@@ -10,10 +10,10 @@ export async function getLibraryFile(fileId: string) {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
-  if (!session?.user?.id) {
+  if (!user) {
     return {
       error: "Unauthorized"
     }
@@ -21,7 +21,7 @@ export async function getLibraryFile(fileId: string) {
 
   const { data, error } = await supabase.storage
     .from("documents")
-    .createSignedUrl(`${session.user.id}/${fileId}`, 60 * 60 * 24)
+    .createSignedUrl(`${user.id}/${fileId}`, 60 * 60 * 24)
 
   if (error) {
     return {
@@ -44,10 +44,10 @@ export async function renameLibrary(id: string, title: string) {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
-  if (!session?.user?.id) {
+  if (!user) {
     return {
       error: "Unauthorized"
     }
@@ -69,7 +69,7 @@ export async function renameLibrary(id: string, title: string) {
     }
   }
 
-  if (!data || data.user_id !== session.user.id) {
+  if (!data || data.user_id !== user.id) {
     return {
       error: "Unauthorized"
     }
@@ -83,10 +83,10 @@ export async function removeLibrary(id: string, fileId: string) {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
-  if (!session?.user?.id) {
+  if (!user) {
     return {
       error: "Unauthorized"
     }
@@ -96,15 +96,15 @@ export async function removeLibrary(id: string, fileId: string) {
     await supabase.from("libraries").delete().eq("id", id)
   }
   async function deleteChatDocument() {
-    await supabase.storage
-      .from("documents")
-      .remove([`${session?.user.id}/${fileId}`])
+    if (!user) return
+    await supabase.storage.from("documents").remove([`${user.id}/${fileId}`])
   }
   async function deleteDocument() {
+    if (!user) return
     await supabase
       .from("documents")
       .delete()
-      .contains("metadata", { file_id: fileId, user_id: session?.user.id })
+      .contains("metadata", { file_id: fileId, user_id: user.id })
   }
   async function deleteChatByFileId() {
     await supabase.from("chat").delete().eq("file_id", fileId)

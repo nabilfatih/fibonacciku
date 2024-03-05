@@ -39,10 +39,10 @@ export default async function ChatFeaturePage({ params, searchParams }: Props) {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
-  if (!session?.user) {
+  if (!user) {
     redirect(`/auth/login?next=/chat/${params.feature}`)
   }
 
@@ -55,17 +55,17 @@ export default async function ChatFeaturePage({ params, searchParams }: Props) {
   if (referral) {
     // first check if user use referral link is in range of 3 minutes of registration
     // to prevent abuse of referral link
-    const { data: user } = await supabase
+    const { data: userDetails } = await supabase
       .from("users")
       .select("created_at")
-      .eq("id", session.user.id)
+      .eq("id", user.id)
       .limit(1)
       .maybeSingle()
 
-    if (user) {
+    if (userDetails) {
       // check if user is in range of 3 minutes
       const now = new Date()
-      const createdAt = new Date(user.created_at)
+      const createdAt = new Date(userDetails.created_at)
       const diff = now.getTime() - createdAt.getTime()
       const diffMinutes = diff / (1000 * 60)
 
@@ -79,7 +79,7 @@ export default async function ChatFeaturePage({ params, searchParams }: Props) {
         .update({
           referral
         })
-        .eq("id", session.user.id)
+        .eq("id", user.id)
 
       // then remove referral from url
       redirect(`/chat/${params.feature}`)

@@ -26,7 +26,9 @@ const I18nMiddleware = createI18nMiddleware({
 export async function middleware(req: NextRequest) {
   const res = I18nMiddleware(req)
   const { supabase, response } = createClientMiddleware(req, res)
-  await supabase.auth.getSession()
+  // This will refresh session if expired - required for Server Components
+  // https://supabase.com/docs/guides/auth/server-side/nextjs
+  await supabase.auth.getUser()
   return response
 }
 

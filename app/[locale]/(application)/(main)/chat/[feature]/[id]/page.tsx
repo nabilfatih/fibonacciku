@@ -31,10 +31,10 @@ export default async function ChatMessagePage({ params }: Props) {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
-  if (!session?.user) {
+  if (!user) {
     redirect(`/auth/login?next=/chat/${params.feature}/${params.id}`)
   }
 
@@ -42,11 +42,11 @@ export default async function ChatMessagePage({ params }: Props) {
     .from("chat")
     .select()
     .eq("id", params.id)
-    .eq("user_id", session.user.id)
+    .eq("user_id", user.id)
     .limit(1)
     .maybeSingle()
 
-  if (!chat || chat.user_id !== session.user.id) {
+  if (!chat || chat.user_id !== user.id) {
     notFound()
   }
 

@@ -8,10 +8,10 @@ export async function getBookCollection(bookId: string) {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
-  if (!session?.user?.id) {
+  if (!user) {
     return {
       error: "Unauthorized"
     }

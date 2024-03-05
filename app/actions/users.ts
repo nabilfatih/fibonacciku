@@ -10,10 +10,10 @@ export async function updateUser(id: string, data: any) {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
-  if (!session?.user?.id) {
+  if (!user) {
     return {
       error: "Unauthorized"
     }
@@ -40,16 +40,16 @@ export async function deleteUser() {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
-  if (!session?.user?.id) {
+  if (!user) {
     return {
       error: "Unauthorized"
     }
   }
 
-  const { error } = await supabaseAdmin.auth.admin.deleteUser(session.user.id)
+  const { error } = await supabaseAdmin.auth.admin.deleteUser(user.id)
 
   if (error) {
     return {

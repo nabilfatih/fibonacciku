@@ -11,10 +11,10 @@ export async function renameChat(id: string, title: string) {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
-  if (!session?.user?.id) {
+  if (!user) {
     return {
       error: "Unauthorized"
     }
@@ -33,7 +33,7 @@ export async function renameChat(id: string, title: string) {
     }
   }
 
-  if (!data || data.user_id !== session.user.id) {
+  if (!data || data.user_id !== user.id) {
     return {
       error: "Unauthorized"
     }
@@ -44,10 +44,10 @@ export async function removeChat(id: string, path: string) {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
-  if (!session?.user?.id) {
+  if (!user) {
     return {
       error: "Unauthorized"
     }
@@ -66,7 +66,7 @@ export async function removeChat(id: string, path: string) {
     }
   }
 
-  if (!data || data.user_id !== session.user.id) {
+  if (!data || data.user_id !== user.id) {
     return {
       error: "Unauthorized"
     }
@@ -80,10 +80,10 @@ export async function shareChat(id: string, type: string) {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
-  if (!session?.user?.id) {
+  if (!user) {
     return {
       error: "Unauthorized"
     }
@@ -110,7 +110,7 @@ export async function shareChat(id: string, type: string) {
     .from("share_chat")
     .insert({
       id: generateUUID(),
-      user_id: session.user.id,
+      user_id: user.id,
       chat_id: id,
       created_at: getCurrentDate()
     })
@@ -123,7 +123,7 @@ export async function shareChat(id: string, type: string) {
     }
   }
 
-  if (!data || data.user_id !== session.user.id) {
+  if (!data || data.user_id !== user.id) {
     return {
       error: "Something went wrong"
     }
@@ -148,10 +148,10 @@ export async function getChatFile(fileId: string, type: Features) {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
-  if (!session?.user?.id) {
+  if (!user) {
     return {
       error: "Unauthorized"
     }
@@ -162,7 +162,7 @@ export async function getChatFile(fileId: string, type: Features) {
   if (type === "document") {
     const { data, error } = await supabase.storage
       .from("documents")
-      .createSignedUrl(`${session.user.id}/${fileId}`, 60 * 60 * 24)
+      .createSignedUrl(`${user.id}/${fileId}`, 60 * 60 * 24)
 
     if (error) {
       return {

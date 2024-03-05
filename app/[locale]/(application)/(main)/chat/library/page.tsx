@@ -29,17 +29,17 @@ export default async function ChatLibraryPage() {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
-  if (!session?.user) {
+  if (!user) {
     redirect("/auth/login?next=/chat/library")
   }
 
   const { data: libraries } = await supabase
     .from("libraries")
     .select("*")
-    .eq("user_id", session.user.id)
+    .eq("user_id", user.id)
     .order("created_at", { ascending: false })
 
   if (!libraries) {

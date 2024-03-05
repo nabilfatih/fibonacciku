@@ -13,11 +13,11 @@ export default async function NotFound() {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
   return (
-    <CurrentUserContextProvider session={session}>
+    <CurrentUserContextProvider user={user}>
       <HeaderChat />
       <main className="flex flex-1 flex-col overflow-hidden">
         <div className="relative flex h-[calc(100dvh-4rem)] overflow-hidden">

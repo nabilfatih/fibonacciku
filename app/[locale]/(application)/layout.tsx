@@ -14,12 +14,12 @@ export default async function ApplicationLayout({
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
   return (
-    <CurrentUserContextProvider session={session}>
-      {session ? <HeaderChat /> : <MarketingHeader />}
+    <CurrentUserContextProvider user={user}>
+      {user ? <HeaderChat /> : <MarketingHeader />}
       <main className="flex flex-1 flex-col overflow-hidden">{children}</main>
     </CurrentUserContextProvider>
   )

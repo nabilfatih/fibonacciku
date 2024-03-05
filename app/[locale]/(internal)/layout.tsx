@@ -16,20 +16,20 @@ export default async function InternalLayout({
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
-    data: { session }
-  } = await supabase.auth.getSession()
+    data: { user }
+  } = await supabase.auth.getUser()
 
-  if (!session) {
+  if (!user) {
     redirect("/auth/login")
   }
 
   // if email not in admin set, redirect to home
-  if (!admin.has(session.user.email || "")) {
+  if (!admin.has(user.email || "")) {
     redirect("/")
   }
 
   return (
-    <CurrentUserContextProvider session={session}>
+    <CurrentUserContextProvider user={user}>
       <MarketingHeader />
       <main className="flex flex-1 flex-col overflow-hidden">
         <Suspense>{children}</Suspense>
