@@ -44,7 +44,7 @@ export const defaultToolsChat: Tool[] = [
     function: {
       name: "google_search",
       description:
-        "Get real time data or current information from internet or find resources or google search. This can be used as resources of your answers. This function must be used when user want to get the real time data or current information from internet or google search.",
+        "Get real time data or current information of anything from internet or find resources or google search. This can be used as resources of your answers. This function must be used when user want to get the real time data or current information from internet or google search.",
       parameters: {
         type: "object",
         properties: {
@@ -52,9 +52,19 @@ export const defaultToolsChat: Tool[] = [
             type: "string",
             description:
               "the query to search, this query will be used to search the related links from internet or google search."
+          },
+          lang: {
+            type: "string",
+            description:
+              "the language (country code) to get the google search result. Only 2 characters. e.g. 'en', 'id', 'de', 'ru', etc."
+          },
+          dateRestrict: {
+            type: "string",
+            description:
+              "the date to get the google search result. requests results from the specified number of past days/weeks/months/years. E.g. 'd1' for the past 1 day, 'w1' for the past 1 week, 'm1' for the past 1 month, 'y1' for the past 1 year. etc. Make the value empty string if you think the date is not important."
           }
         },
-        required: ["query"]
+        required: ["query", "lang", "dateRestrict"]
       }
     }
   },

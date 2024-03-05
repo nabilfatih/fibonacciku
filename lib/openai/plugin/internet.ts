@@ -9,7 +9,18 @@ import type {
 
 import { scrapeWebsite } from "./ninja"
 
-export const fetchGoogleSearch = async (query: string, num: number) => {
+export const fetchGoogleSearch = async (
+  query: string,
+  num: number,
+  lang: string,
+  dateRestrict = ""
+) => {
+  // check if dateRestrict is valid (valid=m[number], d[number], w[number], y[number])
+  // if not valid, set it to empty string
+  const validDateRestrict = dateRestrict.match(/(m|d|w|y)[0-9]+/)
+    ? dateRestrict
+    : ""
+
   // it can handle multiple fetch at time in parallel
   // google can only return 10 results at a time, so we need to fetch multiple times
   // if num = 15, then we need to fetch 2 times, first time 10 results and second time 5 results
@@ -19,7 +30,7 @@ export const fetchGoogleSearch = async (query: string, num: number) => {
       Array.from({ length: Math.ceil(num / 10) }, (_, i) => {
         const start = i * 10 + 1 // why? because google start from 1, and then 11, 21, 31, etc
         return fetch(
-          `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_CX}&q=${query}&num=10&start=${start}&safe=active`
+          `https://customsearch.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_CX}&q=${query}&num=10&start=${start}&safe=active&gl=${lang}&hl=${lang}&dateRestrict=${validDateRestrict}`
         )
       })
     )
@@ -40,9 +51,9 @@ export const fetchGoogleSearch = async (query: string, num: number) => {
 }
 
 export const googlePlugin = cache(
-  async (query: string) => {
+  async (query: string, lang: string, dateRestrict: string) => {
     try {
-      const result = await fetchGoogleSearch(query, 20)
+      const result = await fetchGoogleSearch(query, 20, lang, dateRestrict)
 
       const smallData: SearchResult[] = result.map((item: any) => {
         return {
@@ -55,10 +66,12 @@ export const googlePlugin = cache(
 
       // scrape the content of the website
       const content = await Promise.all(
-        result.slice(0, 5).map(async (item: any) => {
+        result.slice(0, 20).map(async (item: any) => {
           const scraped = await scrapeWebsite(item.link)
           // only get the first 2000 characters
-          return scraped.results[0].data.substring(0, 2000)
+          return scraped.results.length
+            ? scraped.results[0].data.substring(0, 2000)
+            : ""
         })
       )
 
@@ -175,11 +188,11 @@ export const academicPlugin = cache(
           abstract: sanitizeHtml(item?.abstract || "", {
             allowedTags: [],
             allowedAttributes: {}
-          }).substring(0, 100),
+          }).substring(0, 1000),
           tldr: sanitizeHtml(item?.tldr?.text || "", {
             allowedTags: [],
             allowedAttributes: {}
-          }).substring(0, 100),
+          }).substring(0, 1000),
           url: item.url
         }
       })

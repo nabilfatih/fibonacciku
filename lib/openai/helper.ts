@@ -124,7 +124,11 @@ export const callTools = async (
     toolResponse.result = await callingSolveMathProblem(String(args.query))
   }
   if (name === "google_search") {
-    toolResponse.result = await callingGoogle(String(args.query))
+    toolResponse.result = await callingGoogle(
+      String(args.query),
+      String(args.lang),
+      String(args.dateRestrict)
+    )
   }
   if (name === "youtube_videos") {
     toolResponse.result = await callingYoutube(String(args.query))

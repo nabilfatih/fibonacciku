@@ -17,8 +17,12 @@ export const callingSolveMathProblem = async (query: string) => {
   return data
 }
 
-export const callingGoogle = async (query: string) => {
-  const data = await googlePlugin(query)
+export const callingGoogle = async (
+  query: string,
+  lang: string,
+  dateRestrict: string
+) => {
+  const data = await googlePlugin(query, lang, dateRestrict)
   return data
 }
 
