@@ -45,7 +45,7 @@ export default async function PremiumCompare() {
         </TableRow>
         <TableRow>
           <TableCell>{t("document-upload")}</TableCell>
-          <TableCell>{t("unlimited")}</TableCell>
+          <TableCell>{t("limited")}</TableCell>
           <TableCell>{t("unlimited")}</TableCell>
         </TableRow>
         <TableRow>
