@@ -35,7 +35,7 @@ export default function AuthenticationLayout({
               className="rounded-full object-cover shadow"
             />
           </div>
-          <span className="font-semibold">FibonacciKu</span>
+          <h1 className="font-semibold tracking-tighter">FibonacciKu</h1>
         </Link>
         <div className="relative z-20 mt-auto">
           <blockquote className="space-y-2">
