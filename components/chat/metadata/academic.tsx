@@ -95,7 +95,7 @@ function ChatMetadataAcademic({ metadata }: Props) {
         }
       >
         <div className="grid h-[calc(100%-4rem)]">
-          <div className="relative my-2 overflow-y-auto border-y py-4">
+          <div className="relative my-4 overflow-y-auto border-y py-4">
             <div className="mb-4 flex h-full flex-col space-y-2 px-4">
               {metadata.map((item, index) => {
                 return (
