@@ -103,7 +103,7 @@ function ChatMetadataAcademic({ metadata }: Props) {
                     key={item.id || item.title}
                     item={item}
                     index={index}
-                    className="bg-card hover:bg-card/80"
+                    className="bg-card hover:bg-card/50"
                     showAbstract
                   />
                 )

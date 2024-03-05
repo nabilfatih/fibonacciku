@@ -80,7 +80,7 @@ function ChatMetadataGoogle({ metadata }: Props) {
                   <LinkCard
                     key={item.link}
                     item={item}
-                    className="bg-card hover:bg-card/80"
+                    className="bg-card hover:bg-card/50"
                     showSnippet
                   />
                 )
