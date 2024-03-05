@@ -47,6 +47,6 @@ export const scrapeWebsite = cache(
   },
   ["scrapeWebsite"],
   {
-    revalidate: 86400
+    revalidate: 604800
   }
 )
