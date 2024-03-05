@@ -76,7 +76,7 @@ export async function renameLibrary(id: string, title: string) {
   }
 
   revalidatePath("/")
-  return revalidatePath("/chat/library")
+  return revalidatePath("/library")
 }
 
 export async function removeLibrary(id: string, fileId: string) {
@@ -122,5 +122,5 @@ export async function removeLibrary(id: string, fileId: string) {
   })
 
   revalidatePath("/")
-  return revalidatePath("/chat/library")
+  return revalidatePath("/library")
 }

@@ -13,13 +13,14 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t("library"),
     alternates: {
-      canonical: "/chat/library",
+      canonical: "/library",
       languages: {
-        en: "/en/chat/library",
-        id: "/id/chat/library",
-        de: "/de/chat/library",
-        ru: "/ru/chat/library",
-        nl: "/nl/chat/library"
+        en: "/en/library",
+        id: "/id/library",
+        de: "/de/library",
+        ru: "/ru/library",
+        nl: "/nl/library",
+        it: "/it/library"
       }
     }
   }
@@ -33,7 +34,7 @@ export default async function ChatLibraryPage() {
   } = await supabase.auth.getUser()
 
   if (!user) {
-    redirect("/auth/login?next=/chat/library")
+    redirect("/auth/login?next=/library")
   }
 
   const { data: libraries } = await supabase

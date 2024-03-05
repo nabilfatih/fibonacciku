@@ -126,7 +126,7 @@ export default function LibraryCardActions({ className, library }: Props) {
 
                   setDeleteDialogOpen(false)
                   router.refresh()
-                  router.push("/chat/library")
+                  router.push("/library")
                   toast.success(tDelete("document-deleted"))
                 })
               }}

@@ -146,7 +146,7 @@ export default function UserMenu() {
           </DropdownMenuItem>
           <DropdownMenuItem asChild className="py-2">
             <Link
-              href="/chat/library"
+              href="/library"
               className="inline-flex w-full cursor-pointer items-center justify-between"
             >
               {t("library")}

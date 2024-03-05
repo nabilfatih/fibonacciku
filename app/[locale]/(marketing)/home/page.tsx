@@ -11,7 +11,8 @@ export function generateMetadata(): Metadata {
         id: "/id/home",
         de: "/de/home",
         ru: "/ru/home",
-        nl: "/nl/home"
+        nl: "/nl/home",
+        it: "/it/home"
       }
     }
   }

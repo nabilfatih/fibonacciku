@@ -63,7 +63,8 @@ export async function generateMetadata(): Promise<Metadata> {
         id: "/id",
         de: "/de",
         ru: "/ru",
-        nl: "/nl"
+        nl: "/nl",
+        it: "/it"
       },
       types: {
         "application/rss+xml": "https://www.fibonacciku.com/rss"

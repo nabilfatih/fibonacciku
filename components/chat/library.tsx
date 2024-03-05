@@ -96,7 +96,7 @@ export default function ChatLibrary({ userId }: Props) {
         className="grid"
       >
         <Button asChild variant="link" className="mx-auto w-fit">
-          <Link href="/chat/library">{t("see-your-library")}</Link>
+          <Link href="/library">{t("see-your-library")}</Link>
         </Button>
       </motion.div>
     )
@@ -212,7 +212,7 @@ export default function ChatLibrary({ userId }: Props) {
               size="icon"
               className="mt-2 rounded-full"
             >
-              <Link href="/chat/library">
+              <Link href="/library">
                 <IconX className="h-5 w-5" />
                 <span className="sr-only">Close</span>
               </Link>
@@ -221,7 +221,7 @@ export default function ChatLibrary({ userId }: Props) {
         </div>
       </div>
       <Button asChild variant="link" className="mx-auto w-fit">
-        <Link href="/chat/library">{t("see-your-library")}</Link>
+        <Link href="/library">{t("see-your-library")}</Link>
       </Button>
     </motion.div>
   )

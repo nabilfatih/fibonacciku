@@ -23,6 +23,7 @@ const pathnames = [
   "/chat/document",
   "/chat/library",
   "/chat/book",
+  "/library",
   "/book",
   "/book/collection",
   "/school",

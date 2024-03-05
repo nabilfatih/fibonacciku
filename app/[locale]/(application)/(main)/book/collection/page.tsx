@@ -23,7 +23,8 @@ export async function generateMetadata(): Promise<Metadata> {
         id: "/id/book/collection",
         de: "/de/book/collection",
         ru: "/ru/book/collection",
-        nl: "/nl/book/collection"
+        nl: "/nl/book/collection",
+        it: "/it/book/collection"
       }
     }
   }
