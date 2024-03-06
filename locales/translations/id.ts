@@ -1052,7 +1052,11 @@ export default {
     "our-latest-book": "Buku terbaru",
     "see-our-collection": "Lihat koleksi kami",
     "astronomy-of-the-day": "Astronomi hari ini",
-    "powered-by-nasa": "Didukung oleh NASA"
+    "powered-by-nasa": "Didukung oleh NASA",
+    "good-morning": "Selamat pagi",
+    "good-afternoon": "Selamat siang",
+    "good-evening": "Selamat malam",
+    "good-night": "Selamat tidur"
   },
   Ads: {
     sponsored: "Sponsor",

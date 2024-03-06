@@ -1052,7 +1052,11 @@ export default {
     "our-latest-book": "Наша последняя книга",
     "see-our-collection": "Посмотреть нашу коллекцию",
     "astronomy-of-the-day": "Астрономия дня",
-    "powered-by-nasa": "Поддерживается NASA"
+    "powered-by-nasa": "Поддерживается NASA",
+    "good-morning": "Доброе утро",
+    "good-afternoon": "Добрый день",
+    "good-evening": "Добрый вечер",
+    "good-night": "Спокойной ночи"
   },
   Ads: {
     sponsored: "Реклама",

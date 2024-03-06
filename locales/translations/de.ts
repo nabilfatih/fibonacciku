@@ -1071,7 +1071,11 @@ export default {
     "our-latest-book": "Unser neuestes Buch",
     "see-our-collection": "Sehen Sie unsere Sammlung",
     "astronomy-of-the-day": "Astronomie des Tages",
-    "powered-by-nasa": "Unterstützt von der NASA"
+    "powered-by-nasa": "Unterstützt von der NASA",
+    "good-morning": "Guten Morgen",
+    "good-afternoon": "Guten Tag",
+    "good-evening": "Guten Abend",
+    "good-night": "Gute Nacht"
   },
   Ads: {
     sponsored: "Anzeige",

@@ -1050,7 +1050,11 @@ export default {
     "our-latest-book": "Ons nieuwste boek",
     "see-our-collection": "Bekijk onze collectie",
     "astronomy-of-the-day": "Astronomie van de dag",
-    "powered-by-nasa": "Mogelijk gemaakt door NASA"
+    "powered-by-nasa": "Mogelijk gemaakt door NASA",
+    "good-morning": "Goedemorgen",
+    "good-afternoon": "Goedemiddag",
+    "good-evening": "Goedenavond",
+    "good-night": "Goede nacht"
   },
   Ads: {
     sponsored: "Gesponsord",

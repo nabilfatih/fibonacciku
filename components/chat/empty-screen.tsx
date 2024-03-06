@@ -33,8 +33,10 @@ export default function EmptyScreen({ type }: Props) {
 
   const name = userDetails.full_name || ""
 
+  const greeting = defineGreeting()
+
   // Split the text into individual characters
-  const textArray = `${t("hi")} ${name}`.split("").concat(" 👋")
+  const textArray = `${t(`good-${greeting}`)}, ${name}`.split("").concat(" 👋")
 
   return (
     <div className="mx-auto max-w-2xl px-4">
@@ -66,4 +68,18 @@ export default function EmptyScreen({ type }: Props) {
       <EmptyScreenFeatures type={type} />
     </div>
   )
+}
+
+// check the time, for the greeting, (morning, afternoon, evening, night)
+function defineGreeting() {
+  const time = new Date().getHours()
+  if (time < 12) {
+    return "morning"
+  } else if (time < 18) {
+    return "afternoon"
+  } else if (time < 22) {
+    return "evening"
+  } else {
+    return "night"
+  }
 }

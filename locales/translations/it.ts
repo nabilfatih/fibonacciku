@@ -1050,7 +1050,11 @@ export default {
     "our-latest-book": "Il nostro ultimo libro",
     "see-our-collection": "Vedi la nostra collezione",
     "astronomy-of-the-day": "Astronomia del giorno",
-    "powered-by-nasa": "Powered by NASA"
+    "powered-by-nasa": "Powered by NASA",
+    "good-morning": "Buongiorno",
+    "good-afternoon": "Buon pomeriggio",
+    "good-evening": "Buonasera",
+    "good-night": "Buona notte"
   },
   Ads: {
     sponsored: "Sponsorizzato",

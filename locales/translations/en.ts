@@ -1033,7 +1033,11 @@ export default {
     "our-latest-book": "Our latest book",
     "see-our-collection": "See our collection",
     "astronomy-of-the-day": "Astronomy of the day",
-    "powered-by-nasa": "Powered by NASA"
+    "powered-by-nasa": "Powered by NASA",
+    "good-morning": "Good morning",
+    "good-afternoon": "Good afternoon",
+    "good-evening": "Good evening",
+    "good-night": "Good night"
   },
   Ads: {
     sponsored: "Sponsored",
