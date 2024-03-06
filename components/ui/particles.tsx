@@ -1,6 +1,6 @@
 "use client"
 
-import React, { memo, useEffect, useMemo, useRef } from "react"
+import React, { memo, useCallback, useEffect, useMemo, useRef } from "react"
 import type { FC } from "react"
 import dynamic from "next/dynamic"
 import { useTheme } from "next-themes"
@@ -9,6 +9,19 @@ import { isMobile } from "react-device-detect"
 import { darkThemes } from "@/lib/data/themes"
 import useMousePosition from "@/lib/hooks/use-mouse"
 import { cn } from "@/lib/utils"
+
+type Circle = {
+  x: number
+  y: number
+  translateX: number
+  translateY: number
+  size: number
+  alpha: number
+  targetAlpha: number
+  dx: number
+  dy: number
+  magnetism: number
+}
 
 type ParticlesProps = {
   className?: string
@@ -70,39 +83,7 @@ const Particles: FC<ParticlesProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refresh])
 
-  const initCanvas = () => {
-    resizeCanvas()
-    drawParticles()
-  }
-
-  const onMouseMove = () => {
-    if (canvasRef.current) {
-      const rect = canvasRef.current.getBoundingClientRect()
-      const { w, h } = canvasSize.current
-      const x = mousePosition.x - rect.left - w / 2
-      const y = mousePosition.y - rect.top - h / 2
-      const inside = x < w / 2 && x > -w / 2 && y < h / 2 && y > -h / 2
-      if (inside) {
-        mouse.current.x = x
-        mouse.current.y = y
-      }
-    }
-  }
-
-  type Circle = {
-    x: number
-    y: number
-    translateX: number
-    translateY: number
-    size: number
-    alpha: number
-    targetAlpha: number
-    dx: number
-    dy: number
-    magnetism: number
-  }
-
-  const resizeCanvas = () => {
+  const resizeCanvas = useCallback(() => {
     if (canvasContainerRef.current && canvasRef.current && context.current) {
       circles.current.length = 0
       canvasSize.current.w = canvasContainerRef.current.offsetWidth
@@ -113,9 +94,9 @@ const Particles: FC<ParticlesProps> = ({
       canvasRef.current.style.height = `${canvasSize.current.h}px`
       context.current.scale(dpr, dpr)
     }
-  }
+  }, [dpr])
 
-  const circleParams = (): Circle => {
+  const circleParams = useCallback((): Circle => {
     const x = Math.floor(Math.random() * canvasSize.current.w)
     const y = Math.floor(Math.random() * canvasSize.current.h)
     const translateX = 0
@@ -138,27 +119,30 @@ const Particles: FC<ParticlesProps> = ({
       dy,
       magnetism
     }
-  }
+  }, [])
 
-  const drawCircle = (circle: Circle, update = false) => {
-    if (context.current) {
-      const { x, y, translateX, translateY, size, alpha } = circle
-      context.current.translate(translateX, translateY)
-      context.current.beginPath()
-      context.current.arc(x, y, size, 0, 2 * Math.PI)
-      context.current.fillStyle = isThemeDark
-        ? `rgba(255, 255, 255, ${alpha})`
-        : `rgba(0, 0, 0, ${alpha})`
-      context.current.fill()
-      context.current.setTransform(dpr, 0, 0, dpr, 0, 0)
+  const drawCircle = useCallback(
+    (circle: Circle, update = false) => {
+      if (context.current) {
+        const { x, y, translateX, translateY, size, alpha } = circle
+        context.current.translate(translateX, translateY)
+        context.current.beginPath()
+        context.current.arc(x, y, size, 0, 2 * Math.PI)
+        context.current.fillStyle = isThemeDark
+          ? `rgba(255, 255, 255, ${alpha})`
+          : `rgba(0, 0, 0, ${alpha})`
+        context.current.fill()
+        context.current.setTransform(dpr, 0, 0, dpr, 0, 0)
 
-      if (!update) {
-        circles.current.push(circle)
+        if (!update) {
+          circles.current.push(circle)
+        }
       }
-    }
-  }
+    },
+    [dpr, isThemeDark]
+  )
 
-  const clearContext = () => {
+  const clearContext = useCallback(() => {
     if (context.current) {
       context.current.clearRect(
         0,
@@ -167,30 +151,52 @@ const Particles: FC<ParticlesProps> = ({
         canvasSize.current.h
       )
     }
-  }
+  }, [])
 
-  const drawParticles = () => {
+  const drawParticles = useCallback(() => {
     clearContext()
     const particleCount = quantity
     for (let i = 0; i < particleCount; i++) {
       const circle = circleParams()
       drawCircle(circle)
     }
-  }
+  }, [circleParams, clearContext, drawCircle, quantity])
 
-  const remapValue = (
-    value: number,
-    start1: number,
-    end1: number,
-    start2: number,
-    end2: number
-  ): number => {
-    const remapped =
-      ((value - start1) * (end2 - start2)) / (end1 - start1) + start2
-    return remapped > 0 ? remapped : 0
-  }
+  const initCanvas = useCallback(() => {
+    resizeCanvas()
+    drawParticles()
+  }, [drawParticles, resizeCanvas])
 
-  const animate = () => {
+  const onMouseMove = useCallback(() => {
+    if (canvasRef.current) {
+      const rect = canvasRef.current.getBoundingClientRect()
+      const { w, h } = canvasSize.current
+      const x = mousePosition.x - rect.left - w / 2
+      const y = mousePosition.y - rect.top - h / 2
+      const inside = x < w / 2 && x > -w / 2 && y < h / 2 && y > -h / 2
+      if (inside) {
+        mouse.current.x = x
+        mouse.current.y = y
+      }
+    }
+  }, [mousePosition.x, mousePosition.y])
+
+  const remapValue = useCallback(
+    (
+      value: number,
+      start1: number,
+      end1: number,
+      start2: number,
+      end2: number
+    ): number => {
+      const remapped =
+        ((value - start1) * (end2 - start2)) / (end1 - start1) + start2
+      return remapped > 0 ? remapped : 0
+    },
+    []
+  )
+
+  const animate = useCallback(() => {
     clearContext()
     circles.current.forEach((circle: Circle, i: number) => {
       // Handle the alpha value
@@ -248,15 +254,23 @@ const Particles: FC<ParticlesProps> = ({
       }
     })
     window.requestAnimationFrame(animate)
-  }
+  }, [circleParams, clearContext, drawCircle, ease, remapValue, staticity])
 
-  if (isMobile) return null
+  const renderCanvas = useCallback(() => {
+    if (isMobile) return null
 
-  return (
-    <div className={cn(className)} ref={canvasContainerRef} aria-hidden="true">
-      <canvas ref={canvasRef} />
-    </div>
-  )
+    return (
+      <div
+        className={cn(className)}
+        ref={canvasContainerRef}
+        aria-hidden="true"
+      >
+        <canvas ref={canvasRef} />
+      </div>
+    )
+  }, [className, canvasContainerRef, canvasRef])
+
+  return renderCanvas()
 }
 
 // dynamic import

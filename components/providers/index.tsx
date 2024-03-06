@@ -9,7 +9,7 @@ import { I18nProviderClient } from "@/locales/client"
 
 import { TooltipProvider } from "@/components/ui/tooltip"
 
-export function Providers({
+export default function Providers({
   children,
   ...props
 }: ThemeProviderProps & { locale: string }) {

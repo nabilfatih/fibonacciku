@@ -1,9 +1,7 @@
 "use client"
 
 import {
-  createContext,
   useCallback,
-  useContext,
   useEffect,
   useMemo,
   useReducer,
@@ -14,6 +12,7 @@ import { useParams, usePathname } from "next/navigation"
 import { track } from "@vercel/analytics"
 import debounce from "lodash/debounce"
 import { toast } from "sonner"
+import { createContext, useContextSelector } from "use-context-selector"
 
 import type {
   Chat,
@@ -33,9 +32,8 @@ import {
 import { useCurrentUser } from "@/lib/context/use-current-user"
 import supabaseClient from "@/lib/supabase/client"
 import { getChat } from "@/lib/supabase/client/chat"
+import useChatHistory from "@/lib/swr/use-chat-history"
 import { generateUUID } from "@/lib/utils"
-
-import useChatHistory from "../swr/use-chat-history"
 
 export type MessageContextValue = {
   chatId: string
@@ -720,11 +718,15 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
     ]
   )
 
-  return <MessageContext.Provider value={value} {...props} />
+  return (
+    <MessageContext.Provider value={value} {...props}>
+      {props.children}
+    </MessageContext.Provider>
+  )
 }
 
 export const useMessage = () => {
-  const context = useContext(MessageContext)
+  const context = useContextSelector(MessageContext, value => value)
   if (context === undefined) {
     throw new Error(`useMessage must be used within a MessageContextProvider.`)
   }

@@ -1,3 +1,4 @@
+import { memo } from "react"
 import moment from "moment"
 
 import type { Libraries } from "@/types/types"
@@ -11,7 +12,7 @@ type Props = {
   className?: string
 }
 
-export default function LibraryCardInfo({ library, className }: Props) {
+function LibraryCardInfo({ library, className }: Props) {
   return (
     <div
       className={cn(
@@ -29,3 +30,5 @@ export default function LibraryCardInfo({ library, className }: Props) {
     </div>
   )
 }
+
+export default memo(LibraryCardInfo)

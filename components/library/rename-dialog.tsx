@@ -4,7 +4,7 @@ import * as React from "react"
 import { type DialogProps } from "@radix-ui/react-dialog"
 import { toast } from "sonner"
 
-import type { Libraries, ServerActionResult } from "@/types/types"
+import type { ServerActionResult } from "@/types/types"
 import { useMediaQuery } from "@/lib/hooks/use-media-query"
 import { useScopedI18n } from "@/locales/client"
 
@@ -32,13 +32,15 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 interface LibraryRenameDialogProps extends DialogProps {
-  library: Pick<Libraries, "id" | "name">
+  id: string
+  name: string
   renameLibrary: (id: string, title: string) => ServerActionResult<void>
   onRename: () => void
 }
 
 export function LibraryRenameDialog({
-  library,
+  id,
+  name,
   renameLibrary,
   onRename,
   ...props
@@ -46,7 +48,7 @@ export function LibraryRenameDialog({
   const t = useScopedI18n("RenameDialog")
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
-  const [title, setTitle] = React.useState<string>(library.name)
+  const [title, setTitle] = React.useState<string>(name)
 
   const [isRenamePending, startRenameTransition] = React.useTransition()
 
@@ -82,7 +84,7 @@ export function LibraryRenameDialog({
               disabled={isRenamePending || !title.trim()}
               onClick={() => {
                 startRenameTransition(async () => {
-                  const result = await renameLibrary(library.id, title)
+                  const result = await renameLibrary(id, title)
 
                   if (result && "error" in result) {
                     toast.error(result.error)
@@ -133,7 +135,7 @@ export function LibraryRenameDialog({
             disabled={isRenamePending || !title.trim()}
             onClick={() => {
               startRenameTransition(async () => {
-                const result = await renameLibrary(library.id, title)
+                const result = await renameLibrary(id, title)
 
                 if (result && "error" in result) {
                   toast.error(result.error)

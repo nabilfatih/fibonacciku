@@ -1,15 +1,9 @@
 "use client"
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState
-} from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import type { User } from "@supabase/supabase-js"
 import type { KeyedMutator } from "swr"
+import { createContext, useContextSelector } from "use-context-selector"
 
 import type { Subscription, UserDetails } from "@/types/types"
 import supabaseClient from "@/lib/supabase/client"
@@ -153,7 +147,7 @@ export const CurrentUserContextProvider: React.FC<
 
 // Custom hook for using the context
 export const useCurrentUser = () => {
-  const context = useContext(CurrentUserContext)
+  const context = useContextSelector(CurrentUserContext, value => value)
   if (context === undefined) {
     throw new Error(
       `useCurrentUser must be used within a CurrentUserContextProvider.`

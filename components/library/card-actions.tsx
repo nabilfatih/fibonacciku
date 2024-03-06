@@ -85,10 +85,8 @@ export default function LibraryCardActions({ className, library }: Props) {
       </DropdownMenu>
 
       <LibraryRenameDialog
-        library={{
-          id: library.id,
-          name: library.name
-        }}
+        id={library.id}
+        name={library.name}
         renameLibrary={renameLibrary}
         open={renameDialogOpen}
         onOpenChange={setRenameDialogOpen}

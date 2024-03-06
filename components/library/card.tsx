@@ -1,3 +1,4 @@
+import { memo } from "react"
 import { motion } from "framer-motion"
 
 import type { Libraries } from "@/types/types"
@@ -12,7 +13,7 @@ type Props = {
   className?: string
 }
 
-export default function LibraryCard({ library, className }: Props) {
+function LibraryCard({ library, className }: Props) {
   return (
     <motion.div
       layout // This prop indicates that the component is part of a shared layout animation
@@ -43,3 +44,5 @@ export default function LibraryCard({ library, className }: Props) {
     </motion.div>
   )
 }
+
+export default memo(LibraryCard)

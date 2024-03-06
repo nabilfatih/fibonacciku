@@ -1,3 +1,4 @@
+import { memo } from "react"
 import { useParams } from "next/navigation"
 import type { DialogProps } from "@radix-ui/react-dialog"
 
@@ -19,10 +20,7 @@ interface ChatDocumentSidebarProps extends DialogProps {
   children: React.ReactNode
 }
 
-export default function ChatDocumentSidebar({
-  children,
-  ...props
-}: ChatDocumentSidebarProps) {
+function ChatDocumentSidebar({ children, ...props }: ChatDocumentSidebarProps) {
   const t = useScopedI18n("FormChat")
   const { state, dispatch } = useMessage()
 
@@ -51,3 +49,5 @@ export default function ChatDocumentSidebar({
     </Sheet>
   )
 }
+
+export default memo(ChatDocumentSidebar)

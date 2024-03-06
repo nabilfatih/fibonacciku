@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { createContext, useContextSelector } from "use-context-selector"
 
 const LOCAL_STORAGE_KEY = "sidebar"
 
@@ -10,12 +11,10 @@ type SidebarContext = {
   isLoading: boolean
 }
 
-const SidebarContext = React.createContext<SidebarContext | undefined>(
-  undefined
-)
+const SidebarContext = createContext<SidebarContext | undefined>(undefined)
 
 export function useSidebar() {
-  const context = React.useContext(SidebarContext)
+  const context = useContextSelector(SidebarContext, value => value)
   if (!context) {
     throw new Error("useSidebarContext must be used within a SidebarProvider")
   }

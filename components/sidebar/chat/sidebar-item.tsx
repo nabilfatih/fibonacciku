@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { memo } from "react"
 import Link from "next/link"
 import { useParams, usePathname } from "next/navigation"
 import { IconBook2, IconFile, IconMessageCircle2 } from "@tabler/icons-react"
@@ -21,7 +22,7 @@ interface SidebarItemProps {
   children: React.ReactNode
 }
 
-export default function SidebarItem({ chat, children }: SidebarItemProps) {
+function SidebarItem({ chat, children }: SidebarItemProps) {
   const params = useParams()
   const pathname = usePathname()
   // chatId can be get from params.id or pathname (/chat/${feature}/${chatId})
@@ -85,3 +86,5 @@ function ChatIcon({ type }: { type: string }) {
       return <IconMessageCircle2 className="h-4 w-4" />
   }
 }
+
+export default memo(SidebarItem)

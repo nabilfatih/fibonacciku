@@ -16,7 +16,7 @@ import { getScopedI18n } from "@/locales/server"
 
 import { Toaster } from "@/components/ui/sonner"
 import { TailwindIndicator } from "@/components/development/tailwind-indicator"
-import { Providers } from "@/components/providers"
+import Providers from "@/components/providers"
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getScopedI18n("Metadata")
