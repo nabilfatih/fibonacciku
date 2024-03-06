@@ -54,7 +54,7 @@ export default function EmptyScreen({ type }: Props) {
         }} // Apply the animation settings
         initial="hidden" // Start with the text hidden
         animate="visible" // Animate to visible
-        className="mb-2 text-xl font-semibold sm:text-3xl"
+        className="mb-2 text-xl font-semibold tracking-tighter sm:text-3xl"
       >
         {textArray.map((char, index) => (
           <motion.span
