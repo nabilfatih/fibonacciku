@@ -45,13 +45,15 @@ export async function POST(req: NextRequest) {
   try {
     const publicUrl = await getBooksSignedUrlAdmin(bookId, fileId)
 
+    // Always check the price of the providers please! It can be there is a change in the price
+    // See EDEN AI Pricing
     const response = await fetch(ENDPOINTS.ocrAsync, {
       method: "POST",
       headers: EDEN_HEADERS,
       body: JSON.stringify({
         show_original_response: false,
-        fallback_providers: "",
-        providers: "microsoft",
+        fallback_providers: "microsoft",
+        providers: "amazon",
         file_url: publicUrl,
         users_webhook_parameters: {
           bookId: bookId,
