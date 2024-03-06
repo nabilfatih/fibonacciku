@@ -23,7 +23,7 @@ export default function SidebarItems({ chats, parentRef }: SidebarItemsProps) {
       <LayoutGroup>
         <AnimatePresence initial={false}>
           <ViewportList ref={listRef} viewportRef={parentRef} items={chats}>
-            {(item, index) => (
+            {item => (
               <motion.div
                 key={item.id}
                 exit={{
@@ -31,7 +31,7 @@ export default function SidebarItems({ chats, parentRef }: SidebarItemsProps) {
                   height: 0
                 }}
               >
-                <SidebarItem index={index} chat={item}>
+                <SidebarItem chat={item}>
                   <SidebarActions
                     chat={item}
                     removeChat={removeChat}

@@ -10,6 +10,7 @@ import useChatHistory from "@/lib/swr/use-chat-history"
 import { useScopedI18n } from "@/locales/client"
 
 import { Input } from "@/components/ui/input"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import ClearHistory from "@/components/sidebar/chat/clear-history"
 import LoadingChatHistory from "@/components/sidebar/chat/loading-chat-history"
 import SidebarItems from "@/components/sidebar/chat/sidebar-items"
@@ -149,13 +150,13 @@ export default function SidebarList({ userId }: Props) {
         </form>
       </div>
 
-      <div ref={ref} className="mb-1 flex-1 overflow-y-auto overflow-x-hidden">
+      <ScrollArea ref={ref} className="mb-1 flex-1">
         {isLoading ? (
           <LoadingChatHistory />
         ) : (
           <>
             {filteredChats.length ? (
-              <div className="space-y-2 px-2">
+              <div className="px-2">
                 <SidebarItems chats={filteredChats} parentRef={ref} />
               </div>
             ) : (
@@ -167,7 +168,7 @@ export default function SidebarList({ userId }: Props) {
             )}
           </>
         )}
-      </div>
+      </ScrollArea>
       <div className="flex items-center justify-between border-t px-2 py-4">
         <ThemeToggle />
         <ClearHistory isEnabled={!!userChatData.length} />
