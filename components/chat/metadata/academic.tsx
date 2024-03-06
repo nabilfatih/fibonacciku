@@ -8,6 +8,7 @@ import type { AcademicSearchResult } from "@/types/types"
 import { cn } from "@/lib/utils"
 import { useScopedI18n } from "@/locales/client"
 
+import { ScrollArea } from "@/components/ui/scroll-area"
 import MetadataSidebar from "@/components/chat/metadata/sidebar"
 
 type Props = {
@@ -95,8 +96,8 @@ function ChatMetadataAcademic({ metadata }: Props) {
         }
       >
         <div className="grid h-[calc(100%-4rem)]">
-          <div className="relative my-4 overflow-y-auto border-y py-4">
-            <div className="mb-4 flex h-full flex-col space-y-2 px-4">
+          <ScrollArea className="relative my-4 border-y">
+            <div className="my-4 flex h-full flex-col space-y-2 px-4">
               {metadata.map((item, index) => {
                 return (
                   <LinkCard
@@ -109,7 +110,7 @@ function ChatMetadataAcademic({ metadata }: Props) {
                 )
               })}
             </div>
-          </div>
+          </ScrollArea>
         </div>
       </MetadataSidebar>
     </div>
