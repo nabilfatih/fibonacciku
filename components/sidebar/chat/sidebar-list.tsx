@@ -170,7 +170,7 @@ export default function SidebarList({ userId }: Props) {
         )}
       </ScrollArea>
       <div className="flex items-center justify-between border-t px-2 py-4">
-        <ThemeToggle />
+        <ThemeToggle userId={userId} />
         <ClearHistory isEnabled={!!userChatData.length} />
       </div>
     </div>

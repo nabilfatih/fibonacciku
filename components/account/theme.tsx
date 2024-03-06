@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { useTheme } from "next-themes"
 
 import { themes } from "@/lib/data/themes"
@@ -26,7 +25,6 @@ type Props = {
 export default function AccountTheme({ userId }: Props) {
   const t = useScopedI18n("ModalAccount")
   const { setTheme, theme } = useTheme()
-  const [_, startTransition] = React.useTransition()
 
   if (!theme) return null
 
@@ -35,29 +33,29 @@ export default function AccountTheme({ userId }: Props) {
       <Label className="text-sm text-muted-foreground">
         {t("theme-preference")}
       </Label>
-      <Select
-        value={theme}
-        onValueChange={value => {
-          startTransition(() => {
+      <div className="flex items-center gap-2">
+        <Select
+          value={theme}
+          onValueChange={async value => {
             setTheme(value)
-            updateUser(userId, { theme: value })
-          })
-        }}
-      >
-        <SelectTrigger className="w-28">
-          <SelectValue placeholder="Theme" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectGroup>
-            <SelectLabel>{t("theme")}</SelectLabel>
-            {themes.map(theme => (
-              <SelectItem key={theme} value={theme}>
-                {capitalizeFirstLetter(theme)}
-              </SelectItem>
-            ))}
-          </SelectGroup>
-        </SelectContent>
-      </Select>
+            await updateUser(userId, { theme: value })
+          }}
+        >
+          <SelectTrigger className="w-28">
+            <SelectValue placeholder="Theme" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>{t("theme")}</SelectLabel>
+              {themes.map(theme => (
+                <SelectItem key={theme} value={theme}>
+                  {capitalizeFirstLetter(theme)}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      </div>
     </div>
   )
 }

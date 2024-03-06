@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { IconBrush } from "@tabler/icons-react"
 import { useTheme } from "next-themes"
 
@@ -18,16 +17,21 @@ import {
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { updateUser } from "@/app/actions/users"
 
 type Props = {
   side?: "right" | "top" | "bottom" | "left"
   align?: "start" | "center" | "end"
+  userId?: string
 }
 
-export default function ThemeToggle({ side = "right", align = "end" }: Props) {
+export default function ThemeToggle({
+  side = "right",
+  align = "end",
+  userId
+}: Props) {
   const t = useScopedI18n("ModalAccount")
   const { setTheme } = useTheme()
-  const [_, startTransition] = React.useTransition()
 
   return (
     <DropdownMenu>
@@ -47,10 +51,11 @@ export default function ThemeToggle({ side = "right", align = "end" }: Props) {
             {themes.map(theme => (
               <DropdownMenuItem
                 key={theme}
-                onClick={() => {
-                  startTransition(() => {
-                    setTheme(theme)
-                  })
+                onClick={async () => {
+                  setTheme(theme)
+                  if (userId) {
+                    await updateUser(userId, { theme: theme })
+                  }
                 }}
               >
                 {capitalizeFirstLetter(theme)}
