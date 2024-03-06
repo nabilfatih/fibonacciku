@@ -90,7 +90,9 @@ export default function ChatMessageActions({
                       <span className="sr-only">Submit Edit Message</span>
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent>{t("submit")}</TooltipContent>
+                  <TooltipContent>
+                    <p>{t("submit")}</p>
+                  </TooltipContent>
                 </Tooltip>
 
                 <Tooltip>
@@ -106,7 +108,9 @@ export default function ChatMessageActions({
                       <span className="sr-only">Cancel Edit message</span>
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent>{t("cancel")}</TooltipContent>
+                  <TooltipContent>
+                    <p>{t("cancel")}</p>
+                  </TooltipContent>
                 </Tooltip>
               </form>
             ) : (
@@ -124,7 +128,9 @@ export default function ChatMessageActions({
                     <span className="sr-only">Edit message</span>
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent>{t("edit")}</TooltipContent>
+                <TooltipContent>
+                  <p>{t("edit")}</p>
+                </TooltipContent>
               </Tooltip>
             )}
           </>
@@ -143,7 +149,9 @@ export default function ChatMessageActions({
                 <span className="sr-only">Regenerate</span>
               </Button>
             </TooltipTrigger>
-            <TooltipContent>{t("regenerate")}</TooltipContent>
+            <TooltipContent>
+              <p>{t("regenerate")}</p>
+            </TooltipContent>
           </Tooltip>
         )}
 
@@ -159,7 +167,7 @@ export default function ChatMessageActions({
             </Button>
           </TooltipTrigger>
           <TooltipContent>
-            {isCopied ? t("copied") : t("copy-to-clipboard")}
+            <p>{isCopied ? t("copied") : t("copy-to-clipboard")}</p>
           </TooltipContent>
         </Tooltip>
 

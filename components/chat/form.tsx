@@ -132,7 +132,9 @@ export default function PromptForm({
               <span className="sr-only">{t("settings")}</span>
             </Button>
           </TooltipTrigger>
-          <TooltipContent>{t("settings")}</TooltipContent>
+          <TooltipContent>
+            <p>{t("settings")}</p>
+          </TooltipContent>
         </Tooltip>
 
         <ChatSettingsDialog
@@ -167,7 +169,9 @@ export default function PromptForm({
               <span className="sr-only">{t("image")}</span>
             </Button>
           </TooltipTrigger>
-          <TooltipContent>{t("image")}</TooltipContent>
+          <TooltipContent>
+            <p>{t("image")}</p>
+          </TooltipContent>
         </Tooltip>
 
         <Textarea
@@ -197,7 +201,9 @@ export default function PromptForm({
                   <span className="sr-only">{t("stop-generating")}</span>
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>{t("stop-generating")}</TooltipContent>
+              <TooltipContent>
+                <p>{t("stop-generating")}</p>
+              </TooltipContent>
             </Tooltip>
           ) : (
             <Tooltip>
@@ -211,7 +217,9 @@ export default function PromptForm({
                   <span className="sr-only">{t("send")}</span>
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>{t("send")}</TooltipContent>
+              <TooltipContent>
+                <p>{t("send")}</p>
+              </TooltipContent>
             </Tooltip>
           )}
         </div>

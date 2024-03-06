@@ -10,6 +10,11 @@ import { type Chat } from "@/types/types"
 import { cn } from "@/lib/utils"
 
 import { buttonVariants } from "@/components/ui/button"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger
+} from "@/components/ui/tooltip"
 
 interface SidebarItemProps {
   chat: Chat
@@ -41,25 +46,30 @@ export default function SidebarItem({ chat, children }: SidebarItemProps) {
         ease: "easeInOut"
       }}
     >
-      <Link
-        href={`/chat/${chat.type}/${chat.id}`}
-        className={cn(
-          buttonVariants({ variant: "ghost" }),
-          "group w-full pl-10 pr-4 font-normal",
-          isActive &&
-            "bg-primary pr-12 text-primary-foreground transition-colors hover:bg-primary/90 hover:text-primary-foreground"
-        )}
-      >
-        <div className="absolute left-2.5 top-1.5 flex h-6 w-6 items-center justify-center">
-          <ChatIcon type={chat.type} />
-        </div>
-        <p
-          className="relative max-h-5 w-0 flex-1 select-none truncate break-all"
-          title={chat.title}
-        >
-          {chat.title}
-        </p>
-      </Link>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Link
+            href={`/chat/${chat.type}/${chat.id}`}
+            className={cn(
+              buttonVariants({ variant: "ghost" }),
+              "group w-full pl-10 pr-4 font-normal",
+              isActive &&
+                "bg-primary pr-12 text-primary-foreground transition-colors hover:bg-primary/90 hover:text-primary-foreground"
+            )}
+          >
+            <div className="absolute left-2.5 top-1.5 flex h-6 w-6 items-center justify-center">
+              <ChatIcon type={chat.type} />
+            </div>
+            <p className="relative max-h-5 w-0 flex-1 select-none truncate break-all">
+              {chat.title}
+            </p>
+          </Link>
+        </TooltipTrigger>
+        <TooltipContent side="right">
+          <p>{chat.title}</p>
+        </TooltipContent>
+      </Tooltip>
+
       {isActive && <div className="absolute right-2 top-1.5">{children}</div>}
     </motion.div>
   )

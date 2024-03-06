@@ -95,7 +95,9 @@ export default function BookForm({ className }: FormProps) {
                 <span className="sr-only">Search</span>
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Search</TooltipContent>
+            <TooltipContent>
+              <p>Search</p>
+            </TooltipContent>
           </Tooltip>
         </div>
       </div>

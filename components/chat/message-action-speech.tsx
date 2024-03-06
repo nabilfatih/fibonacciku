@@ -169,7 +169,7 @@ export default function ChatMessageActionSpeech({ text }: Props) {
         </Button>
       </TooltipTrigger>
       <TooltipContent>
-        {isPlaying ? tForm("stop") : tForm("play")}
+        <p>{isPlaying ? tForm("stop") : tForm("play")}</p>
       </TooltipContent>
     </Tooltip>
   )

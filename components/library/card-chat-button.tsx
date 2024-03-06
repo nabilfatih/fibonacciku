@@ -37,7 +37,9 @@ export default function LibraryCardChatButton({ library }: Props) {
           <span className="sr-only">{t("chat-with-document")}</span>
         </Button>
       </TooltipTrigger>
-      <TooltipContent>{t("chat-with-document")}</TooltipContent>
+      <TooltipContent>
+        <p>{t("chat-with-document")}</p>
+      </TooltipContent>
     </Tooltip>
   )
 }

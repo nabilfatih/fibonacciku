@@ -67,7 +67,9 @@ export default function ChatMessageActionPagination({
             <span className="sr-only">Previous message</span>
           </Button>
         </TooltipTrigger>
-        <TooltipContent>{t("previous")}</TooltipContent>
+        <TooltipContent>
+          <p>{t("previous")}</p>
+        </TooltipContent>
       </Tooltip>
 
       <p className="text-sm">
@@ -86,7 +88,9 @@ export default function ChatMessageActionPagination({
             <span className="sr-only">Next message</span>
           </Button>
         </TooltipTrigger>
-        <TooltipContent>{t("next")}</TooltipContent>
+        <TooltipContent>
+          <p>{t("next")}</p>
+        </TooltipContent>
       </Tooltip>
     </div>
   )
