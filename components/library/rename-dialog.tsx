@@ -52,6 +52,20 @@ export function LibraryRenameDialog({
 
   const [isRenamePending, startRenameTransition] = React.useTransition()
 
+  const handleRename = React.useCallback(() => {
+    startRenameTransition(async () => {
+      const result = await renameLibrary(id, title)
+
+      if (result && "error" in result) {
+        toast.error(result.error)
+        return
+      }
+
+      onRename()
+      toast.success(t("document-renamed"))
+    })
+  }, [id, onRename, renameLibrary, t, title])
+
   if (isDesktop) {
     return (
       <Dialog {...props}>
@@ -82,19 +96,7 @@ export function LibraryRenameDialog({
 
             <Button
               disabled={isRenamePending || !title.trim()}
-              onClick={() => {
-                startRenameTransition(async () => {
-                  const result = await renameLibrary(id, title)
-
-                  if (result && "error" in result) {
-                    toast.error(result.error)
-                    return
-                  }
-
-                  onRename()
-                  toast.success(t("document-renamed"))
-                })
-              }}
+              onClick={handleRename}
             >
               {isRenamePending ? (
                 <>
@@ -133,19 +135,7 @@ export function LibraryRenameDialog({
 
           <Button
             disabled={isRenamePending || !title.trim()}
-            onClick={() => {
-              startRenameTransition(async () => {
-                const result = await renameLibrary(id, title)
-
-                if (result && "error" in result) {
-                  toast.error(result.error)
-                  return
-                }
-
-                onRename()
-                toast.success(t("document-renamed"))
-              })
-            }}
+            onClick={handleRename}
           >
             {isRenamePending ? (
               <>
