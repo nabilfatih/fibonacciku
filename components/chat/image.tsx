@@ -27,7 +27,7 @@ function ImageMarkdown({ src, alt }: Props) {
           unoptimized
           width={337}
           height={192}
-          className="relative my-4 h-[8rem] w-full cursor-pointer rounded-xl border bg-muted/90 object-cover sm:h-48 sm:w-[337px]"
+          className="relative my-4 h-[8rem] w-full cursor-pointer rounded-xl border bg-muted/90 object-cover shadow sm:h-48 sm:w-[337px]"
         />
       </Link>
     )
@@ -48,7 +48,7 @@ function ImageMarkdown({ src, alt }: Props) {
           unoptimized
           width={256}
           height={256}
-          className="m-0 mt-4 cursor-pointer rounded-xl border bg-muted/90 object-cover"
+          className="m-0 mt-4 cursor-pointer rounded-xl border bg-muted/90 object-cover shadow"
         />
       </Link>
     )
@@ -69,7 +69,7 @@ function ImageMarkdown({ src, alt }: Props) {
         width={256}
         height={256}
         onError={() => setIsError(true)}
-        className="my-4 max-w-[256px] cursor-pointer rounded-xl border bg-muted/90 object-cover"
+        className="my-4 max-w-[256px] cursor-pointer rounded-xl border bg-muted/90 object-cover shadow"
       />
     </Link>
   )
