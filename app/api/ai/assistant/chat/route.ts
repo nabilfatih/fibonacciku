@@ -159,15 +159,14 @@ export async function POST(req: Request) {
 
           const args = call.tools.find(
             tool => tool.func.name === "image_analysis"
-          )?.func.arguments
+          )?.func.arguments as { image: string } | undefined
+
           if (!args) {
             throw new Error("No arguments found")
           }
 
           // remove space in image and split by comma
-          const imageIdArray = String(JSON.parse(String(args)).image)
-            .trim()
-            .split(",")
+          const imageIdArray = args.image.trim().split(",")
 
           // get image url in parallel
           const imageUrls = await Promise.all(
@@ -209,7 +208,7 @@ export async function POST(req: Request) {
               userId,
               chatId,
               tool.func.name,
-              JSON.parse(String(tool.func.arguments))
+              tool.func.arguments
             ).then(data => {
               return {
                 toolId: tool.id,

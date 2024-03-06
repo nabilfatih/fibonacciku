@@ -160,12 +160,25 @@ export async function POST(req: NextRequest) {
         call: ToolCallPayload,
         appendToolCallMessage
       ) => {
-        if (call.tools[0].func.name === "image_analysis") {
+        // search if the tool is image_analysis
+        const isImageAnalysis = call.tools.some(
+          tool => tool.func.name === "image_analysis"
+        )
+        if (isImageAnalysis) {
           const initialMessages = finalMessage.slice(0, -1)
           const currentMessage = finalMessage[finalMessage.length - 1]
-          const args = JSON.parse(String(call.tools[0].func.arguments))
+
+          const args = call.tools.find(
+            tool => tool.func.name === "image_analysis"
+          )?.func.arguments as { image: string } | undefined
+
+          if (!args) {
+            throw new Error("No arguments found")
+          }
+
           // remove space in image and split by comma
-          const imageIdArray = String(args.image).replace(/\s/g, "").split(",")
+          const imageIdArray = args.image.trim().split(",")
+
           // get image url in parallel
           const imageUrls = await Promise.all(
             imageIdArray.map(imageId =>
@@ -206,7 +219,7 @@ export async function POST(req: NextRequest) {
               userId,
               chatId,
               tool.func.name,
-              JSON.parse(String(tool.func.arguments))
+              tool.func.arguments
             ).then(data => {
               return {
                 toolId: tool.id,
