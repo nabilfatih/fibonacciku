@@ -37,14 +37,25 @@ type Props = {
 
 export default async function BlogPage({ searchParams }: Props) {
   const tag = searchParams.tag as string | undefined
+  const author = searchParams.author as string | undefined
 
   const t = await getScopedI18n("Marketing")
   const locale = getCurrentLocale()
   const blogs = (await getBlogsAdmin()).filter(blog => {
-    if (tag) {
-      return blog.tags.toLowerCase().includes(tag)
+    // it can be there is both tag and author
+    if (tag && author) {
+      return (
+        blog.tags.toLowerCase().includes(tag.toLowerCase()) &&
+        blog.authors.toLowerCase().includes(author.toLowerCase())
+      )
     }
-    return blog
+    if (tag) {
+      return blog.tags.toLowerCase().includes(tag.toLowerCase())
+    }
+    if (author) {
+      return blog.authors.toLowerCase().includes(author.toLowerCase())
+    }
+    return true
   })
 
   return (

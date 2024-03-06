@@ -97,6 +97,7 @@ export default async function BlogSlugPage({ params }: Props) {
   const cover = getBlogsCoverPublicUrlAdmin(blog.id, blog.cover)
 
   const tags = blog.tags.split(",").map(tag => tag.trim().toLowerCase())
+  const authors = blog.authors.split(",").map(author => author.trim())
 
   return (
     <MarketingTransition>
@@ -164,7 +165,17 @@ export default async function BlogSlugPage({ params }: Props) {
 
           <div className="flex flex-col">
             <p className="font-bold tracking-tight">{t("authors")}</p>
-            <p className="tracking-tight">{blog.authors}</p>
+            <p className="tracking-tight">
+              {authors.map(author => (
+                <Link
+                  key={author}
+                  href={`/blog?author=${author.toLowerCase().replaceAll(" ", "+")}`}
+                  className="underline underline-offset-4"
+                >
+                  {author}
+                </Link>
+              ))}
+            </p>
           </div>
 
           <div className="flex flex-col">
