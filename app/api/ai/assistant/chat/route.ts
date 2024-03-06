@@ -252,7 +252,7 @@ export async function POST(req: Request) {
           user: userId
         })
       },
-      async onCompletion(completion) {
+      async onFinal(completion) {
         if (dataRequest.isNewMessage) {
           const prompt = lastMessage.content
             .split("------------------------------")[0]
@@ -268,8 +268,6 @@ export async function POST(req: Request) {
         }
         // no need await, because it is not blocking
         await updateUserUsageAdmin(userId, 1) // add usage by 1
-      },
-      onFinal(completion) {
         // IMPORTANT! you must close StreamData manually or the response will never finish.
         data.close()
       },

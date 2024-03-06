@@ -263,7 +263,7 @@ export async function POST(req: NextRequest) {
           user: userId
         })
       },
-      async onCompletion(completion) {
+      async onFinal(completion) {
         if (dataRequest.isNewMessage) {
           const library = await getLibraryByFileIdAdmin(dataRequest.fileId)
           const title = createSafeTitle(library?.name || "Untitled")
@@ -278,8 +278,6 @@ export async function POST(req: NextRequest) {
         }
         // no need await, because it is not blocking
         await updateUserUsageAdmin(userId, 1) // add usage by 1
-      },
-      onFinal(completion) {
         // IMPORTANT! you must close StreamData manually or the response will never finish.
         data.close()
       },

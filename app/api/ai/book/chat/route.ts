@@ -273,7 +273,7 @@ export async function POST(req: NextRequest) {
           user: userId
         })
       },
-      async onCompletion(completion) {
+      async onFinal(completion) {
         if (dataRequest.isNewMessage) {
           const book = await getBooksAdmin(bookId)
           const title = createSafeTitle(book?.title || "Untitled")
@@ -288,8 +288,6 @@ export async function POST(req: NextRequest) {
         }
         // no need await, because it is not blocking
         await updateUserUsageAdmin(userId, 1) // add usage by 1
-      },
-      onFinal(completion) {
         // IMPORTANT! you must close StreamData manually or the response will never finish.
         data.close()
       },
