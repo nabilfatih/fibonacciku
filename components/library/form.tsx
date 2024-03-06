@@ -93,9 +93,9 @@ export default function LibraryForm({ className, ...props }: LibraryFormProps) {
 
       setIsUploadPending(true)
 
-      // if user not premium or enterprise, check if the user has reached the limit, (5 documents for free user)
+      // if user not premium or enterprise, check if the user has reached the limit, (2 documents for free users)
       if (!subscription) {
-        const response = await getUserLibraryWithLimit(6)
+        const response = await getUserLibraryWithLimit(3)
 
         if ("error" in response) {
           toast.error(t("something-went-wrong"))
@@ -103,7 +103,7 @@ export default function LibraryForm({ className, ...props }: LibraryFormProps) {
           return
         }
 
-        if (response.data.length >= 5) {
+        if (response.data.length >= 2) {
           toast.error(t("max-document-reached"))
           setIsUploadPending(false)
           return
