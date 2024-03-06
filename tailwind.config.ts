@@ -31,23 +31,23 @@ const config = {
             },
             h2: {
               color: "hsl(var(--foreground) / 0.9)",
-              letterSpacing: "-0.05em"
+              letterSpacing: "-0.025em"
             },
             h3: {
               color: "hsl(var(--foreground) / 0.9)",
-              letterSpacing: "-0.05em"
+              letterSpacing: "-0.025em"
             },
             h4: {
               color: "hsl(var(--foreground) / 0.9)",
-              letterSpacing: "-0.05em"
+              letterSpacing: "-0.025em"
             },
             h5: {
               color: "hsl(var(--foreground) / 0.9)",
-              letterSpacing: "-0.05em"
+              letterSpacing: "-0.025em"
             },
             h6: {
               color: "hsl(var(--foreground) / 0.9)",
-              letterSpacing: "-0.05em"
+              letterSpacing: "-0.025em"
             },
             "li::marker": {
               color: "hsl(var(--muted-foreground))"
