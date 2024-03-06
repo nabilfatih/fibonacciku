@@ -140,6 +140,7 @@ export type Blogs = {
   seen: number
   tags: string
   slug: string
+  num: number
   created_at: string
   updated_at: string
 }

@@ -272,6 +272,7 @@ export type Database = {
           seen: number
           tags: string
           slug: string
+          num: number
           created_at: string
           updated_at: string
         }
@@ -285,6 +286,7 @@ export type Database = {
           seen: number
           tags: string
           slug: string
+          num?: number // auto increment
           created_at: string
           updated_at: string
         }
@@ -298,6 +300,7 @@ export type Database = {
           seen?: number
           tags?: string
           slug?: string
+          num?: number
           created_at?: string
           updated_at?: string
         }

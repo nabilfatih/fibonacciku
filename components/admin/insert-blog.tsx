@@ -77,7 +77,8 @@ export default function AdminInsertBlog() {
     const blogId = generateUUID()
     const fileId = `cover__${generateNanoID()}`
 
-    const dataBlogs: Blogs = {
+    // opt out "num" in Blogs type, because it's auto increment
+    const dataBlogs: Omit<Blogs, "num"> = {
       id: blogId,
       title: data.title,
       description: data.description,

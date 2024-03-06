@@ -20,7 +20,7 @@ export const uploadBlogsCoverFile = async (
   return data
 }
 
-export const insertBlogs = async (blogs: Blogs) => {
+export const insertBlogs = async (blogs: Omit<Blogs, "num">) => {
   const { data, error } = await supabaseClient.from("blogs").insert(blogs)
   if (error) {
     throw error
