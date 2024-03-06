@@ -11,11 +11,10 @@ import { Label } from "@/components/ui/label"
 import { updateUser } from "@/app/actions/users"
 
 type Props = {
-  userId: string
   fullName: string
 }
 
-export default function AccountName({ userId, fullName }: Props) {
+export default function AccountName({ fullName }: Props) {
   const t = useScopedI18n("ModalAccount")
   const [_, startTransition] = React.useTransition()
 
@@ -26,7 +25,7 @@ export default function AccountName({ userId, fullName }: Props) {
         defaultValue={fullName}
         onChange={debounce(async e => {
           startTransition(async () => {
-            const result = await updateUser(userId, {
+            const result = await updateUser({
               full_name: e.target.value
             })
 

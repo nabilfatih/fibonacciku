@@ -18,11 +18,7 @@ import {
 } from "@/components/ui/select"
 import { updateUser } from "@/app/actions/users"
 
-type Props = {
-  userId: string
-}
-
-export default function AccountTheme({ userId }: Props) {
+export default function AccountTheme() {
   const t = useScopedI18n("ModalAccount")
   const { setTheme, theme } = useTheme()
 
@@ -38,7 +34,7 @@ export default function AccountTheme({ userId }: Props) {
           value={theme}
           onValueChange={async value => {
             setTheme(value)
-            await updateUser(userId, { theme: value })
+            await updateUser({ theme: value })
           }}
         >
           <SelectTrigger className="w-28">

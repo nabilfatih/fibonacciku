@@ -19,11 +19,10 @@ import {
 import { updateUser } from "@/app/actions/users"
 
 type Props = {
-  userId: string
   role: UserRole
 }
 
-export default function AccountRole({ userId, role }: Props) {
+export default function AccountRole({ role }: Props) {
   const t = useScopedI18n("ModalAccount")
 
   const [_, startTransition] = React.useTransition()
@@ -35,7 +34,7 @@ export default function AccountRole({ userId, role }: Props) {
         value={role}
         onValueChange={(value: string) => {
           startTransition(async () => {
-            const result = await updateUser(userId, {
+            const result = await updateUser({
               role: value as UserRole
             })
 

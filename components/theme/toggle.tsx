@@ -22,14 +22,9 @@ import { updateUser } from "@/app/actions/users"
 type Props = {
   side?: "right" | "top" | "bottom" | "left"
   align?: "start" | "center" | "end"
-  userId?: string
 }
 
-export default function ThemeToggle({
-  side = "right",
-  align = "end",
-  userId
-}: Props) {
+export default function ThemeToggle({ side = "right", align = "end" }: Props) {
   const t = useScopedI18n("ModalAccount")
   const { setTheme } = useTheme()
 
@@ -53,9 +48,7 @@ export default function ThemeToggle({
                 key={theme}
                 onClick={async () => {
                   setTheme(theme)
-                  if (userId) {
-                    await updateUser(userId, { theme: theme })
-                  }
+                  await updateUser({ theme: theme })
                 }}
               >
                 {capitalizeFirstLetter(theme)}

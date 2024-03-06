@@ -56,13 +56,13 @@ export default async function AccountGeneral({ userId }: Props) {
               <p className="text-sm leading-none">{data.email}</p>
             </div>
 
-            <AccountName userId={userId} fullName={data.full_name || ""} />
+            <AccountName fullName={data.full_name || ""} />
 
-            <AccountRole userId={userId} role={data.role} />
+            <AccountRole role={data.role} />
 
-            <AccountTheme userId={userId} />
+            <AccountTheme />
 
-            <AccountLanguage userId={userId} />
+            <AccountLanguage />
           </div>
         </CardContent>
         <CardFooter className="flex flex-wrap items-center gap-2">

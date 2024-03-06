@@ -2,7 +2,6 @@
 
 import React from "react"
 
-import { updateUserLang } from "@/lib/supabase/client/users"
 import {
   useChangeLocale,
   useCurrentLocale,
@@ -19,6 +18,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select"
+import { updateUser } from "@/app/actions/users"
 
 export const languages: { icon: string; name: string; value: string }[] = [
   {
@@ -53,11 +53,7 @@ export const languages: { icon: string; name: string; value: string }[] = [
   }
 ]
 
-type Props = {
-  userId: string
-}
-
-export default function AccountLanguage({ userId }: Props) {
+export default function AccountLanguage() {
   const lang = useCurrentLocale()
 
   const t = useScopedI18n("ModalAccount")
@@ -65,7 +61,7 @@ export default function AccountLanguage({ userId }: Props) {
 
   const handleChangeLocale = async (value: string) => {
     changeLocale(value as never)
-    await updateUserLang(userId, value)
+    await updateUser({ lang: value })
   }
 
   return (
