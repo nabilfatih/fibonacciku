@@ -17,9 +17,7 @@ export default function HeaderBadge() {
   if (!subscription)
     return (
       <Link href="/premium" className="ml-2">
-        <Badge variant="outline" className="hidden sm:inline-flex">
-          {t("free")}
-        </Badge>
+        <Badge className="hidden sm:inline-flex">{t("free")}</Badge>
         <IconLockAccess className="h-4 w-4 text-primary sm:hidden" />
       </Link>
     )
