@@ -39,10 +39,10 @@ const Particles: FC<ParticlesProps> = ({
   refresh = false
 }) => {
   const { resolvedTheme } = useTheme()
-  const isThemeDark = useMemo(
-    () => darkThemes.includes(resolvedTheme as string),
-    [resolvedTheme]
-  )
+  const isThemeDark = useMemo(() => {
+    if (!resolvedTheme) return false
+    return darkThemes.includes(resolvedTheme)
+  }, [resolvedTheme])
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const canvasContainerRef = useRef<HTMLDivElement>(null)
