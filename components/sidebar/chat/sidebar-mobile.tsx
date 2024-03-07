@@ -2,7 +2,7 @@ import { IconLayoutSidebar } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Sidebar } from "@/components/sidebar"
+import Sidebar from "@/components/sidebar"
 
 type SidebarMobileProps = {
   children: React.ReactNode

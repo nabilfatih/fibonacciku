@@ -11,7 +11,7 @@ import {
   SheetFooter,
   SheetTrigger
 } from "@/components/ui/sheet"
-import { Sidebar } from "@/components/sidebar"
+import Sidebar from "@/components/sidebar"
 
 export default async function MarketingSidebarMobile() {
   const t = await getScopedI18n("Marketing")

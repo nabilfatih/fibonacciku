@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, type MutableRefObject } from "react"
+import { memo, useRef, type MutableRefObject } from "react"
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion"
 import { ViewportList } from "react-viewport-list"
 
@@ -15,7 +15,7 @@ type SidebarItemsProps = {
   parentRef: MutableRefObject<HTMLDivElement | null>
 }
 
-export default function SidebarItems({ chats, parentRef }: SidebarItemsProps) {
+function SidebarItems({ chats, parentRef }: SidebarItemsProps) {
   const listRef = useRef(null)
 
   return (
@@ -46,3 +46,5 @@ export default function SidebarItems({ chats, parentRef }: SidebarItemsProps) {
     </div>
   )
 }
+
+export default memo(SidebarItems)

@@ -11,7 +11,7 @@ import {
   SheetHeader,
   SheetTitle
 } from "@/components/ui/sheet"
-import { Sidebar } from "@/components/sidebar"
+import Sidebar from "@/components/sidebar"
 
 interface BookDetailsSidebarProps extends DialogProps {
   children: React.ReactNode

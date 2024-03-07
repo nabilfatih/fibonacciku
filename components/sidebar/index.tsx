@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 
 export interface SidebarProps extends React.ComponentProps<"div"> {}
 
-export function Sidebar({ className, children }: SidebarProps) {
+function Sidebar({ className, children }: SidebarProps) {
   const { isSidebarOpen, isLoading } = useSidebar()
 
   return (
@@ -19,3 +19,5 @@ export function Sidebar({ className, children }: SidebarProps) {
     </div>
   )
 }
+
+export default React.memo(Sidebar)

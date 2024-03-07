@@ -24,7 +24,7 @@ import {
   SheetTitle,
   SheetTrigger
 } from "@/components/ui/sheet"
-import { Sidebar } from "@/components/sidebar"
+import Sidebar from "@/components/sidebar"
 
 type Props = {
   text?: string

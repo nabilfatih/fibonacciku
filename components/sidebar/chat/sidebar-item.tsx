@@ -17,7 +17,7 @@ import {
   TooltipTrigger
 } from "@/components/ui/tooltip"
 
-interface SidebarItemProps {
+type SidebarItemProps = {
   chat: Chat
   children: React.ReactNode
 }
