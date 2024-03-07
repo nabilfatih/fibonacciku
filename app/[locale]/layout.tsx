@@ -14,6 +14,7 @@ import { themes } from "@/lib/data/themes"
 import { cn } from "@/lib/utils"
 import { getScopedI18n } from "@/locales/server"
 
+import Loader from "@/components/ui/loader"
 import { Toaster } from "@/components/ui/sonner"
 import { TailwindIndicator } from "@/components/development/tailwind-indicator"
 import Providers from "@/components/providers"
@@ -208,7 +209,6 @@ export default function RootLayout({
         )}
         suppressHydrationWarning
       >
-        <Toaster />
         <Providers
           locale={params.locale}
           attribute="class"
@@ -216,7 +216,10 @@ export default function RootLayout({
           themes={themes}
           disableTransitionOnChange
         >
-          <div className="flex min-h-[100dvh] flex-col">{children}</div>
+          <Toaster />
+          <Loader>
+            <div className="flex min-h-[100dvh] flex-col">{children}</div>
+          </Loader>
           <TailwindIndicator />
           <Analytics />
         </Providers>

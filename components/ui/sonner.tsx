@@ -1,12 +1,20 @@
 "use client"
 
+import { useMemo } from "react"
 import { useTheme } from "next-themes"
 import { Toaster as Sonner } from "sonner"
+
+import { darkThemes } from "@/lib/data/themes"
 
 type ToasterProps = React.ComponentProps<typeof Sonner>
 
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme()
+  const { resolvedTheme } = useTheme()
+
+  const theme = useMemo(() => {
+    if (!resolvedTheme) return "system"
+    return darkThemes.includes(resolvedTheme) ? "dark" : "light"
+  }, [resolvedTheme])
 
   return (
     <Sonner
