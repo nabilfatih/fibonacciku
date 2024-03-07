@@ -15,7 +15,7 @@ function Loader({ children }: Props) {
 
   const color = useMemo(() => {
     if (!resolvedTheme) return "#18181b"
-    return darkThemes.includes(resolvedTheme) ? "#18181b" : "#18181b"
+    return darkThemes.includes(resolvedTheme) ? "#f4f4f5" : "#18181b"
   }, [resolvedTheme])
 
   return (
