@@ -150,7 +150,7 @@ function LinkCard({
           </p>
           {showAbstract && (
             <p
-              className="line-clamp-3 whitespace-pre-wrap break-words text-xs"
+              className="line-clamp-3 whitespace-pre-wrap break-all text-xs"
               title={he.decode(item.abstract || "")}
             >
               {he.decode(item.abstract || "")}
