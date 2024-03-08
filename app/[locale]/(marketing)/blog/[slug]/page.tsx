@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { decode } from "urlencode"
 
 import type { Blogs } from "@/types/types"
 import {
@@ -28,7 +29,7 @@ type Props = {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const slug = params.slug
+  const slug = decode(params.slug)
   const blog = await getBlog(slug)
 
   if (!blog) {
@@ -87,7 +88,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogSlugPage({ params }: Props) {
-  const slug = params.slug
+  // convert html entities to string
+  const slug = decode(params.slug)
+
   const t = await getScopedI18n("Marketing")
   const locale = getCurrentLocale()
   const blog = await getBlogsBySlugAdmin(slug)
