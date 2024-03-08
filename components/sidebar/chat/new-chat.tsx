@@ -4,12 +4,11 @@ import Link from "next/link"
 import { useParams, usePathname } from "next/navigation"
 import { IconPlus } from "@tabler/icons-react"
 
+import { chatFeatures } from "@/lib/data/chat"
 import { cn } from "@/lib/utils"
 import { useScopedI18n } from "@/locales/client"
 
 import { buttonVariants } from "@/components/ui/button"
-
-const chatFeatures = ["assistant", "document"]
 
 export default function NewChat() {
   const t = useScopedI18n("Chat")

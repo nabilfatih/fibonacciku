@@ -4,6 +4,7 @@ import { redirect } from "next/navigation"
 import { setStaticParamsLocale } from "next-international/server"
 
 import type { Features } from "@/types/types"
+import { chatFeatures } from "@/lib/data/chat"
 import { createClientServer } from "@/lib/supabase/server"
 import { getScopedI18n } from "@/locales/server"
 
@@ -35,6 +36,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       }
     }
   }
+}
+
+export function generateStaticParams() {
+  return chatFeatures.map(feature => ({ feature }))
 }
 
 export default async function ChatFeaturePage({ params, searchParams }: Props) {
