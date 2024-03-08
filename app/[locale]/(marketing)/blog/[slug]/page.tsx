@@ -7,6 +7,7 @@ import { decode } from "urlencode"
 
 import type { Blogs } from "@/types/types"
 import {
+  getBlogsAdmin,
   getBlogsBySlugAdmin,
   getBlogsCoverPublicUrlAdmin
 } from "@/lib/supabase/admin/blogs"
@@ -85,6 +86,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [ogImage]
     }
   }
+}
+
+export async function generateStaticParams() {
+  const blogs = await getBlogsAdmin()
+
+  return blogs.map(blog => ({
+    slug: blog.slug
+  }))
 }
 
 export default async function BlogSlugPage({ params }: Props) {
