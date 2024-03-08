@@ -34,7 +34,7 @@ function AdsBox({ id }: Props) {
       revalidateIfStale: true,
       refreshWhenHidden: true,
       refreshWhenOffline: true,
-      refreshInterval: 1000 // 1 second
+      refreshInterval: 1000 * 60 * 5 // 5 minutes
     }
   )
 
