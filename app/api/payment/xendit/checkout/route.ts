@@ -74,8 +74,7 @@ export async function POST(req: Request) {
         customerNotificationPreference: {
           invoiceCreated: ["email", "whatsapp"],
           invoiceReminder: ["email", "whatsapp"],
-          invoicePaid: ["email", "whatsapp"],
-          invoiceExpired: ["email", "whatsapp"]
+          invoicePaid: ["email", "whatsapp"]
         },
         items: [
           {
