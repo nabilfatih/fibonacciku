@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import Link from "next/link"
 import { redirect } from "next/navigation"
+import { setStaticParamsLocale } from "next-international/server"
 
 import { createClientServer } from "@/lib/supabase/server"
 import { getScopedI18n } from "@/locales/server"
@@ -9,6 +10,7 @@ import { getScopedI18n } from "@/locales/server"
 import LoginAuthForm from "@/components/auth/login-form"
 
 type Props = {
+  params: { locale: string }
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
@@ -31,7 +33,8 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function LoginPage({ searchParams }: Props) {
+export default async function LoginPage({ params, searchParams }: Props) {
+  setStaticParamsLocale(params.locale)
   const t = await getScopedI18n("Auth")
 
   // get next url, it is always a string

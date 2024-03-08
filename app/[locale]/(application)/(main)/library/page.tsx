@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import { notFound, redirect } from "next/navigation"
+import { setStaticParamsLocale } from "next-international/server"
 
 import { createClientServer } from "@/lib/supabase/server"
 import { getScopedI18n } from "@/locales/server"
@@ -26,7 +27,12 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function ChatLibraryPage() {
+export default async function ChatLibraryPage({
+  params: { locale }
+}: {
+  params: { locale: string }
+}) {
+  setStaticParamsLocale(locale)
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {

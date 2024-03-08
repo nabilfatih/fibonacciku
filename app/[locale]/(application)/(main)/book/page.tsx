@@ -2,6 +2,7 @@ import { Suspense } from "react"
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
+import { setStaticParamsLocale } from "next-international/server"
 
 import { createClientServer } from "@/lib/supabase/server"
 import { getScopedI18n } from "@/locales/server"
@@ -32,7 +33,12 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function BookPage() {
+export default async function BookPage({
+  params: { locale }
+}: {
+  params: { locale: string }
+}) {
+  setStaticParamsLocale(locale)
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import { notFound } from "next/navigation"
+import { setStaticParamsLocale } from "next-international/server"
 
 import { createClientServer } from "@/lib/supabase/server"
 import { getScopedI18n } from "@/locales/server"
@@ -8,6 +9,7 @@ import { getScopedI18n } from "@/locales/server"
 import BookCollections from "@/components/book/collections"
 
 type Props = {
+  params: { locale: string }
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
@@ -30,7 +32,11 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function BookCollectionPage({ searchParams }: Props) {
+export default async function BookCollectionPage({
+  params,
+  searchParams
+}: Props) {
+  setStaticParamsLocale(params.locale)
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
 

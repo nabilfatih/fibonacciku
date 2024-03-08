@@ -12,7 +12,7 @@ import { Analytics } from "@vercel/analytics/react"
 
 import { themes } from "@/lib/data/themes"
 import { cn } from "@/lib/utils"
-import { getScopedI18n } from "@/locales/server"
+import { getScopedI18n, getStaticParams } from "@/locales/server"
 
 import Loader from "@/components/ui/loader"
 import { Toaster } from "@/components/ui/sonner"
@@ -177,6 +177,10 @@ export async function generateMetadata(): Promise<Metadata> {
       }
     }
   }
+}
+
+export function generateStaticParams() {
+  return getStaticParams()
 }
 
 export const viewport: Viewport = {

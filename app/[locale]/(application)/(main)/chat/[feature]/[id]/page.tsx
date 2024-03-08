@@ -2,6 +2,7 @@ import { cache } from "react"
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import { notFound, redirect } from "next/navigation"
+import { setStaticParamsLocale } from "next-international/server"
 
 import type { Features } from "@/types/types"
 import { getChatAdmin } from "@/lib/supabase/admin/chat"
@@ -16,7 +17,7 @@ const getChat = cache(async (chatId: string) => {
 })
 
 type Props = {
-  params: { feature: string; id: string }
+  params: { locale: string; feature: string; id: string }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -28,6 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ChatMessagePage({ params }: Props) {
+  setStaticParamsLocale(params.locale)
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {

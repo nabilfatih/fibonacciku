@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
+import { setStaticParamsLocale } from "next-international/server"
 
 import type { Subscription } from "@/types/types"
 import { createClientServer } from "@/lib/supabase/server"
@@ -32,7 +33,12 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function PremiumPage() {
+export default async function PremiumPage({
+  params: { locale }
+}: {
+  params: { locale: string }
+}) {
+  setStaticParamsLocale(locale)
   const t = await getScopedI18n("MarketingPricing")
 
   const cookieStore = cookies()

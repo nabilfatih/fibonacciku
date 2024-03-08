@@ -1,6 +1,13 @@
+import { setStaticParamsLocale } from "next-international/server"
+
 import AdminInsertBlog from "@/components/admin/insert-blog"
 
-export default function AdminBlogPage() {
+export default function AdminBlogPage({
+  params: { locale }
+}: {
+  params: { locale: string }
+}) {
+  setStaticParamsLocale(locale)
   return (
     <main>
       <div className="py-10">

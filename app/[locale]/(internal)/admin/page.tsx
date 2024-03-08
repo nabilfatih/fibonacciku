@@ -1,8 +1,14 @@
 import Link from "next/link"
+import { setStaticParamsLocale } from "next-international/server"
 
 import { Button } from "@/components/ui/button"
 
-export default function AdminPage() {
+export default function AdminPage({
+  params: { locale }
+}: {
+  params: { locale: string }
+}) {
+  setStaticParamsLocale(locale)
   return (
     <main>
       <div className="bg-muted py-16 sm:py-24">

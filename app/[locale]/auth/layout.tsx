@@ -1,9 +1,15 @@
 import Image from "next/image"
 import Link from "next/link"
 
+import { getStaticParams } from "@/locales/server"
+
 import Particles from "@/components/ui/particles"
 import AuthLanguage from "@/components/auth/language"
 import ThemeToggle from "@/components/theme/toggle"
+
+export function generateStaticParams() {
+  return getStaticParams()
+}
 
 export default function AuthenticationLayout({
   children

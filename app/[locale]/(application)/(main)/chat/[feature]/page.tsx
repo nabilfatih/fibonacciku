@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
+import { setStaticParamsLocale } from "next-international/server"
 
 import type { Features } from "@/types/types"
 import { createClientServer } from "@/lib/supabase/server"
@@ -9,7 +10,7 @@ import { getScopedI18n } from "@/locales/server"
 import ChatMessage from "@/components/chat"
 
 type Props = {
-  params: { feature: string }
+  params: { locale: string; feature: string }
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
@@ -37,6 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ChatFeaturePage({ params, searchParams }: Props) {
+  setStaticParamsLocale(params.locale)
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {

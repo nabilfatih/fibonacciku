@@ -2,6 +2,7 @@ import { cache } from "react"
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import { notFound, redirect } from "next/navigation"
+import { setStaticParamsLocale } from "next-international/server"
 
 import { getBooksAdmin } from "@/lib/supabase/admin/book"
 import { createClientServer } from "@/lib/supabase/server"
@@ -15,7 +16,7 @@ const getBook = cache(async (bookId: string) => {
 })
 
 type Props = {
-  params: { id: string }
+  params: { locale: string; id: string }
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
@@ -43,6 +44,7 @@ export default async function BookReadSpecificPage({
   params,
   searchParams
 }: Props) {
+  setStaticParamsLocale(params.locale)
   const bookId = params.id
 
   // from string to number

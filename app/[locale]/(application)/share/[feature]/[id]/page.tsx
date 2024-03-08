@@ -1,6 +1,7 @@
 import { cache } from "react"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { setStaticParamsLocale } from "next-international/server"
 
 import type { Features } from "@/types/types"
 import supabaseAdmin from "@/lib/supabase/admin"
@@ -15,7 +16,7 @@ const getChat = cache(async (chatId: string) => {
 })
 
 type Props = {
-  params: { feature: string; id: string }
+  params: { locale: string; feature: string; id: string }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -27,6 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ChatMessagePage({ params }: Props) {
+  setStaticParamsLocale(params.locale)
   // can be open without login
   const { data } = await supabaseAdmin
     .from("share_chat")

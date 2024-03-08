@@ -1,6 +1,13 @@
+import { setStaticParamsLocale } from "next-international/server"
+
 import AdminUploadImage from "@/components/admin/upload-image"
 
-export default function AdminImageUploadPage() {
+export default function AdminImageUploadPage({
+  params: { locale }
+}: {
+  params: { locale: string }
+}) {
+  setStaticParamsLocale(locale)
   return (
     <main>
       <div className="py-10">

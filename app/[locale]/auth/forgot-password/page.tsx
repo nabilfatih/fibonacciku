@@ -1,10 +1,16 @@
 import Link from "next/link"
+import { setStaticParamsLocale } from "next-international/server"
 
 import { getScopedI18n } from "@/locales/server"
 
 import { ForgotPasswordForm } from "@/components/auth/forgot-password-form"
 
-export default async function ForgotPasswordPage() {
+export default async function ForgotPasswordPage({
+  params: { locale }
+}: {
+  params: { locale: string }
+}) {
+  setStaticParamsLocale(locale)
   const t = await getScopedI18n("Auth")
   return (
     <>

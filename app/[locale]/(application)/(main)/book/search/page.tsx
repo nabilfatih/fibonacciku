@@ -2,6 +2,7 @@ import { Suspense } from "react"
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
+import { setStaticParamsLocale } from "next-international/server"
 
 import { createClientServer } from "@/lib/supabase/server"
 import { getScopedI18n } from "@/locales/server"
@@ -11,6 +12,7 @@ import BookPanel from "@/components/book/panel"
 import BookSearch from "@/components/book/search"
 
 type Props = {
+  params: { locale: string }
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
@@ -36,7 +38,8 @@ export async function generateMetadata({
   }
 }
 
-export default async function BookSearchPage({ searchParams }: Props) {
+export default async function BookSearchPage({ params, searchParams }: Props) {
+  setStaticParamsLocale(params.locale)
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
