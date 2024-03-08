@@ -1,14 +1,25 @@
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
+import { setStaticParamsLocale } from "next-international/server"
 
 import { CurrentUserContextProvider } from "@/lib/context/use-current-user"
 import { createClientServer } from "@/lib/supabase/server"
+import { getStaticParams } from "@/locales/server"
 
 import MarketingFooter from "@/components/marketing/footer"
 import MarketingHeader from "@/components/marketing/header"
 import MarketingHome from "@/components/marketing/home"
 
-export default async function Home() {
+export function generateStaticParams() {
+  return getStaticParams()
+}
+
+export default async function Home({
+  params: { locale }
+}: {
+  params: { locale: string }
+}) {
+  setStaticParamsLocale(locale)
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
 

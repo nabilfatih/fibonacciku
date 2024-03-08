@@ -2,6 +2,7 @@ import { cache } from "react"
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import { setStaticParamsLocale } from "next-international/server"
 
 import {
   getBlogsAdmin,
@@ -33,10 +34,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 type Props = {
+  params: { locale: string }
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export default async function BlogPage({ searchParams }: Props) {
+export default async function BlogPage({ params, searchParams }: Props) {
+  setStaticParamsLocale(params.locale)
   const t = await getScopedI18n("Marketing")
   const locale = getCurrentLocale()
   const blogs = await getBlogs({ searchParams })
@@ -137,7 +140,7 @@ export default async function BlogPage({ searchParams }: Props) {
   )
 }
 
-const getBlogs = cache(async ({ searchParams }: Props) => {
+const getBlogs = cache(async ({ searchParams }: Omit<Props, "params">) => {
   const tag = searchParams.tag as string | undefined
   const author = searchParams.author as string | undefined
 

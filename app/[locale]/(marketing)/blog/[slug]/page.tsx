@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { setStaticParamsLocale } from "next-international/server"
 import { decode } from "urlencode"
 
 import type { Blogs } from "@/types/types"
@@ -25,7 +26,7 @@ const getBlog = cache(async (slug: string) => {
 })
 
 type Props = {
-  params: { slug: string }
+  params: { locale: string; slug: string }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -88,6 +89,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogSlugPage({ params }: Props) {
+  setStaticParamsLocale(params.locale)
   // convert html entities to string
   const slug = decode(params.slug)
 

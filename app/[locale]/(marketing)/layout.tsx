@@ -2,9 +2,14 @@ import { cookies } from "next/headers"
 
 import { CurrentUserContextProvider } from "@/lib/context/use-current-user"
 import { createClientServer } from "@/lib/supabase/server"
+import { getStaticParams } from "@/locales/server"
 
 import MarketingFooter from "@/components/marketing/footer"
 import MarketingHeader from "@/components/marketing/header"
+
+export function generateStaticParams() {
+  return getStaticParams()
+}
 
 export default async function MarketingLayout({
   children

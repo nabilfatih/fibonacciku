@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { setStaticParamsLocale } from "next-international/server"
 
 import { getScopedI18n } from "@/locales/server"
 
@@ -24,7 +25,12 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function ContactPage() {
+export default async function ContactPage({
+  params: { locale }
+}: {
+  params: { locale: string }
+}) {
+  setStaticParamsLocale(locale)
   const t = await getScopedI18n("MarketingContact")
   return (
     <MarketingTransition>

@@ -1,6 +1,7 @@
 import fs from "fs"
 import path from "path"
 import type { Metadata } from "next"
+import { setStaticParamsLocale } from "next-international/server"
 
 import { getScopedI18n } from "@/locales/server"
 
@@ -13,7 +14,12 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function PrivacyPolicyPage() {
+export default async function PrivacyPolicyPage({
+  params: { locale }
+}: {
+  params: { locale: string }
+}) {
+  setStaticParamsLocale(locale)
   const t = await getScopedI18n("Marketing")
   const privacyPolicyContent = fs.readFileSync(
     path.join(process.cwd(), "content/privacy-policy.mdx"),

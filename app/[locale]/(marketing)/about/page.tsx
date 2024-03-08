@@ -8,6 +8,7 @@ import {
   IconMoodWink,
   type TablerIconsProps
 } from "@tabler/icons-react"
+import { setStaticParamsLocale } from "next-international/server"
 
 import { getScopedI18n } from "@/locales/server"
 
@@ -63,7 +64,12 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function AboutPage() {
+export default async function AboutPage({
+  params: { locale }
+}: {
+  params: { locale: string }
+}) {
+  setStaticParamsLocale(locale)
   const t = await getScopedI18n("MarketingAbout")
 
   return (

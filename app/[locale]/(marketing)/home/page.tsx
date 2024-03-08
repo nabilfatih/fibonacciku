@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { setStaticParamsLocale } from "next-international/server"
 
 import MarketingHome from "@/components/marketing/home"
 
@@ -18,6 +19,11 @@ export function generateMetadata(): Metadata {
   }
 }
 
-export default function HomePage() {
+export default function HomePage({
+  params: { locale }
+}: {
+  params: { locale: string }
+}) {
+  setStaticParamsLocale(locale)
   return <MarketingHome />
 }
