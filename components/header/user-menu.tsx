@@ -66,12 +66,14 @@ export default function UserMenu() {
   if (!userDetails) {
     return (
       <div className="flex items-center justify-between">
-        <Button size="icon" onClick={handleLogout} className="sm:hidden">
-          <IconLogin className="h-5 w-5" />
+        <Button size="icon" asChild className="sm:hidden">
+          <Link href="/auth/login">
+            <IconLogin className="h-5 w-5" />
+          </Link>
         </Button>
 
-        <Button onClick={handleLogout} className="hidden sm:inline-flex">
-          {t("login")}
+        <Button asChild className="hidden sm:inline-flex">
+          <Link href="/auth/login">{t("login")}</Link>
         </Button>
       </div>
     )
