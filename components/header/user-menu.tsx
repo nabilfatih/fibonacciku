@@ -1,5 +1,6 @@
 "use client"
 
+import { useCallback } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import {
@@ -45,12 +46,12 @@ export default function UserMenu() {
     userDetails?.full_name ?? userDetails?.email ?? "Anonymous"
   )
 
-  const handleLogout = async () => {
+  const handleLogout = useCallback(async () => {
     await supabaseClient.auth.signOut()
     router.replace("/auth/login")
     router.refresh()
     handleClearCurrentUserData()
-  }
+  }, [router, handleClearCurrentUserData])
 
   if (isLoading) {
     return (
