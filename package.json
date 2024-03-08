@@ -90,7 +90,7 @@
     "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss-animate": "^1.0.7",
     "urlencode": "^2.0.0",
-    "use-context-selector": "^1.4.3",
+    "use-context-selector": "^1.4.4",
     "uuid": "^9.0.1",
     "vaul": "^0.9.0",
     "xendit-node": "^4.2.0",
