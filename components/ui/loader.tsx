@@ -21,7 +21,11 @@ function Loader({ children }: Props) {
   return (
     <>
       {children}
-      <ProgressBar color={color} options={{ showSpinner: false }} />
+      <ProgressBar
+        height="3px"
+        color={color}
+        options={{ showSpinner: false }}
+      />
     </>
   )
 }
