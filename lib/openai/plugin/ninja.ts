@@ -1,6 +1,6 @@
 import { unstable_cache as cache } from "next/cache"
 
-import { generateNanoID } from "@/lib/utils"
+import { generateNanoID, replaceSpecialChars } from "@/lib/utils"
 
 export const ninjaBaseUrl = "https://api.api-ninjas.com/v1/"
 
@@ -30,11 +30,18 @@ export const scrapeWebsite = cache(
         "webscraper",
         `url=${url}&text_only=true`
       )
+      if (!response.ok) {
+        throw new Error(`Error scraping website: ${response.statusText}`)
+      }
+
+      const result = response.data
+
       const data = {
         id: generateNanoID(5),
         url,
-        ...response
+        data: replaceSpecialChars(result)
       }
+
       return {
         results: [data]
       }

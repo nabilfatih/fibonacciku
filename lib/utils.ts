@@ -1,5 +1,6 @@
 import axios from "axios"
 import { clsx, type ClassValue } from "clsx"
+import replaceSpecialCharacters from "replace-special-characters"
 import { twMerge } from "tailwind-merge"
 import { v4 as uuidv4 } from "uuid"
 
@@ -143,4 +144,8 @@ export const randomSelectWeighted = (
 
   // Fallback to the last model if random selection fails
   return arr[arr.length - 1].name
+}
+
+export const replaceSpecialChars = (text: string) => {
+  return replaceSpecialCharacters(text).replace(/\\u0000/g, "")
 }

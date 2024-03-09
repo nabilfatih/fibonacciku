@@ -20,7 +20,7 @@ import {
   getUserDetailsAdmin,
   getUserSubscriptionAdmin
 } from "@/lib/supabase/admin/users"
-import { randomSelectWeighted } from "@/lib/utils"
+import { randomSelectWeighted, replaceSpecialChars } from "@/lib/utils"
 
 // Define the models with their respective weights
 const modelsForPremium = [
@@ -84,7 +84,7 @@ export const createDocumentsFromPages = async (
     const page = pages[i]
     const doc = await textSplitter.splitDocuments([
       new Document({
-        pageContent: page.replace(/[\x00-\x1F\x7F]/g, ""),
+        pageContent: replaceSpecialChars(page.replace(/[\x00-\x1F\x7F]/g, "")),
         metadata: {
           ...metadata,
           page_number: i + 1
@@ -97,17 +97,20 @@ export const createDocumentsFromPages = async (
 }
 
 export const createSafeTitle = (prompt: string): string => {
-  if (prompt.length <= 50) {
-    return prompt // If it's short and sweet, just use it as is.
+  // Remove special characters and replace with underscores
+  const safeTitle = replaceSpecialChars(prompt)
+
+  if (safeTitle.length <= 50) {
+    return safeTitle
   }
 
   // Find the last space before the 50-char limit to avoid word cuts.
-  const lastSpaceIndex = prompt.substring(0, 50).lastIndexOf(" ")
+  const lastSpaceIndex = safeTitle.substring(0, 50).lastIndexOf(" ")
 
   // If there's a space, we cut the prompt there. If not, it's chop-chop at 50 chars!
   return lastSpaceIndex > -1
-    ? prompt.substring(0, lastSpaceIndex)
-    : prompt.substring(0, 50)
+    ? safeTitle.substring(0, lastSpaceIndex)
+    : safeTitle.substring(0, 50)
 }
 
 export const callTools = async (

@@ -4,6 +4,7 @@ import { OpenAIEmbeddings } from "@langchain/openai"
 import type { Document } from "langchain/document"
 
 import supabaseAdmin from "@/lib/supabase/admin"
+import { replaceSpecialChars } from "@/lib/utils"
 
 export const documentRetrieval = cache(
   async (userId: string, fileId: string, query: string) => {
@@ -109,7 +110,7 @@ function formatCleanData(sources: Document[], amount: number, fileId: string) {
     sources
       .map(source => {
         return {
-          pageContent: source.pageContent,
+          pageContent: replaceSpecialChars(source.pageContent),
           metadata: source.metadata,
           page_number: source.metadata.page_number
         }

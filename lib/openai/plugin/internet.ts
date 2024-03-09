@@ -6,6 +6,7 @@ import type {
   SearchResult,
   YoutubeSearchResult
 } from "@/types/types"
+import { replaceSpecialChars } from "@/lib/utils"
 
 import { scrapeWebsite } from "./ninja"
 
@@ -60,7 +61,7 @@ export const googlePlugin = cache(
           title: item.title,
           displayLink: item.displayLink,
           link: item.link,
-          snippet: item.snippet || ""
+          snippet: replaceSpecialChars(item.snippet || "")
         }
       })
 
@@ -70,14 +71,14 @@ export const googlePlugin = cache(
           const scraped = await scrapeWebsite(item.link)
           // only get the first 2000 characters
           return scraped.results.length
-            ? scraped.results[0].data.substring(0, 2000)
+            ? scraped.results[0].data.substring(0, 2000) || ""
             : ""
         })
       )
 
       // put the content into the smallData
       smallData.forEach((item, index) => {
-        item.content = content[index]
+        item.content = replaceSpecialChars(content[index])
       })
 
       return {
