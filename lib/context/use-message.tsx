@@ -372,6 +372,8 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
           return
         }
 
+        console.error("Error:", error)
+
         // reset the chat state to the previous state.
         setShowMessage(previousMessages)
 
