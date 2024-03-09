@@ -37,13 +37,13 @@ export function SidebarProvider({ children }: SidebarProviderProps) {
     setLoading(false)
   }, [])
 
-  const toggleSidebar = () => {
+  const toggleSidebar = React.useCallback(() => {
     setSidebarOpen(value => {
       const newState = !value
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newState))
       return newState
     })
-  }
+  }, [])
 
   if (isLoading) {
     return null
