@@ -174,6 +174,16 @@ export default function UserMenu() {
             <Contact className="w-full p-2" />
           </DropdownMenuLabel>
 
+          <DropdownMenuItem asChild className="py-2">
+            <Link
+              href="/blog"
+              className="inline-flex w-full cursor-pointer items-center justify-between"
+            >
+              {t("blog")}
+              <IconNews className="ml-auto h-4 w-4" />
+            </Link>
+          </DropdownMenuItem>
+
           <DropdownMenuSeparator />
 
           <DropdownMenuItem asChild className="py-2">
@@ -183,15 +193,6 @@ export default function UserMenu() {
             >
               {t("homepage")}
               <IconExternalLink className="ml-auto h-4 w-4" />
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild className="py-2">
-            <Link
-              href="/blog"
-              className="inline-flex w-full cursor-pointer items-center justify-between"
-            >
-              {t("blog")}
-              <IconNews className="ml-auto h-4 w-4" />
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem
