@@ -102,6 +102,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
                       width={512}
                       height={512}
                       sizes="512px"
+                      priority
                       className="m-0 rounded-xs border bg-muted/90 object-cover shadow transition-all duration-300 group-hover:rounded-5xl"
                     />
                     <div className="relative mt-2 grid gap-1.5 break-words">

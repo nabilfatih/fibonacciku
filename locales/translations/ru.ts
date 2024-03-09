@@ -743,7 +743,8 @@ export default {
     hi: "Привет",
     "account-desc": "Вы можете обновить информацию о своем аккаунте здесь.",
     "delete-account": "Удалить аккаунт",
-    delete: "Удалить"
+    delete: "Удалить",
+    blog: "Блог"
   },
   ModalClearChat: {
     clear: "Очистить",

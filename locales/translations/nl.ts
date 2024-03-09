@@ -743,7 +743,8 @@ export default {
     hi: "Hoi",
     "account-desc": "Je kunt hier je accountinformatie bijwerken.",
     "delete-account": "Account verwijderen",
-    delete: "Verwijderen"
+    delete: "Verwijderen",
+    blog: "Blog"
   },
   ModalClearChat: {
     clear: "Wissen",

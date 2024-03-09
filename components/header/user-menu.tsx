@@ -9,6 +9,7 @@ import {
   IconExternalLink,
   IconHomeShield,
   IconLogin,
+  IconNews,
   IconUser
 } from "@tabler/icons-react"
 import Avatar, { genConfig } from "react-nice-avatar"
@@ -182,6 +183,15 @@ export default function UserMenu() {
             >
               {t("homepage")}
               <IconExternalLink className="ml-auto h-4 w-4" />
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild className="py-2">
+            <Link
+              href="/blog"
+              className="inline-flex w-full cursor-pointer items-center justify-between"
+            >
+              {t("blog")}
+              <IconNews className="ml-auto h-4 w-4" />
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem

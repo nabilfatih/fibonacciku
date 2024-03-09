@@ -748,7 +748,8 @@ export default {
     hi: "Hai",
     "account-desc": "Anda dapat memperbarui informasi akun Anda di sini.",
     "delete-account": "Hapus akun",
-    delete: "Hapus"
+    delete: "Hapus",
+    blog: "Blog"
   },
   ModalClearChat: {
     clear: "Hapus",

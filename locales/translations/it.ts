@@ -744,7 +744,8 @@ export default {
     hi: "Ciao",
     "account-desc": "Puoi aggiornare le informazioni sul tuo account qui.",
     "delete-account": "Elimina account",
-    delete: "Elimina"
+    delete: "Elimina",
+    blog: "Blog"
   },
   ModalClearChat: {
     clear: "Cancella",
