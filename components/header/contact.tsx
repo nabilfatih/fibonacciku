@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import { IconSend } from "@tabler/icons-react"
 import axios from "axios"
 import { toast } from "sonner"
@@ -59,38 +59,41 @@ export default function Contact({ variant, className }: Props) {
   const [subject, setSubject] = useState<string>("")
   const [message, setMessage] = useState<string>("")
 
-  const handleSubmit = async (e: React.SyntheticEvent) => {
-    e.preventDefault()
-    if (!userDetails) return
-    setIsLoading(true)
+  const handleSubmit = useCallback(
+    async (e: React.SyntheticEvent) => {
+      e.preventDefault()
+      if (!userDetails) return
+      setIsLoading(true)
 
-    try {
-      const res = await axios.post(
-        "/api/email/contact",
-        {
-          email: userDetails.email,
-          subject,
-          message
-        },
-        {
-          headers: {
-            "Content-Type": "application/json"
+      try {
+        const res = await axios.post(
+          "/api/email/contact",
+          {
+            email: userDetails.email,
+            subject,
+            message
+          },
+          {
+            headers: {
+              "Content-Type": "application/json"
+            }
           }
+        )
+        if (res.status === 200) {
+          setSubject("")
+          setMessage("")
+          toast.success(t("message-send"))
         }
-      )
-      if (res.status === 200) {
-        setSubject("")
-        setMessage("")
-        toast.success(t("message-send"))
+        if (res.status === 400) {
+          toast.error(res.data.message)
+        }
+      } catch (error) {
+        toast.error(t("something-wrong"))
       }
-      if (res.status === 400) {
-        toast.error(res.data.message)
-      }
-    } catch (error) {
-      toast.error(t("something-wrong"))
-    }
-    setIsLoading(false)
-  }
+      setIsLoading(false)
+    },
+    [message, t, userDetails, subject]
+  )
 
   if (isDesktop) {
     return (
