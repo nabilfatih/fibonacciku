@@ -1,8 +1,9 @@
 import { Skeleton } from "@/components/ui/skeleton"
+import MarketingTransition from "@/components/marketing/transition"
 
 export default function Loading() {
   return (
-    <div className="relative">
+    <MarketingTransition className="relative">
       <header className="bg-muted py-16">
         <div className="relative mx-auto max-w-7xl px-4">
           <Skeleton className="h-16 w-32"></Skeleton>
@@ -31,6 +32,6 @@ export default function Loading() {
           </div>
         </div>
       </section>
-    </div>
+    </MarketingTransition>
   )
 }
