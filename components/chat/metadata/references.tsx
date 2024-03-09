@@ -40,7 +40,8 @@ function ChatMetadataReferences({ metadata }: Props) {
               title={`${t("page")} ${item.page_number}`}
               key={index}
               size="sm"
-              className="rounded-full"
+              variant="outline"
+              className="rounded-full shadow"
               onClick={async () => {
                 dispatch({
                   type: "SET_INITIAL_PAGE",

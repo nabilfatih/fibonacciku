@@ -9,7 +9,7 @@ import { I18nProviderClient } from "@/locales/client"
 
 import { TooltipProvider } from "@/components/ui/tooltip"
 
-export default function Providers({
+function Providers({
   children,
   ...props
 }: ThemeProviderProps & { locale: string }) {
@@ -23,3 +23,5 @@ export default function Providers({
     </NextThemesProvider>
   )
 }
+
+export default React.memo(Providers)
