@@ -18,13 +18,13 @@ export default function AdminPage({
       </div>
       <div className="py-10">
         <div className="relative mx-auto max-w-3xl space-x-4 space-y-4 px-4">
-          <Button>
+          <Button asChild>
             <Link href="/admin/blog">Insert Blog</Link>
           </Button>
-          <Button>
+          <Button asChild>
             <Link href="/admin/image">Change Blog Cover</Link>
           </Button>
-          <Button>
+          <Button asChild>
             <Link href="/admin/image/upload">Upload Image</Link>
           </Button>
         </div>
