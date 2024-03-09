@@ -17,6 +17,9 @@ function Confetti() {
 
   if (confetti && confetti !== "true") return null
 
+  // if no there are no both payment and confetti query params, return null
+  if (!payment && !confetti) return null
+
   return (
     <ConfettiEffect
       width={window.innerWidth}
