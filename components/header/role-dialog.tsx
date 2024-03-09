@@ -52,14 +52,19 @@ export default function RoleDialog() {
         updateUserLang(userDetails.id, locale)
       ])
       toast.success(t("welcome"))
-      await sendWelcomeEmail(role, userDetails)
+
       if (ref) {
         await updateUserRef(userDetails.id, ref)
         // remove ref from url
         router.replace(pathname)
       }
+
+      // add confetti=true in search params for welcoming celebration
+      router.push(`${pathname}?confetti=true`)
+
       router.refresh()
       mutate()
+      await sendWelcomeEmail(role, userDetails)
     } catch (error) {
       console.error(error)
       toast.error(tBackend("something-wrong"))

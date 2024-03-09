@@ -11,7 +11,11 @@ function Confetti() {
   const pathname = usePathname()
 
   const payment = searchParams.get("payment")
+  const confetti = searchParams.get("confetti")
+
   if (payment !== "success") return null
+
+  if (confetti !== "true") return null
 
   return (
     <ConfettiEffect
