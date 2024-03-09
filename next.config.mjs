@@ -35,6 +35,7 @@ const ContentSecurityPolicy = `
     worker-src 'self' blob:;
     script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.vercel-insights.com va.vercel-scripts.com js.stripe.com www.googletagmanager.com www.google-analytics.com unpkg.com;
     style-src 'self' 'unsafe-inline';
+    script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' cdn.vercel-insights.com va.vercel-scripts.com js.stripe.com www.googletagmanager.com www.google-analytics.com unpkg.com;
     img-src * blob: data:;
     media-src 'self' blob:;
     connect-src *;
