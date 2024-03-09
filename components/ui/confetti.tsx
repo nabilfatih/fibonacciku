@@ -13,9 +13,9 @@ function Confetti() {
   const payment = searchParams.get("payment")
   const confetti = searchParams.get("confetti")
 
-  if (payment !== "success") return null
+  if (payment && payment !== "success") return null
 
-  if (confetti !== "true") return null
+  if (confetti && confetti !== "true") return null
 
   return (
     <ConfettiEffect
