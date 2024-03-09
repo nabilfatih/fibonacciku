@@ -1,6 +1,6 @@
 "use client"
 
-import { memo, useMemo } from "react"
+import { memo, useCallback, useMemo } from "react"
 import Link from "next/link"
 import { AnimatePresence, motion } from "framer-motion"
 import useSWRImmutable from "swr/immutable"
@@ -58,16 +58,17 @@ function AdsBox({ id }: Props) {
     return replacedText
   }, [data?.data])
 
+  const handleClick = useCallback(async () => {
+    const ads = data?.data
+    if (!ads) return
+    await clickAdsAdzedek(ads.id, generateUUID())
+  }, [data?.data])
+
   if (isLoading || isUserLoading || !data || subscription || !userDetails) {
     return null
   }
 
   if ("error" in data) return null
-
-  const handleClick = async () => {
-    const ads = data?.data
-    await clickAdsAdzedek(ads.id, generateUUID())
-  }
 
   return (
     <AnimatePresence initial={false}>
