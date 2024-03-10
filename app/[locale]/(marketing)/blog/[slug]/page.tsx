@@ -232,16 +232,12 @@ export default async function BlogSlugPage({ params }: Props) {
   )
 }
 
-const incrementViews = cache(async (id: string, seen: number) => {
-  await updateBlogs(id, { seen: seen + 1 })
-})
-
 async function Views({ blog }: { blog: Blogs }) {
   noStore()
   const t = await getScopedI18n("Marketing")
   const data = await getBlogsBySlugAdmin(blog.slug)
   if (!data) return null
-  await incrementViews(data.id, data.seen || 0)
+  await updateBlogs(data.id, { seen: data.seen + 1 })
   const number = new Number(blog.seen || 0)
 
   return (
