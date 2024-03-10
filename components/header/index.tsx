@@ -1,4 +1,3 @@
-import { Suspense } from "react"
 import { cookies } from "next/headers"
 import Image from "next/image"
 import Link from "next/link"
@@ -62,9 +61,7 @@ export function HeaderChat() {
   return (
     <header className="sticky top-0 z-50 flex h-16 w-full shrink-0 items-center justify-between border-b bg-muted px-4 backdrop-blur-xl">
       <div className="flex items-center">
-        <Suspense fallback={<div className="flex-1 overflow-auto" />}>
-          <UserHistory />
-        </Suspense>
+        <UserHistory />
       </div>
       <div className="flex items-center justify-end space-x-2">
         <HeaderChatFeature />
