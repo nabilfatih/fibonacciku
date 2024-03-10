@@ -57,7 +57,7 @@ async function UserHistory() {
   )
 }
 
-export function HeaderChat() {
+export default function HeaderChat() {
   return (
     <header className="sticky top-0 z-50 flex h-16 w-full shrink-0 items-center justify-between border-b bg-muted px-4 backdrop-blur-xl">
       <div className="flex items-center">
