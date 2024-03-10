@@ -1,5 +1,6 @@
 import { cache, Suspense } from "react"
 import type { Metadata } from "next"
+import { unstable_noStore as noStore } from "next/cache"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -236,8 +237,11 @@ const incrementViews = cache(async (id: string, seen: number) => {
 })
 
 async function Views({ blog }: { blog: Blogs }) {
+  noStore()
   const t = await getScopedI18n("Marketing")
-  await incrementViews(blog.id, blog.seen)
+  const data = await getBlogsBySlugAdmin(blog.slug)
+  if (!data) return null
+  await incrementViews(data.id, data.seen || 0)
   const number = new Number(blog.seen || 0)
 
   return (
