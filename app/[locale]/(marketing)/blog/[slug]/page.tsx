@@ -21,6 +21,8 @@ import MarketingCta from "@/components/marketing/cta"
 import MarketingTransition from "@/components/marketing/transition"
 import { updateBlogs } from "@/app/actions/blog"
 
+export const revalidate = 86400 // 24 hours
+
 const getBlog = cache(async (slug: string) => {
   const blog = await getBlogsBySlugAdmin(slug)
   // if there is chat return the title, if not return FibonacciKu
