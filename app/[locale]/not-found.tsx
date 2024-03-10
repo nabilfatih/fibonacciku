@@ -6,7 +6,7 @@ import { createClientServer } from "@/lib/supabase/server"
 import { getScopedI18n } from "@/locales/server"
 
 import { Button } from "@/components/ui/button"
-import { HeaderChat } from "@/components/header"
+import HeaderChat from "@/components/header"
 
 export default async function NotFound() {
   const t = await getScopedI18n("BackendRouter")
