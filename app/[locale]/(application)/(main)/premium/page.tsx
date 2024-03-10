@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils"
 import { getScopedI18n } from "@/locales/server"
 
 import { Badge } from "@/components/ui/badge"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import MarketingCta from "@/components/marketing/cta"
 import MarketingFooter from "@/components/marketing/footer"
 import PremiumCompare from "@/components/premium/compare"
@@ -87,55 +88,63 @@ export default async function PremiumPage({
   }
 
   return (
-    <main className="h-full space-y-6 overflow-y-auto overflow-x-hidden">
-      <header className="border-b py-4">
-        <div
+    <ScrollArea className="h-full">
+      <main className="space-y-6">
+        <header className="border-b py-4">
+          <div
+            className={cn(
+              "relative mx-auto max-w-4xl px-4",
+              !user && "max-w-7xl"
+            )}
+          >
+            <div className="flex items-center">
+              <h2 className="text-2xl font-semibold tracking-tighter">
+                FibonacciKu
+              </h2>
+              <Badge className="ml-2">{t("premium")}</Badge>
+            </div>
+            <p className="mt-2 text-muted-foreground">{t("desc-2")}</p>
+          </div>
+        </header>
+
+        <section
           className={cn(
             "relative mx-auto max-w-4xl px-4",
             !user && "max-w-7xl"
           )}
         >
-          <div className="flex items-center">
+          <PremiumPrice user={user || null} subscription={subscription} />
+        </section>
+
+        <section
+          className={cn(
+            "relative mx-auto max-w-4xl px-4",
+            !user && "max-w-7xl"
+          )}
+        >
+          <PremiumFeatures />
+        </section>
+
+        <section
+          className={cn(
+            "relative mx-auto max-w-4xl px-4 pb-12 pt-6",
+            !user && "max-w-7xl"
+          )}
+        >
+          <div className="flex items-center pb-6">
             <h2 className="text-2xl font-semibold tracking-tighter">
-              FibonacciKu
+              {t("compare-features-across-plans")}
             </h2>
-            <Badge className="ml-2">{t("premium")}</Badge>
           </div>
-          <p className="mt-2 text-muted-foreground">{t("desc-2")}</p>
-        </div>
-      </header>
-
-      <section
-        className={cn("relative mx-auto max-w-4xl px-4", !user && "max-w-7xl")}
-      >
-        <PremiumPrice user={user || null} subscription={subscription} />
-      </section>
-
-      <section
-        className={cn("relative mx-auto max-w-4xl px-4", !user && "max-w-7xl")}
-      >
-        <PremiumFeatures />
-      </section>
-
-      <section
-        className={cn(
-          "relative mx-auto max-w-4xl px-4 pb-12 pt-6",
-          !user && "max-w-7xl"
+          <PremiumCompare />
+        </section>
+        {!user && (
+          <>
+            <MarketingCta />
+            <MarketingFooter />
+          </>
         )}
-      >
-        <div className="flex items-center pb-6">
-          <h2 className="text-2xl font-semibold tracking-tighter">
-            {t("compare-features-across-plans")}
-          </h2>
-        </div>
-        <PremiumCompare />
-      </section>
-      {!user && (
-        <>
-          <MarketingCta />
-          <MarketingFooter />
-        </>
-      )}
-    </main>
+      </main>
+    </ScrollArea>
   )
 }

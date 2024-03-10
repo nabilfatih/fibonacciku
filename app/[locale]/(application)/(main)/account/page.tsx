@@ -7,6 +7,7 @@ import { setStaticParamsLocale } from "next-international/server"
 import { createClientServer } from "@/lib/supabase/server"
 import { getScopedI18n } from "@/locales/server"
 
+import { ScrollArea } from "@/components/ui/scroll-area"
 import AccountGeneral from "@/components/account/general"
 import AccountHeader from "@/components/account/header"
 import AccountSubscription from "@/components/account/subscription"
@@ -47,16 +48,18 @@ export default async function AccountPage({
   }
 
   return (
-    <main className="h-full space-y-4 overflow-y-auto overflow-x-hidden pb-6">
-      <AccountHeader text="account" />
+    <ScrollArea className="h-full">
+      <main className="space-y-4 pb-6">
+        <AccountHeader text="account" />
 
-      <Suspense>
-        <AccountGeneral userId={user.id} />
+        <Suspense>
+          <AccountGeneral userId={user.id} />
 
-        <AccountSubscription userId={user.id} />
+          <AccountSubscription userId={user.id} />
 
-        <AccountSystem />
-      </Suspense>
-    </main>
+          <AccountSystem />
+        </Suspense>
+      </main>
+    </ScrollArea>
   )
 }
