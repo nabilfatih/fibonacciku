@@ -20,7 +20,7 @@ export default function Loading() {
               </div>
             </div>
 
-            <Skeleton className="h-[640px] w-[640px]"></Skeleton>
+            <Skeleton className="h-[500px] w-full"></Skeleton>
           </div>
         </div>
       </header>
