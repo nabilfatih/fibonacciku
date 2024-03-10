@@ -16,12 +16,8 @@ import LoadingChatHistory from "@/components/sidebar/chat/loading-chat-history"
 import SidebarItems from "@/components/sidebar/chat/sidebar-items"
 import ThemeToggle from "@/components/theme/toggle"
 
-type Props = {
-  userId: string
-}
-
-export default function SidebarList({ userId }: Props) {
-  const { userChatHistory, isLoading } = useChatHistory(userId)
+export default function SidebarList() {
+  const { userChatHistory, isLoading } = useChatHistory()
   const { userDetails } = useCurrentUser()
 
   const t = useScopedI18n("Chat")

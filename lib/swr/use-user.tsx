@@ -1,26 +1,32 @@
-import axios from "axios"
 import useSWR from "swr"
 
 import type { Subscription, UserDetails } from "@/types/types"
 
-type ResponseData = {
-  userDetails: UserDetails
-  subscription: Subscription
+import { getUser } from "@/app/actions/users"
+
+export type ResponseDataUseUser = {
+  userDetails: UserDetails | null
+  subscription: Subscription | null
 }
 
-const fetcher = (url: string): Promise<ResponseData> =>
-  axios.get(url).then(res => res.data)
+const fetcher = async (): Promise<ResponseDataUseUser> => {
+  const response = await getUser()
+  if ("error" in response) {
+    return {
+      userDetails: null,
+      subscription: null
+    }
+  }
+  return response
+}
 
-export default function useUser(userId: string) {
-  const { data, error, isLoading, isValidating, mutate } = useSWR<ResponseData>(
-    userId ? `/api/app/get-user/${userId}` : null,
-    fetcher,
-    {
+export default function useUser() {
+  const { data, error, isLoading, isValidating, mutate } =
+    useSWR<ResponseDataUseUser>("user-data", fetcher, {
       refreshWhenHidden: true,
       revalidateOnMount: true,
       refreshWhenOffline: true
-    }
-  )
+    })
 
   return {
     userDetails: data?.userDetails,

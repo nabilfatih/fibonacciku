@@ -27,7 +27,7 @@ async function UserHistory() {
       {user?.id ? (
         <>
           <SidebarMobile>
-            <ChatHistory userId={user.id} />
+            <ChatHistory />
           </SidebarMobile>
           <SidebarToggle />
         </>

@@ -1,21 +1,21 @@
-import { cache } from "react"
-import axios from "axios"
 import useSWR from "swr"
 
 import type { Libraries } from "@/types/types"
 
-type ResponseData = {
-  libraries: Libraries[]
+import { getUserLibrary } from "@/app/actions/library"
+
+const fetcher = async (): Promise<Libraries[]> => {
+  const response = await getUserLibrary()
+  if ("error" in response) {
+    return []
+  }
+  return response.data
 }
 
-const fetcher = cache(
-  (url: string): Promise<ResponseData> => axios.get(url).then(res => res.data)
-)
-
-export default function useUserLibrary(userId: string) {
+export default function useUserLibrary() {
   // if userId is empty string, return not fetch
-  const { data, error, isLoading, isValidating, mutate } = useSWR<ResponseData>(
-    userId ? `/api/app/get-library/${userId}` : null,
+  const { data, error, isLoading, isValidating, mutate } = useSWR<Libraries[]>(
+    "user-library",
     fetcher,
     {
       refreshWhenHidden: true,
@@ -25,7 +25,7 @@ export default function useUserLibrary(userId: string) {
   )
 
   return {
-    libraries: data?.libraries,
+    libraries: data,
     mutate,
     isLoading,
     isError: error,

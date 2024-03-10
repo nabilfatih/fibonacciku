@@ -7,6 +7,36 @@ import type { Features } from "@/types/types"
 import { createClientServer } from "@/lib/supabase/server"
 import { generateUUID, getCurrentDate } from "@/lib/utils"
 
+export async function getUserChat() {
+  const cookieStore = cookies()
+  const supabase = createClientServer(cookieStore)
+  const {
+    data: { user }
+  } = await supabase.auth.getUser()
+
+  if (!user) {
+    return {
+      error: "Unauthorized"
+    }
+  }
+
+  const { data, error } = await supabase
+    .from("chat")
+    .select()
+    .eq("user_id", user.id)
+    .order("updated_at", { ascending: false })
+
+  if (error) {
+    return {
+      error: "Something went wrong"
+    }
+  }
+
+  return {
+    data
+  }
+}
+
 export async function renameChat(id: string, title: string) {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)

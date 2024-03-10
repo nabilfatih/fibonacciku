@@ -1,20 +1,20 @@
-import { cache } from "react"
-import axios from "axios"
 import useSWR from "swr"
 
 import type { Chat } from "@/types/types"
 
-type ResponseData = {
-  userChatHistory: Chat[]
+import { getUserChat } from "@/app/actions/chat"
+
+const fetcher = async (): Promise<Chat[]> => {
+  const response = await getUserChat()
+  if ("error" in response) {
+    return []
+  }
+  return response.data
 }
 
-const fetcher = cache(
-  (url: string): Promise<ResponseData> => axios.get(url).then(res => res.data)
-)
-
-export default function useChatHistory(userId: string) {
-  const { data, error, isLoading, mutate } = useSWR<ResponseData>(
-    userId ? `/api/app/get-user-chat/${userId}` : null,
+export default function useChatHistory() {
+  const { data, error, isLoading, mutate } = useSWR<Chat[]>(
+    "user-chat-history",
     fetcher,
     {
       refreshWhenHidden: true,
@@ -24,7 +24,7 @@ export default function useChatHistory(userId: string) {
   )
 
   return {
-    userChatHistory: data?.userChatHistory,
+    userChatHistory: data,
     isLoading,
     isError: error,
     mutate

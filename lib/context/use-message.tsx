@@ -191,7 +191,7 @@ export const MessageContextProvider: React.FC<MessageContextProviderProps> = (
   const pathname = usePathname()
 
   const { userDetails } = useCurrentUser()
-  const { mutate } = useChatHistory(userDetails?.id || "")
+  const { mutate } = useChatHistory()
 
   const feature = useMemo(() => {
     if (params?.feature) {

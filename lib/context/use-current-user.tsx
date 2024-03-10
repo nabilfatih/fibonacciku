@@ -7,7 +7,7 @@ import { createContext, useContextSelector } from "use-context-selector"
 
 import type { Subscription, UserDetails } from "@/types/types"
 import supabaseClient from "@/lib/supabase/client"
-import useUser from "@/lib/swr/use-user"
+import useUser, { type ResponseDataUseUser } from "@/lib/swr/use-user"
 
 // Define type for context value
 type CurrentUserContextValue = {
@@ -18,10 +18,7 @@ type CurrentUserContextValue = {
   setSubscription: React.Dispatch<React.SetStateAction<Subscription | null>>
   isLoading: boolean
   handleClearCurrentUserData: () => void
-  mutate: KeyedMutator<{
-    userDetails: UserDetails
-    subscription: Subscription
-  }>
+  mutate: KeyedMutator<ResponseDataUseUser>
 }
 
 // Create context
@@ -47,7 +44,7 @@ export const CurrentUserContextProvider: React.FC<
     subscription: subscriptionData,
     isLoading,
     mutate
-  } = useUser(user?.id || "")
+  } = useUser()
 
   useEffect(() => {
     if (userData) setUserDetails(userData)

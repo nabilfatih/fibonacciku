@@ -6,6 +6,42 @@ import { cookies } from "next/headers"
 import { createClientServer } from "@/lib/supabase/server"
 import { getCurrentDate } from "@/lib/utils"
 
+export async function getUserLibrary() {
+  const cookieStore = cookies()
+  const supabase = createClientServer(cookieStore)
+  const {
+    data: { user }
+  } = await supabase.auth.getUser()
+
+  if (!user) {
+    return {
+      error: "Unauthorized"
+    }
+  }
+
+  const { data, error } = await supabase
+    .from("libraries")
+    .select("*")
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: false })
+
+  if (error) {
+    return {
+      error: "Something went wrong"
+    }
+  }
+
+  if (!data) {
+    return {
+      error: "Unauthorized"
+    }
+  }
+
+  return {
+    data
+  }
+}
+
 export async function getLibraryFile(fileId: string) {
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
