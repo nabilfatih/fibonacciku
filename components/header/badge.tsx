@@ -1,10 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import {
-  IconLockAccess,
-  IconRosetteDiscountCheckFilled
-} from "@tabler/icons-react"
+import { IconChessFilled, IconChessQueenFilled } from "@tabler/icons-react"
 
 import { useCurrentUser } from "@/lib/context/use-current-user"
 import { useScopedI18n } from "@/locales/client"
@@ -21,13 +18,13 @@ export default function HeaderBadge() {
     return (
       <Link href="/premium" className="ml-2">
         <Badge className="hidden sm:inline-flex">{t("free")}</Badge>
-        <IconLockAccess className="h-4 w-4 text-primary sm:hidden" />
+        <IconChessFilled className="h-4 w-4 text-primary sm:hidden" />
       </Link>
     )
 
   return (
     <Link href="/premium" className="ml-2">
-      <IconRosetteDiscountCheckFilled className="h-4 w-4 text-primary" />
+      <IconChessQueenFilled className="h-4 w-4 bg-muted text-primary" />
     </Link>
   )
 }
