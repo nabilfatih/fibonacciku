@@ -24,7 +24,10 @@ export default function HeaderBadge() {
 
   return (
     <Link href="/premium" className="ml-2">
-      <IconChessQueenFilled className="h-4 w-4 bg-muted text-primary" />
+      <Badge className="hidden sm:inline-flex">
+        {t(subscription.planName.toLowerCase() as never)}
+      </Badge>
+      <IconChessQueenFilled className="h-4 w-4 text-primary sm:hidden" />
     </Link>
   )
 }
