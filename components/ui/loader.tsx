@@ -13,7 +13,7 @@ function Loader({ children }: Props) {
       {children}
       <ProgressBar
         height="3px"
-        color="var(--foreground)"
+        color="hsl(var(--primary))"
         options={{ showSpinner: false }}
       />
     </>
