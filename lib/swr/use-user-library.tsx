@@ -1,16 +1,17 @@
+import { cache } from "react"
 import useSWR from "swr"
 
 import type { Libraries } from "@/types/types"
 
 import { getUserLibrary } from "@/app/actions/library"
 
-const fetcher = async (): Promise<Libraries[]> => {
+const fetcher = cache(async (): Promise<Libraries[]> => {
   const response = await getUserLibrary()
   if ("error" in response) {
     return []
   }
   return response.data
-}
+})
 
 type Props = {
   userId: string

@@ -1,16 +1,17 @@
+import { cache } from "react"
 import useSWR from "swr"
 
 import type { Chat } from "@/types/types"
 
 import { getUserChat } from "@/app/actions/chat"
 
-const fetcher = async (): Promise<Chat[]> => {
+const fetcher = cache(async (): Promise<Chat[]> => {
   const response = await getUserChat()
   if ("error" in response) {
     return []
   }
   return response.data
-}
+})
 
 type Props = {
   userId: string

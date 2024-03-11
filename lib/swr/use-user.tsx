@@ -1,3 +1,4 @@
+import { cache } from "react"
 import useSWR from "swr"
 
 import type { Subscription, UserDetails } from "@/types/types"
@@ -9,7 +10,7 @@ export type ResponseDataUseUser = {
   subscription: Subscription | null
 }
 
-const fetcher = async (): Promise<ResponseDataUseUser> => {
+const fetcher = cache(async (): Promise<ResponseDataUseUser> => {
   const response = await getUser()
   if ("error" in response) {
     return {
@@ -18,7 +19,7 @@ const fetcher = async (): Promise<ResponseDataUseUser> => {
     }
   }
   return response
-}
+})
 
 type Props = {
   userId: string
