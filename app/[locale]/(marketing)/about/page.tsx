@@ -1,3 +1,4 @@
+import type React from "react"
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
@@ -6,7 +7,7 @@ import {
   IconGlobe,
   IconLeaf,
   IconMoodWink,
-  type TablerIconsProps
+  type IconProps
 } from "@tabler/icons-react"
 import { setStaticParamsLocale } from "next-international/server"
 
@@ -19,9 +20,10 @@ import MarketingTransition from "@/components/marketing/transition"
 
 import sustainBackground from "/public/background-sustain.webp"
 
-// Define a new type for the IconInfo
 type IconInfo = {
-  IconComponent: (props: TablerIconsProps) => JSX.Element
+  IconComponent: React.ForwardRefExoticComponent<
+    Omit<IconProps, "ref"> & React.RefAttributes<SVGSVGElement>
+  >
   titleKey: string
   descKey: string
 }
