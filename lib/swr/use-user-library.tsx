@@ -12,10 +12,14 @@ const fetcher = async (): Promise<Libraries[]> => {
   return response.data
 }
 
-export default function useUserLibrary() {
+type Props = {
+  userId: string
+}
+
+export default function useUserLibrary({ userId }: Props) {
   // if userId is empty string, return not fetch
   const { data, error, isLoading, isValidating, mutate } = useSWR<Libraries[]>(
-    "user-library",
+    userId ? `user-library-${userId}` : null,
     fetcher,
     {
       refreshWhenHidden: true,

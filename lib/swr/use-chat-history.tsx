@@ -12,9 +12,13 @@ const fetcher = async (): Promise<Chat[]> => {
   return response.data
 }
 
-export default function useChatHistory() {
+type Props = {
+  userId: string
+}
+
+export default function useChatHistory({ userId }: Props) {
   const { data, error, isLoading, mutate } = useSWR<Chat[]>(
-    "user-chat-history",
+    userId ? `user-chat-${userId}` : null,
     fetcher,
     {
       refreshWhenHidden: true,

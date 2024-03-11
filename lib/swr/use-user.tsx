@@ -20,13 +20,21 @@ const fetcher = async (): Promise<ResponseDataUseUser> => {
   return response
 }
 
-export default function useUser() {
+type Props = {
+  userId: string
+}
+
+export default function useUser({ userId }: Props) {
   const { data, error, isLoading, isValidating, mutate } =
-    useSWR<ResponseDataUseUser>("user-data", fetcher, {
-      refreshWhenHidden: true,
-      revalidateOnMount: true,
-      refreshWhenOffline: true
-    })
+    useSWR<ResponseDataUseUser>(
+      userId ? `user-data-${userId}` : null,
+      fetcher,
+      {
+        refreshWhenHidden: true,
+        revalidateOnMount: true,
+        refreshWhenOffline: true
+      }
+    )
 
   return {
     userDetails: data?.userDetails,

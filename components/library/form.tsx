@@ -24,7 +24,7 @@ export default function LibraryForm({ className, ...props }: LibraryFormProps) {
   const router = useRouter()
 
   const { userDetails, subscription } = useCurrentUser()
-  const { mutate } = useUserLibrary()
+  const { mutate } = useUserLibrary({ userId: userDetails?.id ?? "" })
 
   const inputRef = useRef<HTMLInputElement>(null)
 

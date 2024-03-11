@@ -2,7 +2,6 @@
 
 import { useCallback } from "react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
 import {
   IconBook,
   IconDiscountCheck,
@@ -12,6 +11,7 @@ import {
   IconNews,
   IconUser
 } from "@tabler/icons-react"
+import { useRouter } from "next-nprogress-bar"
 import Avatar, { genConfig } from "react-nice-avatar"
 
 import { useCurrentUser } from "@/lib/context/use-current-user"
@@ -40,7 +40,7 @@ export default function UserMenu() {
   const t = useScopedI18n("ModalAccount")
   const router = useRouter()
 
-  const { userDetails, isLoading, mutate } = useCurrentUser()
+  const { userDetails, isLoading } = useCurrentUser()
 
   const config = genConfig(
     userDetails?.full_name ?? userDetails?.email ?? "Anonymous"
@@ -49,9 +49,8 @@ export default function UserMenu() {
   const handleLogout = useCallback(async () => {
     await supabaseClient.auth.signOut()
     router.replace("/auth/login")
-    mutate()
     router.refresh()
-  }, [mutate, router])
+  }, [router])
 
   if (isLoading) {
     return (

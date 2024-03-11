@@ -44,7 +44,7 @@ export const CurrentUserContextProvider: React.FC<
     subscription: subscriptionData,
     isLoading,
     mutate
-  } = useUser()
+  } = useUser({ userId: user?.id ?? "" })
 
   useEffect(() => {
     if (userData) setUserDetails(userData)

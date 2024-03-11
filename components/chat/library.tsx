@@ -38,7 +38,7 @@ type Props = {
 
 export default function ChatLibrary({ userId }: Props) {
   const t = useScopedI18n("EmptyScreen")
-  const { libraries, mutate, isLoading } = useUserLibrary()
+  const { libraries, mutate, isLoading } = useUserLibrary({ userId })
   const { append, dispatch } = useMessage()
 
   const searchParams = useSearchParams()
