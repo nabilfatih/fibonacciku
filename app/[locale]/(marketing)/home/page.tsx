@@ -6,7 +6,6 @@ import MarketingHome from "@/components/marketing/home"
 export function generateMetadata(): Metadata {
   return {
     alternates: {
-      canonical: "/home",
       languages: {
         en: "/en/home",
         id: "/id/home",

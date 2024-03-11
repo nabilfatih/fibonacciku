@@ -14,7 +14,6 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t("library"),
     alternates: {
-      canonical: "/library",
       languages: {
         en: "/en/library",
         id: "/id/library",

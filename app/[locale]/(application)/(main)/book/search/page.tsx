@@ -25,7 +25,6 @@ export async function generateMetadata({
   return {
     title: query !== "undefined" ? `${query}` : t("fibo-book"),
     alternates: {
-      canonical: "/book/search",
       languages: {
         en: "/en/book/search",
         id: "/id/book/search",

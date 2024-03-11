@@ -25,7 +25,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     description: t(`fibo-${feature}-description` as never),
     alternates: {
-      canonical: `/chat/${feature}`,
       languages: {
         en: `/en/chat/${feature}`,
         id: `/id/chat/${feature}`,

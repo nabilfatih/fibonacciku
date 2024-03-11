@@ -58,7 +58,6 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     metadataBase: new URL("https://www.fibonacciku.com"),
     alternates: {
-      canonical: "/",
       languages: {
         en: "/en",
         id: "/id",

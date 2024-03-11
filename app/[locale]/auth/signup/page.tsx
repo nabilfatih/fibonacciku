@@ -20,7 +20,6 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t("sign-up"),
     alternates: {
-      canonical: "/auth/signup",
       languages: {
         en: "/en/auth/signup",
         id: "/id/auth/signup",

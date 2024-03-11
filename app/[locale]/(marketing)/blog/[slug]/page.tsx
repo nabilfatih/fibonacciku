@@ -64,7 +64,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ...blog.tags.split(",").map(tag => tag.trim().toLowerCase())
     ],
     alternates: {
-      canonical: `/blog/${blog.slug}`,
       languages: {
         en: `/en/blog/${blog.slug}`,
         id: `/id/blog/${blog.slug}`,

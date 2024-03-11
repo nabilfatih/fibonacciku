@@ -19,7 +19,6 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t("book-collection"),
     alternates: {
-      canonical: "/book/collection",
       languages: {
         en: "/en/book/collection",
         id: "/id/book/collection",

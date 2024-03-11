@@ -12,7 +12,6 @@ export async function generateMetadata(): Promise<Metadata> {
     title: t("contact"),
     description: t("desc"),
     alternates: {
-      canonical: "/contact",
       languages: {
         en: "/en/contact",
         id: "/id/contact",

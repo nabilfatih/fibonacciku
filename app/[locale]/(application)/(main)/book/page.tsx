@@ -20,7 +20,6 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description: `${t("header")}. ${t("fibo-book-description")}`,
     alternates: {
-      canonical: "/book",
       languages: {
         en: "/en/book",
         id: "/id/book",

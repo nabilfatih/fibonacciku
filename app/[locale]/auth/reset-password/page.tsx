@@ -12,7 +12,6 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t("reset-password"),
     alternates: {
-      canonical: "/auth/reset-password",
       languages: {
         en: "/en/auth/reset-password",
         id: "/id/auth/reset-password",

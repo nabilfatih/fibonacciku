@@ -20,7 +20,6 @@ export async function generateMetadata(): Promise<Metadata> {
     title: t("blog"),
     description: t("blog-desc"),
     alternates: {
-      canonical: "/blog",
       languages: {
         en: "/en/blog",
         id: "/id/blog",

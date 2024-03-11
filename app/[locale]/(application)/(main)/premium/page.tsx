@@ -21,7 +21,6 @@ export async function generateMetadata(): Promise<Metadata> {
     title: t("premium"),
     description: t("premium-desc"),
     alternates: {
-      canonical: "/premium",
       languages: {
         en: "/en/premium",
         id: "/id/premium",
