@@ -40,8 +40,7 @@ export default function UserMenu() {
   const t = useScopedI18n("ModalAccount")
   const router = useRouter()
 
-  const { userDetails, isLoading, handleClearCurrentUserData } =
-    useCurrentUser()
+  const { userDetails, isLoading, mutate } = useCurrentUser()
 
   const config = genConfig(
     userDetails?.full_name ?? userDetails?.email ?? "Anonymous"
@@ -49,10 +48,10 @@ export default function UserMenu() {
 
   const handleLogout = useCallback(async () => {
     await supabaseClient.auth.signOut()
-    handleClearCurrentUserData()
     router.replace("/auth/login")
+    mutate()
     router.refresh()
-  }, [router, handleClearCurrentUserData])
+  }, [mutate, router])
 
   if (isLoading) {
     return (
