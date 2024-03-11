@@ -2,10 +2,10 @@ import {
   IconBooks,
   IconBrandWikipedia,
   IconBrandYoutube,
-  IconDiscountCheckFilled,
   IconMath,
   IconPhotoHeart,
   IconPuzzle,
+  IconRosetteDiscountCheckFilled,
   IconSitemap,
   IconWind,
   IconWorldWww
@@ -82,7 +82,7 @@ export default async function PremiumPlugins({
                         </h3>
                         {plugin.premium && (
                           <div title={`Fibo ${t("premium")}`}>
-                            <IconDiscountCheckFilled className="inline-block h-4 w-4 min-w-[1rem] text-primary" />
+                            <IconRosetteDiscountCheckFilled className="inline-block h-4 w-4 min-w-[1rem] text-primary" />
                           </div>
                         )}
                       </div>
