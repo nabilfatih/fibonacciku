@@ -156,7 +156,7 @@ export default async function MarketingHome() {
           </div>
           <div className="flex flex-row justify-center gap-2">
             <Button asChild>
-              <Link href="/contact">
+              <Link href="/chat/assistant">
                 <IconSparkles className="mr-1 h-4 w-4" />
                 {t("try-it-now")}
               </Link>
