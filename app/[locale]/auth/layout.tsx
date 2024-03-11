@@ -55,17 +55,7 @@ export default function AuthenticationLayout({
         </div>
       </div>
       <div className="py-4 lg:p-8">
-        <Link href="/home" className="flex justify-center lg:hidden">
-          <Image
-            src="/logo-outline.webp"
-            width={32}
-            height={32}
-            priority
-            alt="FibonacciKu"
-            className="rounded-full object-cover shadow"
-          />
-        </Link>
-        <main className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+        <main className="mx-auto flex w-full flex-col justify-center space-y-4 sm:w-[350px] sm:space-y-6">
           {children}
         </main>
       </div>
