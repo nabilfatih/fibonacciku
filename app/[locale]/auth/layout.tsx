@@ -55,7 +55,7 @@ export default function AuthenticationLayout({
         </div>
       </div>
       <div className="py-4 lg:p-8">
-        <Link href="/home" className="mb-4 flex justify-center lg:hidden">
+        <Link href="/home" className="flex justify-center lg:hidden">
           <Image
             src="/logo-outline.webp"
             width={32}
