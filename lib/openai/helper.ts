@@ -57,7 +57,7 @@ export const determineModelBasedOnSubscription = async (
       subscription.planName === "enterprise")
   ) {
     return {
-      model: "gpt-4-0125-preview",
+      model: randomSelectWeighted(modelsForPremium),
       subscription,
       additionalTools: listToolsChat,
       isCostLimit
