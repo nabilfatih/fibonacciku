@@ -279,7 +279,7 @@ export const getUserSubscriptionAdmin = async (
   const { data, error } = await supabaseAdmin
     .from("subscriptions")
     .select("*, prices(*, products(*))")
-    // .in("status", ["trialing", "active"])
+    .in("status", ["trialing", "active"])
     .gt("current_period_end", new Date().toISOString())
     .eq("user_id", userId)
     .order("created_at", { ascending: false }) // get the latest subscription
