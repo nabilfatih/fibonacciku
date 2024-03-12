@@ -1,4 +1,3 @@
-import Image from "next/image"
 import Link from "next/link"
 import { setStaticParamsLocale } from "next-international/server"
 
@@ -15,16 +14,6 @@ export default async function ForgotPasswordPage({
   const t = await getScopedI18n("Auth")
   return (
     <>
-      <Link href="/home" className="flex justify-center lg:hidden">
-        <Image
-          src="/logo-outline.webp"
-          width={32}
-          height={32}
-          priority
-          alt="FibonacciKu"
-          className="rounded-full object-cover shadow"
-        />
-      </Link>
       <header className="flex flex-col space-y-2 pb-4 text-center">
         <h1 className="text-2xl font-semibold tracking-tight">
           {t("forgot-password")}

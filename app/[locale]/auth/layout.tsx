@@ -18,6 +18,20 @@ export default function AuthenticationLayout({
 }) {
   return (
     <div className="container relative grid h-[100dvh] flex-col items-center justify-center text-foreground lg:max-w-none lg:grid-cols-2 lg:px-0">
+      <Link
+        href="/"
+        className="absolute left-5 top-5 flex items-center gap-2 md:left-9 md:top-9 lg:hidden"
+      >
+        <Image
+          src="/logo-outline.webp"
+          width={32}
+          height={32}
+          priority
+          sizes="32px"
+          alt="FibonacciKu"
+          className="rounded-full object-cover shadow"
+        />
+      </Link>
       <div className="absolute right-4 top-4 flex items-center gap-2 md:right-8 md:top-8">
         <AuthLanguage />
         <ThemeToggle side="bottom" align="end" />
@@ -28,13 +42,13 @@ export default function AuthenticationLayout({
           quantity={50}
         />
         <Link
-          href="/home"
-          className="relative z-20 flex w-fit items-center gap-2 text-lg font-medium"
+          href="/"
+          className="relative z-20 flex w-fit items-center gap-2 text-xl font-medium"
         >
-          <div className="relative h-6 w-6">
+          <div className="relative h-8 w-8">
             <Image
               src="/logo-outline.webp"
-              sizes="24px"
+              sizes="32px"
               fill
               priority
               alt="FibonacciKu"

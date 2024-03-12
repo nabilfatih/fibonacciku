@@ -21,10 +21,10 @@ export default async function MarketingHeader() {
             <Image
               src={logoOutline}
               alt="FibonacciKu"
-              width={24}
-              height={24}
+              width={28}
+              height={28}
               priority
-              sizes="24px"
+              sizes="28px"
               className="mr-2 rounded-full object-cover shadow"
             />
           </Link>

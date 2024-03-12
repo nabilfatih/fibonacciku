@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
-import Image from "next/image"
 import Link from "next/link"
 import { redirect } from "next/navigation"
 import { setStaticParamsLocale } from "next-international/server"
@@ -77,16 +76,6 @@ export default async function SignupPage({ params, searchParams }: Props) {
           })
         }}
       />
-      <Link href="/home" className="flex justify-center lg:hidden">
-        <Image
-          src="/logo-outline.webp"
-          width={32}
-          height={32}
-          priority
-          alt="FibonacciKu"
-          className="rounded-full object-cover shadow"
-        />
-      </Link>
       <header className="flex flex-col space-y-2 text-center">
         <h1 className="text-2xl font-semibold tracking-tight">
           {t("create-account")}
