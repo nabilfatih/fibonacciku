@@ -1,4 +1,4 @@
-import { generateImage } from "./plugin/ai"
+import { createFlashcards, generateImage } from "./plugin/ai"
 import { academicPlugin, googlePlugin, youtubePlugin } from "./plugin/internet"
 import { scrapeWebsite } from "./plugin/ninja"
 import { documentRetrieval } from "./plugin/retrieval"
@@ -99,5 +99,10 @@ export const callingGetOnThisDay = async () => {
 
 export const callingGetSearchContent = async (lang: string, query: string) => {
   const data = await wikiSearchContent(lang, query)
+  return data
+}
+
+export const callingCreateFlashcards = async (context: string) => {
+  const data = await createFlashcards(context)
   return data
 }

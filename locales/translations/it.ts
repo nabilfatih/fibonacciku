@@ -405,7 +405,8 @@ export default {
     "customer-service": "Servizio clienti",
     wikipedia: "Wikipedia",
     "compare-features-across-plans": "Confronta le caratteristiche tra i piani",
-    "2-months-free": "2 mesi gratis"
+    "2-months-free": "2 mesi gratis",
+    flashcards: "Flashcards"
   },
   PricingFAQ: {
     faq: "Domande frequenti",
@@ -803,7 +804,9 @@ export default {
     "solve-math": "Risolvere problemi di matematica",
     "solve-math-helper": "Aiuto per risolvere problemi di matematica...",
     "wikipedia-article": "Wikipedia",
-    "wikipedia-article-helper": "Cerca su Wikipedia qualcosa..."
+    "wikipedia-article-helper": "Cerca su Wikipedia qualcosa...",
+    flashcards: "Flashcards",
+    "flashcards-helper": "Crea flashcards su qualcosa..."
   },
   ModalContact: {
     contact: "Contatto",

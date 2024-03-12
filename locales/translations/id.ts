@@ -407,7 +407,8 @@ export default {
     "customer-service": "Layanan pelanggan",
     wikipedia: "Wikipedia",
     "compare-features-across-plans": "Bandikan fitur di seluruh paket",
-    "2-months-free": "2 bulan gratis"
+    "2-months-free": "2 bulan gratis",
+    flashcards: "Kartu belajar"
   },
 
   PricingFAQ: {
@@ -808,7 +809,9 @@ export default {
     "solve-math": "Pecahkan matematika",
     "solve-math-helper": "Bantu pecahkan masalah matematika...",
     "wikipedia-article": "Wikipedia",
-    "wikipedia-article-helper": "Cari di Wikipedia tentang sesuatu..."
+    "wikipedia-article-helper": "Cari di Wikipedia tentang sesuatu...",
+    flashcards: "Kartu belajar",
+    "flashcards-helper": "Buat kartu belajar tentang sesuatu..."
   },
   ModalContact: {
     contact: "Kontak",

@@ -176,6 +176,25 @@ export const defaultToolsChat: Tool[] = [
         required: ["lang", "query"]
       }
     }
+  },
+  {
+    type: "function",
+    function: {
+      name: "create_flashcards",
+      description:
+        "Create flashcards based on the query. This function must be used when user want to create or generate flashcards or want some flashcards. Always work in Anki format.",
+      parameters: {
+        type: "object",
+        properties: {
+          context: {
+            type: "string",
+            description:
+              "the full context to create flashcards. Must be descriptive, detailed, and clear to get the best result. The context must be specific for the flashcards."
+          }
+        },
+        required: ["context"]
+      }
+    }
   }
 ]
 

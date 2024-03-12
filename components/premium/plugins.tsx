@@ -2,6 +2,7 @@ import {
   IconBooks,
   IconBrandWikipedia,
   IconBrandYoutube,
+  IconCards,
   IconMath,
   IconPhotoHeart,
   IconPuzzle,
@@ -159,6 +160,12 @@ export const pluginsList = [
     icon: IconBrandWikipedia,
     title: "wikipedia-article",
     helper: "wikipedia-article-helper",
+    premium: false
+  },
+  {
+    icon: IconCards,
+    title: "flashcards",
+    helper: "flashcards-helper",
     premium: false
   }
 ] as const

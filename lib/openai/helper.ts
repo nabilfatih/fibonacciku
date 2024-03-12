@@ -5,6 +5,7 @@ import type { RecursiveCharacterTextSplitter } from "langchain/text_splitter"
 import type { Subscription } from "@/types/types"
 import {
   callingAcademic,
+  callingCreateFlashcards,
   callingDocument,
   callingGenerateImage,
   callingGetOnThisDay,
@@ -168,6 +169,9 @@ export const callTools = async (
       String(args.lang),
       String(args.query)
     )
+  }
+  if (name === "create_flashcards") {
+    toolResponse.result = await callingCreateFlashcards(String(args.context))
   }
   return toolResponse
 }

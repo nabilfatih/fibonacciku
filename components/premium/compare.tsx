@@ -176,6 +176,15 @@ export default async function PremiumCompare() {
           </TableCell>
         </TableRow>
         <TableRow>
+          <TableCell>{t("flashcards")}</TableCell>
+          <TableCell>
+            <IconCheck className="h-5 w-5" />
+          </TableCell>
+          <TableCell>
+            <IconCheck className="h-5 w-5" />
+          </TableCell>
+        </TableRow>
+        <TableRow>
           <TableCell>{t("website-scraping")}</TableCell>
           <TableCell>
             <IconCheck className="h-5 w-5" />

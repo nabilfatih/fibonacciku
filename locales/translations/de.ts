@@ -411,7 +411,8 @@ export default {
     wikipedia: "Wikipedia",
     "compare-features-across-plans":
       "Vergleichen Sie Funktionen über Pläne hinweg",
-    "2-months-free": "2 Monate kostenlos"
+    "2-months-free": "2 Monate kostenlos",
+    flashcards: "Lernkarten"
   },
   PricingFAQ: {
     faq: "Häufig gestellte Fragen",
@@ -815,7 +816,9 @@ export default {
     "solve-math": "Löse Mathe",
     "solve-math-helper": "Hilf mir, Mathe zu lösen...",
     "wikipedia-article": "Wikipedia",
-    "wikipedia-article-helper": "Suche auf Wikipedia nach etwas..."
+    "wikipedia-article-helper": "Suche auf Wikipedia nach etwas...",
+    flashcards: "Lernkarten",
+    "flashcards-helper": "Erstellen Sie Lernkarten zu etwas..."
   },
   ModalContact: {
     contact: "Kontakt",

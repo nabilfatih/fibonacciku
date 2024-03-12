@@ -406,7 +406,8 @@ export default {
     "customer-service": "Служба поддержки",
     wikipedia: "Википедия",
     "compare-features-across-plans": "Сравнить функции между планами",
-    "2-months-free": "2 месяца бесплатно"
+    "2-months-free": "2 месяца бесплатно",
+    flashcards: "Карточки"
   },
   PricingFAQ: {
     faq: "Часто задаваемые вопросы",
@@ -802,7 +803,9 @@ export default {
     "solve-math": "Решить математику",
     "solve-math-helper": "Помогите решить математическую задачу...",
     "wikipedia-article": "Википедия",
-    "wikipedia-article-helper": "Ищите на Википедии о чем-то..."
+    "wikipedia-article-helper": "Ищите на Википедии о чем-то...",
+    flashcards: "Карточки",
+    "flashcards-helper": "Создавайте карточки на тему..."
   },
   ModalContact: {
     contact: "Контакт",
