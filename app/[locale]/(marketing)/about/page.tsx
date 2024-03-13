@@ -6,8 +6,7 @@ import {
   IconClick,
   IconGlobe,
   IconLeaf,
-  IconMoodWink,
-  type IconProps
+  IconMoodWink
 } from "@tabler/icons-react"
 import { setStaticParamsLocale } from "next-international/server"
 
@@ -21,9 +20,7 @@ import MarketingTransition from "@/components/marketing/transition"
 import sustainBackground from "/public/background-sustain.webp"
 
 type IconInfo = {
-  IconComponent: React.ForwardRefExoticComponent<
-    Omit<IconProps, "ref"> & React.RefAttributes<SVGSVGElement>
-  >
+  IconComponent: typeof IconGlobe
   titleKey: string
   descKey: string
 }
