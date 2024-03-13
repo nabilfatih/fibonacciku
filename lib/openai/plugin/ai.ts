@@ -1,3 +1,5 @@
+import { unstable_cache as cache } from "next/cache"
+
 import type { ImageResult } from "@/types/types"
 import {
   getChatImagePublicUrlAdmin,
@@ -167,51 +169,57 @@ export const generateImage = async (
   }
 }
 
-export const createFlashcards = async (
-  context: string
-): Promise<{
-  results: { question: string; answer: string }[]
-  message?: string
-}> => {
-  try {
-    // create flashcards based on the context with Anki format
-    const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo-0125",
-      temperature: 0.5,
-      response_format: { type: "json_object" },
-      messages: [
-        {
-          role: "system",
-          content: `You are a helpful assistant that generate flashcards based on a context in Anki format. Provide your answer in JSON structure like this { "data": [ {"question": "<question>", "answer": "<answer>"}, ...] }`
-        },
-        {
-          role: "user",
-          content: `Create 10 flashcards based on the context: ${context}`
+export const createFlashcards = cache(
+  async (
+    context: string
+  ): Promise<{
+    results: { question: string; answer: string }[]
+    message?: string
+  }> => {
+    try {
+      // create flashcards based on the context with Anki format
+      const completion = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo-0125",
+        temperature: 0.5,
+        response_format: { type: "json_object" },
+        messages: [
+          {
+            role: "system",
+            content: `You are a helpful assistant that generate flashcards based on a context in Anki format. Provide your answer in JSON structure like this { "data": [ {"question": "<question>", "answer": "<answer>"}, ...] }`
+          },
+          {
+            role: "user",
+            content: `Create 10 flashcards based on the context: ${context}`
+          }
+        ]
+      })
+
+      const responseText = completion.choices[0].message.content
+
+      if (!responseText) {
+        return {
+          results: [],
+          message: "Cannot create flashcards, please try again."
         }
-      ]
-    })
+      }
 
-    const responseText = completion.choices[0].message.content
+      const data = JSON.parse(responseText) as {
+        data: { question: string; answer: string }[]
+      }
 
-    if (!responseText) {
+      return {
+        results: data.data
+      }
+    } catch (error) {
+      console.error(`Error Fetching OpenAI: ${error}`)
       return {
         results: [],
         message: "Cannot create flashcards, please try again."
       }
     }
-
-    const data = JSON.parse(responseText) as {
-      data: { question: string; answer: string }[]
-    }
-
-    return {
-      results: data.data
-    }
-  } catch (error) {
-    console.error(`Error Fetching OpenAI: ${error}`)
-    return {
-      results: [],
-      message: "Cannot create flashcards, please try again."
-    }
+  },
+  ["createFlashcards"],
+  {
+    revalidate: 3600
   }
-}
+)

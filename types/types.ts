@@ -212,6 +212,7 @@ export type ChatMessageMetadata = {
   weather_information?: Weather[]
   website_scraping?: WebsiteScraping[]
   solve_math?: SolveMath[]
+  flashcard?: Flashcard[]
 }
 
 export type Attachment = {
@@ -376,6 +377,11 @@ export type WebsiteScraping = {
   id: string
   url: string
   data: string
+}
+
+export type Flashcard = {
+  question: string
+  answer: string
 }
 
 export type SolveMath = {
