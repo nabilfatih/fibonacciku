@@ -216,7 +216,8 @@ export const createFlashcards = cache(
       })
 
       return {
-        results: finalData
+        results: finalData,
+        message: "Use words question and answer, instead of front and back."
       }
     } catch (error) {
       console.error(`Error Fetching OpenAI: ${error}`)
