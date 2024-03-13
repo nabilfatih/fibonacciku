@@ -48,7 +48,7 @@ export default function ChatMetadata({ metadata, contentIndex }: Props) {
   } = currentMetadata
 
   return (
-    <div className="flex flex-col gap-4 pb-5">
+    <div className="flex flex-col gap-6 pb-5">
       {attachments && <ChatMetadataAttachment metadata={attachments} />}
       {imageResults && <ChatMetadataImage metadata={imageResults} />}
       {weatherInformation && (
