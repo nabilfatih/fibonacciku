@@ -1,13 +1,16 @@
-import { memo, useState } from "react"
+import { memo, useCallback, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { IconBooks } from "@tabler/icons-react"
+import { IconBooks, IconDownload } from "@tabler/icons-react"
 import he from "he"
+import { json2csv } from "json-2-csv"
+import { toast } from "sonner"
 
 import type { AcademicSearchResult } from "@/types/types"
 import { cn } from "@/lib/utils"
 import { useScopedI18n } from "@/locales/client"
 
+import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import MetadataSidebar from "@/components/chat/metadata/sidebar"
 
@@ -19,6 +22,35 @@ function ChatMetadataAcademic({ metadata }: Props) {
   const t = useScopedI18n("MetadataChat")
 
   const [open, setOpen] = useState<boolean>(false)
+
+  const handleDownload = useCallback(() => {
+    const cleanData = metadata.map(item => {
+      return {
+        Title: he.decode(item.title),
+        Abstract: he.decode(item.abstract || ""),
+        Tldr: he.decode(item.tldr || ""),
+        Link: item.url,
+        Authors: item.authors
+          ?.map(author => {
+            return author.name
+          })
+          .join(", "),
+        Year: item.year
+      }
+    })
+    const csv = json2csv(cleanData)
+    const blob = new Blob([csv], { type: "text/csv" })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement("a")
+    link.href = url
+    link.download = "academic-research.csv"
+    link.style.display = "none"
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    URL.revokeObjectURL(url)
+    toast.success(t("exported-success"))
+  }, [metadata, t])
 
   return (
     <div className="flex flex-col justify-start gap-2">
@@ -84,6 +116,11 @@ function ChatMetadataAcademic({ metadata }: Props) {
           )
         }
       </div>
+
+      <Button className="w-fit" size="sm" onClick={handleDownload}>
+        <IconDownload className="mr-1 h-4 w-4" />
+        {t("export-to-csv")}
+      </Button>
 
       <MetadataSidebar
         open={open}

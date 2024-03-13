@@ -690,7 +690,9 @@ export default {
     "show-more": "Show more",
     flashcards: "Flashcards",
     "export-to-csv": "Export to CSV",
-    "flashcards-exported": "Flashcards exported"
+    "flashcards-exported": "Flashcards exported",
+    "exported-success": "Exported success",
+    "exported-failed": "Exported failed"
   },
   Markdown: {
     "link-not-available": "Link not available"

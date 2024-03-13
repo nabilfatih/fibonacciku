@@ -710,7 +710,9 @@ export default {
     "show-more": "Lihat lebih banyak",
     flashcards: "Kartu belajar",
     "export-to-csv": "Ekspor ke CSV",
-    "flashcards-exported": "Kartu belajar diekspor"
+    "flashcards-exported": "Kartu belajar diekspor",
+    "exported-success": "Berhasil diekspor",
+    "exported-failed": "Gagal diekspor"
   },
   Markdown: {
     "link-not-available": "Tautan tidak tersedia"

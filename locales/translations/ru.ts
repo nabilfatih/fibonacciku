@@ -705,7 +705,9 @@ export default {
     "show-more": "Показать больше",
     flashcards: "Карточки",
     "export-to-csv": "Экспорт в CSV",
-    "flashcards-exported": "Карточки экспортированы"
+    "flashcards-exported": "Карточки экспортированы",
+    "exported-success": "Экспорт успешен",
+    "exported-failed": "Экспорт не удался"
   },
   Markdown: {
     "link-not-available": "Ссылка недоступна"

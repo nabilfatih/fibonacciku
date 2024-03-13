@@ -717,7 +717,9 @@ export default {
     "show-more": "Mehr anzeigen",
     flashcards: "Lernkarten",
     "export-to-csv": "Exportieren als CSV",
-    "flashcards-exported": "Lernkarten exportiert"
+    "flashcards-exported": "Lernkarten exportiert",
+    "exported-success": "Export erfolgreich",
+    "exported-failed": "Export fehlgeschlagen"
   },
   Markdown: {
     "link-not-available": "Link nicht verfügbar"
