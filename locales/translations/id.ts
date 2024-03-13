@@ -708,7 +708,9 @@ export default {
     "alternate-form-of-integral": "Bentuk alternatif integral",
     "website-scraping": "Website Scraping",
     "show-more": "Lihat lebih banyak",
-    flashcards: "Kartu belajar"
+    flashcards: "Kartu belajar",
+    "export-to-csv": "Ekspor ke CSV",
+    "flashcards-exported": "Kartu belajar diekspor"
   },
   Markdown: {
     "link-not-available": "Tautan tidak tersedia"

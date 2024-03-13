@@ -688,7 +688,9 @@ export default {
     "alternate-form-of-integral": "Alternate form of integral",
     "website-scraping": "Website scraping",
     "show-more": "Show more",
-    flashcards: "Flashcards"
+    flashcards: "Flashcards",
+    "export-to-csv": "Export to CSV",
+    "flashcards-exported": "Flashcards exported"
   },
   Markdown: {
     "link-not-available": "Link not available"

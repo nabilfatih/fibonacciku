@@ -715,7 +715,9 @@ export default {
     "alternate-form-of-integral": "Alternativform des Integrals",
     "website-scraping": "Webseiten-Scraping",
     "show-more": "Mehr anzeigen",
-    flashcards: "Lernkarten"
+    flashcards: "Lernkarten",
+    "export-to-csv": "Exportieren als CSV",
+    "flashcards-exported": "Lernkarten exportiert"
   },
   Markdown: {
     "link-not-available": "Link nicht verfügbar"

@@ -3,7 +3,7 @@
 
 "use client"
 
-import { memo, type FC } from "react"
+import { memo, useCallback, type FC } from "react"
 import {
   IconCheck,
   IconCode,
@@ -67,7 +67,7 @@ export const generateRandomString = (length: number, lowercase = false) => {
 const CodeBlock: FC<Props> = memo(({ language, value }) => {
   const { isCopied, copyToClipboard } = useCopyToClipboard({ timeout: 2000 })
 
-  const downloadAsFile = () => {
+  const downloadAsFile = useCallback(() => {
     if (typeof window === "undefined") {
       return
     }
@@ -93,12 +93,12 @@ const CodeBlock: FC<Props> = memo(({ language, value }) => {
     link.click()
     document.body.removeChild(link)
     URL.revokeObjectURL(url)
-  }
+  }, [language, value])
 
-  const onCopy = () => {
+  const onCopy = useCallback(() => {
     if (isCopied) return
     copyToClipboard(value)
-  }
+  }, [copyToClipboard, isCopied, value])
 
   return (
     <div className="codeblock relative w-full bg-[#070e1b] font-sans">

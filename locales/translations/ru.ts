@@ -703,7 +703,9 @@ export default {
     "alternate-form-of-integral": "Альтернативная форма интеграла",
     "website-scraping": "Скрапинг веб-сайтов",
     "show-more": "Показать больше",
-    flashcards: "Карточки"
+    flashcards: "Карточки",
+    "export-to-csv": "Экспорт в CSV",
+    "flashcards-exported": "Карточки экспортированы"
   },
   Markdown: {
     "link-not-available": "Ссылка недоступна"

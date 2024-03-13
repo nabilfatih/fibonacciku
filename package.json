@@ -50,6 +50,7 @@
     "framer-motion": "^11.0.9",
     "geist": "^1.2.2",
     "he": "^1.2.0",
+    "json-2-csv": "^5.5.0",
     "langchain": "^0.1.26",
     "lodash": "^4.17.21",
     "markdown-to-txt": "^2.0.1",

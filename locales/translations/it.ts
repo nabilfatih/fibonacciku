@@ -704,7 +704,9 @@ export default {
     "alternate-form-of-integral": "Forma alternativa dell'integrale",
     "website-scraping": "Estrazione di dati dai siti web",
     "show-more": "Mostra di più",
-    flashcards: "Flashcards"
+    flashcards: "Flashcards",
+    "export-to-csv": "Esporta in CSV",
+    "flashcards-exported": "Flashcards esportate"
   },
   Markdown: {
     "link-not-available": "Link non disponibile"

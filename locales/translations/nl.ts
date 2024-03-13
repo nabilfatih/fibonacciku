@@ -703,7 +703,9 @@ export default {
     "alternate-form-of-integral": "Alternatieve vorm van integraal",
     "website-scraping": "Website scraping",
     "show-more": "Meer tonen",
-    flashcards: "Flashcards"
+    flashcards: "Flashcards",
+    "export-to-csv": "Exporteren naar CSV",
+    "flashcards-exported": "Flashcards geëxporteerd"
   },
   Markdown: {
     "link-not-available": "Link niet beschikbaar"
