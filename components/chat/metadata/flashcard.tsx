@@ -86,7 +86,7 @@ function ChatMetadataFlashcard({ metadata }: Props) {
 
       <Button className="w-fit" size="sm" onClick={handleDownload}>
         <IconDownload className="mr-1 h-4 w-4" />
-        Export to CSV
+        {t("export-to-csv")}
       </Button>
 
       <MetadataSidebar
