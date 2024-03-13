@@ -707,7 +707,8 @@ export default {
     "indefinite-integral": "Integral tak tentu",
     "alternate-form-of-integral": "Bentuk alternatif integral",
     "website-scraping": "Website Scraping",
-    "show-more": "Lihat lebih banyak"
+    "show-more": "Lihat lebih banyak",
+    flashcards: "Kartu belajar"
   },
   Markdown: {
     "link-not-available": "Tautan tidak tersedia"

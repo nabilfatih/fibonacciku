@@ -702,7 +702,8 @@ export default {
     "indefinite-integral": "Неопределенный интеграл",
     "alternate-form-of-integral": "Альтернативная форма интеграла",
     "website-scraping": "Скрапинг веб-сайтов",
-    "show-more": "Показать больше"
+    "show-more": "Показать больше",
+    flashcards: "Карточки"
   },
   Markdown: {
     "link-not-available": "Ссылка недоступна"

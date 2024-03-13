@@ -714,7 +714,8 @@ export default {
     "indefinite-integral": "Unbestimmtes Integral",
     "alternate-form-of-integral": "Alternativform des Integrals",
     "website-scraping": "Webseiten-Scraping",
-    "show-more": "Mehr anzeigen"
+    "show-more": "Mehr anzeigen",
+    flashcards: "Lernkarten"
   },
   Markdown: {
     "link-not-available": "Link nicht verfügbar"

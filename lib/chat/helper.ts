@@ -5,6 +5,7 @@ import type {
   Chat,
   ChatMessageMetadata,
   DataMessage,
+  Flashcard,
   ImageResult,
   IndexMessage,
   SaveDataMessage,
@@ -538,6 +539,23 @@ export const handleMetadataMessage = (
         messageMetadata.website_scraping = []
       }
       messageMetadata.website_scraping.push(...websiteScrapingResult)
+    }
+  }
+
+  const flashcardsResults = functionData.filter(
+    item => item.toolName === "create_flashcards"
+  )
+  if (flashcardsResults.length) {
+    const flashcardsResult = flashcardsResults
+      .flatMap(item => item.data.results.map((item: Flashcard) => item))
+      .filter(
+        (item, index, self) => index === self.findIndex(t => t.id === item.id)
+      ) as Flashcard[]
+    if (flashcardsResult.length) {
+      if (!messageMetadata.flashcard) {
+        messageMetadata.flashcard = []
+      }
+      messageMetadata.flashcard.push(...flashcardsResult)
     }
   }
 

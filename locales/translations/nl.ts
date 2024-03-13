@@ -702,7 +702,8 @@ export default {
     "indefinite-integral": "Ongespecificeerd integraal",
     "alternate-form-of-integral": "Alternatieve vorm van integraal",
     "website-scraping": "Website scraping",
-    "show-more": "Meer tonen"
+    "show-more": "Meer tonen",
+    flashcards: "Flashcards"
   },
   Markdown: {
     "link-not-available": "Link niet beschikbaar"

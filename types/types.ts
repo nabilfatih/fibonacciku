@@ -380,8 +380,9 @@ export type WebsiteScraping = {
 }
 
 export type Flashcard = {
-  question: string
-  answer: string
+  id: string
+  front: string
+  back: string
 }
 
 export type SolveMath = {

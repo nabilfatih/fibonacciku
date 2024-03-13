@@ -687,7 +687,8 @@ export default {
     "indefinite-integral": "Indefinite integral",
     "alternate-form-of-integral": "Alternate form of integral",
     "website-scraping": "Website scraping",
-    "show-more": "Show more"
+    "show-more": "Show more",
+    flashcards: "Flashcards"
   },
   Markdown: {
     "link-not-available": "Link not available"

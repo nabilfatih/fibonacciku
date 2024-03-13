@@ -10,6 +10,7 @@ import {
   getUserSubscriptionAdmin,
   updateUserUsageAdmin
 } from "@/lib/supabase/admin/users"
+import { generateNanoID } from "@/lib/utils"
 
 import { openai } from ".."
 
@@ -173,7 +174,7 @@ export const createFlashcards = cache(
   async (
     context: string
   ): Promise<{
-    results: { question: string; answer: string }[]
+    results: { front: string; back: string }[]
     message?: string
   }> => {
     try {
@@ -185,7 +186,7 @@ export const createFlashcards = cache(
         messages: [
           {
             role: "system",
-            content: `You are a helpful assistant that generate flashcards based on a context in Anki format. Provide your answer in JSON structure like this { "data": [ {"question": "<question>", "answer": "<answer>"}, ...] }`
+            content: `You are a helpful assistant that generate flashcards based on a context in Anki format. Provide your answer in JSON structure like this { "data": [ {"front": "<question>", "back": "<answer>"}, ...] }`
           },
           {
             role: "user",
@@ -204,11 +205,18 @@ export const createFlashcards = cache(
       }
 
       const data = JSON.parse(responseText) as {
-        data: { question: string; answer: string }[]
+        data: { front: string; back: string }[]
       }
 
+      const finalData = data.data.map(item => {
+        return {
+          ...item,
+          id: generateNanoID()
+        }
+      })
+
       return {
-        results: data.data
+        results: finalData
       }
     } catch (error) {
       console.error(`Error Fetching OpenAI: ${error}`)

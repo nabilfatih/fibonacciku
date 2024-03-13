@@ -703,7 +703,8 @@ export default {
     "indefinite-integral": "Integrale indefinito",
     "alternate-form-of-integral": "Forma alternativa dell'integrale",
     "website-scraping": "Estrazione di dati dai siti web",
-    "show-more": "Mostra di più"
+    "show-more": "Mostra di più",
+    flashcards: "Flashcards"
   },
   Markdown: {
     "link-not-available": "Link non disponibile"

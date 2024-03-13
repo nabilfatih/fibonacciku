@@ -2,6 +2,7 @@ import type { ChatMessageMetadata } from "@/types/types"
 
 import ChatMetadataAcademic from "@/components/chat/metadata/academic"
 import ChatMetadataAttachment from "@/components/chat/metadata/attachment"
+import ChatMetadataFlashcard from "@/components/chat/metadata/flashcard"
 import ChatMetadataGoogle from "@/components/chat/metadata/google"
 import ChatMetadataImage from "@/components/chat/metadata/image"
 import ChatMetadataReferences from "@/components/chat/metadata/references"
@@ -42,7 +43,8 @@ export default function ChatMetadata({ metadata, contentIndex }: Props) {
     wiki_feed_featured: wikiFeedFeatured,
     weather_information: weatherInformation,
     website_scraping: websiteScraping,
-    solve_math: solveMath
+    solve_math: solveMath,
+    flashcard: flashcard
   } = currentMetadata
 
   return (
@@ -58,6 +60,7 @@ export default function ChatMetadata({ metadata, contentIndex }: Props) {
       {wikiSearchContent && (
         <ChatMetadataWikipedia metadata={wikiSearchContent} />
       )}
+      {flashcard && <ChatMetadataFlashcard metadata={flashcard} />}
       {solveMath && <ChatMetadataSolveMath metadata={solveMath} />}
       {websiteScraping && (
         <ChatMetadataWebsiteScraping metadata={websiteScraping} />
