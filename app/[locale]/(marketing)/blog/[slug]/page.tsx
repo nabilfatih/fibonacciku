@@ -180,7 +180,7 @@ export default async function BlogSlugPage({ params }: Props) {
 
           <div className="flex flex-col">
             <p className="font-bold tracking-tight">{t("authors")}</p>
-            <p className="tracking-tight">
+            <p className="flex flex-wrap items-center gap-2 tracking-tight">
               {authors.map(author => (
                 <Link
                   key={author}
