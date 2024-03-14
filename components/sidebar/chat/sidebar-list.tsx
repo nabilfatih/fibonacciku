@@ -129,50 +129,52 @@ export default function SidebarList({ userId }: Props) {
   )
 
   return (
-    <div className="flex flex-1 flex-col overflow-hidden">
-      <div className="my-2 px-2">
-        <form className="relative">
-          <IconSearch className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
-          <Input
-            tabIndex={-1} // Prevents the input from being focused when the user presses tab
-            ref={refSearch}
-            type="text"
-            placeholder={
-              navigator.userAgent.includes("Mac") ? "⌘ + K" : "Alt + K"
-            }
-            className="h-10 bg-background pl-10"
-            value={searchTerm}
-            autoFocus={false}
-            autoComplete="off"
-            autoCorrect="off"
-            onChange={e => setSearchTerm(e.target.value)}
-          />
-        </form>
-      </div>
+    <>
+      <div className="flex flex-1 flex-col overflow-hidden">
+        <div className="my-2 px-2">
+          <form className="relative">
+            <IconSearch className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
+            <Input
+              tabIndex={-1} // Prevents the input from being focused when the user presses tab
+              ref={refSearch}
+              type="text"
+              placeholder={
+                navigator.userAgent.includes("Mac") ? "⌘ + K" : "Alt + K"
+              }
+              className="h-10 bg-background pl-10"
+              value={searchTerm}
+              autoFocus={false}
+              autoComplete="off"
+              autoCorrect="off"
+              onChange={e => setSearchTerm(e.target.value)}
+            />
+          </form>
+        </div>
 
-      <ScrollArea ref={ref} className="mb-1 flex-1">
-        {isLoading ? (
-          <LoadingChatHistory />
-        ) : (
-          <>
-            {filteredChats.length ? (
-              <div className="px-2">
-                <SidebarItems chats={filteredChats} parentRef={ref} />
-              </div>
-            ) : (
-              <div className="p-8 text-center">
-                <p className="text-sm text-muted-foreground">
-                  {t("chat-not-found")}
-                </p>
-              </div>
-            )}
-          </>
-        )}
-      </ScrollArea>
+        <ScrollArea ref={ref} className="mb-1 flex-1">
+          {isLoading ? (
+            <LoadingChatHistory />
+          ) : (
+            <>
+              {filteredChats.length ? (
+                <div className="px-2">
+                  <SidebarItems chats={filteredChats} parentRef={ref} />
+                </div>
+              ) : (
+                <div className="p-8 text-center">
+                  <p className="text-sm text-muted-foreground">
+                    {t("chat-not-found")}
+                  </p>
+                </div>
+              )}
+            </>
+          )}
+        </ScrollArea>
+      </div>
       <div className="flex items-center justify-between border-t px-2 py-4">
         <ThemeToggle />
         <ClearHistory isEnabled={!!userChatData.length} />
       </div>
-    </div>
+    </>
   )
 }
