@@ -53,7 +53,7 @@ export default async function PremiumPage({
     const { data } = await supabase
       .from("subscriptions")
       .select("*, prices(*, products(*))")
-      // .in("status", ["trialing", "active"])
+      .in("status", ["trialing", "active"])
       .gt("current_period_end", new Date().toISOString())
       .eq("user_id", user.id)
       .order("created_at", { ascending: false }) // get the latest subscription
