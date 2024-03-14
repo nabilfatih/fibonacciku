@@ -1,4 +1,3 @@
-import { memo } from "react"
 import { motion } from "framer-motion"
 
 import type { Features } from "@/types/types"
@@ -26,7 +25,7 @@ function EmptyScreenFeatures({ type }: Props) {
   }
 }
 
-function EmptyScreen({ type }: Props) {
+export default function EmptyScreen({ type }: Props) {
   const t = useScopedI18n("EmptyScreen")
   const { userDetails } = useCurrentUser()
 
@@ -85,5 +84,3 @@ function defineGreeting() {
     return "night"
   }
 }
-
-export default memo(EmptyScreen)
