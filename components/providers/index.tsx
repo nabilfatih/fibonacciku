@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
 import type { ThemeProviderProps } from "next-themes/dist/types"
 
@@ -9,7 +8,7 @@ import { I18nProviderClient } from "@/locales/client"
 
 import { TooltipProvider } from "@/components/ui/tooltip"
 
-function Providers({
+export default function Providers({
   children,
   ...props
 }: ThemeProviderProps & { locale: string }) {
@@ -23,5 +22,3 @@ function Providers({
     </NextThemesProvider>
   )
 }
-
-export default React.memo(Providers)
