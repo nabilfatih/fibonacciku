@@ -100,7 +100,7 @@ export async function generateStaticParams() {
 
 export default async function BlogSlugPage({ params }: Props) {
   setStaticParamsLocale(params.locale)
-  // convert html entities to string
+
   const slug = decode(params.slug)
 
   const t = await getScopedI18n("Marketing")
