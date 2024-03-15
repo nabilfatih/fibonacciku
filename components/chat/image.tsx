@@ -33,7 +33,7 @@ function ImageMarkdown({ src, alt }: Props) {
     )
   }
 
-  if (dataSrc.includes("zlptcjjcwjiielzjqzwm.supabase.co")) {
+  if (dataSrc.includes("auth.fibonacciku.com")) {
     return (
       <Link href={dataSrc} target="_blank">
         <Image
