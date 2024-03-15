@@ -47,9 +47,9 @@ export const determineModelBasedOnSubscription = async (
   // TODO: This is only when the cost reaches a certain threshold, this can be adjusted
   let isCostLimit = false
   // Now no limit, cause we have ads and we want to encourage people to use the app
-  // if (!subscription && userDetails.usage > 50) {
-  //   isCostLimit = true
-  // }
+  if (!subscription && userDetails.usage > 50) {
+    isCostLimit = true
+  }
 
   // Determine the model based on the subscription plan
   if (
