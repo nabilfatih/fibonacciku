@@ -42,8 +42,7 @@ function ImageMarkdown({ src, alt }: Props) {
           sizes="100%"
           style={{
             width: "100%",
-            height: "auto",
-            maxHeight: "28rem"
+            height: "auto"
           }}
           unoptimized
           width={256}
