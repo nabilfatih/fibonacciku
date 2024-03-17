@@ -1133,6 +1133,8 @@ export default {
     politics: "Politica",
     views: "Visualizzazioni",
     business: "Affari",
-    leadership: "Leadership"
+    leadership: "Leadership",
+    philosophy: "Filosofia",
+    psychology: "Psicologia"
   }
 } as const

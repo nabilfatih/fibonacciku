@@ -1132,6 +1132,8 @@ export default {
     politics: "Politiek",
     views: "Bekeken",
     business: "Zaken",
-    leadership: "Leiderschap"
+    leadership: "Leiderschap",
+    philosophy: "Filosofie",
+    psychology: "Psychologie"
   }
 } as const

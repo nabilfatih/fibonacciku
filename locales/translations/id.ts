@@ -1134,6 +1134,8 @@ export default {
     politics: "Politik",
     views: "Dilihat",
     business: "Bisnis",
-    leadership: "Kepemimpinan"
+    leadership: "Kepemimpinan",
+    philosophy: "Filsafat",
+    psychology: "Psikologi"
   }
 } as const

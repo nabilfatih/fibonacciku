@@ -1135,6 +1135,8 @@ export default {
     politics: "Политика",
     views: "Просмотры",
     business: "Бизнес",
-    leadership: "Лидерство"
+    leadership: "Лидерство",
+    philosophy: "Философия",
+    psychology: "Психология"
   }
 } as const
