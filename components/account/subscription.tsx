@@ -17,7 +17,7 @@ export default async function AccountSubscription({ userId }: Props) {
   const { data } = await supabase
     .from("subscriptions")
     .select("*, prices(*, products(*))")
-    // .in("status", ["trialing", "active"])
+    .in("status", ["trialing", "active"])
     .gt("current_period_end", new Date().toISOString())
     .eq("user_id", userId)
     .order("created_at", { ascending: false }) // get the latest subscription
