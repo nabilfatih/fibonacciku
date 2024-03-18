@@ -32,12 +32,12 @@ export default function EmptyScreen({ type }: Props) {
   if (!userDetails) return null
 
   // only get the first name
-  const name = `, ${userDetails.full_name?.split(" ")[0]}` || ""
+  const name = userDetails.full_name?.split(" ")[0] || ""
 
   const greeting = `${t(`good-${defineGreeting()}`)}`
 
   // Split the text into individual characters
-  const textArray = `${greeting}${name}`.split("").concat(" 👋")
+  const textArray = `${greeting} ${name}`.split("").concat(" 👋")
 
   return (
     <div className="mx-auto max-w-2xl px-4">
