@@ -182,7 +182,7 @@ export async function POST(req: NextRequest) {
                 error: {
                   statusCode: 402,
                   message:
-                    "Fibo is in high capacity, please consider to buy premium to get unlimited access"
+                    "Only for premium user, please consider to buy premium to get unlimited access"
                 }
               },
               {
