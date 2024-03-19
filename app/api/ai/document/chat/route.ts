@@ -191,7 +191,7 @@ export async function POST(req: NextRequest) {
 
           // cost for image analysis is 10 usages
           if (imageUrls.length > 0) {
-            await updateUserUsageAdmin(userId, 10) // add usage by 10
+            await updateUserUsageAdmin(userId, 20) // add usage by 10
           }
 
           // the function still not handle the types from ai sdk
