@@ -198,6 +198,12 @@ export async function POST(req: NextRequest) {
             console.error(error)
             return []
           })
+
+          // cost for image analysis is 10 usages
+          if (imageUrls.length > 0) {
+            await updateUserUsageAdmin(userId, 10) // add usage by 10
+          }
+
           // the function still not handle the types from ai sdk
           // @ts-ignore
           return openai.chat.completions.create({

@@ -143,7 +143,7 @@ export const generateImage = async (
       // in parallel, upload and update user usage
       const [dataFile] = await Promise.all([
         uploadChatImageAdmin(userId, chatId, String(image.b64_json)),
-        updateUserUsageAdmin(userId, 20)
+        updateUserUsageAdmin(userId, 25)
       ])
 
       const url = getChatImagePublicUrlAdmin(userId, chatId, dataFile.fileId)
