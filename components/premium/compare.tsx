@@ -119,7 +119,7 @@ export default async function PremiumCompare() {
         <TableRow>
           <TableCell>{t("image-input")}</TableCell>
           <TableCell>
-            <IconCheck className="h-5 w-5" />
+            <IconX className="h-5 w-5" />
           </TableCell>
           <TableCell>
             <IconCheck className="h-5 w-5" />
