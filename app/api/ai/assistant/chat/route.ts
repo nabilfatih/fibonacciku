@@ -150,24 +150,31 @@ export async function POST(req: Request) {
         appendToolCallMessage
       ) => {
         // search if the tool is image_analysis
-        const isImageAnalysis = call.tools.some(
+        const imageAnalysis = call.tools.find(
           tool => tool.func.name === "image_analysis"
         )
-        if (isImageAnalysis) {
+        if (imageAnalysis) {
           // only for premium user
           if (!subscription) {
-            return NextResponse.json(
-              {
-                error: {
-                  statusCode: 402,
-                  message:
-                    "Only for premium user, please consider to buy premium to get unlimited access"
-                }
-              },
-              {
-                status: 402
-              }
-            )
+            return openai.chat.completions.create({
+              messages: [
+                ...(finalMessage as any),
+                ...appendToolCallMessage({
+                  tool_call_id: imageAnalysis.id,
+                  function_name: imageAnalysis.func.name,
+                  tool_call_result: {
+                    results:
+                      "Only for premium user, please consider to buy premium to get unlimited access. Go to https://fibonacciku.com/premium to get more information."
+                  }
+                })
+              ],
+              temperature: 0.5,
+              model,
+              stream: true,
+              tools,
+              tool_choice: "auto",
+              user: userId
+            })
           }
 
           const initialMessages = finalMessage.slice(0, -1)
