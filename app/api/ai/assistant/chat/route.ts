@@ -85,7 +85,7 @@ export async function POST(req: Request) {
 
   const chatId = dataRequest.chatId
   const userId = user.id
-  const { model, additionalTools, isCostLimit } =
+  const { model, additionalTools, isCostLimit, subscription } =
     await determineModelBasedOnSubscription(userId)
 
   if (isCostLimit) {
@@ -154,6 +154,22 @@ export async function POST(req: Request) {
           tool => tool.func.name === "image_analysis"
         )
         if (isImageAnalysis) {
+          // only for premium user
+          if (!subscription) {
+            return NextResponse.json(
+              {
+                error: {
+                  statusCode: 402,
+                  message:
+                    "Fibo is in high capacity, please consider to buy premium to get unlimited access"
+                }
+              },
+              {
+                status: 402
+              }
+            )
+          }
+
           const initialMessages = finalMessage.slice(0, -1)
           const currentMessage = finalMessage[finalMessage.length - 1]
 
