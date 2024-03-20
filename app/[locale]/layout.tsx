@@ -216,6 +216,7 @@ export default function RootLayout({
           locale={params.locale}
           attribute="class"
           enableSystem
+          defaultTheme="system"
           themes={themes}
           disableTransitionOnChange
         >
