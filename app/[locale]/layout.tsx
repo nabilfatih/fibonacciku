@@ -178,16 +178,16 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export function generateStaticParams() {
-  return getStaticParams()
-}
-
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
   interactiveWidget: "resizes-visual"
+}
+
+export function generateStaticParams() {
+  return getStaticParams()
 }
 
 export default function RootLayout({
