@@ -325,3 +325,14 @@ export const getChatAttachmentSignedUrl = async (
   }
   return data.signedUrl
 }
+
+export const getChatImagePublicUrl = (
+  userId: string,
+  chatId: string,
+  fileId: string
+) => {
+  const { data } = supabaseClient.storage
+    .from("images")
+    .getPublicUrl(`${userId}/${chatId}/${fileId}`)
+  return data.publicUrl
+}
