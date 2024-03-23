@@ -37,7 +37,7 @@ function ChatMetadataImage({ metadata }: Props) {
               target="_blank"
             >
               <Image
-                src={item.image}
+                src={urlImage}
                 alt={item.prompt || "Image"}
                 sizes="100%"
                 style={{
