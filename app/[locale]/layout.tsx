@@ -49,6 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "Study Buddy",
       "AI for Education"
     ],
+    referrer: "origin-when-cross-origin",
     authors: [{ name: "Nabil Akbarazzima Fatih" }],
     publisher: "Nabil Akbarazzima Fatih",
     formatDetection: {
