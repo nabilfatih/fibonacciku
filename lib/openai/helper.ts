@@ -36,7 +36,7 @@ export const determineModelBasedOnSubscription = async (
   model: string
   subscription: Subscription | null
   additionalTools: Tool[]
-  isCostLimit?: boolean
+  isCostLimit: boolean
 }> => {
   // Retrieve the user's subscription details
   const [userDetails, subscription] = await Promise.all([
