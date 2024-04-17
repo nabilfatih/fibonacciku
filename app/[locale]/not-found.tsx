@@ -10,6 +10,7 @@ import HeaderChat from "@/components/header"
 
 export default async function NotFound() {
   const t = await getScopedI18n("BackendRouter")
+
   const cookieStore = cookies()
   const supabase = createClientServer(cookieStore)
   const {
