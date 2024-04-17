@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "*"
       }
     ],
-    sitemap: "https://www.fibonacciku.com/sitemap.xml",
-    host: "https://www.fibonacciku.com"
+    sitemap: "https://fibonacciku.com/sitemap.xml",
+    host: "https://fibonacciku.com"
   }
 }

@@ -57,7 +57,7 @@ export async function generateMetadata(): Promise<Metadata> {
       email: true,
       address: true
     },
-    metadataBase: new URL("https://www.fibonacciku.com"),
+    metadataBase: new URL("https://fibonacciku.com"),
     alternates: {
       languages: {
         en: "/en",
@@ -68,50 +68,50 @@ export async function generateMetadata(): Promise<Metadata> {
         it: "/it"
       },
       types: {
-        "application/rss+xml": "https://www.fibonacciku.com/rss"
+        "application/rss+xml": "https://fibonacciku.com/rss"
       }
     },
     openGraph: {
       title: t("title"),
       description: t("desc"),
-      url: "https://www.fibonacciku.com",
+      url: "https://fibonacciku.com",
       siteName: "FibonacciKu",
       type: "website",
       locale: "en",
       alternateLocale: localesList,
       images: [
         {
-          url: "https://www.fibonacciku.com/og-facebook.png",
+          url: "https://fibonacciku.com/og-facebook.png",
           width: 1200,
           height: 630,
           alt: t("title")
         },
         {
-          url: "https://www.fibonacciku.com/og-linkedin.png",
+          url: "https://fibonacciku.com/og-linkedin.png",
           width: 1200,
           height: 627,
           alt: t("title")
         },
         {
-          url: "https://www.fibonacciku.com/og-twitter-sm.png",
+          url: "https://fibonacciku.com/og-twitter-sm.png",
           width: 1200,
           height: 675,
           alt: t("title")
         },
         {
-          url: "https://www.fibonacciku.com/og-twitter-lg.png",
+          url: "https://fibonacciku.com/og-twitter-lg.png",
           width: 4096,
           height: 4096,
           alt: t("title")
         },
         {
-          url: "https://www.fibonacciku.com/og-reddit.png",
+          url: "https://fibonacciku.com/og-reddit.png",
           width: 1200,
           height: 1200,
           alt: t("title")
         },
         {
-          url: "https://www.fibonacciku.com/og-pinterest.png",
+          url: "https://fibonacciku.com/og-pinterest.png",
           width: 1000,
           height: 1500,
           alt: t("title")
@@ -132,7 +132,7 @@ export async function generateMetadata(): Promise<Metadata> {
     icons: {
       icon: [
         { url: "/logo-background.png" },
-        new URL("/logo-background.png", "https://www.fibonacciku.com")
+        new URL("/logo-background.png", "https://fibonacciku.com")
       ],
       shortcut: ["/logo-background.png", "/logo.png"],
       apple: [
@@ -154,13 +154,13 @@ export async function generateMetadata(): Promise<Metadata> {
       site: "@fibonacciku",
       images: [
         {
-          url: "https://www.fibonacciku.com/og-twitter-sm.png",
+          url: "https://fibonacciku.com/og-twitter-sm.png",
           width: 1200,
           height: 675,
           alt: t("title")
         },
         {
-          url: "https://www.fibonacciku.com/og-twitter-lg.png",
+          url: "https://fibonacciku.com/og-twitter-lg.png",
           width: 4096,
           height: 4096,
           alt: t("title")
@@ -173,7 +173,7 @@ export async function generateMetadata(): Promise<Metadata> {
       yandex: "yandex",
       yahoo: "yahoo",
       other: {
-        me: ["nabilfatih@fibonacciku.com", "https://www.fibonacciku.com"]
+        me: ["nabilfatih@fibonacciku.com", "https://fibonacciku.com"]
       }
     }
   }

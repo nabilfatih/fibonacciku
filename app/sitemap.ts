@@ -35,7 +35,7 @@ const pathnames = [
 ]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://www.fibonacciku.com"
+  const baseUrl = "https://fibonacciku.com"
 
   const blogSlugs = await getBlogsSlugAdmin()
 

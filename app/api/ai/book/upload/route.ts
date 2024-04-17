@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
           bookId: bookId,
           fileId: fileId
         },
-        webhook_receiver: "https://www.fibonacciku.com/api/ai/book/webhooks"
+        webhook_receiver: "https://fibonacciku.com/api/ai/book/webhooks"
       })
     })
 
