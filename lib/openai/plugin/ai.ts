@@ -180,7 +180,7 @@ export const createFlashcards = cache(
     try {
       // create flashcards based on the context with Anki format
       const completion = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo-0125",
+        model: "gpt-3.5-turbo",
         temperature: 0.5,
         response_format: { type: "json_object" },
         messages: [

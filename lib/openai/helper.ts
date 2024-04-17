@@ -23,12 +23,6 @@ import {
 } from "@/lib/supabase/admin/users"
 import { randomSelectWeighted, replaceSpecialChars } from "@/lib/utils"
 
-// Define the models with their respective weights
-const modelsForPremium = [
-  { name: "gpt-4-0125-preview", weight: 0.5 },
-  { name: "gpt-3.5-turbo-0125", weight: 0.5 }
-]
-
 // Function to determine which model to use based on the user's subscription
 export const determineModelBasedOnSubscription = async (
   userId: string
@@ -58,7 +52,7 @@ export const determineModelBasedOnSubscription = async (
       subscription.planName === "enterprise")
   ) {
     return {
-      model: randomSelectWeighted(modelsForPremium),
+      model: "gpt-4-turbo",
       subscription,
       additionalTools: listToolsChat,
       isCostLimit
@@ -66,7 +60,7 @@ export const determineModelBasedOnSubscription = async (
   }
 
   return {
-    model: "gpt-3.5-turbo-0125",
+    model: "gpt-3.5-turbo",
     subscription,
     additionalTools: listToolsChat, // for now, for experimentation free users can use some tools
     isCostLimit

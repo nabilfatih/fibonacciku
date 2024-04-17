@@ -204,10 +204,10 @@ export async function POST(req: Request) {
           // the function still not handle the types from ai sdk
           // @ts-ignore
           return openai.chat.completions.create({
-            model: "gpt-4-vision-preview",
+            model: "gpt-4-turbo",
             stream: true,
             temperature: 0.5,
-            max_tokens: 4096, // I don't know why, but in gpt-4-vision-preview, maxTokens must be specified
+            max_tokens: 4096, // I don't know why, but in gpt-4-turbo, maxTokens must be specified
             messages: [
               ...initialMessages,
               {
