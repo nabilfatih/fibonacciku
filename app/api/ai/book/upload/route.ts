@@ -9,8 +9,6 @@ import {
 } from "@/lib/supabase/admin/book"
 import { createClientServer } from "@/lib/supabase/server"
 
-export const maxDuration = 300 // This function can run for a maximum of 300 seconds
-
 export async function POST(req: NextRequest) {
   const { bookId, fileId, dataBook } = (await req.json()) as {
     bookId: string

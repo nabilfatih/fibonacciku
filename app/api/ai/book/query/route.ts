@@ -9,8 +9,6 @@ import supabaseAdmin from "@/lib/supabase/admin"
 import { getBooksAdmin } from "@/lib/supabase/admin/book"
 import { createClientServer } from "@/lib/supabase/server"
 
-export const maxDuration = 300 // This function can run for a maximum of 300 seconds
-
 type MetadataBooks = {
   loc: any // Replace 'any' with the actual type if known.
   book_id: string

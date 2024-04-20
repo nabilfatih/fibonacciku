@@ -7,8 +7,6 @@ import { createDocumentsFromPages } from "@/lib/openai/helper"
 import supabaseAdmin from "@/lib/supabase/admin"
 import { updateLibraryStatusAdmin } from "@/lib/supabase/admin/library"
 
-export const maxDuration = 300 // This function can run for a maximum of 300 seconds
-
 // Based on https://docs.edenai.co/docs/webhooks
 // Somehow the verification of the signature is not working
 

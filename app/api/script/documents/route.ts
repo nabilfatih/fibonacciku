@@ -6,8 +6,6 @@ import {
 } from "@/lib/supabase/admin/chat"
 import { getLibraryByFileIdAdmin } from "@/lib/supabase/admin/library"
 
-export const maxDuration = 300 // This function can run for a maximum of 300 seconds
-
 // TODO: This script is more cleaning chat, when there is no library, delete chat
 // TODO: Migration to library table
 // TODO: Only run in your local machine

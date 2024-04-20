@@ -14,8 +14,6 @@ import { insertLibraryAdmin } from "@/lib/supabase/admin/library"
 import { createClientServer } from "@/lib/supabase/server"
 import { generateUUID } from "@/lib/utils"
 
-export const maxDuration = 300 // This function can run for a maximum of 300 seconds
-
 export async function POST(req: NextRequest) {
   const ip = req.headers.get("x-forwarded-for")
   const ratelimit = new Ratelimit({
