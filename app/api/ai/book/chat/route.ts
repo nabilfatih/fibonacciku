@@ -340,7 +340,7 @@ export async function POST(req: NextRequest) {
             name,
             status,
             headers,
-            message: "High Traffic",
+            message: "High Traffic, please try again later.",
             text: message
           }
         },
@@ -350,7 +350,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           error: {
-            message: "High Traffic"
+            message: "High Traffic, please try again later."
           }
         },
         { status: 500 }
