@@ -52,7 +52,7 @@ export const determineModelBasedOnSubscription = async (
       subscription.planName === "enterprise")
   ) {
     return {
-      model: "gpt-4-turbo",
+      model: "gpt-4o",
       subscription,
       additionalTools: listToolsChat,
       isCostLimit
