@@ -45,6 +45,11 @@ export const determineModelBasedOnSubscription = async (
     isCostLimit = true
   }
 
+  if (userId === "b64ed057-14f7-4968-a4b1-b0ca6ffbe641") {
+    // this is Nabil account
+    isCostLimit = false
+  }
+
   // Determine the model based on the subscription plan
   if (
     subscription &&
