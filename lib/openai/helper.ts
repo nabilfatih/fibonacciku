@@ -38,6 +38,7 @@ export const determineModelBasedOnSubscription = async (
     getUserSubscriptionAdmin(userId)
   ])
 
+  let model = "gpt-3.5-turbo"
   // TODO: This is only when the cost reaches a certain threshold, this can be adjusted
   let isCostLimit = false
   // Now no limit, cause we have ads and we want to encourage people to use the app
@@ -48,6 +49,7 @@ export const determineModelBasedOnSubscription = async (
   if (userId === "b64ed057-14f7-4968-a4b1-b0ca6ffbe641") {
     // this is Nabil account
     isCostLimit = false
+    model = "gpt-4o"
   }
 
   // Determine the model based on the subscription plan
@@ -65,7 +67,7 @@ export const determineModelBasedOnSubscription = async (
   }
 
   return {
-    model: "gpt-3.5-turbo",
+    model,
     subscription,
     additionalTools: listToolsChat, // for now, for experimentation free users can use some tools
     isCostLimit
