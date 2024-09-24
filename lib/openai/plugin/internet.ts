@@ -98,7 +98,7 @@ export const googlePlugin = cache(
   },
   ["googlePlugin"],
   {
-    revalidate: 3600
+    revalidate: 1800
   }
 )
 
@@ -150,7 +150,7 @@ export const youtubePlugin = cache(
   },
   ["youtubePlugin"],
   {
-    revalidate: 3600
+    revalidate: 1800
   }
 )
 
